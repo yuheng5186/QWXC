@@ -101,7 +101,7 @@ static NSString *cellstr=@"Cellstr";
 }
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
+    return 7;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
@@ -165,7 +165,8 @@ static NSString *cellstr=@"Cellstr";
         cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
         return cell2;
         
-    }else if (indexPath.section==1){
+    }
+    else if (indexPath.section==1){
         QWMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
           cell.backgroundColor=[UIColor clearColor];
@@ -219,7 +220,16 @@ static NSString *cellstr=@"Cellstr";
         return cell;
         
         
-    }else {
+    }else if(indexPath.section==4){
+ 
+        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell2.backgroundColor=[UIColor clearColor];
+        cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
+        cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"guanggao22"]];
+        return cell2;
+    
+    } else {
         QWHomeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_HomeDetailTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -230,16 +240,19 @@ static NSString *cellstr=@"Cellstr";
 }
 #pragma mark-组头组尾
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 67)];
-    header.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
-    UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, header.frame.size.height-2)];
-    [header addSubview:imagevie];
-    if (section == 4) {
-        imagevie.image=[UIImage imageNamed:@"guanggao22"];
-    } else {
-        UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, header.frame.size.height)];
-        [header addSubview:imagevie];
-    }
+    UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 100)];
+    header.backgroundColor=RGBACOLOR(246, 246, 246, 1);
+//    UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth,87)];
+//    [header addSubview:imagevie];
+//    if (section == 4) {
+//        imagevie.contentMode=UIViewContentModeScaleAspectFill;
+////        UIEdgeInsetsMake
+//
+//        imagevie.image=[UIImage imageNamed:@"guanggao22"];
+//    } else {
+//        UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 47)];
+//        [header addSubview:imagevie];
+//    }
     return header;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -256,12 +269,13 @@ static NSString *cellstr=@"Cellstr";
     //        imagevie.image=[UIImage imageNamed:@"guanggao11"];
     //         return Footer;
     //    } else
-    if (section >1) {
+    if (section >1&&section!=4) {
         UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
         Footer.backgroundColor=[UIColor clearColor];
         UILabel *imagevie=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, Footer.frame.size.height)];
         imagevie.textColor=[UIColor colorWithHexString:@"#868686"];
         imagevie.textAlignment=NSTextAlignmentCenter;
+        imagevie.font=[UIFont systemFontOfSize:12];
         imagevie.text=@"查看详情";
         [Footer addSubview:imagevie];
         
@@ -274,28 +288,26 @@ static NSString *cellstr=@"Cellstr";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section==4){
-        return 67;
-    }else if(section==1){
+    if(section==1){
         
         return 0;
         
     }else{
-        return 3;
+        return 10;
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     //    if (section==1) {
     //        return 67;
     //    }else
-    if(section>1){
+    if(section>1&&section!=4){
         return 30;
-    }else if(section==0||section==1){
+    }else if(section==0||section==1||section==4){
         
         return 0;
         
     }else{
-        return 3;
+        return 10;
         
     }
     
