@@ -26,6 +26,9 @@
 #import "UIImage+XLimg.h"
 #import "Masonry.h"
 #import "UIView+Frame.h"
+#import "UIColor+HexColor.h"
+#import "UIColor+Additions.h"
+#import "UIImage+BFS.h"
 #import "UIImage+Common.h"
 #import "AppDelegate.h"
 #import "UILabel+StringFrame.h"
@@ -42,6 +45,15 @@
 # define BtnHighlighted       UIControlStateHighlighted
 #define kColorTableBG [UIColor colorWithHexString:@"0xf0f0f0"]
 #define kMenuNormalColor    [UIColor colorWithHexString:@"0x222222"]
+
+//定义屏幕高度
+#define Main_Screen_Height [UIScreen mainScreen].bounds.size.height
+//定义屏幕宽度
+#define Main_Screen_Width [UIScreen mainScreen].bounds.size.width
+
+
+
+
 
 #define autoScaleW(width) [(AppDelegate *)[UIApplication sharedApplication].delegate autoScaleW:width]
 #define autoScaleH(height) [(AppDelegate *)[UIApplication sharedApplication].delegate autoScaleH:height]
