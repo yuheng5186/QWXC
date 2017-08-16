@@ -12,6 +12,20 @@
 #import "QWCarFriendsCircleController.h"
 #import "QWExchangeViewController.h"
 #import "QWMerchantInViewController.h"
+
+#import "QWScanController.h"
+#import "QWDownloadController.h"
+#import "QWCarClubController.h"
+#import "QWShareMoneyController.h"
+#import "QWMyCarController.h"
+#import "QWUserServiceController.h"
+#import "QWMembershipController.h"
+#import "QWScoreController.h"
+#import "QWCardPackgeController.h"
+#import "QWAddShopController.h"
+
+#import "PopupView.h"
+#import "LewPopupViewAnimationDrop.h"
 @interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 @end
@@ -76,6 +90,10 @@ static NSString *cellstr=@"Cellstr";
 }
 -(void)downloadOnclick:(id) sender{
     
+    QWDownloadController    *downloadController     = [[QWDownloadController alloc]init];
+    downloadController.hidesBottomBarWhenPushed     = YES;
+    [self.navigationController pushViewController:downloadController animated:YES];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -108,9 +126,40 @@ static NSString *cellstr=@"Cellstr";
         QWMenuTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell2.selectionStyle = UITableViewCellSelectionStyleNone;
         cell2.backgroundColor=[UIColor clearColor];
-        [cell2 setContentAndImgArr:@[@"saoyisao",@"kabao",@"huiyuan",@"jifen"] andContentArr:@[@"扫一扫",@"卡包",@"会员",@"积分"]];
+        [cell2 setContentAndImgArr:@[@"saoyisao",
+                                     @"kabao",
+                                     @"huiyuan",
+                                     @"jifen"]
+                     andContentArr:@[@"扫一扫",
+                                     @"卡包",
+                                     @"会员",
+                                     @"积分"]];
+        
+        QWScanController    *scanController             = [[QWScanController alloc]init];
+        QWCardPackgeController  *cardPackgeController   = [[QWCardPackgeController alloc]init];
+        QWMembershipController  *membershipController   = [[QWMembershipController alloc]init];
+        QWScoreController       *scoreController        = [[QWScoreController alloc]init];
+        
         cell2.selecOptionIndexs=^(NSInteger index){
             #pragma mark-图片点击事件
+            switch (index) {
+                case 0:
+                    [self.navigationController pushViewController:scanController animated:YES];
+                    
+                    break;
+                case 1:
+                    [self.navigationController pushViewController:cardPackgeController animated:YES];
+                    break;
+                case 2:
+                    [self.navigationController pushViewController:membershipController animated:YES];
+                    break;
+                case 3:
+                    [self.navigationController pushViewController:scoreController animated:YES];
+                    break;
+                default:
+                    break;
+            }
+            
         };
         cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
         return cell2;
@@ -119,15 +168,40 @@ static NSString *cellstr=@"Cellstr";
         QWMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
           cell.backgroundColor=[UIColor clearColor];
-        [cell setContentAndImgArr:@[@"duihuanlipin",@"qiandao",@"shangjia",@"kefu",@"wode-aiche",@"fenxiang",@"quanzi"] andContentArr:@[@"兑换礼品",@"每日签到",@"商家入驻",@"客服咨询",@"我的爱车",@"分享赚钱",@"车友圈"]];
-        cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
-        QWCarFriendsCircleController *qwcarfriendscirclectl=[[QWCarFriendsCircleController alloc]init];
-        QWExchangeViewController *exchangevctl=[[QWExchangeViewController alloc]init];
-        QWMerchantInViewController *MerchantIn=[[QWMerchantInViewController alloc]init];
+        [cell setContentAndImgArr:@[@"duihuanlipin",
+                                    @"qiandao",
+                                    @"shangjia",
+                                    @"kefu",
+                                    @"wode-aiche",
+                                    @"fenxiang",
+                                    @"quanzi"]
+                    andContentArr:@[@"兑换礼品",
+                                    @"每日签到",
+                                    @"商家入驻",
+                                    @"客服咨询",
+                                    @"我的爱车",
+                                    @"分享赚钱",
+                                    @"车友圈"]];
+        cell.backgroundView                                 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
+        QWCarFriendsCircleController *qwcarfriendscirclectl = [[QWCarFriendsCircleController alloc]init];
+        QWExchangeViewController *exchangevctl              = [[QWExchangeViewController alloc]init];
+        QWAddShopController *MerchantIn                     = [[QWAddShopController alloc]init];
+        
+        PopupView *view = [PopupView defaultPopupView];
+        view.parentVC   = self;
+        
         cell.selecOptionIndexs=^(NSInteger index){
             switch (index) {
                 case 0:
                     [self.navigationController pushViewController:exchangevctl animated:YES];
+                    
+                    break;
+                case 1:
+
+                    
+                    [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
+                        
+                    }];
                     break;
                 case 2:
                     [self.navigationController pushViewController:MerchantIn animated:YES];
