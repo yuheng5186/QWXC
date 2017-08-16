@@ -2,9 +2,6 @@
 //  HYSlider.m
 //  HYSlider
 //
-//  Created by heyang on 16/6/3.
-//  Copyright © 2016年 heyang. All rights reserved.
-//
 
 #import "HYSlider.h"
 @interface HYSlider ()
@@ -59,7 +56,7 @@
         _touchView .frame = CGRectMake(0, 0, self.frame.size.height + 10, self.frame.size.height + 10);
         _touchView.center = _textLabel.center;
     }
-
+    
 }
 
 
@@ -91,7 +88,7 @@
     _showScrollTextView = showScrollTextView;
     
     self.scrollShowTextView.hidden = !showScrollTextView;
-    self.scrollShowTextView.frame = CGRectMake((self.touchView.frame.origin.x)>= 0 ? (self.touchView.frame.origin.x):(0) ,- 48, 36, 43);
+    self.scrollShowTextView.frame = CGRectMake((self.touchView.frame.origin.x)>= 0 ? (self.touchView.frame.origin.x):(0) ,- 25, 20, 20);
     self.scrollShowTextLabel.text = [NSString stringWithFormat:@"%.f",self.currentSliderValue];
 }
 
@@ -121,15 +118,15 @@
     
     
     /** 浮标image*/
-    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,36,43)];
+    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,20,20)];
     _imageView.image = [UIImage imageNamed:@"huiyuanfenshukuang"];
     [_scrollShowTextView addSubview:_imageView];
     
     /** 浮标数值显示label*/
-    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , 36, 36)];
+    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , 20, 20)];
     _scrollShowTextLabel.textAlignment = NSTextAlignmentCenter;
     _scrollShowTextLabel.textColor = [UIColor whiteColor];
-    _scrollShowTextLabel.font = [UIFont systemFontOfSize:13.0];
+    _scrollShowTextLabel.font = [UIFont systemFontOfSize:10.0];
     [_scrollShowTextView addSubview:_scrollShowTextLabel];
     
     
@@ -144,7 +141,7 @@
     
     /** 默认最大值*/
     _hyMaxValue = 255.0;
-
+    
     UILongPressGestureRecognizer *longGR = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longGRAction:)];
     [self addGestureRecognizer:longGR];
     
@@ -162,30 +159,29 @@
         
         
         if((translation.x >=0 && ((_hyMaxValue/self.frame.size.width) * translation.x) <= _hyMaxValue)){
-          
+            
             self.leftView.frame           = CGRectMake(0, 0, translation.x, self.frame.size.height);
-            self.scrollShowTextView.frame = CGRectMake((translation.x-18)>= 0 ? (translation.x-18):(0) ,- 48, 36, 43);
+            self.scrollShowTextView.frame = CGRectMake((translation.x-18)>= 0 ? (translation.x-18):(0) ,- 48, 20, 20);
             self.textLabel .frame             = CGRectMake((self.leftView.frame.size.width - 20) >= 0 ? (self.leftView.frame.size.width - 20):(0) , 0, 20, self.frame.size.height);
             self.textLabel.text           = [NSString stringWithFormat:@"%.f",(_hyMaxValue/self.frame.size.width) * translation.x];
             self.scrollShowTextLabel.text = [NSString stringWithFormat:@"%.f",(_hyMaxValue/self.frame.size.width) * translation.x];
-
+            
             if(_showTouchView){
-            _touchView .frame             = CGRectMake(0, 0, self.frame.size.height + 10, self.frame.size.height + 10);
-            _touchView.center             = _textLabel.center;
+                _touchView .frame             = CGRectMake(0, 0, self.frame.size.height + 10, self.frame.size.height + 10);
+                _touchView.center             = _textLabel.center;
             }
-         
+            
             
             /** delegate*/
             if([self.delegate respondsToSelector:@selector(HYSlider:didScrollValue:)]){
-            [self.delegate HYSlider:self didScrollValue:(_hyMaxValue/self.frame.size.width) * translation.x];
+                [self.delegate HYSlider:self didScrollValue:(_hyMaxValue/self.frame.size.width) * translation.x];
             }
             
             
         }
-
+        
     }
 }
-
 
 
 @end
