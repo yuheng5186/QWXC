@@ -14,5 +14,10 @@
 
 @property float autoSizeScaleX;
 @property float autoSizeScaleY;
+- (CGFloat)autoScaleW:(CGFloat)w;
+
+- (CGFloat)autoScaleH:(CGFloat)h;
+- (void)initAutoScaleSize;
+
 @end
 

@@ -43,3 +43,5 @@
 #define kColorTableBG [UIColor colorWithHexString:@"0xf0f0f0"]
 #define kMenuNormalColor    [UIColor colorWithHexString:@"0x222222"]
 
+#define autoScaleW(width) [(AppDelegate *)[UIApplication sharedApplication].delegate autoScaleW:width]
+#define autoScaleH(height) [(AppDelegate *)[UIApplication sharedApplication].delegate autoScaleH:height]

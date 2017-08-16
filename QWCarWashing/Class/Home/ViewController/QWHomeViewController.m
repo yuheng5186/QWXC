@@ -26,14 +26,14 @@ static NSString *cellstr=@"Cellstr";
         _tableview.delegate=self;
         _tableview.dataSource=self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-         _tableview.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
-
+        _tableview.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
+        
     }
     return _tableview;
 }
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden=NO;
-
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,22 +57,22 @@ static NSString *cellstr=@"Cellstr";
     //右边试图
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
-
-//    UIButton *rightbtn=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [rightbtn sizeToFit];
-//    rightbtn.imageView.contentMode=UIViewContentModeScaleAspectFit;
-//    rightbtn.frame=CGRectMake(10, 0, 48, 48);
-//    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateNormal];
-//    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateHighlighted];
-//    
-//    [rightbtn addTarget:self action:@selector(downloadOnclick) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    UIBarButtonItem *rightbarbtn= [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
-//    self.navigationItem.rightBarButtonItem=rightbarbtn;
+    
+    //    UIButton *rightbtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    //    [rightbtn sizeToFit];
+    //    rightbtn.imageView.contentMode=UIViewContentModeScaleAspectFit;
+    //    rightbtn.frame=CGRectMake(10, 0, 48, 48);
+    //    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateNormal];
+    //    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateHighlighted];
+    //
+    //    [rightbtn addTarget:self action:@selector(downloadOnclick) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    UIBarButtonItem *rightbarbtn= [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
+    //    self.navigationItem.rightBarButtonItem=rightbarbtn;
 }
 
 -(void)personInfo{
-
+    
 }
 -(void)downloadOnclick:(id) sender{
     
@@ -110,7 +110,7 @@ static NSString *cellstr=@"Cellstr";
         cell2.backgroundColor=[UIColor clearColor];
         [cell2 setContentAndImgArr:@[@"saoyisao",@"kabao",@"huiyuan",@"jifen"] andContentArr:@[@"扫一扫",@"卡包",@"会员",@"积分"]];
         cell2.selecOptionIndexs=^(NSInteger index){
-            #pragma mark-图片点击事件
+#pragma mark-图片点击事件
         };
         cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
         return cell2;
@@ -118,7 +118,7 @@ static NSString *cellstr=@"Cellstr";
     }else if (indexPath.section==1){
         QWMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-          cell.backgroundColor=[UIColor clearColor];
+        
         [cell setContentAndImgArr:@[@"duihuanlipin",@"qiandao",@"shangjia",@"kefu",@"wode-aiche",@"fenxiang",@"quanzi"] andContentArr:@[@"兑换礼品",@"每日签到",@"商家入驻",@"客服咨询",@"我的爱车",@"分享赚钱",@"车友圈"]];
         cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
         QWCarFriendsCircleController *qwcarfriendscirclectl=[[QWCarFriendsCircleController alloc]init];
@@ -139,7 +139,7 @@ static NSString *cellstr=@"Cellstr";
                 default:
                     break;
             }
-            #pragma mark-图片点击事件
+#pragma mark-图片点击事件
         };
         return cell;
         
@@ -157,9 +157,9 @@ static NSString *cellstr=@"Cellstr";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 67)];
     header.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
-    UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, header.frame.size.height-10)];
+    UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, header.frame.size.height-2)];
     [header addSubview:imagevie];
-    if (section == 2 || section == 4) {
+    if (section == 4) {
         imagevie.image=[UIImage imageNamed:@"guanggao22"];
     } else {
         UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, header.frame.size.height)];
@@ -169,18 +169,19 @@ static NSString *cellstr=@"Cellstr";
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-   
+    
     // 覆盖文字
-    if (section == 1) {
-        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 67)];
-        Footer.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
-        UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, QWScreenWidth-40, Footer.frame.size.height-20)];
-        
-        imagevie.layer.cornerRadius=15;
-        [Footer addSubview:imagevie];
-        imagevie.image=[UIImage imageNamed:@"guanggao11"];
-         return Footer;
-    } else if (section == 2 || section == 4) {
+    //    if (section == 1) {
+    //        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 67)];
+    //        Footer.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
+    //        UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, QWScreenWidth-40, Footer.frame.size.height-20)];
+    //
+    //        imagevie.layer.cornerRadius=15;
+    //        [Footer addSubview:imagevie];
+    //        imagevie.image=[UIImage imageNamed:@"guanggao11"];
+    //         return Footer;
+    //    } else
+    if (section >1) {
         UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
         Footer.backgroundColor=[UIColor clearColor];
         UILabel *imagevie=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, Footer.frame.size.height)];
@@ -191,32 +192,39 @@ static NSString *cellstr=@"Cellstr";
         
         return Footer;
     }else{
-         UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 0)];
+        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 0)];
         return Footer;
     }
     
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section==2||section==4){
+    if(section==4){
         return 67;
-    }else{
-       
-        return 3;
+    }else if(section==1){
         
+        return 0;
+        
+    }else{
+        return 3;
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if (section==1) {
-        return 67;
-    }else if(section==2 ||section==4){
+    //    if (section==1) {
+    //        return 67;
+    //    }else
+    if(section>1){
         return 30;
+    }else if(section==0||section==1){
+        
+        return 0;
+        
     }else{
         return 3;
-    
+        
     }
-   
-
+    
+    
 }
 
 
@@ -232,7 +240,7 @@ static NSString *cellstr=@"Cellstr";
     }else{
         return 100;
     }
-
+    
 }
 
 @end
