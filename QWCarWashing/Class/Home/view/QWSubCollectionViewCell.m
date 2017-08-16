@@ -36,7 +36,7 @@
 {
     WEAKSELF
     self=[super initWithFrame:frame];
-    self.backgroundColor = [UIColor whiteColor];
+    //    self.backgroundColor = [UIColor redColor];
     if (self) {
         if (!_imagescell) {
             self.imagescell=[[UIImageView alloc]init];
@@ -44,19 +44,20 @@
             self.imagescell.layer.cornerRadius=6;
             //            隐藏 边框的圆角
             self.imagescell.layer.masksToBounds=YES;
+            //             self.imagescell.backgroundColor = [UIColor yellowColor];
             [self addSubview:self.imagescell];
-         
-        
-        if (!_namecell) {
-            self.namecell=[[UILabel alloc]init];
-            self.namecell.textAlignment=NSTextAlignmentCenter;
-            self.namecell.font = [UIFont systemFontOfSize:12];
-            self.namecell.textColor = [UIColor lightGrayColor];
-           
-          
-            [self addSubview:self.namecell];
+            
+            
+            if (!_namecell) {
+                self.namecell=[[UILabel alloc]init];
+                self.namecell.textAlignment=NSTextAlignmentCenter;
+                self.namecell.font = [UIFont systemFontOfSize:12];
+                self.namecell.textColor = [UIColor lightGrayColor];
+                //           self.namecell.backgroundColor = [UIColor whiteColor];
+                
+                [self addSubview:self.namecell];
+            }
         }
-    }
     }
     return self;
 }
@@ -71,13 +72,13 @@
         make.centerX.mas_equalTo(weakSelf.contentView);
         make.top.mas_equalTo(4);
     }];
-
+    
     [_namecell mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(laberW, 15));
+        make.size.mas_equalTo(CGSizeMake(self.frame.size.width, 15));
         make.centerX.mas_equalTo(weakSelf.contentView);
-        make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(4);
+        make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(15);
     }];
-
+    
 }
 -(void)setSmailImages:(NSString *)myImages andName:(NSString *)names
 {
@@ -92,7 +93,7 @@
     [_namecell mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(laberW, 15));
         make.centerX.mas_equalTo(weakSelf.contentView);
-        make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(13);
+        make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(15);
     }];
 }
 +(CGSize)ccellSize{

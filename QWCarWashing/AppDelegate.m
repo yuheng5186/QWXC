@@ -12,8 +12,12 @@
 {
     AppDelegate *myDelegate;
 }
-@end
 
+//当前屏幕与设计尺寸(iPhone6)宽度比例
+@property(nonatomic,assign)CGFloat autoSizeScaleW;
+//当前屏幕与设计尺寸(iPhone6)高度比例
+@property(nonatomic,assign)CGFloat autoSizeScaleH;
+@end
 @implementation AppDelegate
 
 
@@ -25,7 +29,7 @@
     tabbarc.tabBar.backgroundColor=[UIColor whiteColor];
     self.window.rootViewController=tabbarc;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-   
+    
     
     myDelegate = [[UIApplication sharedApplication] delegate];
     
@@ -40,10 +44,44 @@
         myDelegate.autoSizeScaleY = QWScreenheight/667;
     }
     return YES;
-
+    
+}
+#pragma mark - ScaleSize
+- (void)initAutoScaleSize{
+    
+    if (QWScreenheight==480) {
+        //4s
+        _autoSizeScaleW =QWScreenWidth/375;
+        _autoSizeScaleH =QWScreenheight/667;
+    }else if(QWScreenheight==568) {
+        //5
+        _autoSizeScaleW =QWScreenWidth/375;
+        _autoSizeScaleH =QWScreenheight/667;
+    }else if(QWScreenheight==667){
+        //6
+        _autoSizeScaleW =QWScreenWidth/375;
+        _autoSizeScaleH =QWScreenheight/667;
+    }else if(QWScreenheight==736){
+        //6p
+        _autoSizeScaleW =QWScreenWidth/375;
+        _autoSizeScaleH =QWScreenheight/667;
+    }else{
+        _autoSizeScaleW =1;
+        _autoSizeScaleH =1;
+    }
+    
+}
+- (CGFloat)autoScaleW:(CGFloat)w{
+    
+    return w * self.autoSizeScaleW;
+    
 }
 
-
+- (CGFloat)autoScaleH:(CGFloat)h{
+    
+    return h * self.autoSizeScaleH;
+    
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
