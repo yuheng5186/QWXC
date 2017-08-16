@@ -1,13 +1,13 @@
 //
-//  QWAddShopController.h
+//  QWBaseViewController.h
 //  QWCarWashing
 //
 //  Created by Wuxinglin on 2017/8/16.
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import "QWBaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface QWAddShopController : QWBaseViewController
+@interface QWBaseViewController : UIViewController
 
 @end

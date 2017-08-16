@@ -8,13 +8,18 @@
 
 #import "QWMerchantInViewController.h"
 #import "QWMerchantInTableViewCell.h"
-@interface QWMerchantInViewController ()
-<UITableViewDelegate,UITableViewDataSource>
+@interface QWMerchantInViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property(nonatomic,strong)UITableView *tableview;
+
 @end
+
 #define QWCellIdentifier_MerchantInTableViewCell @"QWMerchantInTableViewCell"
+
 @implementation QWMerchantInViewController
+
 -(UITableView *)tableview{
+    
     if (_tableview==nil) {
         _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
 //        [_tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:cellstr];
@@ -56,6 +61,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
+    
+    self.title  = @"商家入驻";
+    [self resetBabkButton];
+}
+
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

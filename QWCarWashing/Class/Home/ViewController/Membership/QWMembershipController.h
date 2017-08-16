@@ -6,8 +6,8 @@
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "QWBaseViewController.h"
 
-@interface QWMembershipController : UIViewController
+@interface QWMembershipController : QWBaseViewController
 
 @end

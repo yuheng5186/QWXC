@@ -1,26 +1,23 @@
 //
-//  QWDownloadController.m
+//  QWBaseViewController.m
 //  QWCarWashing
 //
 //  Created by Wuxinglin on 2017/8/16.
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import "QWDownloadController.h"
+#import "QWBaseViewController.h"
 
-@interface QWDownloadController ()
+@interface QWBaseViewController ()
 
 @end
 
-@implementation QWDownloadController
+@implementation QWBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title  = @"下载蔷薇洗车";
-
     [self resetBabkButton];
-
 }
 
 - (void) resetBabkButton {
@@ -35,7 +32,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

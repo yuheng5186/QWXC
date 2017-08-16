@@ -6,8 +6,8 @@
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "QWBaseViewController.h"
 
-@interface QWScoreController : UIViewController
+@interface QWScoreController : QWBaseViewController
 
 @end

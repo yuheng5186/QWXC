@@ -16,17 +16,18 @@
 		180701F41F44214C00398435 /* PopHelpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701EE1F44214C00398435 /* PopHelpView.m */; };
 		180701F51F44214C00398435 /* PopHelpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180701EF1F44214C00398435 /* PopHelpView.xib */; };
 		180701F61F44214C00398435 /* UIViewController+LewPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701F11F44214C00398435 /* UIViewController+LewPopupViewController.m */; };
-		180701FA1F44224700398435 /* QWDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701F91F44224700398435 /* QWDownloadController.m */; };
-		180702041F44263D00398435 /* QWCardPackgeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702031F44263D00398435 /* QWCardPackgeController.m */; };
-		180702071F44265900398435 /* QWScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702061F44265900398435 /* QWScoreController.m */; };
-		1807020A1F44266B00398435 /* QWMembershipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702091F44266B00398435 /* QWMembershipController.m */; };
-		1807020D1F44268500398435 /* QWUserServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807020C1F44268500398435 /* QWUserServiceController.m */; };
-		180702101F44269800398435 /* QWMyCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807020F1F44269800398435 /* QWMyCarController.m */; };
-		180702131F4426AC00398435 /* QWShareMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702121F4426AC00398435 /* QWShareMoneyController.m */; };
-		180702161F4426BE00398435 /* QWCarClubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702151F4426BE00398435 /* QWCarClubController.m */; };
 		1807021A1F442CD500398435 /* PopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702181F442CD500398435 /* PopupView.m */; };
 		1807021B1F442CD500398435 /* PopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702191F442CD500398435 /* PopupView.xib */; };
-		1807021E1F442DEF00398435 /* QWAddShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807021D1F442DEF00398435 /* QWAddShopController.m */; };
+		180702221F4441E700398435 /* QWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702211F4441E700398435 /* QWBaseViewController.m */; };
+		180702251F44428900398435 /* QWShareMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702241F44428900398435 /* QWShareMoneyController.m */; };
+		180702281F4442B500398435 /* QWMyCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702271F4442B500398435 /* QWMyCarController.m */; };
+		1807022B1F4442F600398435 /* QWDownloadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807022A1F4442F600398435 /* QWDownloadController.m */; };
+		1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807022D1F44431E00398435 /* QWCardPackgeController.m */; };
+		180702311F44432F00398435 /* QWScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702301F44432F00398435 /* QWScoreController.m */; };
+		180702341F44435100398435 /* QWMembershipController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702331F44435100398435 /* QWMembershipController.m */; };
+		180702371F44436100398435 /* QWUserServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702361F44436100398435 /* QWUserServiceController.m */; };
+		1807023A1F44437700398435 /* QWCarClubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702391F44437700398435 /* QWCarClubController.m */; };
+		1807023D1F44481600398435 /* QWAddShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807023C1F44481600398435 /* QWAddShopController.m */; };
 		180957781F4147E400BE185D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957771F4147E400BE185D /* main.m */; };
 		1809577B1F4147E400BE185D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577A1F4147E400BE185D /* AppDelegate.m */; };
 		1809577E1F4147E400BE185D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577D1F4147E400BE185D /* ViewController.m */; };
@@ -170,27 +171,29 @@
 		180701EF1F44214C00398435 /* PopHelpView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopHelpView.xib; sourceTree = "<group>"; };
 		180701F01F44214C00398435 /* UIViewController+LewPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LewPopupViewController.h"; sourceTree = "<group>"; };
 		180701F11F44214C00398435 /* UIViewController+LewPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LewPopupViewController.m"; sourceTree = "<group>"; };
-		180701F81F44224700398435 /* QWDownloadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWDownloadController.h; sourceTree = "<group>"; };
-		180701F91F44224700398435 /* QWDownloadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWDownloadController.m; sourceTree = "<group>"; };
-		180702021F44263D00398435 /* QWCardPackgeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCardPackgeController.h; sourceTree = "<group>"; };
-		180702031F44263D00398435 /* QWCardPackgeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCardPackgeController.m; sourceTree = "<group>"; };
-		180702051F44265900398435 /* QWScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScoreController.h; sourceTree = "<group>"; };
-		180702061F44265900398435 /* QWScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScoreController.m; sourceTree = "<group>"; };
-		180702081F44266B00398435 /* QWMembershipController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMembershipController.h; sourceTree = "<group>"; };
-		180702091F44266B00398435 /* QWMembershipController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMembershipController.m; sourceTree = "<group>"; };
-		1807020B1F44268500398435 /* QWUserServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUserServiceController.h; sourceTree = "<group>"; };
-		1807020C1F44268500398435 /* QWUserServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUserServiceController.m; sourceTree = "<group>"; };
-		1807020E1F44269800398435 /* QWMyCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMyCarController.h; sourceTree = "<group>"; };
-		1807020F1F44269800398435 /* QWMyCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMyCarController.m; sourceTree = "<group>"; };
-		180702111F4426AC00398435 /* QWShareMoneyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWShareMoneyController.h; sourceTree = "<group>"; };
-		180702121F4426AC00398435 /* QWShareMoneyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWShareMoneyController.m; sourceTree = "<group>"; };
-		180702141F4426BE00398435 /* QWCarClubController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubController.h; sourceTree = "<group>"; };
-		180702151F4426BE00398435 /* QWCarClubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubController.m; sourceTree = "<group>"; };
 		180702171F442CD500398435 /* PopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupView.h; sourceTree = "<group>"; };
 		180702181F442CD500398435 /* PopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupView.m; sourceTree = "<group>"; };
 		180702191F442CD500398435 /* PopupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopupView.xib; sourceTree = "<group>"; };
-		1807021C1F442DEF00398435 /* QWAddShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAddShopController.h; sourceTree = "<group>"; };
-		1807021D1F442DEF00398435 /* QWAddShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAddShopController.m; sourceTree = "<group>"; };
+		180702201F4441E700398435 /* QWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWBaseViewController.h; sourceTree = "<group>"; };
+		180702211F4441E700398435 /* QWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWBaseViewController.m; sourceTree = "<group>"; };
+		180702231F44428900398435 /* QWShareMoneyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWShareMoneyController.h; sourceTree = "<group>"; };
+		180702241F44428900398435 /* QWShareMoneyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWShareMoneyController.m; sourceTree = "<group>"; };
+		180702261F4442B500398435 /* QWMyCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMyCarController.h; sourceTree = "<group>"; };
+		180702271F4442B500398435 /* QWMyCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMyCarController.m; sourceTree = "<group>"; };
+		180702291F4442F600398435 /* QWDownloadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWDownloadController.h; sourceTree = "<group>"; };
+		1807022A1F4442F600398435 /* QWDownloadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWDownloadController.m; sourceTree = "<group>"; };
+		1807022C1F44431E00398435 /* QWCardPackgeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCardPackgeController.h; sourceTree = "<group>"; };
+		1807022D1F44431E00398435 /* QWCardPackgeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCardPackgeController.m; sourceTree = "<group>"; };
+		1807022F1F44432F00398435 /* QWScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScoreController.h; sourceTree = "<group>"; };
+		180702301F44432F00398435 /* QWScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScoreController.m; sourceTree = "<group>"; };
+		180702321F44435100398435 /* QWMembershipController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMembershipController.h; sourceTree = "<group>"; };
+		180702331F44435100398435 /* QWMembershipController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMembershipController.m; sourceTree = "<group>"; };
+		180702351F44436100398435 /* QWUserServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUserServiceController.h; sourceTree = "<group>"; };
+		180702361F44436100398435 /* QWUserServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUserServiceController.m; sourceTree = "<group>"; };
+		180702381F44437700398435 /* QWCarClubController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubController.h; sourceTree = "<group>"; };
+		180702391F44437700398435 /* QWCarClubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubController.m; sourceTree = "<group>"; };
+		1807023B1F44481600398435 /* QWAddShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAddShopController.h; sourceTree = "<group>"; };
+		1807023C1F44481600398435 /* QWAddShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAddShopController.m; sourceTree = "<group>"; };
 		180957731F4147E400BE185D /* QWCarWashing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWCarWashing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180957771F4147E400BE185D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		180957791F4147E400BE185D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -452,8 +455,8 @@
 		180701F71F44223200398435 /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				180701F81F44224700398435 /* QWDownloadController.h */,
-				180701F91F44224700398435 /* QWDownloadController.m */,
+				180702291F4442F600398435 /* QWDownloadController.h */,
+				1807022A1F4442F600398435 /* QWDownloadController.m */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -461,8 +464,8 @@
 		180701FB1F44230F00398435 /* CardPackge */ = {
 			isa = PBXGroup;
 			children = (
-				180702021F44263D00398435 /* QWCardPackgeController.h */,
-				180702031F44263D00398435 /* QWCardPackgeController.m */,
+				1807022C1F44431E00398435 /* QWCardPackgeController.h */,
+				1807022D1F44431E00398435 /* QWCardPackgeController.m */,
 			);
 			path = CardPackge;
 			sourceTree = "<group>";
@@ -470,8 +473,8 @@
 		180701FC1F4423BC00398435 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				180702051F44265900398435 /* QWScoreController.h */,
-				180702061F44265900398435 /* QWScoreController.m */,
+				1807022F1F44432F00398435 /* QWScoreController.h */,
+				180702301F44432F00398435 /* QWScoreController.m */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -479,8 +482,8 @@
 		180701FD1F4423C000398435 /* Membership */ = {
 			isa = PBXGroup;
 			children = (
-				180702081F44266B00398435 /* QWMembershipController.h */,
-				180702091F44266B00398435 /* QWMembershipController.m */,
+				180702321F44435100398435 /* QWMembershipController.h */,
+				180702331F44435100398435 /* QWMembershipController.m */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -488,8 +491,8 @@
 		180701FE1F44242700398435 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
-				1807020B1F44268500398435 /* QWUserServiceController.h */,
-				1807020C1F44268500398435 /* QWUserServiceController.m */,
+				180702351F44436100398435 /* QWUserServiceController.h */,
+				180702361F44436100398435 /* QWUserServiceController.m */,
 			);
 			path = UserService;
 			sourceTree = "<group>";
@@ -497,8 +500,8 @@
 		180701FF1F4424A900398435 /* MyCar */ = {
 			isa = PBXGroup;
 			children = (
-				1807020E1F44269800398435 /* QWMyCarController.h */,
-				1807020F1F44269800398435 /* QWMyCarController.m */,
+				180702261F4442B500398435 /* QWMyCarController.h */,
+				180702271F4442B500398435 /* QWMyCarController.m */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -506,8 +509,8 @@
 		180702001F4424D100398435 /* ShareMoney */ = {
 			isa = PBXGroup;
 			children = (
-				180702111F4426AC00398435 /* QWShareMoneyController.h */,
-				180702121F4426AC00398435 /* QWShareMoneyController.m */,
+				180702231F44428900398435 /* QWShareMoneyController.h */,
+				180702241F44428900398435 /* QWShareMoneyController.m */,
 			);
 			path = ShareMoney;
 			sourceTree = "<group>";
@@ -515,8 +518,8 @@
 		180702011F44251900398435 /* CarClub */ = {
 			isa = PBXGroup;
 			children = (
-				180702141F4426BE00398435 /* QWCarClubController.h */,
-				180702151F4426BE00398435 /* QWCarClubController.m */,
+				180702381F44437700398435 /* QWCarClubController.h */,
+				180702391F44437700398435 /* QWCarClubController.m */,
 			);
 			path = CarClub;
 			sourceTree = "<group>";
@@ -719,6 +722,8 @@
 				180957CF1F414D6900BE185D /* QWNavigationViewController.m */,
 				180957D11F414DC700BE185D /* QWTabBarController.h */,
 				180957D21F414DC700BE185D /* QWTabBarController.m */,
+				180702201F4441E700398435 /* QWBaseViewController.h */,
+				180702211F4441E700398435 /* QWBaseViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1243,8 +1248,8 @@
 			children = (
 				187CCBE21F43496900FCDF1C /* QWMerchantInViewController.h */,
 				187CCBE31F43496900FCDF1C /* QWMerchantInViewController.m */,
-				1807021C1F442DEF00398435 /* QWAddShopController.h */,
-				1807021D1F442DEF00398435 /* QWAddShopController.m */,
+				1807023B1F44481600398435 /* QWAddShopController.h */,
+				1807023C1F44481600398435 /* QWAddShopController.m */,
 			);
 			path = "MerchantInvctl(商家入驻)";
 			sourceTree = "<group>";
@@ -1489,7 +1494,6 @@
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
 				185C9E461F42DCD900B4ED52 /* OrderDetailView.m in Sources */,
 				185C9E261F42D06F00B4ED52 /* SuccessPayCell.m in Sources */,
-				1807020D1F44268500398435 /* QWUserServiceController.m in Sources */,
 				1807021A1F442CD500398435 /* PopupView.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				187CCBEE1F43E6B800FCDF1C /* HYSlider.m in Sources */,
@@ -1507,13 +1511,14 @@
 				180957F31F41A19100BE185D /* QWPersonHeaderTableViewCell.m in Sources */,
 				185C9E2F1F42D0EB00B4ED52 /* QWorderMenuViewController.m in Sources */,
 				180957E91F41766300BE185D /* QWSubCollectionViewCell.m in Sources */,
+				1807022B1F4442F600398435 /* QWDownloadController.m in Sources */,
+				180702371F44436100398435 /* QWUserServiceController.m in Sources */,
 				180957FC1F427E9D00BE185D /* QWMclistTableViewCell.m in Sources */,
 				185C9E071F42C22800B4ED52 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */,
 				180957E31F414F8E00BE185D /* QWShoppingCarViewController.m in Sources */,
 				185090121F43CFD300795E0A /* QWMerChantCommentViewController.m in Sources */,
 				180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */,
-				180702041F44263D00398435 /* QWCardPackgeController.m in Sources */,
 				180957D61F414E0200BE185D /* QWHomeViewController.m in Sources */,
 				185C9E081F42C22800B4ED52 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */,
@@ -1523,13 +1528,9 @@
 				18508FF81F42D68400795E0A /* QWMccommentTableViewCell.m in Sources */,
 				1809582E1F427FB500BE185D /* YZMenuButton.m in Sources */,
 				185C9DFA1F42BF2800B4ED52 /* BlackLoadingView.m in Sources */,
-				180702071F44265900398435 /* QWScoreController.m in Sources */,
 				180701F61F44214C00398435 /* UIViewController+LewPopupViewController.m in Sources */,
 				185C9DFD1F42C02E00B4ED52 /* UIUtil.m in Sources */,
 				180958331F427FB500BE185D /* YZCover.m in Sources */,
-				180701FA1F44224700398435 /* QWDownloadController.m in Sources */,
-				1807021E1F442DEF00398435 /* QWAddShopController.m in Sources */,
-				180702101F44269800398435 /* QWMyCarController.m in Sources */,
 				180957DA1F414F2F00BE185D /* QWCarWashViewController.m in Sources */,
 				187CCBE71F43D65400FCDF1C /* QWVipSecondTableViewCell.m in Sources */,
 				180958271F427FB500BE185D /* PGIndexBannerSubiew.m in Sources */,
@@ -1538,8 +1539,10 @@
 				18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */,
 				18508FFB1F42D7F300795E0A /* QWMcServiceTableViewCell.m in Sources */,
 				185090111F43CFD300795E0A /* QWAboutStoreViewController.m in Sources */,
+				180702311F44432F00398435 /* QWScoreController.m in Sources */,
 				1809577B1F4147E400BE185D /* AppDelegate.m in Sources */,
 				185C9E3C1F42DC5A00B4ED52 /* PayOrderController.m in Sources */,
+				180702251F44428900398435 /* QWShareMoneyController.m in Sources */,
 				180957E01F414F7200BE185D /* QWMerchantViewController.m in Sources */,
 				1809582A1F427FB500BE185D /* YZMoreMenuViewController.m in Sources */,
 				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
@@ -1547,7 +1550,6 @@
 				185C9DF41F42A8FF00B4ED52 /* DSWheelGroupController.m in Sources */,
 				185C9E1B1F42CAB700B4ED52 /* QWcollectionViewController.m in Sources */,
 				48D313031F41FBC00029BA17 /* MenuIconCell.m in Sources */,
-				180702161F4426BE00398435 /* QWCarClubController.m in Sources */,
 				185C9E2A1F42D06F00B4ED52 /* CancelPayCell.m in Sources */,
 				180958401F42902900BE185D /* QWHomeDetailTableViewCell.m in Sources */,
 				185C9E361F42DBB500B4ED52 /* OrderCategoryView.m in Sources */,
@@ -1555,9 +1557,9 @@
 				187CCBCE1F43359300FCDF1C /* QWVipHeaderTableViewCell.m in Sources */,
 				180957F01F4178F400BE185D /* UdStorage.m in Sources */,
 				185C9E421F42DC8C00B4ED52 /* OrderDetailController.m in Sources */,
-				180702131F4426AC00398435 /* QWShareMoneyController.m in Sources */,
 				180957781F4147E400BE185D /* main.m in Sources */,
 				185C9DF11F42A8FF00B4ED52 /* DSCarClubDetailController.m in Sources */,
+				1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */,
 				18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */,
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
 				180958281F427FB500BE185D /* YZAllCourseViewController.m in Sources */,
@@ -1566,11 +1568,12 @@
 				1809582C1F427FB500BE185D /* YZMoreMenuCell.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
 				187CCBE41F43496900FCDF1C /* QWMerchantInViewController.m in Sources */,
+				180702221F4441E700398435 /* QWBaseViewController.m in Sources */,
 				185C9E091F42C22800B4ED52 /* TPKeyboardAvoidingTableView.m in Sources */,
 				180701F21F44214C00398435 /* LewPopupBackgroundView.m in Sources */,
 				1809582D1F427FB500BE185D /* UIView+YZCategory.m in Sources */,
 				180701DE1F44134700398435 /* QWScanController.m in Sources */,
-				1807020A1F44266B00398435 /* QWMembershipController.m in Sources */,
+				1807023A1F44437700398435 /* QWCarClubController.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
 				180958311F427FB500BE185D /* YZSortCell.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1579,13 +1582,16 @@
 				185090161F43CFF600795E0A /* QWStoreCategory.m in Sources */,
 				180957E61F416E9A00BE185D /* QWMenuTableViewCell.m in Sources */,
 				180958341F427FB500BE185D /* YZPullDownMenu.m in Sources */,
+				1807023D1F44481600398435 /* QWAddShopController.m in Sources */,
 				185C9DF01F42A8FF00B4ED52 /* DSCarClubController.m in Sources */,
 				180957CA1F414D0000BE185D /* UIBarButtonItem+XLItems.m in Sources */,
 				185C9E281F42D06F00B4ED52 /* DelayPayCell.m in Sources */,
 				180957D31F414DC700BE185D /* QWTabBarController.m in Sources */,
 				185C9DF71F42BDF300B4ED52 /* BaseController.m in Sources */,
 				180957DD1F414F5100BE185D /* QWMeViewController.m in Sources */,
+				180702341F44435100398435 /* QWMembershipController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,
+				180702281F4442B500398435 /* QWMyCarController.m in Sources */,
 				185C9DD51F42A7CF00B4ED52 /* DSSegmentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
