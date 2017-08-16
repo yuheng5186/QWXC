@@ -20,9 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asO-f6-nDG">
-                        <rect key="frame" x="88.5" y="10" width="160" height="110.5"/>
+                        <rect key="frame" x="108.5" y="15" width="120" height="105.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="160" id="UZ7-Ic-nbf"/>
+                            <constraint firstAttribute="width" constant="120" id="UZ7-Ic-nbf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白银会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-2z-CWF">
@@ -33,7 +33,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="90m-PH-xwf"/>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="90m-PH-xwf"/>
                     <constraint firstItem="Cr9-2z-CWF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CBG-RK-nI7"/>
                     <constraint firstItem="asO-f6-nDG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VdT-rJ-qNW"/>
                     <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="17" id="hfd-PK-kBF"/>

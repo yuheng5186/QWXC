@@ -5,6 +5,7 @@
 //  Created by apple on 2017/8/15.
 //  Copyright © 2017年 apple. All rights reserved.
 //
+
 #import "QWViptequanViewController.h"
 #import "QWVipHeaderTableViewCell.h"
 #import "QWVipSecondTableViewCell.h"
@@ -53,7 +54,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -79,15 +80,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         return 175;
-    }else if(indexPath.section==1){
+    }else {
         return 125;
-    }else{
-        return 50;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section==2||indexPath.section==3)
+    if(indexPath.section==2||indexPath.section==1)
     {
         static NSString *cellStatic = @"cellStatic";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStatic];
@@ -100,7 +99,7 @@
         cell.textLabel.text=@"10元洗车倦";
         cell.detailTextLabel.text=@"门店洗车时可抵扣相应金额，每月领取一次";
         return cell;
-    }else if(indexPath.section==0)
+    }else
     {
         
         QWVipHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_VipHeaderTableViewCell forIndexPath:indexPath];
@@ -112,17 +111,18 @@
         cell.accessoryType=UITableViewCellAccessoryNone;
         
         return cell;
-    }else {
-        
-        QWVipSecondTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_VipSecondTableViewCell forIndexPath:indexPath];
-        
-        if (!cell) {
-            cell = [[QWVipSecondTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QWCellIdentifier_VipSecondTableViewCell];
-        }
-        cell.accessoryType=UITableViewCellAccessoryNone;
-        cell.backgroundColor    = [UIColor whiteColor];
-        return cell;
     }
+    //        else {
+    //
+    //        QWVipSecondTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_VipSecondTableViewCell forIndexPath:indexPath];
+    //
+    //        if (!cell) {
+    //            cell = [[QWVipSecondTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QWCellIdentifier_VipSecondTableViewCell];
+    //        }
+    //        cell.accessoryType=UITableViewCellAccessoryNone;
+    //        cell.backgroundColor    = [UIColor whiteColor];
+    //               return cell;
+    //    }
     
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -130,7 +130,7 @@
     
     
     UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
-    if (section==2||section==3) {
+    if (section==2||section==1) {
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29)];
         lab.backgroundColor=[UIColor whiteColor];
         lab.text=@"   我的特权";
@@ -143,7 +143,7 @@
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if (section==2||section==3) {
+    if (section==2||section==1) {
         return 30;
     }else{
         return 0;
@@ -164,6 +164,5 @@
  // Pass the selected object to the new view controller.
  }
  */
-
 
 @end
