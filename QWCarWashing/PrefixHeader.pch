@@ -1,0 +1,45 @@
+//
+//  PrefixHeader.pch
+//  QWCarWashing
+//
+//  Created by apple on 2017/8/14.
+//  Copyright © 2017年 apple. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+#define QWScreenWidth [UIScreen mainScreen].bounds.size.width
+#define QWScreenheight [UIScreen mainScreen].bounds.size.height
+#import "UIBarButtonItem+XLItems.h"
+#import "QWTabBarController.h"
+#import "QWMeViewController.h"
+#import "QWHomeViewController.h"
+#import "QWShoppingCarViewController.h"
+#import "QWCarWashViewController.h"
+#import "QWMerchantViewController.h"
+#import "QWNavigationViewController.h"
+#import "UIImage+XLimg.h"
+#import "Masonry.h"
+#import "UIView+Frame.h"
+#import "UIImage+Common.h"
+#import "AppDelegate.h"
+#import "UILabel+StringFrame.h"
+#import "UIUtil.h"
+#import "BaseController.h"
+//颜色
+#define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#import "UIColor+HEXString.h"
+#define WEAKSELF typeof(self) __weak weakSelf = self;
+//button
+# define BtnNormal            UIControlStateNormal
+# define BtnTouchUpInside     UIControlEventTouchUpInside
+# define BtnStateSelected     UIControlStateSelected
+# define BtnHighlighted       UIControlStateHighlighted
+#define kColorTableBG [UIColor colorWithHexString:@"0xf0f0f0"]
+#define kMenuNormalColor    [UIColor colorWithHexString:@"0x222222"]
+

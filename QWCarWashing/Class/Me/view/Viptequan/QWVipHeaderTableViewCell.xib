@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="QWVipHeaderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="169"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="337" height="168"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asO-f6-nDG">
+                        <rect key="frame" x="88.5" y="10" width="160" height="110.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="UZ7-Ic-nbf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白银会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-2z-CWF">
+                        <rect key="frame" x="135" y="137.5" width="68" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="90m-PH-xwf"/>
+                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CBG-RK-nI7"/>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VdT-rJ-qNW"/>
+                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="17" id="hfd-PK-kBF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cr9-2z-CWF" secondAttribute="bottom" constant="3" id="xLw-Vf-8jR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="headerimage" destination="asO-f6-nDG" id="FY7-Cb-NWa"/>
+                <outlet property="username" destination="Cr9-2z-CWF" id="YPr-Nu-e5Y"/>
+            </connections>
+            <point key="canvasLocation" x="42.5" y="189.5"/>
+        </tableViewCell>
+    </objects>
+</document>
