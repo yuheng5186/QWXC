@@ -62,7 +62,7 @@
     
     
     QWCarWashViewController *CarWash1=[[QWCarWashViewController alloc]init];
-    [self setsubtabbarsyle:CarWash1 andimg:[UIImage imageWithRenderingModeorname:@"saomaxiche"] andselectimg:[UIImage imageWithRenderingModeorname:@"saomaxiche"] andtitle:@"洗车" andnavtitle:@"洗车"];
+    [self setsubtabbarsyle:CarWash1 andimg:[UIImage imageWithRenderingModeorname:@"saomaxiche"] andselectimg:[UIImage imageWithRenderingModeorname:@"saomaxiche"] andtitle:@"洗车" andnavtitle:@"扫码洗车"];
     
     
     

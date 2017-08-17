@@ -34,9 +34,11 @@
 #import "UILabel+StringFrame.h"
 #import "UIUtil.h"
 #import "BaseController.h"
+#import "QWScanController.h"
+
 
 #import <Masonry.h>
-
+#import "PhoneHelper.h"
 
 
 //颜色

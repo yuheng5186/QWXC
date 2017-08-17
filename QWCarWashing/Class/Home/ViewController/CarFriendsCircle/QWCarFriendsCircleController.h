@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QWCarFriendsCircleController : BaseController
+@interface QWCarFriendsCircleController : UIViewController
 
 @end
