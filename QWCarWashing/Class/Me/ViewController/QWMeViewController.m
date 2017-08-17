@@ -23,7 +23,7 @@ static NSString *cellstr=@"cell";
 @implementation QWMeViewController
 -(UITableView *)tableview{
     if (_tableview==nil) {
-        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight) style:UITableViewStyleGrouped];
+        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
         _tableview.backgroundColor = kColorTableBG;
         [_tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:cellstr];
         [_tableview registerClass:[QWPersonHeaderTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_PersonHeaderTableViewCell];
@@ -32,12 +32,15 @@ static NSString *cellstr=@"cell";
         
         _tableview.delegate=self;
         _tableview.dataSource=self;
-        _tableview.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+//        _tableview.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+        _tableview.tableFooterView  = [UIView new];
+        _tableview.tableHeaderView  = [UIView new];
     }
     return _tableview;
 }
 -(void)viewWillAppear:(BOOL)animated{
      self.tabBarController.tabBar.hidden=NO;
+    
 }
 - (void)viewDidLoad {
    
@@ -74,11 +77,14 @@ static NSString *cellstr=@"cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        QWPersonHeaderTableViewCell *cell =[[QWPersonHeaderTableViewCell alloc]initWithFrame:CGRectMake(10, 10, QWScreenWidth-20, 90)];
+        QWPersonHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_PersonHeaderTableViewCell forIndexPath:indexPath];
+        
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (!cell) {
             cell = [[QWPersonHeaderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QWCellIdentifier_PersonHeaderTableViewCell];
         }
+        cell.backgroundColor=[UIColor clearColor];;
+        cell.contentView.backgroundColor=[UIColor clearColor];
          QWPersonInfoDetailViewController *personInfo=[[QWPersonInfoDetailViewController alloc]init];
         cell.ImageClicked=^(void){
             [self.navigationController pushViewController:personInfo animated:YES];
@@ -150,18 +156,14 @@ static NSString *cellstr=@"cell";
 #pragma mark-添加表头
 //通过委托方法设置表头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section==0){
-        return 0;
-    }else{
-        return 5;
-    }
+    
+        return 10;
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    if(section==0){
+   
         return 0;
-    }else{
-        return 0;
-    }
+  
 
 }
 @end

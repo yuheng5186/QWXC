@@ -48,6 +48,9 @@
     return YES;
     
 }
++ (AppDelegate *)sharedInstance {
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
 #pragma mark - ScaleSize
 - (void)initAutoScaleSize{
     

@@ -7,7 +7,10 @@
 //
 
 #import "QWPersonInfoDetailViewController.h"
-@interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import<AVFoundation/AVMediaFormat.h>
+#import <AVFoundation/AVCaptureDevice.h>
+#import "LKAlertView.h"
+@interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LKActionSheetDelegate,LKAlertViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *sexString;
 @property (nonatomic, strong) UIImageView *userImageView;
@@ -15,18 +18,18 @@
 @end
 
 @implementation QWPersonInfoDetailViewController
+-(void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden=YES;
 
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createSubView];
 }
 - (void) createSubView {
-//    UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
-//    [leftButton setImage:[UIImage imageNamed:@"baisefanhui"] forState:UIControlStateNormal];
-//    [leftButton addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= [UIBarButtonItem setUibarbutonimgname:@"baisefanhui" andhightimg:@"" Target:self action:@selector(back:) forControlEvents:BtnTouchUpInside];
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth,QWScreenheight) style:UITableViewStyleGrouped];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth,QWScreenheight)];
+    self.tableView.backgroundColor = kColorTableBG;
     self.tableView.top              = 0;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
@@ -50,6 +53,9 @@
 
 -(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section==0) {
+        return 10.0f;
+    }
     return 0.01f;
 }
 
@@ -132,8 +138,57 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.section == 0) {
+        
+        
+        AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+        if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied){
+            //无权限 做一个友好的提示
+            //            UIAlertView * alart = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请您设置允许APP访问您的相机->设置->隐私->相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil]; [alart show]; return ;
+            
+        } else {
+            LKActionSheet *avatarSheet  = [[LKActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册中选择", nil];
+            avatarSheet.tag             = 1001;
+            [avatarSheet showInView:[AppDelegate sharedInstance].window.rootViewController.view];
+        }
+        
+        
+        
+        
+        
+    }else if (indexPath.section == 1){
+        if (indexPath.row == 0) {
+//            DSChangeNameController  *changeNameController   = [[DSChangeNameController alloc]init];
+//            changeNameController.hidesBottomBarWhenPushed   = YES;
+//            [self.navigationController pushViewController:changeNameController animated:YES];
+            
+        }else if (indexPath.row == 1){
+            
+//            DSChangePhoneController *changePhone    = [[DSChangePhoneController alloc]init];
+//            changePhone.hidesBottomBarWhenPushed    = YES;
+//            [self.navigationController pushViewController:changePhone animated:YES];
+            
+        }else if (indexPath.row == 2){
+            LKActionSheet *actionSheet = [[LKActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"男",@"女",nil];
+            
+            
+            [actionSheet showInView:[AppDelegate sharedInstance].window.rootViewController.view];
+        }else {
+            
+            LKAlertView *alartView      = [[LKAlertView alloc]initWithTitle:nil message:@"”金顶洗车“想要打开“微信”" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认"];
+            [alartView show];
+        }
+    }
 
+
+}
+- (void)actionSheet:(LKActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"点击了");
+}
+- (void)alertView:(LKAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"点击");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

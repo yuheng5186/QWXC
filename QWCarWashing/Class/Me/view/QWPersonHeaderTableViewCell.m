@@ -9,6 +9,7 @@
 #import "QWPersonHeaderTableViewCell.h"
 
 @interface QWPersonHeaderTableViewCell()
+@property(nonatomic,strong)UIView *headerBackView;
 @property(nonatomic,strong)UIButton *headerBtn;
 @property(nonatomic,strong)UILabel *username;
 @property(nonatomic,strong)UIButton *privilegeButton;
@@ -28,19 +29,63 @@
 
     // Configure the view for the selected state
 }
--(instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+   
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+     
         [self initView];
     }
     return self;
 }
 
 -(void)initView{
-    [self addSubview:self.headerBtn];
-    [self addSubview:self.username];
-    [self addSubview:self.privilegeButton];
-    [self addSubview:self.qiandaoButton];
+   [self.contentView addSubview:self.headerBackView];
+   [self.headerBackView addSubview:self.headerBtn];
+   [self.headerBackView addSubview:self.username];
+   [self.headerBackView addSubview:self.privilegeButton];
+   [self.headerBackView addSubview:self.qiandaoButton];
+//   [self.contentView sd_addSubviews:@[self.headerBackView,self.headerBtn,self.username,self.privilegeButton,self.qiandaoButton]];
+//   
+//   
+//   _headerBackView.sd_layout
+//   .rightSpaceToView(self.contentView, 10)
+//   .bottomSpaceToView(self.contentView, 0)
+//   .topSpaceToView(self.contentView, 0)
+//   .leftSpaceToView(self.contentView, 10);
+//   
+//   _headerBtn.sd_layout
+//   .topSpaceToView(self.headerBackView, 14)
+//   .leftSpaceToView(self.headerBackView, 13)
+//   .heightIs(80)
+//   .widthIs(80);
+//   
+//   _username.sd_layout
+//   .topSpaceToView(self.headerBackView, self.headerBtn.bounds.size.height/4)
+//   .leftSpaceToView(self.headerBtn, 15)
+//   .bottomSpaceToView(self.privilegeButton,18)
+//   .rightSpaceToView(self.headerBackView,0);
+//   
+//   _privilegeButton.sd_layout
+//   .leftEqualToView(self.username)
+//   .rightSpaceToView(self.qiandaoButton,10)
+//   .heightIs(60)
+//   .widthIs(15);
+//   
+//   _qiandaoButton.sd_layout
+//   .topEqualToView(self.privilegeButton)
+//   .rightSpaceToView(self.privilegeButton,10)
+//   .heightIs(60)
+//   .widthIs(15);
+
+}
+-(UIView *)headerBackView{
+   if (!_headerBackView) {
+      _headerBackView=[[UIView alloc]initWithFrame:CGRectMake(10, 0, QWScreenWidth-20, 110)];
+      _headerBackView.backgroundColor=[UIColor whiteColor];
+      _headerBackView.layer.cornerRadius=10;
+   }
+   return _headerBackView;
 }
 -(UIButton *)headerBtn{
     if (!_headerBtn) {
@@ -63,7 +108,7 @@
 }
 -(UILabel *)username{
     if (!_username) {
-        _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+15, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/3, 100, 30)];
+        _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+15, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/4, 100, 30)];
         _username.text=@"用户名";
         
         
@@ -72,6 +117,7 @@
     return _username;
     
 }
+
 -(UIButton *)privilegeButton{
     if (!_privilegeButton) {
         _privilegeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.username.frame.origin.x, self.username.frame.origin.y+self.username.frame.size.height+18, 60, 15)];

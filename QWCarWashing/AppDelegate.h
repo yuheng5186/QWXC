@@ -18,6 +18,6 @@
 
 - (CGFloat)autoScaleH:(CGFloat)h;
 - (void)initAutoScaleSize;
-
++ (AppDelegate *)sharedInstance;
 @end
 

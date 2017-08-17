@@ -82,6 +82,8 @@
 		180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958361F427FCD00BE185D /* UILabel+StringFrame.m */; };
 		180958401F42902900BE185D /* QWHomeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809583E1F42902900BE185D /* QWHomeDetailTableViewCell.m */; };
 		180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809583F1F42902900BE185D /* QWHomeDetailTableViewCell.xib */; };
+		1829FB521F45707B002BA519 /* LKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB4F1F45707B002BA519 /* LKActionSheet.m */; };
+		1829FB531F45707B002BA519 /* LKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB511F45707B002BA519 /* LKAlertView.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
 		18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FEE1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m */; };
 		18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FF11F42CCDD00795E0A /* QWDetailAddressTableViewCell.m */; };
@@ -307,6 +309,10 @@
 		1809583D1F42902900BE185D /* QWHomeDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWHomeDetailTableViewCell.h; sourceTree = "<group>"; };
 		1809583E1F42902900BE185D /* QWHomeDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWHomeDetailTableViewCell.m; sourceTree = "<group>"; };
 		1809583F1F42902900BE185D /* QWHomeDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWHomeDetailTableViewCell.xib; sourceTree = "<group>"; };
+		1829FB4E1F45707B002BA519 /* LKActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKActionSheet.h; sourceTree = "<group>"; };
+		1829FB4F1F45707B002BA519 /* LKActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKActionSheet.m; sourceTree = "<group>"; };
+		1829FB501F45707B002BA519 /* LKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAlertView.h; sourceTree = "<group>"; };
+		1829FB511F45707B002BA519 /* LKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAlertView.m; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -918,6 +924,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1829FB4D1F45707B002BA519 /* Alert */,
 				180701E81F44214C00398435 /* PopView */,
 				180701DF1F441AA100398435 /* UIColor+Additions.h */,
 				180701E01F441AA100398435 /* UIColor+Additions.m */,
@@ -1115,6 +1122,17 @@
 				180958251F427FB500BE185D /* YZPullDownMenu.m */,
 			);
 			path = YZPullDownMenu;
+			sourceTree = "<group>";
+		};
+		1829FB4D1F45707B002BA519 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				1829FB4E1F45707B002BA519 /* LKActionSheet.h */,
+				1829FB4F1F45707B002BA519 /* LKActionSheet.m */,
+				1829FB501F45707B002BA519 /* LKAlertView.h */,
+				1829FB511F45707B002BA519 /* LKAlertView.m */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -1546,6 +1564,7 @@
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
 				185C9E461F42DCD900B4ED52 /* OrderDetailView.m in Sources */,
+				1829FB531F45707B002BA519 /* LKAlertView.m in Sources */,
 				185C9E261F42D06F00B4ED52 /* SuccessPayCell.m in Sources */,
 				1807021A1F442CD500398435 /* PopupView.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
@@ -1603,6 +1622,7 @@
 				180702251F44428900398435 /* QWShareMoneyController.m in Sources */,
 				180957E01F414F7200BE185D /* QWMerchantViewController.m in Sources */,
 				1809582A1F427FB500BE185D /* YZMoreMenuViewController.m in Sources */,
+				1829FB521F45707B002BA519 /* LKActionSheet.m in Sources */,
 				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
 				180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */,
 				185C9DF41F42A8FF00B4ED52 /* DSWheelGroupController.m in Sources */,
