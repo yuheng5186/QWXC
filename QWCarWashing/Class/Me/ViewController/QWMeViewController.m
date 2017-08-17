@@ -13,14 +13,23 @@
 #import "QWcollectionViewController.h"
 #import "QWorderMenuViewController.h"
 #import "QWExchangeViewController.h"
- #import "QWPersonInfoDetailViewController.h"
+#import "QWPersonInfoDetailViewController.h"
 #import "QWViptequanViewController.h"
+#import "QWMyCarController.h"
+
+
 @interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property(strong,nonatomic)UITableView*tableview;
+
 @end
+
 #define QWCellIdentifier_PersonHeaderTableViewCell @"QWPersonHeaderTableViewCell"
+
 static NSString *cellstr=@"cell";
+
 @implementation QWMeViewController
+
 -(UITableView *)tableview{
     if (_tableview==nil) {
         _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
@@ -39,6 +48,7 @@ static NSString *cellstr=@"cell";
     return _tableview;
 }
 -(void)viewWillAppear:(BOOL)animated{
+    
      self.tabBarController.tabBar.hidden=NO;
     
 }
@@ -153,6 +163,21 @@ static NSString *cellstr=@"cell";
     }
 
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 3) {
+        
+        if (indexPath.row == 0) {
+            QWMyCarController   *myCar      = [[QWMyCarController alloc]init];
+            myCar.hidesBottomBarWhenPushed  = YES;
+            [self.navigationController pushViewController:myCar animated:YES];
+        }
+    }
+    
+}
+
+
 #pragma mark-添加表头
 //通过委托方法设置表头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

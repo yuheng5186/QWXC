@@ -23,6 +23,8 @@
 #import "QWScoreController.h"
 #import "QWCardPackgeController.h"
 #import "QWAddShopController.h"
+#import "QWSaleActivityController.h"
+
 
 #import "PopupView.h"
 #import "LewPopupViewAnimationDrop.h"
@@ -53,6 +55,7 @@ static NSString *cellstr=@"Cellstr";
     [super viewDidLoad];
     [self setNagationLeftAndRightButton];
     [self.view addSubview:self.tableview];
+    
 }
 #pragma mark-设置导航栏左右按钮
 -(void)setNagationLeftAndRightButton{
@@ -144,10 +147,12 @@ static NSString *cellstr=@"Cellstr";
             #pragma mark-图片点击事件
             switch (index) {
                 case 0:
+                    scanController.hidesBottomBarWhenPushed     = YES;
                     [self.navigationController pushViewController:scanController animated:YES];
                     
                     break;
                 case 1:
+                    
                     [self.navigationController pushViewController:cardPackgeController animated:YES];
                     break;
                 case 2:
@@ -176,6 +181,7 @@ static NSString *cellstr=@"Cellstr";
                                     @"kefu",
                                     @"wode-aiche",
                                     @"fenxiang",
+                                    @"duihuanliwu",
                                     @"quanzi"]
                     andContentArr:@[@"兑换礼品",
                                     @"每日签到",
@@ -183,11 +189,16 @@ static NSString *cellstr=@"Cellstr";
                                     @"客服咨询",
                                     @"我的爱车",
                                     @"分享赚钱",
+                                    @"优惠活动",
                                     @"车友圈"]];
         cell.backgroundView                                 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
         QWCarFriendsCircleController *qwcarfriendscirclectl = [[QWCarFriendsCircleController alloc]init];
         QWExchangeViewController *exchangevctl              = [[QWExchangeViewController alloc]init];
         QWAddShopController *MerchantIn                     = [[QWAddShopController alloc]init];
+        QWUserServiceController     *userService            = [[QWUserServiceController alloc]init];
+        QWMyCarController           *myCar                  = [[QWMyCarController alloc]init];
+        QWShareMoneyController      *shareMoney             = [[QWShareMoneyController alloc]init];
+        QWSaleActivityController    *activity               = [[QWSaleActivityController alloc]init];
         
         PopupView *view = [PopupView defaultPopupView];
         view.parentVC   = self;
@@ -195,6 +206,7 @@ static NSString *cellstr=@"Cellstr";
         cell.selecOptionIndexs=^(NSInteger index){
             switch (index) {
                 case 0:
+                    
                     [self.navigationController pushViewController:exchangevctl animated:YES];
                     
                     break;
@@ -206,9 +218,29 @@ static NSString *cellstr=@"Cellstr";
                     }];
                     break;
                 case 2:
+                    MerchantIn.hidesBottomBarWhenPushed         = YES;
                     [self.navigationController pushViewController:MerchantIn animated:YES];
                     break;
+                case 3:
+                    userService.hidesBottomBarWhenPushed        = YES;
+                    [self.navigationController pushViewController:userService animated:YES];
+                    break;
+                case 4:
+                    myCar.hidesBottomBarWhenPushed              = YES;
+                    [self.navigationController pushViewController:myCar animated:YES];
+                    break;
+                case 5:
+                    
+                    shareMoney.hidesBottomBarWhenPushed         = YES;
+                    [self.navigationController pushViewController:shareMoney animated:YES];
+                    break;
                 case 6:
+                    
+                    activity.hidesBottomBarWhenPushed           = YES;
+                    [self.navigationController pushViewController:activity animated:YES];
+                    break;
+                case 7:
+                    qwcarfriendscirclectl.hidesBottomBarWhenPushed      = YES;
                     [self.navigationController pushViewController:qwcarfriendscirclectl animated:YES];
                     break;
                     

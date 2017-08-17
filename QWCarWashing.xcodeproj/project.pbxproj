@@ -39,6 +39,37 @@
 		180702571F44578A00398435 /* RechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702551F44578A00398435 /* RechargeCell.m */; };
 		180702581F44578A00398435 /* RechargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702561F44578A00398435 /* RechargeCell.xib */; };
 		1807025B1F4457A900398435 /* QWRechargeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807025A1F4457A900398435 /* QWRechargeDetailController.m */; };
+		180702671F45609100398435 /* AnswerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807025E1F45609100398435 /* AnswerCell.m */; };
+		180702681F45609100398435 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1807025F1F45609100398435 /* AnswerCell.xib */; };
+		180702691F45609100398435 /* AnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702611F45609100398435 /* AnswerModel.m */; };
+		1807026A1F45609100398435 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702631F45609100398435 /* HeadView.m */; };
+		1807026B1F45609100398435 /* problemCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 180702641F45609100398435 /* problemCenter.plist */; };
+		1807026C1F45609100398435 /* ProblemTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702661F45609100398435 /* ProblemTitleModel.m */; };
+		180702761F4560E000398435 /* HQSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807026F1F4560E000398435 /* HQSliderView.m */; };
+		180702771F4560E000398435 /* UIView+HQCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702721F4560E000398435 /* UIView+HQCategory.m */; };
+		180702781F4560E000398435 /* HQTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702751F4560E000398435 /* HQTableViewCell.m */; };
+		1807027B1F45615700398435 /* PhoneHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807027A1F45615700398435 /* PhoneHelper.m */; };
+		1807027E1F456D8400398435 /* QWMyCarPortController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807027D1F456D8400398435 /* QWMyCarPortController.m */; };
+		180702811F456DEA00398435 /* QWIcreaseCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702801F456DEA00398435 /* QWIcreaseCarController.m */; };
+		180702851F456E6200398435 /* MyCarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702831F456E6200398435 /* MyCarViewCell.m */; };
+		180702861F456E6200398435 /* MyCarViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702841F456E6200398435 /* MyCarViewCell.xib */; };
+		180702891F456FCD00398435 /* QFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702881F456FCD00398435 /* QFDatePickerView.m */; };
+		1807028C1F45712200398435 /* MyCarInfosHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807028B1F45712200398435 /* MyCarInfosHeaderView.m */; };
+		180702911F45715D00398435 /* SCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807028E1F45715D00398435 /* SCBaseViewController.m */; };
+		180702921F45715D00398435 /* UIView+Uitls.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702901F45715D00398435 /* UIView+Uitls.m */; };
+		180702951F45718600398435 /* ProvinceShortController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702941F45718600398435 /* ProvinceShortController.m */; };
+		180702981F45834600398435 /* QWUpdateRuleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702971F45834600398435 /* QWUpdateRuleController.m */; };
+		1807029B1F45839B00398435 /* QWHowToUpGradeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807029A1F45839B00398435 /* QWHowToUpGradeController.m */; };
+		1807029E1F45847000398435 /* WayToUpGradeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807029D1F45847000398435 /* WayToUpGradeCell.m */; };
+		180702A11F45848B00398435 /* QWEarnScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702A01F45848B00398435 /* QWEarnScoreController.m */; };
+		180702A41F4584A800398435 /* QWScoreDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702A31F4584A800398435 /* QWScoreDetailController.m */; };
+		180702A81F458A6900398435 /* QWSaleActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702A71F458A6900398435 /* QWSaleActivityController.m */; };
+		180702AB1F458AB700398435 /* QWUserRightDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702AA1F458AB700398435 /* QWUserRightDetailController.m */; };
+		180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702AE1F458DD400398435 /* UIWindow+YzdHUD.m */; };
+		180702B81F458DD500398435 /* YzdHUDBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702B01F458DD400398435 /* YzdHUDBackgroundView.m */; };
+		180702B91F458DD500398435 /* YzdHUDImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702B21F458DD400398435 /* YzdHUDImageView.m */; };
+		180702BA1F458DD500398435 /* YzdHUDIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702B41F458DD400398435 /* YzdHUDIndicator.m */; };
+		180702BB1F458DD500398435 /* YzdHUDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702B61F458DD500398435 /* YzdHUDLabel.m */; };
 		180957781F4147E400BE185D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957771F4147E400BE185D /* main.m */; };
 		1809577B1F4147E400BE185D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577A1F4147E400BE185D /* AppDelegate.m */; };
 		1809577E1F4147E400BE185D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577D1F4147E400BE185D /* ViewController.m */; };
@@ -226,6 +257,65 @@
 		180702561F44578A00398435 /* RechargeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeCell.xib; sourceTree = "<group>"; };
 		180702591F4457A900398435 /* QWRechargeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWRechargeDetailController.h; sourceTree = "<group>"; };
 		1807025A1F4457A900398435 /* QWRechargeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWRechargeDetailController.m; sourceTree = "<group>"; };
+		1807025D1F45609100398435 /* AnswerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCell.h; sourceTree = "<group>"; };
+		1807025E1F45609100398435 /* AnswerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCell.m; sourceTree = "<group>"; };
+		1807025F1F45609100398435 /* AnswerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
+		180702601F45609100398435 /* AnswerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerModel.h; sourceTree = "<group>"; };
+		180702611F45609100398435 /* AnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerModel.m; sourceTree = "<group>"; };
+		180702621F45609100398435 /* HeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
+		180702631F45609100398435 /* HeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
+		180702641F45609100398435 /* problemCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = problemCenter.plist; sourceTree = "<group>"; };
+		180702651F45609100398435 /* ProblemTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemTitleModel.h; sourceTree = "<group>"; };
+		180702661F45609100398435 /* ProblemTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemTitleModel.m; sourceTree = "<group>"; };
+		1807026E1F4560E000398435 /* HQSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQSliderView.h; sourceTree = "<group>"; };
+		1807026F1F4560E000398435 /* HQSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQSliderView.m; sourceTree = "<group>"; };
+		180702711F4560E000398435 /* UIView+HQCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HQCategory.h"; sourceTree = "<group>"; };
+		180702721F4560E000398435 /* UIView+HQCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HQCategory.m"; sourceTree = "<group>"; };
+		180702741F4560E000398435 /* HQTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQTableViewCell.h; sourceTree = "<group>"; };
+		180702751F4560E000398435 /* HQTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQTableViewCell.m; sourceTree = "<group>"; };
+		180702791F45615700398435 /* PhoneHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneHelper.h; sourceTree = "<group>"; };
+		1807027A1F45615700398435 /* PhoneHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneHelper.m; sourceTree = "<group>"; };
+		1807027C1F456D8400398435 /* QWMyCarPortController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMyCarPortController.h; sourceTree = "<group>"; };
+		1807027D1F456D8400398435 /* QWMyCarPortController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMyCarPortController.m; sourceTree = "<group>"; };
+		1807027F1F456DEA00398435 /* QWIcreaseCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWIcreaseCarController.h; sourceTree = "<group>"; };
+		180702801F456DEA00398435 /* QWIcreaseCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWIcreaseCarController.m; sourceTree = "<group>"; };
+		180702821F456E6200398435 /* MyCarViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarViewCell.h; sourceTree = "<group>"; };
+		180702831F456E6200398435 /* MyCarViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarViewCell.m; sourceTree = "<group>"; };
+		180702841F456E6200398435 /* MyCarViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCarViewCell.xib; sourceTree = "<group>"; };
+		180702871F456FCD00398435 /* QFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFDatePickerView.h; sourceTree = "<group>"; };
+		180702881F456FCD00398435 /* QFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFDatePickerView.m; sourceTree = "<group>"; };
+		1807028A1F45712200398435 /* MyCarInfosHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCarInfosHeaderView.h; sourceTree = "<group>"; };
+		1807028B1F45712200398435 /* MyCarInfosHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCarInfosHeaderView.m; sourceTree = "<group>"; };
+		1807028D1F45715D00398435 /* SCBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCBaseViewController.h; sourceTree = "<group>"; };
+		1807028E1F45715D00398435 /* SCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCBaseViewController.m; sourceTree = "<group>"; };
+		1807028F1F45715D00398435 /* UIView+Uitls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Uitls.h"; sourceTree = "<group>"; };
+		180702901F45715D00398435 /* UIView+Uitls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Uitls.m"; sourceTree = "<group>"; };
+		180702931F45718600398435 /* ProvinceShortController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceShortController.h; sourceTree = "<group>"; };
+		180702941F45718600398435 /* ProvinceShortController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceShortController.m; sourceTree = "<group>"; };
+		180702961F45834600398435 /* QWUpdateRuleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUpdateRuleController.h; sourceTree = "<group>"; };
+		180702971F45834600398435 /* QWUpdateRuleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUpdateRuleController.m; sourceTree = "<group>"; };
+		180702991F45839B00398435 /* QWHowToUpGradeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWHowToUpGradeController.h; sourceTree = "<group>"; };
+		1807029A1F45839B00398435 /* QWHowToUpGradeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWHowToUpGradeController.m; sourceTree = "<group>"; };
+		1807029C1F45847000398435 /* WayToUpGradeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WayToUpGradeCell.h; sourceTree = "<group>"; };
+		1807029D1F45847000398435 /* WayToUpGradeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WayToUpGradeCell.m; sourceTree = "<group>"; };
+		1807029F1F45848B00398435 /* QWEarnScoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWEarnScoreController.h; sourceTree = "<group>"; };
+		180702A01F45848B00398435 /* QWEarnScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWEarnScoreController.m; sourceTree = "<group>"; };
+		180702A21F4584A800398435 /* QWScoreDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScoreDetailController.h; sourceTree = "<group>"; };
+		180702A31F4584A800398435 /* QWScoreDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScoreDetailController.m; sourceTree = "<group>"; };
+		180702A61F458A6900398435 /* QWSaleActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWSaleActivityController.h; sourceTree = "<group>"; };
+		180702A71F458A6900398435 /* QWSaleActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWSaleActivityController.m; sourceTree = "<group>"; };
+		180702A91F458AB700398435 /* QWUserRightDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUserRightDetailController.h; sourceTree = "<group>"; };
+		180702AA1F458AB700398435 /* QWUserRightDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUserRightDetailController.m; sourceTree = "<group>"; };
+		180702AD1F458DD400398435 /* UIWindow+YzdHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+YzdHUD.h"; sourceTree = "<group>"; };
+		180702AE1F458DD400398435 /* UIWindow+YzdHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+YzdHUD.m"; sourceTree = "<group>"; };
+		180702AF1F458DD400398435 /* YzdHUDBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDBackgroundView.h; sourceTree = "<group>"; };
+		180702B01F458DD400398435 /* YzdHUDBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDBackgroundView.m; sourceTree = "<group>"; };
+		180702B11F458DD400398435 /* YzdHUDImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDImageView.h; sourceTree = "<group>"; };
+		180702B21F458DD400398435 /* YzdHUDImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDImageView.m; sourceTree = "<group>"; };
+		180702B31F458DD400398435 /* YzdHUDIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDIndicator.h; sourceTree = "<group>"; };
+		180702B41F458DD400398435 /* YzdHUDIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDIndicator.m; sourceTree = "<group>"; };
+		180702B51F458DD400398435 /* YzdHUDLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YzdHUDLabel.h; sourceTree = "<group>"; };
+		180702B61F458DD500398435 /* YzdHUDLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YzdHUDLabel.m; sourceTree = "<group>"; };
 		180957731F4147E400BE185D /* QWCarWashing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWCarWashing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180957771F4147E400BE185D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		180957791F4147E400BE185D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -537,8 +627,18 @@
 		180701FD1F4423C000398435 /* Membership */ = {
 			isa = PBXGroup;
 			children = (
+				1807029C1F45847000398435 /* WayToUpGradeCell.h */,
+				1807029D1F45847000398435 /* WayToUpGradeCell.m */,
 				180702321F44435100398435 /* QWMembershipController.h */,
 				180702331F44435100398435 /* QWMembershipController.m */,
+				180702961F45834600398435 /* QWUpdateRuleController.h */,
+				180702971F45834600398435 /* QWUpdateRuleController.m */,
+				180702991F45839B00398435 /* QWHowToUpGradeController.h */,
+				1807029A1F45839B00398435 /* QWHowToUpGradeController.m */,
+				1807029F1F45848B00398435 /* QWEarnScoreController.h */,
+				180702A01F45848B00398435 /* QWEarnScoreController.m */,
+				180702A21F4584A800398435 /* QWScoreDetailController.h */,
+				180702A31F4584A800398435 /* QWScoreDetailController.m */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -546,6 +646,19 @@
 		180701FE1F44242700398435 /* UserService */ = {
 			isa = PBXGroup;
 			children = (
+				180702791F45615700398435 /* PhoneHelper.h */,
+				1807027A1F45615700398435 /* PhoneHelper.m */,
+				1807026D1F4560E000398435 /* HQSliderView */,
+				1807025D1F45609100398435 /* AnswerCell.h */,
+				1807025E1F45609100398435 /* AnswerCell.m */,
+				1807025F1F45609100398435 /* AnswerCell.xib */,
+				180702601F45609100398435 /* AnswerModel.h */,
+				180702611F45609100398435 /* AnswerModel.m */,
+				180702621F45609100398435 /* HeadView.h */,
+				180702631F45609100398435 /* HeadView.m */,
+				180702641F45609100398435 /* problemCenter.plist */,
+				180702651F45609100398435 /* ProblemTitleModel.h */,
+				180702661F45609100398435 /* ProblemTitleModel.m */,
 				180702351F44436100398435 /* QWUserServiceController.h */,
 				180702361F44436100398435 /* QWUserServiceController.m */,
 			);
@@ -555,8 +668,25 @@
 		180701FF1F4424A900398435 /* MyCar */ = {
 			isa = PBXGroup;
 			children = (
+				180702931F45718600398435 /* ProvinceShortController.h */,
+				180702941F45718600398435 /* ProvinceShortController.m */,
+				1807028D1F45715D00398435 /* SCBaseViewController.h */,
+				1807028E1F45715D00398435 /* SCBaseViewController.m */,
+				1807028F1F45715D00398435 /* UIView+Uitls.h */,
+				180702901F45715D00398435 /* UIView+Uitls.m */,
+				1807028A1F45712200398435 /* MyCarInfosHeaderView.h */,
+				1807028B1F45712200398435 /* MyCarInfosHeaderView.m */,
+				180702871F456FCD00398435 /* QFDatePickerView.h */,
+				180702881F456FCD00398435 /* QFDatePickerView.m */,
+				180702821F456E6200398435 /* MyCarViewCell.h */,
+				180702831F456E6200398435 /* MyCarViewCell.m */,
+				180702841F456E6200398435 /* MyCarViewCell.xib */,
 				180702261F4442B500398435 /* QWMyCarController.h */,
 				180702271F4442B500398435 /* QWMyCarController.m */,
+				1807027C1F456D8400398435 /* QWMyCarPortController.h */,
+				1807027D1F456D8400398435 /* QWMyCarPortController.m */,
+				1807027F1F456DEA00398435 /* QWIcreaseCarController.h */,
+				180702801F456DEA00398435 /* QWIcreaseCarController.m */,
 			);
 			path = MyCar;
 			sourceTree = "<group>";
@@ -577,6 +707,64 @@
 				180702391F44437700398435 /* QWCarClubController.m */,
 			);
 			path = CarClub;
+			sourceTree = "<group>";
+		};
+		1807026D1F4560E000398435 /* HQSliderView */ = {
+			isa = PBXGroup;
+			children = (
+				1807026E1F4560E000398435 /* HQSliderView.h */,
+				1807026F1F4560E000398435 /* HQSliderView.m */,
+				180702701F4560E000398435 /* UIView+HQCategory */,
+				180702731F4560E000398435 /* Views */,
+			);
+			path = HQSliderView;
+			sourceTree = "<group>";
+		};
+		180702701F4560E000398435 /* UIView+HQCategory */ = {
+			isa = PBXGroup;
+			children = (
+				180702711F4560E000398435 /* UIView+HQCategory.h */,
+				180702721F4560E000398435 /* UIView+HQCategory.m */,
+			);
+			path = "UIView+HQCategory";
+			sourceTree = "<group>";
+		};
+		180702731F4560E000398435 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				180702741F4560E000398435 /* HQTableViewCell.h */,
+				180702751F4560E000398435 /* HQTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		180702A51F458A4500398435 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				180702AC1F458DD400398435 /* toast */,
+				180702A61F458A6900398435 /* QWSaleActivityController.h */,
+				180702A71F458A6900398435 /* QWSaleActivityController.m */,
+				180702A91F458AB700398435 /* QWUserRightDetailController.h */,
+				180702AA1F458AB700398435 /* QWUserRightDetailController.m */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		180702AC1F458DD400398435 /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				180702AD1F458DD400398435 /* UIWindow+YzdHUD.h */,
+				180702AE1F458DD400398435 /* UIWindow+YzdHUD.m */,
+				180702AF1F458DD400398435 /* YzdHUDBackgroundView.h */,
+				180702B01F458DD400398435 /* YzdHUDBackgroundView.m */,
+				180702B11F458DD400398435 /* YzdHUDImageView.h */,
+				180702B21F458DD400398435 /* YzdHUDImageView.m */,
+				180702B31F458DD400398435 /* YzdHUDIndicator.h */,
+				180702B41F458DD400398435 /* YzdHUDIndicator.m */,
+				180702B51F458DD400398435 /* YzdHUDLabel.h */,
+				180702B61F458DD500398435 /* YzdHUDLabel.m */,
+			);
+			path = toast;
 			sourceTree = "<group>";
 		};
 		1809576A1F4147E400BE185D = {
@@ -729,6 +917,7 @@
 		180957B11F414D0000BE185D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				180702A51F458A4500398435 /* Activity */,
 				180702011F44251900398435 /* CarClub */,
 				180702001F4424D100398435 /* ShareMoney */,
 				180701FF1F4424A900398435 /* MyCar */,
@@ -1468,6 +1657,7 @@
 				185C9E171F42C8DE00B4ED52 /* SalerListViewCell.xib in Resources */,
 				185C9E2B1F42D06F00B4ED52 /* CancelPayCell.xib in Resources */,
 				1807021B1F442CD500398435 /* PopupView.xib in Resources */,
+				180702681F45609100398435 /* AnswerCell.xib in Resources */,
 				1809582B1F427FB500BE185D /* YZMoreMenuViewController.xib in Resources */,
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
 				180702501F444EED00398435 /* DiscountDetailView.xib in Resources */,
@@ -1476,6 +1666,8 @@
 				185C9E471F42DCD900B4ED52 /* OrderDetailView.xib in Resources */,
 				180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */,
 				185C9E291F42D06F00B4ED52 /* DelayPayCell.xib in Resources */,
+				180702861F456E6200398435 /* MyCarViewCell.xib in Resources */,
+				1807026B1F45609100398435 /* problemCenter.plist in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
 			);
@@ -1560,16 +1752,21 @@
 				1809577E1F4147E400BE185D /* ViewController.m in Sources */,
 				180957CB1F414D0000BE185D /* UIImage+XLimg.m in Sources */,
 				185C9E111F42C2FD00B4ED52 /* UIView+BFSToastInfo.m in Sources */,
+				180702BA1F458DD500398435 /* YzdHUDIndicator.m in Sources */,
 				185C9DF31F42A8FF00B4ED52 /* DSSaleActivityController.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
 				185C9E461F42DCD900B4ED52 /* OrderDetailView.m in Sources */,
 				1829FB531F45707B002BA519 /* LKAlertView.m in Sources */,
+				180702A41F4584A800398435 /* QWScoreDetailController.m in Sources */,
+				180702891F456FCD00398435 /* QFDatePickerView.m in Sources */,
 				185C9E261F42D06F00B4ED52 /* SuccessPayCell.m in Sources */,
 				1807021A1F442CD500398435 /* PopupView.m in Sources */,
+				180702911F45715D00398435 /* SCBaseViewController.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				187CCBEE1F43E6B800FCDF1C /* HYSlider.m in Sources */,
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
+				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
 				180957EC1F4177B900BE185D /* UIColor+HEXString.m in Sources */,
 				185C9E3F1F42DC7600B4ED52 /* CommentOrderController.m in Sources */,
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
@@ -1599,11 +1796,14 @@
 				180702571F44578A00398435 /* RechargeCell.m in Sources */,
 				48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */,
 				180702431F444E4D00398435 /* QWDiscountController.m in Sources */,
+				180702781F4560E000398435 /* HQTableViewCell.m in Sources */,
 				48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */,
 				187CCBDC1F43471A00FCDF1C /* QWMerchantInTableViewCell.m in Sources */,
 				180957CC1F414D0000BE185D /* UIView+XLFrame.m in Sources */,
 				18508FF81F42D68400795E0A /* QWMccommentTableViewCell.m in Sources */,
 				1809582E1F427FB500BE185D /* YZMenuButton.m in Sources */,
+				180702BB1F458DD500398435 /* YzdHUDLabel.m in Sources */,
+				180702B91F458DD500398435 /* YzdHUDImageView.m in Sources */,
 				185C9DFA1F42BF2800B4ED52 /* BlackLoadingView.m in Sources */,
 				180701F61F44214C00398435 /* UIViewController+LewPopupViewController.m in Sources */,
 				185C9DFD1F42C02E00B4ED52 /* UIUtil.m in Sources */,
@@ -1614,9 +1814,12 @@
 				180701E71F441AA100398435 /* UIImage+BFS.m in Sources */,
 				185C9E4A1F42DFE200B4ED52 /* QWPersonInfoDetailViewController.m in Sources */,
 				18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */,
+				180702761F4560E000398435 /* HQSliderView.m in Sources */,
+				1807027E1F456D8400398435 /* QWMyCarPortController.m in Sources */,
 				18508FFB1F42D7F300795E0A /* QWMcServiceTableViewCell.m in Sources */,
 				185090111F43CFD300795E0A /* QWAboutStoreViewController.m in Sources */,
 				180702311F44432F00398435 /* QWScoreController.m in Sources */,
+				180702AB1F458AB700398435 /* QWUserRightDetailController.m in Sources */,
 				1809577B1F4147E400BE185D /* AppDelegate.m in Sources */,
 				185C9E3C1F42DC5A00B4ED52 /* PayOrderController.m in Sources */,
 				180702251F44428900398435 /* QWShareMoneyController.m in Sources */,
@@ -1624,7 +1827,9 @@
 				1809582A1F427FB500BE185D /* YZMoreMenuViewController.m in Sources */,
 				1829FB521F45707B002BA519 /* LKActionSheet.m in Sources */,
 				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
+				1807029B1F45839B00398435 /* QWHowToUpGradeController.m in Sources */,
 				180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */,
+				180702A11F45848B00398435 /* QWEarnScoreController.m in Sources */,
 				185C9DF41F42A8FF00B4ED52 /* DSWheelGroupController.m in Sources */,
 				1807024B1F444EBF00398435 /* QWDiscountDetailController.m in Sources */,
 				185C9E1B1F42CAB700B4ED52 /* QWcollectionViewController.m in Sources */,
@@ -1632,12 +1837,18 @@
 				185C9E2A1F42D06F00B4ED52 /* CancelPayCell.m in Sources */,
 				180958401F42902900BE185D /* QWHomeDetailTableViewCell.m in Sources */,
 				185C9E361F42DBB500B4ED52 /* OrderCategoryView.m in Sources */,
+				180702851F456E6200398435 /* MyCarViewCell.m in Sources */,
+				180702951F45718600398435 /* ProvinceShortController.m in Sources */,
 				180958261F427FB500BE185D /* NewPagedFlowView.m in Sources */,
 				187CCBCE1F43359300FCDF1C /* QWVipHeaderTableViewCell.m in Sources */,
 				180957F01F4178F400BE185D /* UdStorage.m in Sources */,
 				185C9E421F42DC8C00B4ED52 /* OrderDetailController.m in Sources */,
 				180957781F4147E400BE185D /* main.m in Sources */,
+				180702811F456DEA00398435 /* QWIcreaseCarController.m in Sources */,
 				185C9DF11F42A8FF00B4ED52 /* DSCarClubDetailController.m in Sources */,
+				1807027B1F45615700398435 /* PhoneHelper.m in Sources */,
+				180702921F45715D00398435 /* UIView+Uitls.m in Sources */,
+				180702671F45609100398435 /* AnswerCell.m in Sources */,
 				1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */,
 				18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */,
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
@@ -1646,13 +1857,16 @@
 				1809582F1F427FB500BE185D /* QWCitySelectViewController.m in Sources */,
 				1809582C1F427FB500BE185D /* YZMoreMenuCell.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
+				180702691F45609100398435 /* AnswerModel.m in Sources */,
 				187CCBE41F43496900FCDF1C /* QWMerchantInViewController.m in Sources */,
 				180702221F4441E700398435 /* QWBaseViewController.m in Sources */,
 				185C9E091F42C22800B4ED52 /* TPKeyboardAvoidingTableView.m in Sources */,
 				180701F21F44214C00398435 /* LewPopupBackgroundView.m in Sources */,
 				1809582D1F427FB500BE185D /* UIView+YZCategory.m in Sources */,
 				180701DE1F44134700398435 /* QWScanController.m in Sources */,
+				180702981F45834600398435 /* QWUpdateRuleController.m in Sources */,
 				1807023A1F44437700398435 /* QWCarClubController.m in Sources */,
+				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
 				180958311F427FB500BE185D /* YZSortCell.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -1660,17 +1874,23 @@
 				180957D01F414D6900BE185D /* QWNavigationViewController.m in Sources */,
 				185090161F43CFF600795E0A /* QWStoreCategory.m in Sources */,
 				180957E61F416E9A00BE185D /* QWMenuTableViewCell.m in Sources */,
+				180702B81F458DD500398435 /* YzdHUDBackgroundView.m in Sources */,
 				180958341F427FB500BE185D /* YZPullDownMenu.m in Sources */,
+				1807028C1F45712200398435 /* MyCarInfosHeaderView.m in Sources */,
+				1807026C1F45609100398435 /* ProblemTitleModel.m in Sources */,
+				1807026A1F45609100398435 /* HeadView.m in Sources */,
 				1807023D1F44481600398435 /* QWAddShopController.m in Sources */,
 				185C9DF01F42A8FF00B4ED52 /* DSCarClubController.m in Sources */,
 				180957CA1F414D0000BE185D /* UIBarButtonItem+XLItems.m in Sources */,
 				185C9E281F42D06F00B4ED52 /* DelayPayCell.m in Sources */,
 				180957D31F414DC700BE185D /* QWTabBarController.m in Sources */,
+				1807029E1F45847000398435 /* WayToUpGradeCell.m in Sources */,
 				185C9DF71F42BDF300B4ED52 /* BaseController.m in Sources */,
 				180957DD1F414F5100BE185D /* QWMeViewController.m in Sources */,
 				180702341F44435100398435 /* QWMembershipController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,
 				180702281F4442B500398435 /* QWMyCarController.m in Sources */,
+				180702A81F458A6900398435 /* QWSaleActivityController.m in Sources */,
 				1807025B1F4457A900398435 /* QWRechargeDetailController.m in Sources */,
 				180702471F444EA000398435 /* DiscountCell.m in Sources */,
 				185C9DD51F42A7CF00B4ED52 /* DSSegmentView.m in Sources */,

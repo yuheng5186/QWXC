@@ -29,18 +29,27 @@
 
 @implementation QWCarFriendsCircleController
 
-- (void) drawNavigation {
+
+
+- (void) resetBabkButton {
     
-    [self drawTitle:@"发现"];
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
 }
-- (void) drawContent {
-    self.contentView.top        = 0;
-    self.contentView.height     = self.view.height;
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title      = @"发现";
+    [self resetBabkButton];
+
     NSArray * array = @[
                         @{
                             @"nickName":@"杨芳学",
@@ -106,13 +115,13 @@
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth,QWScreenheight) style:UITableViewStylePlain];
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
-    self.tableView.top              = self.contentView.bottom;
+    self.tableView.top              = self.view.bottom;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"ActivityListCell" bundle:nil] forCellReuseIdentifier:@"ActivityListCell"];
     
     self.tableView.rowHeight        = 200;
     
-    [self.contentView addSubview:self.tableView];
+    [self.view addSubview:self.tableView];
     
     
     
