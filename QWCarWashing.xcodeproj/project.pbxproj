@@ -28,6 +28,17 @@
 		180702371F44436100398435 /* QWUserServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702361F44436100398435 /* QWUserServiceController.m */; };
 		1807023A1F44437700398435 /* QWCarClubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702391F44437700398435 /* QWCarClubController.m */; };
 		1807023D1F44481600398435 /* QWAddShopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807023C1F44481600398435 /* QWAddShopController.m */; };
+		180702401F444DA000398435 /* QWDiscountCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807023F1F444DA000398435 /* QWDiscountCategoryView.m */; };
+		180702431F444E4D00398435 /* QWDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702421F444E4D00398435 /* QWDiscountController.m */; };
+		180702471F444EA000398435 /* DiscountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702451F444EA000398435 /* DiscountCell.m */; };
+		180702481F444EA000398435 /* DiscountCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702461F444EA000398435 /* DiscountCell.xib */; };
+		1807024B1F444EBF00398435 /* QWDiscountDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807024A1F444EBF00398435 /* QWDiscountDetailController.m */; };
+		1807024F1F444EED00398435 /* DiscountDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807024D1F444EED00398435 /* DiscountDetailView.m */; };
+		180702501F444EED00398435 /* DiscountDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1807024E1F444EED00398435 /* DiscountDetailView.xib */; };
+		180702531F4455C000398435 /* QWRechargeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702521F4455C000398435 /* QWRechargeController.m */; };
+		180702571F44578A00398435 /* RechargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702551F44578A00398435 /* RechargeCell.m */; };
+		180702581F44578A00398435 /* RechargeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702561F44578A00398435 /* RechargeCell.xib */; };
+		1807025B1F4457A900398435 /* QWRechargeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807025A1F4457A900398435 /* QWRechargeDetailController.m */; };
 		180957781F4147E400BE185D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957771F4147E400BE185D /* main.m */; };
 		1809577B1F4147E400BE185D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577A1F4147E400BE185D /* AppDelegate.m */; };
 		1809577E1F4147E400BE185D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577D1F4147E400BE185D /* ViewController.m */; };
@@ -194,6 +205,25 @@
 		180702391F44437700398435 /* QWCarClubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubController.m; sourceTree = "<group>"; };
 		1807023B1F44481600398435 /* QWAddShopController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAddShopController.h; sourceTree = "<group>"; };
 		1807023C1F44481600398435 /* QWAddShopController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAddShopController.m; sourceTree = "<group>"; };
+		1807023E1F444DA000398435 /* QWDiscountCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWDiscountCategoryView.h; sourceTree = "<group>"; };
+		1807023F1F444DA000398435 /* QWDiscountCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWDiscountCategoryView.m; sourceTree = "<group>"; };
+		180702411F444E4D00398435 /* QWDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWDiscountController.h; sourceTree = "<group>"; };
+		180702421F444E4D00398435 /* QWDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWDiscountController.m; sourceTree = "<group>"; };
+		180702441F444EA000398435 /* DiscountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscountCell.h; sourceTree = "<group>"; };
+		180702451F444EA000398435 /* DiscountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscountCell.m; sourceTree = "<group>"; };
+		180702461F444EA000398435 /* DiscountCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountCell.xib; sourceTree = "<group>"; };
+		180702491F444EBF00398435 /* QWDiscountDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWDiscountDetailController.h; sourceTree = "<group>"; };
+		1807024A1F444EBF00398435 /* QWDiscountDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWDiscountDetailController.m; sourceTree = "<group>"; };
+		1807024C1F444EED00398435 /* DiscountDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscountDetailView.h; sourceTree = "<group>"; };
+		1807024D1F444EED00398435 /* DiscountDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscountDetailView.m; sourceTree = "<group>"; };
+		1807024E1F444EED00398435 /* DiscountDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountDetailView.xib; sourceTree = "<group>"; };
+		180702511F4455C000398435 /* QWRechargeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWRechargeController.h; sourceTree = "<group>"; };
+		180702521F4455C000398435 /* QWRechargeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWRechargeController.m; sourceTree = "<group>"; };
+		180702541F44578A00398435 /* RechargeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeCell.h; sourceTree = "<group>"; };
+		180702551F44578A00398435 /* RechargeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeCell.m; sourceTree = "<group>"; };
+		180702561F44578A00398435 /* RechargeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeCell.xib; sourceTree = "<group>"; };
+		180702591F4457A900398435 /* QWRechargeDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWRechargeDetailController.h; sourceTree = "<group>"; };
+		1807025A1F4457A900398435 /* QWRechargeDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWRechargeDetailController.m; sourceTree = "<group>"; };
 		180957731F4147E400BE185D /* QWCarWashing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWCarWashing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180957771F4147E400BE185D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		180957791F4147E400BE185D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -464,8 +494,27 @@
 		180701FB1F44230F00398435 /* CardPackge */ = {
 			isa = PBXGroup;
 			children = (
+				180702541F44578A00398435 /* RechargeCell.h */,
+				180702551F44578A00398435 /* RechargeCell.m */,
+				180702561F44578A00398435 /* RechargeCell.xib */,
+				1807024C1F444EED00398435 /* DiscountDetailView.h */,
+				1807024D1F444EED00398435 /* DiscountDetailView.m */,
+				1807024E1F444EED00398435 /* DiscountDetailView.xib */,
+				180702441F444EA000398435 /* DiscountCell.h */,
+				180702451F444EA000398435 /* DiscountCell.m */,
+				180702461F444EA000398435 /* DiscountCell.xib */,
 				1807022C1F44431E00398435 /* QWCardPackgeController.h */,
 				1807022D1F44431E00398435 /* QWCardPackgeController.m */,
+				1807023E1F444DA000398435 /* QWDiscountCategoryView.h */,
+				1807023F1F444DA000398435 /* QWDiscountCategoryView.m */,
+				180702411F444E4D00398435 /* QWDiscountController.h */,
+				180702421F444E4D00398435 /* QWDiscountController.m */,
+				180702491F444EBF00398435 /* QWDiscountDetailController.h */,
+				1807024A1F444EBF00398435 /* QWDiscountDetailController.m */,
+				180702511F4455C000398435 /* QWRechargeController.h */,
+				180702521F4455C000398435 /* QWRechargeController.m */,
+				180702591F4457A900398435 /* QWRechargeDetailController.h */,
+				1807025A1F4457A900398435 /* QWRechargeDetailController.m */,
 			);
 			path = CardPackge;
 			sourceTree = "<group>";
@@ -1403,10 +1452,13 @@
 				1807021B1F442CD500398435 /* PopupView.xib in Resources */,
 				1809582B1F427FB500BE185D /* YZMoreMenuViewController.xib in Resources */,
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
+				180702501F444EED00398435 /* DiscountDetailView.xib in Resources */,
 				185C9E271F42D06F00B4ED52 /* SuccessPayCell.xib in Resources */,
+				180702581F44578A00398435 /* RechargeCell.xib in Resources */,
 				185C9E471F42DCD900B4ED52 /* OrderDetailView.xib in Resources */,
 				180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */,
 				185C9E291F42D06F00B4ED52 /* DelayPayCell.xib in Resources */,
+				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1503,10 +1555,12 @@
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
 				180957F61F41AED400BE185D /* QWOrderMenuTableViewCell.m in Sources */,
 				48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */,
+				180702401F444DA000398435 /* QWDiscountCategoryView.m in Sources */,
 				185C9E101F42C2FD00B4ED52 /* MBProgressHUD.m in Sources */,
 				185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */,
 				185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */,
 				185C9E3B1F42DC5A00B4ED52 /* AllOrderController.m in Sources */,
+				1807024F1F444EED00398435 /* DiscountDetailView.m in Sources */,
 				180701F31F44214C00398435 /* LewPopupViewAnimationDrop.m in Sources */,
 				180957F31F41A19100BE185D /* QWPersonHeaderTableViewCell.m in Sources */,
 				185C9E2F1F42D0EB00B4ED52 /* QWorderMenuViewController.m in Sources */,
@@ -1518,10 +1572,13 @@
 				18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */,
 				180957E31F414F8E00BE185D /* QWShoppingCarViewController.m in Sources */,
 				185090121F43CFD300795E0A /* QWMerChantCommentViewController.m in Sources */,
+				180702531F4455C000398435 /* QWRechargeController.m in Sources */,
 				180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */,
 				180957D61F414E0200BE185D /* QWHomeViewController.m in Sources */,
 				185C9E081F42C22800B4ED52 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				180702571F44578A00398435 /* RechargeCell.m in Sources */,
 				48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */,
+				180702431F444E4D00398435 /* QWDiscountController.m in Sources */,
 				48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */,
 				187CCBDC1F43471A00FCDF1C /* QWMerchantInTableViewCell.m in Sources */,
 				180957CC1F414D0000BE185D /* UIView+XLFrame.m in Sources */,
@@ -1548,6 +1605,7 @@
 				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
 				180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */,
 				185C9DF41F42A8FF00B4ED52 /* DSWheelGroupController.m in Sources */,
+				1807024B1F444EBF00398435 /* QWDiscountDetailController.m in Sources */,
 				185C9E1B1F42CAB700B4ED52 /* QWcollectionViewController.m in Sources */,
 				48D313031F41FBC00029BA17 /* MenuIconCell.m in Sources */,
 				185C9E2A1F42D06F00B4ED52 /* CancelPayCell.m in Sources */,
@@ -1592,6 +1650,8 @@
 				180702341F44435100398435 /* QWMembershipController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,
 				180702281F4442B500398435 /* QWMyCarController.m in Sources */,
+				1807025B1F4457A900398435 /* QWRechargeDetailController.m in Sources */,
+				180702471F444EA000398435 /* DiscountCell.m in Sources */,
 				185C9DD51F42A7CF00B4ED52 /* DSSegmentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

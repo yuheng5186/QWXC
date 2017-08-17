@@ -1,26 +1,42 @@
 //
-//  QWScoreController.m
+//  QWDiscountDetailController.m
 //  QWCarWashing
 //
 //  Created by Wuxinglin on 2017/8/16.
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import "QWScoreController.h"
+#import "QWDiscountDetailController.h"
+#import "DiscountDetailView.h"
 
-@interface QWScoreController ()
+@interface QWDiscountDetailController ()
+
+@property (nonatomic, weak) DiscountDetailView *detailView;
 
 @end
 
-@implementation QWScoreController
+@implementation QWDiscountDetailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title  = @"积分";
-    self.view.backgroundColor   = [UIColor grayColor];
-
+    
+    self.detailView.frame = CGRectMake(0, 64, Main_Screen_Width, 400);
+    
 }
+
+- (DiscountDetailView *)detailView {
+    
+    if (_detailView == nil) {
+        
+        DiscountDetailView *detailView = [DiscountDetailView discountDetailView];
+        
+        _detailView = detailView;
+        [self.view addSubview:_detailView];
+    }
+    return _detailView;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
