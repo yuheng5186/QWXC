@@ -34,7 +34,7 @@
 #import "UILabel+StringFrame.h"
 #import "UIUtil.h"
 #import "BaseController.h"
-
+#import "IQKeyboardManager.h"//键盘管理
 #import <Masonry.h>
 
 
