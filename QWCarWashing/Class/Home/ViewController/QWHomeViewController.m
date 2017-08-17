@@ -272,8 +272,15 @@ static NSString *cellstr=@"Cellstr";
 }
 #pragma mark-组头组尾
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
     UIView *header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 100)];
-    header.backgroundColor=RGBACOLOR(246, 246, 246, 1);
+    if(section==0){
+        header.backgroundColor=[UIColor clearColor];
+    }else{
+        header.backgroundColor=RGBACOLOR(246, 246, 246, 1);
+    
+    }
+    
 //    UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth,87)];
 //    [header addSubview:imagevie];
 //    if (section == 4) {

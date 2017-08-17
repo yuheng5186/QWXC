@@ -20,6 +20,7 @@
     self.title  = @"下载蔷薇洗车";
 
     self.view.backgroundColor   = [UIColor whiteColor];
+
     [self resetBabkButton];
 
     [self setSubView];

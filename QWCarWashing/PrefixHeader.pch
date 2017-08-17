@@ -36,6 +36,8 @@
 #import "BaseController.h"
 #import "QWScanController.h"
 
+#import "IQKeyboardManager.h"//键盘管理
+#import <Masonry.h>
 
 #import <Masonry.h>
 #import "PhoneHelper.h"

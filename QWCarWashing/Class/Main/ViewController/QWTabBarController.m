@@ -96,9 +96,10 @@
     
     //添加导航栏
     QWNavigationViewController *qwnav=[[QWNavigationViewController alloc]initWithRootViewController:ctl];
+//    qwnav.navigationBar.barStyle=UIBarStyleDefault;
+//    [qwnav.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:UIBarMetricsDefault];
     
-    [qwnav.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
-    qwnav.navigationBar.barStyle = UIBaselineAdjustmentNone;
+//    qwnav.navigationBar.barStyle = UIBaselineAdjustmentNone;
     [qwnav.navigationBar setTitleTextAttributes:
      @{NSFontAttributeName:[UIFont systemFontOfSize:18 weight:10],
        NSForegroundColorAttributeName:[UIColor whiteColor]}];

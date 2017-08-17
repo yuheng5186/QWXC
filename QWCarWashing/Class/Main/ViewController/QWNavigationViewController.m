@@ -17,22 +17,24 @@
 +(void)initialize
 {
     
-    UIBarButtonItem *barbutitem=[UIBarButtonItem appearanceWhenContainedIn:self, nil];
+    UIBarButtonItem *barbutitem=[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[self]];
+    
     NSMutableDictionary *attrdic=[NSMutableDictionary dictionary];
     attrdic[NSForegroundColorAttributeName]=[UIColor whiteColor];
     attrdic[NSFontAttributeName]=[UIFont systemFontOfSize:18 weight:10];
     [barbutitem setTintColor:[UIColor whiteColor]];
     //设置模型的字体颜色用富文本
     [barbutitem setTitleTextAttributes:attrdic forState:UIControlStateNormal];
-    UINavigationBar *bar=[UINavigationBar appearanceWhenContainedIn:self, nil];
+    UINavigationBar *bar=[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[self]];
+    [bar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:UIBarMetricsDefault];
     [bar setTintColor:[UIColor whiteColor]];
 }
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.viewControllers.count != 0)
     {
-        UIBarButtonItem *barbut=[UIBarButtonItem setUibarbutonimgname:@"backselected" andhightimg:@"backselected" Target:self action:@selector(backpop) forControlEvents:UIControlEventTouchUpInside];
-        UIBarButtonItem *barbutright=[UIBarButtonItem setUibarbutonimgname:@"navigationbar_more" andhightimg:@"navigationbar_more_highlighted" Target:self action:@selector(backroot) forControlEvents:UIControlEventTouchUpInside];
+//        UIBarButtonItem *barbut=[UIBarButtonItem setUibarbutonimgname:@"backselected" andhightimg:@"backselected" Target:self action:@selector(backpop) forControlEvents:UIControlEventTouchUpInside];
+//        UIBarButtonItem *barbutright=[UIBarButtonItem setUibarbutonimgname:@"navigationbar_more" andhightimg:@"navigationbar_more_highlighted" Target:self action:@selector(backroot) forControlEvents:UIControlEventTouchUpInside];
     }
     [super pushViewController:viewController animated:animated];
 }
