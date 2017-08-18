@@ -25,6 +25,7 @@
 #import "QWAddShopController.h"
 #import "QWSaleActivityController.h"
 
+#import "QWConsumerController.h"
 
 
 
@@ -329,6 +330,16 @@ static NSString *cellstr=@"Cellstr";
     }
     
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.section == 2) {
+        QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
+        consumerController.hidesBottomBarWhenPushed             = YES;
+        [self.navigationController pushViewController:consumerController animated:YES];
+    }
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if(section==1){

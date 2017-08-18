@@ -199,6 +199,7 @@
 		18A4B1251F46BCF100C64978 /* MemberView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1231F46BCF100C64978 /* MemberView.xib */; };
 		18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1271F46BEB900C64978 /* CarTicketView.m */; };
 		18A4B12A1F46BEB900C64978 /* CarTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1281F46BEB900C64978 /* CarTicketView.xib */; };
+		18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1721F46CDEE00C64978 /* QWConsumerController.m */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
 		48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312F01F41DDFA0029BA17 /* UIImage+Common.m */; };
 		48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312FC1F41F7500029BA17 /* QWOrderTableViewCell.m */; };
@@ -585,6 +586,8 @@
 		18A4B1261F46BEB900C64978 /* CarTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTicketView.h; sourceTree = "<group>"; };
 		18A4B1271F46BEB900C64978 /* CarTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarTicketView.m; sourceTree = "<group>"; };
 		18A4B1281F46BEB900C64978 /* CarTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTicketView.xib; sourceTree = "<group>"; };
+		18A4B1711F46CDEE00C64978 /* QWConsumerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWConsumerController.h; sourceTree = "<group>"; };
+		18A4B1721F46CDEE00C64978 /* QWConsumerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWConsumerController.m; sourceTree = "<group>"; };
 		48D312EC1F41D9140029BA17 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		48D312ED1F41D9140029BA17 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		48D312EF1F41DDFA0029BA17 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
@@ -1070,6 +1073,7 @@
 		180957B11F414D0000BE185D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18A4B1701F46CDCB00C64978 /* CellShow */,
 				180702A51F458A4500398435 /* Activity */,
 				180702011F44251900398435 /* CarClub */,
 				180702001F4424D100398435 /* ShareMoney */,
@@ -1673,6 +1677,15 @@
 			path = Coustmerslider;
 			sourceTree = "<group>";
 		};
+		18A4B1701F46CDCB00C64978 /* CellShow */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B1711F46CDEE00C64978 /* QWConsumerController.h */,
+				18A4B1721F46CDEE00C64978 /* QWConsumerController.m */,
+			);
+			path = CellShow;
+			sourceTree = "<group>";
+		};
 		445EC465F7A6D4FF15959817 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2042,6 +2055,7 @@
 				1809582D1F427FB500BE185D /* UIView+YZCategory.m in Sources */,
 				180701DE1F44134700398435 /* QWScanController.m in Sources */,
 				180702981F45834600398435 /* QWUpdateRuleController.m in Sources */,
+				18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */,
 				1807023A1F44437700398435 /* QWCarClubController.m in Sources */,
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
