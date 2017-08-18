@@ -200,6 +200,19 @@
 		18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1271F46BEB900C64978 /* CarTicketView.m */; };
 		18A4B12A1F46BEB900C64978 /* CarTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1281F46BEB900C64978 /* CarTicketView.xib */; };
 		18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1721F46CDEE00C64978 /* QWConsumerController.m */; };
+		18A4B1761F46DE2600C64978 /* QWPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1751F46DE2600C64978 /* QWPurchaseViewController.m */; };
+		18A4B1791F46DEB600C64978 /* QWPurchaseCardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1781F46DEB600C64978 /* QWPurchaseCardViewCell.m */; };
+		18A4B17C1F46DF1100C64978 /* QWPayPurchaseCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B17B1F46DF1100C64978 /* QWPayPurchaseCardController.m */; };
+		18A4B1941F46E06B00C64978 /* JFAreaDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1801F46E06B00C64978 /* JFAreaDataManager.m */; };
+		18A4B1951F46E06B00C64978 /* shop_area.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1821F46E06B00C64978 /* shop_area.sqlite */; };
+		18A4B1961F46E06B00C64978 /* JFButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1841F46E06B00C64978 /* JFButton.m */; };
+		18A4B1971F46E06B00C64978 /* JFCityCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1861F46E06B00C64978 /* JFCityCollectionFlowLayout.m */; };
+		18A4B1981F46E06B00C64978 /* JFCityCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1881F46E06B00C64978 /* JFCityCollectionViewCell.m */; };
+		18A4B1991F46E06B00C64978 /* JFCityHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B18A1F46E06B00C64978 /* JFCityHeaderView.m */; };
+		18A4B19A1F46E06B00C64978 /* JFCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B18C1F46E06B00C64978 /* JFCityTableViewCell.m */; };
+		18A4B19B1F46E06B00C64978 /* JFCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B18E1F46E06B00C64978 /* JFCityViewController.m */; };
+		18A4B19C1F46E06B00C64978 /* JFSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1901F46E06B00C64978 /* JFSearchView.m */; };
+		18A4B19D1F46E06B00C64978 /* JFLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1931F46E06B00C64978 /* JFLocation.m */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
 		48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312F01F41DDFA0029BA17 /* UIImage+Common.m */; };
 		48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312FC1F41F7500029BA17 /* QWOrderTableViewCell.m */; };
@@ -588,6 +601,31 @@
 		18A4B1281F46BEB900C64978 /* CarTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTicketView.xib; sourceTree = "<group>"; };
 		18A4B1711F46CDEE00C64978 /* QWConsumerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWConsumerController.h; sourceTree = "<group>"; };
 		18A4B1721F46CDEE00C64978 /* QWConsumerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWConsumerController.m; sourceTree = "<group>"; };
+		18A4B1741F46DE2600C64978 /* QWPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWPurchaseViewController.h; sourceTree = "<group>"; };
+		18A4B1751F46DE2600C64978 /* QWPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWPurchaseViewController.m; sourceTree = "<group>"; };
+		18A4B1771F46DEB600C64978 /* QWPurchaseCardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWPurchaseCardViewCell.h; sourceTree = "<group>"; };
+		18A4B1781F46DEB600C64978 /* QWPurchaseCardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWPurchaseCardViewCell.m; sourceTree = "<group>"; };
+		18A4B17A1F46DF1100C64978 /* QWPayPurchaseCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWPayPurchaseCardController.h; sourceTree = "<group>"; };
+		18A4B17B1F46DF1100C64978 /* QWPayPurchaseCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWPayPurchaseCardController.m; sourceTree = "<group>"; };
+		18A4B17F1F46E06B00C64978 /* JFAreaDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFAreaDataManager.h; sourceTree = "<group>"; };
+		18A4B1801F46E06B00C64978 /* JFAreaDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFAreaDataManager.m; sourceTree = "<group>"; };
+		18A4B1821F46E06B00C64978 /* shop_area.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = shop_area.sqlite; sourceTree = "<group>"; };
+		18A4B1831F46E06B00C64978 /* JFButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFButton.h; sourceTree = "<group>"; };
+		18A4B1841F46E06B00C64978 /* JFButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFButton.m; sourceTree = "<group>"; };
+		18A4B1851F46E06B00C64978 /* JFCityCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionFlowLayout.h; sourceTree = "<group>"; };
+		18A4B1861F46E06B00C64978 /* JFCityCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionFlowLayout.m; sourceTree = "<group>"; };
+		18A4B1871F46E06B00C64978 /* JFCityCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityCollectionViewCell.h; sourceTree = "<group>"; };
+		18A4B1881F46E06B00C64978 /* JFCityCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityCollectionViewCell.m; sourceTree = "<group>"; };
+		18A4B1891F46E06B00C64978 /* JFCityHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityHeaderView.h; sourceTree = "<group>"; };
+		18A4B18A1F46E06B00C64978 /* JFCityHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityHeaderView.m; sourceTree = "<group>"; };
+		18A4B18B1F46E06B00C64978 /* JFCityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityTableViewCell.h; sourceTree = "<group>"; };
+		18A4B18C1F46E06B00C64978 /* JFCityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityTableViewCell.m; sourceTree = "<group>"; };
+		18A4B18D1F46E06B00C64978 /* JFCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCityViewController.h; sourceTree = "<group>"; };
+		18A4B18E1F46E06B00C64978 /* JFCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCityViewController.m; sourceTree = "<group>"; };
+		18A4B18F1F46E06B00C64978 /* JFSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFSearchView.h; sourceTree = "<group>"; };
+		18A4B1901F46E06B00C64978 /* JFSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFSearchView.m; sourceTree = "<group>"; };
+		18A4B1921F46E06B00C64978 /* JFLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFLocation.h; sourceTree = "<group>"; };
+		18A4B1931F46E06B00C64978 /* JFLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFLocation.m; sourceTree = "<group>"; };
 		48D312EC1F41D9140029BA17 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		48D312ED1F41D9140029BA17 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		48D312EF1F41DDFA0029BA17 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
@@ -1264,6 +1302,12 @@
 			children = (
 				180957E11F414F8E00BE185D /* QWShoppingCarViewController.h */,
 				180957E21F414F8E00BE185D /* QWShoppingCarViewController.m */,
+				18A4B1741F46DE2600C64978 /* QWPurchaseViewController.h */,
+				18A4B1751F46DE2600C64978 /* QWPurchaseViewController.m */,
+				18A4B1771F46DEB600C64978 /* QWPurchaseCardViewCell.h */,
+				18A4B1781F46DEB600C64978 /* QWPurchaseCardViewCell.m */,
+				18A4B17A1F46DF1100C64978 /* QWPayPurchaseCardController.h */,
+				18A4B17B1F46DF1100C64978 /* QWPayPurchaseCardController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1271,6 +1315,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				18A4B17D1F46E06B00C64978 /* JFCityViewController */,
 				1829FB4D1F45707B002BA519 /* Alert */,
 				180701E81F44214C00398435 /* PopView */,
 				180701DF1F441AA100398435 /* UIColor+Additions.h */,
@@ -1686,6 +1731,56 @@
 			path = CellShow;
 			sourceTree = "<group>";
 		};
+		18A4B17D1F46E06B00C64978 /* JFCityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B17E1F46E06B00C64978 /* AreaDataManager */,
+				18A4B1811F46E06B00C64978 /* AreaDB */,
+				18A4B1831F46E06B00C64978 /* JFButton.h */,
+				18A4B1841F46E06B00C64978 /* JFButton.m */,
+				18A4B1851F46E06B00C64978 /* JFCityCollectionFlowLayout.h */,
+				18A4B1861F46E06B00C64978 /* JFCityCollectionFlowLayout.m */,
+				18A4B1871F46E06B00C64978 /* JFCityCollectionViewCell.h */,
+				18A4B1881F46E06B00C64978 /* JFCityCollectionViewCell.m */,
+				18A4B1891F46E06B00C64978 /* JFCityHeaderView.h */,
+				18A4B18A1F46E06B00C64978 /* JFCityHeaderView.m */,
+				18A4B18B1F46E06B00C64978 /* JFCityTableViewCell.h */,
+				18A4B18C1F46E06B00C64978 /* JFCityTableViewCell.m */,
+				18A4B18D1F46E06B00C64978 /* JFCityViewController.h */,
+				18A4B18E1F46E06B00C64978 /* JFCityViewController.m */,
+				18A4B18F1F46E06B00C64978 /* JFSearchView.h */,
+				18A4B1901F46E06B00C64978 /* JFSearchView.m */,
+				18A4B1911F46E06B00C64978 /* Location */,
+			);
+			path = JFCityViewController;
+			sourceTree = "<group>";
+		};
+		18A4B17E1F46E06B00C64978 /* AreaDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B17F1F46E06B00C64978 /* JFAreaDataManager.h */,
+				18A4B1801F46E06B00C64978 /* JFAreaDataManager.m */,
+			);
+			path = AreaDataManager;
+			sourceTree = "<group>";
+		};
+		18A4B1811F46E06B00C64978 /* AreaDB */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B1821F46E06B00C64978 /* shop_area.sqlite */,
+			);
+			path = AreaDB;
+			sourceTree = "<group>";
+		};
+		18A4B1911F46E06B00C64978 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B1921F46E06B00C64978 /* JFLocation.h */,
+				18A4B1931F46E06B00C64978 /* JFLocation.m */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		445EC465F7A6D4FF15959817 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1840,6 +1935,7 @@
 				1807026B1F45609100398435 /* problemCenter.plist in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
+				18A4B1951F46E06B00C64978 /* shop_area.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1924,6 +2020,7 @@
 				18A4B11B1F46B64100C64978 /* GoodsExchangeCell.m in Sources */,
 				185C9E111F42C2FD00B4ED52 /* UIView+BFSToastInfo.m in Sources */,
 				180702BA1F458DD500398435 /* YzdHUDIndicator.m in Sources */,
+				18A4B1941F46E06B00C64978 /* JFAreaDataManager.m in Sources */,
 				185C9DF31F42A8FF00B4ED52 /* DSSaleActivityController.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
@@ -1932,6 +2029,7 @@
 				180702A41F4584A800398435 /* QWScoreDetailController.m in Sources */,
 				180702891F456FCD00398435 /* QFDatePickerView.m in Sources */,
 				185C9E261F42D06F00B4ED52 /* SuccessPayCell.m in Sources */,
+				18A4B1791F46DEB600C64978 /* QWPurchaseCardViewCell.m in Sources */,
 				1807021A1F442CD500398435 /* PopupView.m in Sources */,
 				180702911F45715D00398435 /* SCBaseViewController.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
@@ -1941,6 +2039,7 @@
 				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
 				18A4B1241F46BCF100C64978 /* MemberView.m in Sources */,
 				180957EC1F4177B900BE185D /* UIColor+HEXString.m in Sources */,
+				18A4B19A1F46E06B00C64978 /* JFCityTableViewCell.m in Sources */,
 				185C9E3F1F42DC7600B4ED52 /* CommentOrderController.m in Sources */,
 				18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */,
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
@@ -1992,6 +2091,7 @@
 				180957DA1F414F2F00BE185D /* QWCarWashViewController.m in Sources */,
 				187CCBE71F43D65400FCDF1C /* QWVipSecondTableViewCell.m in Sources */,
 				180702E41F45976D00398435 /* TYShowAlertView.m in Sources */,
+				18A4B19D1F46E06B00C64978 /* JFLocation.m in Sources */,
 				180958271F427FB500BE185D /* PGIndexBannerSubiew.m in Sources */,
 				180701E71F441AA100398435 /* UIImage+BFS.m in Sources */,
 				180702DB1F45976D00398435 /* ShareView.m in Sources */,
@@ -2000,7 +2100,9 @@
 				180702761F4560E000398435 /* HQSliderView.m in Sources */,
 				1807027E1F456D8400398435 /* QWMyCarPortController.m in Sources */,
 				180702E61F45976D00398435 /* UIView+TYAutoLayout.m in Sources */,
+				18A4B1961F46E06B00C64978 /* JFButton.m in Sources */,
 				180702F31F4600CA00398435 /* QWFeedbackController.m in Sources */,
+				18A4B19C1F46E06B00C64978 /* JFSearchView.m in Sources */,
 				18508FFB1F42D7F300795E0A /* QWMcServiceTableViewCell.m in Sources */,
 				185090111F43CFD300795E0A /* QWAboutStoreViewController.m in Sources */,
 				180702311F44432F00398435 /* QWScoreController.m in Sources */,
@@ -2015,6 +2117,7 @@
 				1807029B1F45839B00398435 /* QWHowToUpGradeController.m in Sources */,
 				180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */,
 				180702A11F45848B00398435 /* QWEarnScoreController.m in Sources */,
+				18A4B19B1F46E06B00C64978 /* JFCityViewController.m in Sources */,
 				18A4B1201F46BB4F00C64978 /* QWWashCarTicketController.m in Sources */,
 				185C9DF41F42A8FF00B4ED52 /* DSWheelGroupController.m in Sources */,
 				1807024B1F444EBF00398435 /* QWDiscountDetailController.m in Sources */,
@@ -2036,6 +2139,7 @@
 				1807027B1F45615700398435 /* PhoneHelper.m in Sources */,
 				180702921F45715D00398435 /* UIView+Uitls.m in Sources */,
 				180702671F45609100398435 /* AnswerCell.m in Sources */,
+				18A4B1761F46DE2600C64978 /* QWPurchaseViewController.m in Sources */,
 				1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */,
 				18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */,
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
@@ -2048,7 +2152,9 @@
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
 				180702691F45609100398435 /* AnswerModel.m in Sources */,
 				180702D91F45976D00398435 /* TYAlertController+BlurEffects.m in Sources */,
+				18A4B1981F46E06B00C64978 /* JFCityCollectionViewCell.m in Sources */,
 				187CCBE41F43496900FCDF1C /* QWMerchantInViewController.m in Sources */,
+				18A4B1971F46E06B00C64978 /* JFCityCollectionFlowLayout.m in Sources */,
 				180702221F4441E700398435 /* QWBaseViewController.m in Sources */,
 				185C9E091F42C22800B4ED52 /* TPKeyboardAvoidingTableView.m in Sources */,
 				180701F21F44214C00398435 /* LewPopupBackgroundView.m in Sources */,
@@ -2056,6 +2162,7 @@
 				180701DE1F44134700398435 /* QWScanController.m in Sources */,
 				180702981F45834600398435 /* QWUpdateRuleController.m in Sources */,
 				18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */,
+				18A4B17C1F46DF1100C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1807023A1F44437700398435 /* QWCarClubController.m in Sources */,
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
@@ -2084,6 +2191,7 @@
 				180702341F44435100398435 /* QWMembershipController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,
 				180702281F4442B500398435 /* QWMyCarController.m in Sources */,
+				18A4B1991F46E06B00C64978 /* JFCityHeaderView.m in Sources */,
 				180702A81F458A6900398435 /* QWSaleActivityController.m in Sources */,
 				1807025B1F4457A900398435 /* QWRechargeDetailController.m in Sources */,
 				180702471F444EA000398435 /* DiscountCell.m in Sources */,

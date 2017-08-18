@@ -7,6 +7,7 @@
 //
 
 #import "QWTabBarController.h"
+#import "QWPurchaseViewController.h"
 
 @interface QWTabBarController ()
 
@@ -66,7 +67,7 @@
     
     
     
-    QWShoppingCarViewController *ShoppingCar=[[QWShoppingCarViewController alloc]init];
+    QWPurchaseViewController *ShoppingCar=[[QWPurchaseViewController alloc]init];
     [self setsubtabbarsyle:ShoppingCar andimg:[UIImage imageNamed:@"goukah"] andselectimg:[UIImage imageWithRenderingModeorname:@"goukac"] andtitle:@"购卡" andnavtitle:@"购卡"];
     
     
