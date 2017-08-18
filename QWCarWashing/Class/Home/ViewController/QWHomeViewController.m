@@ -27,7 +27,8 @@
 
 #import "QWConsumerController.h"
 
-
+#import "QWUserRightDetailViewController.h"
+#import "QWCarWashingActivityViewController.h"
 
 #import "PopupView.h"
 #import "LewPopupViewAnimationDrop.h"
@@ -337,6 +338,16 @@ static NSString *cellstr=@"Cellstr";
         QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
         consumerController.hidesBottomBarWhenPushed             = YES;
         [self.navigationController pushViewController:consumerController animated:YES];
+    }else if(indexPath.section==3){
+        QWUserRightDetailViewController *UserRightDetailController     = [[QWUserRightDetailViewController alloc]init];
+        UserRightDetailController.hidesBottomBarWhenPushed             = YES;
+        [self.navigationController pushViewController:UserRightDetailController animated:YES];
+    
+    }else if(indexPath.section==5){
+        QWCarWashingActivityViewController *CarWashingActivityController     = [[QWCarWashingActivityViewController alloc]init];
+        CarWashingActivityController.hidesBottomBarWhenPushed             = YES;
+        [self.navigationController pushViewController:CarWashingActivityController animated:YES];
+    
     }
 }
 

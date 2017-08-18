@@ -135,6 +135,8 @@
 		180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809583F1F42902900BE185D /* QWHomeDetailTableViewCell.xib */; };
 		1829FB521F45707B002BA519 /* LKActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB4F1F45707B002BA519 /* LKActionSheet.m */; };
 		1829FB531F45707B002BA519 /* LKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB511F45707B002BA519 /* LKAlertView.m */; };
+		1829FB651F46DF51002BA519 /* QWCarWashingActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB641F46DF51002BA519 /* QWCarWashingActivityViewController.m */; };
+		1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829FB681F46E36F002BA519 /* QWUserRightDetailViewController.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
 		18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FEE1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m */; };
 		18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FF11F42CCDD00795E0A /* QWDetailAddressTableViewCell.m */; };
@@ -481,6 +483,10 @@
 		1829FB4F1F45707B002BA519 /* LKActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKActionSheet.m; sourceTree = "<group>"; };
 		1829FB501F45707B002BA519 /* LKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKAlertView.h; sourceTree = "<group>"; };
 		1829FB511F45707B002BA519 /* LKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKAlertView.m; sourceTree = "<group>"; };
+		1829FB631F46DF51002BA519 /* QWCarWashingActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarWashingActivityViewController.h; sourceTree = "<group>"; };
+		1829FB641F46DF51002BA519 /* QWCarWashingActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarWashingActivityViewController.m; sourceTree = "<group>"; };
+		1829FB671F46E36F002BA519 /* QWUserRightDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUserRightDetailViewController.h; sourceTree = "<group>"; };
+		1829FB681F46E36F002BA519 /* QWUserRightDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUserRightDetailViewController.m; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -1111,6 +1117,8 @@
 		180957B11F414D0000BE185D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1829FB661F46E36F002BA519 /* UserRight */,
+				1829FB621F46DF45002BA519 /* CarWashingActivity */,
 				18A4B1701F46CDCB00C64978 /* CellShow */,
 				180702A51F458A4500398435 /* Activity */,
 				180702011F44251900398435 /* CarClub */,
@@ -1525,6 +1533,24 @@
 				1829FB511F45707B002BA519 /* LKAlertView.m */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		1829FB621F46DF45002BA519 /* CarWashingActivity */ = {
+			isa = PBXGroup;
+			children = (
+				1829FB631F46DF51002BA519 /* QWCarWashingActivityViewController.h */,
+				1829FB641F46DF51002BA519 /* QWCarWashingActivityViewController.m */,
+			);
+			path = CarWashingActivity;
+			sourceTree = "<group>";
+		};
+		1829FB661F46E36F002BA519 /* UserRight */ = {
+			isa = PBXGroup;
+			children = (
+				1829FB671F46E36F002BA519 /* QWUserRightDetailViewController.h */,
+				1829FB681F46E36F002BA519 /* QWUserRightDetailViewController.m */,
+			);
+			path = UserRight;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2034,6 +2060,7 @@
 				180702911F45715D00398435 /* SCBaseViewController.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				187CCBEE1F43E6B800FCDF1C /* HYSlider.m in Sources */,
+				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
 				180702ED1F46009C00398435 /* QWPasswordController.m in Sources */,
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
 				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
@@ -2173,6 +2200,7 @@
 				180702DE1F45976D00398435 /* TYAlertController.m in Sources */,
 				185090161F43CFF600795E0A /* QWStoreCategory.m in Sources */,
 				180957E61F416E9A00BE185D /* QWMenuTableViewCell.m in Sources */,
+				1829FB651F46DF51002BA519 /* QWCarWashingActivityViewController.m in Sources */,
 				180702E31F45976D00398435 /* TYBaseAnimation.m in Sources */,
 				180702B81F458DD500398435 /* YzdHUDBackgroundView.m in Sources */,
 				180958341F427FB500BE185D /* YZPullDownMenu.m in Sources */,
