@@ -20,6 +20,8 @@
     self.payType.textColor=[UIColor colorWithHexString:@"#868686"];
     self.moneys.font=[UIFont systemFontOfSize:13];
     self.moneys.textColor=[UIColor colorWithHexString:@"#3a3a3a"];
+    self.chedianName.font=[UIFont systemFontOfSize:12];
+    self.chedianName.textColor=[UIColor colorWithHexString:@"#868686"];
     
 }
 
