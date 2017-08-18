@@ -30,6 +30,7 @@
 - (void)setupUI {
    
     self.title=@"收藏";
+    [self resetBabkButton];
     
     self.favoriteListView.delegate = self;
     self.favoriteListView.dataSource = self;
@@ -40,6 +41,19 @@
     
     self.favoriteListView.rowHeight = 110;
     
+}
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

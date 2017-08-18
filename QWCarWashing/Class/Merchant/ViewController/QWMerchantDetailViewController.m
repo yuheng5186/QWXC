@@ -14,6 +14,11 @@
 #import "QWPayViewController.h"
 #import "QWAboutStoreViewController.h"
 
+#import "TYAlertController.h"
+#import "ShareView.h"
+#import "UIView+TYAlertView.h"
+#import "TYAlertController+BlurEffects.h"
+
 @interface QWMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate,CellDelegate>
 {
     AppDelegate *myDelegate;
@@ -501,7 +506,13 @@
 
 -(void)downloadOnclick:(UIButton *)download
 {
-    NSLog(@"你点击了下载");
+
+    ShareView *shareView = [ShareView createViewFromNib];
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
+    
+    [alertController setBlurEffectWithView:self.view];
+    //[alertController setBlurEffectWithView:(UIView *)view style:(BlurEffectStyle)blurStyle];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 -(void)nextjiesuan:(UIButton *)jiesuan

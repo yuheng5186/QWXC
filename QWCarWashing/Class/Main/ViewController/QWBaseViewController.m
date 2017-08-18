@@ -7,6 +7,10 @@
 //
 
 #import "QWBaseViewController.h"
+#define DefaultBtnTag 9001
+#define DefaultNavLeftBtnTag 9002
+#define DefaultNavRightBtnTag 9003
+#define DefaultNavTitleLblTag 9004
 
 @interface QWBaseViewController ()
 
@@ -33,6 +37,24 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+- (UILabel *)drawTitle:(NSString *)title
+{
+    UIColor *color = [UIColor colorWithHex:0xffffff alpha:1.0];//[UIColor colorWithRed:99/255.0 green:99/255.0 blue:99/255.0 alpha:1];
+    
+    return [self drawTitle: title Color: color];
+}
+
+- (UILabel *)drawTitle:(NSString *)title Color: (UIColor *) color
+{
+    [[self.navigationView viewWithTag:DefaultNavTitleLblTag] removeFromSuperview];
+    UILabel *lbl = [UIUtil drawLabelInView:self.navigationView frame:CGRectMake(self.navigationView.frame.size.width/5, 0, self.navigationView.frame.size.width*3/5, self.navigationView.frame.size.height) font:[UIFont boldSystemFontOfSize:18] text:title isCenter:YES color: color];
+    lbl.tag = DefaultNavTitleLblTag;
+    return lbl;
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

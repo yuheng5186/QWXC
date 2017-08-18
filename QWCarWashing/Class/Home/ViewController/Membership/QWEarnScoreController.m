@@ -49,7 +49,12 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.adverView.image = [UIImage imageNamed:@"mendiantese"];
+    self.title           = @"赚积分";
+    
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"我的积分" style:UIBarButtonItemStyleDone target:self action:@selector(myScoreButtonClick:)];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
+    self.adverView.image = [UIImage imageNamed:@"guanggao11"];
     
     self.earnWayView.delegate = self;
     self.earnWayView.dataSource = self;
@@ -72,25 +77,25 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
     
     if (indexPath.row == 0) {
         
-        earnScoreCell.iconV.image = [UIImage imageNamed:@"xinyonghuzhuce"];
+        earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_xinyonghuzhuce"];
         earnScoreCell.waysLab.text = @"新用户注册";
         earnScoreCell.wayToLab.text = @"完成手机号绑定注册";
         earnScoreCell.valuesLab.text = @"+20积分";
     }else if (indexPath.row == 1) {
         
-        earnScoreCell.iconV.image = [UIImage imageNamed:@"yaoqinghaoyou"];
+        earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_yaoqinghaoyou"];
         earnScoreCell.waysLab.text = @"邀请好友";
         earnScoreCell.wayToLab.text = @"邀请好友并完成注册";
         earnScoreCell.valuesLab.text = @"+200积分";
     }else if (indexPath.row == 2) {
         
-        earnScoreCell.iconV.image = [UIImage imageNamed:@"wanshancheliangxinxi"];
+        earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_wanshancheliangxinxi"];
         earnScoreCell.waysLab.text = @"完善车辆信息";
         earnScoreCell.wayToLab.text = @"完成车辆绑定,填写车辆信息";
         earnScoreCell.valuesLab.text = @"+50积分";
     }else {
         
-        earnScoreCell.iconV.image = [UIImage imageNamed:@"wanshangerenxinxi"];
+        earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_wanshangerenxinxi"];
         earnScoreCell.waysLab.text = @"完善隔个人信息";
         earnScoreCell.wayToLab.text = @"填写个人姓名完善个人信息";
         earnScoreCell.valuesLab.text = @"+20积分";
@@ -106,7 +111,7 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 
 
 
-- (void)clickMyScoreButton{
+- (void)myScoreButtonClick:(id)sender {
     
     QWScoreDetailController *scoreController = [[QWScoreDetailController alloc] init];
     scoreController.hidesBottomBarWhenPushed = YES;

@@ -40,19 +40,29 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title      = @"升等级";
     [self setupUI];
 
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"等级规则" style:UIBarButtonItemStyleDone target:self action:@selector(updateButtonClick:)];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    
 }
+- (void) updateButtonClick:(id)sender {
+    
+    QWUpdateRuleController      *updateController   = [[QWUpdateRuleController alloc]init];
+    updateController.hidesBottomBarWhenPushed       = YES;
+    [self.navigationController pushViewController:updateController animated:YES];
 
+}
 - (void)setupUI {
     
     UIView *headContainView = [[UIView alloc] init];
-    headContainView.backgroundColor = [UIColor colorFromHex:@"#293754"];
+    headContainView.backgroundColor = [UIColor colorFromHex:@"#ffffff"];
     [self.view addSubview:headContainView];
     
     UILabel *gradeLab = [[UILabel alloc] init];
     gradeLab.text = @"白银会员";
-    gradeLab.textColor = [UIColor colorFromHex:@"#ffffff"];
+    gradeLab.textColor = [UIColor blackColor];
     gradeLab.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:gradeLab];
     
@@ -71,9 +81,9 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     UIButton *displayBtn = [[UIButton alloc] init];
     displayBtn.userInteractionEnabled = NO;
     [displayBtn setTitle:@"再获得400积分升级为黄金会员" forState:UIControlStateNormal];
-    [displayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [displayBtn setTitleColor:[UIColor colorFromHex:@"#999999"] forState:UIControlStateNormal];
     displayBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-    [displayBtn setImage:[UIImage imageNamed:@"xiaohuojian"] forState:UIControlStateNormal];
+    [displayBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
     displayBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [displayBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
     [headContainView addSubview:displayBtn];
@@ -87,7 +97,7 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     [getMoreBtn setTitle:@"如何获得更多积分" forState:UIControlStateNormal];
     [getMoreBtn setTitleColor:[UIColor colorFromHex:@"#4a4a4a"] forState:UIControlStateNormal];
     getMoreBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [getMoreBtn setImage:[UIImage imageNamed:@"gengduojifen"] forState:UIControlStateNormal];
+    [getMoreBtn setImage:[UIImage imageNamed:@"qw_huodegengduojifen"] forState:UIControlStateNormal];
     [getMoreBtn addTarget:self action:@selector(didClickGetMoreBtn) forControlEvents:UIControlEventTouchUpInside];
     [containView addSubview:getMoreBtn];
     
@@ -165,25 +175,25 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     if (indexPath.row == 0) {
         
-        wayCell.iconV.image = [UIImage imageNamed:@"xinyonghuzhuce"];
+        wayCell.iconV.image = [UIImage imageNamed:@"qw_xinyonghuzhuce"];
         wayCell.waysLab.text = @"新用户注册";
         wayCell.wayToLab.text = @"完成手机号绑定注册";
         wayCell.valuesLab.text = @"+20积分";
     }else if (indexPath.row == 1) {
         
-        wayCell.iconV.image = [UIImage imageNamed:@"yaoqinghaoyou"];
+        wayCell.iconV.image = [UIImage imageNamed:@"qw_yaoqinghaoyou"];
         wayCell.waysLab.text = @"邀请好友";
         wayCell.wayToLab.text = @"邀请好友并完成注册";
         wayCell.valuesLab.text = @"+200积分";
     }else if (indexPath.row == 2) {
         
-        wayCell.iconV.image = [UIImage imageNamed:@"wanshancheliangxinxi"];
+        wayCell.iconV.image = [UIImage imageNamed:@"qw_wanshancheliangxinxi"];
         wayCell.waysLab.text = @"完善车辆信息";
         wayCell.wayToLab.text = @"完成车辆绑定,填写车辆信息";
         wayCell.valuesLab.text = @"+50积分";
     }else {
         
-        wayCell.iconV.image = [UIImage imageNamed:@"wanshangerenxinxi"];
+        wayCell.iconV.image = [UIImage imageNamed:@"qw_wanshangerenxinxi"];
         wayCell.waysLab.text = @"完善隔个人信息";
         wayCell.wayToLab.text = @"填写个人姓名完善个人信息";
         wayCell.valuesLab.text = @"+20积分";

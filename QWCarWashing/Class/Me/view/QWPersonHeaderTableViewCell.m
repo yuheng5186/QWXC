@@ -148,7 +148,7 @@
         [_qiandaoButton setTitle:@"每日签到" forState:BtnNormal];
         _qiandaoButton.backgroundColor=[UIColor colorWithHexString:@"#fe8206"];
         _qiandaoButton.layer.cornerRadius=7.5;
-       [_privilegeButton addTarget:self action:@selector(aiandaoOclick:) forControlEvents:BtnTouchUpInside];
+       [_qiandaoButton addTarget:self action:@selector(aiandaoOclick:) forControlEvents:BtnTouchUpInside];
         
         
     }

@@ -21,13 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title  = @"会员";
+    self.title  = @"等级特权";
+    self.view.backgroundColor   = [UIColor colorFromHex:@"#e6e6e6"];
     [self createSubView];
+    
+    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"使用帮助" style:UIBarButtonItemStyleDone target:self action:@selector(updateRuleClick:)];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
+
 }
 
 - (void) createSubView {
-    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor colorFromHex:@"#293754"]];
-    upView.top                      = 0;
+    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor whiteColor]];
+    upView.top                      = Main_Screen_Height*64/667;
     
     
     UIImage *membershipImage              = [UIImage imageNamed:@"huiyuantou"];
@@ -189,7 +194,7 @@
     [gradeBtn setTitle:@"如何升级到黄金会员" forState:UIControlStateNormal];
     [gradeBtn setTitleColor:[UIColor colorFromHex:@"#4a4a4a"] forState:UIControlStateNormal];
     gradeBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [gradeBtn setImage:[UIImage imageNamed:@"xiaohuojian"] forState:UIControlStateNormal];
+    [gradeBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
     [containView addSubview:gradeBtn];
     
     [containView mas_makeConstraints:^(MASConstraintMaker *make) {

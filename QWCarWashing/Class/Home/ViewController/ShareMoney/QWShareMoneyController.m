@@ -8,6 +8,11 @@
 
 #import "QWShareMoneyController.h"
 
+#import "TYAlertController.h"
+#import "ShareView.h"
+#import "UIView+TYAlertView.h"
+#import "TYAlertController+BlurEffects.h"
+
 @interface QWShareMoneyController ()
 
 @end
@@ -56,7 +61,12 @@
 
 - (void) getMoneyButtonClick:(id)sender {
 
-
+    ShareView *shareView = [ShareView createViewFromNib];
+    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
+    
+    [alertController setBlurEffectWithView:self.view];
+    //[alertController setBlurEffectWithView:(UIView *)view style:(BlurEffectStyle)blurStyle];
+    [self presentViewController:alertController animated:YES completion:nil];
     
 }
 - (void)didReceiveMemoryWarning {

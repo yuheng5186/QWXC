@@ -156,9 +156,11 @@ static NSString *cellstr=@"Cellstr";
                     [self.navigationController pushViewController:cardPackgeController animated:YES];
                     break;
                 case 2:
+                    membershipController.hidesBottomBarWhenPushed   = YES;
                     [self.navigationController pushViewController:membershipController animated:YES];
                     break;
                 case 3:
+                    scoreController.hidesBottomBarWhenPushed        = YES;
                     [self.navigationController pushViewController:scoreController animated:YES];
                     break;
                 default:

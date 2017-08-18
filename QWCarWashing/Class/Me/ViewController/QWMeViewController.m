@@ -16,7 +16,14 @@
 #import "QWPersonInfoDetailViewController.h"
 #import "QWViptequanViewController.h"
 #import "QWMyCarController.h"
+#import "TYAlertController.h"
+#import "ShareView.h"
+#import "UIView+TYAlertView.h"
+#import "TYAlertController+BlurEffects.h"
 
+#import "QWSettingController.h"
+#import "PopupView.h"
+#import "LewPopupViewAnimationDrop.h"
 
 @interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -66,6 +73,9 @@ static NSString *cellstr=@"cell";
 }
 -(void)shezOnclick:(id)sender{
 
+    QWSettingController   *settingController    = [[QWSettingController alloc]init];
+    settingController.hidesBottomBarWhenPushed  = YES;
+    [self.navigationController pushViewController:settingController animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -106,7 +116,16 @@ static NSString *cellstr=@"cell";
             [self.navigationController pushViewController:Viptequan animated:YES];
         
         };
+        
+
+        
         cell.qiandaoClicked=^(void){
+            
+            PopupView *view = [PopupView defaultPopupView];
+            view.parentVC   = self;
+            [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
+                
+            }];
         
         };
         return cell;
@@ -173,6 +192,15 @@ static NSString *cellstr=@"cell";
             myCar.hidesBottomBarWhenPushed  = YES;
             [self.navigationController pushViewController:myCar animated:YES];
         }
+    }
+    
+    if (indexPath.section == 4) {
+        ShareView *shareView = [ShareView createViewFromNib];
+        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
+        
+        [alertController setBlurEffectWithView:self.view];
+        //[alertController setBlurEffectWithView:(UIView *)view style:(BlurEffectStyle)blurStyle];
+        [self presentViewController:alertController animated:YES completion:nil];
     }
     
 }

@@ -35,12 +35,27 @@
 
 - (void)setupUI {
     
+    [self resetBabkButton];
+    
     [self setupCategoryView];
     [self setupScrollView];
     
     [self addOrderChildViewControllers];
     
     
+}
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addOrderChildViewControllers {

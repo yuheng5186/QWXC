@@ -127,8 +127,8 @@
 - (UIButton *)drawBackButtonWithAction:(SEL)action
 {
     [[self.navigationView viewWithTag:DefaultBtnTag] removeFromSuperview];
-    float imageWidth = [UIImage imageNamed:@"icon_titlebar_arrow"].size.width;
-    UIButton *button =  [UIUtil drawButtonInView:self.navigationView frame:CGRectMake(0, 0, 50, self.navigationView.frame.size.height) iconName:@"icon_titlebar_arrow" target:self action:action];
+    float imageWidth = [UIImage imageNamed:@"icon_titlebar_arrow2"].size.width;
+    UIButton *button =  [UIUtil drawButtonInView:self.navigationView frame:CGRectMake(0, 0, 50, self.navigationView.frame.size.height) iconName:@"icon_titlebar_arrow2" target:self action:action];
     button.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, button.frame.size.width-10*2-imageWidth);
     return button;
 }

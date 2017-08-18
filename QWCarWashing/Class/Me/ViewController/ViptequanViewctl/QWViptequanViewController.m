@@ -10,12 +10,15 @@
 #import "QWVipHeaderTableViewCell.h"
 #import "QWVipSecondTableViewCell.h"
 @interface QWViptequanViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property(strong,nonatomic)UITableView*tableview;
 @end
+
 #define QWCellIdentifier_VipHeaderTableViewCell @"QWVipHeaderTableViewCell"
 #define QWCellIdentifier_VipSecondTableViewCell @"QWVipSecondTableViewCell"
 
 @implementation QWViptequanViewController
+
 -(UITableView *)tableview{
     if (_tableview==nil) {
         _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight) style:UITableViewStyleGrouped];
@@ -33,11 +36,28 @@
     }
     return _tableview;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"会员特权";
+    [self resetBabkButton];
+
     [self.view addSubview:self.tableview];
 }
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark - UITableViewDataSource
 //
 //-(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
