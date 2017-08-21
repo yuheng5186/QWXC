@@ -25,6 +25,9 @@
 #import "PopupView.h"
 #import "LewPopupViewAnimationDrop.h"
 
+#import "QWCardPackgeController.h"
+
+
 @interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic)UITableView*tableview;
@@ -191,7 +194,14 @@ static NSString *cellstr=@"cell";
             QWMyCarController   *myCar      = [[QWMyCarController alloc]init];
             myCar.hidesBottomBarWhenPushed  = YES;
             [self.navigationController pushViewController:myCar animated:YES];
+        }else
+        {
+            QWCardPackgeController  *cardPackgeController   = [[QWCardPackgeController alloc]init];
+            cardPackgeController.hidesBottomBarWhenPushed   = YES;
+            [self.navigationController pushViewController:cardPackgeController animated:YES];
+            
         }
+        
     }
     
     if (indexPath.section == 4) {

@@ -1,5 +1,5 @@
 //
-//  QWPayPurchaseCardController.h
+//  CashViewController.h
 //  QWCarWashing
 //
 //  Created by Wuxinglin on 2017/8/18.
@@ -8,6 +8,6 @@
 
 #import "QWBaseViewController.h"
 
-@interface QWPayPurchaseCardController : QWBaseViewController
+@interface CashViewController : QWBaseViewController
 
 @end

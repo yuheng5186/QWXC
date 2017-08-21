@@ -239,9 +239,9 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
     
     QWPayPurchaseCardController *payCardVC = [[QWPayPurchaseCardController alloc] init];
-//    payCardVC.hidesBottomBarWhenPushed = YES;
+    payCardVC.hidesBottomBarWhenPushed = YES;
     
-//    [self.navigationController pushViewController:payCardVC animated:YES];
+    [self.navigationController pushViewController:payCardVC animated:YES];
 }
 
 
