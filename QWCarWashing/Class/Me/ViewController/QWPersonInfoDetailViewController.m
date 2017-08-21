@@ -11,6 +11,9 @@
 #import <AVFoundation/AVCaptureDevice.h>
 #import "LKAlertView.h"
 
+#import "QWChangePhoneController.h"
+#import "QWChangeNameController.h"
+
 
 @interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LKActionSheetDelegate,LKAlertViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -110,11 +113,13 @@
     }
     cell.backgroundColor    = [UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    
+    cell.textLabel.textColor    = [UIColor colorFromHex:@"#4a4a4a"];
+    cell.textLabel.font         = [UIFont systemFontOfSize:15];
+    cell.detailTextLabel.font   = [UIFont systemFontOfSize:14];
     if (indexPath.section == 0) {
         cell.textLabel.text     = @"头像";
-        self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-11, 60, 60) imageName:@"gerenxinxitou"];
-        self.userImageView.left          = QWScreenWidth*280/375;
+        self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-Main_Screen_Height*11/667, Main_Screen_Width*60/375, Main_Screen_Height*60/667) imageName:@"gerenxinxitou"];
+        self.userImageView.left          = QWScreenWidth*275/375;
         
         
     }else{
@@ -163,15 +168,15 @@
         
     }else if (indexPath.section == 1){
         if (indexPath.row == 0) {
-//            DSChangeNameController  *changeNameController   = [[DSChangeNameController alloc]init];
-//            changeNameController.hidesBottomBarWhenPushed   = YES;
-//            [self.navigationController pushViewController:changeNameController animated:YES];
+            QWChangeNameController  *changeNameController   = [[QWChangeNameController alloc]init];
+            changeNameController.hidesBottomBarWhenPushed   = YES;
+            [self.navigationController pushViewController:changeNameController animated:YES];
             
         }else if (indexPath.row == 1){
             
-//            DSChangePhoneController *changePhone    = [[DSChangePhoneController alloc]init];
-//            changePhone.hidesBottomBarWhenPushed    = YES;
-//            [self.navigationController pushViewController:changePhone animated:YES];
+            QWChangePhoneController *changePhone    = [[QWChangePhoneController alloc]init];
+            changePhone.hidesBottomBarWhenPushed    = YES;
+            [self.navigationController pushViewController:changePhone animated:YES];
             
         }else if (indexPath.row == 2){
             LKActionSheet *actionSheet = [[LKActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"男",@"女",nil];
