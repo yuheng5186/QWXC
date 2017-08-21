@@ -20,24 +20,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-e9-5LN">
-                        <rect key="frame" x="279" y="143" width="40" height="20"/>
+                        <rect key="frame" x="264" y="148" width="45" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <state key="normal" title="去赚积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsr-zG-tma">
-                        <rect key="frame" x="179" y="143" width="85" height="29.5"/>
+                        <rect key="frame" x="184" y="143" width="85" height="29.5"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="1680积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-8o-vaG">
-                        <rect key="frame" x="118" y="143" width="40" height="20"/>
+                        <rect key="frame" x="106" y="148" width="45" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="dmV-pS-PxV"/>
-                            <constraint firstAttribute="height" constant="20" id="nfI-RX-huu"/>
+                            <constraint firstAttribute="width" constant="45" id="dmV-pS-PxV"/>
+                            <constraint firstAttribute="height" constant="18" id="nfI-RX-huu"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <state key="normal" title="去升级">
@@ -64,7 +64,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-Rp-ZiO">
-                        <rect key="frame" x="13" y="143" width="85" height="30"/>
+                        <rect key="frame" x="18" y="143" width="85" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="85" id="9jx-JR-3WZ"/>
                             <constraint firstAttribute="height" constant="30" id="PVE-uc-3Ll"/>
@@ -101,20 +101,20 @@
                     <constraint firstItem="hnv-Rp-ZiO" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="CIc-A9-kme"/>
                     <constraint firstAttribute="trailing" secondItem="UPm-9j-29K" secondAttribute="trailing" id="CRM-qL-Go6"/>
                     <constraint firstItem="vsr-zG-tma" firstAttribute="height" secondItem="hnv-Rp-ZiO" secondAttribute="height" id="DbW-fK-d04"/>
-                    <constraint firstItem="81b-8o-vaG" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="FRg-j3-ATc"/>
+                    <constraint firstItem="81b-8o-vaG" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="15" id="FRg-j3-ATc"/>
                     <constraint firstItem="hpj-e9-5LN" firstAttribute="width" secondItem="81b-8o-vaG" secondAttribute="width" id="HCY-xb-f3G"/>
                     <constraint firstItem="hpj-e9-5LN" firstAttribute="height" secondItem="81b-8o-vaG" secondAttribute="height" id="KbX-YU-CkX"/>
-                    <constraint firstItem="oYr-vi-ZzA" firstAttribute="leading" secondItem="81b-8o-vaG" secondAttribute="trailing" constant="10" id="LPU-NN-x5y"/>
-                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="NU9-1l-pLZ"/>
+                    <constraint firstItem="oYr-vi-ZzA" firstAttribute="leading" secondItem="81b-8o-vaG" secondAttribute="trailing" constant="17" id="LPU-NN-x5y"/>
+                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="NU9-1l-pLZ"/>
                     <constraint firstItem="fDO-fa-uak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="64" id="Pny-Ky-q0F"/>
                     <constraint firstItem="oYr-vi-ZzA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Vom-g1-5Me"/>
                     <constraint firstItem="UPm-9j-29K" firstAttribute="top" secondItem="fDO-fa-uak" secondAttribute="bottom" constant="10" id="Y6a-Yn-LRz"/>
-                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="dOt-aF-Mk3"/>
+                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="dOt-aF-Mk3"/>
                     <constraint firstItem="vsr-zG-tma" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="dim-pP-ijD"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hpj-e9-5LN" secondAttribute="trailing" constant="10" id="fq7-6r-DVj"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hpj-e9-5LN" secondAttribute="trailing" constant="20" id="fq7-6r-DVj"/>
                     <constraint firstItem="hpj-e9-5LN" firstAttribute="top" secondItem="81b-8o-vaG" secondAttribute="top" id="g0m-dh-A8W"/>
                     <constraint firstItem="f0f-Dh-H7i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="66" id="rsD-xe-pRq"/>
-                    <constraint firstItem="vsr-zG-tma" firstAttribute="leading" secondItem="oYr-vi-ZzA" secondAttribute="trailing" constant="10" id="tK3-qr-usd"/>
+                    <constraint firstItem="vsr-zG-tma" firstAttribute="leading" secondItem="oYr-vi-ZzA" secondAttribute="trailing" constant="15" id="tK3-qr-usd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="f0f-Dh-H7i" secondAttribute="trailing" id="xEF-Gs-6rJ"/>
                     <constraint firstItem="fDO-fa-uak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="yzu-N1-HJh"/>
                     <constraint firstItem="oYr-vi-ZzA" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="zM8-bF-THl"/>
@@ -132,7 +132,7 @@
                 <outlet property="phoneNum" destination="f0f-Dh-H7i" id="AaR-rJ-7vD"/>
                 <outlet property="vipType" destination="hnv-Rp-ZiO" id="Ulw-eZ-XYW"/>
             </connections>
-            <point key="canvasLocation" x="-457.5" y="120.5"/>
+            <point key="canvasLocation" x="-541.5" y="116.5"/>
         </tableViewCell>
     </objects>
 </document>

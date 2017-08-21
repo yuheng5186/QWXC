@@ -36,7 +36,7 @@
 {
     WEAKSELF
     self=[super initWithFrame:frame];
-    //    self.backgroundColor = [UIColor redColor];
+//        self.backgroundColor = [UIColor redColor];
     if (self) {
         if (!_imagescell) {
             self.imagescell=[[UIImageView alloc]init];
@@ -44,7 +44,7 @@
             self.imagescell.layer.cornerRadius=6;
             //            隐藏 边框的圆角
             self.imagescell.layer.masksToBounds=YES;
-            //             self.imagescell.backgroundColor = [UIColor yellowColor];
+//                         self.imagescell.backgroundColor = [UIColor yellowColor];
             [self addSubview:self.imagescell];
             
             
@@ -53,7 +53,7 @@
                 self.namecell.textAlignment=NSTextAlignmentCenter;
                 self.namecell.font = [UIFont systemFontOfSize:12];
                 self.namecell.textColor = [UIColor lightGrayColor];
-                //           self.namecell.backgroundColor = [UIColor whiteColor];
+//                           self.namecell.backgroundColor = [UIColor whiteColor];
                 
                 [self addSubview:self.namecell];
             }

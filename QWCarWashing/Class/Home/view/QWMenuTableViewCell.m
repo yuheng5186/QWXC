@@ -42,7 +42,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor=[UIColor clearColor];
+//        self.backgroundColor=[UIColor greenColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         _mutableArrImage=[NSArray array];
         _mutableArr = [NSArray array];
@@ -50,23 +50,43 @@
         _selectTitle = [NSString string];
         if (!_collectiveView) {
             UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+            if(QWScreenheight>568){
+                _collectiveView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 0, QWScreenWidth-20, self.contentView.frame.size.height+20) collectionViewLayout:layout];
+                self.collectiveView.scrollEnabled = NO;
+                [self.collectiveView setBackgroundView:nil];
+                [self.collectiveView setBackgroundColor:[UIColor whiteColor]];
+                //            self.collectiveView.layer.borderWidth=1;
+                //            self.collectiveView.layer.borderColor=RGBACOLOR(243, 239, 235, 1).CGColor;
+                self.collectiveView.layer.cornerRadius=5;
+                [self.collectiveView registerClass:[QWSubCollectionViewCell class] forCellWithReuseIdentifier:QWCellIdentifier_MenuTableViewCell];
+                self.collectiveView.dataSource = self;
+                self.collectiveView.delegate = self;
+                [self.contentView addSubview:self.collectiveView];
+                
+                layout.itemSize = CGSizeMake((QWScreenWidth - 70) / 4, self.contentView.frame.size.height+20);
+                layout.minimumLineSpacing = 10;
+                layout.minimumInteritemSpacing = 10;
+
+            }else{
+                _collectiveView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 0, QWScreenWidth-20, self.contentView.frame.size.height+20) collectionViewLayout:layout];
+                self.collectiveView.scrollEnabled = NO;
+                [self.collectiveView setBackgroundView:nil];
+                [self.collectiveView setBackgroundColor:[UIColor whiteColor]];
+                //            self.collectiveView.layer.borderWidth=1;
+                //            self.collectiveView.layer.borderColor=RGBACOLOR(243, 239, 235, 1).CGColor;
+                self.collectiveView.layer.cornerRadius=5;
+                [self.collectiveView registerClass:[QWSubCollectionViewCell class] forCellWithReuseIdentifier:QWCellIdentifier_MenuTableViewCell];
+                self.collectiveView.dataSource = self;
+                self.collectiveView.delegate = self;
+                [self.contentView addSubview:self.collectiveView];
+                
+                layout.itemSize = CGSizeMake((QWScreenWidth - 70) / 4, self.contentView.frame.size.height+20);
+                layout.minimumLineSpacing = 10;
+                layout.minimumInteritemSpacing = 10;
+
+            }
             
-            _collectiveView = [[UICollectionView alloc]initWithFrame:CGRectMake(10, 0, QWScreenWidth-20, self.contentView.frame.size.height+20) collectionViewLayout:layout];
-            self.collectiveView.scrollEnabled = NO;
-            [self.collectiveView setBackgroundView:nil];
-            [self.collectiveView setBackgroundColor:[UIColor whiteColor]];
-            //            self.collectiveView.layer.borderWidth=1;
-            //            self.collectiveView.layer.borderColor=RGBACOLOR(243, 239, 235, 1).CGColor;
-            self.collectiveView.layer.cornerRadius=5;
-            [self.collectiveView registerClass:[QWSubCollectionViewCell class] forCellWithReuseIdentifier:QWCellIdentifier_MenuTableViewCell];
-            self.collectiveView.dataSource = self;
-            self.collectiveView.delegate = self;
-            [self.contentView addSubview:self.collectiveView];
-            
-            layout.itemSize = CGSizeMake((QWScreenWidth - 70) / 4, self.contentView.frame.size.height+20);
-            layout.minimumLineSpacing = 10;
-            layout.minimumInteritemSpacing = 10;
-        }
+                    }
     }
     return self;
 }
@@ -104,7 +124,11 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     //UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
-    return UIEdgeInsetsMake(15,autoScaleW(15),10, autoScaleW(5));
+    if(QWScreenheight>568){
+        return UIEdgeInsetsMake(15,autoScaleW(15),10, autoScaleW(5));}else{
+            return UIEdgeInsetsMake(5,autoScaleW(15),5, autoScaleW(5));
+        
+        }
 }
 + (CGFloat)cellHeightContent:(NSInteger )contentIndex{
     CGFloat cellHeight = 0;

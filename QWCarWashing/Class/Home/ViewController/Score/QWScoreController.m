@@ -31,13 +31,13 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     
     if (!_exchangListView) {
         
-        _exchangListView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, QWScreenWidth, QWScreenheight)];
-        _exchangListView.backgroundColor=[UIColor redColor];
+        _exchangListView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, QWScreenWidth, QWScreenheight+64)];
+
         _exchangListView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _exchangListView.delegate = self;
         _exchangListView.dataSource = self;
         
-        _exchangListView.backgroundColor = [UIColor whiteColor];
+        _exchangListView.backgroundColor = kColorTableBG;
 
         [_exchangListView registerNib:[UINib nibWithNibName:@"QWScoreheaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_ScoreheaderTableViewCell];
         [_exchangListView registerClass:[GoodsExchangeCell class] forCellReuseIdentifier:id_exchangeCell];
@@ -98,6 +98,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
    
     if (indexPath.section==0) {
         QWScoreheaderTableViewCell *scoreheadercell=[tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_ScoreheaderTableViewCell forIndexPath:indexPath];
+        scoreheadercell.selectionStyle = UITableViewCellSelectionStyleNone;
         [scoreheadercell.vipType addTarget:self action:@selector(clickMemberButton:) forControlEvents:BtnTouchUpInside];
         [scoreheadercell.goUpGrade addTarget:self action:@selector(clickUpgradeBtn:) forControlEvents:BtnTouchUpInside];
         [scoreheadercell.ScoreNum addTarget:self action:@selector(clickMemberScoreBtn:) forControlEvents:BtnTouchUpInside];
@@ -106,7 +107,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
         return scoreheadercell;
     }else{
          GoodsExchangeCell *changeCell = [tableView dequeueReusableCellWithIdentifier:id_exchangeCell forIndexPath:indexPath];
-       
+       changeCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return changeCell;
     
     }

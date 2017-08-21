@@ -34,14 +34,14 @@
     [self.ScoreNum setTitleEdgeInsets:UIEdgeInsetsMake(1, -self.ScoreNum.imageView.image.size.width, 0, self.ScoreNum.imageView.image.size.width)];
     [self.ScoreNum setImageEdgeInsets:UIEdgeInsetsMake(1, self.ScoreNum.titleLabel.bounds.size.width, 0, -self.ScoreNum.titleLabel.bounds.size.width)];
 //    [self.ScoreNum addTarget:self action:@selector(scorenum:) forControlEvents:BtnTouchUpInside];
-    CGFloat corner=10;
+    CGFloat corner=9;
     self.goUpGrade.layer.borderWidth=1;
     self.goUpGrade.layer.borderColor=[UIColor whiteColor].CGColor;
     self.goUpGrade.layer.cornerRadius=corner;
     self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:7];
     [self.goUpGrade setTitle:@"去升等级" forState:BtnNormal];
 //    [self.goUpGrade addTarget:self action:@selector(goupgradeonclick:) forControlEvents:BtnTouchUpInside];
-    CGFloat corners=10;
+    CGFloat corners=9;
     self.AddScore.layer.borderWidth=1;
     self.AddScore.layer.borderColor=[UIColor whiteColor].CGColor;
     self.AddScore.layer.cornerRadius=corners;
@@ -49,10 +49,10 @@
     [self.AddScore setTitle:@"去赚积分" forState:BtnNormal];
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.frame = self.bounds;
+    self.gradientLayer.frame =CGRectMake(0, 0, QWScreenWidth, 205);
     
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
-    [self.contentViews.layer addSublayer:self.gradientLayer];
+    [self.contentView.layer addSublayer:self.gradientLayer];
     
     //设置渐变区域的起始和终止位置（范围为0-1）
     self.gradientLayer.startPoint = CGPointMake(0, 0);
@@ -71,14 +71,14 @@
 //    
 //    self.headerImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth/2, 40)];
     self.headerImage.image=[UIImage imageNamed:@"huiyuantou"];
-    [self.contentView addSubview:    self.headerImage];
-    [self.contentView addSubview:    self.phoneNum];
-    [self.contentView addSubview:self.vipType];
-    [self.contentView addSubview:    self.goUpGrade];
-    [self.contentView addSubview:    self.ScoreNum];
-    [self.contentView addSubview:self.AddScore];
-    [self.contentView addSubview:    self.Maxline];
-    [self.contentView addSubview:self.linev];
+    [self.contentViews addSubview:    self.headerImage];
+    [self.contentViews addSubview:    self.phoneNum];
+    [self.contentViews addSubview:self.vipType];
+    [self.contentViews addSubview:    self.goUpGrade];
+    [self.contentViews addSubview:    self.ScoreNum];
+    [self.contentViews addSubview:self.AddScore];
+    [self.contentViews addSubview:    self.Maxline];
+    [self.contentViews addSubview:self.linev];
     
 //    self.aa.image=[UIImage imageNamed:@"huiyuantou"];
 
