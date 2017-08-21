@@ -30,13 +30,12 @@
 
 - (void) createSubView {
     
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*280/667)];
-    self.tableView.top              = Main_Screen_Height*0/667;
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*280/667) style:UITableViewStyleGrouped];
+    self.tableView.top              = -Main_Screen_Height*5/667;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     self.tableView.tableFooterView  = [UIView new];
-     self.tableView.backgroundColor=kColorTableBG;
     //    self.tableView.tableHeaderView  = [UIView new];
     [self.view addSubview:self.tableView];
     
@@ -44,7 +43,7 @@
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    UIButton *submitButton      = [UIUtil drawDefaultButton:self.view title:@"提交" target:self action:@selector(submitButtonClick:)];
+    UIButton *submitButton      = [UIUtil drawDefaultButton:self.contentView title:@"提交" target:self action:@selector(submitButtonClick:)];
     submitButton.top           = self.tableView.bottom +Main_Screen_Height*40/667;
     submitButton.centerX       = Main_Screen_Width/2;
     
@@ -97,6 +96,7 @@
         self.userMobileFieldText.delegate       = self;
         self.userMobileFieldText.clearButtonMode= UITextFieldViewModeAlways;
         self.userMobileFieldText.returnKeyType  = UIReturnKeyDone;
+        self.userMobileFieldText.keyboardType   = UIKeyboardTypeNumberPad;
         self.userMobileFieldText.textAlignment  = NSTextAlignmentLeft;
         self.userMobileFieldText.font           = [UIFont systemFontOfSize:13];
         self.userMobileFieldText.backgroundColor= [UIColor whiteColor];
@@ -112,6 +112,8 @@
         self.verifyFieldText.placeholder    = @"输入验证码";
         self.verifyFieldText.delegate       = self;
         self.verifyFieldText.returnKeyType  = UIReturnKeyDone;
+        self.verifyFieldText.keyboardType   = UIKeyboardTypeNumberPad;
+
         self.verifyFieldText.textAlignment  = NSTextAlignmentLeft;
         self.verifyFieldText.font           = [UIFont systemFontOfSize:13];
         self.verifyFieldText.clearButtonMode= UITextFieldViewModeAlways;
@@ -124,10 +126,10 @@
         [cell.contentView addSubview:self.verifyFieldText];
         
         NSString *getVeriifyString      = @"获取验证码";
-        UIFont *getVeriifyStringFont          = [UIFont systemFontOfSize:14];
+        UIFont *getVeriifyStringFont          = [UIFont systemFontOfSize:Main_Screen_Height*14/667];
         UIButton *getVeriifyStringButton      = [UIUtil drawButtonInView:cell.contentView frame:CGRectMake(0, 0, Main_Screen_Width*90/375, Main_Screen_Height*30/667) text:getVeriifyString font:getVeriifyStringFont color:[UIColor whiteColor] target:self action:@selector(getVeriifyButtonClick:)];
         getVeriifyStringButton.backgroundColor=  [UIColor colorWithHex:0xFFB500 alpha:1.0];
-        getVeriifyStringButton.layer.cornerRadius = 15;
+        getVeriifyStringButton.layer.cornerRadius = Main_Screen_Height*15/667;
         getVeriifyStringButton.right          = Main_Screen_Width -Main_Screen_Width*10/375;
         getVeriifyStringButton.centerY        = self.verifyFieldText.centerY;
     }else if (indexPath.section == 2){
