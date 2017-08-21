@@ -160,7 +160,7 @@
         
     }else if (indexPath.row == 1){
         
-        cell.textLabel.text     = @"关于金顶";
+        cell.textLabel.text     = @"关于蔷薇";
         
     }else {
         
