@@ -8,7 +8,7 @@
 
 #import "QWIcreaseCarController.h"
 #import "QFDatePickerView.h"
-
+#import "ProvinceShortController.h"
 
 @interface QWIcreaseCarController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
 
@@ -16,6 +16,7 @@
 
 @property (nonatomic, weak) UILabel *lbl;
 @property (nonatomic, weak) UILabel *lbl2;
+@property (nonatomic, weak) UIButton *provinceBtn;
 
 @end
 static NSString *id_carInfoCell = @"id_carInfoCell";
@@ -84,11 +85,22 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             carCell.textLabel.text = @"车牌号";
             carCell.textLabel.textColor = [UIColor colorFromHex:@"#868686"];
             carCell.textLabel.font = [UIFont systemFontOfSize:14];
-            UILabel *provinceLabel = [[UILabel alloc] init];
-            provinceLabel.text = @"沪";
-            provinceLabel.textColor = [UIColor colorFromHex:@"#868686"];
+             UIButton *provinceLabel = [[UIButton alloc] init];
+            [provinceLabel setTitle:@"沪" forState:UIControlStateNormal];
+                        [provinceLabel setTitleColor:[UIColor colorFromHex:@"#868686"] forState:UIControlStateNormal];
             provinceLabel.font = [UIFont systemFontOfSize:14];
             [carCell.contentView addSubview:provinceLabel];
+//            UIButton *provinceBtn = [[UIButton alloc] init];
+            _provinceBtn = provinceLabel;
+//            [provinceBtn setTitle:@"沪" forState:UIControlStateNormal];
+//            [provinceBtn setTitleColor:[UIColor colorFromHex:@"#868686"] forState:UIControlStateNormal];
+//            provinceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+            [provinceLabel addTarget:self action:@selector(didClickProvinceBtn) forControlEvents:UIControlEventTouchUpInside];
+            [carCell.contentView addSubview:provinceLabel];
+            UIImageView *provinceImgV = [[UIImageView alloc] init];
+            provinceImgV.image = [UIImage imageNamed:@"xuanshengfen"];
+            [provinceLabel addSubview:provinceImgV];
+            
             
             UITextField *numTF = [[UITextField alloc] init];
             numTF.placeholder = @"请输入车牌号";
@@ -100,7 +112,11 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                 make.centerY.equalTo(carCell.textLabel);
                 make.left.equalTo(carCell.contentView).mas_offset(110);
             }];
-            
+            [provinceImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(provinceLabel);
+                make.bottom.equalTo(provinceLabel);
+                make.width.height.mas_equalTo(7);
+            }];
             [numTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(provinceLabel);
                 make.leading.equalTo(provinceLabel.mas_trailing).mas_offset(16);
@@ -179,7 +195,21 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     
     return carCell;
 }
-
+#pragma mark - 弹出省份简称
+- (void)didClickProvinceBtn {
+    
+    ProvinceShortController *provinceVC = [[ProvinceShortController alloc] init];
+    
+    typeof(self) weakSelf = self;
+    
+    provinceVC.provinceBlock = ^(NSString *nameText) {
+        
+        [weakSelf.provinceBtn setTitle:nameText forState:UIControlStateNormal];
+    };
+    
+    provinceVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:provinceVC animated:NO completion:nil];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return 40;

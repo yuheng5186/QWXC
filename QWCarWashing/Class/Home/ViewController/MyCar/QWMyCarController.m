@@ -352,21 +352,48 @@ static NSString * HeaderId = @"header";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *hederview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40)];
+    hederview.backgroundColor=kColorTableBG;
+    UIView *hederviews=[[UIView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, 29)];
+    hederviews.backgroundColor=[UIColor whiteColor];
     
-    MyCarInfosHeaderView *headView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderId];
-    headView.infosLabel.textColor = [UIColor colorFromHex:@"#868686"];
-    headView.infosLabel.font = [UIFont systemFontOfSize:15];
+    UIImageView *infoimage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 15, 15)];
+    infoimage.contentMode=UIViewContentModeScaleAspectFill;
+    
+    
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(infoimage.frame.origin.x+infoimage.frame.size.width, 0, QWScreenWidth, 29)];
+    
+    infoLabel.textColor = [UIColor colorFromHex:@"#868686"];
+    infoLabel.font = [UIFont systemFontOfSize:15];
     
     if (section == 0) {
-        headView.infosLabel.text = @"基本信息";
-        headView.imgV.image = [UIImage imageNamed:@"xinxi"];
-    }else {
-        headView.infosLabel.text = @"其他信息";
-        headView.imgV.image = [UIImage imageNamed:@"qitaxinxi"];
+        infoimage.image=[UIImage imageNamed:@"xinxi"];
+        infoLabel.text = @"  基本信息";
+        
+    }else{
+        infoimage.image=[UIImage imageNamed:@"qitaxinxi"];
+        infoLabel.text = @"  其他信息";
     }
+    [hederviews addSubview:infoimage];
+    [hederviews addSubview:infoLabel];
+    [hederview addSubview:hederviews];
     
-    
-    return headView;
+    return hederview;
+//    MyCarInfosHeaderView *headView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderId];
+//    headView.backgroundColor=[UIColor whiteColor];
+//    headView.infosLabel.textColor = [UIColor colorFromHex:@"#868686"];
+//    headView.infosLabel.font = [UIFont systemFontOfSize:15];
+//    
+//    if (section == 0) {
+//        headView.infosLabel.text = @"基本信息";
+//        headView.imgV.image = [UIImage imageNamed:@"xinxi"];
+//    }else {
+//        headView.infosLabel.text = @"其他信息";
+//        headView.imgV.image = [UIImage imageNamed:@"qitaxinxi"];
+//    }
+//    
+//    
+//    return headView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
