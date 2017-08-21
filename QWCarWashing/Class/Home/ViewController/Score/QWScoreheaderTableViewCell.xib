@@ -19,28 +19,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiangweihuiyuanditu" translatesAutoresizingMaskIntoConstraints="NO" id="GZy-ZD-HBe">
-                        <rect key="frame" x="0.0" y="0.0" width="337" height="204"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-e9-5LN">
-                        <rect key="frame" x="265" y="143" width="30" height="21"/>
+                        <rect key="frame" x="279" y="143" width="40" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <state key="normal" title="去赚积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsr-zG-tma">
-                        <rect key="frame" x="184" y="143" width="66" height="12.5"/>
+                        <rect key="frame" x="179" y="143" width="85" height="29.5"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="1680积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
-                        <connections>
-                            <action selector="scoreNumOnclick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bz4-fg-0vf"/>
-                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-8o-vaG">
-                        <rect key="frame" x="100" y="143" width="30" height="23"/>
+                        <rect key="frame" x="118" y="143" width="40" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="dmV-pS-PxV"/>
+                            <constraint firstAttribute="height" constant="20" id="nfI-RX-huu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <state key="normal" title="去升级">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -66,7 +64,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-Rp-ZiO">
-                        <rect key="frame" x="23" y="143" width="62" height="12.5"/>
+                        <rect key="frame" x="13" y="143" width="85" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="85" id="9jx-JR-3WZ"/>
+                            <constraint firstAttribute="height" constant="30" id="PVE-uc-3Ll"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="黄金会员">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
@@ -90,47 +93,46 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="vsr-zG-tma" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="1tM-6X-JgC"/>
                     <constraint firstItem="f0f-Dh-H7i" firstAttribute="leading" secondItem="fDO-fa-uak" secondAttribute="trailing" constant="10" id="6EK-S4-E4g"/>
                     <constraint firstItem="UPm-9j-29K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="767-UX-sle"/>
-                    <constraint firstAttribute="bottom" secondItem="GZy-ZD-HBe" secondAttribute="bottom" id="8je-QW-WBz"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="hnv-Rp-ZiO" secondAttribute="bottom" constant="41" id="9VY-Yh-ee3"/>
-                    <constraint firstItem="81b-8o-vaG" firstAttribute="leading" secondItem="hnv-Rp-ZiO" secondAttribute="trailing" constant="15" id="B4Q-k9-HUe"/>
+                    <constraint firstItem="vsr-zG-tma" firstAttribute="width" secondItem="hnv-Rp-ZiO" secondAttribute="width" id="B0r-o4-7og"/>
+                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="CIc-A9-kme"/>
                     <constraint firstAttribute="trailing" secondItem="UPm-9j-29K" secondAttribute="trailing" id="CRM-qL-Go6"/>
-                    <constraint firstItem="hpj-e9-5LN" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="KPj-M8-7yP"/>
-                    <constraint firstItem="GZy-ZD-HBe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="NFl-So-Ddz"/>
+                    <constraint firstItem="vsr-zG-tma" firstAttribute="height" secondItem="hnv-Rp-ZiO" secondAttribute="height" id="DbW-fK-d04"/>
+                    <constraint firstItem="81b-8o-vaG" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="FRg-j3-ATc"/>
+                    <constraint firstItem="hpj-e9-5LN" firstAttribute="width" secondItem="81b-8o-vaG" secondAttribute="width" id="HCY-xb-f3G"/>
+                    <constraint firstItem="hpj-e9-5LN" firstAttribute="height" secondItem="81b-8o-vaG" secondAttribute="height" id="KbX-YU-CkX"/>
+                    <constraint firstItem="oYr-vi-ZzA" firstAttribute="leading" secondItem="81b-8o-vaG" secondAttribute="trailing" constant="10" id="LPU-NN-x5y"/>
+                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="NU9-1l-pLZ"/>
                     <constraint firstItem="fDO-fa-uak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="64" id="Pny-Ky-q0F"/>
-                    <constraint firstItem="oYr-vi-ZzA" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="Rl0-4S-Tfe"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vsr-zG-tma" secondAttribute="bottom" constant="41" id="U1z-gj-UXJ"/>
                     <constraint firstItem="oYr-vi-ZzA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Vom-g1-5Me"/>
-                    <constraint firstItem="GZy-ZD-HBe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WZ0-zq-YqR"/>
                     <constraint firstItem="UPm-9j-29K" firstAttribute="top" secondItem="fDO-fa-uak" secondAttribute="bottom" constant="10" id="Y6a-Yn-LRz"/>
-                    <constraint firstItem="hpj-e9-5LN" firstAttribute="leading" secondItem="vsr-zG-tma" secondAttribute="trailing" constant="15" id="cIm-z8-ay7"/>
-                    <constraint firstItem="vsr-zG-tma" firstAttribute="leading" secondItem="oYr-vi-ZzA" secondAttribute="trailing" constant="15" id="hPt-6G-14y"/>
-                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="iHX-bC-lxg"/>
-                    <constraint firstAttribute="trailing" secondItem="GZy-ZD-HBe" secondAttribute="trailing" id="l9W-m0-ewc"/>
+                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="dOt-aF-Mk3"/>
+                    <constraint firstItem="vsr-zG-tma" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="dim-pP-ijD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hpj-e9-5LN" secondAttribute="trailing" constant="10" id="fq7-6r-DVj"/>
+                    <constraint firstItem="hpj-e9-5LN" firstAttribute="top" secondItem="81b-8o-vaG" secondAttribute="top" id="g0m-dh-A8W"/>
                     <constraint firstItem="f0f-Dh-H7i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="66" id="rsD-xe-pRq"/>
-                    <constraint firstItem="81b-8o-vaG" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="v6D-9b-2qG"/>
+                    <constraint firstItem="vsr-zG-tma" firstAttribute="leading" secondItem="oYr-vi-ZzA" secondAttribute="trailing" constant="10" id="tK3-qr-usd"/>
                     <constraint firstAttribute="trailingMargin" secondItem="f0f-Dh-H7i" secondAttribute="trailing" id="xEF-Gs-6rJ"/>
-                    <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="xfz-zA-7AN"/>
                     <constraint firstItem="fDO-fa-uak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="yzu-N1-HJh"/>
+                    <constraint firstItem="oYr-vi-ZzA" firstAttribute="top" secondItem="hnv-Rp-ZiO" secondAttribute="top" id="zM8-bF-THl"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="AddScore" destination="hpj-e9-5LN" id="qgK-4m-NP8"/>
+                <outlet property="Maxline" destination="UPm-9j-29K" id="U4c-PG-Na4"/>
                 <outlet property="ScoreNum" destination="vsr-zG-tma" id="Aah-bp-Z1h"/>
-                <outlet property="bgImage" destination="GZy-ZD-HBe" id="uOl-uw-39t"/>
+                <outlet property="contentViews" destination="H2p-sc-9uM" id="04w-oM-4ZY"/>
                 <outlet property="goUpGrade" destination="81b-8o-vaG" id="hid-Kk-wFY"/>
                 <outlet property="headerImage" destination="fDO-fa-uak" id="GGm-9W-RGI"/>
+                <outlet property="linev" destination="oYr-vi-ZzA" id="9Lx-Hu-Nr0"/>
                 <outlet property="phoneNum" destination="f0f-Dh-H7i" id="AaR-rJ-7vD"/>
                 <outlet property="vipType" destination="hnv-Rp-ZiO" id="Ulw-eZ-XYW"/>
             </connections>
-            <point key="canvasLocation" x="-57.5" y="128.5"/>
+            <point key="canvasLocation" x="-457.5" y="120.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="qiangweihuiyuanditu" width="375" height="202"/>
-    </resources>
 </document>
