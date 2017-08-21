@@ -22,18 +22,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title=@"密码管理";
     [self createSubView];
+    self.view.backgroundColor=kColorTableBG;
 }
 
 - (void) createSubView {
     
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*280/667) style:UITableViewStyleGrouped];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*280/667)];
     self.tableView.top              = Main_Screen_Height*0/667;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     self.tableView.tableFooterView  = [UIView new];
+     self.tableView.backgroundColor=kColorTableBG;
     //    self.tableView.tableHeaderView  = [UIView new];
     [self.view addSubview:self.tableView];
     
@@ -69,11 +72,11 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 10.0f;
+    return 0.01f;
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 0.01f;
+    return 10.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,7 +14,7 @@
 
 
 @interface QWSettingController ()<UITableViewDelegate,UITableViewDataSource,LKAlertViewDelegate>
-
+@property(nonatomic,strong) UIView *contentview;
 @property (nonatomic, strong) UITableView *tableView;
 
 @end
@@ -23,19 +23,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+//    self.contentview=[[UIView alloc]initWithFrame:CGRectMake(0, 64,QWScreenWidth, QWScreenheight)];
+//    
+//    self.contentview.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+//    self.contentview.userInteractionEnabled = YES;
+//    
+    [self.view addSubview:self.contentView];
     // Do any additional setup after loading the view.
     self.title      = @"设置";
     [self createSubView];
     
 }
+
+- (UIView *)contentView
+{
+    if (!_contentview) {
+        float contentViewTop = 64;
+        float contentViewHeight;
+        if (self.hidesBottomBarWhenPushed) {
+            contentViewHeight = QWScreenheight-self.statusView.frame.size.height-self.navigationView.frame.size.height;
+        } else {
+            contentViewHeight = QWScreenheight-self.statusView.frame.size.height-self.navigationView.frame.size.height-self.tabBarController.tabBar.frame.size.height;
+        }
+        _contentview = [[UIView alloc] initWithFrame:CGRectMake(0, contentViewTop, self.view.frame.size.width, contentViewHeight)];
+        _contentview.backgroundColor = [UIColor whiteColor];
+        _contentview.userInteractionEnabled = YES;
+        //        [UIUtil drawLineInView:_contentView frame:CGRectMake(0, 0, 0, 0) color:[UIColor clearColor]];
+    }
+    return _contentview;
+}
 - (void) createSubView {
     
-    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor colorFromHex:@"#e5e5e5"]];
-    upView.top                      = Main_Screen_Height*64/667;
+    UIView *upView                  = [UIUtil drawLineInView:self.contentview frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
+    upView.top                      = 0;
     
     UIImage *appImage              = [UIImage imageNamed:@"icon_defaultavatar"];
     UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width/2, appImage.size.height/2) imageName:@"icon_defaultavatar"];
-    appImageView.top               = Main_Screen_Height*74/667;
+    appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     
     NSString *showName              = @"分享金顶洗车，让您的好友可以下载金顶客户端";
@@ -51,13 +76,13 @@
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     //    self.tableView.tableFooterView  = [UIView new];
-    [self.view addSubview:self.tableView];
-    
+    [self.contentview addSubview:self.tableView];
+    self.tableView.backgroundColor=[UIColor whiteColor];
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    UIButton *logoutButton      = [UIUtil drawDefaultButton:self.view title:@"退出当前帐号" target:self action:@selector(logoutButtonClick:)];
+    UIButton *logoutButton      = [UIUtil drawDefaultButton:self.contentview title:@"退出当前帐号" target:self action:@selector(logoutButtonClick:)];
     logoutButton.top           = self.tableView.bottom;
     logoutButton.centerX       = upView.centerX;
     

@@ -27,8 +27,9 @@ static NSString *id_carListCell = @"id_carListCell";
     
     if (_carListView == nil) {
         
-        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
+        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) ];
         _carListView = carListView;
+        
         [self.view addSubview:_carListView];
     }
     
@@ -37,6 +38,7 @@ static NSString *id_carListCell = @"id_carListCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"我的车库";
     // Do any additional setup after loading the view.
     [self setupUI];
 
@@ -49,7 +51,7 @@ static NSString *id_carListCell = @"id_carListCell";
     self.carListView.rowHeight = 140;
     [self.carListView registerNib:[UINib nibWithNibName:@"MyCarViewCell" bundle:nil] forCellReuseIdentifier:id_carListCell];
     
-    
+    self.carListView.backgroundColor=kColorTableBG;
     UIButton *increaseBtn = [UIUtil drawDefaultButton:self.view title:@"新增车辆" target:self action:@selector(didClickIncreaseButton)];
     
     [increaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -77,11 +79,16 @@ static NSString *id_carListCell = @"id_carListCell";
     if (indexPath.section == self.nowPath.section) {
         
         carCell.defaultButton.selected = YES;
+        
+        [carCell.defaultButton setTitleColor:RGBACOLOR(230, 230, 230, 1) forState:BtnStateSelected];
+       
         [carCell.defaultButton setTitle:@"已默认" forState:UIControlStateNormal];
         
     }else {
         
         carCell.defaultButton.selected = NO;
+        [carCell.defaultButton setTitleColor:RGBACOLOR(134, 134, 134, 1) forState:BtnNormal];
+        
         [carCell.defaultButton setTitle:@"设置默认" forState:UIControlStateNormal];
         
     }
@@ -100,7 +107,13 @@ static NSString *id_carListCell = @"id_carListCell";
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 10;
+    if (section==0) {
+        return 0;
+    }else{
+        return 10;
+    
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {

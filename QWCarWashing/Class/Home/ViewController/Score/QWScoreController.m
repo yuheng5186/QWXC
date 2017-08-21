@@ -9,21 +9,21 @@
 #import "QWScoreController.h"
 #import "QWEarnScoreController.h"
 #import "GoodsExchangeCell.h"
-#import "MemberView.h"
+//#import "MemberView.h"
 #import "QWMembershipController.h"
 
 #import "QWHowToUpGradeController.h"
 #import "QWWashCarTicketController.h"
 #import "QWScoreDetailController.h"
-
+#import "QWScoreheaderTableViewCell.h"
 @interface QWScoreController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, weak) UITableView *exchangListView;
+@property (nonatomic, strong) UITableView *exchangListView;
 
 @end
 
 static NSString *id_exchangeCell = @"id_exchangeCell";
-
+#define QWCellIdentifier_ScoreheaderTableViewCell @"QWScoreheaderTableViewCell"
 
 @implementation QWScoreController
 
@@ -31,9 +31,17 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     
     if (!_exchangListView) {
         
-        UITableView *exchangeListView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _exchangListView = exchangeListView;
-        [self.view addSubview:_exchangListView];
+        _exchangListView = [[UITableView alloc] initWithFrame:CGRectMake(0, -64, QWScreenWidth, QWScreenheight)];
+        _exchangListView.backgroundColor=[UIColor redColor];
+        _exchangListView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _exchangListView.delegate = self;
+        _exchangListView.dataSource = self;
+        
+        _exchangListView.backgroundColor = [UIColor whiteColor];
+
+        [_exchangListView registerNib:[UINib nibWithNibName:@"QWScoreheaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_ScoreheaderTableViewCell];
+        [_exchangListView registerClass:[GoodsExchangeCell class] forCellReuseIdentifier:id_exchangeCell];
+        
     }
     
     return _exchangListView;
@@ -42,160 +50,195 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [leftButton setImage:[UIImage imageNamed:@"baisefanhui"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem= leftItem;
     // Do any additional setup after loading the view.
     self.title  = @"蔷薇会员";
     self.view.backgroundColor   = [UIColor whiteColor];
+   
 
-    [self setupUI];
+    [self.view addSubview:self.exchangListView];
+
     
 }
-- (void)setupUI {
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    //设置导航栏背景图片为一个空的image，这样就透明了
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     
-    MemberView *memberShipView = [MemberView memberView];
-    memberShipView.frame = CGRectMake(0, 64, Main_Screen_Width, 113);
-    [self.view addSubview:memberShipView];
-    
-    UIView *exchangeView = [[UIView alloc] init];
-    
-    [self.view addSubview:exchangeView];
-    
-    UILabel *exchangeLabel = [[UILabel alloc] init];
-    exchangeLabel.text = @"精品兑换";
-    exchangeLabel.font = [UIFont systemFontOfSize:14];
-    exchangeLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-    [exchangeView addSubview:exchangeLabel];
-    
-    //    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    //    UICollectionView *goodsView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    //    goodsView.backgroundColor = [UIColor whiteColor];
-    //    [self.view addSubview:goodsView];
-    //
-    self.exchangListView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.exchangListView.delegate = self;
-    self.exchangListView.dataSource = self;
-    self.exchangListView.rowHeight = 90;
-    self.exchangListView.backgroundColor = [UIColor whiteColor];
-    
-    [self.exchangListView registerClass:[GoodsExchangeCell class] forCellReuseIdentifier:id_exchangeCell];
-    
-    //约束
-    [exchangeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(memberShipView.mas_bottom).mas_offset(10);
-        make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(40);
-    }];
-    
-    [exchangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(exchangeView);
-    }];
-    
-    //    [goodsView mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(exchangeView.mas_bottom);
-    //        make.left.right.bottom.equalTo(self.view);
-    //    }];
-    //
-    //    goodsView.delegate = self;
-    //    goodsView.dataSource = self;
-    //
-    //    [goodsView registerClass:[GoodsViewCell class] forCellWithReuseIdentifier:id_goodsCell];
-    
-    [_exchangListView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(exchangeView.mas_bottom);
-        make.bottom.equalTo(self.view);
-        make.left.equalTo(self.view).mas_equalTo(10);
-        make.right.equalTo(self.view).mas_equalTo(-10);
-    }];
+    //去掉透明后导航栏下边的黑边
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     
 }
 
 
-
-
-#pragma mark - 点击赚积分
-- (IBAction)clickEarnScoreBtn:(UIButton *)sender {
-    
-    QWEarnScoreController *earnScoreVC    = [[QWEarnScoreController alloc] init];
-    earnScoreVC.hidesBottomBarWhenPushed  = YES;
-    [self.navigationController pushViewController:earnScoreVC animated:YES];
-}
-
-#pragma mark - 点击升级
-- (IBAction)clickUpgradeBtn:(UIButton *)sender {
-    
-    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
-    upGradeVC.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:upGradeVC animated:YES];
-    
-}
-
-
-#pragma mark - 点击会员按钮
-- (IBAction)clickMemberButton:(UIButton *)sender {
-    
-    QWMembershipController *rightsController = [[QWMembershipController alloc] init];
-    rightsController.hidesBottomBarWhenPushed = YES;
-    
-    [self.navigationController pushViewController:rightsController animated:YES];
-    
-}
-
-#pragma mark - 点击积分数值按钮
-- (IBAction)clickMemberScoreBtn:(UIButton *)sender {
-    
-    QWScoreDetailController *scoreVC = [[QWScoreDetailController alloc] init];
-    scoreVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:scoreVC animated:YES];
-}
 
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (section==1) {
+        return 2;
+    }else{
+        return 1;
+    }
     
-    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GoodsExchangeCell *changeCell = [tableView dequeueReusableCellWithIdentifier:id_exchangeCell forIndexPath:indexPath];
+   
+    if (indexPath.section==0) {
+        QWScoreheaderTableViewCell *scoreheadercell=[tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_ScoreheaderTableViewCell forIndexPath:indexPath];
+        [scoreheadercell.vipType addTarget:self action:@selector(clickMemberButton:) forControlEvents:BtnTouchUpInside];
+        
+//        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 40, QWScreenWidth/2, 60)];
+//        btn.backgroundColor=[UIColor redColor];
+//        [btn addTarget:self action:@selector(aa:) forControlEvents:BtnTouchUpInside];
+//        scoreheadercell.bgImage.userInteractionEnabled = YES;
+//        [scoreheadercell.bgImage addSubview:btn];
+//
+//        scoreheadercell.viptypeonclick=^(UIButton *btn){
+//            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+//            QWMembershipController *rightsController = [[QWMembershipController alloc] init];
+//                rightsController.hidesBottomBarWhenPushed = YES;
+//            
+//                [self.navigationController pushViewController:rightsController animated:YES];
+//        };
+        return scoreheadercell;
+    }else{
+         GoodsExchangeCell *changeCell = [tableView dequeueReusableCellWithIdentifier:id_exchangeCell forIndexPath:indexPath];
+       
+        return changeCell;
+    
+    }
     
     
     
     
-    return changeCell;
+    
 }
+-(void)back{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+//#pragma mark - 点击赚积分
+//- (IBAction)clickEarnScoreBtn:(UIButton *)sender {
+//
+//    QWEarnScoreController *earnScoreVC    = [[QWEarnScoreController alloc] init];
+//    earnScoreVC.hidesBottomBarWhenPushed  = YES;
+//    [self.navigationController pushViewController:earnScoreVC animated:YES];
+//}
+//
+//#pragma mark - 点击升级
+//- (IBAction)clickUpgradeBtn:(UIButton *)sender {
+//
+//    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+//    upGradeVC.hidesBottomBarWhenPushed = YES;
+//
+//    [self.navigationController pushViewController:upGradeVC animated:YES];
+//
+//}
+//
+//
+//#pragma mark - 点击会员按钮
+- (void)clickMemberButton:(UIButton *)sender {
 
+    QWMembershipController *rightsController = [[QWMembershipController alloc] init];
+    rightsController.hidesBottomBarWhenPushed = YES;
 
+    [self.navigationController pushViewController:rightsController animated:YES];
+
+}
+//
+//#pragma mark - 点击积分数值按钮
+//- (IBAction)clickMemberScoreBtn:(UIButton *)sender {
+//
+//    QWScoreDetailController *scoreVC = [[QWScoreDetailController alloc] init];
+//    scoreVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:scoreVC animated:YES];
+//}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0) {
+        return  190;
+    }else{
+        return 130;
+    }
+
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
-    ticketVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ticketVC animated:YES];
+//    QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
+//    ticketVC.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:ticketVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section==1) {
+        return 35;
+    }else{
+        return 0;
     
-    return 10;
+    }
+    
+    
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    
-    return 0.1;
+    if (section==0) {
+        return 10;
+    }else{
+        return 0;
+        
+    }
+   
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if (section==0) {
+        UIView *v = [[UIView alloc] init];
+        v.backgroundColor = RGBACOLOR(246, 246, 246, 1);
+        
+        return v;
+    }
+    else{
+        UIView *v = [[UIView alloc] init];
+        v.backgroundColor = [UIColor grayColor];
+        
+        return v;
+        
+    }
+}
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 35)];
+    v.backgroundColor =RGBACOLOR(246, 246, 246, 1);
+//     /RGBACOLOR(246, 246, 246, 1);
+    if (section==1) {
+        UILabel *exchangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 33)];
+        exchangeLabel.backgroundColor=[UIColor whiteColor];
+        exchangeLabel.textAlignment=NSTextAlignmentCenter;
+        exchangeLabel.text = @"精品兑换";
+        exchangeLabel.font = [UIFont systemFontOfSize:12];
+        exchangeLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
+        [v addSubview:exchangeLabel];
+        return v;
+
+    }else {
     UIView *v = [[UIView alloc] init];
-    v.backgroundColor = [UIColor whiteColor];
+    v.backgroundColor = [UIColor blueColor];
     
     return v;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

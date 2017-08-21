@@ -34,29 +34,30 @@
     nameLab.textColor = [UIColor colorFromHex:@"#ffffff"];
     nameLab.text = @"体验卡";
     nameLab.font = [UIFont systemFontOfSize:16];
-    [self.contentView addSubview:nameLab];
+    [backImgV addSubview:nameLab];
     
     UILabel *introLab = [[UILabel alloc] init];
     _introLab = introLab;
     introLab.textColor = [UIColor colorFromHex:@"#ffffff"];
     introLab.text = @"商家洗车自动抵扣";
     introLab.font = [UIFont systemFontOfSize:13];
-    [self.contentView addSubview:introLab];
+    [backImgV addSubview:introLab];
     
     UILabel *scoreLab = [[UILabel alloc] init];
     _scoreLab = scoreLab;
     scoreLab.text = @"1000积分";
     scoreLab.textColor = [UIColor colorFromHex:@"#ffffff"];
     scoreLab.font = [UIFont systemFontOfSize:18];
-    [self.contentView addSubview:scoreLab];
+    [backImgV addSubview:scoreLab];
     
     [backImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView);
+        make.left.top.equalTo(self.contentView).mas_equalTo(20);
+        make.right.bottom.equalTo(self.contentView).mas_equalTo(-20);
     }];
     
     [nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).mas_offset(22);
-        make.top.equalTo(self.contentView).mas_offset(21);
+        make.left.equalTo(backImgV).mas_offset(22);
+        make.top.equalTo(backImgV).mas_offset(21);
     }];
     
     [introLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,8 +66,8 @@
     }];
     
     [scoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).mas_offset(-11);
-        make.bottom.equalTo(self.contentView).mas_offset(-11);
+        make.right.equalTo(backImgV).mas_offset(-11);
+        make.bottom.equalTo(backImgV).mas_offset(-11);
     }];
     
 }

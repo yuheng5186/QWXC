@@ -485,7 +485,7 @@
 {
     
     
-    return self.modelsArray.count;
+    return 3;
 }
 
 

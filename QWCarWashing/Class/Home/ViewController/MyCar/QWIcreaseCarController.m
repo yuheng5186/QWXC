@@ -24,11 +24,14 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=@"我的车库";
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kColorTableBG;
     
-    UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 400) style:UITableViewStyleGrouped];
+    UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 400)];
+    
     _carInfoView = carInfoView;
+    carInfoView.backgroundColor=kColorTableBG;
     [self.view addSubview:carInfoView];
     
     carInfoView.delegate = self;
@@ -188,22 +191,33 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *hederview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40)];
+    hederview.backgroundColor=kColorTableBG;
+    UIView *hederviews=[[UIView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, 29)];
+    hederviews.backgroundColor=[UIColor whiteColor];
+
+    UIImageView *infoimage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 15, 15)];
+    infoimage.contentMode=UIViewContentModeScaleAspectFill;
     
-    UILabel *infoLabel = [[UILabel alloc] init];
+    
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(infoimage.frame.origin.x+infoimage.frame.size.width, 0, QWScreenWidth, 29)];
+    
     infoLabel.textColor = [UIColor colorFromHex:@"#868686"];
     infoLabel.font = [UIFont systemFontOfSize:15];
     
     if (section == 0) {
-        
+        infoimage.image=[UIImage imageNamed:@"xinxi"];
         infoLabel.text = @"  基本信息";
         
     }else{
-        
+        infoimage.image=[UIImage imageNamed:@"qitaxinxi"];
         infoLabel.text = @"  其他信息";
     }
-    
-    
-    return infoLabel;
+    [hederviews addSubview:infoimage];
+    [hederviews addSubview:infoLabel];
+    [hederview addSubview:hederviews];
+   
+    return hederview;
 }
 
 
