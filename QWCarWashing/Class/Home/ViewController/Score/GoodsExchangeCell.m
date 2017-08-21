@@ -51,8 +51,8 @@
     [backImgV addSubview:scoreLab];
     
     [backImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.contentView).mas_equalTo(20);
-        make.right.bottom.equalTo(self.contentView).mas_equalTo(-20);
+        make.left.top.equalTo(self.contentView).mas_equalTo(10);
+        make.right.bottom.equalTo(self.contentView).mas_equalTo(-10);
     }];
     
     [nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -62,7 +62,7 @@
     
     [introLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(nameLab);
-        make.top.equalTo(nameLab.mas_bottom).mas_offset(10);
+        make.top.equalTo(nameLab.mas_bottom).mas_offset(5);
     }];
     
     [scoreLab mas_makeConstraints:^(MASConstraintMaker *make) {

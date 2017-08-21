@@ -99,20 +99,10 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     if (indexPath.section==0) {
         QWScoreheaderTableViewCell *scoreheadercell=[tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_ScoreheaderTableViewCell forIndexPath:indexPath];
         [scoreheadercell.vipType addTarget:self action:@selector(clickMemberButton:) forControlEvents:BtnTouchUpInside];
-        
-//        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 40, QWScreenWidth/2, 60)];
-//        btn.backgroundColor=[UIColor redColor];
-//        [btn addTarget:self action:@selector(aa:) forControlEvents:BtnTouchUpInside];
-//        scoreheadercell.bgImage.userInteractionEnabled = YES;
-//        [scoreheadercell.bgImage addSubview:btn];
-//
-//        scoreheadercell.viptypeonclick=^(UIButton *btn){
-//            [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
-//            QWMembershipController *rightsController = [[QWMembershipController alloc] init];
-//                rightsController.hidesBottomBarWhenPushed = YES;
-//            
-//                [self.navigationController pushViewController:rightsController animated:YES];
-//        };
+        [scoreheadercell.goUpGrade addTarget:self action:@selector(clickUpgradeBtn:) forControlEvents:BtnTouchUpInside];
+        [scoreheadercell.ScoreNum addTarget:self action:@selector(clickMemberScoreBtn:) forControlEvents:BtnTouchUpInside];
+        [scoreheadercell.AddScore addTarget:self action:@selector(clickEarnScoreBtn:) forControlEvents:BtnTouchUpInside];
+
         return scoreheadercell;
     }else{
          GoodsExchangeCell *changeCell = [tableView dequeueReusableCellWithIdentifier:id_exchangeCell forIndexPath:indexPath];
@@ -130,23 +120,24 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     [self.navigationController popViewControllerAnimated:YES];
 }
-//#pragma mark - 点击赚积分
-//- (IBAction)clickEarnScoreBtn:(UIButton *)sender {
-//
-//    QWEarnScoreController *earnScoreVC    = [[QWEarnScoreController alloc] init];
-//    earnScoreVC.hidesBottomBarWhenPushed  = YES;
-//    [self.navigationController pushViewController:earnScoreVC animated:YES];
-//}
+#pragma mark - 点击赚积分
+- (void)clickEarnScoreBtn:(UIButton *)sender {
+
+    QWEarnScoreController *earnScoreVC    = [[QWEarnScoreController alloc] init];
+    earnScoreVC.hidesBottomBarWhenPushed  = YES;
+[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+    [self.navigationController pushViewController:earnScoreVC animated:YES];
+}
 //
 //#pragma mark - 点击升级
-//- (IBAction)clickUpgradeBtn:(UIButton *)sender {
-//
-//    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
-//    upGradeVC.hidesBottomBarWhenPushed = YES;
-//
-//    [self.navigationController pushViewController:upGradeVC animated:YES];
-//
-//}
+- (void)clickUpgradeBtn:(UIButton *)sender {
+
+    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+    upGradeVC.hidesBottomBarWhenPushed = YES;
+[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+    [self.navigationController pushViewController:upGradeVC animated:YES];
+
+}
 //
 //
 //#pragma mark - 点击会员按钮
@@ -154,24 +145,25 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
     QWMembershipController *rightsController = [[QWMembershipController alloc] init];
     rightsController.hidesBottomBarWhenPushed = YES;
-
+[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     [self.navigationController pushViewController:rightsController animated:YES];
 
 }
 //
-//#pragma mark - 点击积分数值按钮
-//- (IBAction)clickMemberScoreBtn:(UIButton *)sender {
-//
-//    QWScoreDetailController *scoreVC = [[QWScoreDetailController alloc] init];
-//    scoreVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:scoreVC animated:YES];
-//}
+#pragma mark - 点击积分数值按钮
+- (void)clickMemberScoreBtn:(UIButton *)sender {
+
+    QWScoreDetailController *scoreVC = [[QWScoreDetailController alloc] init];
+    scoreVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+    [self.navigationController pushViewController:scoreVC animated:YES];
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
         return  190;
     }else{
-        return 130;
+        return 90;
     }
 
 }
