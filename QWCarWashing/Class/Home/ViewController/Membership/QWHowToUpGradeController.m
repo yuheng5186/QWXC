@@ -12,7 +12,7 @@
 #import "QWEarnScoreController.h"
 #import "QWUpdateRuleController.h"
 
-@interface QWHowToUpGradeController ()<UITableViewDelegate, UITableViewDataSource>
+@interface QWHowToUpGradeController ()<UITableViewDelegate, UITableViewDataSource,HYSliderDelegate>
 
 @property (nonatomic, weak) UITableView *wayToEarnScoreView;
 
@@ -65,17 +65,26 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     gradeLab.textColor = [UIColor blackColor];
     gradeLab.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:gradeLab];
-    
-    //滑块
-    HYSlider *slider = [[HYSlider alloc] init];
-    slider.currentValueColor = [UIColor redColor];
+
+    HYSlider *slider = [[HYSlider alloc]initWithFrame:CGRectMake(35, gradeLab.frame.origin.y+gradeLab.frame.size.height+5, QWScreenWidth-46, 9)];
+    slider.backgroundColor=RGBACOLOR(230, 230, 230, 1);
+
+    slider.currentValueColor = [UIColor orangeColor];
     slider.maxValue = 1000;
     slider.currentSliderValue = 600;
-    slider.showTextColor = [UIColor redColor];
+    slider.showTextColor = [UIColor orangeColor];
     slider.showTouchView = YES;
     slider.showScrollTextView = YES;
-    slider.touchViewColor = [UIColor redColor];
+    slider.touchViewColor = [UIColor orangeColor];
+    slider.delegate = self;
     [self.view addSubview:slider];
+    UILabel *maxLab = [[UILabel alloc] init];
+   
+    maxLab.textColor = RGBACOLOR(230, 230, 230, 1);
+    maxLab.textAlignment=NSTextAlignmentRight;
+    maxLab.font = [UIFont systemFontOfSize:10];
+    maxLab.text =[NSString stringWithFormat:@"%d",1000];
+    [self.view addSubview:maxLab];
     
     
     UIButton *displayBtn = [[UIButton alloc] init];
@@ -117,14 +126,22 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     }];
     
     [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(gradeLab.mas_bottom).mas_offset(44);
+        make.top.equalTo(gradeLab.mas_bottom).mas_offset(35);
         make.left.equalTo(headContainView).mas_offset(23);
         make.right.equalTo(headContainView).mas_offset(-23);
-        make.height.mas_equalTo(4);
+        make.width.mas_equalTo(QWScreenWidth-46);
+        make.height.mas_equalTo(9);
+    }];
+    [maxLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(slider.mas_bottom).mas_offset(5);
+//        make.left.equalTo(headContainView).mas_offset(23);
+        make.right.equalTo(slider);
+        make.width.mas_equalTo(46);
+        make.height.mas_equalTo(9);
     }];
     
     [displayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(slider.mas_bottom).mas_offset(20);
+        make.top.equalTo(maxLab.mas_bottom).mas_offset(15);
         make.centerX.equalTo(headContainView);
         make.width.mas_equalTo(250);
     }];

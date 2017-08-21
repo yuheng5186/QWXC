@@ -104,7 +104,6 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     //UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
-    
     return UIEdgeInsetsMake(15,autoScaleW(15),10, autoScaleW(5));
 }
 + (CGFloat)cellHeightContent:(NSInteger )contentIndex{

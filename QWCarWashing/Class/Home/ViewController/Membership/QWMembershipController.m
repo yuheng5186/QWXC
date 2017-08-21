@@ -13,7 +13,7 @@
 #import "QWHowToUpGradeController.h"
 
 @interface QWMembershipController ()
-
+@property(nonatomic,strong) UIView *contentView;
 @end
 
 @implementation QWMembershipController
@@ -22,7 +22,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title  = @"等级特权";
-    self.view.backgroundColor   = [UIColor colorFromHex:@"#e6e6e6"];
+//    self.view.backgroundColor   = [UIColor colorFromHex:@"#e6e6e6"];
+    self.contentView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,QWScreenWidth, QWScreenheight)];
+    
+    self.contentView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    self.contentView.userInteractionEnabled = YES;
+    
+    [self.view addSubview:self.contentView];
     [self createSubView];
     
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"使用帮助" style:UIBarButtonItemStyleDone target:self action:@selector(updateRuleClick:)];
@@ -31,7 +37,7 @@
 }
 
 - (void) createSubView {
-    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor whiteColor]];
+    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor whiteColor]];
     upView.top                      = Main_Screen_Height*64/667;
     
     
@@ -43,7 +49,7 @@
     NSString *membershipName              = @"白银会员";
     UIFont *membershipNameFont            = [UIFont systemFontOfSize:16];
     UILabel *membershipNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:membershipName font:membershipNameFont] font:membershipNameFont text:membershipName isCenter:NO];
-    membershipNameLabel.textColor         = [UIColor colorFromHex:@"#ffffff"];
+    membershipNameLabel.textColor         = [UIColor colorFromHex:@"#868686"];
     membershipNameLabel.top               = membershipImageView.bottom +Main_Screen_Height*10/667;
     membershipNameLabel.centerX           = membershipImageView.centerX;
     
@@ -111,7 +117,7 @@
     //    [middleView addSubview:updateRuleButton];
     
     
-    UIView *downView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*120/667) color:[UIColor whiteColor]];
+    UIView *downView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*120/667) color:[UIColor whiteColor]];
     downView.top                      = upView.bottom +Main_Screen_Height*10/667;
     
     NSString *memberString              = @"我的特权";
@@ -148,7 +154,7 @@
     
     
     
-    UIView *nextView                         = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*120/667) color:[UIColor whiteColor]];
+    UIView *nextView                         = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*120/667) color:[UIColor whiteColor]];
     nextView.top                             = downView.bottom +Main_Screen_Height*10/667;
     
     NSString *memberRightString              = @"升级后可获得特权";
@@ -188,7 +194,7 @@
     //底部
     UIView *containView = [[UIView alloc] init];
     containView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:containView];
+    [self.contentView addSubview:containView];
     
     UIButton *gradeBtn = [[UIButton alloc] init];
     [gradeBtn setTitle:@"如何升级到黄金会员" forState:UIControlStateNormal];
