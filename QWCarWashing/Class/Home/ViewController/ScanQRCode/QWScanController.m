@@ -54,7 +54,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title  = @"扫码洗车";
-    self.view.backgroundColor   = [UIColor whiteColor];
+    self.view.backgroundColor   = [UIColor blackColor];
+    self.view.alpha=0.8;
     [self resetBabkButton];
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];

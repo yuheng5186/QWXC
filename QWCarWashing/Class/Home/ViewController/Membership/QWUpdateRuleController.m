@@ -17,13 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+ 
     self.title      = @"等级规则";
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height - 64)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
     webView.opaque = NO;
     webView.delegate = self;
-    
+    webView.backgroundColor=RGBACOLOR(239, 239, 239, 1);
     [webView sizeToFit];
     
     [self.view addSubview:webView];

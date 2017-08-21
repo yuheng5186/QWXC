@@ -26,7 +26,7 @@
 #import "LewPopupViewAnimationDrop.h"
 
 #import "QWCardPackgeController.h"
-
+#import "QWScoreController.h"
 
 @interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -102,7 +102,7 @@ static NSString *cellstr=@"cell";
     if (indexPath.section==0) {
         QWPersonHeaderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_PersonHeaderTableViewCell forIndexPath:indexPath];
         
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (!cell) {
             cell = [[QWPersonHeaderTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:QWCellIdentifier_PersonHeaderTableViewCell];
         }
@@ -135,7 +135,7 @@ static NSString *cellstr=@"cell";
 
     }else if (indexPath.section==1){
         QWOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_QWOrderTableViewCell forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         QWorderMenuViewController *menuorder=[[QWorderMenuViewController alloc]init];
         cell.oneClicked = ^(void){
             [self.navigationController pushViewController:menuorder animated:YES];
@@ -201,6 +201,13 @@ static NSString *cellstr=@"cell";
             [self.navigationController pushViewController:cardPackgeController animated:YES];
             
         }
+        
+    }else if(indexPath.section==2){
+        QWScoreController *scoreCtl=[[QWScoreController alloc]init];
+        scoreCtl.hidesBottomBarWhenPushed  = YES;
+        [self.navigationController pushViewController:scoreCtl animated:YES];
+        
+        
         
     }
     
