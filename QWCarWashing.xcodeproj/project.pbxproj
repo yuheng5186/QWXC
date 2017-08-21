@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0401E86A1F4B3F4000F0CA79 /* QWChangePhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8691F4B3F4000F0CA79 /* QWChangePhoneController.m */; };
+		0401E86D1F4B3F9800F0CA79 /* QWChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -245,6 +247,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0401E8681F4B3F4000F0CA79 /* QWChangePhoneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWChangePhoneController.h; sourceTree = "<group>"; };
+		0401E8691F4B3F4000F0CA79 /* QWChangePhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWChangePhoneController.m; sourceTree = "<group>"; };
+		0401E86B1F4B3F9800F0CA79 /* QWChangeNameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWChangeNameController.h; sourceTree = "<group>"; };
+		0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWChangeNameController.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -977,6 +983,10 @@
 				180702F51F4600F200398435 /* QWGetScoreController.m */,
 				180702F71F4603F700398435 /* QWAgreementController.h */,
 				180702F81F4603F700398435 /* QWAgreementController.m */,
+				0401E8681F4B3F4000F0CA79 /* QWChangePhoneController.h */,
+				0401E8691F4B3F4000F0CA79 /* QWChangePhoneController.m */,
+				0401E86B1F4B3F9800F0CA79 /* QWChangeNameController.h */,
+				0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -2187,6 +2197,7 @@
 				180702E01F45976D00398435 /* TYAlertFadeAnimation.m in Sources */,
 				180958261F427FB500BE185D /* NewPagedFlowView.m in Sources */,
 				187CCBCE1F43359300FCDF1C /* QWVipHeaderTableViewCell.m in Sources */,
+				0401E86D1F4B3F9800F0CA79 /* QWChangeNameController.m in Sources */,
 				180957F01F4178F400BE185D /* UdStorage.m in Sources */,
 				185C9E421F42DC8C00B4ED52 /* OrderDetailController.m in Sources */,
 				180957781F4147E400BE185D /* main.m in Sources */,
@@ -2245,6 +2256,7 @@
 				185C9DF71F42BDF300B4ED52 /* BaseController.m in Sources */,
 				180957DD1F414F5100BE185D /* QWMeViewController.m in Sources */,
 				180702341F44435100398435 /* QWMembershipController.m in Sources */,
+				0401E86A1F4B3F4000F0CA79 /* QWChangePhoneController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,
 				180702281F4442B500398435 /* QWMyCarController.m in Sources */,
 				18A4B1991F46E06B00C64978 /* JFCityHeaderView.m in Sources */,
