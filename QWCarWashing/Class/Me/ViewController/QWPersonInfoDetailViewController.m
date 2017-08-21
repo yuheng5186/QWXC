@@ -10,6 +10,8 @@
 #import<AVFoundation/AVMediaFormat.h>
 #import <AVFoundation/AVCaptureDevice.h>
 #import "LKAlertView.h"
+
+
 @interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LKActionSheetDelegate,LKAlertViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSString *sexString;
@@ -24,6 +26,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title      = @"个人信息";
     [self createSubView];
 }
 - (void) createSubView {

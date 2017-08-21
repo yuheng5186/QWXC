@@ -55,7 +55,7 @@
 }
 - (void) createSubView {
     
-    UIView *upView                  = [UIUtil drawLineInView:self.contentview frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
+    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor colorFromHex:@"#e5e5e5"]];
     upView.top                      = 0;
     
     UIImage *appImage              = [UIImage imageNamed:@"icon_defaultavatar"];
@@ -64,11 +64,13 @@
     appImageView.centerX           = upView.centerX;
     
     NSString *showName              = @"分享金顶洗车，让您的好友可以下载金顶客户端";
-    UIFont *showNameFont            = [UIFont systemFontOfSize:13];
+    UIFont *showNameFont            = [UIFont systemFontOfSize:Main_Screen_Height*13/667];
     UILabel *showNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:showName font:showNameFont] font:showNameFont text:showName isCenter:NO];
     showNameLabel.textColor         = [UIColor colorFromHex:@"#999999"];
     showNameLabel.top               = appImageView.bottom +Main_Screen_Height*25/667;
     showNameLabel.centerX           = appImageView.centerX;
+    
+    upView.height                   = showNameLabel.bottom +Main_Screen_Height*10/667;
     
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*200/667) style:UITableViewStyleGrouped];
     self.tableView.top              = upView.bottom;
@@ -76,13 +78,13 @@
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     //    self.tableView.tableFooterView  = [UIView new];
-    [self.contentview addSubview:self.tableView];
-    self.tableView.backgroundColor=[UIColor whiteColor];
+    [self.contentView addSubview:self.tableView];
+    
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    UIButton *logoutButton      = [UIUtil drawDefaultButton:self.contentview title:@"退出当前帐号" target:self action:@selector(logoutButtonClick:)];
+    UIButton *logoutButton      = [UIUtil drawDefaultButton:self.contentView title:@"退出当前帐号" target:self action:@selector(logoutButtonClick:)];
     logoutButton.top           = self.tableView.bottom;
     logoutButton.centerX       = upView.centerX;
     
