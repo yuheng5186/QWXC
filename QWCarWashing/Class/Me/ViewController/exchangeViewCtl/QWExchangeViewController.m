@@ -24,7 +24,6 @@
 }
 
 - (void) resetBabkButton {
-
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
     [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -54,16 +53,17 @@
     [exchangeBtn setBackgroundColor:RGBACOLOR(252, 186, 44, 1) ];
     
     [exchangeTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).mas_offset(64 + 23);
+        make.top.equalTo(self.view).mas_offset(64 + 75);
         make.centerX.equalTo(self.view);
-        make.width.mas_equalTo(351);
+        make.left.equalTo(self.view).mas_offset(10);
+        
         make.height.mas_equalTo(48);
     }];
     
     [exchangeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(exchangeTF.mas_bottom).mas_offset(60);
         make.centerX.equalTo(self.view);
-        make.width.mas_equalTo(351);
+        make.left.equalTo(exchangeTF.mas_left);
         make.height.mas_equalTo(48);
     }];
     

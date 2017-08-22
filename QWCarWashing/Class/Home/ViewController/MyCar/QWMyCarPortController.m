@@ -55,7 +55,7 @@ static NSString *id_carListCell = @"id_carListCell";
     UIButton *increaseBtn = [UIUtil drawDefaultButton:self.view title:@"新增车辆" target:self action:@selector(didClickIncreaseButton)];
     
     [increaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(351);
+        make.left.equalTo(self.view).mas_offset(10);
         make.height.mas_equalTo(48);
         make.centerX.equalTo(self.view);
         make.bottom.equalTo(self.view).mas_offset(-25);
