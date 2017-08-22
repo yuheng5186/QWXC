@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.username.textColor=[UIColor colorFromHex:@"#999999"];
+    self.username.font=[UIFont systemFontOfSize:14 weight:2];
     self.headerimage.contentMode=UIViewContentModeScaleAspectFill;
     self.headerimage.image=[UIImage imageNamed:@"gerenxinxitou"];
 }

@@ -234,6 +234,15 @@ static NSString *cellstr=@"cell";
         return 10;
     
 }
+//去掉组头的背景色
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *footerSection=[UIView new];
+    footerSection.backgroundColor=[UIColor clearColor];
+    return footerSection;
+    
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
    
         return 0;

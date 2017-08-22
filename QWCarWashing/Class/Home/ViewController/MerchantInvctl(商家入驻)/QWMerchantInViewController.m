@@ -26,12 +26,13 @@
 -(UITableView *)tableview{
     
     if (_tableview==nil) {
-        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)style:UITableViewStyleGrouped];
+        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
 //        [_tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:cellstr];
 //        [_tableview registerClass:[QWMenuTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_MenuTableViewCell];
         [_tableview registerNib:[UINib nibWithNibName:QWCellIdentifier_MerchantInTableViewCell bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_MerchantInTableViewCell];
         _tableview.delegate=self;
         _tableview.dataSource=self;
+        _tableview.backgroundColor=kColorTableBG;
 //        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 //        _tableview.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
         
@@ -54,6 +55,14 @@
 
 {
     return 10.0f;
+}
+//去掉组尾的背景色
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerSection=[UIView new];
+    footerSection.backgroundColor=[UIColor clearColor];
+    return footerSection;
+    
 }
 
 
