@@ -115,8 +115,8 @@ static NSString *cellstr=@"cell";
         };
 #pragma madrk-会员特权
         cell.vipClicked=^(void){
-            QWViptequanViewController *Viptequan=[[QWViptequanViewController alloc]init];
-            [self.navigationController pushViewController:Viptequan animated:YES];
+            QWPersonInfoDetailViewController *personInfo=[[QWPersonInfoDetailViewController alloc]init];
+            [self.navigationController pushViewController:personInfo animated:YES];
         
         };
         
@@ -218,7 +218,9 @@ static NSString *cellstr=@"cell";
         TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
         
         [alertController setBlurEffectWithView:self.view];
-        //[alertController setBlurEffectWithView:(UIView *)view style:(BlurEffectStyle)blurStyle];
+        alertController.alertView.width     = Main_Screen_Width;
+        alertController.alertView.height    = Main_Screen_Height*230/667;
+        alertController.alertViewOriginY    = self.view.height- alertController.alertView.height;
         [self presentViewController:alertController animated:YES completion:nil];
     }
     

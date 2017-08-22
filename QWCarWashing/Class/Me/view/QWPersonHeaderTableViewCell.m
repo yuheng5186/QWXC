@@ -123,7 +123,7 @@
         _privilegeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.username.frame.origin.x, self.username.frame.origin.y+self.username.frame.size.height+18, 60, 15)];
         [_privilegeButton setTitleColor:[UIColor whiteColor] forState:BtnNormal];
        _privilegeButton.titleLabel.font=[UIFont systemFontOfSize:10];
-        [_privilegeButton setTitle:@"会员特权" forState:BtnNormal];
+        [_privilegeButton setTitle:@"个人信息" forState:BtnNormal];
         _privilegeButton.backgroundColor=[UIColor colorWithHexString:@"#ffce36"];
        _privilegeButton.layer.cornerRadius=7.5;
        [_privilegeButton addTarget:self action:@selector(privilegeOclick:) forControlEvents:BtnTouchUpInside];
