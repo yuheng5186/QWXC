@@ -38,14 +38,14 @@
     self.navigationItem.leftBarButtonItem= rightItem;
     
     // Do any additional setup after loading the view.
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth,QWScreenheight) style:UITableViewStylePlain];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height) style:UITableViewStyleGrouped];
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.top              = 0;
-//    self.tableView.tableFooterView  = [UIView new];
+    self.tableView.tableFooterView  = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActivityListCell" bundle:nil] forCellReuseIdentifier:@"ActivityListCell"];
     
-    self.tableView.rowHeight        = 200;
+    self.tableView.rowHeight        = Main_Screen_Height*205/667;
     self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
     [self.contentView addSubview:self.tableView];
     
@@ -62,10 +62,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
-//- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//
-//    return 10.0f;
-//}
+-(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.01f;
+}
+
+-(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
+
+{
+    return 10.00f;
+}
 #pragma mark --
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

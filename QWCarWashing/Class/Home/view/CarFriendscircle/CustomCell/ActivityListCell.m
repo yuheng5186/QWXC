@@ -9,19 +9,12 @@
 #import "ActivityListCell.h"
 #import "DSActivityModel.h"
 #import "DSCarClubDetailController.h"
-//#import "UIView+BFSToastInfo.h"
+
 @implementation ActivityListCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.activityTitleLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-    self.activityTitleLabel.font = [UIFont systemFontOfSize:14.0];
-    self.activityTimeLabel.textColor = [UIColor colorFromHex:@"#999999"];
-    self.activityTimeLabel.font = [UIFont systemFontOfSize:12.0];
-    self.sayNumberLabel.textColor = [UIColor colorFromHex:@"#999999"];
-    self.goodNumberLabel.textColor=[UIColor colorFromHex:@"#999999"];
-    self.goodNumberLabel.font = [UIFont systemFontOfSize:12.0];
-    self.sayNumberLabel.font = [UIFont systemFontOfSize:12.0];
+    
 
 }
 
@@ -53,8 +46,8 @@
 - (UILabel *)activityTitleLabel{
     if (_activityTitleLabel == nil) {
         UILabel * nickNameLabel = [[UILabel alloc] init];
-        nickNameLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-        nickNameLabel.font = [UIFont systemFontOfSize:14.0];
+        nickNameLabel.textColor = [UIColor orangeColor];
+        nickNameLabel.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:nickNameLabel];
         _activityTitleLabel = nickNameLabel;
     }
@@ -64,9 +57,9 @@
 - (UILabel *)activityTimeLabel{
     if (_activityTimeLabel == nil) {
         UILabel * contentLabel = [[UILabel alloc] init];
-        contentLabel.textColor = [UIColor colorFromHex:@"#999999"];
+        contentLabel.textColor = [UIColor blackColor];
         contentLabel.numberOfLines = 0;
-        contentLabel.font = [UIFont systemFontOfSize:12.0];
+        contentLabel.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:contentLabel];
         _activityTimeLabel = contentLabel;
     }
@@ -76,9 +69,9 @@
 - (UILabel *) sayNumberLabel {
     if (_sayNumberLabel == nil) {
         UILabel * contentLabel = [[UILabel alloc] init];
-        contentLabel.textColor = [UIColor colorFromHex:@"#999999"];
+        contentLabel.textColor = [UIColor blackColor];
         contentLabel.numberOfLines = 0;
-        contentLabel.font = [UIFont systemFontOfSize:12.0];
+        contentLabel.font = [UIFont systemFontOfSize:13.0];
         [self.contentView addSubview:contentLabel];
         _sayNumberLabel = contentLabel;
     }
@@ -100,11 +93,11 @@
 - (IBAction)goodButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     if (button.selected == NO) {
-        [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:BtnStateSelected];
+        [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
         self.goodNumberLabel.text                     = @"1289";
 //        [self.view showInfo:@"点赞成功!" autoHidden:YES];
     }else {
-        [self.goodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:BtnNormal];
+        [self.goodButton setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
         self.goodNumberLabel.text                     = @"1288";
 //        [self.view showInfo:@"取消点赞!" autoHidden:YES];
         

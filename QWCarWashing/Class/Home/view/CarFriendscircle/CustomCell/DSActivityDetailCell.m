@@ -40,45 +40,43 @@
     _iconImageView          = view0;
     
     UILabel *lab1           = [UILabel new];
-    
-    lab1.textColor          = [UIColor colorWithHexString:@"#4a4a4a"];
+    lab1.textColor          = [UIColor colorFromHex:@"#4a4a4a"];
     lab1.font               = [UIFont systemFontOfSize:16];
     _nameLabel              = lab1;
     
     
     UILabel *lab2           = [UILabel new];
-    lab2.textColor          = [UIColor colorWithHexString:@"#999999"];
+    lab2.textColor          = [UIColor colorFromHex:@"#999999"];
     lab2.font               = [UIFont systemFontOfSize:14];
     lab2.numberOfLines      = 0;
     _contentLabel           = lab2;
     
     UILabel *lab3           = [UILabel new];
-    lab3.textColor          = [UIColor colorWithHexString:@"#999999"];
+    lab3.textColor          = [UIColor colorFromHex:@"#999999"];
     lab3.font               = [UIFont systemFontOfSize:14];
     _sayTimeLabel           = lab3;
     
     UIImageView     *view4 = [UIImageView new];
     view4.backgroundColor   = [UIColor clearColor];
     _starImageView          = view4;
-    
 #pragma mark-评论点赞按钮
     UIButton *thumbupvie=[UIButton new];
-    //    thumbupvie.backgroundColor=[UIColor redColor];
-    ////    UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
-    //    thumbupvie.imageView.backgroundColor=[UIColor whiteColor];
-    //    thumbupvie.titleLabel.backgroundColor=[UIColor yellowColor];
+//    thumbupvie.backgroundColor=[UIColor redColor];
+////    UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+//    thumbupvie.imageView.backgroundColor=[UIColor whiteColor];
+//    thumbupvie.titleLabel.backgroundColor=[UIColor yellowColor];
     thumbupvie.titleLabel.textColor=[UIColor colorFromHex:@"#868686"];
     [thumbupvie setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     thumbupvie.titleLabel.font               = [UIFont systemFontOfSize:12];
     [thumbupvie setTitle:@"99" forState:UIControlStateNormal];
     [thumbupvie setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
     [thumbupvie setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateSelected];
-    [thumbupvie setTitleEdgeInsets:UIEdgeInsetsMake(10, -thumbupvie.imageView.image.size.width, 0, thumbupvie.imageView.image.size.width)];
+     [thumbupvie setTitleEdgeInsets:UIEdgeInsetsMake(10, -thumbupvie.imageView.image.size.width, 0, thumbupvie.imageView.image.size.width)];
     [thumbupvie setImageEdgeInsets:UIEdgeInsetsMake(10, thumbupvie.titleLabel.bounds.size.width, 0, -thumbupvie.titleLabel.bounds.size.width)];
-    [thumbupvie addTarget:self action:@selector(ThumbOclick:) forControlEvents:UIControlEventTouchUpInside];
+     [thumbupvie addTarget:self action:@selector(ThumbOclick:) forControlEvents:UIControlEventTouchUpInside];
+   
     
-    
-    
+
     _ThumbUpBtn=thumbupvie;
     
     [self.contentView sd_addSubviews:@[view0,lab1,lab2,lab3,view4,thumbupvie]];
@@ -126,7 +124,13 @@
     
     
 }
+#pragma mark-评论点赞
+-(void)ThumbOclick:(UIButton *)btn{
+    if (self.thumbOnclick) {
+        self.thumbOnclick(btn);
+    }
 
+}
 
 - (void) setModel:(DSUserModel *)model {
     
@@ -136,19 +140,14 @@
     _contentLabel.text      = model.content;
     _sayTimeLabel.text      = model.sayTime;
     _starImageView.image    = [UIImage imageNamed:model.starName];
+    _ThumbUpBtn.titleLabel.text=model.thumbNum;
     CGFloat bottomMargin = 10;
     
     
     [self setupAutoHeightWithBottomView:_contentLabel bottomMargin:bottomMargin];
     
 }
-#pragma mark-评论点赞
--(void)ThumbOclick:(UIButton *)btn{
-    if (self.thumbOnclick) {
-        self.thumbOnclick(btn);
-    }
-    
-}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
