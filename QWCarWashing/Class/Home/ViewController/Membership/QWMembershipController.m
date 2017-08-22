@@ -37,7 +37,13 @@
 }
 
 - (void) createSubView {
-    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor whiteColor]];
+    UIView *upView ;
+    if (Main_Screen_Width>568) {
+        upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*130/667) color:[UIColor whiteColor]];
+    }else{
+       upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*150/667) color:[UIColor whiteColor]];
+    }
+    
     upView.top                      = Main_Screen_Height*64/667;
     
     

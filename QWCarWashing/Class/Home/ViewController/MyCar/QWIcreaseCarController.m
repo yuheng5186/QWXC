@@ -43,7 +43,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     [saveButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.view).mas_offset(-25);
         make.centerX.equalTo(self.view);
-        make.width.mas_equalTo(351);
+        make.left.equalTo(self.view).mas_offset(10);
         make.height.mas_equalTo(48);
     }];
     

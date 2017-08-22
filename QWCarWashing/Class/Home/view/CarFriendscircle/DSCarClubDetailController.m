@@ -45,7 +45,7 @@
 
 - (void)drawNavigation {
     
-    [self drawTitle:@"活动详情"];
+//    [self drawTitle:@"活动详情"];
     
 }
 
@@ -58,7 +58,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+   self.title=@"活动详情";
     [self createSubView];
 }
 - (void) createSubView {
@@ -215,7 +215,9 @@
     
     
     UIButton    *goodButton = [UIButton new];
-    [goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+//    [goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+    [goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:BtnStateSelected];
+    [goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:BtnNormal];
     goodButton.backgroundColor  = [UIColor whiteColor];
     [goodButton addTarget:self action:@selector(goodButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.goodButton         = goodButton;
@@ -300,7 +302,7 @@
     
     
     UIButton    *sayButton = [UIButton new];
-    [sayButton setImage:[UIImage imageNamed:@"huodongxiangqingxiaoxi"] forState:UIControlStateNormal];
+    [sayButton setImage:[UIImage imageNamed:@"faxianxiaoxi"] forState:UIControlStateNormal];
     sayButton.backgroundColor  = [UIColor whiteColor];
     [sayButton addTarget:self action:@selector(sayButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.sayButton         = sayButton;
@@ -327,7 +329,8 @@
     .heightIs(20);
     
     UIButton    *downGoodButton = [UIButton new];
-    [downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:UIControlStateNormal];
+    [downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:BtnStateSelected];
+    [downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:BtnNormal];
     downGoodButton.backgroundColor  = [UIColor whiteColor];
     [downGoodButton addTarget:self action:@selector(downGoodButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     self.downGoodButton         = downGoodButton;
@@ -388,14 +391,13 @@
 - (void) downGoodButtonClick:(UIButton *)sender {
 
     if (sender.selected == NO) {
-        [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
         self.sayShowLabel.text                     = @"170";
        
-//        [self.view showInfo:@"点赞成功!" autoHidden:YES];
+        [self.view showInfo:@"点赞成功!" autoHidden:YES];
     }else {
-        [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:UIControlStateNormal];
+
         self.sayShowLabel.text                     = @"169";
-//        [self.view showInfo:@"取消点赞!" autoHidden:YES];
+        [self.view showInfo:@"取消点赞!" autoHidden:YES];
         
     }
     
@@ -404,13 +406,13 @@
 - (void) goodButtonClick:(UIButton *)sender {
 
     if (sender.selected == NO) {
-        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+
         self.goodNumberLabel.text                     = @"共有169人点赞过";
-//        [self.view showInfo:@"点赞成功!" autoHidden:YES];
+        [self.view showInfo:@"点赞成功!" autoHidden:YES];
     }else {
-        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+
         self.goodNumberLabel.text                     = @"共有168人点赞过";
-//        [self.view showInfo:@"取消点赞!" autoHidden:YES];
+        [self.view showInfo:@"取消点赞!" autoHidden:YES];
 
     }
 

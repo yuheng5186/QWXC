@@ -34,14 +34,14 @@
     [self.ScoreNum setTitleEdgeInsets:UIEdgeInsetsMake(1, -self.ScoreNum.imageView.image.size.width, 0, self.ScoreNum.imageView.image.size.width)];
     [self.ScoreNum setImageEdgeInsets:UIEdgeInsetsMake(1, self.ScoreNum.titleLabel.bounds.size.width, 0, -self.ScoreNum.titleLabel.bounds.size.width)];
 //    [self.ScoreNum addTarget:self action:@selector(scorenum:) forControlEvents:BtnTouchUpInside];
-    CGFloat corner=9;
+    CGFloat corner=self.goUpGrade.bounds.size.height/2;
     self.goUpGrade.layer.borderWidth=1;
     self.goUpGrade.layer.borderColor=[UIColor whiteColor].CGColor;
     self.goUpGrade.layer.cornerRadius=corner;
     self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:7];
     [self.goUpGrade setTitle:@"去升等级" forState:BtnNormal];
 //    [self.goUpGrade addTarget:self action:@selector(goupgradeonclick:) forControlEvents:BtnTouchUpInside];
-    CGFloat corners=9;
+    CGFloat corners=self.AddScore.bounds.size.height/2;
     self.AddScore.layer.borderWidth=1;
     self.AddScore.layer.borderColor=[UIColor whiteColor].CGColor;
     self.AddScore.layer.cornerRadius=corners;
