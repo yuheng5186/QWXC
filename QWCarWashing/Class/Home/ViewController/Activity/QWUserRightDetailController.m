@@ -20,12 +20,13 @@
     // Do any additional setup after loading the view.
     self.title   = @"用户特权";
     [self createSubView];
+    self.view.backgroundColor=kColorTableBG;
 }
 
 - (void) createSubView {
     
     UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*200/667) color:[UIColor whiteColor]];
-    upView.top                      = Main_Screen_Height*64/667;
+    upView.top                      = Main_Screen_Height*64/667+10;
     
     //UIImage *backgroundImage              = [UIImage imageNamed:@"saomaxichetiyanquan"];
     UIImageView *backgroundImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*20/375, Main_Screen_Height*100/667) imageName:@"tiyankaditu"];
