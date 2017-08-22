@@ -21,7 +21,7 @@
 
 -(UITableView *)tableview{
     if (_tableview==nil) {
-        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight) style:UITableViewStyleGrouped];
+        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
         _tableview.backgroundColor = kColorTableBG;
         //        [_tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:cellstr];
         //        [_tableview registerClass:[QWPersonHeaderTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_PersonHeaderTableViewCell];
@@ -99,9 +99,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 175;
+        return 90;
     }else {
-        return 125;
+        return 90;
     }
 }
 

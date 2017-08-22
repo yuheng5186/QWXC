@@ -13,38 +13,38 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="KGk-i7-Jjw" customClass="QWVipHeaderTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="337" height="169"/>
+            <rect key="frame" x="0.0" y="0.0" width="337" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="337" height="168"/>
+                <rect key="frame" x="0.0" y="0.0" width="337" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asO-f6-nDG">
-                        <rect key="frame" x="108.5" y="15" width="120" height="105.5"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asO-f6-nDG">
+                        <rect key="frame" x="144" y="6" width="50" height="35.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="UZ7-Ic-nbf"/>
+                            <constraint firstAttribute="width" constant="50" id="UZ7-Ic-nbf"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白银会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-2z-CWF">
-                        <rect key="frame" x="135" y="137.5" width="68" height="20"/>
+                        <rect key="frame" x="135" y="47.5" width="68" height="20"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="90m-PH-xwf"/>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="90m-PH-xwf"/>
                     <constraint firstItem="Cr9-2z-CWF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CBG-RK-nI7"/>
                     <constraint firstItem="asO-f6-nDG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VdT-rJ-qNW"/>
-                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="17" id="hfd-PK-kBF"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Cr9-2z-CWF" secondAttribute="bottom" constant="3" id="xLw-Vf-8jR"/>
+                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="6" id="hfd-PK-kBF"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cr9-2z-CWF" secondAttribute="bottom" constant="5" id="xLw-Vf-8jR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="headerimage" destination="asO-f6-nDG" id="FY7-Cb-NWa"/>
                 <outlet property="username" destination="Cr9-2z-CWF" id="YPr-Nu-e5Y"/>
             </connections>
-            <point key="canvasLocation" x="42.5" y="189.5"/>
+            <point key="canvasLocation" x="49.5" y="106.5"/>
         </tableViewCell>
     </objects>
 </document>

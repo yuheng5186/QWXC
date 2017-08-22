@@ -138,15 +138,17 @@ static NSString *cellstr=@"cell";
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         QWorderMenuViewController *menuorder=[[QWorderMenuViewController alloc]init];
         cell.oneClicked = ^(void){
+             menuorder.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:menuorder animated:YES];
         };
         QWcollectionViewController *collectionViectl=[[QWcollectionViewController alloc]init];
         cell.twoClicked = ^(void){
-           
+           collectionViectl.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:collectionViectl animated:YES];
         };
         QWExchangeViewController *ExchangeViectl=[[QWExchangeViewController alloc]init];
         cell.threeClicked = ^(void){
+            ExchangeViectl.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:ExchangeViectl animated:YES];
         };
         return cell;

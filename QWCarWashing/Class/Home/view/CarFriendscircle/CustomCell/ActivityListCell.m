@@ -9,7 +9,7 @@
 #import "ActivityListCell.h"
 #import "DSActivityModel.h"
 #import "DSCarClubDetailController.h"
-
+//#import "UIView+BFSToastInfo.h"
 @implementation ActivityListCell
 
 - (void)awakeFromNib {
