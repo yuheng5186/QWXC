@@ -54,6 +54,7 @@
     goButton.titleLabel.font = [UIFont systemFontOfSize:13];
     goButton.backgroundColor = [UIColor colorFromHex:@"#febb02"];
     goButton.layer.cornerRadius = 2;
+ 
     [self.contentView addSubview:goButton];
     
     [iconV mas_makeConstraints:^(MASConstraintMaker *make) {
