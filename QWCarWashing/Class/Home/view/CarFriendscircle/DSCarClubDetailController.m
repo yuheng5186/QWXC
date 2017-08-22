@@ -268,7 +268,7 @@
     .autoHeightRatio(0);
     
     UIImageView *textImageView  = [UIImageView new];
-    textImageView.image         = [UIImage imageNamed:@"hangdiantu"];
+    textImageView.image         = [UIImage imageNamed:@"shangjiadiantu"];
     self.textImageView          = textImageView;
     [backgroudView addSubview:textImageView];
     

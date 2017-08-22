@@ -237,7 +237,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return Main_Screen_Height*45/667;
+    return Main_Screen_Height*46/667;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -260,7 +260,7 @@
         self.userMobileFieldText.textAlignment  = NSTextAlignmentLeft;
         self.userMobileFieldText.font           = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
         self.userMobileFieldText.backgroundColor= [UIColor whiteColor];
-        self.userMobileFieldText.centerY        = cell.centerY;
+        self.userMobileFieldText.top            = Main_Screen_Height*3/667;
         self.userMobileFieldText.left           = Main_Screen_Width*50/375 ;
         
         [self.userMobileFieldText addTarget:self action:@selector(userPhoneFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -278,7 +278,7 @@
         self.verifyFieldText.textAlignment  = NSTextAlignmentLeft;
         self.verifyFieldText.font           = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
         //        self.verifyFieldText.backgroundColor= [UIColor grayColor];
-        self.verifyFieldText.centerY        = cell.contentView.centerY -Main_Screen_Height*4/667;
+        self.verifyFieldText.top            = Main_Screen_Height*3/667;
         self.verifyFieldText.left           = Main_Screen_Width*50/375 ;
         
         [self.verifyFieldText addTarget:self action:@selector(verifyFieldChanged:) forControlEvents:UIControlEventEditingChanged];
