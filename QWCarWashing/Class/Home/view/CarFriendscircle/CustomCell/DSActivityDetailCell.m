@@ -117,7 +117,7 @@
     
     _iconImageView.sd_cornerRadiusFromWidthRatio = @(0.5);
     
-    [_contentLabel setSingleLineAutoResizeWithMaxWidth:260];
+    [_contentLabel setSingleLineAutoResizeWithMaxWidth:200];
     [_nameLabel setSingleLineAutoResizeWithMaxWidth:150];
     
     [_sayTimeLabel setSingleLineAutoResizeWithMaxWidth:150];
