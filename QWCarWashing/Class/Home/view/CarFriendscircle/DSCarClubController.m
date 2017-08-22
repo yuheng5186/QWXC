@@ -22,8 +22,21 @@
     self.contentView.top        = 0;
     self.contentView.height     = self.view.height;
 }
+
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+    
     // Do any additional setup after loading the view.
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth,QWScreenheight) style:UITableViewStylePlain];
     self.tableView.delegate         = self;
