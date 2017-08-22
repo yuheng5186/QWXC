@@ -11,7 +11,7 @@
 #import "GoodsExchangeCell.h"
 //#import "MemberView.h"
 #import "QWMembershipController.h"
-
+#import "QWViptequanViewController.h"
 #import "QWHowToUpGradeController.h"
 #import "QWWashCarTicketController.h"
 #import "QWScoreDetailController.h"
@@ -61,9 +61,12 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
    
 
     [self.view addSubview:self.exchangListView];
-
+    
+    
     
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -144,10 +147,14 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 //#pragma mark - 点击会员按钮
 - (void)clickMemberButton:(UIButton *)sender {
 
-    QWMembershipController *rightsController = [[QWMembershipController alloc] init];
-    rightsController.hidesBottomBarWhenPushed = YES;
+    QWViptequanViewController *vipvc=[[QWViptequanViewController alloc]init];
+    
+    
+//    QWMembershipController *rightsController = [[QWMembershipController alloc] init];
+//    rightsController.hidesBottomBarWhenPushed = YES;
+    vipvc.hidesBottomBarWhenPushed = YES;
 [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
-    [self.navigationController pushViewController:rightsController animated:YES];
+    [self.navigationController pushViewController:vipvc animated:YES];
 
 }
 //

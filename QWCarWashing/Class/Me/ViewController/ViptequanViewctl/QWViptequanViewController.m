@@ -9,6 +9,7 @@
 #import "QWViptequanViewController.h"
 #import "QWVipHeaderTableViewCell.h"
 #import "QWVipSecondTableViewCell.h"
+#import "QWwashCardTableViewCell.h"
 @interface QWViptequanViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic)UITableView*tableview;
@@ -16,6 +17,7 @@
 
 #define QWCellIdentifier_VipHeaderTableViewCell @"QWVipHeaderTableViewCell"
 #define QWCellIdentifier_VipSecondTableViewCell @"QWVipSecondTableViewCell"
+#define QWCellIdentifier_washCardTableViewCell @"QWwashCardTableViewCell"
 
 @implementation QWViptequanViewController
 
@@ -27,7 +29,7 @@
         //        [_tableview registerClass:[QWPersonHeaderTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_PersonHeaderTableViewCell];
         //        [_tableview registerClass:[QWOrderTableViewCell class] forCellReuseIdentifier:kCellIdentifier_QWOrderTableViewCell];
         //        QWCellIdentifier_PersonHeaderTableViewCell
-        
+         [_tableview registerNib:[UINib nibWithNibName:@"QWwashCardTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_washCardTableViewCell];
         [_tableview registerNib:[UINib nibWithNibName:@"QWVipHeaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_VipHeaderTableViewCell];
         [_tableview registerClass:[QWVipSecondTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_VipSecondTableViewCell];
         _tableview.delegate=self;
@@ -43,8 +45,43 @@
     [self resetBabkButton];
 
     [self.view addSubview:self.tableview];
+    //底部
+    CGFloat _tabbarheight=self.tabBarController.tabBar.frame.size.height;
+    
+    UIView *containView = [[UIView alloc] initWithFrame:CGRectMake(0, QWScreenheight-_tabbarheight, QWScreenWidth, _tabbarheight)];
+    containView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:containView];
+    
+    UIButton *gradeBtn = [[UIButton alloc] init];
+    [gradeBtn setTitle:@"如何升级到黄金会员" forState:UIControlStateNormal];
+    [gradeBtn setTitleColor:[UIColor colorFromHex:@"#4a4a4a"] forState:UIControlStateNormal];
+    //    [containView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(self.exchangListView.mas_bottom);
+    //        make.bottom.left.right.equalTo(self.view);
+    //        make.height.mas_equalTo(49*Main_Screen_Height/667);
+    //    }];
+    gradeBtn.titleLabel.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
+    [gradeBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
+    [containView addSubview:gradeBtn];
+    [gradeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(containView);
+        make.height.mas_equalTo(40*Main_Screen_Height/667);
+        make.width.mas_equalTo(250*Main_Screen_Height/667);
+    }];
+    
+    gradeBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+    [gradeBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    
+    
+    [gradeBtn addTarget:self action:@selector(clickHowToIncreaseGradeBtn) forControlEvents:UIControlEventTouchUpInside];
 }
-
+- (void)clickHowToIncreaseGradeBtn {
+    
+    //    HowToUpGradeController *upGradeVC = [[HowToUpGradeController alloc] init];
+    //
+    //    [self.navigationController pushViewController:upGradeVC animated:YES];
+    
+}
 - (void) resetBabkButton {
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
@@ -108,16 +145,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section==2||indexPath.section==1)
     {
-        static NSString *cellStatic = @"cellStatic";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStatic];
+    
+        QWwashCardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_washCardTableViewCell];
         if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+            cell = [[QWwashCardTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:QWCellIdentifier_washCardTableViewCell];
         }
         cell.backgroundColor    = [UIColor whiteColor];
         cell.accessoryType=UITableViewCellAccessoryNone;
-        cell.imageView.image=[UIImage imageNamed:@"shengjihoukaquan"];
-        cell.textLabel.text=@"10元洗车倦";
-        cell.detailTextLabel.text=@"门店洗车时可抵扣相应金额，每月领取一次";
+        cell.imageViews.image=[UIImage imageNamed:@"shengjihoukaquan"];
+        cell.titlelabel.text=@"10元洗车倦";
+        cell.detaillabel.text=@"门店洗车时可抵扣相应金额，每月领取一次";
         return cell;
     }else
     {

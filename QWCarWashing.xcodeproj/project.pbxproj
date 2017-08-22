@@ -224,6 +224,8 @@
 		18A4B1AA1F46F42F00C64978 /* TicketCashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1A81F46F42F00C64978 /* TicketCashView.m */; };
 		18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1A91F46F42F00C64978 /* TicketCashView.xib */; };
 		18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1AD1F46F49C00C64978 /* BusinessPayCell.m */; };
+		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
+		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
 		48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312F01F41DDFA0029BA17 /* UIImage+Common.m */; };
 		48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312FC1F41F7500029BA17 /* QWOrderTableViewCell.m */; };
@@ -658,6 +660,9 @@
 		18A4B1A91F46F42F00C64978 /* TicketCashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketCashView.xib; sourceTree = "<group>"; };
 		18A4B1AC1F46F49C00C64978 /* BusinessPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPayCell.h; sourceTree = "<group>"; };
 		18A4B1AD1F46F49C00C64978 /* BusinessPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPayCell.m; sourceTree = "<group>"; };
+		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
+		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
+		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
 		48D312EC1F41D9140029BA17 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		48D312ED1F41D9140029BA17 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		48D312EF1F41DDFA0029BA17 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
@@ -1766,6 +1771,9 @@
 				187CCBCD1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib */,
 				187CCBE51F43D65400FCDF1C /* QWVipSecondTableViewCell.h */,
 				187CCBE61F43D65400FCDF1C /* QWVipSecondTableViewCell.m */,
+				18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */,
+				18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */,
+				18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */,
 			);
 			path = Viptequan;
 			sourceTree = "<group>";
@@ -2003,6 +2011,7 @@
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
 				180702501F444EED00398435 /* DiscountDetailView.xib in Resources */,
 				185C9E271F42D06F00B4ED52 /* SuccessPayCell.xib in Resources */,
+				18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */,
 				0401E8B51F4C05F000F0CA79 /* ShareView.xib in Resources */,
 				1807D9441F4A92D50080C4AB /* QWScoreheaderTableViewCell.xib in Resources */,
 				180702581F44578A00398435 /* RechargeCell.xib in Resources */,
@@ -2234,6 +2243,7 @@
 				180701F41F44214C00398435 /* PopHelpView.m in Sources */,
 				180702EA1F46007300398435 /* QWSettingController.m in Sources */,
 				1809582F1F427FB500BE185D /* QWCitySelectViewController.m in Sources */,
+				18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */,
 				180702E21F45976D00398435 /* TYAlertView.m in Sources */,
 				1809582C1F427FB500BE185D /* YZMoreMenuCell.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
