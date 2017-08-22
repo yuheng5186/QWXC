@@ -511,7 +511,10 @@
     TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
     
     [alertController setBlurEffectWithView:self.view];
-    //[alertController setBlurEffectWithView:(UIView *)view style:(BlurEffectStyle)blurStyle];
+    alertController.alertView.width     = Main_Screen_Width;
+    alertController.alertView.height    = Main_Screen_Height*230/667;
+    //    if (Main_Screen_Height == 568) {
+    alertController.alertViewOriginY    = self.view.height- alertController.alertView.height;
     [self presentViewController:alertController animated:YES completion:nil];
 }
 

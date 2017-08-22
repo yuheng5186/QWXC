@@ -11,6 +11,8 @@
 		0401E86D1F4B3F9800F0CA79 /* QWChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */; };
 		0401E8AC1F4BDDA900F0CA79 /* QWLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8AB1F4BDDA900F0CA79 /* QWLoginVC.m */; };
 		0401E8AF1F4BDDD300F0CA79 /* QWAgreementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8AE1F4BDDD300F0CA79 /* QWAgreementVC.m */; };
+		0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8B21F4C05F000F0CA79 /* ShareView.m */; };
+		0401E8B51F4C05F000F0CA79 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0401E8B31F4C05F000F0CA79 /* ShareView.xib */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -76,8 +78,6 @@
 		180702BB1F458DD500398435 /* YzdHUDLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702B61F458DD500398435 /* YzdHUDLabel.m */; };
 		180702D91F45976D00398435 /* TYAlertController+BlurEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702BE1F45976D00398435 /* TYAlertController+BlurEffects.m */; };
 		180702DA1F45976D00398435 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702C01F45976D00398435 /* UIImage+ImageEffects.m */; };
-		180702DB1F45976D00398435 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702C31F45976D00398435 /* ShareView.m */; };
-		180702DC1F45976D00398435 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180702C41F45976D00398435 /* ShareView.xib */; };
 		180702DD1F45976D00398435 /* TYAlertController+TransitionAnimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702C61F45976D00398435 /* TYAlertController+TransitionAnimate.m */; };
 		180702DE1F45976D00398435 /* TYAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702C81F45976D00398435 /* TYAlertController.m */; };
 		180702DF1F45976D00398435 /* TYAlertDropDownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702CA1F45976D00398435 /* TYAlertDropDownAnimation.m */; };
@@ -257,6 +257,9 @@
 		0401E8AB1F4BDDA900F0CA79 /* QWLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWLoginVC.m; sourceTree = "<group>"; };
 		0401E8AD1F4BDDD300F0CA79 /* QWAgreementVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAgreementVC.h; sourceTree = "<group>"; };
 		0401E8AE1F4BDDD300F0CA79 /* QWAgreementVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAgreementVC.m; sourceTree = "<group>"; };
+		0401E8B11F4C05F000F0CA79 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
+		0401E8B21F4C05F000F0CA79 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
+		0401E8B31F4C05F000F0CA79 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -379,9 +382,6 @@
 		180702BE1F45976D00398435 /* TYAlertController+BlurEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TYAlertController+BlurEffects.m"; sourceTree = "<group>"; };
 		180702BF1F45976D00398435 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		180702C01F45976D00398435 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		180702C21F45976D00398435 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
-		180702C31F45976D00398435 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
-		180702C41F45976D00398435 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
 		180702C61F45976D00398435 /* TYAlertController+TransitionAnimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TYAlertController+TransitionAnimate.m"; sourceTree = "<group>"; };
 		180702C71F45976D00398435 /* TYAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertController.h; sourceTree = "<group>"; };
 		180702C81F45976D00398435 /* TYAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertController.m; sourceTree = "<group>"; };
@@ -709,6 +709,16 @@
 			path = QWCarWashing/Class/QWLoginView;
 			sourceTree = SOURCE_ROOT;
 		};
+		0401E8B01F4C05F000F0CA79 /* ShareView */ = {
+			isa = PBXGroup;
+			children = (
+				0401E8B11F4C05F000F0CA79 /* ShareView.h */,
+				0401E8B21F4C05F000F0CA79 /* ShareView.m */,
+				0401E8B31F4C05F000F0CA79 /* ShareView.xib */,
+			);
+			path = ShareView;
+			sourceTree = "<group>";
+		};
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,8 +873,8 @@
 		180702001F4424D100398435 /* ShareMoney */ = {
 			isa = PBXGroup;
 			children = (
+				0401E8B01F4C05F000F0CA79 /* ShareView */,
 				180702BC1F45976D00398435 /* Blur Effects */,
-				180702C11F45976D00398435 /* ShareView */,
 				180702C51F45976D00398435 /* TYAlertController */,
 				180702231F44428900398435 /* QWShareMoneyController.h */,
 				180702241F44428900398435 /* QWShareMoneyController.m */,
@@ -948,16 +958,6 @@
 				180702C01F45976D00398435 /* UIImage+ImageEffects.m */,
 			);
 			path = "Blur Effects";
-			sourceTree = "<group>";
-		};
-		180702C11F45976D00398435 /* ShareView */ = {
-			isa = PBXGroup;
-			children = (
-				180702C21F45976D00398435 /* ShareView.h */,
-				180702C31F45976D00398435 /* ShareView.m */,
-				180702C41F45976D00398435 /* ShareView.xib */,
-			);
-			path = ShareView;
 			sourceTree = "<group>";
 		};
 		180702C51F45976D00398435 /* TYAlertController */ = {
@@ -2003,6 +2003,7 @@
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
 				180702501F444EED00398435 /* DiscountDetailView.xib in Resources */,
 				185C9E271F42D06F00B4ED52 /* SuccessPayCell.xib in Resources */,
+				0401E8B51F4C05F000F0CA79 /* ShareView.xib in Resources */,
 				1807D9441F4A92D50080C4AB /* QWScoreheaderTableViewCell.xib in Resources */,
 				180702581F44578A00398435 /* RechargeCell.xib in Resources */,
 				185C9E471F42DCD900B4ED52 /* OrderDetailView.xib in Resources */,
@@ -2010,7 +2011,6 @@
 				185C9E291F42D06F00B4ED52 /* DelayPayCell.xib in Resources */,
 				18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */,
 				180702861F456E6200398435 /* MyCarViewCell.xib in Resources */,
-				180702DC1F45976D00398435 /* ShareView.xib in Resources */,
 				1807026B1F45609100398435 /* problemCenter.plist in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
@@ -2116,6 +2116,7 @@
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				18A4B1A01F46F33D00C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
+				0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */,
 				180702ED1F46009C00398435 /* QWPasswordController.m in Sources */,
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
 				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
@@ -2177,7 +2178,6 @@
 				18A4B19D1F46E06B00C64978 /* JFLocation.m in Sources */,
 				180958271F427FB500BE185D /* PGIndexBannerSubiew.m in Sources */,
 				180701E71F441AA100398435 /* UIImage+BFS.m in Sources */,
-				180702DB1F45976D00398435 /* ShareView.m in Sources */,
 				185C9E4A1F42DFE200B4ED52 /* QWPersonInfoDetailViewController.m in Sources */,
 				18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */,
 				180702761F4560E000398435 /* HQSliderView.m in Sources */,
