@@ -156,7 +156,7 @@ static NSString *cellstr=@"Cellstr";
                     
                     break;
                 case 1:
-                    
+                    cardPackgeController.hidesBottomBarWhenPushed     = YES;
                     [self.navigationController pushViewController:cardPackgeController animated:YES];
                     break;
                 case 2:
