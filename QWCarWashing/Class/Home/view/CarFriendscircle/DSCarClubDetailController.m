@@ -7,7 +7,6 @@
 //
 
 #import "DSCarClubDetailController.h"
-
 #import "DSActivityDetailCell.h"
 #import "UITableView+SDAutoTableViewCellHeight.h"
 #import "TPKeyboardAvoidingScrollView.h"
@@ -496,6 +495,17 @@
     if (!cell) {
         cell = [[DSActivityDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellStatic];
     }
+    cell.thumbOnclick=^(UIButton *btn){
+        if (btn.selected) {
+            
+            [self.view showInfo:@"取消点赞!" autoHidden:YES];
+        }else{
+            [self.view showInfo:@"点赞成功!" autoHidden:YES];
+            
+        }
+        btn.selected=!btn.selected;
+        
+    };
     cell.model  = self.modelsArray[indexPath.row];
     
     

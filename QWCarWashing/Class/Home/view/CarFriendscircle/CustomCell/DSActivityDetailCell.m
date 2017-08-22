@@ -19,6 +19,7 @@
     UILabel     *_contentLabel;
     UILabel     *_sayTimeLabel;
     UIImageView *_starImageView;
+    UIButton *_ThumbUpBtn;
 
 }
 
@@ -60,7 +61,27 @@
     view4.backgroundColor   = [UIColor clearColor];
     _starImageView          = view4;
     
-    [self.contentView sd_addSubviews:@[view0,lab1,lab2,lab3,view4]];
+#pragma mark-评论点赞按钮
+    UIButton *thumbupvie=[UIButton new];
+    //    thumbupvie.backgroundColor=[UIColor redColor];
+    ////    UIEdgeInsetsMake(CGFloat top, CGFloat left, CGFloat bottom, CGFloat right)
+    //    thumbupvie.imageView.backgroundColor=[UIColor whiteColor];
+    //    thumbupvie.titleLabel.backgroundColor=[UIColor yellowColor];
+    thumbupvie.titleLabel.textColor=[UIColor colorFromHex:@"#868686"];
+    [thumbupvie setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    thumbupvie.titleLabel.font               = [UIFont systemFontOfSize:12];
+    [thumbupvie setTitle:@"99" forState:UIControlStateNormal];
+    [thumbupvie setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
+    [thumbupvie setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateSelected];
+    [thumbupvie setTitleEdgeInsets:UIEdgeInsetsMake(10, -thumbupvie.imageView.image.size.width, 0, thumbupvie.imageView.image.size.width)];
+    [thumbupvie setImageEdgeInsets:UIEdgeInsetsMake(10, thumbupvie.titleLabel.bounds.size.width, 0, -thumbupvie.titleLabel.bounds.size.width)];
+    [thumbupvie addTarget:self action:@selector(ThumbOclick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    _ThumbUpBtn=thumbupvie;
+    
+    [self.contentView sd_addSubviews:@[view0,lab1,lab2,lab3,view4,thumbupvie]];
     
     
     _iconImageView.sd_layout
@@ -90,7 +111,11 @@
     .centerYEqualToView(_nameLabel)
     .heightIs(20);
     
-
+    _ThumbUpBtn.sd_layout
+    .rightSpaceToView(self.contentView,12)
+    .bottomSpaceToView(self.contentView,8)
+    .widthIs(34)
+    .heightIs(34);
     
     _iconImageView.sd_cornerRadiusFromWidthRatio = @(0.5);
     
@@ -117,7 +142,13 @@
     [self setupAutoHeightWithBottomView:_contentLabel bottomMargin:bottomMargin];
     
 }
-
+#pragma mark-评论点赞
+-(void)ThumbOclick:(UIButton *)btn{
+    if (self.thumbOnclick) {
+        self.thumbOnclick(btn);
+    }
+    
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

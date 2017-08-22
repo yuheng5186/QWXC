@@ -96,6 +96,9 @@
         make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(15);
     }];
 }
+-(void)setNamelabelColor:(UIColor *)color{
+    
+}
 +(CGSize)ccellSize{
     NSLog(@"-----: %lf,%lf",kTweetSendImageCCell_Width,kTweetSendImageCCell_Width);
     return CGSizeMake(kTweetSendImageCCell_Width, kTweetSendImageCCell_Width);
