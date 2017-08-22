@@ -58,9 +58,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ActivityListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityListCell" forIndexPath:indexPath];
+    
     if (indexPath.row == 0) {
         cell.activityImageView.image    = [UIImage imageNamed:@"faxiantu1"];
+        
         cell.activityTitleLabel.text    = @"开车一看就知道是老司机";
+        
         cell.activityTimeLabel.text     = @"2017-7-28 14:01";
     }else {
     

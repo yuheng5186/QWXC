@@ -39,6 +39,7 @@
     NSString *showString              = @"邀请新人完成注册，即可获得价值99元洗车卡";
     UIFont *showStringFont            = [UIFont systemFontOfSize:14];
     UILabel *showLabel          = [UIUtil drawLabelInView:self.view frame:[UIUtil textRect:showString font:showStringFont] font:showStringFont text:showString isCenter:NO];
+    
     showLabel.textColor         = [UIColor colorFromHex:@"#4a4a4a"];
     showLabel.textAlignment     = NSTextAlignmentCenter;
     showLabel.top               = titleLabel.bottom +Main_Screen_Height*14/667;
@@ -53,7 +54,8 @@
     NSString *string   = @"立即邀请，新人可获得99元洗车卡";
     UIFont  *stringFont = [UIFont systemFontOfSize:16];
     UIButton    *getMoneyButton = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width -Main_Screen_Width*60/375, Main_Screen_Height*40/667) text:string font:stringFont color:[UIColor whiteColor] target:self action:@selector(getMoneyButtonClick:)];
-    getMoneyButton.backgroundColor  = [UIColor colorWithHex:0xFFB500 alpha:1.0];
+//    getMoneyButton.backgroundColor  = [UIColor colorWithHex:0xFFB500 alpha:1.0];
+    [getMoneyButton setBackgroundImage:[UIImage imageNamed:@"denglujianbiantiao"] forState:BtnNormal];
     getMoneyButton.layer.cornerRadius   = 5;
     getMoneyButton.bottom          = Main_Screen_Height -Main_Screen_Height*77/667;
     getMoneyButton.centerX      = self.view.centerX;

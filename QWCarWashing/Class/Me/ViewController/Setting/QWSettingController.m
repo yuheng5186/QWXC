@@ -33,7 +33,7 @@
     // Do any additional setup after loading the view.
     self.title      = @"设置";
     [self createSubView];
-    
+   
 }
 
 - (UIView *)contentView
@@ -47,7 +47,7 @@
             contentViewHeight = QWScreenheight-self.statusView.frame.size.height-self.navigationView.frame.size.height-self.tabBarController.tabBar.frame.size.height;
         }
         _contentview = [[UIView alloc] initWithFrame:CGRectMake(0, contentViewTop, self.view.frame.size.width, contentViewHeight)];
-        _contentview.backgroundColor = [UIColor whiteColor];
+        _contentview.backgroundColor = [UIColor colorFromHex:@"#e5e5e5"];
         _contentview.userInteractionEnabled = YES;
         //        [UIUtil drawLineInView:_contentView frame:CGRectMake(0, 0, 0, 0) color:[UIColor clearColor]];
     }
@@ -55,7 +55,7 @@
 }
 - (void) createSubView {
     
-    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor colorFromHex:@"#e5e5e5"]];
+    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
     upView.top                      = 0;
     
     UIImage *appImage              = [UIImage imageNamed:@"icon_defaultavatar"];
@@ -63,7 +63,7 @@
     appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     
-    NSString *showName              = @"分享金顶洗车，让您的好友可以下载金顶客户端";
+    NSString *showName              = @"分享蔷薇洗车，让您的好友可以下载蔷薇客户端";
     UIFont *showNameFont            = [UIFont systemFontOfSize:Main_Screen_Height*13/667];
     UILabel *showNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:showName font:showNameFont] font:showNameFont text:showName isCenter:NO];
     showNameLabel.textColor         = [UIColor colorFromHex:@"#999999"];
@@ -72,12 +72,12 @@
     
     upView.height                   = showNameLabel.bottom +Main_Screen_Height*10/667;
     
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*200/667) style:UITableViewStyleGrouped];
-    self.tableView.top              = upView.bottom;
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*200/667) ];
+    self.tableView.top              = upView.bottom+1;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
-    //    self.tableView.tableFooterView  = [UIView new];
+     self.tableView.backgroundColor  = [UIColor whiteColor];
     [self.contentView addSubview:self.tableView];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
