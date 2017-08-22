@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0401E86A1F4B3F4000F0CA79 /* QWChangePhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8691F4B3F4000F0CA79 /* QWChangePhoneController.m */; };
 		0401E86D1F4B3F9800F0CA79 /* QWChangeNameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */; };
+		0401E8AC1F4BDDA900F0CA79 /* QWLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8AB1F4BDDA900F0CA79 /* QWLoginVC.m */; };
+		0401E8AF1F4BDDD300F0CA79 /* QWAgreementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8AE1F4BDDD300F0CA79 /* QWAgreementVC.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -251,6 +253,10 @@
 		0401E8691F4B3F4000F0CA79 /* QWChangePhoneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWChangePhoneController.m; sourceTree = "<group>"; };
 		0401E86B1F4B3F9800F0CA79 /* QWChangeNameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWChangeNameController.h; sourceTree = "<group>"; };
 		0401E86C1F4B3F9800F0CA79 /* QWChangeNameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWChangeNameController.m; sourceTree = "<group>"; };
+		0401E8AA1F4BDDA900F0CA79 /* QWLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWLoginVC.h; sourceTree = "<group>"; };
+		0401E8AB1F4BDDA900F0CA79 /* QWLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWLoginVC.m; sourceTree = "<group>"; };
+		0401E8AD1F4BDDD300F0CA79 /* QWAgreementVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAgreementVC.h; sourceTree = "<group>"; };
+		0401E8AE1F4BDDD300F0CA79 /* QWAgreementVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAgreementVC.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -691,6 +697,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0401E8A91F4BDD7A00F0CA79 /* QWLoginView */ = {
+			isa = PBXGroup;
+			children = (
+				0401E8AA1F4BDDA900F0CA79 /* QWLoginVC.h */,
+				0401E8AB1F4BDDA900F0CA79 /* QWLoginVC.m */,
+				0401E8AD1F4BDDD300F0CA79 /* QWAgreementVC.h */,
+				0401E8AE1F4BDDD300F0CA79 /* QWAgreementVC.m */,
+			);
+			name = QWLoginView;
+			path = QWCarWashing/Class/QWLoginView;
+			sourceTree = SOURCE_ROOT;
+		};
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,6 +1078,7 @@
 		180957A91F414D0000BE185D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0401E8A91F4BDD7A00F0CA79 /* QWLoginView */,
 				180957CD1F414D1800BE185D /* Other */,
 				180957AA1F414D0000BE185D /* CarWash */,
 				180957AE1F414D0000BE185D /* Home */,
@@ -2080,6 +2099,7 @@
 				18A4B11B1F46B64100C64978 /* GoodsExchangeCell.m in Sources */,
 				185C9E111F42C2FD00B4ED52 /* UIView+BFSToastInfo.m in Sources */,
 				180702BA1F458DD500398435 /* YzdHUDIndicator.m in Sources */,
+				0401E8AF1F4BDDD300F0CA79 /* QWAgreementVC.m in Sources */,
 				18A4B1941F46E06B00C64978 /* JFAreaDataManager.m in Sources */,
 				185C9DF31F42A8FF00B4ED52 /* DSSaleActivityController.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
@@ -2221,6 +2241,7 @@
 				180702D91F45976D00398435 /* TYAlertController+BlurEffects.m in Sources */,
 				18A4B1981F46E06B00C64978 /* JFCityCollectionViewCell.m in Sources */,
 				187CCBE41F43496900FCDF1C /* QWMerchantInViewController.m in Sources */,
+				0401E8AC1F4BDDA900F0CA79 /* QWLoginVC.m in Sources */,
 				18A4B1971F46E06B00C64978 /* JFCityCollectionFlowLayout.m in Sources */,
 				180702221F4441E700398435 /* QWBaseViewController.m in Sources */,
 				185C9E091F42C22800B4ED52 /* TPKeyboardAvoidingTableView.m in Sources */,

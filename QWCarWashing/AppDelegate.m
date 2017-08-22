@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "QWLoginVC.h"
 
 @interface AppDelegate ()
 {
@@ -45,6 +46,15 @@
         myDelegate.autoSizeScaleX = QWScreenWidth/375;
         myDelegate.autoSizeScaleY = QWScreenheight/667;
     }
+    
+    
+    QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
+    QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
+    nav.navigationBar.hidden      = YES;
+    
+    self.window.rootViewController      = nav;
+    
+    
     return YES;
     
 }
