@@ -28,8 +28,9 @@ static NSString *id_cancelCell = @"id_cancelCell";
 - (UITableView *)allOrderListView {
     
     if (!_allOrderListView) {
-        UITableView *allOrderListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight) style:UITableViewStyleGrouped];
+        UITableView *allOrderListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
         _allOrderListView = allOrderListView;
+        _allOrderListView.backgroundColor=kColorTableBG;
         [self.view addSubview:_allOrderListView];
     }
     return _allOrderListView;
@@ -108,7 +109,11 @@ static NSString *id_cancelCell = @"id_cancelCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *HeaderInSectionview=[UIView new];
+    HeaderInSectionview.backgroundColor=[UIColor clearColor];
+    return HeaderInSectionview;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.1;
 }
