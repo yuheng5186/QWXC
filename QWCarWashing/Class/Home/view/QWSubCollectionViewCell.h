@@ -11,6 +11,6 @@
 @interface QWSubCollectionViewCell : UICollectionViewCell
 -(void)setImages:(NSString *)myImages andName:(NSString *)names;
 -(void)setSmailImages:(NSString *)myImages andName:(NSString *)names;
--(void)setNamelabelColor:(UIColor *)color;
+
 +(CGSize)ccellSize;
 @end

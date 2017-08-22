@@ -181,13 +181,13 @@ static NSString *cellstr=@"Cellstr";
         QWMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
           cell.backgroundColor=[UIColor clearColor];
-        [cell setContentAndImgArr:@[@"duihuanlipin",
+        [cell setContentAndImgArr:@[@"jihuo",
                                     @"qiandao",
                                     @"shangjia",
                                     @"kefu",
-                                    @"wode-aiche",
+                                    @"aiche",
                                     @"fenxiang",
-                                    @"duihuanliwu",
+                                    @"duihuanlipin",
                                     @"quanzi"]
                     andContentArr:@[@"兑换礼品",
                                     @"每日签到",

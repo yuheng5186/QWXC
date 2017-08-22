@@ -51,8 +51,8 @@
             if (!_namecell) {
                 self.namecell=[[UILabel alloc]init];
                 self.namecell.textAlignment=NSTextAlignmentCenter;
-                self.namecell.font = [UIFont systemFontOfSize:12];
-                self.namecell.textColor = [UIColor lightGrayColor];
+               
+//                self.namecell.textColor = [UIColor lightGrayColor];
 //                           self.namecell.backgroundColor = [UIColor whiteColor];
                 
                 [self addSubview:self.namecell];
@@ -65,6 +65,8 @@
 -(void)setImages:(NSString *)myImages andName:(NSString *)names
 {
     _imagescell.image=[UIImage imageNamed:myImages];
+     _namecell.font = [UIFont systemFontOfSize:15];
+    _namecell.textColor = [UIColor colorFromHex:@"#4a4a4a"];
     _namecell.text=names;
     WEAKSELF
     [_imagescell mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,7 +85,10 @@
 -(void)setSmailImages:(NSString *)myImages andName:(NSString *)names
 {
     _imagescell.image=[UIImage imageNamed:myImages];
+     _namecell.font = [UIFont systemFontOfSize:13];
+    _namecell.textColor = [UIColor colorFromHex:@"#a3a3a3"];
     _namecell.text=names;
+    
     WEAKSELF
     [_imagescell mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(imageSmailWH, imageSmailWH));
@@ -96,9 +101,7 @@
         make.top.mas_equalTo(weakSelf.imagescell.mas_bottom).offset(15);
     }];
 }
--(void)setNamelabelColor:(UIColor *)color{
-    
-}
+
 +(CGSize)ccellSize{
     NSLog(@"-----: %lf,%lf",kTweetSendImageCCell_Width,kTweetSendImageCCell_Width);
     return CGSizeMake(kTweetSendImageCCell_Width, kTweetSendImageCCell_Width);
