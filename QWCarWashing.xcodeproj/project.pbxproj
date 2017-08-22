@@ -94,9 +94,9 @@
 		180702F31F4600CA00398435 /* QWFeedbackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702F21F4600CA00398435 /* QWFeedbackController.m */; };
 		180702F61F4600F200398435 /* QWGetScoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702F51F4600F200398435 /* QWGetScoreController.m */; };
 		180702F91F4603F700398435 /* QWAgreementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702F81F4603F700398435 /* QWAgreementController.m */; };
-		1807D93F1F4A766B0080C4AB /* HYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807D93E1F4A766B0080C4AB /* HYSlider.m */; };
 		1807D9431F4A92D50080C4AB /* QWScoreheaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807D9411F4A92D50080C4AB /* QWScoreheaderTableViewCell.m */; };
 		1807D9441F4A92D50080C4AB /* QWScoreheaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1807D9421F4A92D50080C4AB /* QWScoreheaderTableViewCell.xib */; };
+		1807D9471F4C23DE0080C4AB /* HYSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807D9461F4C23DE0080C4AB /* HYSlider.m */; };
 		180957781F4147E400BE185D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957771F4147E400BE185D /* main.m */; };
 		1809577B1F4147E400BE185D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577A1F4147E400BE185D /* AppDelegate.m */; };
 		1809577E1F4147E400BE185D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809577D1F4147E400BE185D /* ViewController.m */; };
@@ -413,11 +413,11 @@
 		180702F51F4600F200398435 /* QWGetScoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWGetScoreController.m; sourceTree = "<group>"; };
 		180702F71F4603F700398435 /* QWAgreementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWAgreementController.h; sourceTree = "<group>"; };
 		180702F81F4603F700398435 /* QWAgreementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAgreementController.m; sourceTree = "<group>"; };
-		1807D93D1F4A766B0080C4AB /* HYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSlider.h; sourceTree = "<group>"; };
-		1807D93E1F4A766B0080C4AB /* HYSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSlider.m; sourceTree = "<group>"; };
 		1807D9401F4A92D50080C4AB /* QWScoreheaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScoreheaderTableViewCell.h; sourceTree = "<group>"; };
 		1807D9411F4A92D50080C4AB /* QWScoreheaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScoreheaderTableViewCell.m; sourceTree = "<group>"; };
 		1807D9421F4A92D50080C4AB /* QWScoreheaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWScoreheaderTableViewCell.xib; sourceTree = "<group>"; };
+		1807D9451F4C23DE0080C4AB /* HYSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSlider.h; sourceTree = "<group>"; };
+		1807D9461F4C23DE0080C4AB /* HYSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSlider.m; sourceTree = "<group>"; };
 		180957731F4147E400BE185D /* QWCarWashing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QWCarWashing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		180957771F4147E400BE185D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		180957791F4147E400BE185D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1794,8 +1794,8 @@
 		187CCBE81F43E4BA00FCDF1C /* Coustmerslider */ = {
 			isa = PBXGroup;
 			children = (
-				1807D93D1F4A766B0080C4AB /* HYSlider.h */,
-				1807D93E1F4A766B0080C4AB /* HYSlider.m */,
+				1807D9451F4C23DE0080C4AB /* HYSlider.h */,
+				1807D9461F4C23DE0080C4AB /* HYSlider.m */,
 			);
 			path = Coustmerslider;
 			sourceTree = "<group>";
@@ -2133,7 +2133,6 @@
 				185C9E101F42C2FD00B4ED52 /* MBProgressHUD.m in Sources */,
 				185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */,
 				185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */,
-				1807D93F1F4A766B0080C4AB /* HYSlider.m in Sources */,
 				185C9E3B1F42DC5A00B4ED52 /* AllOrderController.m in Sources */,
 				1807024F1F444EED00398435 /* DiscountDetailView.m in Sources */,
 				180701F31F44214C00398435 /* LewPopupViewAnimationDrop.m in Sources */,
@@ -2221,6 +2220,7 @@
 				180957F01F4178F400BE185D /* UdStorage.m in Sources */,
 				185C9E421F42DC8C00B4ED52 /* OrderDetailController.m in Sources */,
 				180957781F4147E400BE185D /* main.m in Sources */,
+				1807D9471F4C23DE0080C4AB /* HYSlider.m in Sources */,
 				180702811F456DEA00398435 /* QWIcreaseCarController.m in Sources */,
 				185C9DF11F42A8FF00B4ED52 /* DSCarClubDetailController.m in Sources */,
 				1807027B1F45615700398435 /* PhoneHelper.m in Sources */,

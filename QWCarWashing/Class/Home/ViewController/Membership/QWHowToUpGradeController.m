@@ -11,7 +11,8 @@
 #import "WayToUpGradeCell.h"
 #import "QWEarnScoreController.h"
 #import "QWUpdateRuleController.h"
-
+#import "QWMyCarController.h"
+#import "QWPersonInfoDetailViewController.h"
 @interface QWHowToUpGradeController ()<UITableViewDelegate, UITableViewDataSource,HYSliderDelegate>
 
 @property (nonatomic, weak) UITableView *wayToEarnScoreView;
@@ -189,6 +190,9 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WayToUpGradeCell *wayCell = [tableView dequeueReusableCellWithIdentifier:id_wayToUpCell forIndexPath:indexPath];
+    wayCell.selectionStyle=UITableViewCellSelectionStyleNone;
+    wayCell.goButton.tag=indexPath.row;
+    [wayCell.goButton addTarget:self action:@selector(completeButton:) forControlEvents:BtnTouchUpInside];
     
     if (indexPath.row == 0) {
         
@@ -221,12 +225,49 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     return wayCell;
 }
-
+-(void)completeButton:(UIButton *)btn{
+    
+    QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
+    QWPersonInfoDetailViewController *personinfo=[[QWPersonInfoDetailViewController alloc]init];
+    switch (btn.tag) {
+        case 2:
+            [self.navigationController pushViewController:mycarVC animated:YES];
+            break;
+        case 3:
+            [self.navigationController pushViewController:personinfo animated:YES];
+            break;
+        case 1:
+            
+            break;
+        default:
+            
+            break;
+    }
+    
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return 10;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
+//    QWPersonInfoDetailViewController *personinfo=[[QWPersonInfoDetailViewController alloc]init];
+//    switch (indexPath.row) {
+//        case 2:
+//            [self.navigationController pushViewController:mycarVC animated:YES];
+//            break;
+//        case 3:
+//            [self.navigationController pushViewController:personinfo animated:YES];
+//            break;
+//        case 1:
+//            
+//            break;
+//        default:
+//            
+//            break;
+//    }
 
+}
 
 
 #pragma mark - 点击底部按钮

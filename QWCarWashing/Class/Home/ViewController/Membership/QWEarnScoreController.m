@@ -9,7 +9,8 @@
 #import "QWEarnScoreController.h"
 #import "WayToUpGradeCell.h"
 #import "QWScoreDetailController.h"
-
+#import "QWMyCarController.h"
+#import "QWPersonInfoDetailViewController.h"
 @interface QWEarnScoreController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UIImageView *adverView;
@@ -74,9 +75,9 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WayToUpGradeCell *earnScoreCell = [tableView dequeueReusableCellWithIdentifier:id_earnViewCell forIndexPath:indexPath];
-    
+    earnScoreCell.goButton.tag=indexPath.row;
+    [earnScoreCell.goButton addTarget:self action:@selector(completeButton:) forControlEvents:BtnTouchUpInside];
     if (indexPath.row == 0) {
-        
         earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_xinyonghuzhuce"];
         earnScoreCell.waysLab.text = @"新用户注册";
         earnScoreCell.wayToLab.text = @"完成手机号绑定注册";
@@ -103,7 +104,25 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
     
     return earnScoreCell;
 }
+-(void)completeButton:(UIButton *)btn{
+    QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
+    QWPersonInfoDetailViewController *personinfo=[[QWPersonInfoDetailViewController alloc]init];
+    switch (btn.tag) {
+        case 2:
+            [self.navigationController pushViewController:mycarVC animated:YES];
+            break;
+        case 3:
+            [self.navigationController pushViewController:personinfo animated:YES];
+            break;
+        case 1:
+            
+            break;
+        default:
+            
+            break;
+    }
 
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return 10;

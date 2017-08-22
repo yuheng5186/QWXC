@@ -123,13 +123,16 @@
         
         
     }else{
+        NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:@"15800781856"];
+        [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         if (indexPath.row == 0) {
             cell.textLabel.text         = @"昵称";
-            cell.detailTextLabel.text   = @"15800781856";
+           
+            cell.detailTextLabel.text   = phonestr;
             
         }else if (indexPath.row == 1){
             cell.textLabel.text         = @"手机号";
-            cell.detailTextLabel.text   = @"15800781856";
+            cell.detailTextLabel.text   = phonestr;
         }
         else if(indexPath.row==2) {
             cell.textLabel.text         = @"性别";
