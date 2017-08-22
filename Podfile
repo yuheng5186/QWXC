@@ -9,4 +9,5 @@ target 'QWCarWashing' do
   pod 'AMap2DMap', '~> 4.6.0'
   pod 'WechatOpenSDK', '~> 1.7.8'
   pod 'IQKeyboardManager'
+  pod 'DZNEmptyDataSet'
 end

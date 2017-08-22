@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1D1A16B97272D83D239CEBDAB680E5E6'
+               BlueprintIdentifier = '2A5C6697F94362EE8C74B07FC1B3A932'
                BlueprintName = 'Pods-QWCarWashing'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-QWCarWashing.a'>
