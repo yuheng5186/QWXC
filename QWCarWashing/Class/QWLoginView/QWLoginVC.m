@@ -82,7 +82,8 @@
     
     
 //        UIImage *backgroundImage            = [UIImage imageNamed:@"denglu-icon-ditu"];
-    UIImageView  *backgroundImageView   = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*10/375, Main_Screen_Height*168/667) imageName:@"denglu-icon-ditu"];
+    UIImageView  *backgroundImageView   = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*10/375, Main_Screen_Height*168/667) imageName:@"qiangweidenglu-ditu"];
+    backgroundImageView.contentMode=UIViewContentModeScaleAspectFill;
     backgroundImageView.top             = titleLabel.bottom +Main_Screen_Height*22/667;
     backgroundImageView.centerX         = Main_Screen_Width/2;
     

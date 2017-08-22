@@ -58,8 +58,8 @@
     UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
     upView.top                      = 0;
     
-    UIImage *appImage              = [UIImage imageNamed:@"icon_defaultavatar"];
-    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width/2, appImage.size.height/2) imageName:@"icon_defaultavatar"];
+    UIImage *appImage              = [UIImage imageNamed:@"denglu-icon-ditu"];
+    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width/2, appImage.size.height/2) imageName:@"denglu-icon-ditu"];
     appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     
@@ -88,7 +88,7 @@
     logoutButton.top           = self.tableView.bottom;
     logoutButton.centerX       = upView.centerX;
     
-    
+    self.contentView.backgroundColor=[UIColor whiteColor];
     
 }
 - (void) logoutButtonClick:(id)sender {

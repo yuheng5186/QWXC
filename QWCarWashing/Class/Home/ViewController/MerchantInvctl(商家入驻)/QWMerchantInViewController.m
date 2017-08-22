@@ -26,7 +26,7 @@
 -(UITableView *)tableview{
     
     if (_tableview==nil) {
-        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
+        _tableview=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)style:UITableViewStyleGrouped];
 //        [_tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:cellstr];
 //        [_tableview registerClass:[QWMenuTableViewCell class] forCellReuseIdentifier:QWCellIdentifier_MenuTableViewCell];
         [_tableview registerNib:[UINib nibWithNibName:QWCellIdentifier_MerchantInTableViewCell bundle:[NSBundle mainBundle]] forCellReuseIdentifier:QWCellIdentifier_MerchantInTableViewCell];
@@ -59,7 +59,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -69,12 +69,13 @@
             return 1;
             break;
         case 1:
-            return 2;
+            return 1;
             break;
         default:
+            return 1;
             break;
     }
-    return 0;
+    return 1;
 }
 
 
@@ -110,7 +111,7 @@
             [self.merchantFieldText addTarget:self action:@selector(merchantFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
             [cell.contentView addSubview:self.merchantFieldText];
         }
-    }else {
+    }else if (indexPath.section == 1){
         
         if (indexPath.row == 0) {
             cell.textLabel.text                = @"联系电话";
@@ -127,23 +128,24 @@
             
             [self.phoneFieldText addTarget:self action:@selector(phoneFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
             [cell.contentView addSubview:self.phoneFieldText];
-        }else {
-            cell.textLabel.text                  = @"联系地址";
-            self.addressFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*150/375, Main_Screen_Height*40/667)];
-            self.addressFieldText.placeholder    = @"请填写联系地址";
-            self.addressFieldText.delegate       = self;
-            self.addressFieldText.returnKeyType  = UIReturnKeyDone;
-            self.addressFieldText.textAlignment  = NSTextAlignmentLeft;
-            self.addressFieldText.font           = [UIFont systemFontOfSize:14];
-            self.addressFieldText.backgroundColor= [UIColor whiteColor];
-            self.addressFieldText.centerY        = cell.centerY +Main_Screen_Height*5/667;
-            self.addressFieldText.left           = Main_Screen_Width*120/375 ;
-            
-            [self.addressFieldText addTarget:self action:@selector(addressFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
-            [cell.contentView addSubview:self.addressFieldText];
         }
         
+    }else {
+        cell.textLabel.text                  = @"联系地址";
+        self.addressFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*150/375, Main_Screen_Height*40/667)];
+        self.addressFieldText.placeholder    = @"请填写联系地址";
+        self.addressFieldText.delegate       = self;
+        self.addressFieldText.returnKeyType  = UIReturnKeyDone;
+        self.addressFieldText.textAlignment  = NSTextAlignmentLeft;
+        self.addressFieldText.font           = [UIFont systemFontOfSize:14];
+        self.addressFieldText.backgroundColor= [UIColor whiteColor];
+        self.addressFieldText.centerY        = cell.centerY +Main_Screen_Height*5/667;
+        self.addressFieldText.left           = Main_Screen_Width*120/375 ;
+        
+        [self.addressFieldText addTarget:self action:@selector(addressFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
+        [cell.contentView addSubview:self.addressFieldText];
     }
+    
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -174,12 +176,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
+    //右边试图
     
-    self.title  = @"商家入驻";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStyleDone target:self action:@selector(submitOnclick:)];
+   self.title  = @"商家入驻";
     [self resetBabkButton];
 }
 
-
+#pragma mark-提交
+-(void)submitOnclick:(UIButton *)sender{
+    
+}
 - (void) resetBabkButton {
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
