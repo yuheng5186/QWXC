@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"兑换";
+    self.title=@"激活";
 
     [self resetBabkButton];
     
@@ -42,18 +42,18 @@
 - (void)setupUI {
     self.view.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
     UITextField *exchangeTF = [[UITextField alloc] init];
-    exchangeTF.placeholder = @"请输入兑换码";
+    exchangeTF.placeholder = @"请输入激活码";
     exchangeTF.textAlignment = NSTextAlignmentCenter;
     exchangeTF.layer.cornerRadius = 24;
     exchangeTF.keyboardType = UIKeyboardTypeNumberPad;
     exchangeTF.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:exchangeTF];
     
-    UIButton *exchangeBtn = [UIUtil drawDefaultButton:self.view title:@"兑换" target:self action:@selector(didClickExchangeScoreBtn:)];
+    UIButton *exchangeBtn = [UIUtil drawDefaultButton:self.view title:@"激活" target:self action:@selector(didClickExchangeScoreBtn:)];
     [exchangeBtn setBackgroundColor:RGBACOLOR(252, 186, 44, 1) ];
     
     [exchangeTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).mas_offset(64 + 75);
+        make.top.equalTo(self.view).mas_offset(64 + 25);
         make.centerX.equalTo(self.view);
         make.left.equalTo(self.view).mas_offset(10);
         

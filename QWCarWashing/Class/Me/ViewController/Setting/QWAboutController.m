@@ -41,7 +41,7 @@
 - (void) craeteSubView {
     self.contentViews.backgroundColor    = kColorTableBG;
     [self.view addSubview:self.contentViews];
-    UIView *upView                  = [UIUtil drawLineInView:self.contentViews frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*200/667) color:[UIColor colorFromHex:@"#e5e5e5"]];
+    UIView *upView                  = [UIUtil drawLineInView:self.contentViews frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*150/667) color:[UIColor whiteColor]];
     upView.top                      = 0;
     
     
@@ -64,15 +64,11 @@
     contentNameLabel.textColor          = [UIColor colorFromHex:@"#999999"];
     //    contentNameLabel.backgroundColor    = [UIColor colorFromHex:@"#ffffff"];
     contentNameLabel.numberOfLines      = 0;
-    contentNameLabel.top                = upView.bottom +Main_Screen_Height*20/667;
+    contentNameLabel.top                = upView.bottom +Main_Screen_Height*0/667;
     contentNameLabel.centerX            = appImageView.centerX;
     
-    //    NSString *serviceProtocolName              = @"金顶洗车服务协议";
-    //    UIFont *serviceProtocolNameFont            = [UIFont boldSystemFontOfSize:16];
-    //    UILabel *serviceProtocolNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:serviceProtocolName font:serviceProtocolNameFont] font:serviceProtocolNameFont text:serviceProtocolName isCenter:NO];
-    //    serviceProtocolNameLabel.textColor         = [UIColor colorFromHex:@"#3868ce"];
-    //    serviceProtocolNameLabel.top               = contentNameLabel.bottom +Main_Screen_Height*100/667;
-    //    serviceProtocolNameLabel.centerX           = appImageView.centerX;
+    self.contentViews.backgroundColor            = [UIColor whiteColor];
+
     
     UIButton *updateRuleButton          = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width*320/375, Main_Screen_Height*30/667)];
     [updateRuleButton setTitleColor:[UIColor colorFromHex:@"#293754"] forState:UIControlStateNormal];
@@ -84,18 +80,18 @@
     [updateRuleButton setBackgroundColor:[UIColor clearColor]];
     [updateRuleButton.titleLabel setFont:[UIFont systemFontOfSize:Main_Screen_Height*14/667]];
     [updateRuleButton addTarget:self action:@selector(agreeButtonByClick:) forControlEvents:UIControlEventTouchUpInside];
-    updateRuleButton.top              = contentNameLabel.bottom +Main_Screen_Height*50/667;
+    updateRuleButton.top              = contentNameLabel.bottom +Main_Screen_Height*100/667;
     updateRuleButton.centerX          = appImageView.centerX;
-    [self.contentViews addSubview:updateRuleButton];
+    [self.view addSubview:updateRuleButton];
     
     
     
     
     NSString *copyrightlName              = @"Copyright2014-2017蔷薇版权所有  沪ICP备";
-    UIFont *copyrightlNameFont            = [UIFont boldSystemFontOfSize:Main_Screen_Height*16/667];
-    UILabel *copyrightlNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:copyrightlName font:copyrightlNameFont] font:copyrightlNameFont text:copyrightlName isCenter:NO];
+    UIFont *copyrightlNameFont            = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
+    UILabel *copyrightlNameLabel          = [UIUtil drawLabelInView:self.view frame:[UIUtil textRect:copyrightlName font:copyrightlNameFont] font:copyrightlNameFont text:copyrightlName isCenter:NO];
     copyrightlNameLabel.textColor         = [UIColor colorFromHex:@"#999999"];
-    copyrightlNameLabel.top               = updateRuleButton.bottom +Main_Screen_Height*15/667;
+    copyrightlNameLabel.top               = updateRuleButton.bottom +Main_Screen_Height*5/667;
     copyrightlNameLabel.centerX           = appImageView.centerX;
     
 }
