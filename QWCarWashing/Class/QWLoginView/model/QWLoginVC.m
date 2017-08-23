@@ -12,7 +12,6 @@
 #import "QWAgreementVC.h"
 #import "TPKeyboardAvoidingScrollView.h"
 
-
 @interface QWLoginVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -154,57 +153,64 @@
     }
     return _scrollView;
 }
-
+#pragma mark-登录按钮点击事件
 - (void) loginButtonClick:(id)sender {
+    [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
+//        if (self.userMobileFieldText.text.length == 11) {
+//            if (self.verifyFieldText.text.length == 4) {
+//                //请求数据
+//                [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
+//            }
+//            else{
+//                [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
+//            }
+//    
+//        }else {
+//            [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
+//        }
     
-    //    if (self.userMobileFieldText.text.length == 11) {
-    //        if (self.verifyFieldText.text.length == 4) {
-    //
-    //
-    //
-    //            NSDictionary *mulDic = @{
-    //                                     @"Mobile":self.userMobileFieldText.text,
-    //                                     @"VerCode":self.verifyFieldText.text
-    //                                     };
-    //            NSDictionary *params = @{
-    //                                     @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-    //                                     @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-    //                                     };
-    //            [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@User/Login",Khttp] success:^(NSDictionary *dict, BOOL success) {
-    //
-    //                if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
-    //                {
-    //                    [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Account_Id"] forKey:@"Account_Id"];
+}
+#pragma mark-请求用户登录数据
+-(void)requestLoginDataPhoneNum:(NSString *)phonenum andverify:(NSString *)Verify{
     
-    //                    APPDELEGATE.currentUser = [User getInstanceByDic:[dict objectForKey:@"JsonData"]];
-    
-//    QWTabBarController *menuTabBarController              = [[QWTabBarController alloc] init];
-    QWTabBarController *menuTabBarController=[[QWTabBarController alloc]init];
-    menuTabBarController.tabBar.backgroundColor=[UIColor whiteColor];
-    [AppDelegate sharedInstance].window.rootViewController  = menuTabBarController;
-
-    //                }
-    //                else
-    //                {
-    //                    [self.view showInfo:@"验证码不正确" autoHidden:YES interval:2];
-    //                }
-    //
-    //            } fail:^(NSError *error) {
-    //                [self.view showInfo:@"登录失败" autoHidden:YES interval:2];
-    //            }];
-    
-    
-    
-    
-    
-    //        }else{
-    //            [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
-    //        }
-    //
-    //    }else {
-    //        [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
-    //    }
-    
+//    NSDictionary *mulDic = @{
+//                             @"Mobile":phonenum,
+//                             @"VerCode":Verify
+//                             };
+//        NSLog(@"==dic:%@===",mulDic);
+//    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/Login",Khttp] success:^(NSDictionary *dict, BOOL success) {
+//
+//        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+//        {
+//            NSLog(@"%@",[dict objectForKey:@"JsonData"]);
+//            QWUserInfo *usertmpModel = [QWUserInfo new];
+//            //KVC 方式赋值
+//            [usertmpModel setValuesForKeysWithDictionary:[dict objectForKey:@"JsonData"]];
+////            //数据本地化
+//            [UdStorage storageObject:usertmpModel.Age forKey:@"userAge"];
+//           [UdStorage storageObject:usertmpModel.UserName forKey:@"userName"];
+//            [UdStorage storageObject:usertmpModel.Mobile forKey:@"userPhone"];
+//            [UdStorage storageObject:usertmpModel.Sex forKey:@"userSex"];
+//                [UdStorage storageObject:usertmpModel.Headimg forKey:@"Headimg"];
+//;
+//            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Level_id"] forKey:@"Level_id"];
+//            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Account_Id"] forKey:@"Account_Id"];
+//              APPDELEGATE.currentUser = usertmpModel;
+//
+            QWTabBarController *menuTabBarController              = [[QWTabBarController alloc] init];
+//                QWTabBarController *menuTabBarController=[[QWTabBarController alloc]init];
+            menuTabBarController.tabBar.backgroundColor=[UIColor whiteColor];
+            [AppDelegate sharedInstance].window.rootViewController  = menuTabBarController;
+            
+//        }
+//        else
+//        {
+//            [self.view showInfo:@"验证码不正确" autoHidden:YES interval:2];
+//        }
+//        
+//    } fail:^(NSError *error) {
+//        [self.view showInfo:@"登录失败" autoHidden:YES interval:2];
+//    }];
 }
 
 - (void) agreeButtonClick:(id)sender {
@@ -333,7 +339,8 @@
         
         
         [self startTimer];
-        [self.view showInfo:@"验证码发送成功，请在手机上查收！" autoHidden:YES interval:2];
+//        [self requestVerifyNumAndPhoneNum:self.userMobileFieldText.text];
+//        [self.view showInfo:@"验证码发送成功，请在手机上查收！" autoHidden:YES interval:2];
         
         
     }else
@@ -342,7 +349,26 @@
         
     }
 }
+#pragma mark-获取短信验证码
+-(void)requestVerifyNumAndPhoneNum:(NSString *)phoneNum{
+    NSDictionary *mulDic = @{@"Mobile":phoneNum};
+    
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/GetVerCode",Khttp] success:^(NSDictionary *dict, BOOL success) {
+         NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"验证码发送成功，请在手机上查收！" autoHidden:YES interval:2];
+        }else{
+            [self.view showInfo:@"验证码发送失败" autoHidden:YES interval:2];
 
+        }
+       
+    } fail:^(NSError *error) {
+        NSLog(@"%@",@"fail");
+    }];
+
+}
 
 - (void)startTimer
 {

@@ -100,16 +100,17 @@
     if (indexPath.section == 0) {
         cell.imageView.image                = [UIImage imageNamed:@"yonghushouji"];
         
-        self.userMobileFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10, 45, Main_Screen_Width-Main_Screen_Width*70/375, Main_Screen_Height*40/667)];
+        self.userMobileFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10*Main_Screen_Height/667, 45*Main_Screen_Height/667, Main_Screen_Width-Main_Screen_Width*70/375, Main_Screen_Height*40/667)];
         self.userMobileFieldText.placeholder    = @"15800781856";
         self.userMobileFieldText.delegate       = self;
         self.userMobileFieldText.clearButtonMode= UITextFieldViewModeAlways;
         self.userMobileFieldText.returnKeyType  = UIReturnKeyDone;
         self.userMobileFieldText.keyboardType   = UIKeyboardTypeNumberPad;
+        
         self.userMobileFieldText.textAlignment  = NSTextAlignmentLeft;
-        self.userMobileFieldText.font           = [UIFont systemFontOfSize:13];
+        self.userMobileFieldText.font           = [UIFont systemFontOfSize:14];
         self.userMobileFieldText.backgroundColor= [UIColor whiteColor];
-        self.userMobileFieldText.centerY        = cell.centerY;
+        self.userMobileFieldText.top            = Main_Screen_Height*5/667;
         self.userMobileFieldText.left           = Main_Screen_Width*70/375 ;
         
         [self.userMobileFieldText addTarget:self action:@selector(userMobileFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -117,18 +118,17 @@
     }else if (indexPath.section == 1){
         cell.imageView.image                = [UIImage imageNamed:@"mimayanzheng"];
         
-        self.verifyFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10, 45, Main_Screen_Width-Main_Screen_Width*240/375, Main_Screen_Height*40/667)];
-        self.verifyFieldText.placeholder    = @"输入验证码";
+        self.verifyFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10*Main_Screen_Height/667, 45*Main_Screen_Height/667, Main_Screen_Width-Main_Screen_Width*240/375, Main_Screen_Height*40/667)];
+        self.verifyFieldText.placeholder    = @"请输入验证码";
         self.verifyFieldText.delegate       = self;
         self.verifyFieldText.returnKeyType  = UIReturnKeyDone;
-        self.verifyFieldText.keyboardType   = UIKeyboardTypeNumberPad;
-
         self.verifyFieldText.textAlignment  = NSTextAlignmentLeft;
-        self.verifyFieldText.font           = [UIFont systemFontOfSize:13];
+        self.verifyFieldText.font           = [UIFont systemFontOfSize:14];
         self.verifyFieldText.clearButtonMode= UITextFieldViewModeAlways;
+        self.verifyFieldText.keyboardType   = UIKeyboardTypeNumberPad;
         
         //        self.verifyFieldText.backgroundColor= [UIColor grayColor];
-        self.verifyFieldText.centerY        = cell.centerY;
+        self.verifyFieldText.top            = Main_Screen_Height*5/667;
         self.verifyFieldText.left           = Main_Screen_Width*70/375 ;
         
         [self.verifyFieldText addTarget:self action:@selector(verifyFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -140,7 +140,7 @@
         getVeriifyStringButton.backgroundColor=  [UIColor colorWithHex:0xFFB500 alpha:1.0];
         getVeriifyStringButton.layer.cornerRadius = Main_Screen_Height*15/667;
         getVeriifyStringButton.right          = Main_Screen_Width -Main_Screen_Width*10/375;
-        getVeriifyStringButton.centerY        = self.verifyFieldText.centerY;
+        getVeriifyStringButton.top            = Main_Screen_Height*10/667;
     }else if (indexPath.section == 2){
         cell.imageView.image                = [UIImage imageNamed:@"mimasuo"];
         
@@ -150,9 +150,9 @@
         self.passwordNewFieldText.returnKeyType  = UIReturnKeyDone;
         self.passwordNewFieldText.clearButtonMode= UITextFieldViewModeAlways;
         self.passwordNewFieldText.textAlignment  = NSTextAlignmentLeft;
-        self.passwordNewFieldText.font           = [UIFont systemFontOfSize:13];
+        self.passwordNewFieldText.font           = [UIFont systemFontOfSize:14];
         self.passwordNewFieldText.backgroundColor= [UIColor whiteColor];
-        self.passwordNewFieldText.centerY        = cell.centerY;
+        self.passwordNewFieldText.top            = Main_Screen_Height*5/667;
         self.passwordNewFieldText.left           = Main_Screen_Width*70/375 ;
         
         [self.verifyFieldText addTarget:self action:@selector(passwordNewFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -166,9 +166,9 @@
         self.passwordAgainFieldText.returnKeyType  = UIReturnKeyDone;
         self.passwordAgainFieldText.textAlignment  = NSTextAlignmentLeft;
         self.passwordAgainFieldText.clearButtonMode= UITextFieldViewModeAlways;
-        self.passwordAgainFieldText.font           = [UIFont systemFontOfSize:13];
+        self.passwordAgainFieldText.font           = [UIFont systemFontOfSize:14];
         self.passwordAgainFieldText.backgroundColor= [UIColor whiteColor];
-        self.passwordAgainFieldText.centerY        = cell.centerY;
+        self.passwordAgainFieldText.top            = Main_Screen_Height*5/667;
         self.passwordAgainFieldText.left           = Main_Screen_Width*70/375 ;
         
         [self.passwordAgainFieldText addTarget:self action:@selector(passwordAgainFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];

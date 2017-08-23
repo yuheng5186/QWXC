@@ -11,6 +11,11 @@
 #import "QWVipSecondTableViewCell.h"
 #import "QWwashCardTableViewCell.h"
 #import "QWHowToUpGradeController.h"
+
+#import "QWMemberRightsDetailController.h"
+
+
+
 @interface QWViptequanViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic)UITableView*tableview;
@@ -163,6 +168,8 @@
         }
         cell.backgroundColor    = [UIColor whiteColor];
         cell.accessoryType=UITableViewCellAccessoryNone;
+        cell.selectionStyle =  UITableViewCellSelectionStyleNone;
+
         cell.imageViews.image=[UIImage imageNamed:@"shengjihoukaquan"];
         cell.titlelabel.text=@"10元洗车倦";
         cell.detaillabel.text=@"门店洗车时可抵扣相应金额，每月领取一次";
@@ -177,7 +184,7 @@
         }
         cell.backgroundColor    = [UIColor whiteColor];
         cell.accessoryType=UITableViewCellAccessoryNone;
-        
+        cell.selectionStyle =  UITableViewCellSelectionStyleNone;
         return cell;
     }
     //        else {
@@ -218,6 +225,14 @@
     }else{
         return 0;
     }
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    QWMemberRightsDetailController      *rightDetailVC  = [[QWMemberRightsDetailController alloc]init];
+    [self.navigationController pushViewController:rightDetailVC animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {
