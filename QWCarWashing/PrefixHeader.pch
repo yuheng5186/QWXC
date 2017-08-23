@@ -46,6 +46,11 @@
 #import "LKAlertView.h"
 #import "LKActionSheet.h"
 #import "UIView+BFSToastInfo.h"
+
+//weinxin
+#import "WechatAuthSDK.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
 //请求数据
 #import "AFNetworkingTool.h"
 #import "HTTPDefine.h"

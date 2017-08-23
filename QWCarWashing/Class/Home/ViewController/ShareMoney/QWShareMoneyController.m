@@ -9,9 +9,10 @@
 #import "QWShareMoneyController.h"
 
 #import "TYAlertController.h"
-#import "ShareView.h"
-#import "UIView+TYAlertView.h"
-#import "TYAlertController+BlurEffects.h"
+//#import "ShareView.h"
+//#import "UIView+TYAlertView.h"
+//#import "TYAlertController+BlurEffects.h"
+#import "ShareWeChatController.h"
 
 @interface QWShareMoneyController ()
 
@@ -63,15 +64,10 @@
 
 - (void) getMoneyButtonClick:(id)sender {
 
-    ShareView *shareView = [ShareView createViewFromNib];
-    TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
+    ShareWeChatController *shareVC = [[ShareWeChatController alloc] init];
     
-    [alertController setBlurEffectWithView:self.view];
-    alertController.alertView.width     = Main_Screen_Width;
-    alertController.alertView.height    = Main_Screen_Height*230/667;
-    //    if (Main_Screen_Height == 568) {
-    alertController.alertViewOriginY    = self.view.height- alertController.alertView.height;
-    [self presentViewController:alertController animated:YES completion:nil];
+    shareVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:shareVC animated:NO completion:nil];
     
 }
 - (void)didReceiveMemoryWarning {

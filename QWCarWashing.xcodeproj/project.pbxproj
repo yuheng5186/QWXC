@@ -237,6 +237,8 @@
 		18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B21B1F4D641A00C64978 /* ShopViewController.m */; };
 		18A4B2221F4D65E600C64978 /* UIView+AutoSizeToDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2201F4D65E600C64978 /* UIView+AutoSizeToDevice.m */; };
 		18A4B2231F4D65E600C64978 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2211F4D65E600C64978 /* README.md */; };
+		18A4B2351F4D922400C64978 /* ShareWeChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2321F4D922400C64978 /* ShareWeChatController.m */; };
+		18A4B2361F4D922400C64978 /* ShareWechatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2341F4D922400C64978 /* ShareWechatView.m */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
@@ -698,6 +700,10 @@
 		18A4B21F1F4D65E600C64978 /* UIView+AutoSizeToDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoSizeToDevice.h"; sourceTree = "<group>"; };
 		18A4B2201F4D65E600C64978 /* UIView+AutoSizeToDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoSizeToDevice.m"; sourceTree = "<group>"; };
 		18A4B2211F4D65E600C64978 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18A4B2311F4D922400C64978 /* ShareWeChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWeChatController.h; sourceTree = "<group>"; };
+		18A4B2321F4D922400C64978 /* ShareWeChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWeChatController.m; sourceTree = "<group>"; };
+		18A4B2331F4D922400C64978 /* ShareWechatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWechatView.h; sourceTree = "<group>"; };
+		18A4B2341F4D922400C64978 /* ShareWechatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWechatView.m; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -746,6 +752,10 @@
 				0401E8B11F4C05F000F0CA79 /* ShareView.h */,
 				0401E8B21F4C05F000F0CA79 /* ShareView.m */,
 				0401E8B31F4C05F000F0CA79 /* ShareView.xib */,
+				18A4B2311F4D922400C64978 /* ShareWeChatController.h */,
+				18A4B2321F4D922400C64978 /* ShareWeChatController.m */,
+				18A4B2331F4D922400C64978 /* ShareWechatView.h */,
+				18A4B2341F4D922400C64978 /* ShareWechatView.m */,
 			);
 			path = ShareView;
 			sourceTree = "<group>";
@@ -2261,10 +2271,12 @@
 				185C9E071F42C22800B4ED52 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */,
 				180702F61F4600F200398435 /* QWGetScoreController.m in Sources */,
+				18A4B2361F4D922400C64978 /* ShareWechatView.m in Sources */,
 				180957E31F414F8E00BE185D /* QWShoppingCarViewController.m in Sources */,
 				185090121F43CFD300795E0A /* QWMerChantCommentViewController.m in Sources */,
 				180702E11F45976D00398435 /* TYAlertScaleFadeAnimation.m in Sources */,
 				180702531F4455C000398435 /* QWRechargeController.m in Sources */,
+				18A4B2351F4D922400C64978 /* ShareWeChatController.m in Sources */,
 				180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */,
 				180957D61F414E0200BE185D /* QWHomeViewController.m in Sources */,
 				180702E51F45976D00398435 /* UIView+TYAlertView.m in Sources */,

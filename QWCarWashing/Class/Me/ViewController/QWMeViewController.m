@@ -16,10 +16,7 @@
 #import "QWPersonInfoDetailViewController.h"
 #import "QWViptequanViewController.h"
 #import "QWMyCarController.h"
-#import "TYAlertController.h"
-#import "ShareView.h"
-#import "UIView+TYAlertView.h"
-#import "TYAlertController+BlurEffects.h"
+#import "ShareWeChatController.h"
 
 #import "QWSettingController.h"
 #import "PopupView.h"
@@ -28,7 +25,7 @@
 #import "QWCardPackgeController.h"
 #import "QWScoreController.h"
 
-@interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface QWMeViewController ()<UITableViewDelegate,UITableViewDataSource, SetTabBarDelegate>
 
 @property(strong,nonatomic)UITableView*tableview;
 
@@ -63,6 +60,8 @@ static NSString *cellstr=@"cell";
     [self.tableview reloadData];
 }
 - (void)viewDidLoad {
+    
+    
    
     [super viewDidLoad];
     [self setNagationLeftAndRightButton];
@@ -228,14 +227,14 @@ static NSString *cellstr=@"cell";
     }
     
     if (indexPath.section == 4) {
-        ShareView *shareView = [ShareView createViewFromNib];
-        TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:shareView preferredStyle:TYAlertControllerStyleAlert];
+        ShareWeChatController *shareVC = [[ShareWeChatController alloc] init];
+        shareVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        shareVC.delegate = self;
         
-        [alertController setBlurEffectWithView:self.view];
-        alertController.alertView.width     = Main_Screen_Width;
-        alertController.alertView.height    = Main_Screen_Height*230/667;
-        alertController.alertViewOriginY    = self.view.height- alertController.alertView.height;
-        [self presentViewController:alertController animated:YES completion:nil];
+        self.tabBarController.tabBar.hidden = YES;
+        [self presentViewController:shareVC animated:NO completion:nil];
+        
+        
     }
     
 }
@@ -263,4 +262,12 @@ static NSString *cellstr=@"cell";
   
 
 }
+
+
+- (void)setTabBarIsHide:(UIViewController *)VC {
+    
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+
 @end
