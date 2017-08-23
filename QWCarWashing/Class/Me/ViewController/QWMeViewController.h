@@ -10,4 +10,6 @@
 
 @interface QWMeViewController : UIViewController
 
+@property (nonatomic, assign) BOOL isHide;
+
 @end
