@@ -224,6 +224,14 @@
 		18A4B1AA1F46F42F00C64978 /* TicketCashView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1A81F46F42F00C64978 /* TicketCashView.m */; };
 		18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B1A91F46F42F00C64978 /* TicketCashView.xib */; };
 		18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B1AD1F46F49C00C64978 /* BusinessPayCell.m */; };
+		18A4B2151F4D640400C64978 /* ShopCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B20D1F4D640400C64978 /* ShopCategoryView.m */; };
+		18A4B2161F4D640400C64978 /* ShopCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B20F1F4D640400C64978 /* ShopCommentController.m */; };
+		18A4B2171F4D640400C64978 /* ShopInfoHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2111F4D640400C64978 /* ShopInfoHeadView.m */; };
+		18A4B2181F4D640400C64978 /* ShopInfoHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B2121F4D640400C64978 /* ShopInfoHeadView.xib */; };
+		18A4B2191F4D640400C64978 /* ShopIntroController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2141F4D640400C64978 /* ShopIntroController.m */; };
+		18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B21B1F4D641A00C64978 /* ShopViewController.m */; };
+		18A4B2221F4D65E600C64978 /* UIView+AutoSizeToDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2201F4D65E600C64978 /* UIView+AutoSizeToDevice.m */; };
+		18A4B2231F4D65E600C64978 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2211F4D65E600C64978 /* README.md */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
@@ -660,6 +668,20 @@
 		18A4B1A91F46F42F00C64978 /* TicketCashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TicketCashView.xib; sourceTree = "<group>"; };
 		18A4B1AC1F46F49C00C64978 /* BusinessPayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPayCell.h; sourceTree = "<group>"; };
 		18A4B1AD1F46F49C00C64978 /* BusinessPayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPayCell.m; sourceTree = "<group>"; };
+		18A4B20C1F4D640400C64978 /* ShopCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCategoryView.h; sourceTree = "<group>"; };
+		18A4B20D1F4D640400C64978 /* ShopCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCategoryView.m; sourceTree = "<group>"; };
+		18A4B20E1F4D640400C64978 /* ShopCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopCommentController.h; sourceTree = "<group>"; };
+		18A4B20F1F4D640400C64978 /* ShopCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopCommentController.m; sourceTree = "<group>"; };
+		18A4B2101F4D640400C64978 /* ShopInfoHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopInfoHeadView.h; sourceTree = "<group>"; };
+		18A4B2111F4D640400C64978 /* ShopInfoHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopInfoHeadView.m; sourceTree = "<group>"; };
+		18A4B2121F4D640400C64978 /* ShopInfoHeadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopInfoHeadView.xib; sourceTree = "<group>"; };
+		18A4B2131F4D640400C64978 /* ShopIntroController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopIntroController.h; sourceTree = "<group>"; };
+		18A4B2141F4D640400C64978 /* ShopIntroController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopIntroController.m; sourceTree = "<group>"; };
+		18A4B21A1F4D641A00C64978 /* ShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopViewController.h; sourceTree = "<group>"; };
+		18A4B21B1F4D641A00C64978 /* ShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopViewController.m; sourceTree = "<group>"; };
+		18A4B21F1F4D65E600C64978 /* UIView+AutoSizeToDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AutoSizeToDevice.h"; sourceTree = "<group>"; };
+		18A4B2201F4D65E600C64978 /* UIView+AutoSizeToDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoSizeToDevice.m"; sourceTree = "<group>"; };
+		18A4B2211F4D65E600C64978 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1325,6 +1347,17 @@
 				1850900F1F43CFD300795E0A /* QWMerChantCommentViewController.m */,
 				1850900B1F43CFC500795E0A /* QWMerChantIntroViewController.h */,
 				185090101F43CFD300795E0A /* QWMerChantIntroViewController.m */,
+				18A4B20C1F4D640400C64978 /* ShopCategoryView.h */,
+				18A4B20D1F4D640400C64978 /* ShopCategoryView.m */,
+				18A4B20E1F4D640400C64978 /* ShopCommentController.h */,
+				18A4B20F1F4D640400C64978 /* ShopCommentController.m */,
+				18A4B2101F4D640400C64978 /* ShopInfoHeadView.h */,
+				18A4B2111F4D640400C64978 /* ShopInfoHeadView.m */,
+				18A4B2121F4D640400C64978 /* ShopInfoHeadView.xib */,
+				18A4B2131F4D640400C64978 /* ShopIntroController.h */,
+				18A4B2141F4D640400C64978 /* ShopIntroController.m */,
+				18A4B21A1F4D641A00C64978 /* ShopViewController.h */,
+				18A4B21B1F4D641A00C64978 /* ShopViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1380,6 +1413,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				18A4B21D1F4D65E600C64978 /* AutoSizeToDevice-master */,
 				18A4B17D1F46E06B00C64978 /* JFCityViewController */,
 				1829FB4D1F45707B002BA519 /* Alert */,
 				180701E81F44214C00398435 /* PopView */,
@@ -1867,6 +1901,24 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		18A4B21D1F4D65E600C64978 /* AutoSizeToDevice-master */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B21E1F4D65E600C64978 /* AutoSizeToDevice */,
+				18A4B2211F4D65E600C64978 /* README.md */,
+			);
+			path = "AutoSizeToDevice-master";
+			sourceTree = "<group>";
+		};
+		18A4B21E1F4D65E600C64978 /* AutoSizeToDevice */ = {
+			isa = PBXGroup;
+			children = (
+				18A4B21F1F4D65E600C64978 /* UIView+AutoSizeToDevice.h */,
+				18A4B2201F4D65E600C64978 /* UIView+AutoSizeToDevice.m */,
+			);
+			path = AutoSizeToDevice;
+			sourceTree = "<group>";
+		};
 		445EC465F7A6D4FF15959817 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1955,7 +2007,6 @@
 				TargetAttributes = {
 					180957721F4147E400BE185D = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W85DM2ZM4W;
 						ProvisioningStyle = Automatic;
 					};
 					1809578B1F4147E400BE185D = {
@@ -2019,6 +2070,7 @@
 				180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */,
 				185C9E291F42D06F00B4ED52 /* DelayPayCell.xib in Resources */,
 				18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */,
+				18A4B2181F4D640400C64978 /* ShopInfoHeadView.xib in Resources */,
 				180702861F456E6200398435 /* MyCarViewCell.xib in Resources */,
 				1807026B1F45609100398435 /* problemCenter.plist in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
@@ -2112,6 +2164,7 @@
 				18A4B1941F46E06B00C64978 /* JFAreaDataManager.m in Sources */,
 				185C9DF31F42A8FF00B4ED52 /* DSSaleActivityController.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
+				18A4B2171F4D640400C64978 /* ShopInfoHeadView.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
 				185C9E461F42DCD900B4ED52 /* OrderDetailView.m in Sources */,
 				1829FB531F45707B002BA519 /* LKAlertView.m in Sources */,
@@ -2126,6 +2179,7 @@
 				18A4B1A01F46F33D00C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
 				0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */,
+				18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */,
 				180702ED1F46009C00398435 /* QWPasswordController.m in Sources */,
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
 				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
@@ -2142,11 +2196,13 @@
 				185C9E101F42C2FD00B4ED52 /* MBProgressHUD.m in Sources */,
 				185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */,
 				185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */,
+				18A4B2161F4D640400C64978 /* ShopCommentController.m in Sources */,
 				185C9E3B1F42DC5A00B4ED52 /* AllOrderController.m in Sources */,
 				1807024F1F444EED00398435 /* DiscountDetailView.m in Sources */,
 				180701F31F44214C00398435 /* LewPopupViewAnimationDrop.m in Sources */,
 				180957F31F41A19100BE185D /* QWPersonHeaderTableViewCell.m in Sources */,
 				185C9E2F1F42D0EB00B4ED52 /* QWorderMenuViewController.m in Sources */,
+				18A4B2191F4D640400C64978 /* ShopIntroController.m in Sources */,
 				180957E91F41766300BE185D /* QWSubCollectionViewCell.m in Sources */,
 				1807022B1F4442F600398435 /* QWDownloadController.m in Sources */,
 				18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */,
@@ -2171,6 +2227,7 @@
 				48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */,
 				187CCBDC1F43471A00FCDF1C /* QWMerchantInTableViewCell.m in Sources */,
 				180957CC1F414D0000BE185D /* UIView+XLFrame.m in Sources */,
+				18A4B2231F4D65E600C64978 /* README.md in Sources */,
 				18508FF81F42D68400795E0A /* QWMccommentTableViewCell.m in Sources */,
 				180702DF1F45976D00398435 /* TYAlertDropDownAnimation.m in Sources */,
 				1809582E1F427FB500BE185D /* YZMenuButton.m in Sources */,
@@ -2198,6 +2255,7 @@
 				185090111F43CFD300795E0A /* QWAboutStoreViewController.m in Sources */,
 				180702311F44432F00398435 /* QWScoreController.m in Sources */,
 				180702AB1F458AB700398435 /* QWUserRightDetailController.m in Sources */,
+				18A4B2221F4D65E600C64978 /* UIView+AutoSizeToDevice.m in Sources */,
 				1809577B1F4147E400BE185D /* AppDelegate.m in Sources */,
 				185C9E3C1F42DC5A00B4ED52 /* PayOrderController.m in Sources */,
 				180702251F44428900398435 /* QWShareMoneyController.m in Sources */,
@@ -2262,6 +2320,7 @@
 				18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */,
 				1807023A1F44437700398435 /* QWCarClubController.m in Sources */,
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
+				18A4B2151F4D640400C64978 /* ShopCategoryView.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
 				180958311F427FB500BE185D /* YZSortCell.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
@@ -2444,7 +2503,7 @@
 			baseConfigurationReference = 53466B7310627D639E1C9CE9 /* Pods-QWCarWashing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W85DM2ZM4W;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;
@@ -2459,7 +2518,7 @@
 			baseConfigurationReference = F13072CE0CC61A47AEF000D7 /* Pods-QWCarWashing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W85DM2ZM4W;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;

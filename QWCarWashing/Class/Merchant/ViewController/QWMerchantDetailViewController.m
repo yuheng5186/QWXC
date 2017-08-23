@@ -19,6 +19,8 @@
 #import "UIView+TYAlertView.h"
 #import "TYAlertController+BlurEffects.h"
 
+#import "ShopViewController.h"
+
 @interface QWMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate,CellDelegate>
 {
     AppDelegate *myDelegate;
@@ -567,7 +569,7 @@
 -(void)clicktiaozhuan:(UIGestureRecognizer *)gap
 {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
-    QWAboutStoreViewController *detailController = [[QWAboutStoreViewController alloc] init];
+    ShopViewController *detailController = [[ShopViewController alloc] init];
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }
