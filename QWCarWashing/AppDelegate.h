@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWUserInfo.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) QWUserInfo *currentUser;
 @property float autoSizeScaleX;
 @property float autoSizeScaleY;
 - (CGFloat)autoScaleW:(CGFloat)w;
