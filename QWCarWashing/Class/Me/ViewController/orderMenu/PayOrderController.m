@@ -23,8 +23,9 @@ static NSString *id_delayPayCell = @"id_delayPayCell";
 
 - (UITableView *)payOrderView {
     if (!_payOrderView) {
-        UITableView *payOrderView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, self.view.bounds.size.height) style:UITableViewStyleGrouped];
+        UITableView *payOrderView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, self.view.bounds.size.height)];
         _payOrderView = payOrderView;
+        _payOrderView.backgroundColor=kColorTableBG;//tableview背景色
         [self.view addSubview:_payOrderView];
     }
     return _payOrderView;
@@ -66,7 +67,11 @@ static NSString *id_delayPayCell = @"id_delayPayCell";
     
     return delayCell;
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *HeaderInSectionview=[UIView new];
+    HeaderInSectionview.backgroundColor=[UIColor clearColor];
+    return HeaderInSectionview;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10;
 }

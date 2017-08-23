@@ -64,6 +64,14 @@
     }
     return 0.01f;
 }
+//去掉组尾的背景色
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerSection=[UIView new];
+    footerSection.backgroundColor=[UIColor clearColor];
+    return footerSection;
+    
+}
 
 -(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
 

@@ -22,8 +22,9 @@ static NSString *id_successPayCell = @"id_successPayCell";
 
 - (UITableView *)commentOrderView {
     if (!_commentOrderView) {
-        UITableView *commentOrderView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, self.view.bounds.size.height) style:UITableViewStyleGrouped];
+        UITableView *commentOrderView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, self.view.bounds.size.height)];
         _commentOrderView = commentOrderView;
+        _commentOrderView.backgroundColor=kColorTableBG;
         [self.view addSubview:_commentOrderView];
     }
     return _commentOrderView;
@@ -65,7 +66,11 @@ static NSString *id_successPayCell = @"id_successPayCell";
     
     return commentCell;
 }
-
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *HeaderInSectionview=[UIView new];
+    HeaderInSectionview.backgroundColor=[UIColor clearColor];
+    return HeaderInSectionview;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 10;
 }

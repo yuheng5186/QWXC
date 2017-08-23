@@ -30,20 +30,21 @@
 
 - (void) createSubView {
     
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*280/667) style:UITableViewStyleGrouped];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*360/667)];
     self.tableView.top              = -Main_Screen_Height*5/667;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     self.tableView.tableFooterView  = [UIView new];
-    //    self.tableView.tableHeaderView  = [UIView new];
+    
+        self.tableView.backgroundColor  = kColorTableBG;
     [self.view addSubview:self.tableView];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    UIButton *submitButton      = [UIUtil drawDefaultButton:self.contentView title:@"提交" target:self action:@selector(submitButtonClick:)];
+    UIButton *submitButton      = [UIUtil drawDefaultButton:self.view title:@"提交" target:self action:@selector(submitButtonClick:)];
     submitButton.top           = self.tableView.bottom +Main_Screen_Height*40/667;
     submitButton.centerX       = Main_Screen_Width/2;
     
@@ -70,12 +71,20 @@
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+   
+        return 0.01f;
+
     
-    return 0.01f;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *HeaderInSectionview=[UIView new];
+    HeaderInSectionview.backgroundColor=[UIColor clearColor];
+    return HeaderInSectionview;
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    
+   
     return 10.0f;
+   
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -151,7 +160,7 @@
     }else{
         cell.imageView.image                = [UIImage imageNamed:@"mimasuo"];
         
-        self.passwordAgainFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10, 45, Main_Screen_Width-Main_Screen_Width*70/375, Main_Screen_Height*40/667)];
+        self.passwordAgainFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(10*Main_Screen_Height/667, 45*Main_Screen_Height/667, Main_Screen_Width-Main_Screen_Width*70/375, Main_Screen_Height*40/667)];
         self.passwordAgainFieldText.placeholder    = @"再次输入密码";
         self.passwordAgainFieldText.delegate       = self;
         self.passwordAgainFieldText.returnKeyType  = UIReturnKeyDone;

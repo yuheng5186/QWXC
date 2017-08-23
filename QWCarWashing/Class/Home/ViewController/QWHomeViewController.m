@@ -32,6 +32,7 @@
 
 #import "PopupView.h"
 #import "LewPopupViewAnimationDrop.h"
+#import "QWViptequanViewController.h"
 @interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
 @end
@@ -144,7 +145,7 @@ static NSString *cellstr=@"Cellstr";
         
         QWScanController    *scanController             = [[QWScanController alloc]init];
         QWCardPackgeController  *cardPackgeController   = [[QWCardPackgeController alloc]init];
-        QWMembershipController  *membershipController   = [[QWMembershipController alloc]init];
+        QWViptequanViewController  *vipController   = [[QWViptequanViewController alloc]init];
         QWScoreController       *scoreController        = [[QWScoreController alloc]init];
         
         cell2.selecOptionIndexs=^(NSInteger index){
@@ -160,8 +161,9 @@ static NSString *cellstr=@"Cellstr";
                     [self.navigationController pushViewController:cardPackgeController animated:YES];
                     break;
                 case 2:
-                    membershipController.hidesBottomBarWhenPushed   = YES;
-                    [self.navigationController pushViewController:membershipController animated:YES];
+                    
+                    vipController.hidesBottomBarWhenPushed   = YES;
+                    [self.navigationController pushViewController:vipController animated:YES];
                     break;
                 case 3:
                     scoreController.hidesBottomBarWhenPushed        = YES;

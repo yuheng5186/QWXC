@@ -10,6 +10,7 @@
 #import "QWVipHeaderTableViewCell.h"
 #import "QWVipSecondTableViewCell.h"
 #import "QWwashCardTableViewCell.h"
+#import "QWHowToUpGradeController.h"
 @interface QWViptequanViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(strong,nonatomic)UITableView*tableview;
@@ -35,6 +36,7 @@
         _tableview.delegate=self;
         _tableview.dataSource=self;
         _tableview.separatorStyle=UITableViewCellSeparatorStyleSingleLine;
+        
     }
     return _tableview;
 }
@@ -77,9 +79,10 @@
 }
 - (void)clickHowToIncreaseGradeBtn {
     
-    //    HowToUpGradeController *upGradeVC = [[HowToUpGradeController alloc] init];
-    //
-    //    [self.navigationController pushViewController:upGradeVC animated:YES];
+    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+    
+    [self.navigationController pushViewController:upGradeVC animated:YES];
+
     
 }
 - (void) resetBabkButton {
@@ -102,6 +105,14 @@
 //    return 0.01f;
 //}
 
+//去掉组尾的背景色
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerSection=[UIView new];
+    footerSection.backgroundColor=[UIColor clearColor];
+    return footerSection;
+
+}
 -(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
 
 {
@@ -138,7 +149,7 @@
     if (indexPath.section == 0) {
         return 90;
     }else {
-        return 90;
+        return 70;
     }
 }
 
@@ -190,6 +201,8 @@
     if (section==2||section==1) {
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29)];
         lab.backgroundColor=[UIColor whiteColor];
+        lab.font=[UIFont systemFontOfSize:14];
+        lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
         lab.text=@"   我的特权";
         [headerview addSubview:lab];
         return headerview;
