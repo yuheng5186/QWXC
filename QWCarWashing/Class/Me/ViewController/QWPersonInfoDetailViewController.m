@@ -149,7 +149,7 @@
         }
         else if(indexPath.row==2) {
             cell.textLabel.text         = @"性别";
-            self.sexString=[UdStorage getObjectforKey:@"userSex"];
+            self.sexString=[[UdStorage getObjectforKey:@"userSex"] isEqualToString:@"0"]?@"男":@"女";
             cell.detailTextLabel.text   = self.sexString;
         }else{
             cell.textLabel.text         = @"微信绑定";
