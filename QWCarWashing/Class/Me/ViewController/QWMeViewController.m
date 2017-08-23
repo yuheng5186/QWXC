@@ -60,13 +60,26 @@ static NSString *cellstr=@"cell";
 -(void)viewWillAppear:(BOOL)animated{
     
      self.tabBarController.tabBar.hidden=NO;
-    
+    [self.tableview reloadData];
 }
 - (void)viewDidLoad {
    
     [super viewDidLoad];
     [self setNagationLeftAndRightButton];
     [self.view addSubview:self.tableview];
+//    [self.tableview reloadData];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdateUserheadimg:) name:@"updateheadimgsuccess" object:nil];
+}
+-(void)noticeupdateUserheadimg:(NSNotification *)sender{
+//        UIImageView *imageV = [[UIImageView alloc]init];
+//        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:@"Headimg"]];
+//        NSURL *url=[NSURL URLWithString:ImageURL];
+//        [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"touxiang"]];
+    
+//        [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,imagestr]] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//    self.userImageView.image=image;
+//  }];
 }
 #pragma mark-设置导航栏左右按钮
 -(void)setNagationLeftAndRightButton{
@@ -108,6 +121,7 @@ static NSString *cellstr=@"cell";
         }
         cell.backgroundColor=[UIColor clearColor];;
         cell.contentView.backgroundColor=[UIColor clearColor];
+        
          QWPersonInfoDetailViewController *personInfo=[[QWPersonInfoDetailViewController alloc]init];
         cell.ImageClicked=^(void){
             [self.navigationController pushViewController:personInfo animated:YES];

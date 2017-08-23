@@ -179,7 +179,7 @@
 //                             };
 //        NSLog(@"==dic:%@===",mulDic);
 //    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/Login",Khttp] success:^(NSDictionary *dict, BOOL success) {
-//        
+//
 //        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
 //        {
 //            NSLog(@"%@",[dict objectForKey:@"JsonData"]);
@@ -191,6 +191,7 @@
 //           [UdStorage storageObject:usertmpModel.UserName forKey:@"userName"];
 //            [UdStorage storageObject:usertmpModel.Mobile forKey:@"userPhone"];
 //            [UdStorage storageObject:usertmpModel.Sex forKey:@"userSex"];
+//                [UdStorage storageObject:usertmpModel.Headimg forKey:@"Headimg"];
 //;
 //            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Level_id"] forKey:@"Level_id"];
 //            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Account_Id"] forKey:@"Account_Id"];

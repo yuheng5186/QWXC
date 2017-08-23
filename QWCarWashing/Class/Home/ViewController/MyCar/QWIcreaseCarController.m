@@ -29,7 +29,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     // Do any additional setup after loading the view.
     self.view.backgroundColor = kColorTableBG;
     
-    UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 400)];
+    UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 420)];
     
     _carInfoView = carInfoView;
     carInfoView.backgroundColor=kColorTableBG;

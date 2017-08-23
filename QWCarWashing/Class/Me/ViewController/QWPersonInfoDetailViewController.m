@@ -127,6 +127,9 @@
     if (indexPath.section == 0) {
         cell.textLabel.text     = @"头像";
         self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-Main_Screen_Height*11/667, Main_Screen_Width*60/375, Main_Screen_Height*60/667) imageName:@"gerenxinxitou"];
+//        NSString *imagestr=[UdStorage getObjectforKey:@"Headimg"]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:@"Headimg"];
+        [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+        
         self.userImageView.left          = QWScreenWidth*275/375;
         
         
@@ -136,6 +139,7 @@
         [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         if (indexPath.row == 0) {
             cell.textLabel.text         = @"昵称";
+            
             NSString *username=[UdStorage getObjectforKey:@"userName"]==nil?phonestr:[UdStorage getObjectforKey:@"userName"];
             cell.detailTextLabel.text   = username;
             
@@ -145,6 +149,7 @@
         }
         else if(indexPath.row==2) {
             cell.textLabel.text         = @"性别";
+            self.sexString=[UdStorage getObjectforKey:@"userSex"];
             cell.detailTextLabel.text   = self.sexString;
         }else{
             cell.textLabel.text         = @"微信绑定";
@@ -250,29 +255,8 @@
                 self.sexString = @"男";
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
                 
-                NSDictionary *mulDic = @{
-                                         @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                                         @"ModifyType":@"4",
-                                         @"Sex":@"0"
-                                         };
-                NSDictionary *params = @{
-                                         @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                                         @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                                         };
-                [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
-                    
-                    
-                    
-                    NSLog(@"%@",dict);
-//                    APPDELEGATE.currentUser.userSex = @"0";
-                    [self.tableView reloadData];
-                    
-                    
-                    
-                } fail:^(NSError *error) {
-                    [self.view showInfo:@"设置失败" autoHidden:YES interval:2];
-                }];
                 
+                [self updateSexInfoAndsexstr:@"0" andupdatetypenum:@"4"];
                 
                 
                 
@@ -283,28 +267,8 @@
             {
                 self.sexString = @"女";
                 [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+                 [self updateSexInfoAndsexstr:@"1" andupdatetypenum:@"4"];
                 
-                
-                NSDictionary *mulDic = @{
-                                         @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                                         @"ModifyType":@"4",
-                                         @"Sex":@"1"
-                                         };
-                NSDictionary *params = @{
-                                         @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                                         @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                                         };
-                [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
-                    
-                    
-//                    APPDELEGATE.currentUser.userSex = @"1";
-                    NSLog(@"%@",dict);
-                    [self.tableView reloadData];
-                    
-                    
-                } fail:^(NSError *error) {
-                    [self.view showInfo:@"设置失败" autoHidden:YES interval:2];
-                }];
                 
                 
             }
@@ -314,23 +278,49 @@
         }
     }
 }
-#pragma mark-delegate
+#pragma mark-delegate 点击头像图片选择
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *imagePick = [info objectForKey:UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:nil];
-    
+    [self updateHeaderInfoAndimage:imagePick andupdatetypenum:@"1"];
 }
-//修改头像数据
--(void)updateHeaderInfoAndimage:(UIImage*)headerimage{
-    NSLog(@"%@",[UdStorage getObjectforKey:@"Account_Id"]);
+//修改性别
+
+-(void)updateSexInfoAndsexstr:(NSString*)sexstr andupdatetypenum:(NSString *)typenum{
     
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                             @"ModifyType":@"1",
+                             @"ModifyType":typenum,
+                             @"Sex":sexstr
+                             };
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        [UdStorage storageObject:sexstr forKey:@"userSex"];
+        
+        NSLog(@"%@",dict);
+        //                    APPDELEGATE.currentUser.userSex = @"0";
+        [self.tableView reloadData];
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"设置失败" autoHidden:YES interval:2];
+    }];
+    
+}
+//修改头像数据
+-(void)updateHeaderInfoAndimage:(UIImage*)headerimage andupdatetypenum:(NSString *)typenum{
+    
+    //头像1
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"ModifyType":typenum,
                              @"Headimg":[self imageToString:headerimage]
                              };
     
-    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
+    NSLog(@"%@",mulDic);
+   
+    [AFNetworkingTool postimage:mulDic andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
         NSLog(@"%@",dict);
         
@@ -339,8 +329,14 @@
         {
             
             //            APPDELEGATE.currentUser.Headimg = [[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"];
-//            UdStorage storageObject:<#(id)#> forKey:@"Headimg"
-            self.userImageView.image = headerimage;
+//            UdStorage storageObject: forKey:@"Headimg"
+//            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"] forKey:@"Headimg"];
+//         [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+////            刷新上一页面头像
+//            NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
+//            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            APPDELEGATE.currentUser.Headimg = [[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"];
+            self.userImageView.image =headerimage ;
             
             NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter]postNotification:notice];

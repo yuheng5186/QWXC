@@ -269,7 +269,60 @@
     }];
 
 }
-
++ (void)postimage:(NSDictionary *)param andurl:(NSString *)url success:(SuccessBlock)success  fail:(AFNErrorBlock)fail
+{
+    //MD5加密
+    NSDictionary *params = @{
+                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool base64convertToJsonData:param]],
+                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool base64convertToJsonData:param]]]
+                             };
+    // 创建请求类
+    AFHTTPSessionManager *manager = [self manager];
+    [manager POST:url parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
+        // 这里可以获取到目前数据请求的进度
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 请求成功
+        if(responseObject){
+            NSString *result  =[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSString *tempStr1=[[result description] stringByReplacingOccurrencesOfString:@"\\u"withString:@"\\U"];
+            NSString *tempStr2 =[tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
+            NSString *tempStr3 =[[@"\"" stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
+            NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
+            NSString *str =[NSPropertyListSerialization propertyListFromData:tempData
+                                                            mutabilityOption:NSPropertyListImmutable
+                                                                      format:NULL
+                                                            errorDescription:NULL];
+            //            NSLog(@"%@",str);
+            
+            NSError *errorstr;
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&errorstr];
+            
+            if (!errorstr) {
+                if (dict==nil) {
+                    
+                    //                    [MBProgressHUD showMsg:str duration:1 imgName:@""];
+                }
+                success(dict,YES);
+                
+            }else{
+                NSMutableDictionary *dicts=[NSMutableDictionary dictionaryWithObject:str forKey:@"status"];
+                
+                NSLog(@"%@",dicts);
+                success(dicts,YES);
+                NSLog(@"错误信息：%@",errorstr);
+                
+            }
+            
+            
+        } else {
+            success(@{@"msg":@"暂无数据"}, NO);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        // 请求失败
+        fail(error);
+    }];
+    
+}
 #pragma mark - POST请求
 + (void)loginWithUserAccountTWO:(NSDictionary *)param andurl:(NSString *)url success:(SuccessBlock)success  fail:(AFNErrorBlock)fail
 {

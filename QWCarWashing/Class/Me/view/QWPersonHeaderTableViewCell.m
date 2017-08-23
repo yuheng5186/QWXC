@@ -33,8 +33,10 @@
 {
    
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-     
+       
         [self initView];
+       NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+       [center addObserver:self selector:@selector(noticeupdateUserheadimg:) name:@"updateheadimgsuccess" object:nil];
     }
     return self;
 }
@@ -90,6 +92,7 @@
 -(UIButton *)headerBtn{
     if (!_headerBtn) {
         _headerBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 10, 80, 80)];
+        NSString * headimagestr= [UdStorage getObjectforKey:@"Headimg"]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:@"Headimg"];
         [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
         _headerBtn.layer.cornerRadius = 10;
        [_headerBtn addTarget:self action:@selector(userInfoDetail:) forControlEvents:BtnTouchUpInside];
@@ -109,7 +112,10 @@
 -(UILabel *)username{
     if (!_username) {
         _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+15, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/4, 100, 30)];
-        _username.text=@"用户名";
+       NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:@"userPhone"]];
+       [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+       NSString *username=[UdStorage getObjectforKey:@"userName"]==nil?phonestr:[UdStorage getObjectforKey:@"userName"];
+        _username.text=username;
         
         
         
@@ -159,5 +165,37 @@
    if (self.qiandaoClicked) {
       self.qiandaoClicked();
    }
+}
+#pragma mark - Setters
+-(void)setUsermodel:(QWUserInfo *)usermodel{
+   _usermodel = usermodel;
+   self.username.text = usermodel.UserName;
+ NSString * headimagestr= usermodel.Headimg==nil?@"gerenxinxitou":usermodel.Headimg;
+   [_headerBtn setBackgroundImage:[UIImage imageNamed:headimagestr] forState:BtnNormal];
+//   self.timelab.text = model.ly_time;
+   
+   
+}
+
+
+-(void)noticeupdateUserheadimg:(NSNotification *)sender{
+   NSLog(@"%@",[UdStorage getObjectforKey:@"Headimg"]);
+//   -(void)noticeupdateUserheadimg:(NSNotification *)sender{
+      //    UIImageView *imageV = [[UIImageView alloc]init];
+      //    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.userImagePath];
+      //    NSURL *url=[NSURL URLWithString:ImageURL];
+      //    [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"touxiang"]];
+      
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+         NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.Headimg];
+         NSURL *url=[NSURL URLWithString:ImageURL];
+         NSData *data=[NSData dataWithContentsOfURL:url];
+         UIImage *img=[UIImage imageWithData:data];
+         dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.headerBtn setImage:img forState:UIControlStateNormal];
+         });
+      });
+//   }
+//   [self.headerBtn.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
 }
 @end

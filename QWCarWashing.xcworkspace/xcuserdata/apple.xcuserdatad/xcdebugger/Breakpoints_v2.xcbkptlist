@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/QWLoginView/model/QWLoginVC.m"
-            timestampString = "525173350.697745"
+            timestampString = "525176217.572836"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "-getVeriifyByButtonClick:"
             landmarkType = "7">
          </BreakpointContent>

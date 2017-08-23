@@ -12,4 +12,5 @@
 @property(nonatomic,copy) void (^ImageClicked)(void);
 @property(nonatomic,copy) void (^vipClicked)(void);
 @property(nonatomic,copy) void (^qiandaoClicked)(void);
+@property(nonatomic,strong)QWUserInfo *usermodel;
 @end

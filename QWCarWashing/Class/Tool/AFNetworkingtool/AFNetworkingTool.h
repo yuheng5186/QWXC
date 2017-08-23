@@ -24,7 +24,7 @@ typedef void (^AFNErrorBlock)(NSError *error); // 访问失败block
 + (void)loginWithUserAccount:(NSDictionary *)param andurl:(NSString *)url success:(SuccessBlock)success  fail:(AFNErrorBlock)fail;
 + (void)loginWithUserImageAccount:(NSDictionary *)param andurl:(NSString *)url success:(SuccessImageBlock)success  fail:(AFNErrorBlock)fail;
 + (void)post:(NSDictionary *)param andurl:(NSString *)url success:(SuccessBlock)success  fail:(AFNErrorBlock)fail;
-
++ (void)postimage:(NSDictionary *)param andurl:(NSString *)url success:(SuccessBlock)success  fail:(AFNErrorBlock)fail;
 #pragma mark - 下载
 - (void)downLoadWithUrlString:(NSString *)urlString;
 #pragma mark - 上传
