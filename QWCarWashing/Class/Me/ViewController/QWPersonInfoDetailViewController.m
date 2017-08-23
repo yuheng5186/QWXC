@@ -136,8 +136,8 @@
         [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         if (indexPath.row == 0) {
             cell.textLabel.text         = @"昵称";
-            NSString *username=[UdStorage getObjectforKey:@"userName"];
-            cell.detailTextLabel.text   = phonestr;
+            NSString *username=[UdStorage getObjectforKey:@"userName"]==nil?phonestr:[UdStorage getObjectforKey:@"userName"];
+            cell.detailTextLabel.text   = username;
             
         }else if (indexPath.row == 1){
             cell.textLabel.text         = @"手机号";

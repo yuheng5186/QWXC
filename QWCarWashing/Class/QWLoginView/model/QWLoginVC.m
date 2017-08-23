@@ -155,19 +155,19 @@
 }
 #pragma mark-登录按钮点击事件
 - (void) loginButtonClick:(id)sender {
-    
-        if (self.userMobileFieldText.text.length == 11) {
-            if (self.verifyFieldText.text.length == 4) {
-                //请求数据
-                [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
-            }
-            else{
-                [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
-            }
-    
-        }else {
-            [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
-        }
+    [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
+//        if (self.userMobileFieldText.text.length == 11) {
+//            if (self.verifyFieldText.text.length == 4) {
+//                //请求数据
+//                [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
+//            }
+//            else{
+//                [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
+//            }
+//    
+//        }else {
+//            [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
+//        }
     
 }
 #pragma mark-请求用户登录数据
