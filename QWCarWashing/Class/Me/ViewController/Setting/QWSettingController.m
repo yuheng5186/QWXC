@@ -103,7 +103,7 @@
 
 -(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1f;
+    return 1.0f;
 }
 //
 //-(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
@@ -121,19 +121,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    //    switch (section) {
-    //        case 0:
-    //            return 1;
-    //            break;
-    //        case 1:
-    //            return 2;
-    //            break;
-    //        case 2:
-    //            return 1;
-    //            break;
-    //        default:
-    //            break;
-    //    }
+
     return 3;
     
 }
@@ -152,8 +140,8 @@
     }
     cell.backgroundColor    = [UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.textColor    = [UIColor colorFromHex:@"#999999"];
-    cell.textLabel.font         = [UIFont systemFontOfSize:13];
+    cell.textLabel.textColor    = [UIColor blackColor];
+    cell.textLabel.font         = [UIFont systemFontOfSize:15];
     
     if (indexPath.row == 0) {
         cell.textLabel.text     = @"密码管理";
