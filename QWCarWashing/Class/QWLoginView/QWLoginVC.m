@@ -60,7 +60,7 @@
     NSString   *titleString     = @"蔷薇爱车";
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc]initWithString:titleString];
 //    CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-20 * (CGFloat)M_PI / 180), 1, 0, 0);
-    UIFont     *titleFont       = [UIFont boldSystemFontOfSize:Main_Screen_Height*25/667];
+    UIFont     *titleFont       = [UIFont boldSystemFontOfSize:Main_Screen_Height*20/667];
     UILabel *titleLabel         = [UIUtil drawLabelInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*30/667) font:titleFont text:titleString isCenter:NO];
     titleLabel.attributedText   = attributed;
 //    titleLabel.transform        = matrix;
