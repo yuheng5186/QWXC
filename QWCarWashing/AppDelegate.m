@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "QWLoginVC.h"
-
+#import "QWGuideViewController.h"
 @interface AppDelegate ()
 {
     AppDelegate *myDelegate;
@@ -48,10 +48,13 @@
     }
 #pragma mark-是否已登录
     if (![UdStorage getObjectforKey:@"Account_Id"]) {
-        QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
-        QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
-        nav.navigationBar.hidden      = YES;
-        
+//        QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
+//        QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
+//        nav.navigationBar.hidden      = YES;
+//        
+//        self.window.rootViewController      = nav;
+        QWGuideViewController *guideControl = [[QWGuideViewController alloc]init];
+        UINavigationController *nav         = [[UINavigationController alloc]initWithRootViewController:guideControl];
         self.window.rootViewController      = nav;
         
     }else{

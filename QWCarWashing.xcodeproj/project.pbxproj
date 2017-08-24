@@ -14,6 +14,10 @@
 		0401E8C71F4D72A200F0CA79 /* QWMemberRightsDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8C61F4D72A200F0CA79 /* QWMemberRightsDetailController.m */; };
 		0401E8D01F4EABF200F0CA79 /* QWStartWashingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8CF1F4EABF200F0CA79 /* QWStartWashingController.m */; };
 		0401E8D31F4EAC0600F0CA79 /* QWCompleteWashingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E8D21F4EAC0600F0CA79 /* QWCompleteWashingController.m */; };
+		0401E91E1F4F01A600F0CA79 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9191F4F01A600F0CA79 /* EAIntroPage.m */; };
+		0401E91F1F4F01A600F0CA79 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E91B1F4F01A600F0CA79 /* EAIntroView.m */; };
+		0401E9201F4F01A600F0CA79 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */; };
+		0401E9231F4F01CC00F0CA79 /* QWGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -283,6 +287,14 @@
 		0401E8CF1F4EABF200F0CA79 /* QWStartWashingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWStartWashingController.m; sourceTree = "<group>"; };
 		0401E8D11F4EAC0600F0CA79 /* QWCompleteWashingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCompleteWashingController.h; sourceTree = "<group>"; };
 		0401E8D21F4EAC0600F0CA79 /* QWCompleteWashingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCompleteWashingController.m; sourceTree = "<group>"; };
+		0401E9181F4F01A600F0CA79 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
+		0401E9191F4F01A600F0CA79 /* EAIntroPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroPage.m; sourceTree = "<group>"; };
+		0401E91A1F4F01A600F0CA79 /* EAIntroView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroView.h; sourceTree = "<group>"; };
+		0401E91B1F4F01A600F0CA79 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
+		0401E91C1F4F01A600F0CA79 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARestrictedScrollView.h; sourceTree = "<group>"; };
+		0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
+		0401E9211F4F01CC00F0CA79 /* QWGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWGuideViewController.h; sourceTree = "<group>"; };
+		0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWGuideViewController.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -770,6 +782,19 @@
 				18A4B2341F4D922400C64978 /* ShareWechatView.m */,
 			);
 			path = ShareView;
+			sourceTree = "<group>";
+		};
+		0401E9171F4F011F00F0CA79 /* EAIntroView */ = {
+			isa = PBXGroup;
+			children = (
+				0401E9181F4F01A600F0CA79 /* EAIntroPage.h */,
+				0401E9191F4F01A600F0CA79 /* EAIntroPage.m */,
+				0401E91A1F4F01A600F0CA79 /* EAIntroView.h */,
+				0401E91B1F4F01A600F0CA79 /* EAIntroView.m */,
+				0401E91C1F4F01A600F0CA79 /* EARestrictedScrollView.h */,
+				0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */,
+			);
+			path = EAIntroView;
 			sourceTree = "<group>";
 		};
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
@@ -1448,6 +1473,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0401E9171F4F011F00F0CA79 /* EAIntroView */,
 				182E93191F4D815200819B79 /* MD5 */,
 				182E93061F4D806D00819B79 /* AFNetworkingtool */,
 				18A4B21D1F4D65E600C64978 /* AutoSizeToDevice-master */,
@@ -1594,6 +1620,8 @@
 				182E93111F4D810300819B79 /* QWLoginVC.m */,
 				182E93141F4D810300819B79 /* QWAgreementVC.h */,
 				182E93151F4D810300819B79 /* QWAgreementVC.m */,
+				0401E9211F4F01CC00F0CA79 /* QWGuideViewController.h */,
+				0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */,
 			);
 			path = QWLoginView;
 			sourceTree = "<group>";
@@ -2269,6 +2297,7 @@
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				18A4B1A01F46F33D00C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
+				0401E91E1F4F01A600F0CA79 /* EAIntroPage.m in Sources */,
 				182E934C1F4ECA4C00819B79 /* YZPullDownMenu.m in Sources */,
 				0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */,
 				18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */,
@@ -2276,6 +2305,7 @@
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
 				180702771F4560E000398435 /* UIView+HQCategory.m in Sources */,
 				180957EC1F4177B900BE185D /* UIColor+HEXString.m in Sources */,
+				0401E91F1F4F01A600F0CA79 /* EAIntroView.m in Sources */,
 				18A4B19A1F46E06B00C64978 /* JFCityTableViewCell.m in Sources */,
 				185C9E3F1F42DC7600B4ED52 /* CommentOrderController.m in Sources */,
 				18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */,
@@ -2309,6 +2339,7 @@
 				18A4B2361F4D922400C64978 /* ShareWechatView.m in Sources */,
 				180957E31F414F8E00BE185D /* QWShoppingCarViewController.m in Sources */,
 				185090121F43CFD300795E0A /* QWMerChantCommentViewController.m in Sources */,
+				0401E9201F4F01A600F0CA79 /* EARestrictedScrollView.m in Sources */,
 				180702E11F45976D00398435 /* TYAlertScaleFadeAnimation.m in Sources */,
 				180702531F4455C000398435 /* QWRechargeController.m in Sources */,
 				18A4B2351F4D922400C64978 /* ShareWeChatController.m in Sources */,
@@ -2322,6 +2353,7 @@
 				180702431F444E4D00398435 /* QWDiscountController.m in Sources */,
 				180702781F4560E000398435 /* HQTableViewCell.m in Sources */,
 				182E931C1F4D815200819B79 /* LCMD5Tool.m in Sources */,
+				0401E9231F4F01CC00F0CA79 /* QWGuideViewController.m in Sources */,
 				48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */,
 				187CCBDC1F43471A00FCDF1C /* QWMerchantInTableViewCell.m in Sources */,
 				180957CC1F414D0000BE185D /* UIView+XLFrame.m in Sources */,
