@@ -269,6 +269,7 @@ static NSString *cellstr=@"cell";
 }
 
 
+#pragma mark - modal代理
 - (void)setTabBarIsHide:(UIViewController *)VC {
     
     self.tabBarController.tabBar.hidden = NO;
