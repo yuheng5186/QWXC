@@ -11,7 +11,8 @@
 @interface QWUserInfo : NSObject
 @property (assign,nonatomic)NSInteger Account_Id;
 @property (assign,nonatomic)NSInteger Level_id;
-@property (copy, nonatomic)NSString *Age,*Headimg,*Hobby,*Memo,*Mobile,*ModifyType,*Name,*usermemo,*Occupation,*Sex,*UserName,*VerCode,*UserScore;
+@property (assign,nonatomic)NSInteger Sex;
+@property (copy, nonatomic)NSString *Age,*Headimg,*Hobby,*Memo,*Mobile,*ModifyType,*Name,*usermemo,*Occupation,*UserName,*VerCode,*UserScore;
 
 //@property (copy, nonatomic)NSString *userName,*Accountname,*userImagePath,*userPhone,*userSex,*userAge,*userhobby,*usermemo,*useroccupation,*userVerCode,*userOccupation,*userModifyType;
 

@@ -68,7 +68,12 @@ static NSString *cellstr=@"cell";
     [self.view addSubview:self.tableview];
 //    [self.tableview reloadData];
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];
     [center addObserver:self selector:@selector(noticeupdateUserheadimg:) name:@"updateheadimgsuccess" object:nil];
+}
+//修改昵称通知
+-(void)noticeupdateUserName:(NSString *)username{
+    
 }
 -(void)noticeupdateUserheadimg:(NSNotification *)sender{
 //        UIImageView *imageV = [[UIImageView alloc]init];
@@ -264,6 +269,7 @@ static NSString *cellstr=@"cell";
 }
 
 
+#pragma mark - modal代理
 - (void)setTabBarIsHide:(UIViewController *)VC {
     
     self.tabBarController.tabBar.hidden = NO;
