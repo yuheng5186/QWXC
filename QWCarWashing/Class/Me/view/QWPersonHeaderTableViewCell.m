@@ -36,50 +36,46 @@
        
         [self initView];
        NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+       [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];
        [center addObserver:self selector:@selector(noticeupdateUserheadimg:) name:@"updateheadimgsuccess" object:nil];
     }
     return self;
 }
 
+//修改昵称通知
+-(void)noticeupdateUserName:(NSString *)username{
+   NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserNamer]];
+   [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+   NSString *usernames=[UdStorage getObjectforKey:UserNamer]==nil?phonestr:[UdStorage getObjectforKey:UserNamer];
+   _username.text=usernames;
+   
+}
+-(void)noticeupdateUserheadimg:(NSNotification *)sender{
+   NSLog(@"%@",[UdStorage getObjectforKey:UserHead]);
+   //   -(void)noticeupdateUserheadimg:(NSNotification *)sender{
+   //    UIImageView *imageV = [[UIImageView alloc]init];
+   //    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.userImagePath];
+   //    NSURL *url=[NSURL URLWithString:ImageURL];
+   //    [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"touxiang"]];
+   
+   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+      NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.Headimg];
+      NSURL *url=[NSURL URLWithString:ImageURL];
+      NSData *data=[NSData dataWithContentsOfURL:url];
+      UIImage *img=[UIImage imageWithData:data];
+      dispatch_sync(dispatch_get_main_queue(), ^{
+         [self.headerBtn setImage:img forState:UIControlStateNormal];
+      });
+   });
+   //   }
+   //   [self.headerBtn.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+}
 -(void)initView{
    [self.contentView addSubview:self.headerBackView];
    [self.headerBackView addSubview:self.headerBtn];
    [self.headerBackView addSubview:self.username];
    [self.headerBackView addSubview:self.privilegeButton];
    [self.headerBackView addSubview:self.qiandaoButton];
-//   [self.contentView sd_addSubviews:@[self.headerBackView,self.headerBtn,self.username,self.privilegeButton,self.qiandaoButton]];
-//   
-//   
-//   _headerBackView.sd_layout
-//   .rightSpaceToView(self.contentView, 10)
-//   .bottomSpaceToView(self.contentView, 0)
-//   .topSpaceToView(self.contentView, 0)
-//   .leftSpaceToView(self.contentView, 10);
-//   
-//   _headerBtn.sd_layout
-//   .topSpaceToView(self.headerBackView, 14)
-//   .leftSpaceToView(self.headerBackView, 13)
-//   .heightIs(80)
-//   .widthIs(80);
-//   
-//   _username.sd_layout
-//   .topSpaceToView(self.headerBackView, self.headerBtn.bounds.size.height/4)
-//   .leftSpaceToView(self.headerBtn, 15)
-//   .bottomSpaceToView(self.privilegeButton,18)
-//   .rightSpaceToView(self.headerBackView,0);
-//   
-//   _privilegeButton.sd_layout
-//   .leftEqualToView(self.username)
-//   .rightSpaceToView(self.qiandaoButton,10)
-//   .heightIs(60)
-//   .widthIs(15);
-//   
-//   _qiandaoButton.sd_layout
-//   .topEqualToView(self.privilegeButton)
-//   .rightSpaceToView(self.privilegeButton,10)
-//   .heightIs(60)
-//   .widthIs(15);
-
 }
 -(UIView *)headerBackView{
    if (!_headerBackView) {
@@ -92,7 +88,7 @@
 -(UIButton *)headerBtn{
     if (!_headerBtn) {
         _headerBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 10, 80, 80)];
-        NSString * headimagestr= [UdStorage getObjectforKey:@"Headimg"]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:@"Headimg"];
+        NSString * headimagestr= [UdStorage getObjectforKey:UserHead]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:UserHead];
         [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
         _headerBtn.layer.cornerRadius = 10;
        [_headerBtn addTarget:self action:@selector(userInfoDetail:) forControlEvents:BtnTouchUpInside];
@@ -178,24 +174,5 @@
 }
 
 
--(void)noticeupdateUserheadimg:(NSNotification *)sender{
-   NSLog(@"%@",[UdStorage getObjectforKey:@"Headimg"]);
-//   -(void)noticeupdateUserheadimg:(NSNotification *)sender{
-      //    UIImageView *imageV = [[UIImageView alloc]init];
-      //    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.userImagePath];
-      //    NSURL *url=[NSURL URLWithString:ImageURL];
-      //    [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"touxiang"]];
-      
-      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-         NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.Headimg];
-         NSURL *url=[NSURL URLWithString:ImageURL];
-         NSData *data=[NSData dataWithContentsOfURL:url];
-         UIImage *img=[UIImage imageWithData:data];
-         dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.headerBtn setImage:img forState:UIControlStateNormal];
-         });
-      });
-//   }
-//   [self.headerBtn.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
-}
+
 @end

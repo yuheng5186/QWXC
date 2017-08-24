@@ -60,6 +60,20 @@
 //用户信息
 #import "QWUserInfo.h"
 
+//数据本地化
+//NSUserDefaults 保存数据
+#define IsNotFirstOpen   @"isNotFirstOpen"       //不是第一次打开
+#define Userid           @"Account_Id"               //用户id
+#define UserLevelid           @"Level_id"               //用户id
+#define UserNamer         @"userName"             //用户名
+#define UserPhone        @"userPhone"            //用户手机号码
+#define UserType         @"userType"             //用户类型
+#define UserHead         @"Headimg"             //用户头像
+#define UserSex         @"userSex"             //用户性别
+#define UserAge        @"userAge"             //用户年龄
+#define UserLoading      @"userLoading"          //用户登录
+#define orderPayId       @"orderPayId"           //支付id
+
 //颜色
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #import "UIColor+HEXString.h"

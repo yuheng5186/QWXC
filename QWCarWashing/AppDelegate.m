@@ -34,7 +34,7 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     
-    myDelegate = [[UIApplication sharedApplication] delegate];
+    
     
     if(QWScreenheight > 568)
     {
@@ -46,13 +46,24 @@
         myDelegate.autoSizeScaleX = QWScreenWidth/375;
         myDelegate.autoSizeScaleY = QWScreenheight/667;
     }
+#pragma mark-是否已登录
+    if (![UdStorage getObjectforKey:@"Account_Id"]) {
+        QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
+        QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
+        nav.navigationBar.hidden      = YES;
+        
+        self.window.rootViewController      = nav;
+        
+    }else{
+        QWTabBarController *menuTabBarController              = [[QWTabBarController alloc] init];
+        
+        menuTabBarController.tabBar.backgroundColor=[UIColor whiteColor];
+        self.window.rootViewController      = menuTabBarController;
+
+    }
     
     
-    QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
-    QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
-    nav.navigationBar.hidden      = YES;
     
-    self.window.rootViewController      = nav;
     
     
     return YES;
