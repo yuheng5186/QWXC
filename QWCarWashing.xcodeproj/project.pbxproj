@@ -149,6 +149,7 @@
 		182E93171F4D810300819B79 /* QWUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93131F4D810300819B79 /* QWUserInfo.m */; };
 		182E93181F4D810300819B79 /* QWAgreementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93151F4D810300819B79 /* QWAgreementVC.m */; };
 		182E931C1F4D815200819B79 /* LCMD5Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E931B1F4D815200819B79 /* LCMD5Tool.m */; };
+		182E93201F4E838B00819B79 /* QWUpdatePhoneNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
 		18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FEE1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m */; };
 		18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FF11F42CCDD00795E0A /* QWDetailAddressTableViewCell.m */; };
@@ -537,6 +538,8 @@
 		182E93151F4D810300819B79 /* QWAgreementVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWAgreementVC.m; sourceTree = "<group>"; };
 		182E931A1F4D815200819B79 /* LCMD5Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCMD5Tool.h; sourceTree = "<group>"; };
 		182E931B1F4D815200819B79 /* LCMD5Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMD5Tool.m; sourceTree = "<group>"; };
+		182E931E1F4E838B00819B79 /* QWUpdatePhoneNextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUpdatePhoneNextVC.h; sourceTree = "<group>"; };
+		182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUpdatePhoneNextVC.m; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -1030,6 +1033,7 @@
 		180702E71F46005000398435 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				182E931D1F4E834200819B79 /* updatenextStep */,
 				180702E81F46007300398435 /* QWSettingController.h */,
 				180702E91F46007300398435 /* QWSettingController.m */,
 				180702EB1F46009C00398435 /* QWPasswordController.h */,
@@ -1704,6 +1708,15 @@
 			path = MD5;
 			sourceTree = "<group>";
 		};
+		182E931D1F4E834200819B79 /* updatenextStep */ = {
+			isa = PBXGroup;
+			children = (
+				182E931E1F4E838B00819B79 /* QWUpdatePhoneNextVC.h */,
+				182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */,
+			);
+			name = updatenextStep;
+			sourceTree = "<group>";
+		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
 			isa = PBXGroup;
 			children = (
@@ -2328,6 +2341,7 @@
 				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
 				182E930D1F4D806D00819B79 /* AFNetworkingTool.m in Sources */,
 				18A4B1A31F46F36F00C64978 /* payCardDetailCell.m in Sources */,
+				182E93201F4E838B00819B79 /* QWUpdatePhoneNextVC.m in Sources */,
 				1807029B1F45839B00398435 /* QWHowToUpGradeController.m in Sources */,
 				180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */,
 				180702A11F45848B00398435 /* QWEarnScoreController.m in Sources */,

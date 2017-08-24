@@ -1,32 +1,29 @@
 //
-//  QWChangePhoneController.m
+//  QWUpdatePhoneNextVC.m
 //  QWCarWashing
 //
-//  Created by Mac WuXinLing on 2017/8/22.
+//  Created by apple on 2017/8/24.
 //  Copyright © 2017年 apple. All rights reserved.
 //
 
-#import "QWChangePhoneController.h"
 #import "QWUpdatePhoneNextVC.h"
-@interface QWChangePhoneController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+
+@interface QWUpdatePhoneNextVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UITextField *phoneNumberText;
 @property (nonatomic, strong) UITextField *verifyNumberFieldText;
 @property (nonatomic, strong) NSString    *phoneString;
-@property (nonatomic, strong) NSString    *verifyNumberString;
 @property (nonatomic,strong) NSTimer *timer;
 @property (nonatomic, strong)UIButton *getVeriifyStrButton;
 @property (nonatomic,assign) int second;
 @property (nonatomic, strong) UIButton *resendFakeBtn;
-
 @end
 
-@implementation QWChangePhoneController
+@implementation QWUpdatePhoneNextVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.title      = @"修改手机号";
     self.phoneString=[UdStorage getObjectforKey:UserPhone];
     [self createSubView];
@@ -47,28 +44,58 @@
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    UIButton *nextButton      = [UIUtil drawDefaultButton:self.view title:@"下一步" target:self action:@selector(nextButtonClick:)];
+    UIButton *nextButton      = [UIUtil drawDefaultButton:self.view title:@"保存" target:self action:@selector(nextButtonClick:)];
     nextButton.top           = self.tableView.bottom +Main_Screen_Height*40/667;
     nextButton.centerX       = Main_Screen_Width/2;
     
 }
-#pragma mark- 3#修改手机
+#pragma mark-下一步提交修改手机 3#修改手机
 - (void) nextButtonClick:(id)sender {
-   
-    if (self.verifyNumberFieldText.text.length == 4 &&[self.verifyNumberFieldText.text isEqualToString:self.verifyNumberString]) {
-         QWUpdatePhoneNextVC *updatePhoneNextvc=[[QWUpdatePhoneNextVC alloc]init];
-         [self.navigationController pushViewController:updatePhoneNextvc animated:YES];
-        
+    
+    if (self.phoneNumberText.text.length == 11) {
+        if (self.verifyNumberFieldText.text.length == 4) {
+            //请求数据
+            [self updateUserphone:self.phoneNumberText.text andverifyNumberStr:self.verifyNumberFieldText.text];
         }
         else{
             [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
         }
-    
+        
+    }else {
+        [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
+    }
 }
-#pragma mark-修改手机
--(void)updatephonestr:(NSString *)phonestr{
+#pragma mark-修改手机号
+-(void)updateUserphone:(NSString *)Userphone andverifyNumberStr:(NSString *)verifyNumberstr{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"ModifyType":@"3",
+                             @"Mobile":Userphone,
+                             @"VerCode":verifyNumberstr
+                             };
+    NSLog(@"%@",mulDic);
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        NSLog(@"==%@==",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            
+            [UdStorage storageObject:Userphone forKey:UserPhone];
+            NSNotification * notice = [NSNotification notificationWithName:@"updatephonesuccess" object:nil userInfo:@{@"userphone":Userphone}];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else
+        {
+            [self.view showInfo:@"修改失败" autoHidden:YES interval:1];
+        }
+        
+    } fail:^(NSError *error) {
+        NSLog(@"==+++%@+++",error);
+        [self.view showInfo:@"修改失败" autoHidden:YES interval:1];
+    }];
     
-
 }
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,11 +144,11 @@
         
         NSString *getVeriifyStr      = @"获取验证码";
         UIFont *getVeriifyStrFont          = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
-        self.getVeriifyStrButton      = [UIUtil drawButtonInView:cell.contentView frame:CGRectMake(0, 0, Main_Screen_Width*110/375, Main_Screen_Height*40/667) text:getVeriifyStr font:getVeriifyStrFont color:[UIColor whiteColor] target:self action:@selector(getVeriifyBtnClick:)];
-        self.getVeriifyStrButton.backgroundColor= [UIColor colorWithHex:0xFFB500 alpha:1.0];
-        self.getVeriifyStrButton.layer.cornerRadius = Main_Screen_Height*20/667;
-        self.getVeriifyStrButton.right          = Main_Screen_Width -Main_Screen_Width*10/375;
-        self.getVeriifyStrButton.centerY        = self.phoneNumberText.centerY-Main_Screen_Height*5/667;
+        UIButton *getVeriifyStrButton      = [UIUtil drawButtonInView:cell.contentView frame:CGRectMake(0, 0, Main_Screen_Width*110/375, Main_Screen_Height*40/667) text:getVeriifyStr font:getVeriifyStrFont color:[UIColor whiteColor] target:self action:@selector(getVeriifyBtnClick:)];
+        getVeriifyStrButton.backgroundColor= [UIColor colorWithHex:0xFFB500 alpha:1.0];
+        getVeriifyStrButton.layer.cornerRadius = Main_Screen_Height*20/667;
+        getVeriifyStrButton.right          = Main_Screen_Width -Main_Screen_Width*10/375;
+        getVeriifyStrButton.centerY        = self.phoneNumberText.centerY-Main_Screen_Height*5/667;
     }else if (indexPath.row == 1){
         self.verifyNumberFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*150/375, Main_Screen_Height*40/667)];
         self.verifyNumberFieldText.placeholder    = @"请输入验证码";
@@ -183,22 +210,19 @@
     if (self.second == 0) {
         
         [self.view showInfo:@"未收到验证码，请点击重新发送！" autoHidden:YES interval:2];
-        self.getVeriifyStrButton.hidden = NO;
-        self.resendFakeBtn.hidden = NO;
-        self.getVeriifyStrButton.enabled = YES;
-        self.resendFakeBtn.enabled = YES;
-        [self.getVeriifyStrButton setTitle:@"重新发送" forState:UIControlStateNormal];
+                self.getVeriifyStrButton.hidden = NO;
+                self.resendFakeBtn.hidden = NO;
+                self.getVeriifyStrButton.enabled = YES;
+                self.resendFakeBtn.enabled = YES;
+                [self.getVeriifyStrButton setTitle:@"重新发送" forState:UIControlStateNormal];
         
         [self.timer invalidate];
         
     } else {
-        
-        self.getVeriifyStrButton.enabled = NO;
-        self.resendFakeBtn.enabled = NO;
-        //        [self.resendBtn setTitle:NSLocalizedString(@"Waiting", nil) forState:UIControlStateNormal];
-        //        self.secondLbl.hidden = NO;
-        NSString *text = [NSString stringWithFormat:@"%d%@",self.second--,@"s"];
-        [self.getVeriifyStrButton setTitle:text forState:UIControlStateNormal];
+                self.getVeriifyStrButton.enabled = NO;
+                self.resendFakeBtn.enabled = NO;
+                NSString *text = [NSString stringWithFormat:@"%d%@",self.second--,@"s"];
+                [self.getVeriifyStrButton setTitle:text forState:UIControlStateNormal];
     }
 }
 
@@ -211,7 +235,6 @@
         NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
-            self.verifyNumberString=[[dict objectForKey:@"JsonData"] objectForKey:@"VerCode"];
             [self.view showInfo:@"验证码发送成功，请在手机上查收！" autoHidden:YES interval:2];
         }else{
             [self.view showInfo:@"验证码发送失败" autoHidden:YES interval:2];
@@ -233,19 +256,4 @@
     
     
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -17,7 +17,7 @@
 
 @interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LKActionSheetDelegate,LKAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSString *sexString;
+@property (nonatomic, strong) NSString *sexString,*usernameString,*phoneString;
 @property (nonatomic, strong) UIImageView *userImageView;
 
 @end
@@ -29,8 +29,49 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    switch ([[UdStorage getObjectforKey:UserSex] intValue]) {
+        case 0:
+            
+            self.sexString=@"男";
+            break;
+        case 1:
+            
+            self.sexString=@"女";
+            break;
+        default:
+            break;
+    }
+    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
+    [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    self.phoneString=phonestr;
+    
+    NSString *usernames=[UdStorage getObjectforKey:UserNamer]==nil?self.phoneString:[UdStorage getObjectforKey:UserNamer];
+    self.usernameString=usernames;
     self.title      = @"个人信息";
     [self createSubView];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];
+    [center addObserver:self selector:@selector(noticeupdateUserPhone:)  name:@"updatephonesuccess" object:nil];
+    
+}
+//修改手机通知
+-(void)noticeupdateUserPhone:(NSString *)userPhone{
+    
+    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:userPhone];
+    [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    self.phoneString=phonestr;
+    
+    [self.tableView reloadData];
+    
+}
+//修改昵称通知
+-(void)noticeupdateUserName:(NSString *)username{
+  
+   
+    self.usernameString=username;
+    [self.tableView reloadData];
+    
 }
 - (void) createSubView {
     self.navigationItem.leftBarButtonItem= [UIBarButtonItem setUibarbutonimgname:@"baisefanhui" andhightimg:@"" Target:self action:@selector(back:) forControlEvents:BtnTouchUpInside];
@@ -134,22 +175,17 @@
         
         
     }else{
-        
-        NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:@"userPhone"]];
-        [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
         if (indexPath.row == 0) {
             cell.textLabel.text         = @"昵称";
-            
-            NSString *username=[UdStorage getObjectforKey:@"userName"]==nil?phonestr:[UdStorage getObjectforKey:@"userName"];
-            cell.detailTextLabel.text   = username;
+            cell.detailTextLabel.text   = self.usernameString;
             
         }else if (indexPath.row == 1){
             cell.textLabel.text         = @"手机号";
-            cell.detailTextLabel.text   = phonestr;
+            cell.detailTextLabel.text   = self.phoneString;
         }
         else if(indexPath.row==2) {
             cell.textLabel.text         = @"性别";
-            self.sexString=[[UdStorage getObjectforKey:@"userSex"] isEqualToString:@"0"]?@"男":@"女";
+
             cell.detailTextLabel.text   = self.sexString;
         }else{
             cell.textLabel.text         = @"微信绑定";
@@ -293,6 +329,7 @@
                              @"ModifyType":typenum,
                              @"Sex":sexstr
                              };
+    NSLog(@"%@",mulDic);
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/UserInfoEdit",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
         [UdStorage storageObject:sexstr forKey:@"userSex"];
