@@ -48,7 +48,6 @@
 		180702681F45609100398435 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1807025F1F45609100398435 /* AnswerCell.xib */; };
 		180702691F45609100398435 /* AnswerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702611F45609100398435 /* AnswerModel.m */; };
 		1807026A1F45609100398435 /* HeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702631F45609100398435 /* HeadView.m */; };
-		1807026B1F45609100398435 /* problemCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 180702641F45609100398435 /* problemCenter.plist */; };
 		1807026C1F45609100398435 /* ProblemTitleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702661F45609100398435 /* ProblemTitleModel.m */; };
 		180702761F4560E000398435 /* HQSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807026F1F4560E000398435 /* HQSliderView.m */; };
 		180702771F4560E000398435 /* UIView+HQCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 180702721F4560E000398435 /* UIView+HQCategory.m */; };
@@ -239,6 +238,7 @@
 		18A4B2231F4D65E600C64978 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2211F4D65E600C64978 /* README.md */; };
 		18A4B2351F4D922400C64978 /* ShareWeChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2321F4D922400C64978 /* ShareWeChatController.m */; };
 		18A4B2361F4D922400C64978 /* ShareWechatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2341F4D922400C64978 /* ShareWechatView.m */; };
+		18A4B23F1F4EA45500C64978 /* problemCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B23E1F4EA45500C64978 /* problemCenter.plist */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
@@ -341,7 +341,6 @@
 		180702611F45609100398435 /* AnswerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerModel.m; sourceTree = "<group>"; };
 		180702621F45609100398435 /* HeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadView.h; sourceTree = "<group>"; };
 		180702631F45609100398435 /* HeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadView.m; sourceTree = "<group>"; };
-		180702641F45609100398435 /* problemCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = problemCenter.plist; sourceTree = "<group>"; };
 		180702651F45609100398435 /* ProblemTitleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProblemTitleModel.h; sourceTree = "<group>"; };
 		180702661F45609100398435 /* ProblemTitleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProblemTitleModel.m; sourceTree = "<group>"; };
 		1807026E1F4560E000398435 /* HQSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQSliderView.h; sourceTree = "<group>"; };
@@ -704,6 +703,7 @@
 		18A4B2321F4D922400C64978 /* ShareWeChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWeChatController.m; sourceTree = "<group>"; };
 		18A4B2331F4D922400C64978 /* ShareWechatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWechatView.h; sourceTree = "<group>"; };
 		18A4B2341F4D922400C64978 /* ShareWechatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWechatView.m; sourceTree = "<group>"; };
+		18A4B23E1F4EA45500C64978 /* problemCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = problemCenter.plist; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -876,7 +876,7 @@
 				180702611F45609100398435 /* AnswerModel.m */,
 				180702621F45609100398435 /* HeadView.h */,
 				180702631F45609100398435 /* HeadView.m */,
-				180702641F45609100398435 /* problemCenter.plist */,
+				18A4B23E1F4EA45500C64978 /* problemCenter.plist */,
 				180702651F45609100398435 /* ProblemTitleModel.h */,
 				180702661F45609100398435 /* ProblemTitleModel.m */,
 				180702351F44436100398435 /* QWUserServiceController.h */,
@@ -2113,6 +2113,7 @@
 				180958291F427FB500BE185D /* YZAllCourseViewController.xib in Resources */,
 				180957811F4147E400BE185D /* Main.storyboard in Resources */,
 				180958321F427FB500BE185D /* YZSortCell.xib in Resources */,
+				18A4B23F1F4EA45500C64978 /* problemCenter.plist in Resources */,
 				185C9E171F42C8DE00B4ED52 /* SalerListViewCell.xib in Resources */,
 				18A4B12A1F46BEB900C64978 /* CarTicketView.xib in Resources */,
 				185C9E2B1F42D06F00B4ED52 /* CancelPayCell.xib in Resources */,
@@ -2132,7 +2133,6 @@
 				18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */,
 				18A4B2181F4D640400C64978 /* ShopInfoHeadView.xib in Resources */,
 				180702861F456E6200398435 /* MyCarViewCell.xib in Resources */,
-				1807026B1F45609100398435 /* problemCenter.plist in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
 				18A4B1951F46E06B00C64978 /* shop_area.sqlite in Resources */,
