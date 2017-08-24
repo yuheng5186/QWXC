@@ -124,19 +124,6 @@
 		180957FC1F427E9D00BE185D /* QWMclistTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957FB1F427E9D00BE185D /* QWMclistTableViewCell.m */; };
 		180958261F427FB500BE185D /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 180957FF1F427FB500BE185D /* NewPagedFlowView.m */; };
 		180958271F427FB500BE185D /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958021F427FB500BE185D /* PGIndexBannerSubiew.m */; };
-		180958281F427FB500BE185D /* YZAllCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958081F427FB500BE185D /* YZAllCourseViewController.m */; };
-		180958291F427FB500BE185D /* YZAllCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180958091F427FB500BE185D /* YZAllCourseViewController.xib */; };
-		1809582A1F427FB500BE185D /* YZMoreMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809580D1F427FB500BE185D /* YZMoreMenuViewController.m */; };
-		1809582B1F427FB500BE185D /* YZMoreMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809580E1F427FB500BE185D /* YZMoreMenuViewController.xib */; };
-		1809582C1F427FB500BE185D /* YZMoreMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958111F427FB500BE185D /* YZMoreMenuCell.m */; };
-		1809582D1F427FB500BE185D /* UIView+YZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958141F427FB500BE185D /* UIView+YZCategory.m */; };
-		1809582E1F427FB500BE185D /* YZMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958161F427FB500BE185D /* YZMenuButton.m */; };
-		1809582F1F427FB500BE185D /* QWCitySelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958181F427FB500BE185D /* QWCitySelectViewController.m */; };
-		180958301F427FB500BE185D /* YZSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809581C1F427FB500BE185D /* YZSortViewController.m */; };
-		180958311F427FB500BE185D /* YZSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809581F1F427FB500BE185D /* YZSortCell.m */; };
-		180958321F427FB500BE185D /* YZSortCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180958201F427FB500BE185D /* YZSortCell.xib */; };
-		180958331F427FB500BE185D /* YZCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958231F427FB500BE185D /* YZCover.m */; };
-		180958341F427FB500BE185D /* YZPullDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958251F427FB500BE185D /* YZPullDownMenu.m */; };
 		180958371F427FCD00BE185D /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 180958361F427FCD00BE185D /* UILabel+StringFrame.m */; };
 		180958401F42902900BE185D /* QWHomeDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1809583E1F42902900BE185D /* QWHomeDetailTableViewCell.m */; };
 		180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1809583F1F42902900BE185D /* QWHomeDetailTableViewCell.xib */; };
@@ -151,6 +138,20 @@
 		182E93181F4D810300819B79 /* QWAgreementVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93151F4D810300819B79 /* QWAgreementVC.m */; };
 		182E931C1F4D815200819B79 /* LCMD5Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E931B1F4D815200819B79 /* LCMD5Tool.m */; };
 		182E93201F4E838B00819B79 /* QWUpdatePhoneNextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */; };
+		182E93411F4ECA4C00819B79 /* YZAllCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93251F4ECA4C00819B79 /* YZAllCourseViewController.m */; };
+		182E93421F4ECA4C00819B79 /* YZAllCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182E93261F4ECA4C00819B79 /* YZAllCourseViewController.xib */; };
+		182E93431F4ECA4C00819B79 /* YZMoreMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E932A1F4ECA4C00819B79 /* YZMoreMenuViewController.m */; };
+		182E93441F4ECA4C00819B79 /* YZMoreMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182E932B1F4ECA4C00819B79 /* YZMoreMenuViewController.xib */; };
+		182E93451F4ECA4C00819B79 /* YZMoreMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E932E1F4ECA4C00819B79 /* YZMoreMenuCell.m */; };
+		182E93461F4ECA4C00819B79 /* UIView+YZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93311F4ECA4C00819B79 /* UIView+YZCategory.m */; };
+		182E93471F4ECA4C00819B79 /* YZMenuButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93331F4ECA4C00819B79 /* YZMenuButton.m */; };
+		182E93481F4ECA4C00819B79 /* YZSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93371F4ECA4C00819B79 /* YZSortViewController.m */; };
+		182E93491F4ECA4C00819B79 /* YZSortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E933A1F4ECA4C00819B79 /* YZSortCell.m */; };
+		182E934A1F4ECA4C00819B79 /* YZSortCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182E933B1F4ECA4C00819B79 /* YZSortCell.xib */; };
+		182E934B1F4ECA4C00819B79 /* YZCover.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E933E1F4ECA4C00819B79 /* YZCover.m */; };
+		182E934C1F4ECA4C00819B79 /* YZPullDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93401F4ECA4C00819B79 /* YZPullDownMenu.m */; };
+		182E93521F4ECB3A00819B79 /* QWCitySelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93511F4ECB3A00819B79 /* QWCitySelectViewController.m */; };
+		182E93561F4EEC3900819B79 /* QWMerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93551F4EEC3900819B79 /* QWMerchantModel.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
 		18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FEE1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m */; };
 		18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FF11F42CCDD00795E0A /* QWDetailAddressTableViewCell.m */; };
@@ -494,29 +495,6 @@
 		180957FF1F427FB500BE185D /* NewPagedFlowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPagedFlowView.m; sourceTree = "<group>"; };
 		180958011F427FB500BE185D /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		180958021F427FB500BE185D /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
-		180958071F427FB500BE185D /* YZAllCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZAllCourseViewController.h; sourceTree = "<group>"; };
-		180958081F427FB500BE185D /* YZAllCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAllCourseViewController.m; sourceTree = "<group>"; };
-		180958091F427FB500BE185D /* YZAllCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZAllCourseViewController.xib; sourceTree = "<group>"; };
-		1809580C1F427FB500BE185D /* YZMoreMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMoreMenuViewController.h; sourceTree = "<group>"; };
-		1809580D1F427FB500BE185D /* YZMoreMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMoreMenuViewController.m; sourceTree = "<group>"; };
-		1809580E1F427FB500BE185D /* YZMoreMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZMoreMenuViewController.xib; sourceTree = "<group>"; };
-		180958101F427FB500BE185D /* YZMoreMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMoreMenuCell.h; sourceTree = "<group>"; };
-		180958111F427FB500BE185D /* YZMoreMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMoreMenuCell.m; sourceTree = "<group>"; };
-		180958131F427FB500BE185D /* UIView+YZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YZCategory.h"; sourceTree = "<group>"; };
-		180958141F427FB500BE185D /* UIView+YZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YZCategory.m"; sourceTree = "<group>"; };
-		180958151F427FB500BE185D /* YZMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMenuButton.h; sourceTree = "<group>"; };
-		180958161F427FB500BE185D /* YZMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMenuButton.m; sourceTree = "<group>"; };
-		180958171F427FB500BE185D /* QWCitySelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCitySelectViewController.h; sourceTree = "<group>"; };
-		180958181F427FB500BE185D /* QWCitySelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCitySelectViewController.m; sourceTree = "<group>"; };
-		1809581B1F427FB500BE185D /* YZSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSortViewController.h; sourceTree = "<group>"; };
-		1809581C1F427FB500BE185D /* YZSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSortViewController.m; sourceTree = "<group>"; };
-		1809581E1F427FB500BE185D /* YZSortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSortCell.h; sourceTree = "<group>"; };
-		1809581F1F427FB500BE185D /* YZSortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSortCell.m; sourceTree = "<group>"; };
-		180958201F427FB500BE185D /* YZSortCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZSortCell.xib; sourceTree = "<group>"; };
-		180958221F427FB500BE185D /* YZCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCover.h; sourceTree = "<group>"; };
-		180958231F427FB500BE185D /* YZCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZCover.m; sourceTree = "<group>"; };
-		180958241F427FB500BE185D /* YZPullDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPullDownMenu.h; sourceTree = "<group>"; };
-		180958251F427FB500BE185D /* YZPullDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPullDownMenu.m; sourceTree = "<group>"; };
 		180958351F427FCD00BE185D /* UILabel+StringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+StringFrame.h"; sourceTree = "<group>"; };
 		180958361F427FCD00BE185D /* UILabel+StringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+StringFrame.m"; sourceTree = "<group>"; };
 		1809583D1F42902900BE185D /* QWHomeDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWHomeDetailTableViewCell.h; sourceTree = "<group>"; };
@@ -545,6 +523,31 @@
 		182E931B1F4D815200819B79 /* LCMD5Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCMD5Tool.m; sourceTree = "<group>"; };
 		182E931E1F4E838B00819B79 /* QWUpdatePhoneNextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWUpdatePhoneNextVC.h; sourceTree = "<group>"; };
 		182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWUpdatePhoneNextVC.m; sourceTree = "<group>"; };
+		182E93241F4ECA4C00819B79 /* YZAllCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZAllCourseViewController.h; sourceTree = "<group>"; };
+		182E93251F4ECA4C00819B79 /* YZAllCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZAllCourseViewController.m; sourceTree = "<group>"; };
+		182E93261F4ECA4C00819B79 /* YZAllCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZAllCourseViewController.xib; sourceTree = "<group>"; };
+		182E93291F4ECA4C00819B79 /* YZMoreMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMoreMenuViewController.h; sourceTree = "<group>"; };
+		182E932A1F4ECA4C00819B79 /* YZMoreMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMoreMenuViewController.m; sourceTree = "<group>"; };
+		182E932B1F4ECA4C00819B79 /* YZMoreMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZMoreMenuViewController.xib; sourceTree = "<group>"; };
+		182E932D1F4ECA4C00819B79 /* YZMoreMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMoreMenuCell.h; sourceTree = "<group>"; };
+		182E932E1F4ECA4C00819B79 /* YZMoreMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMoreMenuCell.m; sourceTree = "<group>"; };
+		182E93301F4ECA4C00819B79 /* UIView+YZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YZCategory.h"; sourceTree = "<group>"; };
+		182E93311F4ECA4C00819B79 /* UIView+YZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YZCategory.m"; sourceTree = "<group>"; };
+		182E93321F4ECA4C00819B79 /* YZMenuButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZMenuButton.h; sourceTree = "<group>"; };
+		182E93331F4ECA4C00819B79 /* YZMenuButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZMenuButton.m; sourceTree = "<group>"; };
+		182E93361F4ECA4C00819B79 /* YZSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSortViewController.h; sourceTree = "<group>"; };
+		182E93371F4ECA4C00819B79 /* YZSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSortViewController.m; sourceTree = "<group>"; };
+		182E93391F4ECA4C00819B79 /* YZSortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZSortCell.h; sourceTree = "<group>"; };
+		182E933A1F4ECA4C00819B79 /* YZSortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZSortCell.m; sourceTree = "<group>"; };
+		182E933B1F4ECA4C00819B79 /* YZSortCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YZSortCell.xib; sourceTree = "<group>"; };
+		182E933D1F4ECA4C00819B79 /* YZCover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZCover.h; sourceTree = "<group>"; };
+		182E933E1F4ECA4C00819B79 /* YZCover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZCover.m; sourceTree = "<group>"; };
+		182E933F1F4ECA4C00819B79 /* YZPullDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZPullDownMenu.h; sourceTree = "<group>"; };
+		182E93401F4ECA4C00819B79 /* YZPullDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZPullDownMenu.m; sourceTree = "<group>"; };
+		182E93501F4ECB3A00819B79 /* QWCitySelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCitySelectViewController.h; sourceTree = "<group>"; };
+		182E93511F4ECB3A00819B79 /* QWCitySelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCitySelectViewController.m; sourceTree = "<group>"; };
+		182E93541F4EEC3900819B79 /* QWMerchantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantModel.h; sourceTree = "<group>"; };
+		182E93551F4EEC3900819B79 /* QWMerchantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantModel.m; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -1337,6 +1340,8 @@
 		180957BB1F414D0000BE185D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				182E93541F4EEC3900819B79 /* QWMerchantModel.h */,
+				182E93551F4EEC3900819B79 /* QWMerchantModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1532,119 +1537,12 @@
 		180958031F427FB500BE185D /* YZpulldown */ = {
 			isa = PBXGroup;
 			children = (
-				180958041F427FB500BE185D /* Classes */,
-				180958211F427FB500BE185D /* YZPullDownMenu */,
+				182E93501F4ECB3A00819B79 /* QWCitySelectViewController.h */,
+				182E93511F4ECB3A00819B79 /* QWCitySelectViewController.m */,
+				182E93211F4ECA4C00819B79 /* Classes */,
+				182E933C1F4ECA4C00819B79 /* YZPullDownMenu */,
 			);
 			path = YZpulldown;
-			sourceTree = "<group>";
-		};
-		180958041F427FB500BE185D /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				180958051F427FB500BE185D /* AllCourse */,
-				1809580A1F427FB500BE185D /* MoreMenu */,
-				180958121F427FB500BE185D /* Other */,
-				180958171F427FB500BE185D /* QWCitySelectViewController.h */,
-				180958181F427FB500BE185D /* QWCitySelectViewController.m */,
-				180958191F427FB500BE185D /* Sort */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		180958051F427FB500BE185D /* AllCourse */ = {
-			isa = PBXGroup;
-			children = (
-				180958061F427FB500BE185D /* Controllers */,
-			);
-			path = AllCourse;
-			sourceTree = "<group>";
-		};
-		180958061F427FB500BE185D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				180958071F427FB500BE185D /* YZAllCourseViewController.h */,
-				180958081F427FB500BE185D /* YZAllCourseViewController.m */,
-				180958091F427FB500BE185D /* YZAllCourseViewController.xib */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1809580A1F427FB500BE185D /* MoreMenu */ = {
-			isa = PBXGroup;
-			children = (
-				1809580B1F427FB500BE185D /* Controllers */,
-				1809580F1F427FB500BE185D /* Views */,
-			);
-			path = MoreMenu;
-			sourceTree = "<group>";
-		};
-		1809580B1F427FB500BE185D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1809580C1F427FB500BE185D /* YZMoreMenuViewController.h */,
-				1809580D1F427FB500BE185D /* YZMoreMenuViewController.m */,
-				1809580E1F427FB500BE185D /* YZMoreMenuViewController.xib */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1809580F1F427FB500BE185D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				180958101F427FB500BE185D /* YZMoreMenuCell.h */,
-				180958111F427FB500BE185D /* YZMoreMenuCell.m */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		180958121F427FB500BE185D /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				180958131F427FB500BE185D /* UIView+YZCategory.h */,
-				180958141F427FB500BE185D /* UIView+YZCategory.m */,
-				180958151F427FB500BE185D /* YZMenuButton.h */,
-				180958161F427FB500BE185D /* YZMenuButton.m */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		180958191F427FB500BE185D /* Sort */ = {
-			isa = PBXGroup;
-			children = (
-				1809581A1F427FB500BE185D /* Controllers */,
-				1809581D1F427FB500BE185D /* Views */,
-			);
-			path = Sort;
-			sourceTree = "<group>";
-		};
-		1809581A1F427FB500BE185D /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				1809581B1F427FB500BE185D /* YZSortViewController.h */,
-				1809581C1F427FB500BE185D /* YZSortViewController.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		1809581D1F427FB500BE185D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				1809581E1F427FB500BE185D /* YZSortCell.h */,
-				1809581F1F427FB500BE185D /* YZSortCell.m */,
-				180958201F427FB500BE185D /* YZSortCell.xib */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		180958211F427FB500BE185D /* YZPullDownMenu */ = {
-			isa = PBXGroup;
-			children = (
-				180958221F427FB500BE185D /* YZCover.h */,
-				180958231F427FB500BE185D /* YZCover.m */,
-				180958241F427FB500BE185D /* YZPullDownMenu.h */,
-				180958251F427FB500BE185D /* YZPullDownMenu.m */,
-			);
-			path = YZPullDownMenu;
 			sourceTree = "<group>";
 		};
 		1829FB4D1F45707B002BA519 /* Alert */ = {
@@ -1725,6 +1623,113 @@
 				182E931F1F4E838B00819B79 /* QWUpdatePhoneNextVC.m */,
 			);
 			name = updatenextStep;
+			sourceTree = "<group>";
+		};
+		182E93211F4ECA4C00819B79 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				182E93221F4ECA4C00819B79 /* AllCourse */,
+				182E93271F4ECA4C00819B79 /* MoreMenu */,
+				182E932F1F4ECA4C00819B79 /* Other */,
+				182E93341F4ECA4C00819B79 /* Sort */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		182E93221F4ECA4C00819B79 /* AllCourse */ = {
+			isa = PBXGroup;
+			children = (
+				182E93231F4ECA4C00819B79 /* Controllers */,
+			);
+			path = AllCourse;
+			sourceTree = "<group>";
+		};
+		182E93231F4ECA4C00819B79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182E93241F4ECA4C00819B79 /* YZAllCourseViewController.h */,
+				182E93251F4ECA4C00819B79 /* YZAllCourseViewController.m */,
+				182E93261F4ECA4C00819B79 /* YZAllCourseViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		182E93271F4ECA4C00819B79 /* MoreMenu */ = {
+			isa = PBXGroup;
+			children = (
+				182E93281F4ECA4C00819B79 /* Controllers */,
+				182E932C1F4ECA4C00819B79 /* Views */,
+			);
+			path = MoreMenu;
+			sourceTree = "<group>";
+		};
+		182E93281F4ECA4C00819B79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182E93291F4ECA4C00819B79 /* YZMoreMenuViewController.h */,
+				182E932A1F4ECA4C00819B79 /* YZMoreMenuViewController.m */,
+				182E932B1F4ECA4C00819B79 /* YZMoreMenuViewController.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		182E932C1F4ECA4C00819B79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				182E932D1F4ECA4C00819B79 /* YZMoreMenuCell.h */,
+				182E932E1F4ECA4C00819B79 /* YZMoreMenuCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		182E932F1F4ECA4C00819B79 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				182E93301F4ECA4C00819B79 /* UIView+YZCategory.h */,
+				182E93311F4ECA4C00819B79 /* UIView+YZCategory.m */,
+				182E93321F4ECA4C00819B79 /* YZMenuButton.h */,
+				182E93331F4ECA4C00819B79 /* YZMenuButton.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		182E93341F4ECA4C00819B79 /* Sort */ = {
+			isa = PBXGroup;
+			children = (
+				182E93351F4ECA4C00819B79 /* Controllers */,
+				182E93381F4ECA4C00819B79 /* Views */,
+			);
+			path = Sort;
+			sourceTree = "<group>";
+		};
+		182E93351F4ECA4C00819B79 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182E93361F4ECA4C00819B79 /* YZSortViewController.h */,
+				182E93371F4ECA4C00819B79 /* YZSortViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		182E93381F4ECA4C00819B79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				182E93391F4ECA4C00819B79 /* YZSortCell.h */,
+				182E933A1F4ECA4C00819B79 /* YZSortCell.m */,
+				182E933B1F4ECA4C00819B79 /* YZSortCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		182E933C1F4ECA4C00819B79 /* YZPullDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				182E933D1F4ECA4C00819B79 /* YZCover.h */,
+				182E933E1F4ECA4C00819B79 /* YZCover.m */,
+				182E933F1F4ECA4C00819B79 /* YZPullDownMenu.h */,
+				182E93401F4ECA4C00819B79 /* YZPullDownMenu.m */,
+			);
+			path = YZPullDownMenu;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2133,16 +2138,16 @@
 				180957831F4147E400BE185D /* Assets.xcassets in Resources */,
 				187CCBDD1F43471A00FCDF1C /* QWMerchantInTableViewCell.xib in Resources */,
 				180701F51F44214C00398435 /* PopHelpView.xib in Resources */,
-				180958291F427FB500BE185D /* YZAllCourseViewController.xib in Resources */,
+				182E93441F4ECA4C00819B79 /* YZMoreMenuViewController.xib in Resources */,
 				180957811F4147E400BE185D /* Main.storyboard in Resources */,
-				180958321F427FB500BE185D /* YZSortCell.xib in Resources */,
 				18A4B23F1F4EA45500C64978 /* problemCenter.plist in Resources */,
+				182E93421F4ECA4C00819B79 /* YZAllCourseViewController.xib in Resources */,
 				185C9E171F42C8DE00B4ED52 /* SalerListViewCell.xib in Resources */,
 				18A4B12A1F46BEB900C64978 /* CarTicketView.xib in Resources */,
+				182E934A1F4ECA4C00819B79 /* YZSortCell.xib in Resources */,
 				185C9E2B1F42D06F00B4ED52 /* CancelPayCell.xib in Resources */,
 				1807021B1F442CD500398435 /* PopupView.xib in Resources */,
 				180702681F45609100398435 /* AnswerCell.xib in Resources */,
-				1809582B1F427FB500BE185D /* YZMoreMenuViewController.xib in Resources */,
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
 				180702501F444EED00398435 /* DiscountDetailView.xib in Resources */,
 				185C9E271F42D06F00B4ED52 /* SuccessPayCell.xib in Resources */,
@@ -2221,6 +2226,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-QWCarWashing/Pods-QWCarWashing-resources.sh",
 				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -2245,6 +2251,7 @@
 				180702BA1F458DD500398435 /* YzdHUDIndicator.m in Sources */,
 				18A4B1941F46E06B00C64978 /* JFAreaDataManager.m in Sources */,
 				185C9DF31F42A8FF00B4ED52 /* DSSaleActivityController.m in Sources */,
+				182E93561F4EEC3900819B79 /* QWMerchantModel.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
 				18A4B2171F4D640400C64978 /* ShopInfoHeadView.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
@@ -2256,10 +2263,13 @@
 				185C9E261F42D06F00B4ED52 /* SuccessPayCell.m in Sources */,
 				18A4B1791F46DEB600C64978 /* QWPurchaseCardViewCell.m in Sources */,
 				1807021A1F442CD500398435 /* PopupView.m in Sources */,
+				182E93491F4ECA4C00819B79 /* YZSortCell.m in Sources */,
+				182E93411F4ECA4C00819B79 /* YZAllCourseViewController.m in Sources */,
 				180702911F45715D00398435 /* SCBaseViewController.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				18A4B1A01F46F33D00C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
+				182E934C1F4ECA4C00819B79 /* YZPullDownMenu.m in Sources */,
 				0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */,
 				18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */,
 				180702ED1F46009C00398435 /* QWPasswordController.m in Sources */,
@@ -2272,11 +2282,13 @@
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
 				180957F61F41AED400BE185D /* QWOrderMenuTableViewCell.m in Sources */,
 				48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */,
+				182E93461F4ECA4C00819B79 /* UIView+YZCategory.m in Sources */,
 				180702DD1F45976D00398435 /* TYAlertController+TransitionAnimate.m in Sources */,
 				180702DA1F45976D00398435 /* UIImage+ImageEffects.m in Sources */,
 				180702401F444DA000398435 /* QWDiscountCategoryView.m in Sources */,
 				185C9E101F42C2FD00B4ED52 /* MBProgressHUD.m in Sources */,
 				185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */,
+				182E93471F4ECA4C00819B79 /* YZMenuButton.m in Sources */,
 				185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */,
 				18A4B2161F4D640400C64978 /* ShopCommentController.m in Sources */,
 				185C9E3B1F42DC5A00B4ED52 /* AllOrderController.m in Sources */,
@@ -2316,18 +2328,18 @@
 				18A4B2231F4D65E600C64978 /* README.md in Sources */,
 				18508FF81F42D68400795E0A /* QWMccommentTableViewCell.m in Sources */,
 				180702DF1F45976D00398435 /* TYAlertDropDownAnimation.m in Sources */,
-				1809582E1F427FB500BE185D /* YZMenuButton.m in Sources */,
 				180702BB1F458DD500398435 /* YzdHUDLabel.m in Sources */,
 				180702B91F458DD500398435 /* YzdHUDImageView.m in Sources */,
 				185C9DFA1F42BF2800B4ED52 /* BlackLoadingView.m in Sources */,
 				180701F61F44214C00398435 /* UIViewController+LewPopupViewController.m in Sources */,
 				185C9DFD1F42C02E00B4ED52 /* UIUtil.m in Sources */,
-				180958331F427FB500BE185D /* YZCover.m in Sources */,
 				180957DA1F414F2F00BE185D /* QWCarWashViewController.m in Sources */,
 				187CCBE71F43D65400FCDF1C /* QWVipSecondTableViewCell.m in Sources */,
 				180702E41F45976D00398435 /* TYShowAlertView.m in Sources */,
 				18A4B19D1F46E06B00C64978 /* JFLocation.m in Sources */,
 				180958271F427FB500BE185D /* PGIndexBannerSubiew.m in Sources */,
+				182E93481F4ECA4C00819B79 /* YZSortViewController.m in Sources */,
+				182E93431F4ECA4C00819B79 /* YZMoreMenuViewController.m in Sources */,
 				180701E71F441AA100398435 /* UIImage+BFS.m in Sources */,
 				185C9E4A1F42DFE200B4ED52 /* QWPersonInfoDetailViewController.m in Sources */,
 				18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */,
@@ -2347,9 +2359,7 @@
 				185C9E3C1F42DC5A00B4ED52 /* PayOrderController.m in Sources */,
 				180702251F44428900398435 /* QWShareMoneyController.m in Sources */,
 				180957E01F414F7200BE185D /* QWMerchantViewController.m in Sources */,
-				1809582A1F427FB500BE185D /* YZMoreMenuViewController.m in Sources */,
 				1829FB521F45707B002BA519 /* LKActionSheet.m in Sources */,
-				180958301F427FB500BE185D /* YZSortViewController.m in Sources */,
 				182E930D1F4D806D00819B79 /* AFNetworkingTool.m in Sources */,
 				18A4B1A31F46F36F00C64978 /* payCardDetailCell.m in Sources */,
 				182E93201F4E838B00819B79 /* QWUpdatePhoneNextVC.m in Sources */,
@@ -2368,6 +2378,7 @@
 				180958401F42902900BE185D /* QWHomeDetailTableViewCell.m in Sources */,
 				185C9E361F42DBB500B4ED52 /* OrderCategoryView.m in Sources */,
 				180702851F456E6200398435 /* MyCarViewCell.m in Sources */,
+				182E93451F4ECA4C00819B79 /* YZMoreMenuCell.m in Sources */,
 				180702951F45718600398435 /* ProvinceShortController.m in Sources */,
 				180702E01F45976D00398435 /* TYAlertFadeAnimation.m in Sources */,
 				180958261F427FB500BE185D /* NewPagedFlowView.m in Sources */,
@@ -2386,14 +2397,12 @@
 				1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */,
 				18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */,
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
-				180958281F427FB500BE185D /* YZAllCourseViewController.m in Sources */,
 				180701F41F44214C00398435 /* PopHelpView.m in Sources */,
 				180702EA1F46007300398435 /* QWSettingController.m in Sources */,
-				1809582F1F427FB500BE185D /* QWCitySelectViewController.m in Sources */,
 				18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */,
 				180702E21F45976D00398435 /* TYAlertView.m in Sources */,
-				1809582C1F427FB500BE185D /* YZMoreMenuCell.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
+				182E93521F4ECB3A00819B79 /* QWCitySelectViewController.m in Sources */,
 				180702691F45609100398435 /* AnswerModel.m in Sources */,
 				180702D91F45976D00398435 /* TYAlertController+BlurEffects.m in Sources */,
 				18A4B1981F46E06B00C64978 /* JFCityCollectionViewCell.m in Sources */,
@@ -2403,7 +2412,6 @@
 				180702221F4441E700398435 /* QWBaseViewController.m in Sources */,
 				185C9E091F42C22800B4ED52 /* TPKeyboardAvoidingTableView.m in Sources */,
 				180701F21F44214C00398435 /* LewPopupBackgroundView.m in Sources */,
-				1809582D1F427FB500BE185D /* UIView+YZCategory.m in Sources */,
 				180701DE1F44134700398435 /* QWScanController.m in Sources */,
 				180702981F45834600398435 /* QWUpdateRuleController.m in Sources */,
 				18A4B1731F46CDEE00C64978 /* QWConsumerController.m in Sources */,
@@ -2411,7 +2419,6 @@
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				18A4B2151F4D640400C64978 /* ShopCategoryView.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
-				180958311F427FB500BE185D /* YZSortCell.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				18508FFE1F42F36000795E0A /* QWPayViewController.m in Sources */,
 				180957D01F414D6900BE185D /* QWNavigationViewController.m in Sources */,
@@ -2421,7 +2428,6 @@
 				1829FB651F46DF51002BA519 /* QWCarWashingActivityViewController.m in Sources */,
 				180702E31F45976D00398435 /* TYBaseAnimation.m in Sources */,
 				180702B81F458DD500398435 /* YzdHUDBackgroundView.m in Sources */,
-				180958341F427FB500BE185D /* YZPullDownMenu.m in Sources */,
 				1807028C1F45712200398435 /* MyCarInfosHeaderView.m in Sources */,
 				1807026C1F45609100398435 /* ProblemTitleModel.m in Sources */,
 				182E930C1F4D806D00819B79 /* AFNetworkingTool+GetToken.m in Sources */,
@@ -2435,6 +2441,7 @@
 				180702F01F4600B400398435 /* QWAboutController.m in Sources */,
 				185C9DF71F42BDF300B4ED52 /* BaseController.m in Sources */,
 				180957DD1F414F5100BE185D /* QWMeViewController.m in Sources */,
+				182E934B1F4ECA4C00819B79 /* YZCover.m in Sources */,
 				180702341F44435100398435 /* QWMembershipController.m in Sources */,
 				0401E86A1F4B3F4000F0CA79 /* QWChangePhoneController.m in Sources */,
 				185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */,

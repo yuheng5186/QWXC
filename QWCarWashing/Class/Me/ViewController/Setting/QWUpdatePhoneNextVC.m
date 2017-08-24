@@ -7,7 +7,7 @@
 //
 
 #import "QWUpdatePhoneNextVC.h"
-
+#import "QWPersonInfoDetailViewController.h"
 @interface QWUpdatePhoneNextVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -83,8 +83,8 @@
             [UdStorage storageObject:Userphone forKey:UserPhone];
             NSNotification * notice = [NSNotification notificationWithName:@"updatephonesuccess" object:nil userInfo:@{@"userphone":Userphone}];
             [[NSNotificationCenter defaultCenter]postNotification:notice];
-            [self.navigationController popViewControllerAnimated:YES];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            QWPersonInfoDetailViewController *personVC=[[QWPersonInfoDetailViewController alloc]init];
+            [self.navigationController popToViewController:personVC animated:YES];
         }
         else
         {

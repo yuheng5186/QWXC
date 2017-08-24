@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/QWLoginView/model/QWLoginVC.m"
-            timestampString = "525234345.70786"
+            filePath = "QWCarWashing/Class/Me/ViewController/Setting/QWUpdatePhoneNextVC.m"
+            timestampString = "525264013.729376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
-            landmarkName = "-getVeriifyByButtonClick:"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-nextButtonClick:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Me/ViewController/Setting/QWChangePhoneController.m"
-            timestampString = "525245613.138664"
+            filePath = "QWCarWashing/Class/Me/ViewController/Setting/QWUpdatePhoneNextVC.m"
+            timestampString = "525264500.537278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "-getVeriifyBtnClick:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-updateUserphone:andverifyNumberStr:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Tool/AFNetworkingtool/AFNetworkingTool.m"
-            timestampString = "525247789.458136"
+            filePath = "QWCarWashing/Class/Me/ViewController/Setting/QWUpdatePhoneNextVC.m"
+            timestampString = "525264519.692017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
-            landmarkName = "+post:andurl:success:fail:"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-updateUserphone:andverifyNumberStr:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Me/ViewController/Setting/QWChangePhoneController.m"
-            timestampString = "525248453.760784"
+            filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
+            timestampString = "525265356.253446"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-requestVerifyNumAndPhoneNum:"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-noticeupdateUserPhone:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,61 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/QWHomeViewController.m"
-            timestampString = "525252377.7743"
+            filePath = "QWCarWashing/Class/Merchant/ViewController/QWMerchantViewController.m"
+            timestampString = "525267652.639104"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "-Addsign"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/QWHomeViewController.m"
-            timestampString = "525252377.7743"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "-Addsign"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/QWHomeViewController.m"
-            timestampString = "525252377.7743"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "338"
-            endingLineNumber = "338"
-            landmarkName = "-Addsign"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/QWHomeViewController.m"
-            timestampString = "525252377.7743"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
-            landmarkName = "-Addsign"
+            startingLineNumber = "293"
+            endingLineNumber = "293"
+            landmarkName = "-setData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

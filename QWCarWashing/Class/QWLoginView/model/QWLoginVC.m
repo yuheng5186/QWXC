@@ -194,7 +194,7 @@
             NSLog(@"%@",[dict objectForKey:@"JsonData"]);
             QWUserInfo *usertmpModel = [QWUserInfo new];
             //KVC 方式赋值
-            [usertmpModel setValuesForKeysWithDictionary:[dict objectForKey:@"JsonData"]];
+//            [usertmpModel setValuesForKeysWithDictionary:[dict objectForKey:@"JsonData"]];
 //            //数据本地化
             [UdStorage storageObject:usertmpModel.Age forKey:UserAge];
            [UdStorage storageObject:usertmpModel.UserName forKey:UserNamer];

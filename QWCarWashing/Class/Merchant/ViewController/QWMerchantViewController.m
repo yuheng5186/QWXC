@@ -15,7 +15,7 @@
 #import "YZAllCourseViewController.h"
 #import "QWCitySelectViewController.h"
 #import "QWMerchantDetailViewController.h"
-
+#import "QWMerchantModel.h"
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 
@@ -24,17 +24,20 @@
     AppDelegate *myDelegate;
 }
 
-
+@property (nonatomic, strong) NSMutableDictionary *pramsDic;
 @property (nonatomic, weak) UITableView *MerchantListtableview;
 @property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, strong) NSMutableArray *MerchantData;
+@property (nonatomic,strong) NSMutableArray *otherArray;
 
+@property (nonatomic)NSInteger page;
 @end
 
 @implementation QWMerchantViewController
 
 - (UITableView *)MerchantListtableview {
     if (nil == _MerchantListtableview) {
-        UITableView *MerchantListtableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 49*myDelegate.autoSizeScaleY, ScreenWidth, ScreenHeight - 49 - 64 - 49*myDelegate.autoSizeScaleY) style:UITableViewStylePlain];
+        UITableView *MerchantListtableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+49+49*myDelegate.autoSizeScaleY, ScreenWidth, ScreenHeight - 49 - 64 - 49*myDelegate.autoSizeScaleY) style:UITableViewStylePlain];
         _MerchantListtableview = MerchantListtableview;
         
         [self.view addSubview:MerchantListtableview];
@@ -45,10 +48,45 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
     [self setupview];
+   
+    myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.pramsDic = [[NSMutableDictionary alloc]init];
+    NSArray *array1 = [[NSArray alloc] initWithObjects:@"上海市",@"浦东新区", nil];
+    NSDictionary *dic = @{@"0":array1,@"1":@"普洗-5座轿车",@"2":@"默认排序"};
+    self.pramsDic  = [NSMutableDictionary dictionaryWithDictionary:dic];
+    self.MerchantData = [[NSMutableArray alloc]init];
+    self.page = 0;
+    self.otherArray = [[NSMutableArray alloc]init];
+    NSNotificationCenter *observer = [[NSNotificationCenter defaultCenter] addObserverForName:YZUpdateMenuTitleNote object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        
+        // 获取列
+        NSInteger col = [self.childViewControllers indexOfObject:note.object];
+        
+        // 获取所有值
+        NSArray *allValues = note.userInfo.allValues;
+        
+        // 不需要设置标题,字典个数大于1，或者有数组
+        if (allValues.count > 1 || [allValues.firstObject isKindOfClass:[NSArray class]]) return ;
+        
+        NSString *str = allValues.firstObject;
+        if ([str containsString:@":"]) {
+            NSArray *array = [allValues.firstObject componentsSeparatedByString:@":"];
+            // 设置按钮标题
+            [self.pramsDic setValue:array forKey:[NSString stringWithFormat:@"%ld",(long)col]];
+        } else {
+            // 设置按钮标题
+            [self.pramsDic setValue:allValues.firstObject forKey:[NSString stringWithFormat:@"%ld",(long)col]];
+        }
+        
+        
+        [self.MerchantListtableview.mj_header beginRefreshing];
+        //        [self headerRereshing];
+        
+        
+        
+    }];
+
     
     [self setupmenu];
 }
@@ -81,7 +119,8 @@
     //    }
     //    else
     //    {
-    return 5;
+    return self.MerchantData.count;
+ 
     //    }
 }
 
@@ -132,8 +171,14 @@
     }
     [cell setlayoutCell];
     [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-    //    NSDictionary *dic=[newslist objectAtIndex:indexPath.row];
-    //    [cell setUpCellWithDic:dic];
+    
+    
+    NSDictionary *dic=[self.MerchantData objectAtIndex:indexPath.row];
+ 
+    //KVC 方式赋值
+    QWMerchantModel *tempmodel=[[QWMerchantModel alloc]init];
+     [tempmodel setValuesForKeysWithDictionary:dic];
+    [cell setUpCellWithDic:dic];
     [cell setBackgroundColor:[UIColor clearColor]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -146,17 +191,216 @@
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }
+-(void)setupRefresh
+{
+    self.MerchantListtableview.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self headerRereshing];
+        
+    }];
+    
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    self.MerchantListtableview.mj_header.automaticallyChangeAlpha = YES;
+    
+    [self.MerchantListtableview.mj_header beginRefreshing];
+    
+    // 上拉刷新
+    self.MerchantListtableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self footerRereshing];
+        
+    }];
+}
 
+- (void)headerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_MerchantData removeAllObjects];
+        //
+        self.page = 0 ;
+        [self setData];
+        
+    });
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void)footerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if(_MerchantData.count == 0)
+        {
+            [self setData];
+        }
+        else
+        {
+            self.page++;
+            _otherArray = [NSMutableArray new];
+            [self setDatamore];
+            
+        }
+        //
+        //
+        //
+        //
+        //        // 刷新表格
+        //
+        //        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        
+    });
+}
+-(void)setData
+{
+    [self.MerchantData removeAllObjects];
+    //    NSLog(@"%@",self.pramsDic);
+    
+    NSString *DefaultSort;
+    
+    if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"默认排序"])
+    {
+        DefaultSort = @"1";
+    }
+    else if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"附近优先"])
+    {
+        DefaultSort = @"2";
+    }
+    else if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"评分最高"])
+    {
+        DefaultSort = @"3";
+    }
+    else
+    {
+        DefaultSort = @"4";
+    }
+    
+    
+    NSDictionary *mulDic = @{
+                             @"City":[[self.pramsDic objectForKey:@"0"] objectAtIndex:0],
+                             @"Area":[[self.pramsDic objectForKey:@"0"] objectAtIndex:1],
+                             @"ShopType":@1,
+                             @"ServiceCode":@101,
+                             @"DefaultSort":DefaultSort,
+                             @"Ym":@31.192255,
+                             @"Xm":@121.52334,
+                             @"PageIndex":@0,
+                             @"PageSize":@10
+                             };
+    NSLog(@"%@",mulDic);
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/GetStoreList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+         NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                //                [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
+                [self.MerchantListtableview reloadData];
+                [self.MerchantListtableview.mj_header endRefreshing];
+            }
+            else
+            {
+//                for ( in <#collection#>) {
+//                    <#statements#>
+//                }
+//                
+                [self.MerchantData addObjectsFromArray:arr];
+                [self.MerchantListtableview reloadData];
+                [self.MerchantListtableview.mj_header endRefreshing];
+            }
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
+            [self.MerchantListtableview.mj_header endRefreshing];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.MerchantListtableview.mj_header endRefreshing];
+    }];
+    
+}
+-(void)setDatamore
+{
+    
+    NSString *DefaultSort;
+    
+    if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"默认排序"])
+    {
+        DefaultSort = @"1";
+    }
+    else if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"附近优先"])
+    {
+        DefaultSort = @"2";
+    }
+    else if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"评分最高"])
+    {
+        DefaultSort = @"3";
+    }
+    else
+    {
+        DefaultSort = @"4";
+    }
+    
+    
+    NSDictionary *mulDic = @{
+                             @"City":[[self.pramsDic objectForKey:@"0"] objectAtIndex:0],
+                             @"Area":[[self.pramsDic objectForKey:@"0"] objectAtIndex:1],
+                             @"ShopType":@1,
+                             @"ServiceCode":@101,
+                             @"DefaultSort":DefaultSort,
+                             @"Ym":@31.192255,
+                             @"Xm":@121.52334,
+                             @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
+                             @"PageSize":@10
+                             };
+    NSDictionary *params = @{
+                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
+                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
+                             };
+    
+    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@MerChant/GetStoreList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.removeFromSuperViewOnHide =YES;
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"无更多数据";
+                hud.minSize = CGSizeMake(132.f, 108.0f);
+                [hud hide:YES afterDelay:3];
+                [self.MerchantListtableview.mj_footer endRefreshing];
+                self.page--;
+            }
+            else
+            {
+                [self.MerchantData addObjectsFromArray:arr];
+                [self.MerchantListtableview reloadData];
+                [self.MerchantListtableview.mj_footer endRefreshing];
+            }
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
+            [self.MerchantListtableview.mj_footer endRefreshing];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.MerchantListtableview.mj_header endRefreshing];
+    }];
+    
+}
 -(void)setupmenu
 {
     // 创建下拉菜单
@@ -176,6 +420,7 @@
     
     // 添加子控制器
     [self setupAllChildViewController];
+    [self setupRefresh];
 }
 
 #pragma mark - 添加子控制器

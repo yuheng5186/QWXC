@@ -10,4 +10,5 @@ target 'QWCarWashing' do
   pod 'WechatOpenSDK', '~> 1.7.8'
   pod 'IQKeyboardManager'
   pod 'DZNEmptyDataSet'
+  pod 'MJRefresh'
 end

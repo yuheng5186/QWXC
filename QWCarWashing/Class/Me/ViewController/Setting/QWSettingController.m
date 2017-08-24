@@ -245,6 +245,9 @@
         if (buttonIndex == 0) {
             
         }else{
+            //清空数据
+            NSLog(@"退出");
+            [UdStorage storageObject:@"" forKey:Userid];
 //            LoginViewController *loginViewControler     = [[LoginViewController alloc] init];
 //            UINavigationController *navController       = [[UINavigationController alloc] initWithRootViewController:loginViewControler];
 //            navController.navigationBar.hidden          = YES;

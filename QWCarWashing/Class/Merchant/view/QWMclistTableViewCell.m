@@ -152,7 +152,52 @@
     // UIGraphicsGetImageFromCurrentImageContext()返回的就是image
     return UIGraphicsGetImageFromCurrentImageContext();
 }
-
+-(void)setUpCellWithDic:(NSDictionary *)dic
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[dic objectForKey:@"Img"]];
+        NSURL *url=[NSURL URLWithString:ImageURL];
+        NSData *data=[NSData dataWithContentsOfURL:url];
+        UIImage *img=[UIImage imageWithData:data];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self.McImageView.image = img;
+        });
+    });
+    self.Mcname.text = [dic objectForKey:@"MerName"];
+    self.Mcaddress.text = [dic objectForKey:@"MerAddress"];
+    //    self.freeTestLabel.text = [dicobjectForKey:@"MerName"];
+    //    self.qualityLabel.text = [dicobjectForKey:@"MerName"];
+    self.Mcrange.text = [NSString stringWithFormat:@"%@km",[dic objectForKey:@"Distance"]];
+    
+    if([[dic objectForKey:@"ShopType"] intValue] == 1)
+    {
+        self.Mccat.text = @"洗车服务";
+    }
+    
+    
+    
+    self.Mcscore.text = [NSString stringWithFormat:@"%@分",[dic objectForKey:@"Score"]];
+    
+    [self.Mcxingji setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@xing",[[NSString stringWithFormat:@"%@",[dic objectForKey:@"Score"]] substringToIndex:1]]]];
+    
+    NSArray *lab = [[dic objectForKey:@"MerFlag"] componentsSeparatedByString:@","];
+    
+    UILabel *MerflagsLabel = [UILabel new];
+    for (int i = 0; i < [lab count]; i++) {
+        MerflagsLabel = [[UILabel alloc] initWithFrame:CGRectMake(115 *myDelegate.autoSizeScaleX + i % 3 * 67 *myDelegate.autoSizeScaleX,  i / 3 * 25 *myDelegate.autoSizeScaleY + 85 *myDelegate.autoSizeScaleY, 60*myDelegate.autoSizeScaleX, 15*myDelegate.autoSizeScaleY)];
+        
+        MerflagsLabel.text = lab[i];
+        MerflagsLabel.backgroundColor = [UIColor redColor];
+        [MerflagsLabel setFont:[UIFont fontWithName:@"Helvetica" size:11 ]];
+        MerflagsLabel.textColor = [UIColor colorFromHex:@"#fefefe"];
+        MerflagsLabel.backgroundColor = [UIColor colorFromHex:@"#ff7556"];
+        MerflagsLabel.textAlignment = NSTextAlignmentCenter;
+        MerflagsLabel.layer.masksToBounds = YES;
+        MerflagsLabel.layer.cornerRadius = 7.5*myDelegate.autoSizeScaleY;
+        [self.contentView addSubview:MerflagsLabel];
+    }
+    
+}
 
 CG_INLINE CGRect
 CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
@@ -165,5 +210,20 @@ CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
     rect.size.height = height * myDelegate.autoSizeScaleY;
     return rect;
 }
+#pragma mark-赋值
+#pragma mark - Setters
+-(void)setMerchantmodel:(QWMerchantModel *)Merchantmodel{
+    _Merchantmodel=Merchantmodel;
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,Merchantmodel.Img];
+    [self.McImageView sd_setImageWithURL:[NSURL URLWithString:ImageURL] placeholderImage:[UIImage imageNamed:@"aiche1"]];
+    self.Mcname.text=Merchantmodel.MerName;
+    if(Merchantmodel.ShopType == 1)
+    {
+        self.Mccat.text = @"洗车服务";
+    }
+    self.Mcrange.text= [NSString stringWithFormat:@"%.2f",Merchantmodel.Distance];
+    self.Mcaddress.text=Merchantmodel.MerAddress;
+    self.Mcscore.text=[NSString stringWithFormat:@"%.2f",Merchantmodel.Score];
 
+}
 @end

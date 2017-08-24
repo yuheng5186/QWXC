@@ -35,7 +35,7 @@
     
     
     
-    
+    myDelegate = [[UIApplication sharedApplication] delegate];
     if(QWScreenheight > 568)
     {
         myDelegate.autoSizeScaleX = QWScreenWidth/375;

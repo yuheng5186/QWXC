@@ -29,7 +29,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSMutableString *phonestr;
+    if ([UdStorage getObjectforKey:UserPhone]!=nil) {
+        phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
+        [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+    }
     switch ([[UdStorage getObjectforKey:UserSex] intValue]) {
         case 0:
             
@@ -42,8 +46,6 @@
         default:
             break;
     }
-    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
-    [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     self.phoneString=phonestr;
     
     NSString *usernames=[UdStorage getObjectforKey:UserNamer]==nil?self.phoneString:[UdStorage getObjectforKey:UserNamer];
@@ -56,9 +58,10 @@
     
 }
 //修改手机通知
--(void)noticeupdateUserPhone:(NSString *)userPhone{
-    
-    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:userPhone];
+-(void)noticeupdateUserPhone:(NSNotification *)sender{
+  
+    NSString *phonestrs= [sender.userInfo objectForKey:@"userphone"];
+    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:phonestrs];
     [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     self.phoneString=phonestr;
     
@@ -66,7 +69,9 @@
     
 }
 //修改昵称通知
--(void)noticeupdateUserName:(NSString *)username{
+-(void)noticeupdateUserName:(NSNotification *)sender{
+    NSString *username= [sender.userInfo objectForKey:@"username"];
+
   
    
     self.usernameString=username;

@@ -129,9 +129,9 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
 {
     self.backgroundColor = [UIColor whiteColor];
     
-    _separateLineTopMargin = 10;
+    _separateLineTopMargin = 10*Main_Screen_Height/667;
     
-    _separateLineColor =  [UIColor colorWithRed:246 / 255.0 green:246 / 255.0 blue:246 / 255.0 alpha:1];
+    _separateLineColor =  [UIColor colorWithRed:221 / 255.0 green:221 / 255.0 blue:221 / 255.0 alpha:1];
     
     _coverColor = [UIColor colorWithRed:221 / 255.0 green:221 / 255.0 blue:221 / 255.0 alpha:.7];
     
@@ -153,8 +153,23 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
         // 不需要设置标题,字典个数大于1，或者有数组
         if (allValues.count > 1 || [allValues.firstObject isKindOfClass:[NSArray class]]) return ;
         
-        // 设置按钮标题
-        [btn setTitle:allValues.firstObject forState:UIControlStateNormal];
+        NSString *str = allValues.firstObject;
+        if ([str containsString:@":"]) {
+            NSArray *array = [allValues.firstObject componentsSeparatedByString:@":"];
+            // 设置按钮标题
+            [btn setTitle:array[1] forState:UIControlStateNormal];
+        } else {
+            // 设置按钮标题
+            [btn setTitle:allValues.firstObject forState:UIControlStateNormal];
+        }
+        
+        
+        
+        
+        
+        
+        
+        
         
     }];
 }
@@ -196,7 +211,12 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
 {
     [super willMoveToWindow:newWindow];
     
-    [self reload];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self reload];
+    });
+    
+    
 }
 
 #pragma mark - 下拉菜单功能

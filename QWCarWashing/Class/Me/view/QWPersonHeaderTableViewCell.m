@@ -43,8 +43,10 @@
 }
 
 //修改昵称通知
--(void)noticeupdateUserName:(NSString *)username{
-   NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserNamer]];
+-(void)noticeupdateUserName:(NSNotification *)sender{
+ NSString *username= [sender.userInfo objectForKey:@"username"];
+   
+   NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
    [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
    NSString *usernames=[UdStorage getObjectforKey:UserNamer]==nil?phonestr:[UdStorage getObjectforKey:UserNamer];
    _username.text=usernames;
@@ -76,7 +78,14 @@
        _headerBtn.layer.cornerRadius=40;
        _headerBtn.layer.masksToBounds = YES;
        _headerBtn.contentMode=UIViewContentModeScaleAspectFill;
-       [_headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+       _headerBtn.image=[UIImage imageNamed:@"gerenxinxitou"];
+       if ([UdStorage getObjectforKey:UserHead]==nil) {
+          _headerBtn.image=[UIImage imageNamed:@"gerenxinxitou"];
+       }else{
+           [_headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+       }
+      
+//       [_headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
 //        [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userInfoDetail:)];
        [_headerBtn addGestureRecognizer:tap];
@@ -97,10 +106,15 @@
 -(UILabel *)username{
     if (!_username) {
         _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+15, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/4, 100, 30)];
-       NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:@"userPhone"]];
-       [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-       NSString *username=[UdStorage getObjectforKey:@"userName"]==nil?phonestr:[UdStorage getObjectforKey:@"userName"];
-        _username.text=username;
+       if ([UdStorage getObjectforKey:UserHead]==nil) {
+          _username.text=@"用户名";
+       }else{
+          NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
+          [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+          NSString *username=[UdStorage getObjectforKey:UserNamer]==nil?phonestr:[UdStorage getObjectforKey:UserNamer];
+          _username.text=username;
+       }
+       
         
         
         
@@ -154,7 +168,10 @@
 #pragma mark - Setters
 -(void)setUsermodel:(QWUserInfo *)usermodel{
    _usermodel = usermodel;
-   self.username.text = usermodel.UserName;
+   NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
+   [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
+   NSString *username=[UdStorage getObjectforKey:UserNamer]==nil?phonestr:[UdStorage getObjectforKey:UserNamer];
+   self.username.text = username;
  
     [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
    

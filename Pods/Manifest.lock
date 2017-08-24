@@ -24,6 +24,7 @@ PODS:
   - IQKeyboardManager (4.0.11)
   - JSONModel (1.7.0)
   - Masonry (1.0.2)
+  - MJRefresh (3.1.12)
   - SDAutoLayout (2.2.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JSONModel (~> 1.7.0)
   - Masonry (~> 1.0.2)
+  - MJRefresh
   - SDAutoLayout
   - SDWebImage (~> 4.0.0)
   - WechatOpenSDK (~> 1.7.8)
@@ -51,10 +53,11 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   WechatOpenSDK: 1fe7e3b07db860d6a936c3ff4a5aba6b890958d9
 
-PODFILE CHECKSUM: 7aa588dfc26e246e0ee51dbb85b7248c3bb812ad
+PODFILE CHECKSUM: bcbf9ba0a7aceea28792e3da4ea9b92a1eabf1e9
 
 COCOAPODS: 1.3.1
