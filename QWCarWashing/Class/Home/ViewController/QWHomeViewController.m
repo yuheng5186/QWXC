@@ -80,17 +80,7 @@ static NSString *cellstr=@"Cellstr";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
     
-    //    UIButton *rightbtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    //    [rightbtn sizeToFit];
-    //    rightbtn.imageView.contentMode=UIViewContentModeScaleAspectFit;
-    //    rightbtn.frame=CGRectMake(10, 0, 48, 48);
-    //    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateNormal];
-    //    [rightbtn setImage:[UIImage imageNamed:@"xiazai"] forState:UIControlStateHighlighted];
-    //
-    //    [rightbtn addTarget:self action:@selector(downloadOnclick) forControlEvents:UIControlEventTouchUpInside];
-    //
-    //    UIBarButtonItem *rightbarbtn= [[UIBarButtonItem alloc]initWithCustomView:rightbtn];
-    //    self.navigationItem.rightBarButtonItem=rightbarbtn;
+    
 }
 
 -(void)personInfo{
@@ -220,10 +210,11 @@ static NSString *cellstr=@"Cellstr";
                     break;
                 case 1:
 
-                    
-                    [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
-                        
-                    }];
+                    [self Addsign];
+//                    [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
+//                        
+//                        
+//                    }];
                     break;
                 case 2:
                     MerchantIn.hidesBottomBarWhenPushed         = YES;
@@ -277,6 +268,109 @@ static NSString *cellstr=@"Cellstr";
         
     }
     
+}
+#pragma mark-签到数据请求
+-(void)Addsign{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYYMMdd"];
+    NSDate *datenow = [NSDate date];
+    NSString *currentTimeString = [formatter stringFromDate:datenow];
+    
+    if([UdStorage getObjectforKey:UserSignTime])
+    {
+        if([[UdStorage getObjectforKey:UserSignTime] intValue]<[currentTimeString intValue])
+        {
+            NSDictionary *mulDic = @{
+                                     @"Account_Id":[UdStorage getObjectforKey:Userid]
+                                     };
+            
+            
+            [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/AddUserSign",Khttp] success:^(NSDictionary *dict, BOOL success) {
+                NSLog(@"%@",dict);
+                if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+                {
+                    
+                    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                    [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+                    [inputFormatter setDateFormat:@"yyyy/MM/dd"];
+                    NSDate* inputDate = [inputFormatter dateFromString:[[dict objectForKey:@"JsonData"] objectForKey:@"SignTime"]];
+                    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+                    [outputFormatter setLocale:[NSLocale currentLocale]];
+                    [outputFormatter setDateFormat:@"yyyyMMdd"];
+                    NSString *targetTime = [outputFormatter stringFromDate:inputDate];
+                    
+                    [UdStorage storageObject:targetTime forKey:UserSignTime];
+                    
+                    PopupView *view = [PopupView defaultPopupView];
+                    view.parentVC = self;
+                    
+                    [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
+                        
+                    }];
+                }
+                
+                else
+                {
+                    [self.view showInfo:@"签到失败" autoHidden:YES interval:2];
+                }
+                
+                
+                
+            } fail:^(NSError *error) {
+                [self.view showInfo:@"签到失败" autoHidden:YES interval:2];
+            }];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"今天已经签过到了" autoHidden:YES interval:2];
+        }
+    }
+    else
+    {
+#pragma mark-没签到
+        NSDictionary *mulDic = @{
+                                 @"Account_Id":[UdStorage getObjectforKey:Userid]
+                                 };
+       
+        
+        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/AddUserSign",Khttp] success:^(NSDictionary *dict, BOOL success) {
+            NSLog(@"%@",dict);
+            if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+            {
+                
+                NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+                [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+                [inputFormatter setDateFormat:@"yyyy/MM/dd"];
+                NSDate* inputDate = [inputFormatter dateFromString:[[dict objectForKey:@"JsonData"] objectForKey:@"SignTime"]];
+                NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+                [outputFormatter setLocale:[NSLocale currentLocale]];
+                [outputFormatter setDateFormat:@"yyyyMMdd"];
+                NSString *targetTime = [outputFormatter stringFromDate:inputDate];
+                
+                [UdStorage storageObject:targetTime forKey:UserSignTime];
+                
+                PopupView *view = [PopupView defaultPopupView];
+                view.parentVC = self;
+                
+                [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
+                    
+                }];
+            }
+            
+            else
+            {
+                [self.view showInfo:@"签到失败" autoHidden:YES interval:2];
+            }
+            
+            
+            
+        } fail:^(NSError *error) {
+            [self.view showInfo:@"签到失败" autoHidden:YES interval:2];
+        }];
+        
+    }
+
 }
 #pragma mark-组头组尾
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

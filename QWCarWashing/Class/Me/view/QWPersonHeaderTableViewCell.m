@@ -10,7 +10,7 @@
 
 @interface QWPersonHeaderTableViewCell()
 @property(nonatomic,strong)UIView *headerBackView;
-@property(nonatomic,strong)UIButton *headerBtn;
+@property(nonatomic,strong)UIImageView *headerBtn;
 @property(nonatomic,strong)UILabel *username;
 @property(nonatomic,strong)UIButton *privilegeButton;
 @property(nonatomic,strong)UIButton *qiandaoButton;
@@ -52,23 +52,8 @@
 }
 -(void)noticeupdateUserheadimg:(NSNotification *)sender{
    NSLog(@"%@",[UdStorage getObjectforKey:UserHead]);
-   //   -(void)noticeupdateUserheadimg:(NSNotification *)sender{
-   //    UIImageView *imageV = [[UIImageView alloc]init];
-   //    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.userImagePath];
-   //    NSURL *url=[NSURL URLWithString:ImageURL];
-   //    [imageV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"touxiang"]];
-   
-   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-      NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,APPDELEGATE.currentUser.Headimg];
-      NSURL *url=[NSURL URLWithString:ImageURL];
-      NSData *data=[NSData dataWithContentsOfURL:url];
-      UIImage *img=[UIImage imageWithData:data];
-      dispatch_sync(dispatch_get_main_queue(), ^{
-         [self.headerBtn setImage:img forState:UIControlStateNormal];
-      });
-   });
-   //   }
-   //   [self.headerBtn.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+ 
+      [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
 }
 -(void)initView{
    [self.contentView addSubview:self.headerBackView];
@@ -85,13 +70,17 @@
    }
    return _headerBackView;
 }
--(UIButton *)headerBtn{
+-(UIImageView *)headerBtn{
     if (!_headerBtn) {
-        _headerBtn = [[UIButton alloc]initWithFrame:CGRectMake(20, 10, 80, 80)];
-        NSString * headimagestr= [UdStorage getObjectforKey:UserHead]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:UserHead];
-        [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
-        _headerBtn.layer.cornerRadius = 10;
-       [_headerBtn addTarget:self action:@selector(userInfoDetail:) forControlEvents:BtnTouchUpInside];
+        _headerBtn = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 80, 80)];
+       _headerBtn.layer.cornerRadius=40;
+       _headerBtn.layer.masksToBounds = YES;
+       _headerBtn.contentMode=UIViewContentModeScaleAspectFill;
+       [_headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+//        [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
+       UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userInfoDetail:)];
+       [_headerBtn addGestureRecognizer:tap];
+       
        
     }
     return _headerBtn;
@@ -166,9 +155,8 @@
 -(void)setUsermodel:(QWUserInfo *)usermodel{
    _usermodel = usermodel;
    self.username.text = usermodel.UserName;
- NSString * headimagestr= usermodel.Headimg==nil?@"gerenxinxitou":usermodel.Headimg;
-   [_headerBtn setBackgroundImage:[UIImage imageNamed:headimagestr] forState:BtnNormal];
-//   self.timelab.text = model.ly_time;
+ 
+    [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
    
    
 }

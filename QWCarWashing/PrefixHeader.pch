@@ -74,6 +74,10 @@
 #define UserLoading      @"userLoading"          //用户登录
 #define orderPayId       @"orderPayId"           //支付id
 
+//签到页
+#define UserSignTime        @"SignTime"             //用户年龄
+
+
 //颜色
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #import "UIColor+HEXString.h"

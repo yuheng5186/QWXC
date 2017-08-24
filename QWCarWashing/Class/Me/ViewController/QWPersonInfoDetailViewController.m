@@ -167,9 +167,13 @@
     cell.detailTextLabel.font   = [UIFont systemFontOfSize:14];
     if (indexPath.section == 0) {
         cell.textLabel.text     = @"头像";
-        self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-Main_Screen_Height*11/667, Main_Screen_Width*60/375, Main_Screen_Height*60/667) imageName:@"gerenxinxitou"];
-//        NSString *imagestr=[UdStorage getObjectforKey:@"Headimg"]==nil?@"gerenxinxitou":[UdStorage getObjectforKey:@"Headimg"];
-        [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+        self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-Main_Screen_Height*11/667, Main_Screen_Width*60/375, Main_Screen_Height*60/667) imageName:@""];
+#pragma mark-圆角
+        self.userImageView.layer.cornerRadius=(Main_Screen_Height*60/667)/2;
+        self.userImageView.layer.masksToBounds = YES;
+        self.userImageView.contentMode=UIViewContentModeScaleAspectFill;
+       
+        [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
         
         self.userImageView.left          = QWScreenWidth*275/375;
         
@@ -373,6 +377,7 @@
 //            NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
 //            [[NSNotificationCenter defaultCenter]postNotification:notice];
             APPDELEGATE.currentUser.Headimg = [[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"];
+            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"] forKey:UserHead];
             self.userImageView.image =headerimage ;
             
             NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
