@@ -17,10 +17,100 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
     
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+    }
+    return self;
 
+}
+//-(UIImageView *)McImageView{
+//    if (!_McImageView) {
+//        UIImageView *imageV =[[UIImageView alloc]initWithFrame:CGRectMake1(12,12,80,80)];
+//        imageV.opaque = YES;
+//        imageV.image = [UIImage imageNamed:@"aiche1"];
+//        [self.contentView addSubview:imageV];
+//        _McImageView = imageV;
+//        
+//    }
+//    return _McImageView;
+//
+//}
+//-(UIImageView *)McImagecheckView{
+//    if (!_McImagecheckView) {
+//        UIImageView *imageV1 =[[UIImageView alloc]initWithFrame:CGRectMake1(0,0,30,30)];
+//        imageV1.opaque = YES;
+//        imageV1.image = [UIImage imageNamed:@"renzhengbiaoqian"];
+//        [self.McImageView addSubview:imageV1];
+//        _McImagecheckView = imageV1;
+//        
+//    }
+//    return _McImagecheckView;
+//    
+//}
+//-(UILabel *)Mcname{
+//    if (!_Mcname) {
+//        UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake1(112,12, 100, 10)];
+//        [namelabel setFont:[UIFont fontWithName:@"Helvetica" size:16 * myDelegate.autoSizeScaleX]];
+//        namelabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
+//        namelabel.text = @"金雷快修店";
+//        [self.contentView addSubview:namelabel];
+//        
+//        namelabel.lineBreakMode = NSLineBreakByWordWrapping;
+//        [namelabel sizeToFit];
+//        _Mcname = namelabel;
+//        
+//    }
+//    return _Mcname;
+//    
+//}
+//-(UILabel *)Mccat{
+//    if (!_Mccat) {
+//        UILabel *catlabel = [[UILabel alloc]initWithFrame:CGRectMake1(250,12, 113, 10)];
+//            [catlabel setFont:[UIFont fontWithName:@"Helvetica" size:12 * myDelegate.autoSizeScaleX]];
+//            catlabel.textColor = [UIColor colorWithHexString:@"#868686"];
+//            catlabel.text = @"美容店";
+//            catlabel.textAlignment = NSTextAlignmentRight;
+//            [self.contentView addSubview:catlabel];
+//            _Mccat = catlabel;
+//        CGSize sizecatlabel = [catlabel boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
+//        catlabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    }
+//    return _Mccat;
+//    
+//}
+//-(UILabel *)Mcaddress{
+//    if (!_Mcaddress) {
+//        CGSize size = [self.Mcname boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
+//        UILabel *addlabel = [[UILabel alloc]initWithFrame:CGRectMake(112 * myDelegate.autoSizeScaleX, 19* myDelegate.autoSizeScaleY+size.height, 200* myDelegate.autoSizeScaleX, 10* myDelegate.autoSizeScaleY)];
+//        [addlabel setFont:[UIFont fontWithName:@"Helvetica" size:13 * myDelegate.autoSizeScaleX]];
+//        addlabel.textColor = [UIColor colorWithHexString:@"#999999"];
+//        addlabel.text = @"上海市浦东新区金桥路金桥路";
+//        [self.contentView addSubview:addlabel];
+//        _Mcaddress = addlabel;
+//        
+//        CGSize sizeaddlabel = [addlabel boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
+//        addlabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    }
+//    return _Mcaddress;
+//    
+//}
+//-(UIImageView *)McImagelubiaoView{
+//    if (!_McImagelubiaoView) {
+//          CGSize sizecatlabel = [self.Mccat boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
+//        UIImageView *imageV3 =[[UIImageView alloc]initWithFrame:CGRectMake(320 * myDelegate.autoSizeScaleX, 21* myDelegate.autoSizeScaleY+sizecatlabel.height,10 * myDelegate.autoSizeScaleX,10 * myDelegate.autoSizeScaleY)];
+//        imageV3.opaque = YES;
+//        imageV3.image = [UIImage imageNamed:@"juli"];
+//        [self.contentView addSubview:imageV3];
+//        _McImagelubiaoView = imageV3;
+//        
+//    }
+//    return _McImagelubiaoView;
+//    
+//}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -221,9 +311,27 @@ CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
     {
         self.Mccat.text = @"洗车服务";
     }
-    self.Mcrange.text= [NSString stringWithFormat:@"%.2f",Merchantmodel.Distance];
+    
+    self.Mcrange.text= [NSString stringWithFormat:@"%.2fkm",Merchantmodel.Distance];
     self.Mcaddress.text=Merchantmodel.MerAddress;
-    self.Mcscore.text=[NSString stringWithFormat:@"%.2f",Merchantmodel.Score];
-
+    self.Mcscore.text=[NSString stringWithFormat:@"%.2f分",Merchantmodel.Score];
+    [self.Mcxingji setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@xing",[[NSString stringWithFormat:@"%.2f",Merchantmodel.Score] substringToIndex:1]]]];
+    
+    NSArray *lab = [Merchantmodel.MerFlag componentsSeparatedByString:@","];
+    
+    UILabel *MerflagsLabel = [UILabel new];
+    for (int i = 0; i < [lab count]; i++) {
+        MerflagsLabel = [[UILabel alloc] initWithFrame:CGRectMake(115 *myDelegate.autoSizeScaleX + i % 3 * 67 *myDelegate.autoSizeScaleX,  i / 3 * 25 *myDelegate.autoSizeScaleY + 85 *myDelegate.autoSizeScaleY, 60*myDelegate.autoSizeScaleX, 15*myDelegate.autoSizeScaleY)];
+        
+        MerflagsLabel.text = lab[i];
+        MerflagsLabel.backgroundColor = [UIColor redColor];
+        [MerflagsLabel setFont:[UIFont fontWithName:@"Helvetica" size:11 ]];
+        MerflagsLabel.textColor = [UIColor colorFromHex:@"#fefefe"];
+        MerflagsLabel.backgroundColor = [UIColor colorFromHex:@"#ff7556"];
+        MerflagsLabel.textAlignment = NSTextAlignmentCenter;
+        MerflagsLabel.layer.masksToBounds = YES;
+        MerflagsLabel.layer.cornerRadius = 7.5*myDelegate.autoSizeScaleY;
+        [self.contentView addSubview:MerflagsLabel];
+    }
 }
 @end

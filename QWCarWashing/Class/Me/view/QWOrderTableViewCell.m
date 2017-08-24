@@ -9,13 +9,13 @@
 #import "QWOrderTableViewCell.h"
 
 
-#define kTop 15
+#define kTop 12
 
-#define kLeftPads 40
-#define ImageWH     38
+#define kLeftPads (QWScreenWidth-ImageWH*3)/4
+#define ImageWH     30
 #define HeaderSpan     ( QWScreenWidth - ImageWH *3 )/4
 
-#define LaberWH     56
+#define LaberWH     30
 #define HeaderSpanLaber     (QWScreenWidth - LaberWH *3 )/4
 #define kPaddingW (QWScreenWidth - ImageWH *3- kLeftPads*2)/2
 @interface QWOrderTableViewCell ()
@@ -27,6 +27,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+   
     // Initialization code
 }
 
@@ -39,13 +40,15 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        
         if (!_oneImage) {
             _oneImage = [[UIImageView alloc]initWithFrame:CGRectMake(kLeftPads, kTop, ImageWH, ImageWH)];
             _oneImage.userInteractionEnabled = YES;
             _oneImage.contentMode = UIViewContentModeScaleAspectFill;
             _oneImage.image= [UIImage imageNamed:@"dingdan"];
             [_oneImage addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(oneImageTap:)]];
+           
+            
             [self addSubview:_oneImage];
         }
         if (!_twoImage) {
@@ -67,26 +70,27 @@
             [self addSubview:_threeImage];
         }
         if (!_oneLabel) {
-            _oneLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads-9, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
-            _oneLabel.textColor = [UIColor colorWithHexString:@"0x313131"];
-            _oneLabel.font = [UIFont systemFontOfSize:13];
+            _oneLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
+            _oneLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+            _oneLabel.font = [UIFont systemFontOfSize:12];
             _oneLabel.text= @"订单";
             _oneLabel.textAlignment =NSTextAlignmentCenter;
+           
             [self addSubview:_oneLabel];
         }
         if (!_twoLabel) {
-            _twoLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads + ImageWH+kPaddingW -9, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
-            _twoLabel.textColor = [UIColor colorWithHexString:@"0x313131"];
-            _twoLabel.font = [UIFont systemFontOfSize:13];
+            _twoLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads + ImageWH+kPaddingW , CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
+            _twoLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+            _twoLabel.font = [UIFont systemFontOfSize:12];
             _twoLabel.text= @"收藏";
             _twoLabel.textAlignment =NSTextAlignmentCenter;
             
             [self addSubview:_twoLabel];
         }
         if (!_threeLabel) {
-            _threeLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads + ImageWH *2+kPaddingW *2-9, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
-            _threeLabel.textColor = [UIColor colorWithHexString:@"0x313131"];
-            _threeLabel.font = [UIFont systemFontOfSize:13];
+            _threeLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads + ImageWH *2+kPaddingW *2, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
+            _threeLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+            _threeLabel.font = [UIFont systemFontOfSize:12];
             _threeLabel.text= @"兑换";
             _threeLabel.textAlignment =NSTextAlignmentCenter;
             [self addSubview:_threeLabel];
@@ -111,7 +115,7 @@
     }
 }
 + (CGFloat)cellHeight{
-    return 90;
+    return 75;
 }
 @end
 

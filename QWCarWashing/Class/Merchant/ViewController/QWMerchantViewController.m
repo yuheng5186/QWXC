@@ -119,7 +119,8 @@
     //    }
     //    else
     //    {
-    return self.MerchantData.count;
+//    return self.MerchantData.count;
+    return 5;
  
     //    }
 }
@@ -161,24 +162,24 @@
     {
         cell = [[QWMclistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    else
-    {
-        //删除cell的所有子视图
-        while ([cell.contentView.subviews lastObject] != nil)
-        {
-            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-        }
-    }
-    [cell setlayoutCell];
+//    else
+//    {
+//        //删除cell的所有子视图
+//        while ([cell.contentView.subviews lastObject] != nil)
+//        {
+//            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+//        }
+//    }
+//    [cell setlayoutCell];
     [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
-    
-    NSDictionary *dic=[self.MerchantData objectAtIndex:indexPath.row];
- 
-    //KVC 方式赋值
-    QWMerchantModel *tempmodel=[[QWMerchantModel alloc]init];
-     [tempmodel setValuesForKeysWithDictionary:dic];
-    [cell setUpCellWithDic:dic];
+    if (self.MerchantData.count!=0) {
+        QWMerchantModel *tempmodel=[self.MerchantData objectAtIndex:indexPath.row];
+        [cell setMerchantmodel:tempmodel];
+
+    }
+   
+//    [cell setUpCellWithDic:dic];
     [cell setBackgroundColor:[UIColor clearColor]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -303,11 +304,15 @@
             }
             else
             {
-//                for ( in <#collection#>) {
-//                    <#statements#>
-//                }
-//                
-                [self.MerchantData addObjectsFromArray:arr];
+               
+                for (NSDictionary *tmpDic in arr) {
+                    QWMerchantModel *tmpModel = [QWMerchantModel new];
+                    //KVC 方式赋值
+                    [tmpModel setValuesForKeysWithDictionary:tmpDic];
+                    [self.MerchantData addObject:tmpModel];
+                }
+//
+//                [self.MerchantData addObjectsFromArray:arr];
                 [self.MerchantListtableview reloadData];
                 [self.MerchantListtableview.mj_header endRefreshing];
             }
@@ -420,7 +425,7 @@
     
     // 添加子控制器
     [self setupAllChildViewController];
-    [self setupRefresh];
+//    [self setupRefresh];
 }
 
 #pragma mark - 添加子控制器

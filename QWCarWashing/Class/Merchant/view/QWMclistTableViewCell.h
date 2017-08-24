@@ -24,7 +24,7 @@
 @property(nonatomic,weak)UILabel *Mctag1;
 @property(nonatomic,weak)UILabel *Mctag2;
 @property(nonatomic,strong)QWMerchantModel *Merchantmodel;
--(void)setlayoutCell;
--(void)setUpCellWithDic:(NSDictionary *)dic;
+//-(void)setlayoutCell;
+//-(void)setUpCellWithDic:(NSDictionary *)dic;
 
 @end
