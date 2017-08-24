@@ -2596,6 +2596,7 @@
 			baseConfigurationReference = 53466B7310627D639E1C9CE9 /* Pods-QWCarWashing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
@@ -2611,6 +2612,7 @@
 			baseConfigurationReference = F13072CE0CC61A47AEF000D7 /* Pods-QWCarWashing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
