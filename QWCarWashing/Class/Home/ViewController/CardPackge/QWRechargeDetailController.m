@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.title = @"详情";
     self.view.backgroundColor   = [UIColor whiteColor];
     [self setupUI];
 

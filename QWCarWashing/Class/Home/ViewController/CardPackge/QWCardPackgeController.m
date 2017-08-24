@@ -9,7 +9,6 @@
 #import "QWCardPackgeController.h"
 #import "QWDiscountCategoryView.h"
 #import "QWDiscountController.h"
-#import "QWRechargeController.h"
 #import "RechargeCell.h"
 #import "QWRechargeDetailController.h"
 @interface QWCardPackgeController ()<UITableViewDelegate, UITableViewDataSource>
@@ -119,17 +118,17 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     
     
     [self.rechargeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(titleView.mas_bottom).mas_offset(0);
-        make.left.equalTo(self.view).mas_offset(Main_Screen_Width*10/375);
-        make.right.equalTo(self.view).mas_offset(-Main_Screen_Width*10/375);
+        make.top.equalTo(titleView.mas_bottom);
+        make.left.equalTo(self.view).mas_offset(Main_Screen_Width*37.5/375);
+        make.right.equalTo(self.view).mas_offset(-Main_Screen_Width*37.5/375);
         make.height.mas_equalTo(self.view.height);
     }];
     
     self.rechargeView.delegate = self;
     self.rechargeView.dataSource = self;
-    
+    self.rechargeView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.rechargeView registerNib:[UINib nibWithNibName:@"RechargeCell" bundle:nil] forCellReuseIdentifier:id_rechargeCell];
-    self.rechargeView.rowHeight = Main_Screen_Height*100/667;
+    self.rechargeView.rowHeight = Main_Screen_Height*192/667;
     //self.rechargeView.backgroundColor = [UIColor whiteColor];
     
     UIView *blankView = [[UIView alloc] initWithFrame:CGRectMake(_activateTF.frame.origin.x,_activateTF.frame.origin.y,15.0, _activateTF.frame.size.height)];
@@ -151,7 +150,10 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     RechargeCell *cell = [tableView dequeueReusableCellWithIdentifier:id_rechargeCell forIndexPath:indexPath];
+    cell.backgroundColor = self.view.backgroundColor;
+    cell.contentView.backgroundColor = self.view.backgroundColor;
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -168,9 +170,13 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPat{
     
-    QWRechargeController *rechargedetailvc=[[QWRechargeController alloc]init];
-    rechargedetailvc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:rechargedetailvc animated:YES];
+//    QWRechargeController *rechargedetailvc=[[QWRechargeController alloc]init];
+//    rechargedetailvc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:rechargedetailvc animated:YES];
+    
+    QWRechargeDetailController *VC = [[QWRechargeDetailController alloc] init];
+    VC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:VC animated:YES];
     
 }
 

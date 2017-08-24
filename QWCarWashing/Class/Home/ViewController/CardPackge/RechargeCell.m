@@ -7,12 +7,14 @@
 //
 
 #import "RechargeCell.h"
+#import "UIView+AutoSizeToDevice.h"
 
 @implementation RechargeCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    
+    self.dg_viewAutoSizeToDevice = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
