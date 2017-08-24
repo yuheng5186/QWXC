@@ -9,13 +9,17 @@
 #import "QWUserServiceController.h"
 
 #import "HQSliderView.h"
+#import <Masonry.h>
 #import "ProblemTitleModel.h"
 #import "AnswerModel.h"
 #import "HeadView.h"
 #import "AnswerCell.h"
+
 @interface QWUserServiceController ()<UITableViewDelegate, UITableViewDataSource, HQSliderViewDelegate, HeadViewDelegate>
 
 @property (nonatomic, weak) UITableView *serviceListView;
+
+@property (nonatomic, weak) HQSliderView *serviceSliderView;
 
 /** 记录点击的是第几个Button */
 @property (nonatomic, assign) NSInteger serviceTag;
@@ -35,15 +39,16 @@
 }
 
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title  = @"客服咨询";
-
+    
     [self setupUI];
     
     [self loadData];
 }
+
 
 #pragma mark 加载数据
 - (void)loadData
@@ -64,12 +69,12 @@
     
     [self setupTopServiceSliderView];
     
-    UITableView *serviceListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 108, Main_Screen_Width, Main_Screen_Height)];
+    UITableView *serviceListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, Main_Screen_Width, Main_Screen_Height - 64 - (44+60)*Main_Screen_Height/667)];
     serviceListView.delegate = self;
     serviceListView.dataSource = self;
     [self.view addSubview:serviceListView];
     self.serviceListView = serviceListView;
-    self.serviceListView.sectionHeaderHeight = 50;
+    self.serviceListView.sectionHeaderHeight = 50*Main_Screen_Height/667;
     
     
     //底部电话客服
@@ -84,23 +89,29 @@
     //[phoneBtn setTintColor:[UIColor blackColor]];
     [phoneBtn setTitleColor:[UIColor colorFromHex:@"#4a4a4a"] forState:UIControlStateNormal];
     
-    phoneBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [phoneBtn setImage:[UIImage imageNamed:@"kefu"] forState:UIControlStateNormal];
+    phoneBtn.titleLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+    [phoneBtn setImage:[UIImage imageNamed:@"kefuzixun"] forState:UIControlStateNormal];
     [bottomPhoneView addSubview:phoneBtn];
+    
+    //    [serviceListView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.top.equalTo(_serviceSliderView.mas_bottom);
+    //        make.width.mas_equalTo(Main_Screen_Width);
+    //    }];
     
     [bottomPhoneView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(60);
+        make.height.mas_equalTo(60*Main_Screen_Height/667);
+        
     }];
     
     [phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(bottomPhoneView);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(60);
+        make.width.mas_equalTo(100*Main_Screen_Height/667);
+        make.height.mas_equalTo(60*Main_Screen_Height/667);
     }];
     
     phoneBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    [phoneBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
+    [phoneBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10*Main_Screen_Height/667, 0, 0)];
     
     [phoneBtn addTarget:self action:@selector(showAlertWithMessage:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -116,7 +127,8 @@
 #pragma mark - 创建上部的SliderView
 - (void)setupTopServiceSliderView {
     
-    HQSliderView *serviceSliderView = [[HQSliderView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, 44)];
+    HQSliderView *serviceSliderView = [[HQSliderView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, 44*Main_Screen_Height/667)];
+    _serviceSliderView = serviceSliderView;
     serviceSliderView.titleArr = @[@"常见问题",@"车型疑问",@"APP使用"];
     serviceSliderView.delegate = self;
     [self.view addSubview:serviceSliderView];
@@ -197,7 +209,7 @@
 
 - (CGSize)getLabelSizeFortextFont:(UIFont *)font textLabel:(NSString *)text{
     NSDictionary * totalMoneydic = [NSDictionary dictionaryWithObjectsAndKeys:font,NSFontAttributeName,nil];
-    CGSize totalMoneySize =[text boundingRectWithSize:CGSizeMake(Main_Screen_Width-16,1000) options:NSStringDrawingUsesLineFragmentOrigin  attributes:totalMoneydic context:nil].size;
+    CGSize totalMoneySize =[text boundingRectWithSize:CGSizeMake(Main_Screen_Width-16,2000) options:NSStringDrawingUsesLineFragmentOrigin  attributes:totalMoneydic context:nil].size;
     return totalMoneySize;
 }
 

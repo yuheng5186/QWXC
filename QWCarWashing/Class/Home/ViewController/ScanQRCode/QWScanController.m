@@ -10,6 +10,9 @@
 #import "PopHelpView.h"
 #import "LewPopupViewAnimationDrop.h"
 
+#import "QWStartWashingController.h"
+
+
 @interface QWScanController ()<AVCaptureMetadataOutputObjectsDelegate>
 
 @property (nonatomic, strong) AVCaptureSession *session;
@@ -108,31 +111,34 @@
     lbl.top     = self.scanWindow.bottom +Main_Screen_Height*25/667;
     
     
-    self.flashlight     = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"dakaishoudiantong" target:self action:@selector(flashlightButtonClcik:)];
+    self.flashlight     = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"shoudiantong" target:self action:@selector(flashlightButtonClcik:)];
     self.flashlight.top = lbl.bottom +Main_Screen_Height*50/667;
-    self.flashlight.centerX = lbl.centerX;
+    self.flashlight.right = scanImageView.right;
     
     NSString  *openString     = @"打开手电筒";
-    UIFont    *openStringFont = [UIFont systemFontOfSize:15];
+    UIFont    *openStringFont = [UIFont systemFontOfSize:Main_Screen_Height*15/667];
     self.flashlightSwitch     = [UIUtil drawLabelInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*20/667) font:openStringFont text:openString isCenter:NO];
     self.flashlightSwitch.textColor = [UIColor whiteColor];
     self.flashlightSwitch.top = self.flashlight.bottom;
     self.flashlightSwitch.left  = self.flashlight.left+Main_Screen_Width*10/375;
     
-//    self.inputButton        = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"shurubianhao" target:self action:@selector(inputButtonClcik:)];
-//    self.inputButton.top    = lbl.bottom +Main_Screen_Height*50/667;
-//    self.inputButton.left   = scanImageView.left;
-//    
-//    NSString  *inpotString       = @"输入机器编号开锁";
-//    UIFont    *inputStringFont   = [UIFont systemFontOfSize:16];
-//    self.inputLabel             = [UIUtil drawLabelInView:self.view frame:[UIUtil textRect:inpotString font:inputStringFont]font:inputStringFont text:inpotString isCenter:NO];
-//    self.inputLabel.textColor   = [UIColor whiteColor];
-//    self.inputLabel.top         = self.inputButton.bottom;
-//    self.inputLabel.centerX     = self.inputButton.centerX;
+    self.inputButton        = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"shurubianhao" target:self action:@selector(inputButtonClcik:)];
+    self.inputButton.top    = lbl.bottom +Main_Screen_Height*50/667;
+    self.inputButton.left   = scanImageView.left;
+    
+    NSString  *inpotString       = @"输入机器编号开锁";
+    UIFont    *inputStringFont   = [UIFont systemFontOfSize:Main_Screen_Height*15/667];
+    self.inputLabel             = [UIUtil drawLabelInView:self.view frame:[UIUtil textRect:inpotString font:inputStringFont]font:inputStringFont text:inpotString isCenter:NO];
+    self.inputLabel.textColor   = [UIColor whiteColor];
+    self.inputLabel.top         = self.inputButton.bottom;
+    self.inputLabel.centerX     = self.inputButton.centerX;
+    
 }
 - (void) inputButtonClcik:(UIButton *)sender {
     
-    
+    QWStartWashingController *startVC        = [[QWStartWashingController alloc]init];
+    startVC.hidesBottomBarWhenPushed     = YES;
+    [self.navigationController pushViewController:startVC animated:YES];
 }
 - (void) flashlightButtonClcik:(UIButton *)sender {
     
@@ -153,7 +159,7 @@
         }
         
     }else{
-        [sender setImage:[UIImage imageNamed:@"dakaishoudiantong"] forState:UIControlStateSelected];
+        [sender setImage:[UIImage imageNamed:@"shoudiantong"] forState:UIControlStateSelected];
         self.flashlightSwitch.text  = @"打开手电筒";
         //关闭闪光灯
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -221,9 +227,9 @@
     NSString *imei                          = outMessage;
     
     if (imei != nil) {
-//        DSExchangeController *exchangeVC        = [[DSExchangeController alloc]init];
-//        exchangeVC.hidesBottomBarWhenPushed     = YES;
-//        [self.navigationController pushViewController:exchangeVC animated:YES];
+        QWStartWashingController *startVC        = [[QWStartWashingController alloc]init];
+        startVC.hidesBottomBarWhenPushed     = YES;
+        [self.navigationController pushViewController:startVC animated:YES];
     }
 }
 
