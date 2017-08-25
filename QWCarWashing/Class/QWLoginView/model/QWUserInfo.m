@@ -9,23 +9,8 @@
 #import "QWUserInfo.h"
 
 @implementation QWUserInfo
-//+(QWUserInfo *)getInstanceByDic:(NSDictionary *)dic
-//{
-//  
-//    QWUserInfo *u = [[QWUserInfo alloc]init];
-//    u.Account_Id = [[dic valueForKey:@"Account_Id"] integerValue];
-//    u.Level_id = [[dic valueForKey:@"Level_id"] integerValue];
-//    u.userName = [dic valueForKey:@"Name"];
-//    u.Accountname = [dic valueForKey:@"UserName"];
-//    u.userImagePath = [dic valueForKey:@"Headimg"];
-//    u.userPhone = [dic valueForKey:@"Mobile"];
-//    u.userSex = [dic valueForKey:@"Sex"];
-//    u.userAge = [dic valueForKey:@"Age"];
-//    
-//    u.userhobby = [dic valueForKey:@"Hobby"];
-//    u.usermemo = [dic valueForKey:@"Memo"];
-//    u.useroccupation = [dic valueForKey:@"Occupation"];
-//    //    u.token = [dic valueForKey:@"token"];
-//    return u;
-//}
+//如果不想每一条属性都添加，我们也可以在.m文件中重写方法
++(BOOL)propertyIsOptional:(NSString *)propertyName{
+    return  YES;
+}
 @end

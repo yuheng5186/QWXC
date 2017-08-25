@@ -7,14 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface QWUserInfo : NSObject
+#import <JSONModel/JSONModel.h>
+@interface QWUserInfo:JSONModel
 @property (assign,nonatomic)NSInteger Account_Id;
 @property (assign,nonatomic)NSInteger Level_id;
 @property (assign,nonatomic)NSInteger Sex;
-@property (copy, nonatomic)NSString *Age,*Headimg,*Hobby,*Memo,*Mobile,*ModifyType,*Name,*usermemo,*Occupation,*UserName,*VerCode,*UserScore;
+@property (copy, nonatomic)NSString <Optional> *Age,*Headimg,*Hobby,*Memo,*Mobile,*ModifyType,*Name,*usermemo,*Occupation,*UserName,*VerCode,*UserScore;
 
-//@property (copy, nonatomic)NSString *userName,*Accountname,*userImagePath,*userPhone,*userSex,*userAge,*userhobby,*usermemo,*useroccupation,*userVerCode,*userOccupation,*userModifyType;
-
-//+(QWUserInfo *)getInstanceByDic:(NSDictionary *)dic;
 @end

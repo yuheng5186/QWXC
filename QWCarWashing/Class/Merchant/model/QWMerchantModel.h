@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface QWMerchantModel : NSObject
-@property(nonatomic,strong)NSString *Area,*City,*Img,*MerAddress,*MerFlag,*MerName,*MerPhone,*ServiceTime,*StoreProfile;
+@interface QWMerchantModel : JSONModel
+@property(nonatomic,strong)NSString<Optional> *Area,*City,*Img,*MerAddress,*MerFlag,*MerName,*MerPhone,*ServiceTime,*StoreProfile;
 @property(nonatomic,assign)CGFloat Distance,Score,Xm,Ym;//距离
 @property(nonatomic,assign)int Iscert,MerCode,ServiceCount,ShopType;
 

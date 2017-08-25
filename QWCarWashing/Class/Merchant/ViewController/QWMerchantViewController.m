@@ -119,8 +119,8 @@
     //    }
     //    else
     //    {
-//    return self.MerchantData.count;
-    return 5;
+    return self.MerchantData.count;
+//    return 5;
  
     //    }
 }
@@ -306,9 +306,10 @@
             {
                
                 for (NSDictionary *tmpDic in arr) {
-                    QWMerchantModel *tmpModel = [QWMerchantModel new];
+                    QWMerchantModel *tmpModel = [[QWMerchantModel alloc]initWithDictionary:tmpDic error:nil];
                     //KVC 方式赋值
-                    [tmpModel setValuesForKeysWithDictionary:tmpDic];
+                    
+//                    [tmpModel setValuesForKeysWithDictionary:tmpDic];
                     [self.MerchantData addObject:tmpModel];
                 }
 //
@@ -425,7 +426,7 @@
     
     // 添加子控制器
     [self setupAllChildViewController];
-//    [self setupRefresh];
+    [self setupRefresh];
 }
 
 #pragma mark - 添加子控制器
