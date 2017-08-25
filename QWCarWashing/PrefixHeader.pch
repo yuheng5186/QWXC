@@ -51,6 +51,9 @@
 #import "WechatAuthSDK.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
+
+#import "HYActivityView.h"
+
 //请求数据
 #import "AFNetworkingTool.h"
 #import "HTTPDefine.h"

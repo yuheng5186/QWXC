@@ -67,7 +67,8 @@
     
     
     
-    
+    [WXApi registerApp:@"wxcb207ec4f5991a99"];
+
     
     return YES;
     
@@ -75,6 +76,19 @@
 + (AppDelegate *)sharedInstance {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
 #pragma mark - ScaleSize
 - (void)initAutoScaleSize{
     

@@ -7,12 +7,16 @@
 //
 
 #import "SuccessPayCell.h"
-//#import "OrderCommentController.h"
+#import "OrderCommentController.h"
+#import "UIView+AutoSizeToDevice.h"
 
 @implementation SuccessPayCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.dg_viewAutoSizeToDevice = YES;
+    
     self.selectionStyle=UITableViewCellSelectionStyleNone;
     self.orderLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
     
@@ -37,10 +41,10 @@
     
     if ([self.delegate respondsToSelector:@selector(pushController:animated:)]) {
         
-//        OrderCommentController *starCommentVC = [[OrderCommentController alloc] init];
-//        starCommentVC.hidesBottomBarWhenPushed = YES;
-//        
-//        [self.delegate pushController:starCommentVC animated:YES];
+        OrderCommentController *starCommentVC = [[OrderCommentController alloc] init];
+        starCommentVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.delegate pushController:starCommentVC animated:YES];
     }
 }
 
