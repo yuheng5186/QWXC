@@ -21,7 +21,11 @@
 
 #import "ShopViewController.h"
 #import "QWMerchantModel.h"
-@interface QWMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate,CellDelegate>
+
+#import "JXMapNavigationView.h"
+
+
+@interface QWMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate,CellDelegate, SkipToNaviDelegate>
 {
     AppDelegate *myDelegate;
     int collecttag;
@@ -39,9 +43,19 @@
 @property(nonatomic,strong)NSIndexPath *lastPath;
 @property(nonatomic,strong)NSMutableArray *MerchantDetailData;
 @property(nonatomic,strong)QWMerchantModel *MerChantmodel;
+
+#pragma mark - map
+@property (nonatomic, strong)JXMapNavigationView *mapNavigationView;
 @end
 
 @implementation QWMerchantDetailViewController
+
+- (JXMapNavigationView *)mapNavigationView{
+    if (_mapNavigationView == nil) {
+        _mapNavigationView = [[JXMapNavigationView alloc]init];
+    }
+    return _mapNavigationView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -325,7 +339,7 @@
         static NSString *CellIdentifier=@"Cell";
         [tableView registerClass:[QWDetailAddressTableViewCell class] forCellReuseIdentifier:CellIdentifier];
         QWDetailAddressTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
+        cell.delegate = self;
         
         if (cell == nil)
         {
@@ -655,6 +669,14 @@
     ShopViewController *detailController = [[ShopViewController alloc] init];
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
+}
+
+
+#pragma mark - QWDetailAddressTableViewCell代理方法
+- (void)showMapNavigationView {
+    
+    [self.mapNavigationView showMapNavigationViewWithtargetLatitude:22.488260 targetLongitute:113.915049 toName:@"中海油华英加油站"];
+    [self.view addSubview:_mapNavigationView];
 }
 
 /*

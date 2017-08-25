@@ -100,7 +100,9 @@
 //    
 //    CGSize sizeaddlabel = [addlabel boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
 //    addlabel.lineBreakMode = NSLineBreakByWordWrapping;
-//    
+    
+
+    
     UIImageView *imageV3 =[[UIImageView alloc]initWithFrame:CGRectMake1(329 , 12, 14 ,14)];
     imageV3.opaque = YES;
     imageV3.image = [UIImage imageNamed:@"2828daohang"];
@@ -121,6 +123,25 @@
     [dao setTitleColor:[UIColor colorWithHexString:@"#868686"] forState:UIControlStateNormal];
     [self.contentView addSubview:dao];
     self.navigationbtn = dao;
+    
+    UIButton *mapBtn = [[UIButton alloc] init];
+    [mapBtn addTarget:self action:@selector(skipToNavigationMap) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:mapBtn];
+    
+    [mapBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.right.bottom.equalTo(self.contentView);
+        make.width.mas_equalTo(100);
+    }];
+}
+
+
+- (void)skipToNavigationMap {
+    
+    if ([self.delegate respondsToSelector:@selector(showMapNavigationView)]) {
+        
+        [self.delegate showMapNavigationView];
+    }
+    
 }
 
 

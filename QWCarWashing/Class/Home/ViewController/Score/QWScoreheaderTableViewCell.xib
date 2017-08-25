@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="199" id="KGk-i7-Jjw" customClass="QWScoreheaderTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="337" height="205"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="191" id="KGk-i7-Jjw" customClass="QWScoreheaderTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="197"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="337" height="204"/>
+                <rect key="frame" x="0.0" y="0.0" width="337" height="196.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-e9-5LN">
-                        <rect key="frame" x="269" y="148" width="50" height="18"/>
+                        <rect key="frame" x="269" y="149" width="50" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <state key="normal" title="去赚积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -30,16 +30,6 @@
                         <rect key="frame" x="179" y="143" width="80" height="29.5"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="1680积分">
-                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </state>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-8o-vaG">
-                        <rect key="frame" x="108" y="148" width="50" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="18" id="nfI-RX-huu"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <state key="normal" title="去升级">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -91,6 +81,16 @@
                             <constraint firstAttribute="height" constant="50" id="oa6-Uj-QUj"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-8o-vaG">
+                        <rect key="frame" x="108" y="149" width="50" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="nfI-RX-huu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                        <state key="normal" title="去升级">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
@@ -102,11 +102,11 @@
                     <constraint firstItem="hnv-Rp-ZiO" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="10" id="CIc-A9-kme"/>
                     <constraint firstAttribute="trailing" secondItem="UPm-9j-29K" secondAttribute="trailing" id="CRM-qL-Go6"/>
                     <constraint firstItem="vsr-zG-tma" firstAttribute="height" secondItem="hnv-Rp-ZiO" secondAttribute="height" id="DbW-fK-d04"/>
-                    <constraint firstItem="81b-8o-vaG" firstAttribute="top" secondItem="UPm-9j-29K" secondAttribute="bottom" constant="15" id="FRg-j3-ATc"/>
                     <constraint firstItem="hpj-e9-5LN" firstAttribute="width" secondItem="81b-8o-vaG" secondAttribute="width" id="HCY-xb-f3G"/>
                     <constraint firstItem="hpj-e9-5LN" firstAttribute="height" secondItem="81b-8o-vaG" secondAttribute="height" id="KbX-YU-CkX"/>
                     <constraint firstItem="oYr-vi-ZzA" firstAttribute="leading" secondItem="81b-8o-vaG" secondAttribute="trailing" constant="10" id="LPU-NN-x5y"/>
                     <constraint firstItem="hnv-Rp-ZiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="NU9-1l-pLZ"/>
+                    <constraint firstItem="81b-8o-vaG" firstAttribute="centerY" secondItem="hnv-Rp-ZiO" secondAttribute="centerY" id="Nox-g1-9PE"/>
                     <constraint firstItem="fDO-fa-uak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="64" id="Pny-Ky-q0F"/>
                     <constraint firstItem="oYr-vi-ZzA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Vom-g1-5Me"/>
                     <constraint firstItem="UPm-9j-29K" firstAttribute="top" secondItem="fDO-fa-uak" secondAttribute="bottom" constant="10" id="Y6a-Yn-LRz"/>
@@ -133,7 +133,7 @@
                 <outlet property="phoneNum" destination="f0f-Dh-H7i" id="AaR-rJ-7vD"/>
                 <outlet property="vipType" destination="hnv-Rp-ZiO" id="Ulw-eZ-XYW"/>
             </connections>
-            <point key="canvasLocation" x="-541.5" y="116.5"/>
+            <point key="canvasLocation" x="-692.5" y="52.5"/>
         </tableViewCell>
     </objects>
 </document>

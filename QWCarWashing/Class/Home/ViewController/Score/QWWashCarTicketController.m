@@ -21,16 +21,17 @@
     self.title      = @"体验卡";
     
     CarTicketView *ticketView = [CarTicketView carTicketView];
-    ticketView.frame = CGRectMake(10, 64 + 50, Main_Screen_Width - 20, 90);
+    ticketView.frame = CGRectMake(37.5*Main_Screen_Height/667, 64 + 25*Main_Screen_Height/667, Main_Screen_Width - 75*Main_Screen_Height/667, 192*Main_Screen_Height/667);
+    ticketView.backgroundColor = self.view.backgroundColor;
     [self.view addSubview:ticketView];
     
-    UIButton *exchangeButton = [UIUtil drawDefaultButton:self.view title:@"1000积分兑换" target:self action:@selector(didClickExhangeButton:)];
+    UIButton *exchangeButton = [UIUtil drawDefaultButton:self.view title:@"500积分兑换" target:self action:@selector(didClickExhangeButton:)];
     
     [exchangeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(ticketView.mas_bottom).mas_offset(50);
+        make.top.equalTo(ticketView.mas_bottom).mas_offset(50*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
-        make.height.mas_equalTo(48);
-        make.width.mas_equalTo(351);
+        make.height.mas_equalTo(48*Main_Screen_Height/667);
+        make.width.mas_equalTo(350*Main_Screen_Height/667);
     }];
 }
 - (void)didClickExhangeButton:(UIButton *)button {

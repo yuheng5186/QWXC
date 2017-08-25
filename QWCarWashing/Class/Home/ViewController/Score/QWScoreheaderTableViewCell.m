@@ -12,10 +12,13 @@
 #import "QWHowToUpGradeController.h"
 #import "QWWashCarTicketController.h"
 #import "QWScoreDetailController.h"
+#import "UIView+AutoSizeToDevice.h"
 @implementation QWScoreheaderTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.dg_viewAutoSizeToDevice = YES;
 #pragma mark-电话号码显示
     NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:self.phoneNum.text];
     [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
