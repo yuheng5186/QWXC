@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "QWMerComListModel.h"
+@interface QWMerSerListModel : JSONModel
+@property(nonatomic,strong)NSString<Optional> *CurrentPrice,*OriginalPrice,*SerComment,*SerName;
+@property(nonatomic,assign)int MerCode,SerCode;
+@end
 @interface QWMerchantModel : JSONModel
 @property(nonatomic,strong)NSString<Optional> *Area,*City,*Img,*MerAddress,*MerFlag,*MerName,*MerPhone,*ServiceTime,*StoreProfile;
 @property(nonatomic,assign)CGFloat Distance,Score,Xm,Ym;//距离
 @property(nonatomic,assign)int Iscert,MerCode,ServiceCount,ShopType;
-
+@property(nonatomic,strong)NSArray <QWMerComListModel *> *MerComList;
+@property(nonatomic,strong)NSArray <QWMerSerListModel *> *MerSerList;
 @end

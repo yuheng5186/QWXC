@@ -157,6 +157,7 @@
 		182E934C1F4ECA4C00819B79 /* YZPullDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93401F4ECA4C00819B79 /* YZPullDownMenu.m */; };
 		182E93521F4ECB3A00819B79 /* QWCitySelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93511F4ECB3A00819B79 /* QWCitySelectViewController.m */; };
 		182E93561F4EEC3900819B79 /* QWMerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93551F4EEC3900819B79 /* QWMerchantModel.m */; };
+		182E935A1F4FC7EA00819B79 /* QWMerComListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93591F4FC7EA00819B79 /* QWMerComListModel.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
 		18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FEE1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m */; };
 		18508FF21F42CCDD00795E0A /* QWDetailAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FF11F42CCDD00795E0A /* QWDetailAddressTableViewCell.m */; };
@@ -565,6 +566,8 @@
 		182E93511F4ECB3A00819B79 /* QWCitySelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCitySelectViewController.m; sourceTree = "<group>"; };
 		182E93541F4EEC3900819B79 /* QWMerchantModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantModel.h; sourceTree = "<group>"; };
 		182E93551F4EEC3900819B79 /* QWMerchantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantModel.m; sourceTree = "<group>"; };
+		182E93581F4FC7EA00819B79 /* QWMerComListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerComListModel.h; sourceTree = "<group>"; };
+		182E93591F4FC7EA00819B79 /* QWMerComListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerComListModel.m; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -1376,6 +1379,7 @@
 		180957BB1F414D0000BE185D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				182E93571F4FC7C500819B79 /* merCommentlistModel */,
 				182E93541F4EEC3900819B79 /* QWMerchantModel.h */,
 				182E93551F4EEC3900819B79 /* QWMerchantModel.m */,
 			);
@@ -1769,6 +1773,15 @@
 				182E93401F4ECA4C00819B79 /* YZPullDownMenu.m */,
 			);
 			path = YZPullDownMenu;
+			sourceTree = "<group>";
+		};
+		182E93571F4FC7C500819B79 /* merCommentlistModel */ = {
+			isa = PBXGroup;
+			children = (
+				182E93581F4FC7EA00819B79 /* QWMerComListModel.h */,
+				182E93591F4FC7EA00819B79 /* QWMerComListModel.m */,
+			);
+			path = merCommentlistModel;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2469,6 +2482,7 @@
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				18A4B2151F4D640400C64978 /* ShopCategoryView.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
+				182E935A1F4FC7EA00819B79 /* QWMerComListModel.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				18508FFE1F42F36000795E0A /* QWPayViewController.m in Sources */,
 				180957D01F414D6900BE185D /* QWNavigationViewController.m in Sources */,

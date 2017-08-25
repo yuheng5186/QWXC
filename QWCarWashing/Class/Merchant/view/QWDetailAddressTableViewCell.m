@@ -23,7 +23,25 @@
 
     // Configure the view for the selected state
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+    }
+    return self;
+    
+}
 
+#pragma mark-model赋值
+-(void)setMerchantModel:(QWMerchantModel *)merchantModel{
+    _merchantModel=merchantModel;
+//    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,merchantModel.Img];
+//    [self.MczuobiaoImageView sd_setImageWithURL:[NSURL URLWithString:ImageURL] placeholderImage:[UIImage imageNamed:@"shangjiadingwei"]];
+    self.Mcaddress.text=merchantModel.MerAddress;
+    self.Mctimelabel.text=merchantModel.ServiceTime;
+    self.Mcrange.text=[NSString stringWithFormat:@"%.2fkm",merchantModel.Distance];
+    
+
+}
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -55,10 +73,6 @@
     tlabel.text = @"营业时间 : 8:00-20:00";
     [self.contentView addSubview:tlabel];
     self.Mctimelabel = tlabel;
-    
-    UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, self.contentView.frame.size.height-10*myDelegate.autoSizeScaleY,self.contentView.frame.size.width,10*myDelegate.autoSizeScaleY)];
-    separatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
-    [self.contentView addSubview:separatorview];
     
 //    CGSize size = [namelabel boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
 //    namelabel.lineBreakMode = NSLineBreakByWordWrapping;

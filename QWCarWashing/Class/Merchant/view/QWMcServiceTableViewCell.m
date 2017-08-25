@@ -24,7 +24,21 @@
 
     // Configure the view for the selected state
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+    }
+    return self;
+}
+-(void)setMerchantmod:(QWMerSerListModel *)MerSerList{
+    _MerSerList=MerSerList;
+    self.Mcservicename.text=MerSerList.SerName;
+    self.Mcserviceintro.text=MerSerList.SerComment;
+    
+    self.Mcprice.text=[NSString stringWithFormat:@"¥%@",MerSerList.OriginalPrice];
+    self.Mccurrentprice.text=[NSString stringWithFormat:@"¥%@",MerSerList.CurrentPrice];
 
+}
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

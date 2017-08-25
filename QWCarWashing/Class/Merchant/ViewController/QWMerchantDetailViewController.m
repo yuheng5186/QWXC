@@ -20,7 +20,7 @@
 #import "TYAlertController+BlurEffects.h"
 
 #import "ShopViewController.h"
-
+#import "QWMerchantModel.h"
 @interface QWMerchantDetailViewController ()<UITableViewDelegate, UITableViewDataSource,UIScrollViewDelegate,CellDelegate>
 {
     AppDelegate *myDelegate;
@@ -37,7 +37,8 @@
 @property (nonatomic, strong) UIView *detaiview;
 
 @property(nonatomic,strong)NSIndexPath *lastPath;
-
+@property(nonatomic,strong)NSMutableArray *MerchantDetailData;
+@property(nonatomic,strong)QWMerchantModel *MerChantmodel;
 @end
 
 @implementation QWMerchantDetailViewController
@@ -47,16 +48,45 @@
     // Do any additional setup after loading the view.
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     collecttag=0;
+    [self requestMerchantDetailDataAndMerCode:[NSString stringWithFormat:@"%ld",self.MerCode]];
     
-    [self setupview];
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark-获取商家详情数据
+-(void)requestMerchantDetailDataAndMerCode:(NSString *)mercodestr{
+  
+        [self.MerchantDetailData removeAllObjects];
+        
+        NSDictionary *mulDic = @{
+                                 @"MerCode":mercodestr,
+                                 @"Account_Id":[UdStorage getObjectforKey:Userid],
+                                 };
+    
+        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/GetStoreDetail",Khttp] success:^(NSDictionary *dict, BOOL success) {
+            
+            if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+            {
+                NSLog(@"===%@==",dict);
+                self.MerChantmodel=[[QWMerchantModel alloc]initWithDictionary:[dict objectForKey:@"JsonData"] error:nil];
+                NSLog(@"%@",self.MerChantmodel.MerSerList[0]);
+                [self setupview];
+            }
+            else
+            {
+                [self.view showInfo:@"商家信息获取失败" autoHidden:YES interval:2];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            
+            
+            
+            
+        } fail:^(NSError *error) {
+            [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        }];
+    
 
+}
 -(void)setupview
 {
     UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
@@ -79,7 +109,9 @@
     
     _detaiview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
     _detaiImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
-    _detaiImgView.image = [UIImage imageNamed:@"shangjiadiantu"];
+//    _detaiImgView.image = [UIImage imageNamed:@"shangjiadiantu"];
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.MerChantmodel.Img];
+        [_detaiImgView sd_setImageWithURL:[NSURL URLWithString:ImageURL] placeholderImage:[UIImage imageNamed:@"shangjiadingwei"]];
     [_detaiview addSubview:_detaiImgView];
     
     _McdetailTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, QWScreenWidth, QWScreenWidth/2)];
@@ -170,7 +202,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 3;
+    return 4;
 }
 
 
@@ -178,15 +210,19 @@
 {
     if(section == 0)
     {
-        return 2;
-    }
-    else if(section == 1)
+        return 1;
+    }else if(section == 1)
     {
-        return 4;
+        return 1;
+        
+    }
+    else if(section == 2)
+    {
+        return self.MerChantmodel.MerSerList.count;
     }
     else
     {
-        return 6;
+        return self.MerChantmodel.MerComList.count;
     }
 }
 
@@ -196,11 +232,11 @@
     {
         return 110*(myDelegate.autoSizeScaleY );
     }
-    else if(indexPath.section == 0 && indexPath.row == 1)
+    else if(indexPath.section == 1)
     {
         return 80*(myDelegate.autoSizeScaleY );
     }
-    else if(indexPath.section == 1)
+    else if(indexPath.section == 2)
     {
         return 90*(myDelegate.autoSizeScaleY );
     }
@@ -210,11 +246,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if(section == 1)
+    if(section == 2)
     {
         return 27.5*(myDelegate.autoSizeScaleY);
     }
-    else if(section == 2)
+    else if(section == 3)
     {
         return 37*(myDelegate.autoSizeScaleY );
     }
@@ -225,7 +261,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if(section == 1)
+    if(section == 2)
     {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, 375, 27.5)];
         headerView.backgroundColor = [UIColor whiteColor];
@@ -243,7 +279,7 @@
         
         return headerView;
     }
-    else if(section == 2)
+    else if(section == 3)
     {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, 375, 37)];
         headerView.backgroundColor = [UIColor whiteColor];
@@ -265,44 +301,47 @@
     }
     else
     {
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, 320, 0)];//创建一个视图
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, QWScreenWidth, 0)];//创建一个视图
         
-        
+        headerView.backgroundColor=[UIColor greenColor];
         return headerView;
     }
     
 }
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footerview=[UIView new];
+    footerview.backgroundColor=[UIColor clearColor];
+    return footerview;
 
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0 && indexPath.row == 1)
+    if(indexPath.section == 1)
     {
         static NSString *CellIdentifier=@"Cell";
         [tableView registerClass:[QWDetailAddressTableViewCell class] forCellReuseIdentifier:CellIdentifier];
         QWDetailAddressTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         
+        
         if (cell == nil)
         {
             cell = [[QWDetailAddressTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        else
-        {
-            //删除cell的所有子视图
-            while ([cell.contentView.subviews lastObject] != nil)
-            {
-                [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-            }
-        }
-        [cell setlayoutCell];
+        
+        
         [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
         
-        //    NSDictionary *dic=[newslist objectAtIndex:indexPath.row];
-        //    [cell setUpCellWithDic:dic];
+       
         [cell setBackgroundColor:[UIColor whiteColor]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.merchantModel=self.MerChantmodel;
         return cell;
     }
-    else if(indexPath.section == 0 && indexPath.row == 0)
+    else if(indexPath.section == 0)
     {
         static NSString *CellIdentifier=@"Cell0";
         [tableView registerClass:[QWMcDeatailTableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -312,29 +351,23 @@
         {
             cell = [[QWMcDeatailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        else
-        {
-            //删除cell的所有子视图
-            while ([cell.contentView.subviews lastObject] != nil)
-            {
-                [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-            }
-        }
-        [cell setlayoutCell];
-        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+        
+//        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
         cell.McImagedanhaoView.userInteractionEnabled = YES;
         [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.collectbtn.tag = indexPath.row;
+//        [cell setlayoutCell];
 //        cell.collectbtn = !cell.collectbtn;
         //    NSDictionary *dic=[newslist objectAtIndex:indexPath.row];
         //    [cell setUpCellWithDic:dic];
         [cell setBackgroundColor:[UIColor whiteColor]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.Merchantmodels=self.MerChantmodel;
         return cell;
     }
-    else if(indexPath.section == 1)
+    else if(indexPath.section == 2)
     {
         static NSString *CellIdentifier=@"Cell5";
         [tableView registerClass:[QWMcServiceTableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -344,16 +377,8 @@
         {
             cell = [[QWMcServiceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        else
-        {
-            //删除cell的所有子视图
-            while ([cell.contentView.subviews lastObject] != nil)
-            {
-                [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-            }
-        }
-        [cell setlayoutCell];
-        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+        //        [cell setlayoutCell];
+//        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
         
         [cell.selectbtn addTarget:self action:@selector(didClickwhichservice:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -378,15 +403,15 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 89* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
-        separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
+        separatorview.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:separatorview];
-        
+        cell.MerSerList=self.MerChantmodel.MerSerList[indexPath.row];
         
         return cell;
     }
     else
     {
-        if(indexPath.row<5)
+        if(indexPath.row<1)
         {
             static NSString *CellIdentifier=@"Cell4";
             [tableView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -396,16 +421,16 @@
             {
                 cell = [[QWMccommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            else
-            {
-                //删除cell的所有子视图
-                while ([cell.contentView.subviews lastObject] != nil)
-                {
-                    [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-                }
-            }
-            [cell setlayoutCell];
-            [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+//            else
+//            {
+//                //删除cell的所有子视图
+//                while ([cell.contentView.subviews lastObject] != nil)
+//                {
+//                    [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
+//                }
+//            }
+////            [cell setlayoutCell];
+//            [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
             
             
             
@@ -416,8 +441,8 @@
             
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 104 * myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
-            [cell.contentView addSubview:separatorview];
-            
+//            [cell.contentView addSubview:separatorview];
+            cell.ComList=self.MerChantmodel.MerComList[indexPath.row];
             return cell;
             
 
@@ -436,11 +461,11 @@
             
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
-            [cell.contentView addSubview:separatorview];
+//            [cell.contentView addSubview:separatorview];
             
             UIView *Deseparatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY + 1,QWScreenWidth,cell.contentView.height - 50* myDelegate.autoSizeScaleY -  1)];
             Deseparatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
-            [cell.contentView addSubview:Deseparatorview];
+//            [cell.contentView addSubview:Deseparatorview];
             
             UIButton *commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 50 * myDelegate.autoSizeScaleY)];
             [commentBtn setTitle:@"查看全部评价（128）" forState:UIControlStateNormal];
@@ -448,15 +473,25 @@
             commentBtn.titleLabel.font = [UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleY];
             commentBtn.backgroundColor = [UIColor whiteColor];
             [cell.contentView addSubview:commentBtn];
+            //添加点击事件
+            [commentBtn addTarget:self action:@selector(clickCommentButton) forControlEvents:UIControlEventTouchUpInside];
             return cell;
         
         }
         
     }
 }
-
+#pragma mark - 点击查看全部评价
+- (void)clickCommentButton {
+    
+    ShopViewController *commentVC = [[ShopViewController alloc] init];
+    
+//    commentVC.dic = self.dic;
+    
+    [self.navigationController pushViewController:commentVC animated:YES];
+}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 1)
+    if(indexPath.section == 2)
     {
         //之前选中的，取消选择
         QWMcServiceTableViewCell *celled = [tableView cellForRowAtIndexPath:_lastPath];

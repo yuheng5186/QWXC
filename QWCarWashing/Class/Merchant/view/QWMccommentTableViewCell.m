@@ -23,7 +23,22 @@
 
     // Configure the view for the selected state
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+    }
+    return self;
 
+}
+-(void)setMerserlist:(QWMerComListModel *)ComList{
+    _ComList=ComList;
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,ComList.FromuserImg];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [self.UserImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"aiche1"]];
+    self.Username.text=ComList.FromuserName;
+    self.comment.text=ComList.CommentContent;
+    self.commenttime.text=ComList.CommentDate;
+}
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

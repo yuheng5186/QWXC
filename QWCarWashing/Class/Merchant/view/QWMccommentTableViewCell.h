@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @interface QWMccommentTableViewCell : UITableViewCell
 
 @property(nonatomic,weak)UIImageView *UserImageView;
@@ -17,7 +17,7 @@
 @property(nonatomic,weak)UILabel *comment;
 
 @property(nonatomic,weak)UILabel *commenttime;
-
--(void)setlayoutCell;
+@property(nonatomic,strong)QWMerComListModel *ComList;
+//-(void)setlayoutCell;
 
 @end

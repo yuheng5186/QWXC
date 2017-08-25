@@ -132,7 +132,7 @@
     //容器视图
     UIView *containerView = [[UIView alloc] init];
     _containerView = containerView;
-    containerView.backgroundColor = [UIColor lightGrayColor];
+    containerView.backgroundColor = kColorTableBG;
     
     [shopScrollView addSubview:containerView];
     
