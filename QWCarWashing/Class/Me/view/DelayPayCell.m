@@ -14,7 +14,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    
+    self.selectionStyle=UITableViewCellSelectionStyleNone;
     self.orderLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
     
     self.washTypeLabel.textColor = [UIColor colorWithHexString:@"#3a3a3a"];
