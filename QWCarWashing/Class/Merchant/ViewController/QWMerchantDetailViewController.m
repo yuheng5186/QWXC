@@ -69,7 +69,7 @@
             {
                 NSLog(@"===%@==",dict);
                 self.MerChantmodel=[[QWMerchantModel alloc]initWithDictionary:[dict objectForKey:@"JsonData"] error:nil];
-                NSLog(@"%@",self.MerChantmodel.MerSerList[0]);
+               
                 [self setupview];
             }
             else
