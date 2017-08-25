@@ -18,6 +18,7 @@
 		0401E91F1F4F01A600F0CA79 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E91B1F4F01A600F0CA79 /* EAIntroView.m */; };
 		0401E9201F4F01A600F0CA79 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */; };
 		0401E9231F4F01CC00F0CA79 /* QWGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */; };
+		0401E92D1F4FF7B000F0CA79 /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E92C1F4FF7B000F0CA79 /* HYActivityView.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -295,6 +296,8 @@
 		0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
 		0401E9211F4F01CC00F0CA79 /* QWGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWGuideViewController.h; sourceTree = "<group>"; };
 		0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWGuideViewController.m; sourceTree = "<group>"; };
+		0401E92B1F4FF7B000F0CA79 /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYActivityView.h; sourceTree = "<group>"; };
+		0401E92C1F4FF7B000F0CA79 /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYActivityView.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -773,6 +776,8 @@
 		0401E8B01F4C05F000F0CA79 /* ShareView */ = {
 			isa = PBXGroup;
 			children = (
+				0401E92B1F4FF7B000F0CA79 /* HYActivityView.h */,
+				0401E92C1F4FF7B000F0CA79 /* HYActivityView.m */,
 				0401E8B11F4C05F000F0CA79 /* ShareView.h */,
 				0401E8B21F4C05F000F0CA79 /* ShareView.m */,
 				0401E8B31F4C05F000F0CA79 /* ShareView.xib */,
@@ -2426,6 +2431,7 @@
 				180702921F45715D00398435 /* UIView+Uitls.m in Sources */,
 				180702671F45609100398435 /* AnswerCell.m in Sources */,
 				18A4B1761F46DE2600C64978 /* QWPurchaseViewController.m in Sources */,
+				0401E92D1F4FF7B000F0CA79 /* HYActivityView.m in Sources */,
 				1807022E1F44431E00398435 /* QWCardPackgeController.m in Sources */,
 				18508FEF1F42C0AE00795E0A /* QWMcDeatailTableViewCell.m in Sources */,
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
