@@ -26,48 +26,60 @@
     
     UIImageView *backImgV = [[UIImageView alloc] init];
     _backImgV = backImgV;
-    backImgV.image = [UIImage imageNamed:@"tiyankaditu"];
+    backImgV.image = [UIImage imageNamed:@"bg_card"];
     [self.contentView addSubview:backImgV];
     
     UILabel *nameLab = [[UILabel alloc] init];
     _nameLab = nameLab;
-    nameLab.textColor = [UIColor colorFromHex:@"#ffffff"];
+    //nameLab.textColor = [UIColor colorFromHex:@"#ffffff"];
     nameLab.text = @"体验卡";
-    nameLab.font = [UIFont systemFontOfSize:16];
-    [backImgV addSubview:nameLab];
+    nameLab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
+    [self.contentView addSubview:nameLab];
+    
+    UILabel *brandLab = [[UILabel alloc] init];
+    brandLab.text = @"金顶洗车";
+    brandLab.font = [UIFont systemFontOfSize:11];
+    [self.contentView addSubview:brandLab];
     
     UILabel *introLab = [[UILabel alloc] init];
     _introLab = introLab;
-    introLab.textColor = [UIColor colorFromHex:@"#ffffff"];
+    //introLab.textColor = [UIColor colorFromHex:@"#ffffff"];
     introLab.text = @"商家洗车自动抵扣";
-    introLab.font = [UIFont systemFontOfSize:13];
-    [backImgV addSubview:introLab];
+    introLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+    [self.contentView addSubview:introLab];
     
     UILabel *scoreLab = [[UILabel alloc] init];
     _scoreLab = scoreLab;
     scoreLab.text = @"1000积分";
-    scoreLab.textColor = [UIColor colorFromHex:@"#ffffff"];
-    scoreLab.font = [UIFont systemFontOfSize:18];
-    [backImgV addSubview:scoreLab];
+    scoreLab.textColor = [UIColor redColor];
+    scoreLab.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
+    [self.contentView addSubview:scoreLab];
     
     [backImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(self.contentView).mas_equalTo(10);
-        make.right.bottom.equalTo(self.contentView).mas_equalTo(-10);
+        //make.edges.equalTo(self.contentView);
+        make.top.bottom.equalTo(self.contentView);
+        make.left.equalTo(self.contentView).mas_offset(37.5*Main_Screen_Height/667);
+        make.right.equalTo(self.contentView).mas_offset(-37.5*Main_Screen_Height/667);
     }];
     
     [nameLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(backImgV).mas_offset(22);
-        make.top.equalTo(backImgV).mas_offset(21);
+        make.left.equalTo(self.backImgV).mas_offset(22*Main_Screen_Height/667);
+        make.top.equalTo(self.backImgV).mas_offset(21*Main_Screen_Height/667);
+    }];
+    
+    [brandLab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(nameLab);
+        make.leading.equalTo(nameLab.mas_trailing).mas_offset(5*Main_Screen_Height/667);
     }];
     
     [introLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(nameLab);
-        make.top.equalTo(nameLab.mas_bottom).mas_offset(5);
+        make.top.equalTo(nameLab.mas_bottom).mas_offset(10*Main_Screen_Height/667);
     }];
     
     [scoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(backImgV).mas_offset(-11);
-        make.bottom.equalTo(backImgV).mas_offset(-11);
+        make.left.equalTo(self.backImgV).mas_offset(22*Main_Screen_Height/667);
+        make.bottom.equalTo(self.backImgV).mas_offset(-18*Main_Screen_Height/667);
     }];
     
 }
