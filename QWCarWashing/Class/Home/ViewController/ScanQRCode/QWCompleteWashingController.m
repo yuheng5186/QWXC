@@ -138,7 +138,7 @@
     downView.top                      = middleView.bottom +Main_Screen_Height*10/667;
     downView.centerX                  = Main_Screen_Width/2;
     
-    NSString   *scardString            = @"我的卡券";
+    NSString   *scardString            = @"我的卡包";
     UIFont     *cardFont              = [UIFont systemFontOfSize:15];
     UILabel *cardLabel         = [UIUtil drawLabelInView:downView frame:CGRectMake(0, 0, Main_Screen_Width*80/375, Main_Screen_Height*20/667) font:cardFont text:scardString isCenter:NO];
     cardLabel.text             = scardString;

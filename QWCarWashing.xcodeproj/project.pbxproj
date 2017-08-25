@@ -19,6 +19,10 @@
 		0401E9201F4F01A600F0CA79 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E91D1F4F01A600F0CA79 /* EARestrictedScrollView.m */; };
 		0401E9231F4F01CC00F0CA79 /* QWGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */; };
 		0401E92D1F4FF7B000F0CA79 /* HYActivityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E92C1F4FF7B000F0CA79 /* HYActivityView.m */; };
+		0401E9351F501E9B00F0CA79 /* TFGridInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9301F501E9B00F0CA79 /* TFGridInputView.m */; };
+		0401E9361F501E9B00F0CA79 /* TFGridInputViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9321F501E9B00F0CA79 /* TFGridInputViewCell.m */; };
+		0401E9371F501E9B00F0CA79 /* TFGridInputViewCellStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */; };
+		0401E93A1F501EF400F0CA79 /* QWInputCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9391F501EF400F0CA79 /* QWInputCodeController.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -301,6 +305,14 @@
 		0401E9221F4F01CC00F0CA79 /* QWGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWGuideViewController.m; sourceTree = "<group>"; };
 		0401E92B1F4FF7B000F0CA79 /* HYActivityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYActivityView.h; sourceTree = "<group>"; };
 		0401E92C1F4FF7B000F0CA79 /* HYActivityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYActivityView.m; sourceTree = "<group>"; };
+		0401E92F1F501E9B00F0CA79 /* TFGridInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFGridInputView.h; sourceTree = "<group>"; };
+		0401E9301F501E9B00F0CA79 /* TFGridInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFGridInputView.m; sourceTree = "<group>"; };
+		0401E9311F501E9B00F0CA79 /* TFGridInputViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFGridInputViewCell.h; sourceTree = "<group>"; };
+		0401E9321F501E9B00F0CA79 /* TFGridInputViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFGridInputViewCell.m; sourceTree = "<group>"; };
+		0401E9331F501E9B00F0CA79 /* TFGridInputViewCellStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFGridInputViewCellStyle.h; sourceTree = "<group>"; };
+		0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFGridInputViewCellStyle.m; sourceTree = "<group>"; };
+		0401E9381F501EF400F0CA79 /* QWInputCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWInputCodeController.h; sourceTree = "<group>"; };
+		0401E9391F501EF400F0CA79 /* QWInputCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWInputCodeController.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -811,15 +823,31 @@
 			path = EAIntroView;
 			sourceTree = "<group>";
 		};
+		0401E92E1F501E9B00F0CA79 /* TFGridInputView */ = {
+			isa = PBXGroup;
+			children = (
+				0401E92F1F501E9B00F0CA79 /* TFGridInputView.h */,
+				0401E9301F501E9B00F0CA79 /* TFGridInputView.m */,
+				0401E9311F501E9B00F0CA79 /* TFGridInputViewCell.h */,
+				0401E9321F501E9B00F0CA79 /* TFGridInputViewCell.m */,
+				0401E9331F501E9B00F0CA79 /* TFGridInputViewCellStyle.h */,
+				0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */,
+			);
+			path = TFGridInputView;
+			sourceTree = "<group>";
+		};
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				0401E92E1F501E9B00F0CA79 /* TFGridInputView */,
 				180701DC1F44134700398435 /* QWScanController.h */,
 				180701DD1F44134700398435 /* QWScanController.m */,
 				0401E8CE1F4EABF200F0CA79 /* QWStartWashingController.h */,
 				0401E8CF1F4EABF200F0CA79 /* QWStartWashingController.m */,
 				0401E8D11F4EAC0600F0CA79 /* QWCompleteWashingController.h */,
 				0401E8D21F4EAC0600F0CA79 /* QWCompleteWashingController.m */,
+				0401E9381F501EF400F0CA79 /* QWInputCodeController.h */,
+				0401E9391F501EF400F0CA79 /* QWInputCodeController.m */,
 			);
 			path = ScanQRCode;
 			sourceTree = "<group>";
@@ -2322,6 +2350,8 @@
 				182E93491F4ECA4C00819B79 /* YZSortCell.m in Sources */,
 				182E93411F4ECA4C00819B79 /* YZAllCourseViewController.m in Sources */,
 				180702911F45715D00398435 /* SCBaseViewController.m in Sources */,
+				0401E9351F501E9B00F0CA79 /* TFGridInputView.m in Sources */,
+				0401E9361F501E9B00F0CA79 /* TFGridInputViewCell.m in Sources */,
 				185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */,
 				18A4B1A01F46F33D00C64978 /* QWPayPurchaseCardController.m in Sources */,
 				1829FB691F46E36F002BA519 /* QWUserRightDetailViewController.m in Sources */,
@@ -2376,6 +2406,7 @@
 				180957D61F414E0200BE185D /* QWHomeViewController.m in Sources */,
 				180702E51F45976D00398435 /* UIView+TYAlertView.m in Sources */,
 				185C9E081F42C22800B4ED52 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				0401E9371F501E9B00F0CA79 /* TFGridInputViewCellStyle.m in Sources */,
 				180702571F44578A00398435 /* RechargeCell.m in Sources */,
 				182E93161F4D810300819B79 /* QWLoginVC.m in Sources */,
 				48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */,
@@ -2410,6 +2441,7 @@
 				180702E61F45976D00398435 /* UIView+TYAutoLayout.m in Sources */,
 				18A4B1961F46E06B00C64978 /* JFButton.m in Sources */,
 				180702F31F4600CA00398435 /* QWFeedbackController.m in Sources */,
+				0401E93A1F501EF400F0CA79 /* QWInputCodeController.m in Sources */,
 				0401E8D01F4EABF200F0CA79 /* QWStartWashingController.m in Sources */,
 				18A4B19C1F46E06B00C64978 /* JFSearchView.m in Sources */,
 				18508FFB1F42D7F300795E0A /* QWMcServiceTableViewCell.m in Sources */,
