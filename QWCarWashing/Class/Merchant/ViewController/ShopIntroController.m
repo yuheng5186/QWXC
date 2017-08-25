@@ -49,13 +49,7 @@ static NSString *id_infoCell = @"id_infoCell";
 //        make.width.equalTo(self.view);
 //        make.height.mas_equalTo(280*Main_Screen_Height/667);
 //    }];
-    
-    self.infoHeadView.namelabel.text = self.dic[@"MerName"];
-    self.infoHeadView.addresslabel.text = self.dic[@"MerAddress"];
-    if([self.dic[@"ShopType"] intValue] == 1)
-    {
-        self.infoHeadView.typelabel.text = @"洗车服务";
-    }
+    self.infoHeadView.Merchant=self.merchantModel;
     
     
     
@@ -91,7 +85,11 @@ static NSString *id_infoCell = @"id_infoCell";
     UIImageView *infoImageView = [[UIImageView alloc] init];
     infoImageView.image = [UIImage imageNamed:@"huodongxiangqingtu"];
     infoImageView.frame = CGRectMake(0, 0, Main_Screen_Width, 200*Main_Screen_Height/667);
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.merchantModel.Img];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [infoImageView sd_setImageWithURL:url placeholderImage: [UIImage imageNamed:@"huodongxiangqingtu"]];
     [cell.contentView addSubview:infoImageView];
+    
     
 
     

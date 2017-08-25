@@ -203,11 +203,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="addresslabel" destination="1hp-jF-3u0" id="WA3-13-qC5"/>
-                <outlet property="freeCheckLabel" destination="j4H-U7-Fwm" id="kZ9-8O-tXg"/>
+                <outlet property="freeCheckLabel" destination="j4H-U7-Fwm" id="lsv-mF-jxb"/>
                 <outlet property="namelabel" destination="RmW-RU-P9b" id="fj3-3G-reV"/>
                 <outlet property="qualityProtectedLabel" destination="VOr-A7-USv" id="Fbl-I3-qDY"/>
                 <outlet property="separateLine" destination="rLV-g1-hnC" id="t94-Z4-54T"/>
                 <outlet property="separateView" destination="Lia-kb-okI" id="Ca7-In-DWR"/>
+                <outlet property="thereLine" destination="5xU-yW-evG" id="fZz-gN-mvE"/>
+                <outlet property="twoLine" destination="9LI-KQ-p3V" id="IZs-w2-doO"/>
                 <outlet property="typelabel" destination="BmW-ES-rVh" id="2yZ-NY-XIz"/>
             </connections>
             <point key="canvasLocation" x="-144" y="-321"/>

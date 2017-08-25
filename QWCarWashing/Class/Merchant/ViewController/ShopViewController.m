@@ -58,12 +58,12 @@
     
     //门店简介
     ShopIntroController *introController = [[ShopIntroController alloc] init];
-    introController.dic = self.dic;
+    introController.merchantModel = self.merchantModel;
     [self addChildViewController:introController];
     
     //门店评价
     ShopCommentController *commentController = [[ShopCommentController alloc] init];
-    commentController.dic = self.dic;
+    commentController.MerComList = self.merchantModel.MerComList;
     [self addChildViewController:commentController];
     
     [_containerView addSubview:introController.view];
@@ -98,6 +98,7 @@
     [categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self.view);
         make.top.equalTo(self.view).mas_offset(64);
+        
         make.height.mas_equalTo(44*Main_Screen_Height/667);
     }];
     
@@ -124,7 +125,7 @@
     [self.view addSubview:shopScrollView];
     
     [shopScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_categoryView.mas_bottom);
+        make.top.equalTo(_categoryView.mas_bottom).mas_offset(10);
         make.leading.trailing.bottom.equalTo(self.view);
     }];
     

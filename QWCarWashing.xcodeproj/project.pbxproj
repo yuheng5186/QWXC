@@ -255,6 +255,8 @@
 		18A4B23F1F4EA45500C64978 /* problemCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B23E1F4EA45500C64978 /* problemCenter.plist */; };
 		18A6033F1F4FC52F00CFA328 /* OrderCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6033C1F4FC52F00CFA328 /* OrderCommentController.m */; };
 		18A603401F4FC52F00CFA328 /* TggStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */; };
+		18A603461F50135E00CFA328 /* CLLocation+YCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603431F50135E00CFA328 /* CLLocation+YCLocation.m */; };
+		18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603451F50135E00CFA328 /* JXMapNavigationView.m */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
@@ -752,6 +754,10 @@
 		18A6033C1F4FC52F00CFA328 /* OrderCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCommentController.m; sourceTree = "<group>"; };
 		18A6033D1F4FC52F00CFA328 /* TggStarEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TggStarEvaluationView.h; sourceTree = "<group>"; };
 		18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TggStarEvaluationView.m; sourceTree = "<group>"; };
+		18A603421F50135E00CFA328 /* CLLocation+YCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+YCLocation.h"; sourceTree = "<group>"; };
+		18A603431F50135E00CFA328 /* CLLocation+YCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+YCLocation.m"; sourceTree = "<group>"; };
+		18A603441F50135E00CFA328 /* JXMapNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXMapNavigationView.h; sourceTree = "<group>"; };
+		18A603451F50135E00CFA328 /* JXMapNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXMapNavigationView.m; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1516,6 +1522,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				18A603411F50133500CFA328 /* MapNavigationView */,
 				0401E9171F4F011F00F0CA79 /* EAIntroView */,
 				182E93191F4D815200819B79 /* MD5 */,
 				182E93061F4D806D00819B79 /* AFNetworkingtool */,
@@ -2091,6 +2098,17 @@
 			path = AutoSizeToDevice;
 			sourceTree = "<group>";
 		};
+		18A603411F50133500CFA328 /* MapNavigationView */ = {
+			isa = PBXGroup;
+			children = (
+				18A603421F50135E00CFA328 /* CLLocation+YCLocation.h */,
+				18A603431F50135E00CFA328 /* CLLocation+YCLocation.m */,
+				18A603441F50135E00CFA328 /* JXMapNavigationView.h */,
+				18A603451F50135E00CFA328 /* JXMapNavigationView.m */,
+			);
+			name = MapNavigationView;
+			sourceTree = "<group>";
+		};
 		445EC465F7A6D4FF15959817 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2358,6 +2376,7 @@
 				0401E91E1F4F01A600F0CA79 /* EAIntroPage.m in Sources */,
 				182E934C1F4ECA4C00819B79 /* YZPullDownMenu.m in Sources */,
 				0401E8B41F4C05F000F0CA79 /* ShareView.m in Sources */,
+				18A603461F50135E00CFA328 /* CLLocation+YCLocation.m in Sources */,
 				18A4B21C1F4D641A00C64978 /* ShopViewController.m in Sources */,
 				180702ED1F46009C00398435 /* QWPasswordController.m in Sources */,
 				185C9E331F42D37200B4ED52 /* QWExchangeViewController.m in Sources */,
@@ -2494,6 +2513,7 @@
 				180701E51F441AA100398435 /* UIColor+Additions.m in Sources */,
 				180701F41F44214C00398435 /* PopHelpView.m in Sources */,
 				180702EA1F46007300398435 /* QWSettingController.m in Sources */,
+				18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */,
 				18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */,
 				180702E21F45976D00398435 /* TYAlertView.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,

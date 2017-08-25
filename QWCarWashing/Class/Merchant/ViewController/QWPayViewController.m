@@ -80,7 +80,7 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     [self.payTableView registerClass:[BusinessPayCell class] forCellReuseIdentifier:id_paySelectCell];
     
     //底部支付栏
-    UIView *payBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, Main_Screen_Height - 60, Main_Screen_Width, 60*Main_Screen_Height/667)];
+    UIView *payBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, Main_Screen_Height - 60*Main_Screen_Height/667, Main_Screen_Width, 60*Main_Screen_Height/667)];
     payBottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:payBottomView];
     
@@ -263,10 +263,10 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
         NSInteger oldRow = [self.lastPath row];
         
         if (row == oldRow && self.lastPath != nil) {
-            [cell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xaunzhong"] forState:UIControlStateNormal];
+            [cell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
         }else{
             
-            [cell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
+            [cell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
         }
         
         return cell;

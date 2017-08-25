@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "QWMerchantModel.h"
+
+@protocol SkipToNaviDelegate <NSObject>
+
+- (void)showMapNavigationView;
+
+@end
+
+
 @interface QWDetailAddressTableViewCell : UITableViewCell
 
 @property(nonatomic,weak)UIImageView *MczuobiaoImageView;
@@ -21,5 +29,7 @@
 @property(nonatomic,weak)UIButton *navigationbtn;
 @property(nonatomic,strong)QWMerchantModel *merchantModel;
 //-(void)setlayoutCell;
+
+@property (nonatomic, weak) id<SkipToNaviDelegate>delegate;
 
 @end

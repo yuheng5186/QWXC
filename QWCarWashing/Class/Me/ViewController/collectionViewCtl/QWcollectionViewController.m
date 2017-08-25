@@ -42,7 +42,54 @@
     self.favoriteListView.rowHeight = 110;
     
 }
-
+#pragma mark-查询手册列表
+-(void)requestMyFavouriteData
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"Ym":@31.192255,
+                             @"Xm":@121.52334,
+                             @"PageIndex":@0,
+                             @"PageSize":@10
+                             };
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/GetFavouriteMerchant",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSLog(@"==%@==",dict);
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                //                [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
+                [self.favoriteListView reloadData];
+                [self.favoriteListView.mj_header endRefreshing];
+            }
+            else
+            {
+//                [self.MyFavouriteMerchantData addObjectsFromArray:arr];
+                [self.favoriteListView reloadData];
+                [self.favoriteListView.mj_header endRefreshing];
+            }
+            
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
+            [self.favoriteListView.mj_header endRefreshing];
+        }
+        
+        
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.favoriteListView.mj_header endRefreshing];
+    }];
+    
+}
 - (void) resetBabkButton {
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
@@ -68,6 +115,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self requestMyFavouriteData];
     [self setupUI];
     // Do any additional setup after loading the view.
 }

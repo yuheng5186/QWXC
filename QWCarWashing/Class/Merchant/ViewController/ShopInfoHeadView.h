@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @interface ShopInfoHeadView : UIView
 
 @property (weak, nonatomic) IBOutlet UIView *separateLine;
 
 @property (weak, nonatomic) IBOutlet UIView *separateView;
+@property (weak, nonatomic) IBOutlet UIView *twoLine;
+@property (weak, nonatomic) IBOutlet UIView *thereLine;
 
 @property (weak, nonatomic) IBOutlet UILabel *freeCheckLabel;
 
@@ -20,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *namelabel;
 @property (weak, nonatomic) IBOutlet UILabel *addresslabel;
 @property (weak, nonatomic) IBOutlet UILabel *typelabel;
+@property(nonatomic,strong)QWMerchantModel *Merchant;
+
 
 
 

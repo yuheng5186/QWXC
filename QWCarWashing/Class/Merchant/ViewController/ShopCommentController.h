@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerComListModel.h"
 @interface ShopCommentController : UIViewController
-@property (nonatomic,copy) NSDictionary *dic;
+@property (nonatomic,copy) NSArray <QWMerComListModel *> *MerComList;
 
 @end

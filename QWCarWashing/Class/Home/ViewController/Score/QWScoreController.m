@@ -78,6 +78,13 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+        [self.navigationController.navigationBar setShadowImage:nil];
+    
+}
+
 
 
 
@@ -90,7 +97,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==1) {
-        return 2;
+        return 3;
     }else{
         return 1;
     }
@@ -115,11 +122,11 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     
     }
     
-    
-    
-    
-    
 }
+
+
+
+
 -(void)back{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     [self.navigationController popViewControllerAnimated:YES];
@@ -133,7 +140,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     [self.navigationController pushViewController:earnScoreVC animated:YES];
 }
 //
-//#pragma mark - 点击升级
+#pragma mark - 点击升级
 - (void)clickUpgradeBtn:(UIButton *)sender {
 
     QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
@@ -144,7 +151,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 }
 //
 //
-//#pragma mark - 点击会员按钮
+#pragma mark - 点击会员按钮
 - (void)clickMemberButton:(UIButton *)sender {
 
     QWViptequanViewController *vipvc=[[QWViptequanViewController alloc]init];
@@ -169,23 +176,23 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return  190;
+        return  190*Main_Screen_Height/667;
     }else{
-        return 90;
+        return 192*Main_Screen_Height/667;
     }
 
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-//    QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
-//    ticketVC.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:ticketVC animated:YES];
+    QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
+    ticketVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ticketVC animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (section==1) {
-        return 35;
+        return 35*Main_Screen_Height/667;
     }else{
         return 0;
     
@@ -197,7 +204,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if (section==0) {
-        return 10;
+        return 10*Main_Screen_Height/667;
     }else{
         return 0;
         
@@ -220,15 +227,15 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     }
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 35)];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 35*Main_Screen_Height/667)];
     v.backgroundColor =RGBACOLOR(246, 246, 246, 1);
 //     /RGBACOLOR(246, 246, 246, 1);
     if (section==1) {
-        UILabel *exchangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 33)];
+        UILabel *exchangeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 33*Main_Screen_Height/667)];
         exchangeLabel.backgroundColor=[UIColor whiteColor];
         exchangeLabel.textAlignment=NSTextAlignmentCenter;
         exchangeLabel.text = @"精品兑换";
-        exchangeLabel.font = [UIFont systemFontOfSize:12];
+        exchangeLabel.font = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
         exchangeLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
         [v addSubview:exchangeLabel];
         return v;
