@@ -7,7 +7,7 @@
 //
 
 #import "SuccessPayCell.h"
-//#import "OrderCommentController.h"
+#import "OrderCommentController.h"
 
 @implementation SuccessPayCell
 
@@ -37,10 +37,10 @@
     
     if ([self.delegate respondsToSelector:@selector(pushController:animated:)]) {
         
-//        OrderCommentController *starCommentVC = [[OrderCommentController alloc] init];
-//        starCommentVC.hidesBottomBarWhenPushed = YES;
-//        
-//        [self.delegate pushController:starCommentVC animated:YES];
+        OrderCommentController *starCommentVC = [[OrderCommentController alloc] init];
+        starCommentVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.delegate pushController:starCommentVC animated:YES];
     }
 }
 

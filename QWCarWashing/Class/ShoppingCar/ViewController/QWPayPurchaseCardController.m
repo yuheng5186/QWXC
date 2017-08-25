@@ -33,7 +33,7 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 
 - (UITableView *)payCardView {
     if (!_payCardView) {
-        UITableView *payCardView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
+        UITableView *payCardView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
         self.payCardView = payCardView;
         [self.view addSubview:payCardView];
     }
@@ -43,7 +43,9 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"购卡支付";
+    
     NSArray *payNameArray = @[@"微信支付",@"支付宝支付"];
     NSArray *payImageNameArr = @[@"weixin",@"zhifubao"];
     self.payNameArray = payNameArray;
@@ -55,11 +57,6 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 
 - (void)setupUI {
     
-    //    UITableView *tableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, 300) style:UITableViewStylePlain];
-    //
-    //    tableview.delegate = self;
-    //    tableview.dataSource = self;
-    //[self.view addSubview:self];
     
     self.payCardView.delegate = self;
     self.payCardView.dataSource = self;
@@ -69,102 +66,26 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     
     [self.payCardView registerClass:[BusinessPayCell class] forCellReuseIdentifier:id_businessPaycell];
     
-    //    //选择支付方式
-    //    UILabel *payLab = [[UILabel alloc] init];
-    //    payLab.text = @"选择支付个方式";
-    //    [self.view addSubview:payLab];
-    //
-    //    //支付宝
-    //    UIView *zhifubaoView = [[UIView alloc] init];
-    //    zhifubaoView.backgroundColor = [UIColor whiteColor];
-    //
-    //    [self.view addSubview:zhifubaoView];
-    //
-    //
-    //    //微信
-    //    UIView *weixinView = [[UIView alloc] init];
-    //    weixinView.backgroundColor = [UIColor whiteColor];
-    //    [self.view addSubview:weixinView];
-    //
-    //    //约束
-    //    [payLab mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.mas_equalTo(self.payCardView.mas_bottom).mas_offset(20);
-    //        make.left.equalTo(self.view).mas_offset(20);
-    //    }];
-    //
-    //    [zhifubaoView mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.left.right.equalTo(self.view);
-    //        make.top.mas_equalTo(payLab.mas_bottom).mas_offset(10);
-    //        make.height.mas_equalTo(60);
-    //    }];
-    //
-    //    [weixinView mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.left.right.equalTo(self.view);
-    //        make.top.mas_equalTo(zhifubaoView.mas_bottom).mas_offset(1);
-    //        make.height.mas_equalTo(60);
-    //    }];
-    //
-    //
-    //    UIImageView *aliImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 30, 30)];
-    //    aliImageView.image = [UIImage imageNamed:@"messageA"];
-    //
-    //    UILabel *aliLable = [[UILabel alloc] init];
-    //    aliLable.text = @"支付宝支付";
-    //
-    //    UIButton *aliBtn = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 40, 15, 30, 30)];
-    //
-    //    [aliBtn setBackgroundImage:[UIImage imageNamed:@"搜索-更多-未选中"] forState:UIControlStateNormal];
-    //    [aliBtn setBackgroundImage:[UIImage imageNamed:@"搜索-更多-已选中"] forState:UIControlStateHighlighted];
-    //
-    //    [zhifubaoView addSubview:aliImageView];
-    //    [zhifubaoView addSubview:aliLable];
-    //    [zhifubaoView addSubview:aliBtn];
-    //
-    //    [aliLable mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.centerY.mas_equalTo(aliImageView);
-    //        make.leading.mas_equalTo(aliImageView.mas_trailing).mas_offset(10);
-    //    }];
-    //
-    //
-    //    UIImageView *weixinImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 30, 30)];
-    //
-    //    weixinImageView.image = [UIImage imageNamed:@"messageA"];
-    //
-    //    UILabel *weixinLable = [[UILabel alloc] init];
-    //    weixinLable.text = @"微信支付";
-    //
-    //    UIButton *weixinBtn = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 40, 15, 30, 30)];
-    //
-    //    [weixinBtn setBackgroundImage:[UIImage imageNamed:@"搜索-更多-未选中"] forState:UIControlStateNormal];
-    //    [weixinBtn setBackgroundImage:[UIImage imageNamed:@"搜索-更多-已选中"] forState:UIControlStateHighlighted];
-    //
-    //    [weixinView addSubview:weixinImageView];
-    //    [weixinView addSubview:weixinLable];
-    //    [weixinView addSubview:weixinBtn];
-    //
-    //    [weixinLable mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.centerY.mas_equalTo(weixinView);
-    //        make.leading.mas_equalTo(weixinImageView.mas_trailing).mas_offset(10);
-    //    }];
+    
     
     
     //底部支付栏
-    UIView *payBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, Main_Screen_Height - 60, Main_Screen_Width, 60)];
+    UIView *payBottomView = [[UIView alloc] initWithFrame:CGRectMake(0, Main_Screen_Height - 60*Main_Screen_Height/667, Main_Screen_Width, 60*Main_Screen_Height/667)];
     payBottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:payBottomView];
     
     UILabel *bottomPriceLab = [[UILabel alloc] init];
     bottomPriceLab.text = @"¥54.00";
-    bottomPriceLab.font = [UIFont systemFontOfSize:18];
+    bottomPriceLab.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
     bottomPriceLab.textColor = [UIColor colorFromHex:@"#ff525a"];
     [payBottomView addSubview:bottomPriceLab];
     
     [bottomPriceLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(payBottomView);
-        make.left.equalTo(payBottomView).mas_offset(30);
+        make.left.equalTo(payBottomView).mas_offset(30*Main_Screen_Height/667);
     }];
     
-    UIButton *bottomPayButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 136, 0, 136, 60)];
+    UIButton *bottomPayButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 136*Main_Screen_Height/667, 0, 136*Main_Screen_Height/667, 60*Main_Screen_Height/667)];
     bottomPayButton.backgroundColor = [UIColor colorFromHex:@"#febb02"];
     [bottomPayButton setTitle:@"立即付款" forState:UIControlStateNormal];
     bottomPayButton.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -221,10 +142,10 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0 && indexPath.row == 1) {
-        return 67;
+        return 67*Main_Screen_Height/667;
     }
     
-    return 50;
+    return 50*Main_Screen_Height/667;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellStatic = @"cellStatic";
@@ -235,7 +156,7 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     }
     
     cell.textLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    cell.textLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         
@@ -258,10 +179,10 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         NSInteger oldRow = [self.lastPath row];
         
         if (row == oldRow && self.lastPath != nil) {
-            [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xaunzhong"] forState:UIControlStateNormal];
+            [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
         }else{
             
-            [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
+            [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
         }
         
         
@@ -309,7 +230,7 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     UILabel *wayLabel = [[UILabel alloc] init];
     wayLabel.text = @"  请选择支付方式";
     wayLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-    wayLabel.font = [UIFont systemFontOfSize:14];
+    wayLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     
     
     return wayLabel;
@@ -318,15 +239,15 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if (section == 2) {
-        return 30;
+        return 30*Main_Screen_Height/667;
     }
     
-    return 10;
+    return 10*Main_Screen_Height/667;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
+    return 10*Main_Screen_Height/667;
 }
 
 #pragma mark - 点击cell
@@ -349,11 +270,11 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         if (newRow != oldRow) {
             self.seleCell = [tableView cellForRowAtIndexPath:indexPath];
             
-            [self.seleCell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xaunzhong"] forState:UIControlStateNormal];
+            [self.seleCell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
             
             self.seleCell = [tableView cellForRowAtIndexPath:self.lastPath];
             
-            [self.seleCell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
+            [self.seleCell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
             
             self.lastPath = indexPath;
             
