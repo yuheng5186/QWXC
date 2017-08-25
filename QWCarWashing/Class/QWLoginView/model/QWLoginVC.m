@@ -200,7 +200,7 @@
             [UdStorage storageObject:usertmpModel.Age forKey:UserAge];
            [UdStorage storageObject:usertmpModel.UserName forKey:UserNamer];
             [UdStorage storageObject:usertmpModel.Mobile forKey:UserPhone];
-//            [UdStorage storageObj ect:[[dict objectForKey:@"JsonData"] objectForKey:@"Sex"]forKey:UserSex];
+            [UdStorage storageObject:[NSString stringWithFormat:@"%ld",(long)usertmpModel.Sex] forKey:UserSex];
                 [UdStorage storageObject:usertmpModel.Headimg forKey:UserHead];
 ;
             [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:UserLevelid] forKey:@"Level_id"];
