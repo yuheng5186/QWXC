@@ -33,7 +33,7 @@
 {
    
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-       
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self initView];
        NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
        [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];
@@ -87,6 +87,7 @@
       
 //       [_headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
 //        [_headerBtn setBackgroundImage:[UIImage imageNamed:@"gerenxinxitou"] forState:BtnNormal];
+       _headerBtn.userInteractionEnabled=YES;
        UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(userInfoDetail:)];
        [_headerBtn addGestureRecognizer:tap];
        

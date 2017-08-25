@@ -162,15 +162,6 @@
     {
         cell = [[QWMclistTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-//    else
-//    {
-//        //删除cell的所有子视图
-//        while ([cell.contentView.subviews lastObject] != nil)
-//        {
-//            [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-//        }
-//    }
-//    [cell setlayoutCell];
     [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     if (self.MerchantData.count!=0) {
@@ -179,7 +170,6 @@
 
     }
    
-//    [cell setUpCellWithDic:dic];
     [cell setBackgroundColor:[UIColor clearColor]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

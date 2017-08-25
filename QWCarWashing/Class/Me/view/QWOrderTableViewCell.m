@@ -40,7 +40,8 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
+
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         if (!_oneImage) {
             _oneImage = [[UIImageView alloc]initWithFrame:CGRectMake(kLeftPads, kTop, ImageWH, ImageWH)];
             _oneImage.userInteractionEnabled = YES;
