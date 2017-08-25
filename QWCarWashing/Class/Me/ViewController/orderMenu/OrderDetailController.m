@@ -15,17 +15,28 @@
 
 @implementation OrderDetailController
 
-- (void)drawNavigation {
-    
-    [self drawTitle:@"订单详情"];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"订单详情";
+    
+    UIButton *leftButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [leftButton setImage:[UIImage imageNamed:@"baisefanhui"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem= leftItem;
+    
+    
     OrderDetailView *detailView = [OrderDetailView orderDetailView];
     detailView.frame = CGRectMake(0, 64, QWScreenWidth, QWScreenheight - 64);
     [self.view addSubview:detailView];
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
