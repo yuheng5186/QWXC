@@ -248,6 +248,8 @@
 		18A4B2351F4D922400C64978 /* ShareWeChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2321F4D922400C64978 /* ShareWeChatController.m */; };
 		18A4B2361F4D922400C64978 /* ShareWechatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A4B2341F4D922400C64978 /* ShareWechatView.m */; };
 		18A4B23F1F4EA45500C64978 /* problemCenter.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A4B23E1F4EA45500C64978 /* problemCenter.plist */; };
+		18A6033F1F4FC52F00CFA328 /* OrderCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6033C1F4FC52F00CFA328 /* OrderCommentController.m */; };
+		18A603401F4FC52F00CFA328 /* TggStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
@@ -731,6 +733,10 @@
 		18A4B2331F4D922400C64978 /* ShareWechatView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareWechatView.h; sourceTree = "<group>"; };
 		18A4B2341F4D922400C64978 /* ShareWechatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareWechatView.m; sourceTree = "<group>"; };
 		18A4B23E1F4EA45500C64978 /* problemCenter.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = problemCenter.plist; sourceTree = "<group>"; };
+		18A6033B1F4FC52F00CFA328 /* OrderCommentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderCommentController.h; sourceTree = "<group>"; };
+		18A6033C1F4FC52F00CFA328 /* OrderCommentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderCommentController.m; sourceTree = "<group>"; };
+		18A6033D1F4FC52F00CFA328 /* TggStarEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TggStarEvaluationView.h; sourceTree = "<group>"; };
+		18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TggStarEvaluationView.m; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1873,6 +1879,10 @@
 				185C9E381F42DC5A00B4ED52 /* AllOrderController.m */,
 				185C9E391F42DC5A00B4ED52 /* PayOrderController.h */,
 				185C9E3A1F42DC5A00B4ED52 /* PayOrderController.m */,
+				18A6033B1F4FC52F00CFA328 /* OrderCommentController.h */,
+				18A6033C1F4FC52F00CFA328 /* OrderCommentController.m */,
+				18A6033D1F4FC52F00CFA328 /* TggStarEvaluationView.h */,
+				18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */,
 				185C9E2D1F42D0EB00B4ED52 /* QWorderMenuViewController.h */,
 				185C9E2E1F42D0EB00B4ED52 /* QWorderMenuViewController.m */,
 			);
@@ -2333,6 +2343,7 @@
 				185C9E2F1F42D0EB00B4ED52 /* QWorderMenuViewController.m in Sources */,
 				18A4B2191F4D640400C64978 /* ShopIntroController.m in Sources */,
 				180957E91F41766300BE185D /* QWSubCollectionViewCell.m in Sources */,
+				18A6033F1F4FC52F00CFA328 /* OrderCommentController.m in Sources */,
 				1807022B1F4442F600398435 /* QWDownloadController.m in Sources */,
 				18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */,
 				180702371F44436100398435 /* QWUserServiceController.m in Sources */,
@@ -2365,6 +2376,7 @@
 				18A4B2231F4D65E600C64978 /* README.md in Sources */,
 				18508FF81F42D68400795E0A /* QWMccommentTableViewCell.m in Sources */,
 				180702DF1F45976D00398435 /* TYAlertDropDownAnimation.m in Sources */,
+				18A603401F4FC52F00CFA328 /* TggStarEvaluationView.m in Sources */,
 				180702BB1F458DD500398435 /* YzdHUDLabel.m in Sources */,
 				180702B91F458DD500398435 /* YzdHUDImageView.m in Sources */,
 				185C9DFA1F42BF2800B4ED52 /* BlackLoadingView.m in Sources */,

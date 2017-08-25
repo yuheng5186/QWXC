@@ -100,14 +100,14 @@ static NSString *id_cancelCell = @"id_cancelCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.section == 2) {
-        return 100;
+        return 100*Main_Screen_Height/667;
     }
     
-    return 150;
+    return 150*Main_Screen_Height/667;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
+    return 10*Main_Screen_Height/667;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *HeaderInSectionview=[UIView new];

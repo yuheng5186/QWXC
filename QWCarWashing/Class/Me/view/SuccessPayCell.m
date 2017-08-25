@@ -8,11 +8,15 @@
 
 #import "SuccessPayCell.h"
 #import "OrderCommentController.h"
+#import "UIView+AutoSizeToDevice.h"
 
 @implementation SuccessPayCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.dg_viewAutoSizeToDevice = YES;
+    
     self.selectionStyle=UITableViewCellSelectionStyleNone;
     self.orderLabel.textColor = [UIColor colorWithHexString:@"#4a4a4a"];
     
