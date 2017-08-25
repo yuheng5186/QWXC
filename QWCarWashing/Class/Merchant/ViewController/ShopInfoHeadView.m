@@ -20,7 +20,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    self.separateView.backgroundColor=kColorTableBG;
     self.dg_viewAutoSizeToDevice = YES;
     
     self.freeCheckLabel.layer.cornerRadius = 7.5*Main_Screen_Height/667;

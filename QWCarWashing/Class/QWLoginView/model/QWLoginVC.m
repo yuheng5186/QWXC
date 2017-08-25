@@ -155,27 +155,27 @@
 }
 #pragma mark-登录按钮点击事件
 - (void) loginButtonClick:(id)sender {
-//    if (![UdStorage getObjectforKey:@"Account_Id"]) {
-//        if (self.userMobileFieldText.text.length == 11) {
-//            if (self.verifyFieldText.text.length == 4) {
-//                //请求数据
-//                [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
-//            }
-//            else{
-//                [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
-//            }
-//            
-//        }else {
-//            [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
-//        }
-//
-//    }else{
+    if (![UdStorage getObjectforKey:@"Account_Id"]) {
+        if (self.userMobileFieldText.text.length == 11) {
+            if (self.verifyFieldText.text.length == 4) {
+                //请求数据
+                [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
+            }
+            else{
+                [self.view showInfo:@"请输入4位验证码！" autoHidden:YES interval:2];
+            }
+            
+        }else {
+            [self.view showInfo:@"请输入正确的11位手机号码" autoHidden:YES];
+        }
+
+    }else{
         QWTabBarController *menuTabBarController              = [[QWTabBarController alloc] init];
         
         menuTabBarController.tabBar.backgroundColor=[UIColor whiteColor];
         [AppDelegate sharedInstance].window.rootViewController  = menuTabBarController;
     
-//    }
+    }
 //    [self requestLoginDataPhoneNum:self.userMobileFieldText.text andverify:self.verifyFieldText.text];
     
 }
@@ -200,7 +200,7 @@
             [UdStorage storageObject:usertmpModel.Age forKey:UserAge];
            [UdStorage storageObject:usertmpModel.UserName forKey:UserNamer];
             [UdStorage storageObject:usertmpModel.Mobile forKey:UserPhone];
-            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Sex"]forKey:UserSex];
+//            [UdStorage storageObj ect:[[dict objectForKey:@"JsonData"] objectForKey:@"Sex"]forKey:UserSex];
                 [UdStorage storageObject:usertmpModel.Headimg forKey:UserHead];
 ;
             [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:UserLevelid] forKey:@"Level_id"];

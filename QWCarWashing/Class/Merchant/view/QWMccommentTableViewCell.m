@@ -32,8 +32,9 @@
 }
 -(void)setMerserlist:(QWMerComListModel *)ComList{
     _ComList=ComList;
-
-
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,ComList.FromuserImg];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [self.UserImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"aiche1"]];
     self.Username.text=ComList.FromuserName;
     self.comment.text=ComList.CommentContent;
     self.commenttime.text=ComList.CommentDate;

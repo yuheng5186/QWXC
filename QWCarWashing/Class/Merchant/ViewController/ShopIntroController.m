@@ -43,7 +43,7 @@ static NSString *id_infoCell = @"id_infoCell";
 
 - (void)setupUI {
     
-    self.infoHeadView.frame = CGRectMake(0, 0, Main_Screen_Width, 280*Main_Screen_Height/667);
+    self.infoHeadView.frame = CGRectMake(0, 10, Main_Screen_Width, 280*Main_Screen_Height/667);
 //    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(self.view);
 //        make.width.equalTo(self.view);
