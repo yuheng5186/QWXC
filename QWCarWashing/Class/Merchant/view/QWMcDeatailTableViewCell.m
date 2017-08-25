@@ -54,7 +54,7 @@
         self.Mctag1.text=lab[0];
         self.Mctag2.hidden=YES;
     }
-
+    
     
     
 }
@@ -182,7 +182,8 @@
     self.callbtn = callButton;
     
     UIButton *collectButton = [[UIButton alloc]initWithFrame:CGRectMake1(31,62.5,25,25)];
-    [collectButton setImage:[UIImage imageNamed:@"shoucang1"] forState:UIControlStateNormal];
+    [collectButton setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
+    [collectButton setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
     [backgroundview addSubview:collectButton];
     self.collectbtn = collectButton;
     

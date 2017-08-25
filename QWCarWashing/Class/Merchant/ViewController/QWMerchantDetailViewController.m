@@ -292,7 +292,7 @@
         headerLabel.frame = CGRectMake(15* myDelegate.autoSizeScaleX, 37 * myDelegate.autoSizeScaleY/2-labelSize.height/2, 200, labelSize.height);
         
         UIView * separator = [[UIView alloc] initWithFrame:CGRectMake(0, 36.5, QWScreenWidth, 0.5)];
-        separator.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
+        separator.backgroundColor = [UIColor whiteColor];
         [headerView addSubview:separator];
         
         return headerView;
@@ -353,9 +353,11 @@
         }
         
 //        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+        cell.Merchantmodels=self.MerChantmodel;
         cell.McImagedanhaoView.userInteractionEnabled = YES;
         [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
+        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.collectbtn.tag = indexPath.row;
 //        [cell setlayoutCell];
@@ -364,7 +366,7 @@
         //    [cell setUpCellWithDic:dic];
         [cell setBackgroundColor:[UIColor whiteColor]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.Merchantmodels=self.MerChantmodel;
+        
         return cell;
     }
     else if(indexPath.section == 2)
@@ -377,16 +379,13 @@
         {
             cell = [[QWMcServiceTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        //        [cell setlayoutCell];
-//        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
         
         [cell.selectbtn addTarget:self action:@selector(didClickwhichservice:) forControlEvents:UIControlEventTouchUpInside];
         
         cell.delegate = self;
         cell.selectedIndexPath = indexPath;
         [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
-        //    NSDictionary *dic=[newslist objectAtIndex:indexPath.row];
-        //    [cell setUpCellWithDic:dic];
+   
         
         //当上下拉动的时候，因为cell的复用性，我们需要重新判断一下哪一行是打勾的
         if (_lastPath == indexPath) {
@@ -441,7 +440,7 @@
             
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 104 * myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
-//            [cell.contentView addSubview:separatorview];
+            [cell.contentView addSubview:separatorview];
             cell.ComList=self.MerChantmodel.MerComList[indexPath.row];
             return cell;
             
@@ -461,11 +460,11 @@
             
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
-//            [cell.contentView addSubview:separatorview];
+            [cell.contentView addSubview:separatorview];
             
             UIView *Deseparatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY + 1,QWScreenWidth,cell.contentView.height - 50* myDelegate.autoSizeScaleY -  1)];
             Deseparatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
-//            [cell.contentView addSubview:Deseparatorview];
+            [cell.contentView addSubview:Deseparatorview];
             
             UIButton *commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 50 * myDelegate.autoSizeScaleY)];
             [commentBtn setTitle:@"查看全部评价（128）" forState:UIControlStateNormal];
@@ -481,12 +480,39 @@
         
     }
 }
+#pragma mark-添加收藏数据
+-(void)insertCollectionAndUserid:(NSString *)Useridstr andMerCode:(NSString *)MerCodestr{
+    NSDictionary *mulDic = @{
+                             @"MerCode":[NSString stringWithFormat:@"%ld",self.MerCode],
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             };
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/AddFavouriteMerchant",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.McdetailTableView reloadData];
+//           [self.view showInfo:@"收藏成功" autoHidden:YES interval:1];
+        }
+        else
+        {
+            //                [self.view showInfo:@"收藏失败" autoHidden:YES interval:2];
+            //                [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"收藏失败" autoHidden:YES interval:1];
+    }];
+
+}
 #pragma mark - 点击查看全部评价
 - (void)clickCommentButton {
     
     ShopViewController *commentVC = [[ShopViewController alloc] init];
     
-//    commentVC.dic = self.dic;
+    commentVC.merchantModel = self.MerChantmodel;
     
     [self.navigationController pushViewController:commentVC animated:YES];
 }
@@ -622,22 +648,25 @@
 {
     NSLog(@"点击了客服");
 }
-
+#pragma mark-添加收藏按钮
 -(void)didClickcollectBtn:(UIButton *)jiesuan
 {
-    
-    
-    collecttag ++;
-    if(collecttag%2==0)
+ 
+    if(jiesuan.isSelected)
     {
-        [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:UIControlStateNormal];
-        NSLog(@"取消了收藏");
+        [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
+        
     }
     else
     {
-        [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:UIControlStateNormal];
-        NSLog(@"点击了收藏");
+        [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
+        
     }
+    jiesuan.selected=!jiesuan.selected;
+    [self insertCollectionAndUserid:[UdStorage getObjectforKey:Userid] andMerCode:[NSString stringWithFormat:@"%d",self.MerChantmodel.MerCode]];
+
+    
+    
     
 //    [_McdetailTableView reloadRowsAtIndexPaths:@[
 //                                             [NSIndexPath indexPathForRow:jiesuan.tag inSection:0]

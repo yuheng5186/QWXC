@@ -44,12 +44,16 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.MerComList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     QWMccommentTableViewCell *commentCell = [tableView dequeueReusableCellWithIdentifier:id_commentShopCell forIndexPath:indexPath];
-    
+    if (commentCell == nil)
+    {
+        commentCell = [[QWMccommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id_commentShopCell];
+    }
+    commentCell.ComList =self.MerComList[indexPath.row];
     return commentCell;
     
 }

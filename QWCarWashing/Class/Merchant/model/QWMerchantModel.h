@@ -15,7 +15,7 @@
 @interface QWMerchantModel : JSONModel
 @property(nonatomic,strong)NSString<Optional> *Area,*City,*Img,*MerAddress,*MerFlag,*MerName,*MerPhone,*ServiceTime,*StoreProfile;
 @property(nonatomic,assign)CGFloat Distance,Score,Xm,Ym;//距离
-@property(nonatomic,assign)int Iscert,MerCode,ServiceCount,ShopType;
+@property(nonatomic,assign)int Iscert,MerCode,ServiceCount,ShopType,IsCollection;
 @property(nonatomic,strong)NSArray <QWMerComListModel *> *MerComList;
 @property(nonatomic,strong)NSArray <QWMerSerListModel *> *MerSerList;
 @end

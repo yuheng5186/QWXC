@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @interface ShopViewController : UIViewController
 
-@property (nonatomic,copy) NSDictionary *dic;
+@property (nonatomic,copy) QWMerchantModel *merchantModel;
 
 @end
