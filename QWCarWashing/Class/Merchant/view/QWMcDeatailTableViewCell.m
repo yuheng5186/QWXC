@@ -23,7 +23,41 @@
 
     // Configure the view for the selected state
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+        
+    }
+    return self;
+}
 
+#pragma mark-模型赋值
+-(void)setMerchantmodels:(QWMerchantModel *)Merchantmodels{
+    _Merchantmodels=Merchantmodels;
+    self.Mcname.text=Merchantmodels.MerName;
+    if(Merchantmodels.ShopType == 1)
+    {
+       self.Mccat.text = @"洗车服务";
+    }
+    self.Mcaddress.text=Merchantmodels.MerAddress;
+    
+    self.Mcscore.text=[NSString stringWithFormat:@"%.2f分",Merchantmodels.Score];
+    
+   self.McDingdanlabel.text= [NSString stringWithFormat:@"服务%d单",Merchantmodels.ServiceCount];
+    NSArray *lab = [Merchantmodels.MerFlag componentsSeparatedByString:@","];
+    if (lab.count>1) {
+        self.Mctag2.hidden=NO;
+        self.Mctag1.text=lab[0];
+        self.Mctag2.text=lab[1];
+        
+    }else{
+        self.Mctag1.text=lab[0];
+        self.Mctag2.hidden=YES;
+    }
+
+    
+    
+}
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -33,6 +67,7 @@
     imageV1.image = [UIImage imageNamed:@"renzhengbiaoqian"];
     [self.contentView addSubview:imageV1];
     self.McImagecheckView = imageV1;
+    
     
     UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake1(20,9, 100, 10)];
     [namelabel setFont:[UIFont fontWithName:@"Helvetica" size:16 * myDelegate.autoSizeScaleX]];
@@ -151,9 +186,6 @@
     [backgroundview addSubview:collectButton];
     self.collectbtn = collectButton;
     
-    UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, self.contentView.frame.size.height-10*myDelegate.autoSizeScaleY,self.contentView.frame.size.width,10*myDelegate.autoSizeScaleY)];
-    separatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
-    [self.contentView addSubview:separatorview];
     
 }
 

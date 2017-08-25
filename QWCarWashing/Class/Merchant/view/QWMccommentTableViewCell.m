@@ -23,7 +23,21 @@
 
     // Configure the view for the selected state
 }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self setlayoutCell];
+    }
+    return self;
 
+}
+-(void)setMerserlist:(QWMerComListModel *)ComList{
+    _ComList=ComList;
+
+
+    self.Username.text=ComList.FromuserName;
+    self.comment.text=ComList.CommentContent;
+    self.commenttime.text=ComList.CommentDate;
+}
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

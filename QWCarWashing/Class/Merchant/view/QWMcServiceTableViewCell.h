@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @protocol CellDelegate <NSObject>
 - (void)ButtonDidSelected:(NSIndexPath *)selectedIndexPath;
 @end
@@ -27,9 +27,9 @@
 @property (assign, nonatomic) NSIndexPath *selectedIndexPath;
 
 
--(void)setlayoutCell;
+//-(void)setlayoutCell;
 
 
 @property(nonatomic,assign) id<CellDelegate> delegate;
-
+@property(nonatomic,strong)QWMerSerListModel *MerSerList;
 @end

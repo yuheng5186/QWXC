@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @interface QWDetailAddressTableViewCell : UITableViewCell
 
 @property(nonatomic,weak)UIImageView *MczuobiaoImageView;
@@ -19,7 +19,7 @@
 @property(nonatomic,weak)UILabel *Mcrange;
 
 @property(nonatomic,weak)UIButton *navigationbtn;
-
--(void)setlayoutCell;
+@property(nonatomic,strong)QWMerchantModel *merchantModel;
+//-(void)setlayoutCell;
 
 @end
