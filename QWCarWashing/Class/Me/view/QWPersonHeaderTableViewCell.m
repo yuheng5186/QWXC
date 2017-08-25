@@ -132,9 +132,6 @@
         _privilegeButton.backgroundColor=[UIColor colorWithHexString:@"#ffce36"];
        _privilegeButton.layer.cornerRadius=7.5;
        [_privilegeButton addTarget:self action:@selector(privilegeOclick:) forControlEvents:BtnTouchUpInside];
-        
-        
-        
     }
     return _privilegeButton;
     
@@ -174,8 +171,6 @@
    self.username.text = username;
  
     [self.headerBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
-   
-   
 }
 
 

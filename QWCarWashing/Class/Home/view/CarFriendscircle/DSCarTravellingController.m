@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height) style:UITableViewStyleGrouped];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height)];
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.top              = 0;
@@ -36,6 +36,7 @@
     
     self.tableView.rowHeight        = Main_Screen_Height*205/667;
     self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
+    self.tableView.backgroundColor=kColorTableBG;
     [self.contentView addSubview:self.tableView];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -63,7 +64,12 @@
 {
     return 10.00f;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *footervie=[UIView new];
+    footervie.backgroundColor=[UIColor clearColor];
+    return footervie;
 
+}
 #pragma mark --
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

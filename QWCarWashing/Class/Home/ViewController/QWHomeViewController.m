@@ -99,7 +99,7 @@ static NSString *cellstr=@"Cellstr";
 }
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 7;
+    return 8;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
@@ -112,6 +112,7 @@ static NSString *cellstr=@"Cellstr";
         case 2:
             return 1;
             break;
+        
         default:
             return  1 ;
             break;
@@ -251,7 +252,8 @@ static NSString *cellstr=@"Cellstr";
         return cell;
         
         
-    }else if(indexPath.section==4){
+    }else if(indexPath.section==4)
+    {
  
         UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
         cell2.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -260,7 +262,16 @@ static NSString *cellstr=@"Cellstr";
         cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"guanggao22"]];
         return cell2;
     
-    } else {
+    }
+    else if(indexPath.section==7){
+        
+        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell2.backgroundColor=[UIColor clearColor];
+        cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
+        cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+        return cell2;
+    }else{
         QWHomeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_HomeDetailTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -410,7 +421,7 @@ static NSString *cellstr=@"Cellstr";
     //        imagevie.image=[UIImage imageNamed:@"guanggao11"];
     //         return Footer;
     //    } else
-    if (section >1&&section!=4) {
+    if (section >1&&section!=4&&section!=7) {
         UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
         Footer.backgroundColor=[UIColor clearColor];
         UILabel *imagevie=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, Footer.frame.size.height)];
@@ -449,7 +460,7 @@ static NSString *cellstr=@"Cellstr";
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    if(section==1){
+    if(section==1||section==7){
         
         return 0;
         
@@ -463,7 +474,7 @@ static NSString *cellstr=@"Cellstr";
     //    }else
     if(section>1&&section!=4){
         return 30;
-    }else if(section==0||section==1||section==4){
+    }else if(section==0||section==1||section==4||section==7){
         
         return 0;
         
