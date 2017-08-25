@@ -195,6 +195,7 @@
             QWUserInfo *usertmpModel = [[QWUserInfo alloc]initWithDictionary:[dict objectForKey:@"JsonData"] error:nil];;
             //KVC 方式赋值
             
+            
 //            [usertmpModel setValuesForKeysWithDictionary:[dict objectForKey:@"JsonData"]];
 //            //数据本地化
             [UdStorage storageObject:usertmpModel.Age forKey:UserAge];
