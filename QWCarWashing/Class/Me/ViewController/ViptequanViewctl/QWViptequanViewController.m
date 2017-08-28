@@ -152,9 +152,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 90;
+        return 90*Main_Screen_Height/667;
     }else {
-        return 70;
+        return 70*Main_Screen_Height/667;
     }
 }
 
@@ -204,11 +204,11 @@
     
     
     
-    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
+    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30*Main_Screen_Height/667)];
     if (section==2||section==1) {
-        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29)];
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29*Main_Screen_Height/667)];
         lab.backgroundColor=[UIColor whiteColor];
-        lab.font=[UIFont systemFontOfSize:14];
+        lab.font=[UIFont systemFontOfSize:14*Main_Screen_Height/667];
         lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
         lab.text=@"   我的特权";
         [headerview addSubview:lab];
@@ -221,7 +221,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==2||section==1) {
-        return 30;
+        return 30*Main_Screen_Height/667;
     }else{
         return 0;
     }

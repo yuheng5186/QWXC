@@ -13,12 +13,12 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.titlelabel.font = [UIFont systemFontOfSize:14];
+    self.titlelabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     self.titlelabel.textColor = [UIColor colorFromHex:@"#3a3a3a"];
     
     
 //    self.detaillabel.text = @"门店吸尘是可抵扣相应金额,每月领取一次";
-    self.detaillabel.font = [UIFont systemFontOfSize:12];
+    self.detaillabel.font = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
     self.detaillabel.textColor = [UIColor colorFromHex:@"#999999"];
 }
 

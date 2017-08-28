@@ -21,7 +21,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         if (!_sliderview) {
-            _sliderview = [[HYSlider alloc]initWithFrame:CGRectMake(15, 32, QWScreenWidth-30,10)];
+            _sliderview = [[HYSlider alloc]initWithFrame:CGRectMake(15*Main_Screen_Height/667, 32*Main_Screen_Height/667, QWScreenWidth-30,10*Main_Screen_Height/667)];
             _sliderview.currentValueColor = [UIColor orangeColor];
             _sliderview.maxValue = 1000;
             _sliderview.currentSliderValue = 600;
@@ -35,10 +35,10 @@
             [self.contentView addSubview:_sliderview];
         }
         if (!_integralbtn) {
-            _integralbtn = [[UIButton alloc] initWithFrame:CGRectMake(_sliderview.frame.origin.x, _sliderview.frame.origin.y+_sliderview.frame.size.height+10, _sliderview.frame.size.width, 30)];
+            _integralbtn = [[UIButton alloc] initWithFrame:CGRectMake(_sliderview.frame.origin.x, _sliderview.frame.origin.y+_sliderview.frame.size.height+10*Main_Screen_Height/667, _sliderview.frame.size.width, 30*Main_Screen_Height/667)];
             _integralbtn.imageView.contentMode=UIViewContentModeScaleAspectFill;
             [_integralbtn setImage:[UIImage imageNamed:@"shengji"] forState:BtnNormal];
-            _integralbtn.titleLabel.font = [UIFont systemFontOfSize:10];
+            _integralbtn.titleLabel.font = [UIFont systemFontOfSize:10*Main_Screen_Height/667];
             [_integralbtn setTitleColor:[UIColor grayColor] forState:BtnNormal];
             [_integralbtn setTitleColor:[UIColor orangeColor] forState:BtnHighlighted];
             [_integralbtn setTitle:@"在获取400积分升级为黄金会员" forState:BtnNormal];
@@ -47,7 +47,7 @@
             [self.contentView addSubview:_integralbtn];
         }
         if (!_rulebtn) {
-            _rulebtn = [[UIButton alloc] initWithFrame:CGRectMake(_sliderview.frame.origin.x,  _integralbtn.frame.origin.y+_integralbtn.frame.size.height+8, _sliderview.frame.size.width,30)];
+            _rulebtn = [[UIButton alloc] initWithFrame:CGRectMake(_sliderview.frame.origin.x,  _integralbtn.frame.origin.y+_integralbtn.frame.size.height+8*Main_Screen_Height/667, _sliderview.frame.size.width,30*Main_Screen_Height/667)];
             _rulebtn.titleLabel.textAlignment = NSTextAlignmentCenter;
             _rulebtn.titleLabel.font = [UIFont systemFontOfSize:10];
             [_rulebtn setTitleColor:[UIColor grayColor] forState:BtnNormal];
