@@ -39,7 +39,7 @@
     self.userNameText.delegate       = self;
     self.userNameText.returnKeyType  = UIReturnKeyDone;
     self.userNameText.textAlignment  = NSTextAlignmentLeft;
-    self.userNameText.font           = [UIFont systemFontOfSize:16];
+    self.userNameText.font           = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
     self.userNameText.backgroundColor= [UIColor whiteColor];
     self.userNameText.top            = Main_Screen_Height*10/667;
     self.userNameText.left           = Main_Screen_Width*20/375 ;

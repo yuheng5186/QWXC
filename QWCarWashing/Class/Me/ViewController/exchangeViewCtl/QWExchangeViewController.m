@@ -44,7 +44,7 @@
     UITextField *exchangeTF = [[UITextField alloc] init];
     exchangeTF.placeholder = @"请输入激活码";
     exchangeTF.textAlignment = NSTextAlignmentCenter;
-    exchangeTF.layer.cornerRadius = 24;
+    exchangeTF.layer.cornerRadius = 24*Main_Screen_Height/667;
     exchangeTF.keyboardType = UIKeyboardTypeNumberPad;
     exchangeTF.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:exchangeTF];
@@ -53,18 +53,17 @@
     [exchangeBtn setBackgroundColor:RGBACOLOR(252, 186, 44, 1) ];
     
     [exchangeTF mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).mas_offset(64 + 25);
+        make.top.equalTo(self.view).mas_offset(64 + 25*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
-        make.left.equalTo(self.view).mas_offset(10);
-        
-        make.height.mas_equalTo(48);
+        make.width.mas_equalTo(Main_Screen_Width*351/375);
+        make.height.mas_equalTo(48*Main_Screen_Height/667);
     }];
     
     [exchangeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(exchangeTF.mas_bottom).mas_offset(60);
+        make.top.equalTo(exchangeTF.mas_bottom).mas_offset(60*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
-        make.left.equalTo(exchangeTF.mas_left);
-        make.height.mas_equalTo(48);
+        make.width.mas_equalTo(Main_Screen_Width*351/375);
+        make.height.mas_equalTo(48*Main_Screen_Height/667);
     }];
     
 }
