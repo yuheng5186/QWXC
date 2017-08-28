@@ -105,8 +105,8 @@
     pageFlowView.backgroundColor = [UIColor orangeColor];
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
-    //pageFlowView.minimumPageAlpha = 0.1;
-    pageFlowView.minimumPageScale = 0.85;
+    pageFlowView.minimumPageAlpha = 0.4;
+    //pageFlowView.minimumPageScale = 0.85;
     pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
     //不允许在垂直方向上进行滚动
     pageFlowView.scrollView.contentSize = CGSizeMake(pageFlowView.frame.size.width, (QWScreenWidth - 80 * myDelegate.autoSizeScaleX) * 19 / 30);
