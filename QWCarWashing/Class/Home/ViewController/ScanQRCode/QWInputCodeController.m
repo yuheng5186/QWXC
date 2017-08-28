@@ -38,38 +38,9 @@
 
 
 - (void) createSubView {
-
-    
-//    //用这个按钮来获取输入框的文本，测试文本是否正确
-//    _textGetButton = [[UIButton alloc] initWithFrame:(CGRectMake(30, 70, 300, 30))];
-//    _textGetButton.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
-//    [_textGetButton setTitleColor:[UIColor darkTextColor] forState:(UIControlStateNormal)];
-//    [_textGetButton addTarget:self action:@selector(getInputViewText) forControlEvents:(UIControlEventTouchUpInside)];
-//    [_textGetButton setTitle:@"点击获取文本" forState:(UIControlStateNormal)];
-//    [self.view addSubview:_textGetButton];
     
     //使用默认大小会拉大高宽，虽然设置100，但实际是6*40+(6+1)*8 = 296，参考布局规则
-    
-    if (QWScreenheight==480) {
-        //4s
-        _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*12/375, Main_Screen_Height*80/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667) row:1 column:6];
-
-    }else if(QWScreenheight==568) {
-        //5
-        _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*12/375, Main_Screen_Height*80/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667) row:1 column:6];
-
-    }else if(QWScreenheight==667){
-        //6
-        _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*39/375, Main_Screen_Height*80/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667) row:1 column:6];
-
-    }else if(QWScreenheight==736){
-        //6p
-        _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*50/375, Main_Screen_Height*80/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667) row:1 column:6];
-
-    }else{
-        _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*50/375, Main_Screen_Height*80/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667) row:1 column:6];
-
-    }
+    _inputView = [[TFGridInputView alloc] initWithFrame:CGRectMake(Main_Screen_Width*15/375, 100, 40, 40) row:1 column:7];
 
     _inputView.keyboardType = UIKeyboardTypeNumberPad;
     //构建一个样式，并调整各种格式
