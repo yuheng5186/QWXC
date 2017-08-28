@@ -11,10 +11,18 @@
 @interface QWcollectionViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, weak) UITableView *favoriteListView;
+@property (nonatomic, strong) NSMutableArray <QWMerchantModel *>*merchantModelars;
 @end
 #define QWCellIdentifier_salerListTableViewCell @"salerListCell"
 
 @implementation QWcollectionViewController
+-(NSMutableArray<QWMerchantModel *> *)merchantModelars{
+    if (_merchantModelars==nil) {
+        _merchantModelars=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _merchantModelars;
+
+}
 - (UITableView *)favoriteListView{
     if (nil == _favoriteListView) {
         UITableView *favoriteListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight)];
@@ -60,12 +68,20 @@
             arr = [dict objectForKey:@"JsonData"];
             if(arr.count == 0)
             {
-                //                [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
+                //  [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
+               
                 [self.favoriteListView reloadData];
                 [self.favoriteListView.mj_header endRefreshing];
             }
             else
             {
+                for(int i=0;i<arr.count;i++){
+                  QWMerchantModel *tempmodel= [[QWMerchantModel alloc]initWithDictionary:arr[i] error:nil];
+                    [self.merchantModelars addObject:tempmodel];
+                    
+                
+                }
+               
 //                [self.MyFavouriteMerchantData addObjectsFromArray:arr];
                 [self.favoriteListView reloadData];
                 [self.favoriteListView.mj_header endRefreshing];
@@ -104,13 +120,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.merchantModelars.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SalerListViewCell *favoriCell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_salerListTableViewCell forIndexPath:indexPath];
-    
+    if (self.merchantModelars.count!=0) {
+        favoriCell.Merchantmodel=self.merchantModelars[indexPath.row];
+    }
     return favoriCell;
 }
 - (void)viewDidLoad {

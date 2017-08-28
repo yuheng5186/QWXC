@@ -8,6 +8,7 @@
 
 #import "QWMerchantInViewController.h"
 #import "QWMerchantInTableViewCell.h"
+
 @interface QWMerchantInViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property(nonatomic,strong)UITableView *tableview;
@@ -195,6 +196,38 @@
 #pragma mark-提交
 -(void)submitOnclick:(UIButton *)sender{
     
+    if(IsNullIsNull(self.merchantFieldText.text)&&IsNullIsNull(self.addressFieldText.text)&&IsNullIsNull(self.phoneFieldText.text))
+    {
+        [self.view showInfo:@"信息不能为空" autoHidden:YES interval:1];
+        
+    }else if([LCMD5Tool valiMobile:self.phoneFieldText.text]==YES){
+         [self requestAddMerchantinfoAndmerchant:self.merchantFieldText.text andPhoneStr:self.phoneFieldText.text andaddress:self.addressFieldText.text];
+        
+    }else{
+        [self.view showInfo:@"你填写的手机格式不正确！" autoHidden:YES interval:1];
+    }
+   
+}
+#pragma mark-添加商家
+-(void)requestAddMerchantinfoAndmerchant:(NSString *)merchantName andPhoneStr:(NSString *)phoneStr andaddress:(NSString *)addressstr{
+    NSDictionary *mulDic = @{
+                             @"Name":merchantName,
+                             @"Phone":phoneStr,
+                             @"Address":addressstr
+                             };
+    NSLog(@"%@",mulDic);
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/AddMerchantSettledInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        
+        
+        [self.view showInfo:@"入驻成功" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"入驻失败" autoHidden:YES interval:2];
+    }];
+
 }
 - (void) resetBabkButton {
     

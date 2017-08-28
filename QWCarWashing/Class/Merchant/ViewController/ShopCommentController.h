@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import "QWMerComListModel.h"
 @interface ShopCommentController : UIViewController
-@property (nonatomic,assign) NSInteger mercode;
+@property (nonatomic,strong) NSString *mercode;
 @end

@@ -56,7 +56,7 @@ static NSString *id_infoCell = @"id_infoCell";
     
 //
     
-    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,-40, Main_Screen_Width, Main_Screen_Height- 64 - 39*Main_Screen_Height/667) style:UITableViewStylePlain];
+    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,-40, Main_Screen_Width, Main_Screen_Height- 64 - 39*Main_Screen_Height/667+30) style:UITableViewStylePlain];
     _infoTableView = infoTableView;
     [self.view addSubview:_infoTableView];
     

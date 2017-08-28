@@ -118,7 +118,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 -(void)GetCommentDetail
 {
     NSDictionary *mulDic = @{
-                             @"MerCode":[NSString stringWithFormat:@"%ld",self.mercode],
+                             @"MerCode":self.mercode,
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10
                              };
@@ -127,6 +127,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
+            NSLog(@"%@",dict);
             NSArray *arr = [NSArray array];
             arr = [dict objectForKey:@"JsonData"];
             for (QWMerComListModel *comlistmodel in arr) {
@@ -152,9 +153,9 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
     
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.MerComList.count==0) {
-        return 5;
-    }else
+//    if (self.MerComList.count==0) {
+//        return 5;
+//    }else
     return self.MerComList.count;
 }
 

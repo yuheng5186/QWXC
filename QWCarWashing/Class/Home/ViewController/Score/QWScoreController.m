@@ -176,7 +176,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return  190*Main_Screen_Height/667;
+        return  210*Main_Screen_Height/667;
     }else{
         return 192*Main_Screen_Height/667;
     }

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWMerchantModel.h"
 @interface SalerListViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *shopImageView;
@@ -23,10 +23,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeShopLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *shopScore;
 
 @property (weak, nonatomic) IBOutlet UIView *separateLine;
 
 @property (weak, nonatomic) IBOutlet UIImageView *starView;
 
+@property (weak, nonatomic) IBOutlet UIButton *kuaixiudian;
 
+@property(nonatomic,strong)QWMerchantModel *Merchantmodel;
 @end
