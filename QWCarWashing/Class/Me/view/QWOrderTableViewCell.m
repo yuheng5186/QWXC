@@ -92,7 +92,7 @@
             _threeLabel = [[UILabel alloc]initWithFrame:CGRectMake(kLeftPads + ImageWH *2+kPaddingW *2, CGRectGetMaxY(_oneImage.frame) +7, LaberWH, 20)];
             _threeLabel.textColor = [UIColor colorWithHexString:@"#999999"];
             _threeLabel.font = [UIFont systemFontOfSize:12];
-            _threeLabel.text= @"兑换";
+            _threeLabel.text= @"激活";
             _threeLabel.textAlignment =NSTextAlignmentCenter;
             [self addSubview:_threeLabel];
             

@@ -182,7 +182,7 @@ static NSString *cellstr=@"Cellstr";
                                     @"fenxiang",
                                     @"duihuanlipin",
                                     @"quanzi"]
-                    andContentArr:@[@"兑换礼品",
+                    andContentArr:@[@"激活卡券",
                                     @"每日签到",
                                     @"商家入驻",
                                     @"客服咨询",

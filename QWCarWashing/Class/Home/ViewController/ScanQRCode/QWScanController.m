@@ -11,6 +11,7 @@
 #import "LewPopupViewAnimationDrop.h"
 
 #import "QWStartWashingController.h"
+#import "QWInputCodeController.h"
 
 
 @interface QWScanController ()<AVCaptureMetadataOutputObjectsDelegate>
@@ -136,9 +137,15 @@
 }
 - (void) inputButtonClcik:(UIButton *)sender {
     
-    QWStartWashingController *startVC        = [[QWStartWashingController alloc]init];
-    startVC.hidesBottomBarWhenPushed     = YES;
-    [self.navigationController pushViewController:startVC animated:YES];
+//    QWStartWashingController *startVC        = [[QWStartWashingController alloc]init];
+//    startVC.hidesBottomBarWhenPushed     = YES;
+//    [self.navigationController pushViewController:startVC animated:YES];
+    
+    QWInputCodeController    *inputVC        = [[QWInputCodeController alloc]init];
+    inputVC.hidesBottomBarWhenPushed         = YES;
+    [self.navigationController pushViewController:inputVC animated:YES];
+    
+    
 }
 - (void) flashlightButtonClcik:(UIButton *)sender {
     
