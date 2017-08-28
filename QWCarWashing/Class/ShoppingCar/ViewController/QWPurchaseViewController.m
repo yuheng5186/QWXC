@@ -137,36 +137,36 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.numberOfPages = self.imageArray.count;
     pageControl.userInteractionEnabled = NO;
-    [pageControl setValue:[UIImage imageNamed:@"xuanzhong"] forKey:@"currentPageImage"];
-    [pageControl setValue:[UIImage imageNamed:@"wei_xuanzhong"] forKey:@"pageImage"];
+    [pageControl setValue:[UIImage imageNamed:@"fensexuanzhong"] forKey:@"currentPageImage"];
+    [pageControl setValue:[UIImage imageNamed:@"fenseweixuanzhong"] forKey:@"pageImage"];
     self.pageControl = pageControl;
     [self.view addSubview:pageControl];
     
     //关于卡片的label
     UILabel *functionLabel = [[UILabel alloc] init];
     functionLabel.text = @"卡片功能";
-    functionLabel.font = [UIFont systemFontOfSize:15];
+    functionLabel.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
     functionLabel.textAlignment = NSTextAlignmentCenter;
     functionLabel.textColor = [UIColor colorFromHex:@"#868686"];
     [self.view addSubview:functionLabel];
     
     UILabel *introLabelOne = [[UILabel alloc] init];
     introLabelOne.text = @"您可以享受会员权益";
-    introLabelOne.font = [UIFont systemFontOfSize:13];
+    introLabelOne.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
     introLabelOne.textAlignment = NSTextAlignmentCenter;
     introLabelOne.textColor = [UIColor colorFromHex:@"#999999"];
     [self.view addSubview:introLabelOne];
     
     UILabel *introLabelTwo = [[UILabel alloc] init];
     introLabelTwo.text = @"并且可以持卡";
-    introLabelTwo.font = [UIFont systemFontOfSize:15];
+    introLabelTwo.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
     introLabelTwo.textAlignment = NSTextAlignmentCenter;
     introLabelTwo.textColor = [UIColor colorFromHex:@"#999999"];
     [self.view addSubview:introLabelTwo];
     
     UILabel *introLabelThree = [[UILabel alloc] init];
     introLabelThree.text = @"免费洗车5次";
-    introLabelThree.font = [UIFont systemFontOfSize:15];
+    introLabelThree.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
     introLabelThree.textAlignment = NSTextAlignmentCenter;
     introLabelThree.textColor = [UIColor colorFromHex:@"#999999"];
     [self.view addSubview:introLabelThree];
@@ -175,42 +175,42 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     [buyButton setTitle:@"现在购买" forState:UIControlStateNormal];
     [buyButton setTintColor:[UIColor colorFromHex:@"#ffffff"]];
     buyButton.backgroundColor = [UIColor colorFromHex:@"#293754"];
-    buyButton.titleLabel.font = [UIFont systemFontOfSize:18];
-    buyButton.layer.cornerRadius = 15;
+    buyButton.titleLabel.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
+    buyButton.layer.cornerRadius = 15*Main_Screen_Height/667;
     [buyButton addTarget:self action:@selector(didSelectCell:withSubViewIndex:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:buyButton];
     
     
     [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
-        make.top.equalTo(pageFlowView.mas_bottom).mas_offset(23);
+        make.top.equalTo(pageFlowView.mas_bottom).mas_offset(23*Main_Screen_Height/667);
     }];
     
     [functionLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.pageControl.mas_bottom).mas_offset(25);
+        make.top.equalTo(self.pageControl.mas_bottom).mas_offset(25*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
     }];
     
     [introLabelOne mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(functionLabel.mas_bottom).mas_offset(25);
+        make.top.equalTo(functionLabel.mas_bottom).mas_offset(25*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
     }];
     
     [introLabelTwo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introLabelOne.mas_bottom).mas_offset(12);
+        make.top.equalTo(introLabelOne.mas_bottom).mas_offset(12*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
     }];
     
     [introLabelThree mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introLabelTwo.mas_bottom).mas_offset(12);
+        make.top.equalTo(introLabelTwo.mas_bottom).mas_offset(12*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
     }];
     
     [buyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(introLabelThree.mas_bottom).mas_offset(50);
+        make.top.equalTo(introLabelThree.mas_bottom).mas_offset(50*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
-        make.width.mas_equalTo(120);
-        make.height.mas_equalTo(30);
+        make.width.mas_equalTo(120*Main_Screen_Height/667);
+        make.height.mas_equalTo(30*Main_Screen_Height/667);
     }];
     
 }
