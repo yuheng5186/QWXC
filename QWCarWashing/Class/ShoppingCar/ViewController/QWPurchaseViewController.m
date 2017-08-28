@@ -127,8 +127,8 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     pageFlowView.backgroundColor = [UIColor whiteColor];
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
-    //pageFlowView.minimumPageAlpha = 0.1;
-    pageFlowView.minimumPageScale = 0.85;
+    pageFlowView.minimumPageAlpha = 0.4;
+    //pageFlowView.minimumPageScale = 0.85;
     pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
     
     [self.view addSubview:pageFlowView];
