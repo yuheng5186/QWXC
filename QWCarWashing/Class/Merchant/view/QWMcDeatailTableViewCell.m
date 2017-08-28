@@ -42,21 +42,55 @@
     self.Mcaddress.text=Merchantmodels.MerAddress;
     
     self.Mcscore.text=[NSString stringWithFormat:@"%.2f分",Merchantmodels.Score];
-    
+    NSLog(@"===%d",Merchantmodels.IsCollection);
+    [self.collectbtn setSelected:Merchantmodels.IsCollection==1?NO:YES];
    self.McDingdanlabel.text= [NSString stringWithFormat:@"服务%d单",Merchantmodels.ServiceCount];
+    
+    NSArray *number = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
+    NSMutableAttributedString *attributeString  = [[NSMutableAttributedString alloc]initWithString:self.McDingdanlabel.text];
+    for (int i = 0; i < self.McDingdanlabel.text.length; i ++) {
+        //这里的小技巧，每次只截取一个字符的范围
+        NSString *a = [self.McDingdanlabel.text substringWithRange:NSMakeRange(i, 1)];
+        //判断装有0-9的字符串的数字数组是否包含截取字符串出来的单个字符，从而筛选出符合要求的数字字符的范围NSMakeRange
+        if ([number containsObject:a]) {
+            [attributeString setAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#ff3645"],NSFontAttributeName:[UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX]} range:NSMakeRange(i, 1)];
+        }
+        
+    }
+    
+    //完成查找数字，最后将带有字体下划线的字符串显示在UILabel上
+    self.McDingdanlabel.attributedText = attributeString;
     NSArray *lab = [Merchantmodels.MerFlag componentsSeparatedByString:@","];
+    NSLog(@"%@",lab);
     if (lab.count>1) {
         self.Mctag2.hidden=NO;
         self.Mctag1.text=lab[0];
         self.Mctag2.text=lab[1];
         
     }else{
-        self.Mctag1.text=lab[0];
         self.Mctag2.hidden=YES;
+        self.Mctag1.text=lab[0];
+        
     }
     
     
     
+}
+-(UILabel *)McDingdanlabel{
+    if (_McDingdanlabel==nil) {
+        CGSize sizeaddlabel = [self.Mcaddress boundingRectWithSize:CGSizeMake(QWScreenWidth,2000)];
+        UILabel *dingdanlabel = [[UILabel alloc]initWithFrame:CGRectMake(150 * myDelegate.autoSizeScaleX, self.Mcaddress.frame.origin.y+sizeaddlabel.height, 89* myDelegate.autoSizeScaleX, 21* myDelegate.autoSizeScaleY)];
+        [dingdanlabel setFont:[UIFont fontWithName:@"Helvetica" size:14 * myDelegate.autoSizeScaleX]];
+        dingdanlabel.textColor = [UIColor colorWithHexString:@"#dfdfdf"];
+//        dingdanlabel.text = @"服务236单";
+        dingdanlabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:dingdanlabel];
+        _McDingdanlabel = dingdanlabel;
+        
+       
+    }
+    return _McDingdanlabel;
+
 }
 -(void)setlayoutCell
 {
@@ -121,27 +155,7 @@
     [self.contentView addSubview:scorelabel];
     self.Mcscore = scorelabel;
     
-    UILabel *dingdanlabel = [[UILabel alloc]initWithFrame:CGRectMake(150 * myDelegate.autoSizeScaleX, self.Mcaddress.frame.origin.y+sizeaddlabel.height, 89* myDelegate.autoSizeScaleX, 21* myDelegate.autoSizeScaleY)];
-    [dingdanlabel setFont:[UIFont fontWithName:@"Helvetica" size:14 * myDelegate.autoSizeScaleX]];
-    dingdanlabel.textColor = [UIColor colorWithHexString:@"#dfdfdf"];
-    dingdanlabel.text = @"服务236单";
-    dingdanlabel.textAlignment = NSTextAlignmentRight;
-    [self.contentView addSubview:dingdanlabel];
-    self.McDingdanlabel = dingdanlabel;
-    
-    NSArray *number = @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
-    NSMutableAttributedString *attributeString  = [[NSMutableAttributedString alloc]initWithString:dingdanlabel.text];
-    for (int i = 0; i < dingdanlabel.text.length; i ++) {
-        //这里的小技巧，每次只截取一个字符的范围
-        NSString *a = [dingdanlabel.text substringWithRange:NSMakeRange(i, 1)];
-        //判断装有0-9的字符串的数字数组是否包含截取字符串出来的单个字符，从而筛选出符合要求的数字字符的范围NSMakeRange
-        if ([number containsObject:a]) {
-            [attributeString setAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#ff3645"],NSFontAttributeName:[UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX]} range:NSMakeRange(i, 1)];
-        }
-        
-    }
-    //完成查找数字，最后将带有字体下划线的字符串显示在UILabel上
-    self.McDingdanlabel.attributedText = attributeString;
+   
     
     
     UIImageView *imageV3 =[[UIImageView alloc]initWithFrame:CGRectMake(252 * myDelegate.autoSizeScaleX, self.Mcaddress.frame.origin.y+sizeaddlabel.height+1* myDelegate.autoSizeScaleY,18 * myDelegate.autoSizeScaleX,18 * myDelegate.autoSizeScaleY)];

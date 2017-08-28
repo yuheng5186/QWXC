@@ -71,7 +71,7 @@
         [self setupview];
     }
     
-   
+//
     
     
     
@@ -347,8 +347,10 @@
     
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
     UIView *footerview=[UIView new];
     footerview.backgroundColor=[UIColor clearColor];
+   
     return footerview;
 
 }
@@ -394,15 +396,15 @@
             cell = [[QWMcDeatailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-//        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-        if (self.MerChantmodel==nil) {
+
+        if (self.MerChantmodel!=nil) {
             cell.Merchantmodels=self.MerChantmodel;
         }
         
         cell.McImagedanhaoView.userInteractionEnabled = YES;
         [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
-        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
+//        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.collectbtn.tag = indexPath.row;
 //        [cell setlayoutCell];
@@ -458,7 +460,8 @@
     }
     else
     {
-        if(indexPath.row<2)
+        
+        if(indexPath.row<1)
         {
             static NSString *CellIdentifier=@"Cell4";
             [tableView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -468,21 +471,7 @@
             {
                 cell = [[QWMccommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-//            else
-//            {
-//                //删除cell的所有子视图
-//                while ([cell.contentView.subviews lastObject] != nil)
-//                {
-//                    [(UIView*)[cell.contentView.subviews lastObject] removeFromSuperview];
-//                }
-//            }
-////            [cell setlayoutCell];
-//            [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-            
-            
-            
-            //    NSDictionary *dic=[newslist objectAtIndex:indexPath.row];
-            //    [cell setUpCellWithDic:dic];
+
             [cell setBackgroundColor:[UIColor whiteColor]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
@@ -534,14 +523,16 @@
 #pragma mark-添加收藏数据
 -(void)insertCollectionAndUserid:(NSString *)Useridstr andMerCode:(NSString *)MerCodestr{
     NSDictionary *mulDic = @{
-                             @"MerCode":[NSString stringWithFormat:@"%ld",self.MerCode],
+                             @"MerCode":self.MerCode,
                              @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
                              };
+    NSLog(@"%@",mulDic);
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/AddFavouriteMerchant",Khttp] success:^(NSDictionary *dict, BOOL success) {
         NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
-            [self.McdetailTableView reloadData];
+            
+//            [self.McdetailTableView reloadData];
 //           [self.view showInfo:@"收藏成功" autoHidden:YES interval:1];
         }
         else
@@ -604,7 +595,12 @@
 {
     //设置导航栏背景图片为一个空的image，这样就透明了
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    self.lastPath = indexPath;
+        [self.McdetailTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        if ([_McdetailTableView.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+            [_McdetailTableView.delegate tableView:_McdetailTableView didSelectRowAtIndexPath:indexPath];
+        }
     //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 
@@ -703,18 +699,22 @@
 -(void)didClickcollectBtn:(UIButton *)jiesuan
 {
  
+    NSLog(@"%d",jiesuan.isSelected);
     if(jiesuan.isSelected)
     {
+        [jiesuan setSelected:NO];
         [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
+        
         
     }
     else
     {
+        [jiesuan setSelected:YES];
         [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
         
     }
-    jiesuan.selected=!jiesuan.selected;
-    [self insertCollectionAndUserid:[UdStorage getObjectforKey:Userid] andMerCode:[NSString stringWithFormat:@"%d",self.MerChantmodel.MerCode]];
+    
+    [self insertCollectionAndUserid:[UdStorage getObjectforKey:Userid] andMerCode:self.MerChantmodel.MerCode];
 
     
     

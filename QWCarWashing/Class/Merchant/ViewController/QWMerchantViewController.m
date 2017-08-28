@@ -119,8 +119,8 @@
     //    }
     //    else
     //    {
-//    return self.MerchantData.count;
-    return 5;
+    return self.MerchantData.count;
+//    return 5;
  
     //    }
 }

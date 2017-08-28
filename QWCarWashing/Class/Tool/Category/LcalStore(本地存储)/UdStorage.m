@@ -19,4 +19,10 @@
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     return [ud objectForKey:key];
 }
++(void)removeObjectForKeyS:(NSString *)key{
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    [ud removeObjectForKey:key];
+    [ud synchronize];//同步
+    
+}
 @end
