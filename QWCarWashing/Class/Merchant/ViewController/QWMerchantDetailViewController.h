@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface QWMerchantDetailViewController : UIViewController
-@property (nonatomic,assign) NSInteger MerCode;
+@property (nonatomic,strong) NSString *MerCode;
 @end
