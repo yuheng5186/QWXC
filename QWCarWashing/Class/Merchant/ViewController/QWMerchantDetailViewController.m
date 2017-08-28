@@ -62,7 +62,19 @@
     // Do any additional setup after loading the view.
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     collecttag=0;
-    [self requestMerchantDetailDataAndMerCode:[NSString stringWithFormat:@"%ld",self.MerCode]];
+    
+    NSLog(@"===%@",self.MerCode);
+    
+    if (!IsNullIsNull(self.MerCode)) {
+        [self requestMerchantDetailDataAndMerCode:self.MerCode];
+    }else{
+        [self setupview];
+    }
+    
+   
+    
+    
+    
     
     
 }
@@ -123,9 +135,12 @@
     
     _detaiview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
     _detaiImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
-//    _detaiImgView.image = [UIImage imageNamed:@"shangjiadiantu"];
-    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.MerChantmodel.Img];
+    _detaiImgView.image = [UIImage imageNamed:@"shangjiadiantu"];
+    if (!IsNullIsNull(self.MerChantmodel.Img)) {
+        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.MerChantmodel.Img];
         [_detaiImgView sd_setImageWithURL:[NSURL URLWithString:ImageURL] placeholderImage:[UIImage imageNamed:@"shangjiadingwei"]];
+    }
+    
     [_detaiview addSubview:_detaiImgView];
     
     _McdetailTableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, QWScreenWidth, QWScreenWidth/2)];
@@ -232,11 +247,20 @@
     }
     else if(section == 2)
     {
+        if (self.MerChantmodel.MerSerList.count==0) {
+            return 4;
+        }else{
         return self.MerChantmodel.MerSerList.count;
+        }
     }
     else
     {
-        return self.MerChantmodel.MerComList.count;
+        if (self.MerChantmodel.MerSerList.count==0) {
+            return 3;
+        }else{
+            return self.MerChantmodel.MerComList.count;
+        }
+        
     }
 }
 
@@ -352,7 +376,11 @@
        
         [cell setBackgroundColor:[UIColor whiteColor]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.merchantModel=self.MerChantmodel;
+        NSLog(@"%@",self.MerChantmodel);
+        if (self.MerChantmodel!=nil) {
+            cell.merchantModel=self.MerChantmodel;
+        }
+        
         return cell;
     }
     else if(indexPath.section == 0)
@@ -367,7 +395,10 @@
         }
         
 //        [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-        cell.Merchantmodels=self.MerChantmodel;
+        if (self.MerChantmodel==nil) {
+            cell.Merchantmodels=self.MerChantmodel;
+        }
+        
         cell.McImagedanhaoView.userInteractionEnabled = YES;
         [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -418,13 +449,16 @@
         UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 89* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
         separatorview.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:separatorview];
-        cell.MerSerList=self.MerChantmodel.MerSerList[indexPath.row];
+        if (self.MerChantmodel==nil) {
+            cell.MerSerList=self.MerChantmodel.MerSerList[indexPath.row];
+        }
+        
         
         return cell;
     }
     else
     {
-        if(indexPath.row<1)
+        if(indexPath.row<2)
         {
             static NSString *CellIdentifier=@"Cell4";
             [tableView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -455,7 +489,10 @@
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 104 * myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
             [cell.contentView addSubview:separatorview];
-            cell.ComList=self.MerChantmodel.MerComList[indexPath.row];
+            if (self.MerChantmodel==nil) {
+                cell.ComList=self.MerChantmodel.MerComList[indexPath.row];
+            }
+            
             return cell;
             
 

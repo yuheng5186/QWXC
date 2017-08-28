@@ -155,7 +155,7 @@
 }
 #pragma mark-登录按钮点击事件
 - (void) loginButtonClick:(id)sender {
-    if (![UdStorage getObjectforKey:@"Account_Id"]) {
+    if (IsNullIsNull([UdStorage getObjectforKey:Userid])) {
         if (self.userMobileFieldText.text.length == 11) {
             if (self.verifyFieldText.text.length == 4) {
                 //请求数据

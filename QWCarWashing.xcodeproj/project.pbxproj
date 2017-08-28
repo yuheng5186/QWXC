@@ -570,6 +570,7 @@
 		182E93551F4EEC3900819B79 /* QWMerchantModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantModel.m; sourceTree = "<group>"; };
 		182E93581F4FC7EA00819B79 /* QWMerComListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerComListModel.h; sourceTree = "<group>"; };
 		182E93591F4FC7EA00819B79 /* QWMerComListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerComListModel.m; sourceTree = "<group>"; };
+		182E935C1F513C4500819B79 /* Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Custom.h; sourceTree = "<group>"; };
 		18508FE71F42A40300795E0A /* QWMerchantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMerchantDetailViewController.h; sourceTree = "<group>"; };
 		18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerchantDetailViewController.m; sourceTree = "<group>"; };
 		18508FED1F42C0AE00795E0A /* QWMcDeatailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMcDeatailTableViewCell.h; sourceTree = "<group>"; };
@@ -1494,6 +1495,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				182E935B1F513C3300819B79 /* CustomPch */,
 				18A603411F50133500CFA328 /* MapNavigationView */,
 				0401E9171F4F011F00F0CA79 /* EAIntroView */,
 				182E93191F4D815200819B79 /* MD5 */,
@@ -1789,6 +1791,14 @@
 				182E93591F4FC7EA00819B79 /* QWMerComListModel.m */,
 			);
 			path = merCommentlistModel;
+			sourceTree = "<group>";
+		};
+		182E935B1F513C3300819B79 /* CustomPch */ = {
+			isa = PBXGroup;
+			children = (
+				182E935C1F513C4500819B79 /* Custom.h */,
+			);
+			path = CustomPch;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {

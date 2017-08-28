@@ -119,8 +119,8 @@
     //    }
     //    else
     //    {
-    return self.MerchantData.count;
-//    return 5;
+//    return self.MerchantData.count;
+    return 5;
  
     //    }
 }
@@ -181,8 +181,11 @@
     //跳转商家详情
     QWMerchantDetailViewController *detailController = [[QWMerchantDetailViewController alloc] init];
     detailController.hidesBottomBarWhenPushed       = YES;
-    QWMerchantModel *tempmodel=(QWMerchantModel *)[self.MerchantData objectAtIndex:indexPath.row];
-    detailController.MerCode                       = tempmodel.MerCode;
+    if (self.MerchantData.count!=0) {
+        QWMerchantModel *tempmodel=(QWMerchantModel *)[self.MerchantData objectAtIndex:indexPath.row];
+        detailController.MerCode                       = tempmodel.MerCode;
+    }
+   
     [self.navigationController pushViewController:detailController animated:YES];
 }
 -(void)setupRefresh

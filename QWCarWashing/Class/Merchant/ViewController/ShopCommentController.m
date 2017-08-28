@@ -13,7 +13,9 @@
 @interface ShopCommentController ()<UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (nonatomic, weak) UITableView *commentListView;
-
+@property (nonatomic)NSInteger page;
+@property (nonatomic, strong) NSMutableArray *MerchantCommentListData;
+@property (nonatomic,copy) NSMutableArray <QWMerComListModel *> *MerComList;
 @end
 
 static NSString *id_commentShopCell = @"id_commentShopCell";
@@ -22,7 +24,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 
 - (UITableView *)commentListView{
     if (_commentListView == nil) {
-        UITableView *commenListView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+        UITableView *commenListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, QWScreenWidth, QWScreenheight-5) style:UITableViewStyleGrouped];
         _commentListView = commenListView;
         [self.view addSubview:commenListView];
     }
@@ -41,9 +43,118 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
     self.commentListView.tableFooterView = [UIView new];
     [self.commentListView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:id_commentShopCell];
     self.commentListView.rowHeight = 110*Main_Screen_Height/667;
+    self.commentListView.backgroundColor=kColorTableBG;
+    [self setupRefresh];
 }
 
+-(void)setupRefresh
+{
+    self.commentListView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self headerRereshing];
+        
+    }];
+    
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    self.commentListView.mj_header.automaticallyChangeAlpha = YES;
+    
+    [self.commentListView.mj_header beginRefreshing];
+    
+    // 上拉刷新
+    self.commentListView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self footerRereshing];
+        
+    }];
+}
+
+- (void)headerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _MerchantCommentListData = [NSMutableArray new];
+        
+        self.page = 0 ;
+        
+        [self GetCommentDetail];
+        
+    });
+}
+
+-(NSMutableArray<QWMerComListModel *> *)MerComList{
+    if (_MerComList==nil) {
+        _MerComList=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _MerComList;
+
+}
+- (void)footerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if(_MerchantCommentListData.count == 0)
+        {
+            [self GetCommentDetail];
+        }
+        else
+        {
+            self.page++;
+            [self GetCommentDetail];
+            
+        }
+        
+        
+        
+        
+        // 刷新表格
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        
+    });
+}
+
+#pragma mark-请求商家评论数据
+-(void)GetCommentDetail
+{
+    NSDictionary *mulDic = @{
+                             @"MerCode":[NSString stringWithFormat:@"%ld",self.mercode],
+                             @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
+                             @"PageSize":@10
+                             };
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/GetCommentDetail",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            for (QWMerComListModel *comlistmodel in arr) {
+                [self.MerComList addObject:comlistmodel];
+            }
+//            [self.MerchantCommentListData addObjectsFromArray:arr];
+            [_commentListView.mj_header endRefreshing];
+            [_commentListView reloadData];
+        }
+        else
+        {
+            [self.view showInfo:@"商家评论信息获取失败" autoHidden:YES interval:2];
+            [_commentListView.mj_header endRefreshing];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [_commentListView.mj_header endRefreshing];
+    }];
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (self.MerComList.count==0) {
+        return 5;
+    }else
     return self.MerComList.count;
 }
 
@@ -53,15 +164,19 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
     {
         commentCell = [[QWMccommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id_commentShopCell];
     }
-    commentCell.ComList =self.MerComList[indexPath.row];
+    if (self.MerComList.count!=0) {
+        commentCell.ComList =self.MerComList[indexPath.row];
+    }
+    
     return commentCell;
     
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
     UILabel *commentTitleLabel = [[UILabel alloc] init];
     commentTitleLabel.text = @"  评价(58)";
-    commentTitleLabel.backgroundColor = [UIColor colorFromHex:@"#dfdfdf"];
+    commentTitleLabel.backgroundColor = [UIColor whiteColor];
     commentTitleLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
     commentTitleLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     

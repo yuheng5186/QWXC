@@ -38,22 +38,25 @@ static NSString *id_infoCell = @"id_infoCell";
     [super viewDidLoad];
     
     [self setupUI];
+    self.infoTableView.backgroundColor=kColorTableBG;
+    self.infoHeadView.backgroundColor=[UIColor whiteColor];
+    self.infoTableView.backgroundColor=kColorTableBG;
     
 }
 
 - (void)setupUI {
-    
-    self.infoHeadView.frame = CGRectMake(0, 10, Main_Screen_Width, 280*Main_Screen_Height/667);
-//    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view);
-//        make.width.equalTo(self.view);
-//        make.height.mas_equalTo(280*Main_Screen_Height/667);
-//    }];
+    self.infoHeadView.backgroundColor=[UIColor whiteColor];
+    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).mas_offset(5);
+        make.width.equalTo(self.view);
+        make.height.mas_equalTo(280*Main_Screen_Height/667);
+    }];
     self.infoHeadView.Merchant=self.merchantModel;
     
     
+//
     
-    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height- 64 - 44*Main_Screen_Height/667) style:UITableViewStylePlain];
+    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,-40, Main_Screen_Width, Main_Screen_Height- 64 - 39*Main_Screen_Height/667) style:UITableViewStylePlain];
     _infoTableView = infoTableView;
     [self.view addSubview:_infoTableView];
     
@@ -64,9 +67,14 @@ static NSString *id_infoCell = @"id_infoCell";
     infoTableView.tableHeaderView = self.infoHeadView;
     infoTableView.rowHeight = 200*Main_Screen_Height/667;
     
-    
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
 
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 2;
 }
@@ -80,14 +88,18 @@ static NSString *id_infoCell = @"id_infoCell";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     }
+    cell.contentView.backgroundColor=[UIColor whiteColor];
     
-    
-    UIImageView *infoImageView = [[UIImageView alloc] init];
+    UIImageView *infoImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, QWScreenWidth-20, 200*Main_Screen_Height/667-20)];
+   
     infoImageView.image = [UIImage imageNamed:@"huodongxiangqingtu"];
-    infoImageView.frame = CGRectMake(0, 0, Main_Screen_Width, 200*Main_Screen_Height/667);
-    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.merchantModel.Img];
-    NSURL *url=[NSURL URLWithString:ImageURL];
-    [infoImageView sd_setImageWithURL:url placeholderImage: [UIImage imageNamed:@"huodongxiangqingtu"]];
+    
+    if (!IsNullIsNull(self.merchantModel.Img)) {
+        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.merchantModel.Img];
+        NSURL *url=[NSURL URLWithString:ImageURL];
+        [infoImageView sd_setImageWithURL:url placeholderImage: [UIImage imageNamed:@"huodongxiangqingtu"]];
+    }
+  
     [cell.contentView addSubview:infoImageView];
     
     

@@ -63,7 +63,8 @@
     
     //门店评价
     ShopCommentController *commentController = [[ShopCommentController alloc] init];
-    commentController.MerComList = self.merchantModel.MerComList;
+    commentController.mercode=self.merchantModel.MerCode;
+   
     [self addChildViewController:commentController];
     
     [_containerView addSubview:introController.view];
@@ -92,14 +93,13 @@
     ShopCategoryView *categoryView = [[ShopCategoryView alloc] init];
     
     _categoryView = categoryView;
-    
     [self.view addSubview:categoryView];
     
     [categoryView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.equalTo(self.view);
         make.top.equalTo(self.view).mas_offset(64);
         
-        make.height.mas_equalTo(44*Main_Screen_Height/667);
+        make.height.mas_equalTo(39*Main_Screen_Height/667);
     }];
     
     //给block赋值
@@ -117,7 +117,6 @@
     
     UIScrollView *shopScrollView =  [[UIScrollView alloc] init];
     _shopScrollView = shopScrollView;
-    
     shopScrollView.delegate = self;
     shopScrollView.bounces = NO;
     shopScrollView.pagingEnabled = YES;
@@ -125,7 +124,7 @@
     [self.view addSubview:shopScrollView];
     
     [shopScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_categoryView.mas_bottom).mas_offset(10);
+        make.top.equalTo(_categoryView.mas_bottom);
         make.leading.trailing.bottom.equalTo(self.view);
     }];
     

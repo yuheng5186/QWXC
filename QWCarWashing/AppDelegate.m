@@ -47,7 +47,7 @@
         myDelegate.autoSizeScaleY = QWScreenheight/667;
     }
 #pragma mark-是否已登录
-    if (![UdStorage getObjectforKey:@"Account_Id"]) {
+    if (IsNullIsNull([UdStorage getObjectforKey:Userid])) {
 //        QWLoginVC *loginControl             = [[QWLoginVC alloc]init];
 //        QWNavigationViewController *nav         = [[QWNavigationViewController alloc]initWithRootViewController:loginControl];
 //        nav.navigationBar.hidden      = YES;
