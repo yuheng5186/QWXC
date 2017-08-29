@@ -27,7 +27,7 @@
 @property (nonatomic, weak) UIPageControl *pageControl;
 
 @property (nonatomic, weak) UIButton *provinceBtn;
-
+@property (nonatomic, strong) NSMutableArray *CarArray;
 
 
 @property (nonatomic, weak) UILabel *lbl;
@@ -50,7 +50,56 @@ static NSString * HeaderId = @"header";
     }
     return _imageArray;
 }
-
+-(NSMutableArray *)CarArray{
+    if (_CarArray==nil) {
+        _CarArray=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _CarArray;
+}
+#pragma mark-查询爱车列表
+-(void)requestMyCarData
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid]
+                             };
+    NSLog(@"查询爱车列表:%@",mulDic);
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/GetCarList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+         NSLog(@"==%@==",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            for(NSDictionary *dic in arr)
+            {
+//                MyCar *newcar = [[MyCar alloc]init];
+//                [newcar setValuesForKeysWithDictionary:dic];
+//                [_CarArray addObject:newcar];
+            }
+            
+//            for (int index = 0; index < [_CarArray count]; index++) {
+//                UIImage *image = [UIImage imageNamed:@"aicheditu"];
+//                [self.imageArray addObject:image];
+//            }
+            
+            [self setupUI];
+            
+            [_carInfoView reloadData];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+    }];
+    
+}
 //- (UIImageView *)carImageView {
 //
 //    if (_carImageView == nil) {
@@ -78,7 +127,9 @@ static NSString * HeaderId = @"header";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title  = @"我的爱车";
-
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdateMyCar:) name:@"updatemycarsuccess" object:nil];
+    [center addObserver:self selector:@selector(noticeupdateMyCar:) name:@"increasemycarsuccess" object:nil];
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"我的车库" style:UIBarButtonItemStyleDone target:self action:@selector(clickMycarPort)];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
     
@@ -87,16 +138,22 @@ static NSString * HeaderId = @"header";
         [self.imageArray addObject:image];
     }
     
+    [self requestMyCarData];
     
-    
-    [self setupUI];
+//    [self setupUI];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
     tap.delegate = self;
     [self.view addGestureRecognizer:tap];
     
 }
-
+#pragma mark-修改或者添加了车辆都会通知更新数据ui
+-(void)noticeupdateMyCar:(NSNotification*)notif{
+//    _Xuhao = 0;
+    _CarArray = [NSMutableArray array];
+    self.imageArray  = [NSMutableArray array];
+    [self requestMyCarData];
+}
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     
     if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {//判断如果点击的是tableView的cell，就把手势给关闭了

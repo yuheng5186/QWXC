@@ -17,7 +17,13 @@
 @property (nonatomic, weak) UILabel *lbl;
 @property (nonatomic, weak) UILabel *lbl2;
 @property (nonatomic, weak) UIButton *provinceBtn;
-
+@property (nonatomic, weak) UITextField *CarBrandlab;
+@property (nonatomic, weak) UITextField *PlateNumberlab;
+@property (nonatomic, weak) UITextField *ChassisNumlab;
+@property (nonatomic, weak) UITextField *Manufacturelab;
+@property (nonatomic, weak) UITextField *DepartureTimelab;
+@property (nonatomic, weak) UITextField *Mileagelab;
+//CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
 @end
 static NSString *id_carInfoCell = @"id_carInfoCell";
 
@@ -81,7 +87,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            
+            //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
             carCell.textLabel.text = @"车牌号";
             carCell.textLabel.textColor = [UIColor colorFromHex:@"#868686"];
             carCell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -107,7 +113,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             numTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             numTF.font = [UIFont systemFontOfSize:12];
             [carCell.contentView addSubview:numTF];
-            
+            self.PlateNumberlab=numTF;
             [provinceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(carCell.textLabel);
                 make.left.equalTo(carCell.contentView).mas_offset(110);
@@ -132,7 +138,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             brandTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             brandTF.font = [UIFont systemFontOfSize:12];
             [carCell.contentView addSubview:brandTF];
-            
+            self.CarBrandlab=brandTF;
             [brandTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(carCell.contentView).mas_offset(110);
                 make.centerY.equalTo(carCell);
@@ -160,6 +166,12 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                 make.centerY.equalTo(carCell);
                 make.right.equalTo(carCell.contentView).mas_offset(-12);
             }];
+            if (indexPath.row == 0) {
+                self.ChassisNumlab=textTF;
+            }else{
+                self.Mileagelab=textTF;
+                
+            }
         }else {
             
             
@@ -285,7 +297,66 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 
 - (void)didClickSaveButton {
+    if (IsNullIsNull(self.CarBrandlab.text)||IsNullIsNull(self.PlateNumberlab.text)||IsNullIsNull(self.ChassisNumlab.text)||IsNullIsNull(self.lbl.text)||IsNullIsNull(self.lbl2.text)||IsNullIsNull(self.Mileagelab.text)) {
+        [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:1];
+        
+    }else{
+        //车牌号：沪+编号
+        NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
+        
+        [self requestAddCarAndcCarBrand:self.CarBrandlab.text andPlateNumber:PlateNumberstr andChassisNum:self.ChassisNumlab.text andManufacture:[self.lbl.text substringWithRange:NSMakeRange(0,4)] andDepartureTime:self.lbl2.text andMileage:self.Mileagelab.text];
     
+    }
+    
+    
+}
+#pragma mark-新增爱车
+//CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+-(void)requestAddCarAndcCarBrand:(NSString *)CarBrand andPlateNumber:(NSString *)PlateNumber andChassisNum:(NSString *)ChassisNum andManufacture:(NSString *)Manufacture andDepartureTime:(NSString *)DepartureTime andMileage:(NSString *)Mileage {
+        NSDictionary *mulDic = @{
+                                 @"CarBrand":CarBrand,
+                                 @"PlateNumber":PlateNumber,
+                                 @"ChassisNum":ChassisNum,
+                                 @"EngineNum":@"",
+                                 @"Manufacture":Manufacture,
+                                 @"DepartureTime":DepartureTime,
+                                 @"Mileage":Mileage,
+                                 @"Account_Id":[UdStorage getObjectforKey:Userid]
+                                 };
+    
+        
+    
+            NSLog(@"%@",mulDic);
+            [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/AddCarInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+                
+                
+                if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+                {
+                    NSLog(@"%@",dict);
+                    [self.view showInfo:@"新增成功" autoHidden:YES interval:2];
+                    NSNotification * notice = [NSNotification notificationWithName:@"increasemycarsuccess" object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                
+                else
+                {
+                    [self.view showInfo:@"新增失败" autoHidden:YES interval:2];
+                }
+                
+                
+                
+                
+                
+                
+            } fail:^(NSError *error) {
+                [self.view showInfo:@"新增失败" autoHidden:YES interval:2];
+            }];
+            
+    
+    
+
+
 }
 
 - (void)didReceiveMemoryWarning {
