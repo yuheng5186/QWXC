@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DSUserModel.h"
+#import "QWCarClubUserModel.h"
 
 @interface DSActivityDetailCell : UITableViewCell
 
-@property (nonatomic, strong) DSUserModel *model;
+@property (nonatomic, strong) QWCarClubUserModel *CarClubUserModel;
 @property(nonatomic,copy) void (^thumbOnclick)(UIButton *btn);
 @end

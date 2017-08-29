@@ -160,7 +160,8 @@ static NSString *cellstr=@"cell";
         };
         return cell;
 
-    }else if (indexPath.section==1){
+    }else if
+        (indexPath.section==1){
         QWOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_QWOrderTableViewCell forIndexPath:indexPath];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         QWorderMenuViewController *menuorder=[[QWorderMenuViewController alloc]init];

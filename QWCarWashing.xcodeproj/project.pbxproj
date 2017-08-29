@@ -162,6 +162,7 @@
 		182E935A1F4FC7EA00819B79 /* QWMerComListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93591F4FC7EA00819B79 /* QWMerComListModel.m */; };
 		182E93621F5400AD00819B79 /* QWMyCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93611F5400AD00819B79 /* QWMyCarModel.m */; };
 		182E93661F55346800819B79 /* QWCarClubNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93651F55346800819B79 /* QWCarClubNewsModel.m */; };
+		182E936A1F55558E00819B79 /* QWCarClubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93691F55558E00819B79 /* QWCarClubUserModel.m */; };
 		18464A571F53C54B00229017 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */; };
 		18464A5A1F53C56800229017 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A591F53C56800229017 /* NewPagedFlowView.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
@@ -180,7 +181,6 @@
 		185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185C9DDA1F42A8FF00B4ED52 /* ActivityListCell.xib */; };
 		185C9DED1F42A8FF00B4ED52 /* DSActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DDC1F42A8FF00B4ED52 /* DSActivityDetailCell.m */; };
 		185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DDE1F42A8FF00B4ED52 /* DSActivityModel.m */; };
-		185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DE01F42A8FF00B4ED52 /* DSUserModel.m */; };
 		185C9DF01F42A8FF00B4ED52 /* DSCarClubController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DE21F42A8FF00B4ED52 /* DSCarClubController.m */; };
 		185C9DF11F42A8FF00B4ED52 /* DSCarClubDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DE41F42A8FF00B4ED52 /* DSCarClubDetailController.m */; };
 		185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DE61F42A8FF00B4ED52 /* DSCarTravellingController.m */; };
@@ -585,6 +585,8 @@
 		182E93611F5400AD00819B79 /* QWMyCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMyCarModel.m; sourceTree = "<group>"; };
 		182E93641F55346800819B79 /* QWCarClubNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubNewsModel.h; sourceTree = "<group>"; };
 		182E93651F55346800819B79 /* QWCarClubNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubNewsModel.m; sourceTree = "<group>"; };
+		182E93681F55558E00819B79 /* QWCarClubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubUserModel.h; sourceTree = "<group>"; };
+		182E93691F55558E00819B79 /* QWCarClubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubUserModel.m; sourceTree = "<group>"; };
 		18464A551F53C54B00229017 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		18464A581F53C56800229017 /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
@@ -620,8 +622,6 @@
 		185C9DDC1F42A8FF00B4ED52 /* DSActivityDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSActivityDetailCell.m; sourceTree = "<group>"; };
 		185C9DDD1F42A8FF00B4ED52 /* DSActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSActivityModel.h; sourceTree = "<group>"; };
 		185C9DDE1F42A8FF00B4ED52 /* DSActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSActivityModel.m; sourceTree = "<group>"; };
-		185C9DDF1F42A8FF00B4ED52 /* DSUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSUserModel.h; sourceTree = "<group>"; };
-		185C9DE01F42A8FF00B4ED52 /* DSUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSUserModel.m; sourceTree = "<group>"; };
 		185C9DE11F42A8FF00B4ED52 /* DSCarClubController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCarClubController.h; sourceTree = "<group>"; };
 		185C9DE21F42A8FF00B4ED52 /* DSCarClubController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSCarClubController.m; sourceTree = "<group>"; };
 		185C9DE31F42A8FF00B4ED52 /* DSCarClubDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSCarClubDetailController.h; sourceTree = "<group>"; };
@@ -1831,6 +1831,7 @@
 		182E935E1F54008B00819B79 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				182E93671F55557800819B79 /* CarClubUser */,
 				182E93631F55345600819B79 /* CarClubNews */,
 				182E935F1F54008B00819B79 /* MyCar */,
 			);
@@ -1853,6 +1854,15 @@
 				182E93651F55346800819B79 /* QWCarClubNewsModel.m */,
 			);
 			path = CarClubNews;
+			sourceTree = "<group>";
+		};
+		182E93671F55557800819B79 /* CarClubUser */ = {
+			isa = PBXGroup;
+			children = (
+				182E93681F55558E00819B79 /* QWCarClubUserModel.h */,
+				182E93691F55558E00819B79 /* QWCarClubUserModel.m */,
+			);
+			path = CarClubUser;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -1901,8 +1911,6 @@
 				185C9DDC1F42A8FF00B4ED52 /* DSActivityDetailCell.m */,
 				185C9DDD1F42A8FF00B4ED52 /* DSActivityModel.h */,
 				185C9DDE1F42A8FF00B4ED52 /* DSActivityModel.m */,
-				185C9DDF1F42A8FF00B4ED52 /* DSUserModel.h */,
-				185C9DE01F42A8FF00B4ED52 /* DSUserModel.m */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -2393,6 +2401,7 @@
 				182E93561F4EEC3900819B79 /* QWMerchantModel.m in Sources */,
 				185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */,
 				18A4B2171F4D640400C64978 /* ShopInfoHeadView.m in Sources */,
+				182E936A1F55558E00819B79 /* QWCarClubUserModel.m in Sources */,
 				185C9E161F42C8DE00B4ED52 /* SalerListViewCell.m in Sources */,
 				18464A5A1F53C56800229017 /* NewPagedFlowView.m in Sources */,
 				185C9E461F42DCD900B4ED52 /* OrderDetailView.m in Sources */,
@@ -2434,7 +2443,6 @@
 				185C9E101F42C2FD00B4ED52 /* MBProgressHUD.m in Sources */,
 				185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */,
 				182E93471F4ECA4C00819B79 /* YZMenuButton.m in Sources */,
-				185C9DEF1F42A8FF00B4ED52 /* DSUserModel.m in Sources */,
 				18A4B2161F4D640400C64978 /* ShopCommentController.m in Sources */,
 				185C9E3B1F42DC5A00B4ED52 /* AllOrderController.m in Sources */,
 				1807024F1F444EED00398435 /* DiscountDetailView.m in Sources */,

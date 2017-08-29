@@ -18,6 +18,7 @@
 @property (nonatomic,strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray    *modelsArray;
+@property (nonatomic, strong) NSMutableArray    *moreArray;
 @property (nonatomic, strong) UIImageView       *userImageView;
 @property (nonatomic, strong) UIImageView       *seeImageView;
 @property (nonatomic, strong) UILabel           *seeNumber;
@@ -39,6 +40,8 @@
 @property (nonatomic, strong) UILabel           *sayShowLabel;
 @property (nonatomic, strong) UILabel           *goodShowLabel;
 @property (nonatomic, strong)UIView *downView;
+@property (nonatomic, strong)QWCarClubNewsModel *CarClubNewsModel;
+@property (nonatomic)NSInteger page;
 
 @property (nonatomic, strong) TPKeyboardAvoidingScrollView *scrollView;
 
@@ -46,7 +49,18 @@
 
 @implementation DSCarClubDetailController
 
-
+-(NSMutableArray *)moreArray{
+    if (_moreArray==nil) {
+        _moreArray=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _moreArray;
+}
+-(NSMutableArray *)modelsArray{
+    if (_modelsArray==nil) {
+        _modelsArray=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _modelsArray;
+}
 
 //- (void) drawContent
 //{
@@ -69,6 +83,7 @@
     
     
     [self createSubView];
+    [self setupRefresh];
 }
 
 - (void) resetBabkButton {
@@ -93,12 +108,11 @@
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [aValue CGRectValue];
     int height = keyboardRect.size.height;
-    
     if (self.userSayTextField.text.length ==0) {//键盘弹出
-        
-        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667-height, Main_Screen_Width, Main_Screen_Height*60/667);
+//        0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667
+        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667);
     }else{
-        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667-height, Main_Screen_Width, Main_Screen_Height*60/667);
+        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667, Main_Screen_Width, Main_Screen_Height*60/667);
         self.downView.frame = rect;
     }
 }
@@ -119,7 +133,7 @@
 
 - (void) createSubView {
 
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height+Main_Screen_Height*64/667) style:UITableViewStylePlain];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-Main_Screen_Height*100/667) style:UITableViewStylePlain];
     self.tableView.top              = 64;
     
 //    if (Main_Screen_Height == 568) {
@@ -135,12 +149,12 @@
     //    self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
     //    self.tableView.scrollEnabled    = NO;
     //    self.tableView.tableFooterView  = [UIView new];
-    self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
+//    self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor=[UIColor clearColor];
     
-    [self createHeaderView];
-    [self creatModelsWithCount:10];
+    
+//    [self creatModelsWithCount:10];
 }
 
 - (void) createHeaderView {
@@ -345,22 +359,25 @@
     
     
     
-    UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 215)];
-    v.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:v];
-    
-    
-    UIImageView *ImgView = [[UIImageView alloc] initWithFrame:CGRectMake(120, 27, 135, 120)];
-    ImgView.image = [UIImage imageNamed:@"pinglun_kongbai"];
-    [v addSubview:ImgView];
-    
-    UILabel *nocommentlab = [[UILabel alloc]initWithFrame:CGRectMake(0, ImgView.frame.origin.y+ImgView.frame.size.height+17, Main_Screen_Width, 14)];
-    nocommentlab.text = @"暂无评价信息";
-    nocommentlab.font = [UIFont systemFontOfSize:16];
-    nocommentlab.textAlignment = NSTextAlignmentCenter;
-    nocommentlab.textColor = [UIColor colorFromHex:@"#999999"];
-    [v addSubview:nocommentlab];
-    self.tableView.tableFooterView = v;
+    if(self.modelsArray.count == 0)
+    {
+        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 215*Main_Screen_Height/667)];
+        v.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:v];
+        
+        
+        UIImageView *ImgView = [[UIImageView alloc] initWithFrame:CGRectMake(120*Main_Screen_Width/375, 27*Main_Screen_Height/667, 135*Main_Screen_Width/375, 120*Main_Screen_Height/667)];
+        ImgView.image = [UIImage imageNamed:@"pinglun_kongbai"];
+        [v addSubview:ImgView];
+        
+        UILabel *nocommentlab = [[UILabel alloc]initWithFrame:CGRectMake(0, ImgView.frame.origin.y+ImgView.frame.size.height+17*Main_Screen_Height/667, Main_Screen_Width, 14*Main_Screen_Height/667)];
+        nocommentlab.text = @"暂无评价信息";
+        nocommentlab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
+        nocommentlab.textAlignment = NSTextAlignmentCenter;
+        nocommentlab.textColor = [UIColor colorFromHex:@"#999999"];
+        [v addSubview:nocommentlab];
+        self.tableView.tableFooterView = v;
+    }
     
     
     
@@ -444,12 +461,297 @@
     .heightIs(20);
     
     
+ 
+#pragma mark-赋值
+    if (self.CarClubNewsModel!=nil) {
+        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.FromusrImg];
+        NSURL *url=[NSURL URLWithString:ImageURL];
+        [self.userImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon0.jpg"]];
+        self.userName.text=self.CarClubNewsModel.FromusrName;
+        self.seeNumber.text=[NSString stringWithFormat:@"%ld",self.CarClubNewsModel.Readcount];
+        self.sayTime.text=self.CarClubNewsModel.ActDate;
+        self.textContentLabel.text=self.CarClubNewsModel.Comment;
+        NSString *ImageURLs=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.IndexImg];
+        NSURL *urls=[NSURL URLWithString:ImageURLs];
+        [self.textImageView sd_setImageWithURL:urls placeholderImage:[UIImage imageNamed:@"shangjiadiantu"]];
+        self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+        self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
+        
+        self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+        self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
+    }
     [self.downView  layoutSubviews];
     
     [self.view addSubview:self.downView ];
+    
 
 }
 
+-(void)setupRefresh
+{
+    
+    
+    
+    self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self headerRereshing];
+        
+    }];
+    
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+    // 上拉刷新
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self footerRereshing];
+        
+    }];
+    
+    
+}
+
+- (void)headerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _modelsArray = [NSMutableArray new];
+        self.page = 0 ;
+        
+        [self requestActivityDetail];
+        
+    });
+}
+
+
+- (void)footerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if(_modelsArray.count == 0)
+        {
+            [self requestCommentList];
+        }
+        else
+        {
+            self.page++;
+            _moreArray = [NSMutableArray array];
+            [self requestCommentList2];
+            
+            
+            //            if(_moreArray.count == 0)
+            //            {
+            //                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            //                hud.removeFromSuperViewOnHide =YES;
+            //                hud.mode = MBProgressHUDModeText;
+            //                hud.labelText = @"无更多数据";
+            //                hud.minSize = CGSizeMake(132.f, 108.0f);
+            //                [hud hide:YES afterDelay:3];
+            //                [self.tableView.mj_footer endRefreshing];
+            //                self.page--;
+            //            }
+            //            else
+            //            {
+            //
+            //
+            //                [self.tableView reloadData];
+            //                [self.tableView.mj_footer endRefreshing];
+            //            }
+        }
+        
+        
+        
+        
+        // 刷新表格
+        
+        // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        
+    });
+}
+#pragma mark-文章详细信息查询接口
+-(void)requestActivityDetail
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode]
+                             };
+        //
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+//        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
+            
+            NSDictionary *dic = [dict objectForKey:@"JsonData"];
+            self.CarClubNewsModel=[[QWCarClubNewsModel alloc]initWithDictionary:dic error:nil];
+            
+            
+            
+            NSArray *arr = [NSArray array];
+            arr = [dic objectForKey:@"actModelList"];
+            for(NSDictionary *dic in arr)
+            {
+                
+                //                NSLog(@"%@",dic);
+                QWCarClubUserModel *model = [[QWCarClubUserModel alloc]initWithDictionary:dic error:nil];
+                
+                
+                [self.modelsArray addObject:model];
+            }
+            
+            
+            //            self.userName.text = newsDetail.FromusrName;
+            //            self.sayTime.text = newsDetail.ActDate;
+            //            self.seeNumber.text = [NSString stringWithFormat:@"%ld",newsDetail.Readcount];
+            //            self.textTitleLabel.text = newsDetail.ActivityName;
+            //            self.textContentLabel.text = newsDetail.Comment;
+            //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //                                                NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,newsDetail.IndexImg];
+            //                                                NSURL *url=[NSURL URLWithString:ImageURL];
+            //                                                NSData *data=[NSData dataWithContentsOfURL:url];
+            //                                                UIImage *img=[UIImage imageWithData:data];
+            //                                                dispatch_sync(dispatch_get_main_queue(), ^{
+            //                                                    [self.textImageView setImage:img];
+            //                                                });
+            //                                            });
+            //            self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",newsDetail.GiveCount];
+            //            self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",newsDetail.CommentCount];
+            //            if(newsDetail.IsGive == 1)
+            //            {
+            //                [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+            //                [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+            //                self.goodButton.selected = YES;
+            //                self.downGoodButton.selected = YES;
+            //            }
+            //            else
+            //            {
+            //                [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+            //                [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:UIControlStateNormal];
+            //                self.goodButton.selected = NO;
+            //                self.downGoodButton.selected = NO;
+            //            }
+            //            self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",newsDetail.CommentCount];
+            //            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",newsDetail.GiveCount];
+            
+            //
+            [self createHeaderView];
+            [_tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+        }
+        else
+        {
+            [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+            [self.tableView.mj_header endRefreshing];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+        [self.tableView.mj_header endRefreshing];
+    }];
+    
+}
+#pragma mark-文章评论列表查询接口
+-(void)requestCommentList
+{
+    NSDictionary *mulDic = @{
+                             @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
+                             @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
+                             @"PageSize":@10
+                             };
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityCommentList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+           NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            for(NSDictionary *dic in arr)
+            {
+                     QWCarClubUserModel *model = [[QWCarClubUserModel alloc]initWithDictionary:dic error:nil];
+                [self.modelsArray addObject:model];
+            }
+            [_tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+            [self.tableView.mj_footer endRefreshing];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+    
+}
+
+-(void)requestCommentList2
+{
+    NSDictionary *mulDic = @{
+                             @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
+                             @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
+                             @"PageSize":@10
+                             };
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityCommentList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            for(NSDictionary *dic in arr)
+            {
+                     QWCarClubUserModel *model = [[QWCarClubUserModel alloc]initWithDictionary:dic error:nil];
+                [_moreArray addObject:model];
+            }
+            if(_moreArray.count == 0)
+            {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.removeFromSuperViewOnHide =YES;
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"无更多数据";
+                hud.minSize = CGSizeMake(132.f, 108.0f);
+                [hud hide:YES afterDelay:3];
+                [self.tableView.mj_footer endRefreshing];
+                self.page--;
+            }
+            else
+            {
+                [self.modelsArray addObjectsFromArray:_moreArray];
+                [_tableView reloadData];
+                [self.tableView.mj_footer endRefreshing];
+            }
+            
+            
+            
+        }
+        else
+        {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.removeFromSuperViewOnHide =YES;
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"无更多数据";
+            hud.minSize = CGSizeMake(132.f, 108.0f);
+            [hud hide:YES afterDelay:3];
+            [self.tableView.mj_footer endRefreshing];
+            self.page--;
+            
+            
+            //            [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+            
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
+        [self.tableView.mj_footer endRefreshing];
+    }];
+    
+}
 - (TPKeyboardAvoidingScrollView *)scrollView {
     if (!_scrollView) {
         _scrollView = [[TPKeyboardAvoidingScrollView alloc] initWithFrame:self.contentView.bounds];
@@ -505,72 +807,15 @@
     
 }
 
-- (void) creatModelsWithCount:(NSInteger)count {
-    
-    if (!_modelsArray) {
-        _modelsArray = [NSMutableArray new];
-    }
-    
-    NSArray *iconImageNamesArray = @[@"icon0.jpg",
-                                     @"icon1.jpg",
-                                     @"icon2.jpg",
-                                     @"icon3.jpg",
-                                     @"icon4.jpg",
-                                     ];
-    
-    NSArray *starImageArray      = @[@"5xing.jpg",
-                                     @"4xing.jpg",
-                                     @"3xing.jpg",
-                                     @"2xing.jpg",
-                                     @"1xing.jpg",
-                                     ];
-    
-    NSArray *namesArray = @[@"158****1856",
-                            @"风口上的猪",
-                            @"梅超风",
-                            @"我叫郭德纲",
-                            @"Hello Kitty"];
-    
-    NSArray *textArray = @[@"游泳。 最重要的是保持平和安详的心态。正所谓：心静自然凉。我经常用这一招，很有效果。",
-                           @"在饮食方面，一方面体弱人群要适量饮用淡盐水；另一方面，少吃油腻食品。",
-                           @"少吃多餐且清淡",
-                           @"合理的安排休息时间，每天保证8小时足够的睡眠以保持充分的体能，可有效达到防暑目的哦.",
-                           @"尽量不要上午10点至下午16点出门"
-                           ];
-    
-    
-    
-    for (int i = 0; i < iconImageNamesArray.count; i++) {
-        //        int iconRandomIndex = arc4random_uniform(5);
-        //        int nameRandomIndex = arc4random_uniform(5);
-        //        int contentRandomIndex = arc4random_uniform(5);
-        
-        DSUserModel *model = [DSUserModel new];
-        model.iconName = iconImageNamesArray[i];
-        model.name = namesArray[i];
-        model.content = textArray[i];
-        model.sayTime   = @"2017-7-31";
-        model.starName  = starImageArray[i];
-        
-        //        DSUserModel *model = [DSUserModel new];
-        //        model.iconName = iconImageNamesArray[i];
-        //        model.name = namesArray[i];
-        //        model.content = textArray[i];
-        
-        // 模拟“有或者无图片”
-        
-        [self.modelsArray addObject:model];
-    }
-    
-}
+
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+ 
+    return self.modelsArray.count;
     
-    //    return self.modelsArray.count;
 }
 
 
@@ -581,6 +826,10 @@
     if (!cell) {
         cell = [[DSActivityDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellStatic];
     }
+    if (self.modelsArray.count!=0) {
+        cell.CarClubUserModel  = self.modelsArray[indexPath.row];
+    }
+    
     cell.thumbOnclick=^(UIButton *btn){
         if (btn.selected) {
             
@@ -592,7 +841,7 @@
         btn.selected=!btn.selected;
         
     };
-    cell.model  = self.modelsArray[indexPath.row];
+    
     
     
     return cell;
@@ -685,8 +934,15 @@
 {
     // >>>>>>>>>>>>>>>>>>>>> * cell自适应步骤2 * >>>>>>>>>>>>>>>>>>>>>>>>
     /* model 为模型实例， keyPath 为 model 的属性名，通过 kvc 统一赋值接口 */
-    
-    return [self.tableView cellHeightForIndexPath:indexPath model:self.modelsArray[indexPath.row] keyPath:@"model" cellClass:[DSActivityDetailCell class] contentViewWidth:[self cellContentViewWith]];
+    if(self.modelsArray.count == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return [self.tableView cellHeightForIndexPath:indexPath model:self.modelsArray[indexPath.row] keyPath:@"CarClubUserModel" cellClass:[DSActivityDetailCell class] contentViewWidth:[self cellContentViewWith]];
+    }
+   
 }
 
 - (CGFloat)cellContentViewWith
