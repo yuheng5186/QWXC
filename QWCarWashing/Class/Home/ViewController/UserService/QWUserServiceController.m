@@ -73,6 +73,7 @@
     UITableView *serviceListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64 + 44, Main_Screen_Width, Main_Screen_Height - 64 - (44+60)*Main_Screen_Height/667)];
     serviceListView.delegate = self;
     serviceListView.dataSource = self;
+    serviceListView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:serviceListView];
     self.serviceListView = serviceListView;
     self.serviceListView.sectionHeaderHeight = 50*Main_Screen_Height/667;
@@ -83,6 +84,9 @@
     bottomPhoneView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:bottomPhoneView];
     
+    UIView *lineView = [[UIView alloc] init];
+    lineView.backgroundColor = [UIColor colorFromHex:@"#4a4a4a"];
+    [self.view addSubview:lineView];
     
     UIButton *phoneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     phoneBtn.backgroundColor = [UIColor whiteColor];
@@ -103,6 +107,12 @@
         make.left.right.bottom.equalTo(self.view);
         make.height.mas_equalTo(60*Main_Screen_Height/667);
         
+    }];
+    
+    [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(bottomPhoneView.mas_top);
+        make.width.mas_equalTo(Main_Screen_Width);
+        make.height.mas_equalTo(1*Main_Screen_Height/667);
     }];
     
     [phoneBtn mas_makeConstraints:^(MASConstraintMaker *make) {
