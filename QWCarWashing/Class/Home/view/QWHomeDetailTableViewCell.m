@@ -22,6 +22,9 @@
     self.moneys.textColor=[UIColor colorWithHexString:@"#3a3a3a"];
     self.chedianName.font=[UIFont systemFontOfSize:12];
     self.chedianName.textColor=[UIColor colorWithHexString:@"#868686"];
+    self.seeDetailbtn.titleLabel.font=[UIFont systemFontOfSize:12];
+    [self.seeDetailbtn setTitleColor:[UIColor colorFromHex:@"#868686"] forState:BtnNormal];
+    self.seeDetailbtn.backgroundColor=[UIColor colorFromHex:@"#eaeaea"];
     
 }
 

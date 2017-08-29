@@ -170,7 +170,8 @@ static NSString *cellstr=@"Cellstr";
         return cell2;
         
     }
-    else if (indexPath.section==1){
+    else if (indexPath.section==1)
+    {
         QWMenuTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
           cell.backgroundColor=[UIColor clearColor];
@@ -407,38 +408,7 @@ static NSString *cellstr=@"Cellstr";
 //    }
     return header;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    
-    // 覆盖文字
-    //    if (section == 1) {
-    //        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 67)];
-    //        Footer.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
-    //        UIImageView *imagevie=[[UIImageView alloc]initWithFrame:CGRectMake(20, 10, QWScreenWidth-40, Footer.frame.size.height-20)];
-    //
-    //        imagevie.layer.cornerRadius=15;
-    //        [Footer addSubview:imagevie];
-    //        imagevie.image=[UIImage imageNamed:@"guanggao11"];
-    //         return Footer;
-    //    } else
-    if (section >1&&section!=4&&section!=7) {
-        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40)];
-        Footer.backgroundColor=[UIColor clearColor];
-        UILabel *imagevie=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, Footer.frame.size.height)];
-        imagevie.textColor=[UIColor colorWithHexString:@"#868686"];
-        imagevie.textAlignment=NSTextAlignmentCenter;
-        imagevie.backgroundColor    = [UIColor colorFromHex:@"#eaeaea"];
-        imagevie.font=[UIFont systemFontOfSize:12];
-        imagevie.text=@"查看详情";
-        [Footer addSubview:imagevie];
-        
-        return Footer;
-    }else{
-        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 0)];
-        return Footer;
-    }
-    
-}
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -469,23 +439,7 @@ static NSString *cellstr=@"Cellstr";
         return 10;
     }
 }
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    //    if (section==1) {
-    //        return 67;
-    //    }else
-    if(section>1&&section!=4){
-        return 40;
-    }else if(section==0||section==1||section==4||section==7){
-        
-        return 0;
-        
-    }else{
-        return 10;
-        
-    }
-    
-    
-}
+
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -495,10 +449,10 @@ static NSString *cellstr=@"Cellstr";
         return [QWMenuTableViewCell cellHeight:7];
         ;
     }else if (indexPath.section==2){
-        return 140;
+        return 171;
         ;
     }else{
-        return 140;
+        return 171;
     }
     
 }

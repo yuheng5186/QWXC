@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *Nowtime;
 @property (weak, nonatomic) IBOutlet UILabel *moneys;
 @property (weak, nonatomic) IBOutlet UILabel *chedianName;
+@property (weak, nonatomic) IBOutlet UIButton *seeDetailbtn;
 
 @end
