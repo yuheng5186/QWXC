@@ -14,9 +14,13 @@
 @property (nonatomic, weak) UILabel *washCarLabel;
 @property (nonatomic, weak) UILabel *validityLabel;
 @property (nonatomic, weak) UILabel *timesLabel;
+@property (nonatomic, weak) UILabel *lineLabel;
+
 @property (nonatomic, weak) UILabel *noticeLabel;
 @property (nonatomic, weak) UILabel *noticeLabelOne;
 @property (nonatomic, weak) UILabel *noticeLabeTwo;
+@property (nonatomic, weak) UILabel *noticeLabeThree;
+
 
 @end
 
@@ -25,36 +29,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"详情";
-    self.view.backgroundColor   = [UIColor whiteColor];
+    self.view.backgroundColor   = [UIColor colorFromHex:@"#fafafa"];
     [self setupUI];
 
 }
 
 - (void)setupUI {
-    
-    //    UILabel *washCarLabel = [[UILabel alloc] init];
-    //    washCarLabel.text = @"洗车月卡";
-    //    [self.view addSubview:washCarLabel];
-    //
-    //    UILabel *validityLabel = [[UILabel alloc] init];
-    //    validityLabel.text = @"有效期至: 2017-8-1";
-    //    [self.view addSubview:validityLabel];
-    //
-    //    UILabel *timesLabel = [[UILabel alloc] init];
-    //    timesLabel.text = @"免费洗车次数6次";
-    //    [self.view addSubview:timesLabel];
-    //
-    //    UILabel *noticeLabel = [[UILabel alloc] init];
-    //    noticeLabel.text = @"使用须知";
-    //    [self.view addSubview:noticeLabel];
-    //
-    //    UILabel *noticeLabelOne = [[UILabel alloc] init];
-    //    noticeLabelOne.text = @"1、本洗车卡由金顶洗车APP发放,仅限金顶洗车店和与金顶合作商家使用";
-    //    [self.view addSubview:noticeLabelOne];
-    //
-    //    UILabel *noticeLabelTwo = [[UILabel alloc] init];
-    //    noticeLabelTwo.text = @"2、有任何问题,可咨询金顶客服";
-    //    [self.view addSubview:noticeLabelTwo];
     
     [self.washCarLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.containView).mas_offset(20);
@@ -71,9 +51,17 @@
         make.top.equalTo(self.validityLabel.mas_bottom).mas_offset(15);
     }];
     
+    [self.lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.mas_equalTo(0);
+        make.height.mas_equalTo(1);
+        make.width.mas_equalTo(self.view);
+        make.top.equalTo(self.timesLabel.mas_bottom).mas_offset(15);
+    }];
+    
+    
     [self.noticeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.washCarLabel);
-        make.top.equalTo(self.timesLabel.mas_bottom).mas_offset(35);
+        make.top.equalTo(self.lineLabel.mas_bottom).mas_offset(15);
     }];
     
     [self.noticeLabelOne mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,6 +73,11 @@
     [self.noticeLabeTwo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.washCarLabel);
         make.top.equalTo(self.noticeLabelOne.mas_bottom).mas_offset(15);
+    }];
+    
+    [self.noticeLabeThree mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(self.washCarLabel);
+        make.top.equalTo(self.noticeLabeTwo.mas_bottom).mas_offset(15);
     }];
     
 }
@@ -104,7 +97,7 @@
     
     if (!_washCarLabel) {
         UILabel *washCarLabel = [[UILabel alloc] init];
-        washCarLabel.text = @"洗车月卡";
+        washCarLabel.text = @"洗车体验卡";
         washCarLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
         washCarLabel.font = [UIFont systemFontOfSize:16];
         _washCarLabel = washCarLabel;
@@ -118,7 +111,7 @@
     if (!_validityLabel) {
         
         UILabel *validityLabel = [[UILabel alloc] init];
-        validityLabel.text = @"有效期至: 2017-8-1";
+        validityLabel.text = @"有效期至: 2017.8.10";
         validityLabel.textColor = [UIColor colorFromHex:@"#999999"];
         validityLabel.font = [UIFont systemFontOfSize:13];
         _validityLabel = validityLabel;
@@ -141,6 +134,18 @@
     return _timesLabel;
 }
 
+- (UILabel *)lineLabel {
+    
+    if (!_lineLabel) {
+        UILabel *lineLabel = [[UILabel alloc] init];
+        lineLabel.backgroundColor   = [UIColor colorFromHex:@"#eaeaea"];;
+        _lineLabel = lineLabel;
+        [self.containView addSubview:_lineLabel];
+    }
+    return _lineLabel;
+}
+
+
 - (UILabel *)noticeLabel {
     
     if (!_noticeLabel) {
@@ -159,7 +164,7 @@
     
     if (!_noticeLabelOne) {
         UILabel *noticeLabelOne = [[UILabel alloc] init];
-        noticeLabelOne.text = @"1、本洗车卡由金顶洗车APP发放,仅限金顶洗车店和与金顶合作商家使用";
+        noticeLabelOne.text = @"1、本洗车卡由蔷薇爱车APP发放,仅限蔷薇洗车店和与蔷薇合作商家使用";
         noticeLabelOne.numberOfLines = 0;
         noticeLabelOne.textColor = [UIColor colorFromHex:@"#999999"];
         noticeLabelOne.font = [UIFont systemFontOfSize:13];
@@ -173,13 +178,26 @@
     
     if (!_noticeLabeTwo) {
         UILabel *noticeLabelTwo = [[UILabel alloc] init];
-        noticeLabelTwo.text = @"2、有任何问题,可咨询金顶客服";
+        noticeLabelTwo.text = @"2、洗车卡不能兑换现金和转增与其他人使用";
         noticeLabelTwo.textColor = [UIColor colorFromHex:@"#999999"];
         noticeLabelTwo.font = [UIFont systemFontOfSize:13];
         _noticeLabeTwo = noticeLabelTwo;
         [self.containView addSubview:_noticeLabeTwo];
     }
     return _noticeLabeTwo;
+}
+
+- (UILabel *)noticeLabeThree {
+    
+    if (!_noticeLabeThree) {
+        UILabel *noticeLabeThree = [[UILabel alloc] init];
+        noticeLabeThree.text = @"3、有任何问题,可咨询金顶客服";
+        noticeLabeThree.textColor = [UIColor colorFromHex:@"#999999"];
+        noticeLabeThree.font = [UIFont systemFontOfSize:13];
+        _noticeLabeThree = noticeLabeThree;
+        [self.containView addSubview:_noticeLabeThree];
+    }
+    return _noticeLabeThree;
 }
 
 - (void)didReceiveMemoryWarning {
