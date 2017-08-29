@@ -7,6 +7,7 @@
 //
 
 #import "OrderDetailView.h"
+#import "UIView+AutoSizeToDevice.h"
 
 @implementation OrderDetailView
 
@@ -18,11 +19,15 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    //self.dg_viewAutoSizeToDevice = YES;
+    
+    
     [self setupUI];
 }
 
 - (void)setupUI {
     
+   
 }
 
 @end
