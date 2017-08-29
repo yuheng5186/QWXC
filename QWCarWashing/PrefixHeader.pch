@@ -62,6 +62,7 @@
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
 #import <JSONModel/JSONModel.h>
+#import "QWMyCarModel.h"
 //用户信息
 #import "QWUserInfo.h"
 

@@ -15,7 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *defaultButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-
+@property (weak, nonatomic) IBOutlet UILabel *shengcDate;
+@property (strong, nonatomic)QWMyCarModel *mycarmodel;
+@property (weak, nonatomic) IBOutlet UIButton *defaultbz;
 
 
 @end

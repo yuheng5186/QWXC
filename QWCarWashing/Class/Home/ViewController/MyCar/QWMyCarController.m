@@ -15,8 +15,9 @@
 #import "UIView+Uitls.h"
 #import "QFDatePickerView.h"
 #import "ProvinceShortController.h"
-
-@interface QWMyCarController ()<UITableViewDelegate, UITableViewDataSource, NewPagedFlowViewDelegate, NewPagedFlowViewDataSource, UITextFieldDelegate,UIGestureRecognizerDelegate>
+#import "UIScrollView+EmptyDataSet.h"//第三方空白页
+#import "QWIcreaseCarController.h"
+@interface QWMyCarController ()<UITableViewDelegate, UITableViewDataSource, NewPagedFlowViewDelegate, NewPagedFlowViewDataSource, UITextFieldDelegate,UIGestureRecognizerDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (nonatomic, weak) UIImageView *carImageView;
 
@@ -28,11 +29,18 @@
 
 @property (nonatomic, weak) UIButton *provinceBtn;
 @property (nonatomic, strong) NSMutableArray *CarArray;
-
+@property (nonatomic, assign) NSInteger Xuhao;
 
 @property (nonatomic, weak) UILabel *lbl;
 @property (nonatomic, weak) UILabel *lbl2;
 @property (nonatomic, weak) UITextField *carNum;
+@property (nonatomic, weak) UITextField *CarBrandlab;
+@property (nonatomic, weak) UITextField *PlateNumberlab;
+@property (nonatomic, weak) UITextField *ChassisNumlab;
+@property (nonatomic, weak) UITextField *Manufacturelab;
+@property (nonatomic, weak) UITextField *DepartureTimelab;
+@property (nonatomic, weak) UITextField *Mileagelab;
+//CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
 
 @end
 
@@ -72,19 +80,19 @@ static NSString * HeaderId = @"header";
             arr = [dict objectForKey:@"JsonData"];
             for(NSDictionary *dic in arr)
             {
-//                MyCar *newcar = [[MyCar alloc]init];
-//                [newcar setValuesForKeysWithDictionary:dic];
-//                [_CarArray addObject:newcar];
+                QWMyCarModel *newcar = [[QWMyCarModel alloc]initWithDictionary:dic error:nil];
+
+                [self.CarArray addObject:newcar];
             }
             
-//            for (int index = 0; index < [_CarArray count]; index++) {
-//                UIImage *image = [UIImage imageNamed:@"aicheditu"];
-//                [self.imageArray addObject:image];
-//            }
+            for (int index = 0; index < [self.CarArray count]; index++) {
+                UIImage *image = [UIImage imageNamed:@"aicheditu"];
+                [self.imageArray addObject:image];
+            }
             
             [self setupUI];
             
-            [_carInfoView reloadData];
+            [self.carInfoView reloadData];
             
         }
         else
@@ -116,6 +124,8 @@ static NSString * HeaderId = @"header";
         
         UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
         _carInfoView = carInfoView;
+        _carInfoView.emptyDataSetDelegate=self;
+        _carInfoView.emptyDataSetSource=self;
         [self.view addSubview:_carInfoView];
     }
     return _carInfoView;
@@ -133,18 +143,16 @@ static NSString * HeaderId = @"header";
     self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"我的车库" style:UIBarButtonItemStyleDone target:self action:@selector(clickMycarPort)];
     [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
     
-    for (int index = 0; index < 3; index++) {
-        UIImage *image = [UIImage imageNamed:@"aicheditu"];
-        [self.imageArray addObject:image];
-    }
     
-    [self requestMyCarData];
     
-//    [self setupUI];
+    
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
     tap.delegate = self;
     [self.view addGestureRecognizer:tap];
+    [self requestMyCarData];
+    
+    
     
 }
 #pragma mark-修改或者添加了车辆都会通知更新数据ui
@@ -165,7 +173,7 @@ static NSString * HeaderId = @"header";
 - (void)setupUI {
     
     //无限轮播图
-    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, (Main_Screen_Width - 60) * 9 / 16 + 24)];
+    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, (Main_Screen_Width - 60) * 9 / 16 + 24)];
     pageFlowView.backgroundColor = [UIColor whiteColor];
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
@@ -203,21 +211,22 @@ static NSString * HeaderId = @"header";
 }
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
-    
+    _Xuhao = subIndex;
 }
 
 
 #pragma mark NewPagedFlowView Datasource
 - (NSInteger)numberOfPagesInFlowView:(NewPagedFlowView *)flowView {
     
-    return self.imageArray.count;
+    return self.CarArray.count;
+//    return 0;
     
 }
 
 - (UIView *)flowView:(NewPagedFlowView *)flowView cellForPageAtIndex:(NSInteger)index{
     PGIndexBannerSubiew *bannerView = (PGIndexBannerSubiew *)[flowView dequeueReusableCell];
     if (!bannerView) {
-        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width - 84, (Main_Screen_Width - 84) / 2)];
+        bannerView = [[PGIndexBannerSubiew alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width - 84*Main_Screen_Height/667, (Main_Screen_Width - 84*Main_Screen_Height/667) / 2)];
         bannerView.layer.cornerRadius = 4;
         bannerView.layer.masksToBounds = YES;
     }
@@ -230,29 +239,107 @@ static NSString * HeaderId = @"header";
     iconImageView.image = [UIImage imageNamed:@"aichemoren"];
     [containImageView addSubview:iconImageView];
     
+    
+    QWMyCarModel *car = [[QWMyCarModel alloc]init];
+    car = [self.CarArray objectAtIndex:index];
+    if(car.IsDefaultFav == 0)
+    {
+        iconImageView.hidden = YES;
+    }
+    else
+    {
+        iconImageView.hidden = NO;
+    }
+    
+    
+    
     UIImageView *carImageView = [[UIImageView alloc] init];
     carImageView.image = [UIImage imageNamed:@"aiche1"];
     [containImageView addSubview:carImageView];
     
+    UILabel *carpinpai = [[UILabel alloc]initWithFrame:CGRectMake(115*Main_Screen_Height/667, 40*Main_Screen_Height/667, containImageView.frame.size.width - 130*Main_Screen_Height/667, 20)];
+    carpinpai.text = car.CarBrand;
+    carpinpai.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
+    [containImageView addSubview:carpinpai];
+    
+    UILabel *carpro = [[UILabel alloc]initWithFrame:CGRectMake(115*Main_Screen_Height/667, 40*Main_Screen_Height/667 + carpinpai.frame.size.height , containImageView.frame.size.width - 130*Main_Screen_Height/667, 20)];
+    carpro.text = [NSString stringWithFormat:@"%ld年产",car.Manufacture];
+    carpro.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+    [containImageView addSubview:carpro];
+    
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(containImageView);
-        make.width.height.mas_equalTo(30);
+        make.width.height.mas_equalTo(30*Main_Screen_Height/667);
     }];
     
     [carImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(containImageView);
-        make.left.equalTo(containImageView).mas_equalTo(24);
-        make.width.height.mas_equalTo(67);
+        make.left.equalTo(containImageView).mas_equalTo(24*Main_Screen_Height/667);
+        make.width.height.mas_equalTo(67*Main_Screen_Height/667);
     }];
     
     bannerView.mainImageView = containImageView;
+    
+    
+    
     
     return bannerView;
 }
 
 - (void)didScrollToPage:(NSInteger)pageNumber inFlowView:(NewPagedFlowView *)flowView {
     
-    //self.pageControl.currentPage = pageNumber;
+    NSLog(@"%ld",pageNumber);
+    _Xuhao = pageNumber;
+    QWMyCarModel *car = [[QWMyCarModel alloc]init];
+    
+    
+    
+    if(self.CarArray.count != 0)
+  {
+    car = [self.CarArray objectAtIndex:_Xuhao];
+    
+    NSString *platenumbertype=[car.PlateNumber substringToIndex:1];
+    
+    [self.provinceBtn setTitle:platenumbertype forState:BtnNormal];
+    //            3.从第n为开始直到最后（包含第n位）
+    //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+    self.carNum.text=[car.PlateNumber substringFromIndex:1];
+    self.CarBrandlab.text = car.CarBrand;
+    self.ChassisNumlab.text = car.ChassisNum;
+    self.Mileagelab.text = [NSString stringWithFormat:@"%ld",car.Mileage];
+    
+    
+    
+    
+    
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [inputFormatter setDateFormat:@"yyyyMM"];
+    NSDate* inputDate = [inputFormatter dateFromString:car.DepartureTime];
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setLocale:[NSLocale currentLocale]];
+    [outputFormatter setDateFormat:@"yyyy-MM"];
+    NSString *targetTime = [outputFormatter stringFromDate:inputDate];
+    _lbl2.text  = targetTime;
+    
+    if(targetTime == 0)
+    {
+        NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+        [inputFormatter setDateFormat:@"yyyyM"];
+        NSDate* inputDate = [inputFormatter dateFromString:car.DepartureTime];
+        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+        [outputFormatter setLocale:[NSLocale currentLocale]];
+        [outputFormatter setDateFormat:@"yyyy-M"];
+        NSString *targetTime = [outputFormatter stringFromDate:inputDate];
+        _lbl2.text  = targetTime;
+    }
+    
+    
+    _lbl.text = [NSString stringWithFormat:@"%ld",car.Manufacture];
+      
+  }
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -287,10 +374,11 @@ static NSString * HeaderId = @"header";
             //            provinceLabel.font = [UIFont systemFontOfSize:14];
             UIButton *provinceBtn = [[UIButton alloc] init];
             _provinceBtn = provinceBtn;
+            
             [provinceBtn setTitle:@"沪" forState:UIControlStateNormal];
             [provinceBtn setTitleColor:[UIColor colorFromHex:@"#868686"] forState:UIControlStateNormal];
             provinceBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-            [provinceBtn addTarget:self action:@selector(didClickProvinceBtn) forControlEvents:UIControlEventTouchUpInside];
+//            [provinceBtn addTarget:self action:@selector(didClickProvinceBtn) forControlEvents:UIControlEventTouchUpInside];
             [carCell.contentView addSubview:provinceBtn];
             
             UIImageView *provinceImgV = [[UIImageView alloc] init];
@@ -321,7 +409,10 @@ static NSString * HeaderId = @"header";
                 make.leading.equalTo(provinceBtn.mas_trailing).mas_offset(16);
                 make.width.mas_equalTo(200);
             }];
-        }else{
+            
+        
+        }
+        else{
             carCell.textLabel.text = @"品牌车系";
             carCell.textLabel.textColor = [UIColor colorFromHex:@"#868686"];
             carCell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -331,13 +422,14 @@ static NSString * HeaderId = @"header";
             brandTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             brandTF.font = [UIFont systemFontOfSize:12];
             [carCell.contentView addSubview:brandTF];
-            
+            self.CarBrandlab=brandTF;
             [brandTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(carCell.contentView).mas_offset(110);
                 make.centerY.equalTo(carCell);
                 make.right.equalTo(carCell.contentView).mas_offset(-12);
             }];
         }
+       
     }
     
     if (indexPath.section == 1) {
@@ -355,6 +447,11 @@ static NSString * HeaderId = @"header";
             textTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             textTF.font = [UIFont systemFontOfSize:12];
             [carCell.contentView addSubview:textTF];
+            if (indexPath.row==0) {
+                self.ChassisNumlab=textTF;
+            }else if (indexPath.row==3){
+                self.Mileagelab=textTF;
+            }
             
             [textTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.left.equalTo(carCell.contentView).mas_offset(110);
@@ -394,7 +491,24 @@ static NSString * HeaderId = @"header";
         
         
     }
-    
+    QWMyCarModel *car = [[QWMyCarModel alloc]init];
+    if (self.CarArray.count!=0) {
+        car = [self.CarArray objectAtIndex:_Xuhao];
+        //            2.截取到第n为（第n位不算在内）
+       
+        NSString *platenumbertype=[car.PlateNumber substringToIndex:1];
+        
+        [self.provinceBtn setTitle:platenumbertype forState:BtnNormal];
+        //            3.从第n为开始直到最后（包含第n位）
+        //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+        self.carNum.text=[car.PlateNumber substringFromIndex:1];
+        self.CarBrandlab.text=car.CarBrand;
+        self.ChassisNumlab.text=car.ChassisNum;
+        self.Mileagelab.text=[NSString stringWithFormat:@"%ld",car.Mileage];
+        self.lbl.text= [NSString stringWithFormat:@"%ld",car.Manufacture];
+        self.lbl2.text=car.DepartureTime;
+        
+    }
     return carCell;
 }
 
@@ -454,45 +568,52 @@ static NSString * HeaderId = @"header";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 1)
-    {
-        
-        if (indexPath.row == 1) {
-            QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
-                
-                self.lbl.text = str;
-            }];
-            [datePickerView show];
-        }
-        
-        if (indexPath.row == 2) {
-            QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
-                
-                self.lbl2.text = str;
-            }];
-            [datePickerView show];
-        }
-    }
+    QWIcreaseCarController *increaseVC = [[QWIcreaseCarController alloc] init];
+    QWMyCarModel *car = [[QWMyCarModel alloc]init];
+    car = [self.CarArray objectAtIndex:_Xuhao];
+     increaseVC.mycarModel = car;
+    increaseVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:increaseVC animated:YES];
+//    if (indexPath.section == 1)
+//    {
+//        
+//        if (indexPath.row == 1) {
+//            QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
+//                
+//                self.lbl.text = str;
+//            }];
+//            [datePickerView show];
+//        }
+//        
+//        if (indexPath.row == 2) {
+////            QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
+////                
+////                self.lbl2.text = str;
+////            }];
+////            [datePickerView show];
+//        }
+//    }
     
 }
 
 
 #pragma mark - 弹出省份简称
-- (void)didClickProvinceBtn {
-    
-    ProvinceShortController *provinceVC = [[ProvinceShortController alloc] init];
-    
-    typeof(self) weakSelf = self;
-    
-    provinceVC.provinceBlock = ^(NSString *nameText) {
-        
-        [weakSelf.provinceBtn setTitle:nameText forState:UIControlStateNormal];
-    };
-    
-    provinceVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [self presentViewController:provinceVC animated:NO completion:nil];
-}
+//- (void)didClickProvinceBtn {
+//    
+//    ProvinceShortController *provinceVC = [[ProvinceShortController alloc] init];
+//    
+//    typeof(self) weakSelf = self;
+//    
+//    provinceVC.provinceBlock = ^(NSString *nameText) {
+//        
+//        [weakSelf.provinceBtn setTitle:nameText forState:UIControlStateNormal];
+//    };
+//    
+//    provinceVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//    [self presentViewController:provinceVC animated:NO completion:nil];
+//}
 
 
 #pragma mark - 键盘
@@ -623,6 +744,80 @@ static NSString * HeaderId = @"header";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 无数据占位
+//无数据占位
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return [UIImage imageNamed:@"cheku_kongbai"];
+}
+
+- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @"cheku_kongbai"];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0,   1.0)];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    return animation;
+}
+//设置文字（上图下面的文字，我这个图片默认没有这个文字的）是富文本样式，扩展性很强！
+
+//这个是设置标题文字的
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"小二已在此恭候你多时";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:13.0f],
+                                 NSForegroundColorAttributeName: [UIColor colorFromHex: @"#4a4a4a"]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+//设置按钮的文本和按钮的背景图片
+
+//- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state  {
+////    NSLog(@"buttonTitleForEmptyDataSet:点击上传照片");
+////    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
+////    return [[NSAttributedString alloc] initWithString:@"点击上传照片" attributes:attributes];
+//}
+// 返回可以点击的按钮 上面带文字
+- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
+    return [[NSAttributedString alloc] initWithString:@"" attributes:attribute];
+}
+
+
+- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+    return [UIImage imageNamed:@"button_image"];
+}
+//是否显示空白页，默认YES
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return YES;
+}
+//是否允许点击，默认YES
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
+    return NO;
+}
+//是否允许滚动，默认NO
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
+    return YES;
+}
+//图片是否要动画效果，默认NO
+- (BOOL) emptyDataSetShouldAllowImageViewAnimate:(UIScrollView *)scrollView {
+    return YES;
+}
+//空白页点击事件
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView {
+    NSLog(@"空白页点击事件");
+}
+//空白页按钮点击事件
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+    return NSLog(@"空白页按钮点击事件");
+}
+/**
+ *  调整垂直位置
+ */
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -64;
+}
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }

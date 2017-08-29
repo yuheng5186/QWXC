@@ -9,5 +9,5 @@
 #import "QWBaseViewController.h"
 
 @interface QWIcreaseCarController : QWBaseViewController
-
+@property(nonatomic,strong)QWMyCarModel *mycarModel;
 @end
