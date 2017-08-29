@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderDetailView : UIView
+@property (weak, nonatomic) IBOutlet UIView *view1;
+@property (weak, nonatomic) IBOutlet UIView *view2;
+@property (weak, nonatomic) IBOutlet UIView *view3;
 
 + (instancetype)orderDetailView;
 

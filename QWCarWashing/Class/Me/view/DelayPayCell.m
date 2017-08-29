@@ -8,7 +8,7 @@
 
 #import "DelayPayCell.h"
 #import "UIView+AutoSizeToDevice.h"
-//#import "BusinessPayController.h"
+#import "QWPayViewController.h"
 
 @implementation DelayPayCell
 
@@ -39,10 +39,11 @@
     
     if ([self.delegate respondsToSelector:@selector(pushVC:animated:)]) {
         
-//        BusinessPayController *payVC = [[BusinessPayController alloc] init];
-//        payVC.hidesBottomBarWhenPushed = YES;
-//        
-//        [self.delegate pushVC:payVC animated:YES];
+
+        QWPayViewController *payVC = [[QWPayViewController alloc] init];
+        payVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.delegate pushVC:payVC animated:YES];
     }
 }
 

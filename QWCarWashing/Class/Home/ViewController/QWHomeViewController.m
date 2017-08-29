@@ -47,7 +47,7 @@ static NSString *cellstr=@"Cellstr";
         _tableview.delegate=self;
         _tableview.dataSource=self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableview.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
+        _tableview.backgroundColor=[UIColor colorWithHexString:@"#fafafa"];
         
     }
     return _tableview;
@@ -390,7 +390,7 @@ static NSString *cellstr=@"Cellstr";
     if(section==0){
         header.backgroundColor=[UIColor clearColor];
     }else{
-        header.backgroundColor=RGBACOLOR(246, 246, 246, 1);
+        header.backgroundColor= [UIColor colorFromHex:@"#fafafa"];
     
     }
     
@@ -422,11 +422,12 @@ static NSString *cellstr=@"Cellstr";
     //         return Footer;
     //    } else
     if (section >1&&section!=4&&section!=7) {
-        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30)];
+        UIView *Footer = [[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40)];
         Footer.backgroundColor=[UIColor clearColor];
         UILabel *imagevie=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, Footer.frame.size.height)];
         imagevie.textColor=[UIColor colorWithHexString:@"#868686"];
         imagevie.textAlignment=NSTextAlignmentCenter;
+        imagevie.backgroundColor    = [UIColor colorFromHex:@"#eaeaea"];
         imagevie.font=[UIFont systemFontOfSize:12];
         imagevie.text=@"查看详情";
         [Footer addSubview:imagevie];
@@ -473,7 +474,7 @@ static NSString *cellstr=@"Cellstr";
     //        return 67;
     //    }else
     if(section>1&&section!=4){
-        return 30;
+        return 40;
     }else if(section==0||section==1||section==4||section==7){
         
         return 0;
@@ -494,10 +495,10 @@ static NSString *cellstr=@"Cellstr";
         return [QWMenuTableViewCell cellHeight:7];
         ;
     }else if (indexPath.section==2){
-        return 100;
+        return 140;
         ;
     }else{
-        return 100;
+        return 140;
     }
     
 }

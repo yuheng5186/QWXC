@@ -9,12 +9,15 @@
 #import "ActivityListCell.h"
 #import "DSActivityModel.h"
 #import "DSCarClubDetailController.h"
+#import "UIView+AutoSizeToDevice.h"
+
 
 @implementation ActivityListCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     
+    self.dg_viewAutoSizeToDevice = YES;
 
 }
 
