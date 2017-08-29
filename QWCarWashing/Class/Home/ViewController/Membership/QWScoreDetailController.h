@@ -10,4 +10,6 @@
 
 @interface QWScoreDetailController : QWBaseViewController
 
+@property(nonatomic,copy)NSString *CurrentScore;
+
 @end

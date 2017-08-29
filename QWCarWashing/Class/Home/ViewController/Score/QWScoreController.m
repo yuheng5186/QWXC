@@ -235,7 +235,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
         exchangeLabel.backgroundColor=[UIColor whiteColor];
         exchangeLabel.textAlignment=NSTextAlignmentCenter;
         exchangeLabel.text = @"精品兑换";
-        exchangeLabel.font = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
+        exchangeLabel.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
         exchangeLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
         [v addSubview:exchangeLabel];
         return v;
