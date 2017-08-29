@@ -83,7 +83,6 @@
     
     
     [self createSubView];
-    [self setupRefresh];
 }
 
 - (void) resetBabkButton {
@@ -133,7 +132,7 @@
 
 - (void) createSubView {
 
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-Main_Screen_Height*100/667) style:UITableViewStylePlain];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-Main_Screen_Height*60/667 - 64) style:UITableViewStylePlain];
     self.tableView.top              = 64;
     
 //    if (Main_Screen_Height == 568) {
@@ -153,7 +152,8 @@
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor=[UIColor clearColor];
     
-    
+    [self setupRefresh];
+
 //    [self creatModelsWithCount:10];
 }
 
@@ -167,15 +167,19 @@
     
     UIImageView *userImageView  = [UIImageView new];
     userImageView.image         = [UIImage imageNamed:@"gerenxinxitou"];
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.FromusrImg];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [userImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon0.jpg"]];
     self.userImageView          = userImageView;
+    
     [header addSubview:userImageView];
     
     
     userImageView.sd_layout
-    .leftSpaceToView(header, 10)
-    .topSpaceToView(header, 10)
-    .heightIs(40)
-    .widthIs(40);
+    .leftSpaceToView(header, 10*Main_Screen_Height/667)
+    .topSpaceToView(header, 10*Main_Screen_Height/667)
+    .heightIs(40*Main_Screen_Height/667)
+    .widthIs(40*Main_Screen_Height/667);
     userImageView.sd_cornerRadiusFromWidthRatio     = @(0.5);
     
     
@@ -184,14 +188,15 @@
     userName.font                       = [UIFont systemFontOfSize:14];
     userName.textColor                  = [UIColor colorFromHex:@"#3a3a3a"];
     userName.text                       = @"15800781856";
+     userName.text=self.CarClubNewsModel.FromusrName;
     self.userName                       = userName;
     [header addSubview:userName];
     
     userName.sd_layout
-    .leftSpaceToView(userImageView, 10)
-    .topSpaceToView(header, 10)
-    .heightIs(20)
-    .widthIs(150);
+    .leftSpaceToView(userImageView, 10*Main_Screen_Height/667)
+    .topSpaceToView(header, 10*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667)
+    .widthIs(150*Main_Screen_Height/667);
     
     
     UILabel *seeNumberLabel                   = [UILabel new];
@@ -199,14 +204,16 @@
     seeNumberLabel.font                       = [UIFont systemFontOfSize:12];
     seeNumberLabel.textColor                  = [UIColor colorFromHex:@"#868686"];
     seeNumberLabel.text                       = @"369";
+    
+    seeNumberLabel.text=[NSString stringWithFormat:@"%ld",self.CarClubNewsModel.Readcount];
     self.userName                            = seeNumberLabel;
     [header addSubview:seeNumberLabel];
     
     seeNumberLabel.sd_layout
-    .rightSpaceToView(header, 10)
-    .topSpaceToView(header, 10)
-    .heightIs(20)
-    .widthIs(40);
+    .rightSpaceToView(header, 10*Main_Screen_Height/667)
+    .topSpaceToView(header, 10*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667)
+    .widthIs(40*Main_Screen_Height/667);
     
     
     UIImageView *seeImageView  = [UIImageView new];
@@ -216,10 +223,10 @@
     
     
     seeImageView.sd_layout
-    .rightSpaceToView(seeNumberLabel, 5)
-    .topSpaceToView(header, 12)
-    .heightIs(15)
-    .widthIs(15);
+    .rightSpaceToView(seeNumberLabel, 5*Main_Screen_Height/667)
+    .topSpaceToView(header, 12*Main_Screen_Height/667)
+    .heightIs(15*Main_Screen_Height/667)
+    .widthIs(15*Main_Screen_Height/667);
     
     
     
@@ -227,16 +234,20 @@
     UILabel *sayTimeLab                 = [UILabel new];
     sayTimeLab.textColor                = [UIColor colorFromHex:@"#999999"];
     sayTimeLab.text                     = @"2017-7-31 15:30:56";
-    sayTimeLab.font                     = [UIFont systemFontOfSize:11];
+    sayTimeLab.font                     = [UIFont systemFontOfSize:11*Main_Screen_Height/667];
+    
+    sayTimeLab.text=self.CarClubNewsModel.ActDate;
+   
+    
     self.sayTime                        = sayTimeLab;
     [header addSubview:sayTimeLab];
     
     
     sayTimeLab.sd_layout
     .leftEqualToView(userName)
-    .topSpaceToView(userName, 5)
-    .widthIs(150)
-    .heightIs(20);
+    .topSpaceToView(userName, 5*Main_Screen_Height/667)
+    .widthIs(150*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667);
     
     
     
@@ -248,49 +259,62 @@
     [header addSubview:backgroudView];
     
     backgroudView.sd_layout
-    .topSpaceToView(sayTimeLab, 10)
+    .topSpaceToView(sayTimeLab, 10*Main_Screen_Height/667)
     .leftEqualToView(header)
-    .heightIs(300);
+    .heightIs(300*Main_Screen_Height/667);
     
     UILabel *textTitleLabel                 = [UILabel new];
     textTitleLabel.textColor                = [UIColor colorFromHex:@"#4a4a4a"];
     textTitleLabel.text                     = @"夏天如何防止高温？";
-    textTitleLabel.font                     = [UIFont systemFontOfSize:16];
+    textTitleLabel.font                     = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+    textTitleLabel.text=self.CarClubNewsModel.ActivityName;
+    
+    
     self.textTitleLabel                     = textTitleLabel;
     [backgroudView addSubview:textTitleLabel];
     
     
     textTitleLabel.sd_layout
-    .leftSpaceToView(backgroudView, 10)
-    .topSpaceToView(backgroudView, 10)
-    .widthIs(250)
-    .heightIs(40);
+    .leftSpaceToView(backgroudView, 10*Main_Screen_Height/667)
+    .topSpaceToView(backgroudView, 10*Main_Screen_Height/667)
+    .widthIs(250*Main_Screen_Height/667)
+    .heightIs(40*Main_Screen_Height/667);
     
     UILabel *textContentLabel                 = [UILabel new];
     textContentLabel.textColor                = [UIColor colorFromHex:@"#999999"];
     textContentLabel.text                     = @"夏天到来,随着温度越来越高,很多抵抗力差的人在高温环境下很容易中暑.今天太阳城管理网分享几条经验,教亲们如何采取措施,防止中暑.每天要喝7-8杯水,夏天是个严重缺水的季节,所以要增加水量,做到水分充足.补充水分也可以选择喝茶,因为茶味略苦性寒，具有消暑、解毒、去火等功能,但饮茶不能过量，茶水以清淡适中为宜哦.还有水果跟蔬菜也可补充水分.记住不要等到口渴了才喝水, 因为口渴表示身体已经缺水了.吃的东西越多，为了消化这些食物，身体产生的代谢热量就越多.一定要注意少吃高蛋白的食物，因为它们产生的代谢热量特别多.高蛋白质的食物如:牛奶,肉,鸡蛋,豆类等.还要吃得清淡,像黄瓜,西红柿等,这些蔬菜含水量多.夏天的衣服一定要尽量穿透气、浅色的.散热的棉质衣服而且要宽松的.浅色的衣服不会吸热.所以尽量不要穿暗色的衣服易吸热,像黑色,灰色等.";
-    textContentLabel.font                     = [UIFont systemFontOfSize:14];
+    textContentLabel.font                     = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     textContentLabel.numberOfLines            = 0;
+    
+    textContentLabel.text=self.CarClubNewsModel.Comment;
+    
+    
     self.textContentLabel                     = textContentLabel;
     [backgroudView addSubview:textContentLabel];
     
     
     textContentLabel.sd_layout
     .leftEqualToView(textTitleLabel)
-    .rightSpaceToView(backgroudView, 10)
-    .topSpaceToView(textTitleLabel, 10)
+    .rightSpaceToView(backgroudView, 10*Main_Screen_Height/667)
+    .topSpaceToView(textTitleLabel, 10*Main_Screen_Height/667)
     .autoHeightRatio(0);
     
     UIImageView *textImageView  = [UIImageView new];
     textImageView.image         = [UIImage imageNamed:@"shangjiadiantu"];
+    
+    NSString *ImageURLs=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.IndexImg];
+    NSURL *urls=[NSURL URLWithString:ImageURLs];
+    [textImageView sd_setImageWithURL:urls placeholderImage:[UIImage imageNamed:@"shangjiadiantu"]];
+    
+    
     self.textImageView          = textImageView;
     [backgroudView addSubview:textImageView];
     
     textImageView.sd_layout
-    .topSpaceToView(textContentLabel, 10)
+    .topSpaceToView(textContentLabel, 10*Main_Screen_Height/667)
     .leftEqualToView(textContentLabel)
     .widthRatioToView(textContentLabel, 1)
-    .heightIs(200);
+    .heightIs(200*Main_Screen_Height/667);
     
     
     UIButton    *goodButton = [UIButton new];
@@ -301,10 +325,10 @@
     [backgroudView addSubview:goodButton];
     
     goodButton.sd_layout
-    .topSpaceToView(textImageView, 10)
+    .topSpaceToView(textImageView, 10*Main_Screen_Height/667)
     .centerXEqualToView(textImageView)
-    .heightIs(50)
-    .widthIs(50);
+    .heightIs(50*Main_Screen_Height/667)
+    .widthIs(50*Main_Screen_Height/667);
     goodButton.layer.cornerRadius = goodButton.size.width/2;
     
     
@@ -312,16 +336,18 @@
     UILabel  *goodNumberLabel                = [UILabel new];
     goodNumberLabel.textColor                = [UIColor colorFromHex:@"#999999"];
     goodNumberLabel.text                     = @"共有168人点赞过";
-    goodNumberLabel.font                     = [UIFont systemFontOfSize:14];
-    self.goodNumberLabel                     = goodNumberLabel;
+    goodNumberLabel.font                     = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+    
+    goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+       self.goodNumberLabel                     = goodNumberLabel;
     goodNumberLabel.textAlignment            = NSTextAlignmentCenter;
     [backgroudView addSubview:goodNumberLabel];
     
     goodNumberLabel.sd_layout
-    .topSpaceToView(goodButton, 10)
+    .topSpaceToView(goodButton, 10*Main_Screen_Height/667)
     .centerXEqualToView(goodButton)
-    .widthIs(150)
-    .heightIs(20);
+    .widthIs(150*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667);
     
     
     [backgroudView setupAutoHeightWithBottomView:goodNumberLabel bottomMargin:10];
@@ -332,14 +358,18 @@
     sayNumberLab.textColor                  = [UIColor blackColor];
     sayNumberLab.font                       = [UIFont systemFontOfSize:16];
     sayNumberLab.text                       = @"评论（0）";
+    sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
+    
+
+
     self.sayNumberLab                       = sayNumberLab;
     [header addSubview:sayNumberLab];
     
     sayNumberLab.sd_layout
-    .leftSpaceToView(header, 10)
-    .topSpaceToView(backgroudView, 10)
-    .widthIs(100)
-    .heightIs(20);
+    .leftSpaceToView(header, 10*Main_Screen_Height/667)
+    .topSpaceToView(backgroudView, 10*Main_Screen_Height/667)
+    .widthIs(100*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667);
     
     
     UIView *bottomLine = [UIView new];
@@ -347,13 +377,13 @@
     [header addSubview:bottomLine];
     
     bottomLine.sd_layout
-    .topSpaceToView(sayNumberLab, 10)
+    .topSpaceToView(sayNumberLab, 10*QWScreenheight/667)
     .leftSpaceToView(header, 0)
     .rightSpaceToView(header, 0)
     .heightIs(1);
     
     
-    [header setupAutoHeightWithBottomView:bottomLine bottomMargin:10];
+    [header setupAutoHeightWithBottomView:bottomLine bottomMargin:10*QWScreenheight/667];
     [header layoutSubviews];
     self.tableView.tableHeaderView  = header;
     
@@ -414,24 +444,28 @@
     [self.downView  addSubview:sayButton];
     
     sayButton.sd_layout
-    .leftSpaceToView(self.userSayTextField, 10)
+    .leftSpaceToView(self.userSayTextField, 10*Main_Screen_Height/667)
     .centerYEqualToView(self.userSayTextField)
-    .heightIs(20)
-    .widthIs(20);
+    .heightIs(20*Main_Screen_Height/667)
+    .widthIs(20*Main_Screen_Height/667);
     
     
     UILabel *sayShowLabel                   = [UILabel new];
     sayShowLabel.textColor                  = [UIColor colorFromHex:@"#999999"];
     sayShowLabel.font                       = [UIFont systemFontOfSize:12];
     sayShowLabel.text                       = @"369";
+    
+    sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+    
+    
     self.sayShowLabel                       = sayShowLabel;
     [self.downView  addSubview:sayShowLabel];
     
     sayShowLabel.sd_layout
-    .leftSpaceToView(sayButton, 5)
-    .topSpaceToView(self.downView , 12)
-    .widthIs(40)
-    .heightIs(20);
+    .leftSpaceToView(sayButton, 5*Main_Screen_Height/667)
+    .topSpaceToView(self.downView , 12*Main_Screen_Height/667)
+    .widthIs(40*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667);
     
     UIButton    *downGoodButton = [UIButton new];
     [downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
@@ -441,45 +475,27 @@
     [self.downView  addSubview:downGoodButton];
     
     downGoodButton.sd_layout
-    .leftSpaceToView(self.sayShowLabel, 5)
+    .leftSpaceToView(self.sayShowLabel, 5*Main_Screen_Height/667)
     .centerYEqualToView(self.userSayTextField)
-    .heightIs(20)
-    .widthIs(20);
+    .heightIs(20*Main_Screen_Height/667)
+    .widthIs(20*Main_Screen_Height/667);
     
     
     UILabel *goodShowLabel                   = [UILabel new];
     goodShowLabel.textColor                  = [UIColor colorFromHex:@"#999999"];
     goodShowLabel.font                       = [UIFont systemFontOfSize:12];
     goodShowLabel.text                       = @"369";
+    
+   goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
     self.sayShowLabel                       = goodShowLabel;
     [self.downView  addSubview:goodShowLabel];
     
     goodShowLabel.sd_layout
     .leftSpaceToView(downGoodButton, 0)
-    .topSpaceToView(self.downView , 12)
-    .widthIs(40)
-    .heightIs(20);
+    .topSpaceToView(self.downView , 12*Main_Screen_Height/667)
+    .widthIs(40*Main_Screen_Height/667)
+    .heightIs(20*Main_Screen_Height/667);
     
-    
- 
-#pragma mark-赋值
-    if (self.CarClubNewsModel!=nil) {
-        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.FromusrImg];
-        NSURL *url=[NSURL URLWithString:ImageURL];
-        [self.userImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon0.jpg"]];
-        self.userName.text=self.CarClubNewsModel.FromusrName;
-        self.seeNumber.text=[NSString stringWithFormat:@"%ld",self.CarClubNewsModel.Readcount];
-        self.sayTime.text=self.CarClubNewsModel.ActDate;
-        self.textContentLabel.text=self.CarClubNewsModel.Comment;
-        NSString *ImageURLs=[NSString stringWithFormat:@"%@%@",kHTTPImg,self.CarClubNewsModel.IndexImg];
-        NSURL *urls=[NSURL URLWithString:ImageURLs];
-        [self.textImageView sd_setImageWithURL:urls placeholderImage:[UIImage imageNamed:@"shangjiadiantu"]];
-        self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
-        self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
-        
-        self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
-        self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
-    }
     [self.downView  layoutSubviews];
     
     [self.view addSubview:self.downView ];
@@ -789,6 +805,9 @@
     
     sender.selected = !sender.selected;
 }
+#pragma mark-
+
+#pragma mark-点赞
 - (void) goodButtonClick:(UIButton *)sender {
 
     if (sender.selected == NO) {
@@ -823,6 +842,7 @@
     
     static NSString *cellStatic = @"cellStatic";
     DSActivityDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStatic];
+//    cell.backgroundColor=[UIColor greenColor];
     if (!cell) {
         cell = [[DSActivityDetailCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellStatic];
     }
@@ -845,6 +865,59 @@
     
     
     return cell;
+}
+
+#pragma mark-添加评论借口
+-(void)addCommentariesData{
+    //    "JsonData": {"ActivityCode": 1001,"Account_Id": "404832711505",
+    //        "Comment": "第一条测试"}
+    
+    NSLog(@"添加评论借口参数：%ld==%@",(long)self.ActivityCode,self.userSayTextField.text);
+    //    ht://192.168.3.101:8090/api/Activity/AddActivityCommentInfo
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
+                             @"Comment":self.userSayTextField.text
+                             };
+    NSLog(@"添加评论借口参数：%@",mulDic);
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/AddActivityCommentInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"评论添加成功" autoHidden:YES interval:2];
+            //            self.dic = [dict objectForKey:@"JsonData"];
+            //        [self.MerchantDetailData addObjectsFromArray:arr];
+            
+            [self headerRereshing];
+        }
+        else
+        {
+            [self.view showInfo:@"评论添加失败" autoHidden:YES interval:2];
+            //            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"评论添加失败" autoHidden:YES interval:2];
+    }];
+    
+    
+}
+#pragma mark-监听键盘的done事件
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    NSLog(@"%@",textField.text);
+    if(textField.text.length == 0)
+    {
+        
+    }else
+    {
+        [self addCommentariesData];
+    }
+    
+    textField.text = @"";
 }
 
 #pragma mark - 无数据占位
