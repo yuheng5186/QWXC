@@ -33,9 +33,7 @@
     upView.top                      = Main_Screen_Height*84/667;
     
     self.userNameText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 40)];
-    //        self.phoneNumberText.placeholder    = @"输入验证码";
-//    self.userNameText.placeholder    = APPDELEGATE.currentUser.userName;
-    //    self.userNameText.text           = @"15800781856";
+    self.userNameText.placeholder    = self.userName;
     self.userNameText.delegate       = self;
     self.userNameText.returnKeyType  = UIReturnKeyDone;
     self.userNameText.textAlignment  = NSTextAlignmentLeft;
@@ -43,7 +41,7 @@
     self.userNameText.backgroundColor= [UIColor whiteColor];
     self.userNameText.top            = Main_Screen_Height*10/667;
     self.userNameText.left           = Main_Screen_Width*20/375 ;
-    self.userNameText.placeholder    =[UdStorage getObjectforKey:UserNamer];
+//    self.userNameText.placeholder    =[UdStorage getObjectforKey:UserNamer];
     [self.userNameText addTarget:self action:@selector(userNameTextChanged:) forControlEvents:UIControlEventEditingChanged];
     [upView addSubview:self.userNameText];
     
