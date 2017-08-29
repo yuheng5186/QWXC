@@ -26,16 +26,34 @@
 
     // Configure the view for the selected state
 }
+-(void)setCarNewsModel:(QWCarClubNewsModel *)CarNewsModel{
+    _CarNewsModel=CarNewsModel;
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,CarNewsModel.IndexImg];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [self.activityImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"faxiantu1"]];
+    NSLog(@"====%@=====",CarNewsModel.ActDate);
+    self.activityTimeLabel.text=CarNewsModel.ActDate;
+    self.activityTitleLabel.text    = CarNewsModel.ActivityName;
+    self.activityTimeLabel.text     = CarNewsModel.ActDate;
+    self.sayNumberLabel.text        = [NSString stringWithFormat:@"%ld",CarNewsModel.CommentCount];
+    self.goodNumberLabel.text       = [NSString stringWithFormat:@"%ld",CarNewsModel.GiveCount];
+    if(CarNewsModel.IsGive == 1)
+    {
+        self.goodButton.selected = YES;
+        
+    }else
+    {
+        self.goodButton.selected = NO;
+        
+        
+    }
+    [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:BtnNormal];
+     [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:BtnStateSelected];
+   
 
-- (void)setModel:(DSActivityModel *)model {
 
-    NSString * name = [NSString stringWithFormat:@"rank_%@",model.iconName];
-    
-    self.activityImageView.image = [UIImage imageNamed:name];
-    self.activityTitleLabel.text    = model.titleName;
-    self.activityTimeLabel.text     = model.sayTime;
-    
 }
+
 #pragma mark - 懒加载
 - (UIImageView *)activityImageView{
     if (_activityImageView == nil) {
@@ -96,12 +114,12 @@
 - (IBAction)goodButtonClick:(id)sender {
     UIButton *button = (UIButton *)sender;
     if (button.selected == NO) {
-        [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
-        self.goodNumberLabel.text                     = @"1289";
+//        [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+//        self.goodNumberLabel.text                     = @"1289";
 //        [self.view showInfo:@"点赞成功!" autoHidden:YES];
     }else {
-        [self.goodButton setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
-        self.goodNumberLabel.text                     = @"1288";
+//        [self.goodButton setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
+//        self.goodNumberLabel.text                     = @"1288";
 //        [self.view showInfo:@"取消点赞!" autoHidden:YES];
         
     }

@@ -65,6 +65,8 @@
 #import "QWMyCarModel.h"
 //用户信息
 #import "QWUserInfo.h"
+//model
+#import "QWCarClubNewsModel.h"
 
 //数据本地化
 //NSUserDefaults 保存数据

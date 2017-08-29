@@ -161,6 +161,7 @@
 		182E93561F4EEC3900819B79 /* QWMerchantModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93551F4EEC3900819B79 /* QWMerchantModel.m */; };
 		182E935A1F4FC7EA00819B79 /* QWMerComListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93591F4FC7EA00819B79 /* QWMerComListModel.m */; };
 		182E93621F5400AD00819B79 /* QWMyCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93611F5400AD00819B79 /* QWMyCarModel.m */; };
+		182E93661F55346800819B79 /* QWCarClubNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93651F55346800819B79 /* QWCarClubNewsModel.m */; };
 		18464A571F53C54B00229017 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */; };
 		18464A5A1F53C56800229017 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A591F53C56800229017 /* NewPagedFlowView.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
@@ -582,6 +583,8 @@
 		182E935C1F513C4500819B79 /* Custom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Custom.h; sourceTree = "<group>"; };
 		182E93601F5400AD00819B79 /* QWMyCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMyCarModel.h; sourceTree = "<group>"; };
 		182E93611F5400AD00819B79 /* QWMyCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMyCarModel.m; sourceTree = "<group>"; };
+		182E93641F55346800819B79 /* QWCarClubNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubNewsModel.h; sourceTree = "<group>"; };
+		182E93651F55346800819B79 /* QWCarClubNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubNewsModel.m; sourceTree = "<group>"; };
 		18464A551F53C54B00229017 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		18464A581F53C56800229017 /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
@@ -1828,6 +1831,7 @@
 		182E935E1F54008B00819B79 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				182E93631F55345600819B79 /* CarClubNews */,
 				182E935F1F54008B00819B79 /* MyCar */,
 			);
 			path = model;
@@ -1840,6 +1844,15 @@
 				182E93611F5400AD00819B79 /* QWMyCarModel.m */,
 			);
 			path = MyCar;
+			sourceTree = "<group>";
+		};
+		182E93631F55345600819B79 /* CarClubNews */ = {
+			isa = PBXGroup;
+			children = (
+				182E93641F55346800819B79 /* QWCarClubNewsModel.h */,
+				182E93651F55346800819B79 /* QWCarClubNewsModel.m */,
+			);
+			path = CarClubNews;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2434,6 +2447,7 @@
 				1807022B1F4442F600398435 /* QWDownloadController.m in Sources */,
 				18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */,
 				180702371F44436100398435 /* QWUserServiceController.m in Sources */,
+				182E93661F55346800819B79 /* QWCarClubNewsModel.m in Sources */,
 				180702F91F4603F700398435 /* QWAgreementController.m in Sources */,
 				180957FC1F427E9D00BE185D /* QWMclistTableViewCell.m in Sources */,
 				185C9E071F42C22800B4ED52 /* TPKeyboardAvoidingCollectionView.m in Sources */,
