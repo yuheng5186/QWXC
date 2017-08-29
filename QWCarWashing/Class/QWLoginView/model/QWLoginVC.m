@@ -89,10 +89,11 @@
     
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width*235/375,Main_Screen_Height*95/667) style:UITableViewStyleGrouped];
     self.tableView.top              = backgroundImageView.top +Main_Screen_Height*42/667;
-    self.tableView.centerX          = backgroundImageView.centerX;
+    self.tableView.centerX          = backgroundImageView.centerX-Main_Screen_Width*10/375;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
+    self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor  = [UIColor whiteColor];
     self.tableView.tableFooterView  = [UIView new];
     [self.scrollView addSubview:self.tableView];
@@ -283,6 +284,10 @@
         [self.userMobileFieldText addTarget:self action:@selector(userPhoneFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];
         [cell.contentView addSubview:self.userMobileFieldText];
         
+        UIView          *lineView       = [UIUtil drawLineInView:cell.contentView frame:CGRectMake(0, 0, cell.contentView.width, 1) color:[UIColor colorFromHex:@"#e6e6e6"]];
+        lineView.top                    = Main_Screen_Height*46/667;
+        lineView.left                   = cell.imageView.left +Main_Screen_Width*20/375;
+        
     }else
     {
         cell.imageView.image                = [UIImage imageNamed:@"mimayanzheng"];
@@ -310,6 +315,9 @@
         self.getVeriifyStringButton.right          = self.tableView.width;
         self.getVeriifyStringButton.centerY        = self.verifyFieldText.centerY;
         
+        UIView          *lineView       = [UIUtil drawLineInView:cell.contentView frame:CGRectMake(0, 0, Main_Screen_Width, 1) color:[UIColor colorFromHex:@"#e6e6e6"]];
+        lineView.top                    = Main_Screen_Height*46/667;
+        lineView.left                   = cell.imageView.left +Main_Screen_Width*20/375;
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
