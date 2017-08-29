@@ -23,13 +23,11 @@
 @property (nonatomic,strong) DSSegmentView *segmentView;
 @property (nonatomic, weak) UIScrollView *shopScrollView;
 
-@property(nonatomic,strong)NSMutableArray *dataArray;
+
 
 @end
 
 @implementation QWCarFriendsCircleController
-
-
 
 - (void) resetBabkButton {
     
@@ -50,36 +48,6 @@
     self.title      = @"发现";
     [self resetBabkButton];
 
-    NSArray * array = @[
-                        @{
-                            @"nickName":@"杨芳学",
-                            @"graide":@"16",
-                            @"content":@"天使天使天使天使天使天使天使天使天使天"
-                            },
-                        @{
-                            @"nickName":@"杨芳学",
-                            @"graide":@"16",
-                            @"content":@"天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天"
-                            },
-                        @{
-                            @"nickName":@"杨芳学",
-                            @"graide":@"16",
-                            @"content":@"天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天"
-                            },
-                        @{
-                            @"nickName":@"杨芳学",
-                            @"graide":@"16",
-                            @"content":@"天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使天使"
-                            },
-                        ];
-    
-    
-    for (NSDictionary * dict in array) {
-        
-        DSActivityModel * model = [DSActivityModel modelWithDict:dict];
-        
-        [self.dataArray addObject:model];
-    }
     
     
     
@@ -93,9 +61,12 @@
     
     [self addChildViewControllers];
     
-    [self.tableView reloadData];
+   
+    
+    
     
 }
+
 
 - (void) createSubView {
     
@@ -259,7 +230,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataArray.count;
+    
+    return 1;
 }
 
 #pragma mark --
@@ -272,8 +244,7 @@
         
     }
     cell.activityImageView.image    = [UIImage imageNamed:@"faxiantu"];
-    
-    return cell;
+        return cell;
 }
 
 @end

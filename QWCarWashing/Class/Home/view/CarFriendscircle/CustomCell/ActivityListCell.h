@@ -25,5 +25,5 @@
 - (IBAction)goodButtonClick:(id)sender;
 - (IBAction)sayButtonClick:(id)sender;
 
-
+@property(nonatomic,strong)QWCarClubNewsModel *CarNewsModel;
 @end
