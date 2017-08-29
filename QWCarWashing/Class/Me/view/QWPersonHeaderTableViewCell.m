@@ -66,7 +66,7 @@
 }
 -(UIView *)headerBackView{
    if (!_headerBackView) {
-      _headerBackView=[[UIView alloc]initWithFrame:CGRectMake(10, 0, QWScreenWidth-20, 110)];
+      _headerBackView=[[UIView alloc]initWithFrame:CGRectMake(Main_Screen_Width*10/375, 0, QWScreenWidth-Main_Screen_Width*20/375, Main_Screen_Height*110/667)];
       _headerBackView.backgroundColor=[UIColor whiteColor];
       _headerBackView.layer.cornerRadius=10;
    }
@@ -74,8 +74,8 @@
 }
 -(UIImageView *)headerBtn{
     if (!_headerBtn) {
-        _headerBtn = [[UIImageView alloc]initWithFrame:CGRectMake(20, 10, 80, 80)];
-       _headerBtn.layer.cornerRadius=40;
+        _headerBtn = [[UIImageView alloc]initWithFrame:CGRectMake(Main_Screen_Width*20/375, Main_Screen_Height*15/667, Main_Screen_Width*80/375, Main_Screen_Height*80/667)];
+       _headerBtn.layer.cornerRadius= _headerBtn.height/2;
        _headerBtn.layer.masksToBounds = YES;
        _headerBtn.contentMode=UIViewContentModeScaleAspectFill;
        _headerBtn.image=[UIImage imageNamed:@"gerenxinxitou"];
@@ -106,7 +106,7 @@
 }
 -(UILabel *)username{
     if (!_username) {
-        _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+15, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/4, 100, 30)];
+        _username = [[UILabel alloc]initWithFrame:CGRectMake(self.headerBtn.frame.origin.x+self.headerBtn.frame.size.width+Main_Screen_Height*15/667, (self.headerBtn.frame.origin.y+self.headerBtn.frame.size.height)/4, Main_Screen_Width*200/375, Main_Screen_Height*30/667)];
        if ([UdStorage getObjectforKey:UserHead]==nil) {
           _username.text=@"用户名";
        }else{
@@ -126,12 +126,14 @@
 
 -(UIButton *)privilegeButton{
     if (!_privilegeButton) {
-        _privilegeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.username.frame.origin.x, self.username.frame.origin.y+self.username.frame.size.height+18, 60, 15)];
+        _privilegeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width*80/375, Main_Screen_Height*25/667)];
         [_privilegeButton setTitleColor:[UIColor whiteColor] forState:BtnNormal];
-       _privilegeButton.titleLabel.font=[UIFont systemFontOfSize:10];
+       _privilegeButton.titleLabel.font=[UIFont boldSystemFontOfSize:14];
         [_privilegeButton setTitle:@"个人信息" forState:BtnNormal];
         _privilegeButton.backgroundColor=[UIColor colorWithHexString:@"#ffce36"];
-       _privilegeButton.layer.cornerRadius=7.5;
+       _privilegeButton.layer.cornerRadius = _privilegeButton.height/2;
+       _privilegeButton.top                = _username.bottom +Main_Screen_Height*5/667;
+       _privilegeButton.left               = _username.left;
        [_privilegeButton addTarget:self action:@selector(privilegeOclick:) forControlEvents:BtnTouchUpInside];
     }
     return _privilegeButton;
@@ -145,12 +147,12 @@
 }
 -(UIButton *)qiandaoButton{
     if (!_qiandaoButton) {
-        _qiandaoButton = [[UIButton alloc]initWithFrame:CGRectMake(self.privilegeButton.frame.origin.x+self.privilegeButton.frame.size.width+10, self.privilegeButton.frame.origin.y, 60, 15)];
+        _qiandaoButton = [[UIButton alloc]initWithFrame:CGRectMake(self.privilegeButton.frame.origin.x+self.privilegeButton.frame.size.width+Main_Screen_Width*10/375, self.privilegeButton.frame.origin.y, Main_Screen_Width*80/375, Main_Screen_Height*25/667)];
         [_qiandaoButton setTitleColor:[UIColor whiteColor] forState:BtnNormal];
-       _qiandaoButton.titleLabel.font=[UIFont systemFontOfSize:10];
+       _qiandaoButton.titleLabel.font=[UIFont boldSystemFontOfSize:14];
         [_qiandaoButton setTitle:@"每日签到" forState:BtnNormal];
         _qiandaoButton.backgroundColor=[UIColor colorWithHexString:@"#fe8206"];
-        _qiandaoButton.layer.cornerRadius=7.5;
+        _qiandaoButton.layer.cornerRadius= _qiandaoButton.height/2;
        [_qiandaoButton addTarget:self action:@selector(aiandaoOclick:) forControlEvents:BtnTouchUpInside];
         
         
