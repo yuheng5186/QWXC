@@ -241,7 +241,7 @@
     UILabel *textTitleLabel                 = [UILabel new];
     textTitleLabel.textColor                = [UIColor colorFromHex:@"#4a4a4a"];
     textTitleLabel.text                     = @"夏天如何防止高温？";
-    textTitleLabel.font                     = [UIFont systemFontOfSize:14];
+    textTitleLabel.font                     = [UIFont systemFontOfSize:16];
     self.textTitleLabel                     = textTitleLabel;
     [backgroudView addSubview:textTitleLabel];
     
