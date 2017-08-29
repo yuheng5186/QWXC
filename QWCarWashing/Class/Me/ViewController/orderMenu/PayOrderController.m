@@ -64,7 +64,8 @@ static NSString *id_delayPayCell = @"id_delayPayCell";
     
     DelayPayCell *delayCell = [tableView dequeueReusableCellWithIdentifier:id_delayPayCell forIndexPath:indexPath];
     delayCell.delegate = self;
-    
+    delayCell.selectionStyle   = UITableViewCellSelectionStyleNone;
+
     return delayCell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

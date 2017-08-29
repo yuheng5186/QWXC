@@ -63,7 +63,8 @@ static NSString *id_successPayCell = @"id_successPayCell";
     
     SuccessPayCell *commentCell = [tableView dequeueReusableCellWithIdentifier:id_successPayCell forIndexPath:indexPath];
     commentCell.delegate = self;
-    
+    commentCell.selectionStyle   = UITableViewCellSelectionStyleNone;
+
     return commentCell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

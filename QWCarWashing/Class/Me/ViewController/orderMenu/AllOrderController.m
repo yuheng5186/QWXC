@@ -80,7 +80,7 @@ static NSString *id_cancelCell = @"id_cancelCell";
     }
     
     CancelPayCell *cancelCell = [tableView dequeueReusableCellWithIdentifier:id_cancelCell forIndexPath:indexPath];
-    
+    cancelCell.selectionStyle   = UITableViewCellSelectionStyleNone;
     return cancelCell;
 }
 
