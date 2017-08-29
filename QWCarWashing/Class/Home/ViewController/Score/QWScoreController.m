@@ -176,7 +176,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return  210*Main_Screen_Height/667;
+        return  230*Main_Screen_Height/667;
     }else{
         return 192*Main_Screen_Height/667;
     }
@@ -226,6 +226,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
         
     }
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 35*Main_Screen_Height/667)];
     v.backgroundColor =RGBACOLOR(246, 246, 246, 1);

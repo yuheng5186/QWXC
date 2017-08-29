@@ -56,10 +56,10 @@
     [self.contentView addSubview:scoreLab];
     
     [backImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        //make.edges.equalTo(self.contentView);
-        make.top.bottom.equalTo(self.contentView);
-        make.left.equalTo(self.contentView).mas_offset(37.5*Main_Screen_Height/667);
-        make.right.equalTo(self.contentView).mas_offset(-37.5*Main_Screen_Height/667);
+        make.top.equalTo(self.contentView).mas_offset(15*Main_Screen_Height/667);
+        make.bottom.equalTo(self.contentView).mas_offset(-4*Main_Screen_Height/667);
+        make.left.equalTo(self.contentView).mas_offset(30.5*Main_Screen_Height/667);
+        make.right.equalTo(self.contentView).mas_offset(-30.5*Main_Screen_Height/667);
     }];
     
     [nameLab mas_makeConstraints:^(MASConstraintMaker *make) {

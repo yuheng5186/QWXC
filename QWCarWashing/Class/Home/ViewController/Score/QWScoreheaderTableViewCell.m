@@ -23,13 +23,14 @@
     NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:self.phoneNum.text];
     [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     self.phoneNum.text=phonestr;
+    self.vipType.titleLabel.font=[UIFont systemFontOfSize:13 weight:5];
     [self.vipType setTitle:@"黄金会员" forState:BtnNormal];
     self.vipType.imageView.contentMode=UIViewContentModeScaleAspectFill;
     
     [self.vipType setImage:[UIImage imageNamed:@"huiyuandianjitiaozhuan"] forState:BtnNormal];
     [self.vipType setTitleEdgeInsets:UIEdgeInsetsMake(1, -self.vipType.imageView.image.size.width, 0, self.vipType.imageView.image.size.width)];
     [self.vipType setImageEdgeInsets:UIEdgeInsetsMake(1, self.vipType.titleLabel.bounds.size.width, 0, -self.vipType.titleLabel.bounds.size.width)];
-    
+    self.ScoreNum.titleLabel.font=[UIFont systemFontOfSize:13 weight:5];
     [self.ScoreNum setTitle:@"1680积分" forState:BtnNormal];
     self.ScoreNum.imageView.contentMode=UIViewContentModeScaleAspectFill;
     [self.ScoreNum setImage:[UIImage imageNamed:@"huiyuandianjitiaozhuan"] forState:UIControlStateNormal];
@@ -41,14 +42,14 @@
     self.goUpGrade.layer.borderWidth=1;
     self.goUpGrade.layer.borderColor=[UIColor whiteColor].CGColor;
     self.goUpGrade.layer.cornerRadius=corner;
-    self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:7];
+    self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
     [self.goUpGrade setTitle:@"去升等级" forState:BtnNormal];
 //    [self.goUpGrade addTarget:self action:@selector(goupgradeonclick:) forControlEvents:BtnTouchUpInside];
     CGFloat corners=self.AddScore.bounds.size.height/2;
     self.AddScore.layer.borderWidth=1;
     self.AddScore.layer.borderColor=[UIColor whiteColor].CGColor;
     self.AddScore.layer.cornerRadius=corners;
-    self.AddScore.titleLabel.font=[UIFont systemFontOfSize:7];
+    self.AddScore.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
     [self.AddScore setTitle:@"去赚积分" forState:BtnNormal];
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     self.gradientLayer = [CAGradientLayer layer];
