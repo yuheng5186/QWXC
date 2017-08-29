@@ -11,7 +11,7 @@
 @property (nonatomic,strong) UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 
-//@property (nonatomic,strong) NSMutableArray *NewsArray;
+
 @property (nonatomic,strong) NSMutableArray *otherArray;
 
 @property (nonatomic)NSInteger page;
@@ -56,7 +56,7 @@
     self.navigationItem.leftBarButtonItem= rightItem;
     
     // Do any additional setup after loading the view.
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height)];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-Main_Screen_Height*100/667)];
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.top              = 0;
@@ -64,7 +64,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"ActivityListCell" bundle:nil] forCellReuseIdentifier:@"ActivityListCell"];
     
     self.tableView.rowHeight        = Main_Screen_Height*205/667;
-    self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
+//    self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
     self.tableView.backgroundColor=kColorTableBG;
     [self.contentView addSubview:self.tableView];
     
@@ -142,7 +142,7 @@
                              @"PageSize":@10
                              };
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityList",Khttp] success:^(NSDictionary *dict, BOOL success) {
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
@@ -203,7 +203,7 @@
                              };
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityList",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
-        NSLog(@"%@",dict);
+//        NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
@@ -289,6 +289,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
+    detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.row]).ActivityCode;
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
     

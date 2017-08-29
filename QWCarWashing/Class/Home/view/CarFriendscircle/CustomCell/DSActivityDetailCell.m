@@ -131,16 +131,31 @@
     }
 
 }
-
-- (void) setModel:(DSUserModel *)model {
+-(void)setCarClubUserModel:(QWCarClubUserModel *)CarClubUserModel
+{
     
-    _model  = model;
-    _iconImageView.image    = [UIImage imageNamed:model.iconName];
-    _nameLabel.text         = model.name;
-    _contentLabel.text      = model.content;
-    _sayTimeLabel.text      = model.sayTime;
-    _starImageView.image    = [UIImage imageNamed:model.starName];
-    _ThumbUpBtn.titleLabel.text=model.thumbNum;
+    _CarClubUserModel  = CarClubUserModel;
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,CarClubUserModel.CommentUserImg];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [_iconImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+    _nameLabel.text         = CarClubUserModel.CommentUserName;
+    _contentLabel.text      = CarClubUserModel.Comment;
+    _sayTimeLabel.text      = CarClubUserModel.CommentDate;
+   
+    [_ThumbUpBtn setTitle:[NSString stringWithFormat:@"%ld",CarClubUserModel.Support] forState:UIControlStateNormal];
+    if(CarClubUserModel.IsGive == 1)
+    {
+        [_ThumbUpBtn setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+        _ThumbUpBtn.selected = YES;
+    }
+    else
+    {
+        [_ThumbUpBtn setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
+        _ThumbUpBtn.selected = NO;
+    }
+    
+    
+    
     CGFloat bottomMargin = 10;
     
     
