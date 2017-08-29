@@ -36,19 +36,10 @@
     self.activityTimeLabel.text     = CarNewsModel.ActDate;
     self.sayNumberLabel.text        = [NSString stringWithFormat:@"%ld",CarNewsModel.CommentCount];
     self.goodNumberLabel.text       = [NSString stringWithFormat:@"%ld",CarNewsModel.GiveCount];
+    
+    [self.goodButton setSelected:CarNewsModel.IsGive == 1?YES:NO];
     [self.goodButton setImage:[UIImage imageNamed:@"pinglundianzan"] forState:BtnNormal];
     [self.goodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:BtnStateSelected];
-    if(CarNewsModel.IsGive == 1)
-    {
-        self.goodButton.selected = YES;
-        
-    }else
-    {
-        self.goodButton.selected = NO;
-        
-        
-    }
-    
    
 
 

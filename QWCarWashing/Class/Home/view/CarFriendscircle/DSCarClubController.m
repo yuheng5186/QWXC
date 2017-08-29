@@ -203,7 +203,7 @@
                              };
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityList",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
-//        NSLog(@"%@",dict);
+        NSLog(@"=====%@====",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
@@ -267,23 +267,78 @@
         cell.CarNewsModel=self.dataArray[indexPath.row];
     }
     ;
-
-//    if (indexPath.row == 0) {
-//        
-//        cell.activityImageView.image    = [UIImage imageNamed:@"faxiantu1"];
-//        cell.activityTitleLabel.text    = @"法拉利总裁介绍新款V8发动机";
-//        cell.activityTimeLabel.text     = @"2017-7-28 14:01";
-//    }else {
-//    
-//        cell.activityImageView.image    = [UIImage imageNamed:@"faxiantu2"];
-//        cell.activityTitleLabel.text    = @"开车一看就知道是老司机";
-//        cell.activityTimeLabel.text     = @"2017-7-28 14:01";
-//    }
-//    
+    cell.goodButton.tag = indexPath.section;
+    [cell.goodButton addTarget:self action:@selector(addSupport:) forControlEvents:UIControlEventTouchUpInside];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     return cell;
+}
+#pragma mark-点赞按钮
+-(void)addSupport:(UIButton *)button
+{
+ 
+//    if(button.isSelected)
+//    {
+//        [button setSelected:NO];
+//        [button setImage:[UIImage imageNamed:@"pinglundianzan"] forState:BtnNormal];
+//        
+//        
+//    }
+//    else
+//    {
+//        [button setSelected:YES];
+//        [button setImage:[UIImage imageNamed:@"xiaohongshou"] forState:BtnStateSelected];
+//        
+//    }
+    QWCarClubNewsModel *model=(QWCarClubNewsModel *)self.dataArray[button.tag];
+    [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+//    if (button.selected == NO) {
+//   
+//     
+//        [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+//    }else {
+//       
+//               [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+//        
+//    }
+//    button.selected = !button.selected;
+}
+
+-(void)addNewsSupportTypeid:(NSString *)SupTypeCodestr andSupType:(NSString *)SupTypestr{
+    
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"SupTypeCode":SupTypeCodestr,
+                             @"SupType":SupTypestr
+                             };
+    
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/AddActivitySupporInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            //            [self.view showInfo:[dict objectForKey:@"ResultMessage"] autoHidden:YES interval:2];
+            //            self.dic = [dict objectForKey:@"JsonData"];
+            //        [self.MerchantDetailData addObjectsFromArray:arr];
+            
+//            [self headerRereshing];
+        }
+        else
+        {
+            [self.view showInfo:@"点赞失败" autoHidden:YES interval:2];
+            //            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"点赞失败" autoHidden:YES interval:2];
+    }];
+    
+    
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
