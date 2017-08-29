@@ -204,6 +204,19 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
         
         
     }
+    if (self.mycarModel!=nil) {
+        NSString *platenumbertype=[self.mycarModel.PlateNumber substringToIndex:1];
+        
+        [self.provinceBtn setTitle:platenumbertype forState:BtnNormal];
+        //            3.从第n为开始直到最后（包含第n位）
+        //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+        self.PlateNumberlab.text=[self.mycarModel.PlateNumber substringFromIndex:1];
+        self.CarBrandlab.text=self.mycarModel.CarBrand;
+        self.ChassisNumlab.text=self.mycarModel.ChassisNum;
+        self.Mileagelab.text=[NSString stringWithFormat:@"%ld",self.mycarModel.Mileage];
+        self.lbl.text= [NSString stringWithFormat:@"%ld",self.mycarModel.Manufacture];
+        self.lbl2.text=self.mycarModel.DepartureTime;
+    }
     
     return carCell;
 }
@@ -297,17 +310,61 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 
 - (void)didClickSaveButton {
-    if (IsNullIsNull(self.CarBrandlab.text)||IsNullIsNull(self.PlateNumberlab.text)||IsNullIsNull(self.ChassisNumlab.text)||IsNullIsNull(self.lbl.text)||IsNullIsNull(self.lbl2.text)||IsNullIsNull(self.Mileagelab.text)) {
-        [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:1];
-        
+    if (self.mycarModel==nil) {
+        //新增
+        if (IsNullIsNull(self.CarBrandlab.text)||IsNullIsNull(self.PlateNumberlab.text)||IsNullIsNull(self.ChassisNumlab.text)||IsNullIsNull(self.lbl.text)||IsNullIsNull(self.lbl2.text)||IsNullIsNull(self.Mileagelab.text)) {
+            [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:1];
+            
+        }else{
+            //车牌号：沪+编号
+            NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
+            
+            [self requestAddCarAndcCarBrand:self.CarBrandlab.text andPlateNumber:PlateNumberstr andChassisNum:self.ChassisNumlab.text andManufacture:[self.lbl.text substringWithRange:NSMakeRange(0,4)] andDepartureTime:self.lbl2.text andMileage:self.Mileagelab.text];
+            
+        }
     }else{
-        //车牌号：沪+编号
-        NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
-        
-        [self requestAddCarAndcCarBrand:self.CarBrandlab.text andPlateNumber:PlateNumberstr andChassisNum:self.ChassisNumlab.text andManufacture:[self.lbl.text substringWithRange:NSMakeRange(0,4)] andDepartureTime:self.lbl2.text andMileage:self.Mileagelab.text];
-    
+        [self updateCarDefaultAndCarCode:[NSString stringWithFormat:@"%ld",self.mycarModel.CarCode] andModifyType:@"1"];
     }
     
+    
+    
+}
+#pragma mark-修改信息
+#pragma mark-修改车辆默认值接口
+-(void)updateCarDefaultAndCarCode:(NSString *)carCode andModifyType:(NSString *)ModifyType {
+    //车牌号：沪+编号
+    NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
+    //    [[_mycararray objectAtIndex:button.tag] objectForKey:@"CarCode"]
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"CarCode":carCode,
+                             @"ModifyType":@1,
+                             @"CarBrand":self.CarBrandlab.text,
+                             @"PlateNumber":PlateNumberstr,
+                             @"ChassisNum":self.ChassisNumlab.text,
+                             @"EngineNum":@"",
+                             @"Manufacture":[self.lbl.text substringWithRange:NSMakeRange(0,4)],
+                             @"DepartureTime":self.lbl2.text,
+                             @"Mileage":self.Mileagelab.text
+                             };
+    NSLog(@"%@",mulDic);
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/ModifyCarInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"修改成功" autoHidden:YES interval:2];
+            NSNotification * notice = [NSNotification notificationWithName:@"updatemycarsuccess" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [self.view showInfo:@"修改失败" autoHidden:YES interval:2];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"修改失败" autoHidden:YES interval:2];
+    }];
     
 }
 #pragma mark-新增爱车

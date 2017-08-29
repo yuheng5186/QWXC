@@ -17,6 +17,8 @@
 @property (nonatomic, weak) UITableView *carListView;
 
 @property (nonatomic, strong) NSIndexPath *nowPath;
+@property (nonatomic, strong) NSMutableArray *CarArray;
+@property (nonatomic, strong) NSMutableArray *imageArray;
 @end
 
 static NSString *id_carListCell = @"id_carListCell";
@@ -27,7 +29,7 @@ static NSString *id_carListCell = @"id_carListCell";
     
     if (_carListView == nil) {
         
-        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) ];
+        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height) ];
         _carListView = carListView;
         
         [self.view addSubview:_carListView];
@@ -35,15 +37,26 @@ static NSString *id_carListCell = @"id_carListCell";
     
     return _carListView;
 }
-
+- (NSMutableArray *)imageArray {
+    if (_imageArray == nil) {
+        _imageArray = [NSMutableArray array];
+    }
+    return _imageArray;
+}
+-(NSMutableArray *)CarArray{
+    if (_CarArray==nil) {
+        _CarArray=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _CarArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"我的车库";
     
  
     // Do any additional setup after loading the view.
-    [self setupUI];
-
+//    [self setupUI];
+    [self requestMyCarData];
 }
 
 - (void)setupUI {
@@ -63,11 +76,55 @@ static NSString *id_carListCell = @"id_carListCell";
         make.bottom.equalTo(self.view).mas_offset(-25);
     }];
 }
-
+#pragma mark-查询爱车列表
+-(void)requestMyCarData
+{
+    [self.CarArray removeAllObjects];
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid]
+                             };
+    NSLog(@"查询爱车列表:%@",mulDic);
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/GetCarList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        NSLog(@"==%@==",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            for(NSDictionary *dic in arr)
+            {
+                QWMyCarModel *newcar = [[QWMyCarModel alloc]initWithDictionary:dic error:nil];
+                
+                [self.CarArray addObject:newcar];
+            }
+            
+            for (int index = 0; index < [self.CarArray count]; index++) {
+                UIImage *image = [UIImage imageNamed:@"aicheditu"];
+                [self.imageArray addObject:image];
+            }
+            
+            [self setupUI];
+            
+            [self.carListView reloadData];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+    }];
+    
+}
 #pragma mark - 数据源代理
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return self.CarArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -77,23 +134,9 @@ static NSString *id_carListCell = @"id_carListCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MyCarViewCell *carCell = [tableView dequeueReusableCellWithIdentifier:id_carListCell];
-    
-    if (indexPath.section == self.nowPath.section) {
-        
-        carCell.defaultButton.selected = YES;
-        
-        [carCell.defaultButton setTitleColor:RGBACOLOR(230, 230, 230, 1) forState:BtnStateSelected];
-       
-        [carCell.defaultButton setTitle:@"已默认" forState:UIControlStateNormal];
-        
-    }else {
-        
-        carCell.defaultButton.selected = NO;
-        [carCell.defaultButton setTitleColor:RGBACOLOR(134, 134, 134, 1) forState:BtnNormal];
-        
-        [carCell.defaultButton setTitle:@"设置默认" forState:UIControlStateNormal];
-        
-    }
+    carCell.mycarmodel=self.CarArray[indexPath.section];
+    carCell.deleteButton.tag=indexPath.section;
+     carCell.deleteButton.tag = indexPath.section+1000;
     
     
     return carCell;
@@ -108,39 +151,72 @@ static NSString *id_carListCell = @"id_carListCell";
 }
 
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section==0) {
-        return 0;
-    }else{
-        return 10;
-    
-    }
-    
-}
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+   
+    UIView *headervie=[UIView new];
+    headervie.backgroundColor=[UIColor clearColor];
+    return headervie;
+
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 0.1f;
+    return 10.1f;
 }
 
 
-
-- (IBAction)didClickDefaultButton:(id)button {
+#pragma mark-修改车辆的默认值
+- (IBAction)didClickDefaultButton:(UIButton *)button {
     
-    UITableViewCell *cell = (UITableViewCell *) [[button superview] superview];
-    
-    NSIndexPath *path = [self.carListView indexPathForCell:cell];
-    
-    //记录当下的indexpath
-    self.nowPath = path;
-    
-    [self.carListView reloadData];
-    
+//    UITableViewCell *cell = (UITableViewCell *) [[button superview] superview];
+//    
+//    NSIndexPath *path = [self.carListView indexPathForCell:cell];
+//    
+//    //记录当下的indexpath
+//    self.nowPath = path;
+//    
+//    [self.carListView reloadData];
+    QWMyCarModel *mycar=[[QWMyCarModel alloc]init];
+    mycar=self.CarArray[button.tag];
+   
+   
+    [self updateCarDefaultAndCarCode:[NSString stringWithFormat:@"%ld",mycar.CarCode] andModifyType:@"2"];
     
 }
+#pragma mark-修改车辆默认值接口
+-(void)updateCarDefaultAndCarCode:(NSString *)carCode andModifyType:(NSString *)ModifyType {
+//    [[_mycararray objectAtIndex:button.tag] objectForKey:@"CarCode"]
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"CarCode":carCode,
+                             @"ModifyType":ModifyType,
+                             };
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/ModifyCarInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"修改成功" autoHidden:YES interval:2];
+//            _mycararray = [[NSMutableArray alloc]init];
+//            _myDefaultcararray = [[NSMutableArray alloc]init];
+            [self requestMyCarData];
+//                            [self.carListView reloadData];
+            NSNotification * notice = [NSNotification notificationWithName:@"updatemycarsuccess" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"修改失败" autoHidden:YES interval:2];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"修改失败" autoHidden:YES interval:2];
+    }];
 
-
-- (IBAction)didClickDeleteButton:(id)sender {
+}
+#pragma mark-删除车按钮事件
+- (IBAction)didClickDeleteButton:(UIButton *)sender {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"是否删除车辆信息" preferredStyle:UIAlertControllerStyleAlert];
     
@@ -150,6 +226,9 @@ static NSString *id_carListCell = @"id_carListCell";
     [alertController addAction:cancelAction];
     
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        QWMyCarModel *mycar=[[QWMyCarModel alloc]init];
+        mycar=self.CarArray[sender.tag-1000];
+        [self updateCarDefaultAndCarCode:[NSString stringWithFormat:@"%ld",mycar.CarCode] andModifyType:@"3"];
         
     }];
     [alertController addAction:OKAction];
