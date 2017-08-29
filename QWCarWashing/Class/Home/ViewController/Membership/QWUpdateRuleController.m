@@ -28,7 +28,7 @@
     
     [self.view addSubview:webView];
     
-    NSURL * url                     = [NSURL URLWithString: @"http://115.159.67.77/dengji.html"];
+    NSURL * url                     = [NSURL URLWithString: @"http://115.159.97.191/jingding/dengji.html"];
     NSURLRequest* request           = [NSURLRequest requestWithURL: url];
     
     [webView loadRequest:request];
