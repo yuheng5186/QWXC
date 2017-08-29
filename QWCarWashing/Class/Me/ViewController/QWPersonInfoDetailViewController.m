@@ -139,7 +139,7 @@
             return 1;
             break;
         case 1:
-            return 4;
+            return 3;
             break;
             
         default:
@@ -167,9 +167,9 @@
     }
     cell.backgroundColor    = [UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.textColor    = [UIColor colorFromHex:@"#4a4a4a"];
-    cell.textLabel.font         = [UIFont systemFontOfSize:15];
-    cell.detailTextLabel.font   = [UIFont systemFontOfSize:14];
+//    cell.textLabel.textColor    = [UIColor colorFromHex:@"#4a4a4a"];
+//    cell.textLabel.font         = [UIFont systemFontOfSize:15];
+//    cell.detailTextLabel.font   = [UIFont systemFontOfSize:14];
     if (indexPath.section == 0) {
         cell.textLabel.text     = @"头像";
         self.userImageView  = [UIUtil drawCustomImgViewInView:cell.contentView frame:CGRectMake(0, cell.contentView.centerY-Main_Screen_Height*11/667, Main_Screen_Width*60/375, Main_Screen_Height*60/667) imageName:@""];
@@ -197,8 +197,8 @@
 
             cell.detailTextLabel.text   = self.sexString;
         }else{
-            cell.textLabel.text         = @"微信绑定";
-            cell.detailTextLabel.text   = @"去绑定";
+//            cell.textLabel.text         = @"微信绑定";
+//            cell.detailTextLabel.text   = @"去绑定";
             
         }
         
@@ -233,6 +233,7 @@
         if (indexPath.row == 0) {
             QWChangeNameController  *changeNameController   = [[QWChangeNameController alloc]init];
             changeNameController.hidesBottomBarWhenPushed   = YES;
+            changeNameController.userName                   = self.usernameString;
             [self.navigationController pushViewController:changeNameController animated:YES];
             
         }else if (indexPath.row == 1){

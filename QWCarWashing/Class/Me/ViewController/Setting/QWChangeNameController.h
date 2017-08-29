@@ -10,4 +10,5 @@
 
 @interface QWChangeNameController : QWBaseViewController
 
+@property (nonatomic, strong) NSString *userName;
 @end

@@ -49,7 +49,7 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title      = @"支付";
     //myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     NSArray *payNameArray = @[@"微信支付",@"支付宝支付"];
@@ -98,7 +98,7 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     
     UIButton *bottomPayButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 136*Main_Screen_Height/667, 0, 136*Main_Screen_Height/667, 60*Main_Screen_Height/667)];
     bottomPayButton.backgroundColor = [UIColor colorFromHex:@"#febb02"];
-    [bottomPayButton setTitle:@"立即付款" forState:UIControlStateNormal];
+    [bottomPayButton setTitle:@"立即支付" forState:UIControlStateNormal];
     [bottomPayButton setTintColor:[UIColor whiteColor]];
     bottomPayButton.titleLabel.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
     
@@ -154,9 +154,9 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     
     if (self.lastPath.row == 0) {
-        message = @"金顶洗车想要打开微信";
+        message = @"蔷薇爱车想要打开微信";
     }else {
-        message = @"金顶洗车想要打开支付宝";
+        message = @"蔷薇爱车想要打开支付宝";
     }
     
     

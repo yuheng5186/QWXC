@@ -46,7 +46,7 @@
     UINib *nib = [UINib nibWithNibName:@"SalerListViewCell" bundle:nil];
     
     [self.favoriteListView registerNib:nib forCellReuseIdentifier:QWCellIdentifier_salerListTableViewCell];
-    
+    self.favoriteListView.tableFooterView   = [[UIView alloc]initWithFrame:CGRectZero];
     self.favoriteListView.rowHeight = 110;
     
 }

@@ -309,7 +309,7 @@ static NSString *cellstr=@"cell";
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return 110;
+        return 110*Main_Screen_Height/667;
     }else if (indexPath.section==1) {
         return [QWOrderTableViewCell cellHeight];
     }else{
@@ -411,7 +411,7 @@ static NSString *cellstr=@"cell";
 //通过委托方法设置表头高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-        return 10;
+        return 10*Main_Screen_Height/667;
     
 }
 //去掉组头的背景色
