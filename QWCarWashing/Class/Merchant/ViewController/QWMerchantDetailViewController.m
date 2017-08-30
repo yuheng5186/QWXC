@@ -734,6 +734,7 @@
 {
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     ShopViewController *detailController = [[ShopViewController alloc] init];
+    detailController.merchantModel=self.MerChantmodel;
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }

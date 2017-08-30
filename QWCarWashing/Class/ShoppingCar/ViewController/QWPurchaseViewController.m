@@ -19,6 +19,8 @@
 #import "MBProgressHUD.h"
 #import "QWCarModel.h"
 #import "QWPayPurchaseCardController.h"
+
+#import "UIView+Frame.h"
 #define KCURRENTCITYINFODEFAULTS [NSUserDefaults standardUserDefaults]
 
 
