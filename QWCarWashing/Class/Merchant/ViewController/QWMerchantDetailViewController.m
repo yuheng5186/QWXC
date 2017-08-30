@@ -712,6 +712,7 @@
         [jiesuan setSelected:YES];
         [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
         
+        
     }
     
     [self insertCollectionAndUserid:[UdStorage getObjectforKey:Userid] andMerCode:self.MerChantmodel.MerCode];

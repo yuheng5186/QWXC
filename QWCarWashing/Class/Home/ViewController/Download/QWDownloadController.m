@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title  = @"下载蔷薇爱车";
+    self.title  = @"下载金顶洗车";
 
     self.view.backgroundColor   = [UIColor whiteColor];
 
@@ -107,7 +107,7 @@
     logoImageView.top           = Main_Screen_Height*23/667;
     logoImageView.centerX       = titleView.size.width/2;
     
-    NSString   *titleString     = @"蔷薇爱车车";
+    NSString   *titleString     = @"金顶洗车";
     
     UIFont     *titleFont       = [UIFont boldSystemFontOfSize:15];
     UILabel *titleLabel         = [UIUtil drawLabelInView:titleView frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*30/667) font:titleFont text:titleString isCenter:NO];
@@ -122,7 +122,7 @@
     bigImageView.centerX        = titleView.size.width/2;
     
     
-    NSString *showString              = @"扫一扫上面二维码，下载蔷薇车APP";
+    NSString *showString              = @"扫一扫上面二维码，下载金顶洗车APP";
     UIFont *showStringFont            = [UIFont systemFontOfSize:14];
     UILabel *showLabel          = [UIUtil drawLabelInView:titleView frame:[UIUtil textRect:showString font:showStringFont] font:showStringFont text:showString isCenter:NO];
     showLabel.textColor         = [UIColor colorFromHex:@"#4a4a4a"];

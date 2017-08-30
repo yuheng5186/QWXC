@@ -66,12 +66,13 @@ static NSString *cellstr=@"Cellstr";
 -(void)setNagationLeftAndRightButton{
     //左边试图
     UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [btn sizeToFit];
-    btn.imageView.contentMode=UIViewContentModeScaleAspectFit;
-    btn.frame=CGRectMake(0, 0, 50, 50);
+//    [btn sizeToFit];
+//    btn.imageView.contentMode=UIViewContentModeScaleAspectFit;
+//    btn.backgroundColor = [UIColor redColor];
+    btn.frame = CGRectMake(0, 0, Main_Screen_Width*34/375, Main_Screen_Height*34/667);
     [btn setImage:[UIImage imageNamed:@"gerenxinxitou"] forState:UIControlStateNormal];
     [btn setImage:[UIImage imageNamed:@"gerenxinxitou"] forState:UIControlStateHighlighted];
-    
+    btn.top     = Main_Screen_Height*5/667;
     [btn addTarget:self action:@selector(personInfo) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:btn];

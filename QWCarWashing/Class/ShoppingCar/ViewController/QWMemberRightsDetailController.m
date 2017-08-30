@@ -7,6 +7,7 @@
 //
 
 #import "QWMemberRightsDetailController.h"
+#import "QWCardPackgeController.h"
 
 @interface QWMemberRightsDetailController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -23,9 +24,12 @@
 
 - (void)setupUI {
     
+    UIView *containView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 310*Main_Screen_Height/667)];
+    [self.view addSubview:containView];
+    
     UIImageView *cardImgV = [[UIImageView alloc] init];
     cardImgV.image = [UIImage imageNamed:@"bg_card"];
-    [self.view addSubview:cardImgV];
+    [containView addSubview:cardImgV];
     
     UILabel *cardNameLab = [[UILabel alloc] init];
     cardNameLab.text = @"体验卡";
@@ -44,11 +48,11 @@
     [cardImgV addSubview:invalidLab];
     
     UILabel *brandLab = [[UILabel alloc] init];
-    brandLab.text = @"";
-    brandLab.font = [UIFont systemFontOfSize:11];
+    brandLab.text = @"金顶洗车";
+    brandLab.font = [UIFont systemFontOfSize:11*Main_Screen_Height/667];
     [cardImgV addSubview:brandLab];
     
-    UIButton *getBtn = [UIUtil drawDefaultButton:self.view title:@"立即领取" target:self action:@selector(didClickGetBtn)];
+    UIButton *getBtn = [UIUtil drawDefaultButton:containView title:@"立即领取" target:self action:@selector(didClickGetBtn)];
     
     UIButton *checkCardBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [checkCardBtn setTitle:@"查看卡包" forState:UIControlStateNormal];
@@ -59,14 +63,20 @@
     [checkCardBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -50*Main_Screen_Height/667, 0, 0)];
     
     [checkCardBtn addTarget:self action:@selector(didClickCheckCardBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:checkCardBtn];
+    [containView addSubview:checkCardBtn];
     
     
     //约束
+//    [containView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view);
+//        make.left.right.equalTo(self.view);
+//        make.height.mas_equalTo(305*Main_Screen_Height/667);
+//    }];
+    
     [cardImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).mas_offset(64 + 10*Main_Screen_Height/667);
-        make.left.equalTo(self.view).mas_offset(37.5*Main_Screen_Height/667);
-        make.right.equalTo(self.view).mas_offset(-37.5*Main_Screen_Height/667);
+        make.top.equalTo(containView).mas_offset(10*Main_Screen_Height/667);
+        make.left.equalTo(containView).mas_offset(37.5*Main_Screen_Height/667);
+        make.right.equalTo(containView).mas_offset(-37.5*Main_Screen_Height/667);
         make.height.mas_equalTo(192*Main_Screen_Height/667);
     }];
     
@@ -92,31 +102,32 @@
     
     [getBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(cardImgV.mas_bottom).mas_offset(15*Main_Screen_Height/667);
-        make.centerX.equalTo(self.view);
+        make.centerX.equalTo(containView);
         make.width.mas_equalTo(351*Main_Screen_Height/667);
         make.height.mas_equalTo(48*Main_Screen_Height/667);
     }];
     
     [checkCardBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(getBtn.mas_bottom);
-        make.centerX.equalTo(self.view);
+        make.centerX.equalTo(containView);
         make.height.mas_equalTo(45*Main_Screen_Height/667);
         make.width.mas_equalTo(100*Main_Screen_Height/667);
     }];
     
-    UITableView *noticeView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-    //noticeView.backgroundColor = [UIColor whiteColor];
+    UITableView *noticeView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
     [self.view addSubview:noticeView];
     
-    [noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(checkCardBtn.mas_bottom);
-        make.bottom.equalTo(self.view);
-        make.width.mas_equalTo(Main_Screen_Width);
-    }];
+//    [noticeView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(checkCardBtn.mas_bottom);
+//        make.bottom.equalTo(self.view);
+//        make.width.mas_equalTo(Main_Screen_Width);
+//    }];
     noticeView.delegate = self;
     noticeView.dataSource = self;
     noticeView.estimatedRowHeight = 80;
     noticeView.rowHeight = UITableViewAutomaticDimension;
+    
+    noticeView.tableHeaderView = containView;
     
 }
 
@@ -136,32 +147,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:id_noticeCell];
     
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:id_noticeCell];
-    //    UILabel *titleLab = [[UILabel alloc] init];
-    //    titleLab.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-    //    titleLab.font = [UIFont systemFontOfSize:14];
-    //    [cell.contentView addSubview:titleLab];
-    //
-    //    UILabel *infosLab = [[UILabel alloc] init];
-    //    infosLab.textColor = [UIColor colorFromHex:@"#999999"];
-    //    infosLab.font = [UIFont systemFontOfSize:13];
-    //    infosLab.numberOfLines = 0;
-    //    [cell.contentView addSubview:infosLab];
-    //
-    //    [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.equalTo(cell.contentView).mas_offset(15);
-    //        make.left.equalTo(cell.contentView).mas_offset(12);
-    //    }];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     
     if (indexPath.section == 0) {
         
         UILabel *titleLab = [[UILabel alloc] init];
         titleLab.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-        titleLab.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+        titleLab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
         [cell.contentView addSubview:titleLab];
         
         UILabel *infosLab = [[UILabel alloc] init];
         infosLab.textColor = [UIColor colorFromHex:@"#999999"];
-        infosLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        infosLab.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
         infosLab.numberOfLines = 0;
         titleLab.text = @"特权介绍";
         infosLab.text = @"白银会员每月可领取10元代金券，不可以和其他优惠活动叠加使用";
@@ -183,12 +181,12 @@
     }else if (indexPath.section == 1) {
         UILabel *titleLab = [[UILabel alloc] init];
         titleLab.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-        titleLab.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+        titleLab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
         [cell.contentView addSubview:titleLab];
         
         UILabel *infosLab = [[UILabel alloc] init];
         infosLab.textColor = [UIColor colorFromHex:@"#999999"];
-        infosLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        infosLab.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
         infosLab.numberOfLines = 0;
         titleLab.text = @"领取对象";
         infosLab.text = @"白银会员";
@@ -210,12 +208,12 @@
     }else {
         UILabel *titleLab = [[UILabel alloc] init];
         titleLab.textColor = [UIColor colorFromHex:@"#4a4a4a"];
-        titleLab.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+        titleLab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
         [cell.contentView addSubview:titleLab];
         
         UILabel *infosLab = [[UILabel alloc] init];
         infosLab.textColor = [UIColor colorFromHex:@"#999999"];
-        infosLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        infosLab.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
         infosLab.numberOfLines = 0;
         [cell.contentView addSubview:infosLab];
         
@@ -232,13 +230,13 @@
         
         UILabel *infosLab2 = [[UILabel alloc] init];
         infosLab2.textColor = [UIColor colorFromHex:@"#999999"];
-        infosLab2.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        infosLab2.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
         infosLab2.numberOfLines = 0;
         [cell.contentView addSubview:infosLab2];
         
         UILabel *infosLab3 = [[UILabel alloc] init];
         infosLab3.textColor = [UIColor colorFromHex:@"#999999"];
-        infosLab3.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        infosLab3.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
         infosLab3.numberOfLines = 0;
         [cell.contentView addSubview:infosLab3];
         
@@ -281,10 +279,14 @@
 #pragma mark -
 - (void)didClickGetBtn {
     
+    [self.view showInfo:@"领取成功" autoHidden:YES interval:1];
 }
 
 - (void)didClickCheckCardBtn {
     
+    QWCardPackgeController *VC = [[QWCardPackgeController alloc] init];
+    
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 

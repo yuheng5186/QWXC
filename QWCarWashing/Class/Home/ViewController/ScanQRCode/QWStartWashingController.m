@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title      = @"蔷薇洗车";
+    self.title      = @"金顶洗车";
     [self createSubView];
 }
 - (void) createSubView {

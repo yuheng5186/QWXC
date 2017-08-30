@@ -49,7 +49,7 @@
         if (!_rulebtn) {
             _rulebtn = [[UIButton alloc] initWithFrame:CGRectMake(_sliderview.frame.origin.x,  _integralbtn.frame.origin.y+_integralbtn.frame.size.height+8*Main_Screen_Height/667, _sliderview.frame.size.width,30*Main_Screen_Height/667)];
             _rulebtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-            _rulebtn.titleLabel.font = [UIFont systemFontOfSize:10];
+            _rulebtn.titleLabel.font = [UIFont systemFontOfSize:10*Main_Screen_Height/667];
             [_rulebtn setTitleColor:[UIColor grayColor] forState:BtnNormal];
             [_rulebtn setTitleColor:[UIColor orangeColor] forState:BtnHighlighted];
             [_rulebtn setTitle:@"升级规则" forState:BtnNormal];

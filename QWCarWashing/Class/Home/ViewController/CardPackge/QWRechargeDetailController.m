@@ -164,7 +164,7 @@
     
     if (!_noticeLabelOne) {
         UILabel *noticeLabelOne = [[UILabel alloc] init];
-        noticeLabelOne.text = @"1、本洗车卡由蔷薇爱车APP发放,仅限蔷薇洗车店和与蔷薇合作商家使用";
+        noticeLabelOne.text = @"1、本洗车卡由金顶洗车APP发放,仅限金顶洗车店和与金顶合作商家使用";
         noticeLabelOne.numberOfLines = 0;
         noticeLabelOne.textColor = [UIColor colorFromHex:@"#999999"];
         noticeLabelOne.font = [UIFont systemFontOfSize:13];

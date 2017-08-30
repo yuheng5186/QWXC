@@ -63,7 +63,7 @@
     appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     
-    NSString *showName              = @"分享蔷薇洗车，让您的好友可以下载蔷薇客户端";
+    NSString *showName              = @"分享金顶洗车，让您的好友可以下载金顶客户端";
     UIFont *showNameFont            = [UIFont systemFontOfSize:Main_Screen_Height*13/667];
     UILabel *showNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:showName font:showNameFont] font:showNameFont text:showName isCenter:NO];
     showNameLabel.textColor         = [UIColor colorFromHex:@"#999999"];
@@ -77,7 +77,8 @@
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
-     self.tableView.backgroundColor  = [UIColor whiteColor];
+    self.tableView.backgroundColor  = [UIColor whiteColor];
+    self.tableView.tableFooterView  = [[UIView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.tableView];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -148,7 +149,7 @@
         
     }else if (indexPath.row == 1){
         
-        cell.textLabel.text     = @"关于蔷薇";
+        cell.textLabel.text     = @"关于金顶";
         
     }else {
         
