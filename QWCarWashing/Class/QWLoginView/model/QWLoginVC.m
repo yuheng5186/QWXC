@@ -56,7 +56,7 @@
     logoImageView.top           = deaderLabel.bottom +Main_Screen_Height*30/667;
     logoImageView.centerX       = Main_Screen_Width/2;
     
-    NSString   *titleString     = @"蔷薇爱车";
+    NSString   *titleString     = @"金顶洗车";
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc]initWithString:titleString];
 //    CGAffineTransform matrix = CGAffineTransformMake(1, 0, tanf(-20 * (CGFloat)M_PI / 180), 1, 0, 0);
     UIFont     *titleFont       = [UIFont boldSystemFontOfSize:Main_Screen_Height*20/667];

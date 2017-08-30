@@ -183,7 +183,7 @@ static NSString *cellstr=@"cell";
     } else if (indexPath.section==2){
         MenuIconCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_MenuIconCell forIndexPath:indexPath];
         
-        [cell setTitle:@"蔷薇会员" icon:@"huiyuanchequan" detailtitle:@"200积分" ];
+        [cell setTitle:@"金顶会员" icon:@"huiyuanchequan" detailtitle:@"200积分" ];
         return cell;
 
     }else if(indexPath.section == 3){
@@ -199,7 +199,7 @@ static NSString *cellstr=@"cell";
     }else{
         MenuIconCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_MenuIconCell forIndexPath:indexPath];
         
-        [cell setTitle:@"推荐蔷薇APP" icon:@"tuijianAPP" detailtitle:@""];
+        [cell setTitle:@"推荐金顶APP" icon:@"tuijianAPP" detailtitle:@""];
         return cell;
     }
 
