@@ -43,14 +43,14 @@
     self.goUpGrade.layer.borderColor=[UIColor whiteColor].CGColor;
     self.goUpGrade.layer.cornerRadius=corner;
     self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
-    [self.goUpGrade setTitle:@"去升等级" forState:BtnNormal];
+    [self.goUpGrade setTitle:@"升等级" forState:BtnNormal];
 //    [self.goUpGrade addTarget:self action:@selector(goupgradeonclick:) forControlEvents:BtnTouchUpInside];
     CGFloat corners=self.AddScore.bounds.size.height/2;
     self.AddScore.layer.borderWidth=1;
     self.AddScore.layer.borderColor=[UIColor whiteColor].CGColor;
     self.AddScore.layer.cornerRadius=corners;
     self.AddScore.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
-    [self.AddScore setTitle:@"去赚积分" forState:BtnNormal];
+    [self.AddScore setTitle:@"赚积分" forState:BtnNormal];
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     self.gradientLayer = [CAGradientLayer layer];
     self.gradientLayer.frame =CGRectMake(0, 0, QWScreenWidth, 205);
@@ -83,7 +83,10 @@
     [self.contentViews addSubview:self.AddScore];
     [self.contentViews addSubview:    self.Maxline];
     [self.contentViews addSubview:self.linev];
-    
+   
+//    self.Maxline.
+//    .backgroundColor=[UIColor colorWithRed:248/255.0 green:238/255.0 blue:71/255.0 alpha:1];
+//    self.linev.backgroundColor=[UIColor colorWithRed:248/255.0 green:238/255.0 blue:71/255.0 alpha:1];
 //    self.aa.image=[UIImage imageNamed:@"huiyuantou"];
 
     

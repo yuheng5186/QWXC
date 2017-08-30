@@ -56,7 +56,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= leftItem;
     // Do any additional setup after loading the view.
-    self.title  = @"蔷薇会员";
+    self.title  = @"金顶会员";
     self.view.backgroundColor   = [UIColor whiteColor];
    
 

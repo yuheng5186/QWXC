@@ -54,7 +54,7 @@
 {
     QWHomeViewController *home=[[QWHomeViewController alloc]init];
     
-    [self setsubtabbarsyle:home andimg:[UIImage imageNamed:@"zhuye"] andselectimg:[UIImage imageWithRenderingModeorname:@"zhuyec"] andtitle:@"首页" andnavtitle:@"蔷薇爱车"];
+    [self setsubtabbarsyle:home andimg:[UIImage imageNamed:@"zhuye"] andselectimg:[UIImage imageWithRenderingModeorname:@"zhuyec"] andtitle:@"首页" andnavtitle:@"金顶洗车"];
     
     
     QWMerchantViewController *Merchant=[[QWMerchantViewController alloc]init];
