@@ -108,6 +108,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
    
     if (indexPath.section==0) {
         QWScoreheaderTableViewCell *scoreheadercell=[tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_ScoreheaderTableViewCell forIndexPath:indexPath];
+        scoreheadercell.contentViews.bounds=CGRectMake(0, 0, QWScreenWidth, 230*Main_Screen_Height/667);
         scoreheadercell.selectionStyle = UITableViewCellSelectionStyleNone;
         [scoreheadercell.vipType addTarget:self action:@selector(clickMemberButton:) forControlEvents:BtnTouchUpInside];
         [scoreheadercell.goUpGrade addTarget:self action:@selector(clickUpgradeBtn:) forControlEvents:BtnTouchUpInside];

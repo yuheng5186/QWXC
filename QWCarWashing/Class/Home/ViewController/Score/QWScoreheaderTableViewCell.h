@@ -10,7 +10,7 @@
 
 @interface QWScoreheaderTableViewCell : UITableViewCell
 @property (weak, nonatomic)IBOutlet  UIImageView *headerImage;
-@property (weak, nonatomic) IBOutlet UIView *contentViews;
+@property (assign, nonatomic) IBOutlet UIView *contentViews;
 @property (weak, nonatomic) IBOutlet UILabel *Maxline;
 @property (weak, nonatomic) IBOutlet UILabel *linev;
 //
