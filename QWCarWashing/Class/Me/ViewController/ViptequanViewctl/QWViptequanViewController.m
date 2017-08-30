@@ -152,7 +152,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 90*Main_Screen_Height/667;
+        return 120*Main_Screen_Height/667;
     }else {
         return 70*Main_Screen_Height/667;
     }
@@ -208,7 +208,7 @@
     if (section==2||section==1) {
         UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29*Main_Screen_Height/667)];
         lab.backgroundColor=[UIColor whiteColor];
-        lab.font=[UIFont systemFontOfSize:14*Main_Screen_Height/667];
+        lab.font=[UIFont systemFontOfSize:16*Main_Screen_Height/667];
         lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
         lab.text=@"   我的特权";
         [headerview addSubview:lab];
@@ -231,8 +231,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    QWMemberRightsDetailController      *rightDetailVC  = [[QWMemberRightsDetailController alloc]init];
-    [self.navigationController pushViewController:rightDetailVC animated:YES];
+    if (indexPath.section != 0) {
+        
+        QWMemberRightsDetailController      *rightDetailVC  = [[QWMemberRightsDetailController alloc]init];
+        [self.navigationController pushViewController:rightDetailVC animated:YES];
+    }
+    
+    
     
 }
 - (void)didReceiveMemoryWarning {

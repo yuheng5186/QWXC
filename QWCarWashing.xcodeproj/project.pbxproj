@@ -293,8 +293,8 @@
 		0401E8B11F4C05F000F0CA79 /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		0401E8B21F4C05F000F0CA79 /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		0401E8B31F4C05F000F0CA79 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
-		0401E8C51F4D72A200F0CA79 /* QWMemberRightsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWMemberRightsDetailController.h; sourceTree = "<group>"; };
-		0401E8C61F4D72A200F0CA79 /* QWMemberRightsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMemberRightsDetailController.m; sourceTree = "<group>"; };
+		0401E8C51F4D72A200F0CA79 /* QWMemberRightsDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QWMemberRightsDetailController.h; path = ../../ShoppingCar/ViewController/QWMemberRightsDetailController.h; sourceTree = "<group>"; };
+		0401E8C61F4D72A200F0CA79 /* QWMemberRightsDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QWMemberRightsDetailController.m; path = ../../ShoppingCar/ViewController/QWMemberRightsDetailController.m; sourceTree = "<group>"; };
 		0401E8CE1F4EABF200F0CA79 /* QWStartWashingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWStartWashingController.h; sourceTree = "<group>"; };
 		0401E8CF1F4EABF200F0CA79 /* QWStartWashingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWStartWashingController.m; sourceTree = "<group>"; };
 		0401E8D11F4EAC0600F0CA79 /* QWCompleteWashingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCompleteWashingController.h; sourceTree = "<group>"; };
@@ -1396,6 +1396,8 @@
 				180957DC1F414F5100BE185D /* QWMeViewController.m */,
 				185C9E481F42DFE200B4ED52 /* QWPersonInfoDetailViewController.h */,
 				185C9E491F42DFE200B4ED52 /* QWPersonInfoDetailViewController.m */,
+				0401E8C51F4D72A200F0CA79 /* QWMemberRightsDetailController.h */,
+				0401E8C61F4D72A200F0CA79 /* QWMemberRightsDetailController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1513,8 +1515,6 @@
 				18A4B1A51F46F3EB00C64978 /* CashViewController.m */,
 				18A4B1AC1F46F49C00C64978 /* BusinessPayCell.h */,
 				18A4B1AD1F46F49C00C64978 /* BusinessPayCell.m */,
-				0401E8C51F4D72A200F0CA79 /* QWMemberRightsDetailController.h */,
-				0401E8C61F4D72A200F0CA79 /* QWMemberRightsDetailController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

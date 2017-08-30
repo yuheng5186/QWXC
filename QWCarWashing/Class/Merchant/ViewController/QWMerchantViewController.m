@@ -454,7 +454,7 @@
     [button setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateSelected];
     [button setImage:[UIImage imageNamed:@"xiala"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"shangla"] forState:UIControlStateSelected];
-    button.titleLabel.font = [UIFont systemFontOfSize:12];
+    button.titleLabel.font = [UIFont systemFontOfSize:15* myDelegate.autoSizeScaleY];
     
     return button;
 }
@@ -470,16 +470,16 @@
 {
     // 第1列 高度
     if (index == 0) {
-        return 300;
+        return 300* myDelegate.autoSizeScaleY;
     }
     
     // 第2列 高度
     if (index == 1) {
-        return 180;
+        return 200* myDelegate.autoSizeScaleY;
     }
     
     // 第3列 高度
-    return 240;
+    return 200* myDelegate.autoSizeScaleY;
 }
 
 -(void)viewWillAppear:(BOOL)animated
