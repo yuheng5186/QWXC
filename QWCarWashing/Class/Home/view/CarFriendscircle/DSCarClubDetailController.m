@@ -61,7 +61,6 @@
     }
     return _modelsArray;
 }
-
 //- (void) drawContent
 //{
 //    self.contentView.top                = QWScreenheight*44/667;
@@ -487,7 +486,7 @@
     goodShowLabel.text                       = @"369";
     
    goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
-    self.sayShowLabel                       = goodShowLabel;
+    self.goodShowLabel                       = goodShowLabel;
     [self.downView  addSubview:goodShowLabel];
     
     goodShowLabel.sd_layout
@@ -497,6 +496,28 @@
     .heightIs(20*Main_Screen_Height/667);
     
     [self.downView  layoutSubviews];
+    
+    self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+    self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
+    if(self.CarClubNewsModel.IsGive == 1)
+    {
+        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+        self.goodButton.selected = YES;
+        
+        [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+        self.downGoodButton.selected = YES;
+    }
+    else
+    {
+        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+        self.goodButton.selected = NO;
+        
+        
+        [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:UIControlStateNormal];
+        self.downGoodButton.selected = NO;
+    }
+    self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+    self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
     
     [self.view addSubview:self.downView ];
     
@@ -793,13 +814,15 @@
 - (void) downGoodButtonClick:(UIButton *)sender {
 
     if (sender.selected == NO) {
-        [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
-        self.sayShowLabel.text                     = @"170";
-        [self.view showInfo:@"点赞成功!" autoHidden:YES];
+        [self requestAddGoodNum];
+//        [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+//        self.sayShowLabel.text                     = @"170";
+//        [self.view showInfo:@"点赞成功!" autoHidden:YES];
     }else {
-        [self.downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
-        self.sayShowLabel.text                     = @"169";
-        [self.view showInfo:@"取消点赞!" autoHidden:YES];
+        [self CancelRequestGoodNum];
+//        [self.downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
+//        self.sayShowLabel.text                     = @"169";
+//        [self.view showInfo:@"取消点赞!" autoHidden:YES];
         
     }
     
@@ -807,17 +830,14 @@
 }
 #pragma mark-
 
-#pragma mark-点赞
+#pragma mark-详情信息文章支持点赞
 - (void) goodButtonClick:(UIButton *)sender {
 
     if (sender.selected == NO) {
-        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
-        self.goodNumberLabel.text                     = @"共有169人点赞过";
-        [self.view showInfo:@"点赞成功!" autoHidden:YES];
+        [self requestAddGoodNum];
     }else {
-        [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
-        self.goodNumberLabel.text                     = @"共有168人点赞过";
-        [self.view showInfo:@"取消点赞!" autoHidden:YES];
+
+        [self CancelRequestGoodNum];
         
     }
     
@@ -826,7 +846,85 @@
     
 }
 
+#pragma mark-文章支持点赞
+-(void)requestAddGoodNum{
+    
+    
+    
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"SupTypeCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
+                             @"SupType": @1
+                             };
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/AddActivitySupporInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"点赞成功" autoHidden:YES interval:2];
+            
+            [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+            
+            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过", self.CarClubNewsModel.GiveCount + 1];
+            
+            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
+            self.CarClubNewsModel.GiveCount++;
+            [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+            self.downGoodButton.selected = YES;
+           
+        }
+        else
+        {
+            [self.view showInfo:@"点赞失败" autoHidden:YES interval:2];
+            [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+            self.downGoodButton.selected = NO;
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"点赞失败" autoHidden:YES interval:2];
+        [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+        self.downGoodButton.selected = NO;
+    }];
+    
+    
+    
+    
 
+}
+#pragma mark-文章取消点赞
+-(void)CancelRequestGoodNum{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"SupTypeCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
+                             @"SupType": @1
+                             };
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/AddActivitySupporInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            [self.view showInfo:@"取消点赞成功" autoHidden:YES interval:2];
+            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
+            [self.downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
+            
+            self.CarClubNewsModel.GiveCount--;
+            [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
+            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+            self.goodButton.selected = NO;
+        }
+        else
+        {
+            [self.view showInfo:@"取消点赞失败" autoHidden:YES interval:2];
+            [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+            self.downGoodButton.selected = YES;
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"取消点赞失败" autoHidden:YES interval:2];
+        [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
+        self.downGoodButton.selected = YES;
+    }];
+
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -849,12 +947,14 @@
     if (self.modelsArray.count!=0) {
         cell.CarClubUserModel  = self.modelsArray[indexPath.row];
     }
-    
+#pragma mark-评论支持点赞按钮
+   QWCarClubUserModel *model= self.modelsArray[indexPath.row];
     cell.thumbOnclick=^(UIButton *btn){
         if (btn.selected) {
-            
+            [self addCommentariesSupportTypeid:[NSString stringWithFormat:@"%ld",model.CommentCode] andSupType:@"2"];
             [self.view showInfo:@"取消点赞!" autoHidden:YES];
         }else{
+            [self addCommentariesSupportTypeid:[NSString stringWithFormat:@"%ld",model.CommentCode] andSupType:@"2"];
             [self.view showInfo:@"点赞成功!" autoHidden:YES];
             
         }
@@ -866,7 +966,44 @@
     
     return cell;
 }
-
+#pragma mark-评论支持
+-(void)addCommentariesSupportTypeid:(NSString *)SupTypeCodestr andSupType:(NSString *)SupTypestr{
+    NSLog(@"添加评论借口参数：%ld==%@",(long)self.ActivityCode,self.userSayTextField.text);
+    //1#文章;2#评论
+    //    "Account_Id": "404832711505",
+    //    "SupTypeCode": "100001",
+    //    "SupType": "2"
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"SupTypeCode":SupTypeCodestr,
+                             @"SupType":SupTypestr
+                             };
+    NSLog(@"添加评论借口参数：%@",mulDic);
+   
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/AddActivitySupporInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+          
+            [self headerRereshing];
+        }
+        else
+        {
+            [self.view showInfo:@"评论支持添加失败" autoHidden:YES interval:2];
+           
+        }
+        
+        
+        
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+    }];
+    
+    
+}
 #pragma mark-添加评论借口
 -(void)addCommentariesData{
     //    "JsonData": {"ActivityCode": 1001,"Account_Id": "404832711505",
