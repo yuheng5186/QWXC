@@ -93,7 +93,7 @@
                         </state>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="oYr-vi-ZzA" secondAttribute="bottom" constant="14.5" id="4C3-ZX-5B5"/>
                     <constraint firstItem="f0f-Dh-H7i" firstAttribute="leading" secondItem="fDO-fa-uak" secondAttribute="trailing" constant="20" id="6EK-S4-E4g"/>

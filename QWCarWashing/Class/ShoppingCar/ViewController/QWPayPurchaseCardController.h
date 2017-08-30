@@ -7,9 +7,9 @@
 //
 
 #import "QWBaseViewController.h"
-
+#import "QWCarModel.h"
 @interface QWPayPurchaseCardController : QWBaseViewController
-
+@property(nonatomic,strong)QWCarModel *choosecard;
 
 
 @end
