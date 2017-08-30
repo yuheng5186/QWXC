@@ -405,7 +405,8 @@
         }
         
         cell.McImagedanhaoView.userInteractionEnabled = YES;
-        [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
+        //[cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
+        [cell.areaBtn addTarget:self action:@selector(clicktiaozhuan:) forControlEvents:UIControlEventTouchUpInside];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
 //        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
