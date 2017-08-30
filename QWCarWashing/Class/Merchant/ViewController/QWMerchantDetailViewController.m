@@ -60,6 +60,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"商家详情";
+    
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     collecttag=0;
     
@@ -121,7 +124,7 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= leftItem;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"fenxiang-1"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 20*myDelegate.autoSizeScaleY)];
     tableView.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
@@ -206,7 +209,7 @@
     CGFloat imageWidth = QWScreenWidth;
     //图片上下偏移量
     CGFloat imageOffsetY = scrollView.contentOffset.y;
-    NSLog(@"图片上下偏移量 imageOffsetY:%f ->",imageOffsetY);
+//    NSLog(@"图片上下偏移量 imageOffsetY:%f ->",imageOffsetY);
     //上移
     if (imageOffsetY < 0) {
         
@@ -402,7 +405,8 @@
         }
         
         cell.McImagedanhaoView.userInteractionEnabled = YES;
-        [cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
+        //[cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
+        [cell.areaBtn addTarget:self action:@selector(clicktiaozhuan:) forControlEvents:UIControlEventTouchUpInside];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
 //        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -705,14 +709,14 @@
         [jiesuan setSelected:NO];
         [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
         
-        
+        [self.view showInfo:@"取消收藏" autoHidden:YES];
     }
     else
     {
         [jiesuan setSelected:YES];
         [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
         
-        
+        [self.view showInfo:@"收藏成功" autoHidden:YES];
     }
     
     [self insertCollectionAndUserid:[UdStorage getObjectforKey:Userid] andMerCode:self.MerChantmodel.MerCode];

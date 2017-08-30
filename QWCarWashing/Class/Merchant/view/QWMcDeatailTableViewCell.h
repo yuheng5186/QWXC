@@ -28,6 +28,8 @@
 
 @property(nonatomic,weak)UIButton *callbtn;
 @property(nonatomic,weak)UIButton *collectbtn;
+@property (nonatomic, weak) UIButton *areaBtn;
+
 @property(nonatomic,strong)QWMerchantModel *Merchantmodels;
 //-(void)setlayoutCell;
 

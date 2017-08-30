@@ -46,17 +46,18 @@ static NSString *id_infoCell = @"id_infoCell";
 
 - (void)setupUI {
     self.infoHeadView.backgroundColor=[UIColor whiteColor];
-    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).mas_offset(5);
-        make.width.equalTo(self.view);
-        make.height.mas_equalTo(280*Main_Screen_Height/667);
-    }];
+    self.infoHeadView.frame = CGRectMake(0, 0, Main_Screen_Width, 280*Main_Screen_Height/667);
+//    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view).mas_offset(5);
+//        make.width.equalTo(self.view);
+//        make.height.mas_equalTo(280*Main_Screen_Height/667);
+//    }];
     self.infoHeadView.Merchant=self.merchantModel;
     
     
 //
     
-    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,-40, Main_Screen_Width, Main_Screen_Height- 64 - 39*Main_Screen_Height/667+30) style:UITableViewStylePlain];
+    UITableView *infoTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height - 64 - 44*Main_Screen_Height/667) style:UITableViewStylePlain];
     _infoTableView = infoTableView;
     [self.view addSubview:_infoTableView];
     

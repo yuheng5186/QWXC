@@ -201,6 +201,11 @@
     [backgroundview addSubview:collectButton];
     self.collectbtn = collectButton;
     
+    //增加点击区域
+    UIButton *areaBtn = [[UIButton alloc] initWithFrame:CGRectMake1(0, 0, 288, 60)];
+    areaBtn.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:areaBtn];
+    self.areaBtn = areaBtn;
     
 }
 
