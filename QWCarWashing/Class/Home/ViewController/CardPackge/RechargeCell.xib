@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="191.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_card" translatesAutoresizingMaskIntoConstraints="NO" id="YcT-5e-hpD">
@@ -62,6 +62,13 @@
                     <constraint firstItem="Zij-Dc-S8J" firstAttribute="leading" secondItem="EYw-Ib-d88" secondAttribute="leading" id="ptZ-82-3JM"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="CardTimeLabels" destination="Zij-Dc-S8J" id="E0g-fB-SxY"/>
+                <outlet property="CarddesLabels" destination="Lta-PU-w6f" id="SR2-gi-Xxa"/>
+                <outlet property="CardnameLabels" destination="EYw-Ib-d88" id="tdS-iH-sOm"/>
+                <outlet property="backgroundImgVs" destination="YcT-5e-hpD" id="WN8-Ot-WNo"/>
+                <outlet property="tagLabels" destination="oCr-gH-H58" id="Pre-og-g9J"/>
+            </connections>
             <point key="canvasLocation" x="69" y="23"/>
         </tableViewCell>
     </objects>

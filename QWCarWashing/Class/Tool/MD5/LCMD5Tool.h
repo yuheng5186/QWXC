@@ -13,6 +13,6 @@
 +(NSString *) md5: (NSString *) inPutText;
 //判断手机号码格式是否正确
 + (BOOL)valiMobile:(NSString *)mobile;
-
++(NSString *)DateZhuan:(NSString *)string;
 
 @end

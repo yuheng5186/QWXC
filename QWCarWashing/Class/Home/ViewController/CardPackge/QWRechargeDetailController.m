@@ -35,6 +35,11 @@
 }
 
 - (void)setupUI {
+    if (self.card!=nil) {
+        self.washCarLabel.text =self.card.CardName;
+        self.validityLabel.text = [NSString stringWithFormat:@"有效期至%@",self.card.ExpEndDates];
+        self.timesLabel.text = [NSString stringWithFormat:@"免费洗车次数%ld次",self.card.CardCount];
+    }
     
     [self.washCarLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.containView).mas_offset(20);

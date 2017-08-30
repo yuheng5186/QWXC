@@ -8,6 +8,6 @@
 
 #import "QWBaseViewController.h"
 
-@interface QWPurchaseViewController : QWBaseViewController
+@interface QWPurchaseViewController : UIViewController
 
 @end
