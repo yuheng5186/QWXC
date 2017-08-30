@@ -31,7 +31,9 @@
     return _otherArray;
     
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [self setupRefresh];
+}
 
 - (void) drawContent
 {
@@ -72,9 +74,10 @@
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     }
     
-    [self setupRefresh];
+    
     
 }
+
 -(void)setupRefresh
 {
     self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -101,7 +104,7 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        
+        self.dataArray = [NSMutableArray new];
         self.page = 0 ;
         [self requestSelcectList];
         
@@ -264,7 +267,7 @@
   
 
     if (self.dataArray.count!=0) {
-        cell.CarNewsModel=self.dataArray[indexPath.row];
+        cell.CarNewsModel=self.dataArray[indexPath.section];
     }
     ;
     cell.goodButton.tag = indexPath.section;
@@ -291,8 +294,11 @@
 //        [button setImage:[UIImage imageNamed:@"xiaohongshou"] forState:BtnStateSelected];
 //        
 //    }
-    QWCarClubNewsModel *model=(QWCarClubNewsModel *)self.dataArray[button.tag];
-    [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+    
+//    QWCarClubNewsModel *model=(QWCarClubNewsModel *)self.dataArray[button.tag];
+//    [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+    
+    //====
 //    if (button.selected == NO) {
 //   
 //     
@@ -303,6 +309,25 @@
 //        
 //    }
 //    button.selected = !button.selected;
+    
+    
+    
+    
+    QWCarClubNewsModel *model=(QWCarClubNewsModel *)self.dataArray[button.tag];
+    //    UIButton *button = (UIButton *)sender;
+    if (button.selected == NO) {
+        [button setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
+        //        self.goodNumberLabel.text                     = @"1289";
+        //        [self.view showInfo:@"点赞成功!" autoHidden:YES];
+        [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+    }else {
+        [button setImage:[UIImage imageNamed:@"pinglundianzan"] forState:UIControlStateNormal];
+        //        self.goodNumberLabel.text                     = @"1288";
+        //        [self.view showInfo:@"取消点赞!" autoHidden:YES];
+        [self addNewsSupportTypeid:[NSString stringWithFormat:@"%ld",model.ActivityCode] andSupType:@"1"];
+        
+    }
+    button.selected = !button.selected;
 }
 
 -(void)addNewsSupportTypeid:(NSString *)SupTypeCodestr andSupType:(NSString *)SupTypestr{
@@ -323,7 +348,7 @@
             //            self.dic = [dict objectForKey:@"JsonData"];
             //        [self.MerchantDetailData addObjectsFromArray:arr];
             
-//            [self headerRereshing];
+            [self headerRereshing];
         }
         else
         {
@@ -344,7 +369,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
-    detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.row]).ActivityCode;
+    if (self.dataArray.count!=0) {
+         detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode;
+    }
+   
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
     

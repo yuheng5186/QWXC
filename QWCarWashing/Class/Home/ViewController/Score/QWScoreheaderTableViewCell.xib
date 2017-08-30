@@ -20,18 +20,18 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpj-e9-5LN">
-                        <rect key="frame" x="269" y="185.5" width="45" height="20"/>
+                        <rect key="frame" x="274" y="185.5" width="40" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="0cS-vM-xXl"/>
-                            <constraint firstAttribute="width" constant="45" id="wg8-N3-GHi"/>
+                            <constraint firstAttribute="width" constant="40" id="wg8-N3-GHi"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="7"/>
-                        <state key="normal" title="去赚积分">
+                        <state key="normal" title="赚积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsr-zG-tma">
-                        <rect key="frame" x="179" y="176.5" width="75" height="37"/>
+                        <rect key="frame" x="179" y="176.5" width="80" height="37"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <state key="normal" title="1680积分">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,14 +50,14 @@
                         <rect key="frame" x="0.0" y="167.5" width="337" height="1"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="1" id="WbT-h1-Kov"/>
+                            <constraint firstAttribute="height" constant="0.80000000000000004" id="WbT-h1-Kov"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnv-Rp-ZiO">
-                        <rect key="frame" x="23" y="176.5" width="67" height="37"/>
+                        <rect key="frame" x="23" y="176.5" width="72" height="37"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="黄金会员">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -68,7 +68,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="THw-rb-es9"/>
-                            <constraint firstAttribute="width" constant="1" id="Wl7-II-gUv"/>
+                            <constraint firstAttribute="width" constant="0.80000000000000004" id="Wl7-II-gUv"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -82,13 +82,13 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81b-8o-vaG">
-                        <rect key="frame" x="113" y="185.5" width="45" height="20"/>
+                        <rect key="frame" x="118" y="185.5" width="40" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="45" id="1cb-37-egp"/>
+                            <constraint firstAttribute="width" constant="40" id="1cb-37-egp"/>
                             <constraint firstAttribute="height" constant="20" id="mQQ-Ec-gnz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <state key="normal" title="去升级">
+                        <state key="normal" title="升等级">
                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
