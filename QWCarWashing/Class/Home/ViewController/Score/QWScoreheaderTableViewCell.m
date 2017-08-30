@@ -53,7 +53,7 @@
     [self.AddScore setTitle:@"赚积分" forState:BtnNormal];
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.frame =CGRectMake(0, 0, QWScreenWidth, 205);
+    self.gradientLayer.frame =CGRectMake(0, 0, QWScreenWidth, 230*QWScreenheight/667);
     
     //将CAGradientlayer对象添加在我们要设置背景色的视图的layer层
     [self.contentView.layer addSublayer:self.gradientLayer];
@@ -74,6 +74,7 @@
 //    self.gradientLayer.locations = @[@(0.5f), @(1.0f)];
 //    
 //    self.headerImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth/2, 40)];
+//    self.contentViews.backgroundColor=[UIColor clearColor];
     self.headerImage.image=[UIImage imageNamed:@"huiyuantou"];
     [self.contentViews addSubview:    self.headerImage];
     [self.contentViews addSubview:    self.phoneNum];

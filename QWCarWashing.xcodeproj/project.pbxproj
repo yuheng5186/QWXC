@@ -163,6 +163,7 @@
 		182E93621F5400AD00819B79 /* QWMyCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93611F5400AD00819B79 /* QWMyCarModel.m */; };
 		182E93661F55346800819B79 /* QWCarClubNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93651F55346800819B79 /* QWCarClubNewsModel.m */; };
 		182E936A1F55558E00819B79 /* QWCarClubUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93691F55558E00819B79 /* QWCarClubUserModel.m */; };
+		182E936D1F566EE800819B79 /* QWCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E936C1F566EE800819B79 /* QWCarModel.m */; };
 		18464A571F53C54B00229017 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */; };
 		18464A5A1F53C56800229017 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A591F53C56800229017 /* NewPagedFlowView.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
@@ -587,6 +588,8 @@
 		182E93651F55346800819B79 /* QWCarClubNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubNewsModel.m; sourceTree = "<group>"; };
 		182E93681F55558E00819B79 /* QWCarClubUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarClubUserModel.h; sourceTree = "<group>"; };
 		182E93691F55558E00819B79 /* QWCarClubUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarClubUserModel.m; sourceTree = "<group>"; };
+		182E936B1F566EE800819B79 /* QWCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QWCarModel.h; path = QWCarWashing/Class/Home/model/CarClubUser/QWCarModel.h; sourceTree = SOURCE_ROOT; };
+		182E936C1F566EE800819B79 /* QWCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QWCarModel.m; path = QWCarWashing/Class/Home/model/CarClubUser/QWCarModel.m; sourceTree = SOURCE_ROOT; };
 		18464A551F53C54B00229017 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		18464A581F53C56800229017 /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
@@ -1482,6 +1485,8 @@
 		180957BF1F414D0000BE185D /* model */ = {
 			isa = PBXGroup;
 			children = (
+				182E936B1F566EE800819B79 /* QWCarModel.h */,
+				182E936C1F566EE800819B79 /* QWCarModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2512,6 +2517,7 @@
 				18A4B19C1F46E06B00C64978 /* JFSearchView.m in Sources */,
 				18508FFB1F42D7F300795E0A /* QWMcServiceTableViewCell.m in Sources */,
 				185090111F43CFD300795E0A /* QWAboutStoreViewController.m in Sources */,
+				182E936D1F566EE800819B79 /* QWCarModel.m in Sources */,
 				180702311F44432F00398435 /* QWScoreController.m in Sources */,
 				180702AB1F458AB700398435 /* QWUserRightDetailController.m in Sources */,
 				18A4B2221F4D65E600C64978 /* UIView+AutoSizeToDevice.m in Sources */,
