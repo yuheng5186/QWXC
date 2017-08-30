@@ -77,7 +77,8 @@
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
-     self.tableView.backgroundColor  = [UIColor whiteColor];
+    self.tableView.backgroundColor  = [UIColor whiteColor];
+    self.tableView.tableFooterView  = [[UIView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.tableView];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
