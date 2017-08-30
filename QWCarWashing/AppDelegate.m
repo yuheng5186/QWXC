@@ -67,7 +67,9 @@
     
     
     
-    [WXApi registerApp:@"wxcb207ec4f5991a99"];
+//    [WXApi registerApp:@"wxcb207ec4f5991a99"];
+    [WXApi registerApp:@"wx36260a82ad0e51bb"];
+
 
     
     return YES;
