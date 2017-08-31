@@ -175,7 +175,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     [self.locationButton setImage:[UIImage imageNamed:@"shangjiadingwei"] forState:UIControlStateNormal];
     self.locationButton.imageEdgeInsets = UIEdgeInsetsMake(0, -Main_Screen_Width*10/375, 0, 0);
     [self.locationButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-    self.locationButton.layer.cornerRadius = Main_Screen_Height*15/667;
+    self.locationButton.layer.cornerRadius = self.locationButton.height/2;
     //self.locationButton.clipsToBounds = YES;
     self.locationButton.layer.borderWidth = 1;
     self.locationButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -476,7 +476,13 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     __weak typeof(self) weakSelf = self;
     [cityViewController choseCityBlock:^(NSString *cityName) {
         
-        [weakSelf.locationButton setTitle:cityName forState:UIControlStateNormal];
+        NSString    *cityString  = cityName;
+        if (cityName.length > 3) {
+            NSString    *city     = [cityName substringToIndex:2];
+            cityString = [NSString stringWithFormat:@"%@...",city];
+        }
+        weakSelf.locationButton.width   = Main_Screen_Width*80/375;
+        [weakSelf.locationButton setTitle:cityString forState:UIControlStateNormal];
         
         weakSelf.resultLabel.text = cityName;
     }];
