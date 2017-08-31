@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,28 +16,29 @@
             <rect key="frame" x="0.0" y="0.0" width="337" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="337" height="109.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="337" height="109"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="asO-f6-nDG">
-                        <rect key="frame" x="144" y="6" width="50" height="64.5"/>
+                        <rect key="frame" x="139" y="20" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="UZ7-Ic-nbf"/>
+                            <constraint firstAttribute="height" constant="60" id="8Az-Fq-eN6"/>
+                            <constraint firstAttribute="width" constant="60" id="93p-x4-WOC"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="白银会员" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cr9-2z-CWF">
-                        <rect key="frame" x="135" y="76.5" width="68" height="20"/>
+                        <rect key="frame" x="135" y="85" width="68" height="13.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="90m-PH-xwf"/>
-                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="CBG-RK-nI7"/>
-                    <constraint firstItem="asO-f6-nDG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="VdT-rJ-qNW"/>
-                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="6" id="hfd-PK-kBF"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Cr9-2z-CWF" secondAttribute="bottom" constant="5" id="xLw-Vf-8jR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Cr9-2z-CWF" secondAttribute="bottom" constant="3" id="AEM-kB-9JL"/>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LFD-Oy-5Hw"/>
+                    <constraint firstItem="asO-f6-nDG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="hpQ-bA-zas"/>
+                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="top" secondItem="asO-f6-nDG" secondAttribute="bottom" constant="5" id="lIn-Kc-nJW"/>
+                    <constraint firstItem="Cr9-2z-CWF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="lNT-eD-70n"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
