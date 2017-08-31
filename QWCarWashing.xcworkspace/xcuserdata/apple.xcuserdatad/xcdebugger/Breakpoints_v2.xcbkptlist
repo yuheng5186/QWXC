@@ -253,13 +253,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/ShoppingCar/ViewController/QWShoppingCarViewController.m"
-            timestampString = "525763866.460044"
+            filePath = "QWCarWashing/Class/ShoppingCar/ViewController/QWPurchaseViewController.m"
+            timestampString = "525773374.314057"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "-didCickBuyButton"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/CardPackge/QWCardPackgeController.m"
+            timestampString = "525776545.889505"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-GetCardbagList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

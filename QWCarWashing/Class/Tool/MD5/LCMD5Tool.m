@@ -58,4 +58,16 @@
         }
     }
 }
++(NSString *)DateZhuan:(NSString *)string
+{
+    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+    [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+    [inputFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate*inputDate = [inputFormatter dateFromString:string];
+    NSDateFormatter*outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setLocale:[NSLocale currentLocale]];
+    [outputFormatter setDateFormat:@"yyyy.MM.dd"];
+    NSString*str = [outputFormatter stringFromDate:inputDate];
+    return str;
+}
 @end

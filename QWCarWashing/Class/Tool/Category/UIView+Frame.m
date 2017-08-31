@@ -133,6 +133,10 @@
 {
     return self.frame.origin.x + self.frame.size.width;
 }
+- (void) removeAllSubviews
+{
+    [self.subviews makeObjectsPerformSelector: @selector (removeFromSuperview)];
+}
 
 @end
 

@@ -11,12 +11,55 @@
 
 @implementation RechargeCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
+
+-(void)setCardBagModel:(QWCardBagModel *)cardBagModel{
+    cardBagModel=_cardBagModel;
+    self.CardnameLabels.text = cardBagModel.CardName;
+    self.CarddesLabels.text = [NSString stringWithFormat:@"%@ 免费洗车%ld次",cardBagModel.Description,cardBagModel.CardCount];
     
-    self.dg_viewAutoSizeToDevice = YES;
+    
+    
+    
+    
+    self.CardTimeLabels.text = [NSString stringWithFormat:@"有效期: %@-%@",[LCMD5Tool DateZhuan:cardBagModel.ExpStartDates],[LCMD5Tool DateZhuan:cardBagModel.ExpEndDates]];
+    
+    if(cardBagModel.CardUseState == 2)
+    {
+        self.CardnameLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.tagLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.CarddesLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.backgroundImgVs.image = [UIImage imageNamed:@"bg_yishiyong"];
+        
+    }
+    else if(cardBagModel.CardUseState == 3)
+    {
+        self.CardnameLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.tagLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.CarddesLabels.textColor = [UIColor colorFromHex:@"#ffffff"];
+        self.backgroundImgVs.image = [UIImage imageNamed:@"bg_yiguoqi"];
+    }
+    
+
+}
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+    }
+    return self;
 }
 
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.dg_viewAutoSizeToDevice = YES;
+    //    self.CardnameLabel.textColor = [UIColor blackColor];
+    self.tagLabels.font = [UIFont systemFontOfSize:11*Main_Screen_Height/667];
+    self.CardnameLabels.font = [UIFont boldSystemFontOfSize:20*Main_Screen_Height/667];
+    self.CarddesLabels.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
+    self.CardTimeLabels.font = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
+    self.CardTimeLabels.textColor = [UIColor colorFromHex:@"#999999"];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

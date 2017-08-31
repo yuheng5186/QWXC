@@ -87,12 +87,8 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
 -(void)viewWillAppear:(BOOL)animated
 {
     _Xuhao = 0;
-//    _CardArray = [[NSMutableArray alloc]init];
     self.imageArray = [NSMutableArray new];
-    
-//    [_middleview removeAllSubviews];
-//    self.middleview removeall
-    
+    [self.middleview removeAllSubviews];
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.removeFromSuperViewOnHide =YES;
     HUD.mode = MBProgressHUDModeIndeterminate;
@@ -157,7 +153,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     _locationManager.delegate = self;
     self.area = @"上海市";
     
-    UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, 64) color:[UIColor colorFromHex:@"#293754"]];
+    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, 64) color:[UIColor colorFromHex:@"#293754"]];
     upView.top                      = 0;
     
     NSString *titleName              = @"购卡";
@@ -176,7 +172,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     self.locationButton.left              = Main_Screen_Width*14/375;
     self.locationButton.centerY           = titleNameLabel.centerY;
     [self.locationButton addTarget:self action:@selector(clickLocationButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.locationButton setImage:[UIImage imageNamed:@"dingwei"] forState:UIControlStateNormal];
+    [self.locationButton setImage:[UIImage imageNamed:@"shangjiadingwei"] forState:UIControlStateNormal];
     self.locationButton.imageEdgeInsets = UIEdgeInsetsMake(0, -Main_Screen_Width*10/375, 0, 0);
     [self.locationButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     self.locationButton.layer.cornerRadius = Main_Screen_Height*15/667;
@@ -186,7 +182,6 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     [upView addSubview:self.locationButton];
     
     
-//    [self setupUI];
     _middleview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
     _middleview.backgroundColor = [UIColor colorFromHex:@"#fafafa"];
 
@@ -195,61 +190,24 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
 }
 
 - (void)setupUI {
+    
     QWCarModel *card = (QWCarModel *)[self.CardArray objectAtIndex:_Xuhao];
     
-//    //定位按钮
-//    self.locationManager = [[JFLocation alloc] init];
-//    _locationManager.delegate = self;
-//    
-//    
-//    UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*64/667) color:[UIColor colorFromHex:@"#293754"]];
-//    upView.top                      = 0;
-//    
-//    NSString *titleName              = @"购卡";
-//    UIFont *titleNameFont            = [UIFont boldSystemFontOfSize:18];
-//    UILabel *titleNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:titleName font:titleNameFont] font:titleNameFont text:titleName isCenter:NO];
-//    titleNameLabel.textColor         = [UIColor whiteColor];
-//    titleNameLabel.centerX           = upView.centerX;
-//    titleNameLabel.centerY           = upView.centerY +Main_Screen_Height*10/667;
-//    
-//    self.locationButton        = [UIButton buttonWithType:UIButtonTypeCustom];
-//    self.locationButton.frame             = CGRectMake(0, 0, Main_Screen_Width*70/375, Main_Screen_Height*30/667);
-//    self.locationButton.backgroundColor   = [UIColor clearColor];
-//    [self.locationButton setTitle:@"上海" forState:UIControlStateNormal];
-//    [self.locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    self.locationButton.titleLabel.font   = [UIFont systemFontOfSize:14];
-////    self.locationButton.left              = Main_Screen_Width*14/375;
-////    self.locationButton.centerY           = self.navigationView.centerY;
-//    [self.locationButton addTarget:self action:@selector(clickLocationButton) forControlEvents:UIControlEventTouchUpInside];
-//    [self.locationButton setImage:[UIImage imageNamed:@"shangjiadingwei"] forState:UIControlStateNormal];
-//    self.locationButton.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
-//    [self.locationButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
-//    self.locationButton.layer.cornerRadius = 15;
-//    //self.locationButton.clipsToBounds = YES;
-//    self.locationButton.layer.borderWidth = 1;
-//    self.locationButton.layer.borderColor = [UIColor whiteColor].CGColor;
-
-    
-//
     
     UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:self.locationButton];
     self.navigationItem.leftBarButtonItem=leftbarbtn;
-//    //右边试图
-//    
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
-    
     
     
     //无限轮播图
-    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, (Main_Screen_Width - 70*Main_Screen_Height/667) * 9*Main_Screen_Height/667 / 16 + 24)];
-    pageFlowView.backgroundColor = [UIColor whiteColor];
+    NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, 250*Main_Screen_Height/667)];
+    pageFlowView.backgroundColor = [UIColor clearColor];
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
     pageFlowView.minimumPageAlpha = 0.4;
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
     pageFlowView.minimumPageAlpha = 0;
-    //    pageFlowView.minimumPageScale = 0.85;
+//        pageFlowView.minimumPageScale = 0.85;
     pageFlowView.orginPageCount = self.imageArray.count;
     pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
     [_middleview addSubview:pageFlowView];
@@ -307,7 +265,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     
     [pageFlowView.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(_middleview);
-        make.top.equalTo(pageFlowView.mas_bottom).mas_offset(-19*Main_Screen_Height/667);
+        make.top.equalTo(pageFlowView.mas_bottom).mas_offset(-15*Main_Screen_Height/667);
         
     }];
     
@@ -358,7 +316,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
 
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
-    return CGSizeMake(Main_Screen_Width - 84*Main_Screen_Height/667, (Main_Screen_Width - 84*Main_Screen_Height/667) * 9*Main_Screen_Height/667 / 16);
+    return CGSizeMake(300*Main_Screen_Height/667, 192*Main_Screen_Height/667);
 }
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {

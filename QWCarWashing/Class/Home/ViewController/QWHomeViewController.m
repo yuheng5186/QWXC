@@ -33,8 +33,13 @@
 #import "PopupView.h"
 #import "LewPopupViewAnimationDrop.h"
 #import "QWViptequanViewController.h"
+
+#import "QWRecordModel.h"
 @interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *tableview;
+@property (nonatomic, strong) NSMutableArray *GetUserRecordData;
+//@property (nonatomic, strong) UIButton  *locationButton;
+@property (strong, nonatomic)NSString *LocCity;
 @end
 static NSString *cellstr=@"Cellstr";
 @implementation QWHomeViewController
@@ -52,6 +57,12 @@ static NSString *cellstr=@"Cellstr";
     }
     return _tableview;
 }
+-(NSMutableArray *)GetUserRecordData{
+    if (_GetUserRecordData==nil) {
+        _GetUserRecordData=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _GetUserRecordData;
+}
 -(void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden=NO;
     
@@ -61,7 +72,94 @@ static NSString *cellstr=@"Cellstr";
     [self setNagationLeftAndRightButton];
     [self.view addSubview:self.tableview];
     
+    [self setupRefresh];
+    
 }
+
+-(void)setupRefresh
+{
+    self.tableview.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
+        
+        [self headerRereshing];
+        
+    }];
+    
+    // 设置自动切换透明度(在导航栏下面自动隐藏)
+    self.tableview.mj_header.automaticallyChangeAlpha = YES;
+    
+    [self.tableview.mj_header beginRefreshing];
+    
+    
+}
+
+- (void)headerRereshing
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.GetUserRecordData = [[NSMutableArray alloc]init];
+        
+        
+        [self setData];
+        
+    });
+}
+#pragma mark-获取首页展示用户记录和活动列表
+-(void)setData
+{
+    
+    if(self.LocCity == nil)
+    {
+        self.LocCity = @"";
+    }
+    
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"Area":@"上海市"
+                             //                             @"Area":self.LocCity
+                             };
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/GetUserRecord",Khttp] success:^(NSDictionary *dict, BOOL success) {
+           NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                //                [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
+                [self.tableview.mj_header endRefreshing];
+            }
+            else
+            {
+                
+                
+                NSArray *arr = [NSArray array];
+                arr = [dict objectForKey:@"JsonData"];
+                for(NSDictionary *dic in arr)
+                {
+                    QWRecordModel *newrc = [[QWRecordModel alloc]initWithDictionary:dic error:nil];
+                    
+                    [self.GetUserRecordData addObject:newrc];
+                }
+                
+                [self.tableview reloadData];
+                [self.tableview.mj_header endRefreshing];
+            }
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败,请检查定位" autoHidden:YES interval:2];
+            [self.tableview.mj_header endRefreshing];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.tableview.mj_header endRefreshing];
+    }];
+    
+}
+
+
 #pragma mark-设置导航栏左右按钮
 -(void)setNagationLeftAndRightButton{
     //左边试图
@@ -100,7 +198,7 @@ static NSString *cellstr=@"Cellstr";
 }
 #pragma mark-UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 8;
+    return self.GetUserRecordData.count+2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch (section) {
@@ -273,9 +371,16 @@ static NSString *cellstr=@"Cellstr";
         cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
         cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
         return cell2;
-    }else{
+    }
+    else{
         QWHomeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_HomeDetailTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (self.GetUserRecordData.count!=0) {
+            QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:indexPath.section-2];
+            cell.RecordModel=record;
+        }
+        
+       
         return cell;
         
         

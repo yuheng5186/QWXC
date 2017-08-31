@@ -7,7 +7,7 @@
 //
 
 #import "QWBaseViewController.h"
-
+#import "QWCardBagModel.h"
 @interface QWRechargeDetailController : QWBaseViewController
-
+@property(nonatomic,strong)QWCardBagModel *card;
 @end
