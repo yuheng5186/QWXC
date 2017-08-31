@@ -44,16 +44,16 @@
     
     NSString   *headerString     = @"登录";
     UIFont     *headerFont       = [UIFont systemFontOfSize:Main_Screen_Height*20/667];
-    UILabel *deaderLabel         = [UIUtil drawLabelInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*30/667) font:headerFont text:headerString isCenter:NO];
-    deaderLabel.textColor        = [UIColor colorFromHex:@"#febb02"];
-    deaderLabel.textAlignment    = NSTextAlignmentCenter;
+    UILabel *headerLabel         = [UIUtil drawLabelInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*30/667) font:headerFont text:headerString isCenter:NO];
+    headerLabel.textColor        = [UIColor colorFromHex:@"#febb02"];
+    headerLabel.textAlignment    = NSTextAlignmentCenter;
     
-    deaderLabel.centerX          = Main_Screen_Width/2;
-    deaderLabel.top              = Main_Screen_Height*30/667;
+    headerLabel.centerX          = Main_Screen_Width/2;
+    headerLabel.top              = Main_Screen_Height*30/667;
     
     //    UIImage *logoImage          = [UIImage imageNamed:@"WechatIMG3"];
     UIImageView *logoImageView  = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*100/667) imageName:@"huiyuantou"];
-    logoImageView.top           = deaderLabel.bottom +Main_Screen_Height*30/667;
+    logoImageView.top           = headerLabel.bottom +Main_Screen_Height*30/667;
     logoImageView.centerX       = Main_Screen_Width/2;
     
     NSString   *titleString     = @"金顶洗车";
@@ -125,7 +125,7 @@
     remindLabel.textColor        = [UIColor colorFromHex:@"#999999"];
     remindLabel.textAlignment    = NSTextAlignmentCenter;
     remindLabel.centerX          = Main_Screen_Width/2;
-    remindLabel.top              = loginButton.bottom +Main_Screen_Height*100/667;
+    remindLabel.top              = loginButton.bottom +Main_Screen_Height*90/667;
     
     UIButton *updateRuleButton=[[UIButton alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width*320/375, Main_Screen_Height*30/667)];
     [updateRuleButton setTitleColor:[UIColor colorFromHex:@"#293754"] forState:UIControlStateNormal];
@@ -141,7 +141,7 @@
     [updateRuleButton addTarget:self action:@selector(agreeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     updateRuleButton.top              = remindLabel.bottom +Main_Screen_Height*0/667;
     updateRuleButton.centerX          = loginButton.centerX;
-    [self.view addSubview:updateRuleButton];
+    [self.scrollView addSubview:updateRuleButton];
     
 //    [self.scrollView addSubview:self.view];
     [self.view addSubview:self.scrollView];
@@ -227,7 +227,7 @@
 
 - (void) agreeButtonClick:(id)sender {
     
-    QWLoginVC *agreeController      = [[QWLoginVC alloc]init];
+    QWAgreementVC *agreeController      = [[QWAgreementVC alloc]init];
     agreeController.hidesBottomBarWhenPushed    = YES;
     [self.navigationController pushViewController:agreeController animated:YES];
     
