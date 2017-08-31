@@ -31,7 +31,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000积分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Lj-Mh-QEX">
-                    <rect key="frame" x="22" y="156.5" width="69.5" height="19.5"/>
+                    <rect key="frame" x="22" y="154.5" width="69.5" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -54,9 +54,9 @@
                 <constraint firstAttribute="bottom" secondItem="6Lk-SK-rfv" secondAttribute="bottom" id="NeQ-gc-4La"/>
                 <constraint firstItem="Bge-t1-4Rr" firstAttribute="leading" secondItem="JcK-xW-Nlq" secondAttribute="trailing" constant="5" id="VYb-tD-6lQ"/>
                 <constraint firstAttribute="trailing" secondItem="6Lk-SK-rfv" secondAttribute="trailing" id="ciF-3a-hCc"/>
+                <constraint firstAttribute="bottom" secondItem="3Lj-Mh-QEX" secondAttribute="bottom" constant="18" id="iN8-4r-UlZ"/>
                 <constraint firstItem="6Lk-SK-rfv" firstAttribute="leading" secondItem="rCh-rF-4an" secondAttribute="leading" id="mo8-G3-hDh"/>
                 <constraint firstItem="e7L-7r-ZMa" firstAttribute="leading" secondItem="JcK-xW-Nlq" secondAttribute="leading" id="nCQ-Wy-fG1"/>
-                <constraint firstAttribute="bottom" secondItem="3Lj-Mh-QEX" secondAttribute="bottom" constant="16" id="x0P-0d-t9A"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -33,20 +33,20 @@
 
 - (void)showIntroWithCrossDissolve {
     EAIntroPage *page1       = [EAIntroPage page];
-    page1.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introduce_1"]];
+    page1.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introducePage_1"]];
     page1.customView.frame   = self.view.bounds;
     
     
     EAIntroPage *page2       = [EAIntroPage page];
-    page2.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introduce_2"]];
+    page2.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introducePage_2"]];
     page2.customView.frame   = self.view.bounds;
     
     EAIntroPage *page3       = [EAIntroPage page];
-    page3.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introduce_3"]];
+    page3.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introducePage_3"]];
     page3.customView.frame   = self.view.bounds;
     
     EAIntroPage *page4       = [EAIntroPage page];
-    page4.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introduce_4"]];
+    page4.customView         = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"introducePage_4"]];
     page4.customView.frame   = self.view.bounds;
     
     EAIntroView *intro          = [[EAIntroView alloc] initWithFrame:self.view.bounds andPages:@[page1,page2,page3,page4]];
@@ -55,7 +55,7 @@
     intro.pageControlY          = 750;
     //    intro.pageControl.pageIndicatorTintColor = [UIColor colorFromHex:@"#4D4D4D"];
     //    intro.pageControl.currentPageIndicatorTintColor = [UIColor colorFromHex:@"#FFB700"];
-    _experienceBtn              = [UIUtil drawDefaultButton:page4.pageView title:@"开启洗车之旅" target:self action:@selector(experienceButtonClick:)];
+    _experienceBtn              = [UIUtil drawDefaultButton:page4.pageView title:@"马上去洗车" target:self action:@selector(experienceButtonClick:)];
     _experienceBtn.bottom       = self.view.bottom-Main_Screen_Height*73/667;
     _experienceBtn.width        = Main_Screen_Width*200/375;
     _experienceBtn.centerX      = Main_Screen_Width/2;
