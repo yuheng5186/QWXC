@@ -27,7 +27,72 @@
     self.seeDetailbtn.backgroundColor=[UIColor colorFromHex:@"#eaeaea"];
     
 }
+//*contentImage;
+//@property (weak, nonatomic) IBOutlet UILabel *typeName;
+//@property (weak, nonatomic) IBOutlet UILabel *payType;
+//@property (weak, nonatomic) IBOutlet UILabel *Nowtime;
+//@property (weak, nonatomic) IBOutlet UILabel *moneys;
+//@property (weak, nonatomic) IBOutlet UILabel *chedianName;
+//@property (weak, nonatomic) IBOutlet UIButton *seeDetailbtn;
+-(void)setRecordModel:(QWRecordModel *)RecordModel{
+    _RecordModel=RecordModel;
+    self.Nowtime.text=RecordModel.CreateDate;
+//
+    self.moneys.text=RecordModel.RightDes;
+    if(RecordModel.ShowType == 2)
+    {
+//        imageString               = @"xiaofeijilu";
+//        titleString               = @"消费记录";
+//        vipString                 = @"";
+        self.typeName.text=@"消费记录";
+        
+        if(RecordModel.ConsumptionType == 1)
+        {
+            self.payType.text=@"线下门店支付";
+//            1.线下门店支付;2.自动扫码洗车;3.自动扫码洗车支付;4.购买洗车卡(当返回类型为2时用到)
+            self.moneys.text         = [NSString stringWithFormat:@"￥%@",RecordModel.MiddleDes];
+            self.chedianName.text          = RecordModel.BottomDes;
+        }
+        else if(RecordModel.ConsumptionType == 2)
+        {
+            self.payType.text=@"自动扫码洗车";
+            self.typeName.text         = RecordModel.MiddleDes;
+            self.chedianName.text          = [NSString stringWithFormat:@"剩余%@次免费洗车",RecordModel.BottomDes];
+        }
+        else if(RecordModel.ConsumptionType == 3)
+        {
+            self.payType.text=@"自动扫码洗车支付";
+            self.typeName.text          = RecordModel.MiddleDes;
+            self.chedianName.text         = [NSString stringWithFormat:@"支付金额: %@元",RecordModel.BottomDes];
+        }
+        else if(RecordModel.ConsumptionType == 4)
+        {
+            self.payType.text=@"购买洗车卡";
+            self.chedianName.text         = [NSString stringWithFormat:@"您购买%@",RecordModel.MiddleDes];
+           self.chedianName.text          = [NSString stringWithFormat:@"支付金额: %@元",RecordModel.BottomDes];
+        }
+        
+        
+        
+        
+        
+        [self.seeDetailbtn setTitle:@"查看详情" forState:BtnNormal]                ;
+    }
+    
+    else if(RecordModel.ShowType == 1)
+    {
+        self.typeName.text=@"优惠活动";
+//        imageString         = @"quanyi";
+//        titleString         = @"优惠活动";
+//        vipString           = @"zhuanxiang";
+        self.chedianName.text   = RecordModel.MiddleDes;
+        self.chedianName.text    = RecordModel.BottomDes;
+        
+        [self.seeDetailbtn setTitle:@"立即领取" forState:BtnNormal];
+        //        vipString   = @"huiyuanzhuanxiang";
+    }
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
