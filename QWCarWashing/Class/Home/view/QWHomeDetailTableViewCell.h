@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QWRecordModel.h"
 #define QWCellIdentifier_HomeDetailTableViewCell @"QWHomeDetailTableViewCell"
 @interface QWHomeDetailTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *contentImage;
@@ -16,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *moneys;
 @property (weak, nonatomic) IBOutlet UILabel *chedianName;
 @property (weak, nonatomic) IBOutlet UIButton *seeDetailbtn;
-
+@property (nonatomic,strong) QWRecordModel *RecordModel;
 @end
