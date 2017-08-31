@@ -9,5 +9,5 @@
 #import "QWBaseViewController.h"
 
 @interface QWUserRightDetailController : QWBaseViewController
-
+@property(nonatomic,copy)NSString *ConfigCode;
 @end

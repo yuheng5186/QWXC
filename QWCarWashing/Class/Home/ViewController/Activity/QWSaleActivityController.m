@@ -7,21 +7,65 @@
 //
 
 #import "QWSaleActivityController.h"
-#import "QWUserRightDetailController.h"
+#import "QWUserRightDetailViewController.h"
 @interface QWSaleActivityController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    MBProgressHUD *HUD;
+}
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, strong) NSString *area;
+@property (nonatomic, strong) NSMutableArray *CouponListData;
 @end
 
 @implementation QWSaleActivityController
-
+-(NSMutableArray *)CouponListData{
+    if (_CouponListData==nil) {
+        _CouponListData=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _CouponListData;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title      = @"优惠活动";
     [self createSubView];
+     self.area = @"上海市";
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+    [self GetCouponList];
 
+}
+#pragma mark- 优惠活动列表
+-(void)GetCouponList
+{
+    NSDictionary *mulDic = @{
+                             @"GetCardType":@2,
+                             @"Area":self.area
+                             };
+        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardConfigList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+            NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            [_CouponListData addObjectsFromArray:arr];
+            [self.tableView reloadData];
+            [HUD setHidden:YES];
+        }
+        else
+        {
+            [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    
 }
 - (void) createSubView {
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height) style:UITableViewStyleGrouped];
@@ -44,7 +88,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return [self.CouponListData count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -54,16 +98,16 @@
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90;
+    return 90*Main_Screen_Height/667;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     
-    return 10.0f;
+    return 10.0f*Main_Screen_Height/667;
 }
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return 40.01f;
+    return 40.01f*Main_Screen_Height/667;
 }
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -124,25 +168,30 @@
         make.centerY.equalTo(introLab);
         make.leading.equalTo(introLab.mas_trailing).mas_offset(20);
     }];
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[[_CouponListData objectAtIndex:indexPath.section] objectForKey:@"Img"]];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [backV sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"yonghuzhuanxiangditu"]];
     
-    if (indexPath.section == 0) {
-        
-        backV.image = [UIImage imageNamed:@"xinyonghuu"];
-        titleLab.text = @"新用户注册奖励";
-        introLab.text = @"免费获得洗车体验卡一张";
-    }
-    
-    if (indexPath.section == 1) {
-        backV.image = [UIImage imageNamed:@"huiyuanquanyitu"];
-        titleLab.text = @"金顶会员专享权益";
-        introLab.text = @"平台商家下单洗车可抵扣";
-    }
-    
-    if (indexPath.section == 2) {
-        backV.image = [UIImage imageNamed:@"yonghuzhuanxiangditu"];
-        titleLab.text = @"金顶会员专享";
-        introLab.text = @"平台商家下单洗车可抵扣";
-    }
+    titleLab.text = [[_CouponListData objectAtIndex:indexPath.section] objectForKey:@"Description"];
+    introLab.text = [NSString stringWithFormat:@"免费获得洗车%@一张",[[_CouponListData objectAtIndex:indexPath.section] objectForKey:@"CardName"]];
+//    if (indexPath.section == 0) {
+//        
+//        backV.image = [UIImage imageNamed:@"xinyonghuu"];
+//        titleLab.text = @"新用户注册奖励";
+//        introLab.text = @"免费获得洗车体验卡一张";
+//    }
+//    
+//    if (indexPath.section == 1) {
+//        backV.image = [UIImage imageNamed:@"huiyuanquanyitu"];
+//        titleLab.text = @"金顶会员专享权益";
+//        introLab.text = @"平台商家下单洗车可抵扣";
+//    }
+//    
+//    if (indexPath.section == 2) {
+//        backV.image = [UIImage imageNamed:@"yonghuzhuanxiangditu"];
+//        titleLab.text = @"金顶会员专享";
+//        introLab.text = @"平台商家下单洗车可抵扣";
+//    }
     
     
     
@@ -153,8 +202,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    QWUserRightDetailController *rightController    = [[QWUserRightDetailController alloc]init];
+     QWUserRightDetailViewController *rightController     = [[QWUserRightDetailViewController alloc]init];
+   
     rightController.hidesBottomBarWhenPushed        = YES;
+     rightController.ConfigCode                      = [[_CouponListData objectAtIndex:indexPath.section] objectForKey:@"ConfigCode"];
     [self.navigationController pushViewController:rightController animated:YES];
 }
 
