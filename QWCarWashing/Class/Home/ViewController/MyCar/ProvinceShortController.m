@@ -59,7 +59,7 @@
         NSInteger col = i % 8;
         
         //间距
-        CGFloat margin = (Main_Screen_Width - (30 * 8)) / (8 + 1);
+        CGFloat margin = (Main_Screen_Width - (30*Main_Screen_Height/667 * 8)) / (8 + 1);
         
         //x
         CGFloat btnX = margin + (30*Main_Screen_Height/667 + margin) * col;
