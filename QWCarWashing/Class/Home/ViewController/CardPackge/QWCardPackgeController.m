@@ -48,6 +48,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
 }
 -(void)GetCardbagList
 {
+    [self.CardbagData removeAllObjects];
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:Userid]
                              };
@@ -272,9 +273,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (self.CardbagData.count!=0) {
-        QWCardBagModel *card = (QWCardBagModel *)[self.CardbagData objectAtIndex:indexPath.section];
-//        NSLog(@"%@",);
-        cell.cardBagModel=[self.CardbagData objectAtIndex:indexPath.section];
+        cell.cardBagModel=self.CardbagData[indexPath.section];
     }
     return cell;
 }

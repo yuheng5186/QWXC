@@ -151,12 +151,8 @@ static NSString *cellstr=@"cell";
         
         cell.qiandaoClicked=^(void){
             [self Addsign];
-//            PopupView *view = [PopupView defaultPopupView];
-//            view.parentVC   = self;
-//            [self lew_presentPopupView:view animation:[LewPopupViewAnimationDrop new] dismissed:^{
-//                
-//            }];
-        
+
+
         };
         return cell;
 
