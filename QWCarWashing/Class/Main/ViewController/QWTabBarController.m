@@ -11,6 +11,8 @@
 
 @interface QWTabBarController ()
 
+@property (nonatomic, strong)     UIImageView *imageView;
+
 @end
 
 @implementation QWTabBarController
@@ -34,9 +36,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     //管理子视图
     [self addsubviewctl];
+    
+    BOOL firstRun = [[[NSUserDefaults standardUserDefaults]valueForKey:@"firstRun"] boolValue];
+    
+    
+    
+    if (!firstRun) {
+        
+        [[NSUserDefaults standardUserDefaults]setValue:@YES forKey:@"firstRun"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        
+        [self addGuideView];
+        
+    }
+    
+//    [[NSUserDefaults standardUserDefaults]setValue:@NO forKey:@"firstRun"];
+//    [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
+- (void)addGuideView {
+    NSString *imageName = @"qw";
+    
+    UIImage *image = [UIImage imageNamed:imageName];
+    self.imageView = [[UIImageView alloc] initWithImage:image];
+    self.imageView.frame = self.view.bounds;
+    self.imageView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissGuideView)];
+    [self.imageView addGestureRecognizer:tap];
+    
+    [self.view addSubview:self.imageView];
+}
+- (void) dismissGuideView{
+    
+
+    
+    [self.imageView removeFromSuperview];
+}
+
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
@@ -74,7 +116,7 @@
     QWMeViewController *me=[[QWMeViewController alloc]init];
     [self setsubtabbarsyle:me andimg:[UIImage imageNamed:@"wodeh"] andselectimg:[UIImage imageWithRenderingModeorname:@"wodec"] andtitle:@"我的" andnavtitle:@"我的"];
     
-    
+
 }
 #pragma mark-添加子tabbar的样式
 - (void)setsubtabbarsyle:(UIViewController *)ctl andimg:(UIImage *)img1 andselectimg:(UIImage *)img2 andtitle:(NSString *)titles andnavtitle:(NSString *)navstr
