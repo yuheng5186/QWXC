@@ -14,5 +14,5 @@
 +(void)storageObject:(id)object forKey:(NSString*)key;
 
 +(id)getObjectforKey:(NSString*)key;
-+(void)removeObjectForKeyS:(NSString *)key;
++(void)removeAllObjectKeys;
 @end

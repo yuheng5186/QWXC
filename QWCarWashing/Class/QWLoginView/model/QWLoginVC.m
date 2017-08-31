@@ -199,6 +199,7 @@
             
 //            [usertmpModel setValuesForKeysWithDictionary:[dict objectForKey:@"JsonData"]];
 //            //数据本地化
+            [UdStorage storageObject:usertmpModel.UserScore forKey:UserScores];
             [UdStorage storageObject:usertmpModel.Age forKey:UserAge];
            [UdStorage storageObject:usertmpModel.UserName forKey:UserNamer];
             [UdStorage storageObject:usertmpModel.Mobile forKey:UserPhone];

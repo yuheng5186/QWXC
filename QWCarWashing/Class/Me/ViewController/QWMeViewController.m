@@ -182,8 +182,12 @@ static NSString *cellstr=@"cell";
         return cell;
     } else if (indexPath.section==2){
         MenuIconCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_MenuIconCell forIndexPath:indexPath];
-        
-        [cell setTitle:@"金顶会员" icon:@"huiyuanchequan" detailtitle:@"200积分" ];
+        NSString *score;
+        if (!IsNullIsNull([UdStorage getObjectforKey:Userid])) {
+            
+            score=[NSString stringWithFormat:@"%@积分",([UdStorage getObjectforKey:UserScores]==nil?0:[UdStorage getObjectforKey:UserScores]) ];
+        }
+        [cell setTitle:@"金顶会员" icon:@"huiyuanchequan" detailtitle:score ];
         return cell;
 
     }else if(indexPath.section == 3){

@@ -11,7 +11,7 @@
 #import "QWAboutController.h"
 #import "QWFeedbackController.h"
 #import "QWGetScoreController.h"
-
+#import "QWLoginVC.h"
 
 @interface QWSettingController ()<UITableViewDelegate,UITableViewDataSource,LKAlertViewDelegate>
 @property(nonatomic,strong) UIView *contentview;
@@ -248,13 +248,12 @@
         }else{
             //清空数据
             NSLog(@"退出");
-            [UdStorage removeObjectForKeyS:Userid];
-            [UdStorage removeObjectForKeyS:UserNamer];
-//                        LoginViewController *loginViewControler     = [[LoginViewController alloc] init];
-//            UINavigationController *navController       = [[UINavigationController alloc] initWithRootViewController:loginViewControler];
-//            navController.navigationBar.hidden          = YES;
-//            
-//            [self presentViewController: navController animated: YES completion:nil];
+            [UdStorage removeAllObjectKeys];
+            QWLoginVC *loginViewControler     = [[QWLoginVC alloc] init];
+            UINavigationController *navController       = [[UINavigationController alloc] initWithRootViewController:loginViewControler];
+            navController.navigationBar.hidden          = YES;
+//
+            [self presentViewController: navController animated: YES completion:nil];
             
         }
     }else{

@@ -79,6 +79,7 @@
 #define UserHead         @"Headimg"             //用户头像
 #define UserSex         @"userSex"             //用户性别
 #define UserAge        @"userAge"             //用户年龄
+#define UserScores        @"UserScore"             //用户年龄
 #define UserLoading      @"userLoading"          //用户登录
 #define orderPayId       @"orderPayId"           //支付id
 //NSLog
