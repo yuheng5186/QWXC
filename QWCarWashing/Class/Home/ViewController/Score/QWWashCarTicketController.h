@@ -7,7 +7,9 @@
 //
 
 #import "QWBaseViewController.h"
-
+#import "QWCardConfigGradeModel.h"
 @interface QWWashCarTicketController : QWBaseViewController
+@property(nonatomic,strong)QWCardConfigGradeModel *card;
 
+@property(nonatomic,copy)NSString *CurrentScore;
 @end

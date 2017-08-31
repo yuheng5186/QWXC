@@ -7,10 +7,18 @@
 //
 
 #import "QWMemberRightsDetailController.h"
+
 #import "QWCardPackgeController.h"
-
 @interface QWMemberRightsDetailController ()<UITableViewDelegate, UITableViewDataSource>
-
+{
+    UILabel *cardNameLab;
+    UILabel *invalidLab;
+    MBProgressHUD *HUD;
+}
+@property(nonatomic,strong)UITableView *noticeView;
+@property(nonatomic,strong)UIButton *getBtn;
+//@property (nonatomic, strong) NSMutableDictionary *GradeDetailDic;
+@property (nonatomic, strong) NSString *area;
 @end
 
 @implementation QWMemberRightsDetailController
@@ -20,8 +28,96 @@
     // Do any additional setup after loading the view.
     self.title      = @"特权详情";
      [self setupUI];
+    self.area = @"上海市";
+    if(self.card == nil)
+    {
+//        self.GradeDetailDic = [[NSMutableDictionary alloc]init];
+        
+        
+        HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        HUD.removeFromSuperViewOnHide =YES;
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.labelText = @"加载中";
+        HUD.minSize = CGSizeMake(132.f, 108.0f);
+        
+        
+        [self requestCardConfigGradeDetail];
+    }
+    else
+    {
+//        self.GradeDetailDic=[[NSMutableDictionary alloc]init];
+        
+//        self.GradeDetailDic = [[NSMutableDictionary alloc]initWithDictionary:self.nextdic];
+        [self UpdateUI];
+    }
 }
-
+-(void)UpdateUI
+{
+    cardNameLab.text =self.card.CardName;
+//    [_GradeDetailDic objectForKey:@"CardName"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *datenow = [NSDate date];
+    NSDate *newDate = [datenow dateByAddingTimeInterval:60 * 60 * 24 * self.card.ExpiredDay];
+    invalidLab.text = [NSString stringWithFormat:@"截止日期:%@",[formatter stringFromDate:newDate]];
+    
+    NSArray *arr = @[@"",@"普通会员",@"白银会员",@"黄金会员",@"铂金会员",@"钻石会员",@"黑钻会员"];
+    if([self.currentUseLevel intValue] < [self.nextUseLevel intValue])
+    {
+        [self.getBtn setTitle:[NSString stringWithFormat:@"升级到%@可以获取",[arr objectAtIndex:[self.nextUseLevel intValue]]] forState:UIControlStateNormal];
+        self.getBtn.enabled = NO;
+    }
+    else
+    {
+        if(self.card.CardQuantity != 0)
+        {
+            
+        }
+        else
+        {
+            [self.getBtn setTitle:@"该卡已领取完毕" forState:UIControlStateNormal];
+            self.getBtn.enabled = NO;
+        }
+    }
+    
+    
+    
+    
+    [_noticeView reloadData];
+    
+}
+-(void)requestCardConfigGradeDetail
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"ConfigCode":self.ConfigCode,
+                             @"UseLevel":self.currentUseLevel
+                             };
+   
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/CardConfigGradeDetail",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+//            self.GradeDetailDic = [dict objectForKey:@"JsonData"];
+            self.card=[[QWCardConfigGradeModel alloc]initWithDictionary:[dict objectForKey:@"JsonData"] error:nil];
+                [self UpdateUI];
+            
+            [HUD setHidden:YES];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    
+}
 - (void)setupUI {
     
     UIView *containView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 310*Main_Screen_Height/667)];
@@ -31,7 +127,7 @@
     cardImgV.image = [UIImage imageNamed:@"bg_card"];
     [containView addSubview:cardImgV];
     
-    UILabel *cardNameLab = [[UILabel alloc] init];
+    cardNameLab = [[UILabel alloc] init];
     cardNameLab.text = @"体验卡";
     cardNameLab.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
     [cardImgV addSubview:cardNameLab];
@@ -41,7 +137,7 @@
     introLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
     [cardImgV addSubview:introLab];
     
-    UILabel *invalidLab = [[UILabel alloc] init];
+   invalidLab = [[UILabel alloc] init];
     invalidLab.text = @"截止日期：2017-8-10";
     invalidLab.textColor = [UIColor colorFromHex:@"#999999"];
     invalidLab.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
@@ -52,7 +148,7 @@
     brandLab.font = [UIFont systemFontOfSize:11*Main_Screen_Height/667];
     [cardImgV addSubview:brandLab];
     
-    UIButton *getBtn = [UIUtil drawDefaultButton:containView title:@"立即领取" target:self action:@selector(didClickGetBtn)];
+   self.getBtn = [UIUtil drawDefaultButton:containView title:@"立即领取" target:self action:@selector(didClickGetBtn)];
     
     UIButton *checkCardBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [checkCardBtn setTitle:@"查看卡包" forState:UIControlStateNormal];
@@ -100,7 +196,7 @@
         make.bottom.equalTo(cardImgV).mas_offset(-18*Main_Screen_Height/667);
     }];
     
-    [getBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.getBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(cardImgV.mas_bottom).mas_offset(15*Main_Screen_Height/667);
         make.centerX.equalTo(containView);
         make.width.mas_equalTo(351*Main_Screen_Height/667);
@@ -108,7 +204,7 @@
     }];
     
     [checkCardBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(getBtn.mas_bottom);
+        make.top.equalTo(self.getBtn.mas_bottom);
         make.centerX.equalTo(containView);
         make.height.mas_equalTo(45*Main_Screen_Height/667);
         make.width.mas_equalTo(100*Main_Screen_Height/667);
@@ -279,9 +375,80 @@
 #pragma mark -
 - (void)didClickGetBtn {
     
-    [self.view showInfo:@"领取成功" autoHidden:YES interval:1];
+    [self RequestCard];
 }
+#pragma mark-领取卡片
+-(void)RequestCard{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *datenow = [NSDate date];
+    NSDate *newDate = [datenow dateByAddingTimeInterval:60 * 60 * 24 * self.card.ExpiredDay];
+    
+//    NSLog(@"%@",card);
+    
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"ConfigCode":self.ConfigCode,
+                             @"UseLevel":self.currentUseLevel,
+                             @"GetCardType":[NSString stringWithFormat:@"%ld",self.card.GetCardType],
+                             @"Area":self.card.Area,
+                             @"CardCount":[NSString stringWithFormat:@"%ld",self.card.CardCount],
+                             @"CardName":self.card.CardName,
+                             @"CardPrice":[NSString stringWithFormat:@"%@",self.card.CardPrice],
+                             @"CardType":[NSString stringWithFormat:@"%ld",self.card.CardType],
+                             @"Description":self.card.Description,
+                             @"ExpStartDates":[NSString stringWithFormat:@"%@",[formatter stringFromDate:datenow]],
+                             @"ExpEndDates":[NSString stringWithFormat:@"%@",[formatter stringFromDate:newDate]],
+                             @"Integralnum": @1,
+                             };
+    
+    
+    NSLog(@"%@",mulDic);
+    
+   
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/ReceiveCardInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            
+            [self.view showInfo:@"领取成功" autoHidden:YES interval:2];
+            
+            
+            
+            
+            NSLog(@"旧：%ld",self.card.CardQuantity);
+            self.card.CardQuantity= self.card.CardQuantity-1;
+            NSLog(@"新：%ld",self.card.CardQuantity);
+//            [_GradeDetailDic setObject:[NSString stringWithFormat:@"%d",num-1] forKey:@"CardQuantity"];
+            
+            NSNotification * notice = [NSNotification notificationWithName:@"receivesuccess" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+            //            self.GradeDetailDic = [dict objectForKey:@"JsonData"];
+            if(self.card.CardQuantity != 0)
+            {
+                
+            }
+            else
+            {
+                [_getBtn setTitle:@"该卡已领取完毕" forState:UIControlStateNormal];
+                _getBtn.enabled = NO;
+            }
+            
+            
+        }
+        else
+        {
+            [self.view showInfo:@"领取失败" autoHidden:YES interval:2];
+        }
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"领取失败" autoHidden:YES interval:2];
+        
+    }];
+    
 
+
+}
 - (void)didClickCheckCardBtn {
     
     QWCardPackgeController *VC = [[QWCardPackgeController alloc] init];

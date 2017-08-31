@@ -31,7 +31,10 @@
     [self.vipType setTitleEdgeInsets:UIEdgeInsetsMake(1, -self.vipType.imageView.image.size.width, 0, self.vipType.imageView.image.size.width)];
     [self.vipType setImageEdgeInsets:UIEdgeInsetsMake(1, self.vipType.titleLabel.bounds.size.width, 0, -self.vipType.titleLabel.bounds.size.width)];
     self.ScoreNum.titleLabel.font=[UIFont systemFontOfSize:13 weight:5];
-    [self.ScoreNum setTitle:@"1680积分" forState:BtnNormal];
+    
+    NSString *userscorestr= [NSString stringWithFormat:@"%@积分",[UdStorage getObjectforKey:UserScores]==nil?0:[UdStorage getObjectforKey:UserScores]];
+    [self.ScoreNum setTitle:userscorestr forState:BtnNormal];
+
     self.ScoreNum.imageView.contentMode=UIViewContentModeScaleAspectFill;
     [self.ScoreNum setImage:[UIImage imageNamed:@"huiyuandianjitiaozhuan"] forState:UIControlStateNormal];
     

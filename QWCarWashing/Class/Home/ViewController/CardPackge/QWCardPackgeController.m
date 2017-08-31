@@ -13,8 +13,11 @@
 #import "QWRechargeDetailController.h"
 #import "QWCardBagModel.h"
 #import "UIScrollView+EmptyDataSet.h"//第三方空白页
+#import "MBProgressHUD.h"
 @interface QWCardPackgeController ()<UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
-
+{
+    MBProgressHUD *HUD;
+}
 //@property (nonatomic, weak) UIView *containerView;
 //
 //@property (nonatomic, weak) UIScrollView *cardScrollView;
@@ -25,7 +28,6 @@
 @property (nonatomic, weak) UITableView *rechargeView;
 
 @property (nonatomic, strong) NSMutableArray *CardbagData;
-
 
 @end
 static NSString *id_rechargeCell = @"id_rechargeCell";
@@ -44,6 +46,12 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
 
      [self setupUI];
     self.view.backgroundColor=kColorTableBG;
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+
     [self GetCardbagList];
 }
 -(void)GetCardbagList
@@ -61,10 +69,11 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
             for(NSDictionary *dic in arr)
             {
                 QWCardBagModel *model = [[QWCardBagModel alloc]initWithDictionary:dic error:nil];;
-                
+
                 [self.CardbagData addObject:model];
             }
             [self.rechargeView reloadData];
+            [HUD setHidden:YES];
         }
         else
         {

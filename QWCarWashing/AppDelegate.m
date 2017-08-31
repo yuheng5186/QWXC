@@ -32,9 +32,7 @@
     tabbarc.tabBar.backgroundColor=[UIColor whiteColor];
     self.window.rootViewController=tabbarc;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
-    
-    
+
     myDelegate = [[UIApplication sharedApplication] delegate];
     if(QWScreenheight > 568)
     {

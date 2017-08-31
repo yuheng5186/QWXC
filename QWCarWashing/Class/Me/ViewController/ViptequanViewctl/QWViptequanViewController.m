@@ -112,7 +112,7 @@
                              
                              };
        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardConfigList",Khttp] success:^(NSDictionary *dict, BOOL success) {
-           NSLog(@"%@",dict);
+           NSLog(@"等级特权查：%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             _MembershipprivilegesDic = [dict objectForKey:@"JsonData"];
@@ -332,7 +332,13 @@
         lab.backgroundColor=[UIColor whiteColor];
         lab.font=[UIFont systemFontOfSize:16*Main_Screen_Height/667];
         lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
-        lab.text=@"   我的特权";
+        if (section==1) {
+            lab.text=@"   我的特权";
+        }else{
+            lab.text=@"   升级后可获得特权";
+        
+        }
+        
         [headerview addSubview:lab];
         return headerview;
     }else{
@@ -364,15 +370,15 @@
         {
             QWCardConfigGradeModel *model=_CurrentMembershipprivilegesArr[indexPath.row];
             VC.ConfigCode = [NSString stringWithFormat:@"%ld",model.ConfigCode];
-            VC.nextUseLevel = [NSString stringWithFormat:@"%ld",model.UseLevel];
+            VC.nextUseLevel = [NSString stringWithFormat:@"%ld",model.CurrentOrNextLevel];
             
         }
         else
         {
-             QWCardConfigGradeModel *model=_CurrentMembershipprivilegesArr[indexPath.row];
+             QWCardConfigGradeModel *model=_NextMembershipprivilegesArr[indexPath.row];
             VC.ConfigCode =[NSString stringWithFormat:@"%ld",model.ConfigCode];
             VC.nextUseLevel =[NSString stringWithFormat:@"%ld",model.UseLevel] ;
-            VC.nextdic = [_NextMembershipprivilegesArr objectAtIndex:indexPath.row];
+            VC.card = [_NextMembershipprivilegesArr objectAtIndex:indexPath.row];
         }
         VC.currentUseLevel =_MembershipprivilegesDic[@"Level_id"];
         [self.navigationController pushViewController:VC animated:YES];

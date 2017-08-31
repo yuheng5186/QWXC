@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CarTicketView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *CardNames;
+@property (weak, nonatomic) IBOutlet UILabel *ScoreLabels;
 
 + (instancetype)carTicketView;
 

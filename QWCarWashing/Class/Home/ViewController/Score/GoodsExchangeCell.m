@@ -20,7 +20,17 @@
     
     return self;
 }
+//@property (nonatomic, weak) UIImageView *backImgV;
+//@property (nonatomic, weak) UILabel *nameLab;
+//@property (nonatomic, weak) UILabel *introLab;
+//@property (nonatomic, weak) UILabel *scoreLab;
+-(void)setCardconfig:(QWCardConfigGradeModel *)cardconfig{
+    _cardconfig=cardconfig;
+    self.nameLab.text=cardconfig.CardName;
+    self.introLab.text=cardconfig.Description;
+    self.scoreLab.text=[NSString stringWithFormat:@"%ld分",cardconfig.Integralnum];
 
+}
 
 - (void)setupUI {
     

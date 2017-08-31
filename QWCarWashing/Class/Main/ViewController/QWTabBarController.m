@@ -36,19 +36,21 @@
     [super viewDidLoad];
     //管理子视图
     [self addsubviewctl];
+    
+    
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-    for (UIView *views in self.tabBar.subviews)
-    {
-        if ([views isKindOfClass:NSClassFromString(@"UITabBarButton")])
-        {
-            //            [views removeFromSuperview];
-            
-        }
-    }
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:YES];
+//    for (UIView *views in self.tabBar.subviews)
+//    {
+//        if ([views isKindOfClass:NSClassFromString(@"UITabBarButton")])
+//        {
+//            //            [views removeFromSuperview];
+//            
+//        }
+//    }
+//}
 #pragma mark-添加子视图控制器
 - (void)addsubviewctl
 {

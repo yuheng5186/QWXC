@@ -16,10 +16,15 @@
 #import "QWWashCarTicketController.h"
 #import "QWScoreDetailController.h"
 #import "QWScoreheaderTableViewCell.h"
+#import "QWCardConfigGradeModel.h"
 @interface QWScoreController ()<UITableViewDelegate,UITableViewDataSource>
+{
+  MBProgressHUD *HUD;
 
+}
 @property (nonatomic, strong) UITableView *exchangListView;
-
+@property (nonatomic, strong) NSMutableDictionary *MembershipUserScore;
+@property (nonatomic, strong) NSMutableArray *MembershipUserScoreArray;
 @end
 
 static NSString *id_exchangeCell = @"id_exchangeCell";
@@ -61,12 +66,71 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     
     
     [self.view addSubview:self.exchangListView];
+ 
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+    _MembershipUserScore = [[NSMutableDictionary alloc]init];
+    _MembershipUserScoreArray = [[NSMutableArray alloc]init];
+    [self GetMembershipUserScore];
+
+
+
+}
+#pragma mark-获取会员领取,积分兑换列表
+-(void)GetMembershipUserScore
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"GetCardType":@5,
+                             
+                             };
     
-    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardConfigList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            _MembershipUserScore = [dict objectForKey:@"JsonData"];
+            
+            
+            NSArray * arr = [_MembershipUserScore objectForKey:@"cardConfigList"];
+            
+            for(NSDictionary *dic in arr)
+            {
+                QWCardConfigGradeModel *card = [[QWCardConfigGradeModel alloc]initWithDictionary:dic error:nil];
+               
+                [_MembershipUserScoreArray addObject:card];
+            }
+            
+
+            
+           
+            
+            [_exchangListView reloadData];
+            
+            [HUD setHidden:YES];
+            
+            
+            
+            APPDELEGATE.currentUser.UserScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]] ;
+            
+            [UdStorage storageObject:[_MembershipUserScore objectForKey:@"UserScore"] forKey:UserScores];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
     
 }
-
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -97,7 +161,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==1) {
-        return 3;
+        return _MembershipUserScoreArray.count;
     }else{
         return 1;
     }
@@ -114,11 +178,27 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
         [scoreheadercell.goUpGrade addTarget:self action:@selector(clickUpgradeBtn:) forControlEvents:BtnTouchUpInside];
         [scoreheadercell.ScoreNum addTarget:self action:@selector(clickMemberScoreBtn:) forControlEvents:BtnTouchUpInside];
         [scoreheadercell.AddScore addTarget:self action:@selector(clickEarnScoreBtn:) forControlEvents:BtnTouchUpInside];
-
+        if (_MembershipUserScore.count!=0) {
+            NSArray *arr2 = @[@"",@"普通会员",@"白银会员",@"黄金会员",@"铂金会员",@"钻石会员",@"黑钻会员"];
+            
+            NSUInteger num = [[NSString stringWithFormat:@"%@",_MembershipUserScore[@"Level_id"]] integerValue];
+            
+            
+            
+            [scoreheadercell.vipType setTitle:[arr2 objectAtIndex:num] forState:UIControlStateNormal];
+            [scoreheadercell.headerImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kHTTPImg,_MembershipUserScore[@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"huiyuantou"]];
+//            scoreheadercell.phoneNum.text = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"Name"]];
+            [scoreheadercell.ScoreNum setTitle:[NSString stringWithFormat:@"%@分",_MembershipUserScore[@"UserScore"]] forState:UIControlStateNormal];
+        }
+        scoreheadercell.headerImage.layer.cornerRadius =  scoreheadercell.headerImage.bounds.size.width/2;
+         scoreheadercell.headerImage.clipsToBounds=YES;
         return scoreheadercell;
     }else{
          GoodsExchangeCell *changeCell = [tableView dequeueReusableCellWithIdentifier:id_exchangeCell forIndexPath:indexPath];
        changeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (_MembershipUserScoreArray.count!=0) {
+            changeCell.cardconfig=_MembershipUserScoreArray[indexPath.row];
+        }
         return changeCell;
     
     }
@@ -186,7 +266,11 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    
+    QWCardConfigGradeModel *newcard = (QWCardConfigGradeModel *)[_MembershipUserScoreArray objectAtIndex:indexPath.row];
     QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
+    ticketVC.card = newcard;
+    ticketVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
     ticketVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:ticketVC animated:YES];
 }
