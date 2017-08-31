@@ -60,6 +60,9 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     [leftButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= leftItem;
+    
+     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"积分规则" style:UIBarButtonItemStyleDone target:self action:@selector(ScoreRuleOnclick:)];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
     // Do any additional setup after loading the view.
     self.title  = @"金顶会员";
     self.view.backgroundColor   = [UIColor whiteColor];
@@ -77,6 +80,11 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     [self GetMembershipUserScore];
 
 
+
+}
+#pragma mark-积分规则
+-(void)ScoreRuleOnclick:(id)sender{
+    
 
 }
 #pragma mark-获取会员领取,积分兑换列表
