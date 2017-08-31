@@ -58,8 +58,8 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     // Do any additional setup after loading the view.
     self.title  = @"金顶会员";
     self.view.backgroundColor   = [UIColor whiteColor];
-   
-
+    
+    
     [self.view addSubview:self.exchangListView];
     
     
