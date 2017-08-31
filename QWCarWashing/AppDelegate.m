@@ -28,9 +28,7 @@
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor=[UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    QWTabBarController *tabbarc=[[QWTabBarController alloc]init];
-    tabbarc.tabBar.backgroundColor=[UIColor whiteColor];
-    self.window.rootViewController=tabbarc;
+
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     myDelegate = [[UIApplication sharedApplication] delegate];

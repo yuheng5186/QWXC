@@ -249,6 +249,9 @@
             //清空数据
             NSLog(@"退出");
             [UdStorage removeAllObjectKeys];
+            [[NSUserDefaults standardUserDefaults] setValue:@NO forKey:@"firstRun"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
             QWLoginVC *loginViewControler     = [[QWLoginVC alloc] init];
             UINavigationController *navController       = [[UINavigationController alloc] initWithRootViewController:loginViewControler];
             navController.navigationBar.hidden          = YES;
