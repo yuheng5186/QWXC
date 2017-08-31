@@ -165,8 +165,8 @@ static NSString *cellstr=@"Cellstr";
     //左边试图
     UIImageView *btn=[UIImageView new];
     
-    btn.contentMode=UIViewContentModeScaleAspectFit;
-    btn.frame = CGRectMake(0, 0, Main_Screen_Width*34/375, Main_Screen_Height*34/667);
+    btn.contentMode=UIViewContentModeScaleAspectFill;
+    btn.frame = CGRectMake(0, 0, Main_Screen_Width*40/375, Main_Screen_Height*40/667);
     if (!IsNullIsNull([UdStorage getObjectforKey:Userid])) {
         NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
         NSURL *url=[NSURL URLWithString:ImageURL];
@@ -174,7 +174,7 @@ static NSString *cellstr=@"Cellstr";
         [btn sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
     }
     btn.clipsToBounds=YES;
-    btn.layer.cornerRadius=(Main_Screen_Height*34/667)/2;
+    btn.layer.cornerRadius=(Main_Screen_Height*40/667)/2;
     btn.top     = Main_Screen_Height*5/667;
 
     
@@ -412,6 +412,9 @@ static NSString *cellstr=@"Cellstr";
                     NSString *targetTime = [outputFormatter stringFromDate:inputDate];
                     
                     [UdStorage storageObject:targetTime forKey:UserSignTime];
+                    NSString *newsuserscore=[NSString stringWithFormat:@"%ld",[[UdStorage getObjectforKey:UserScores] integerValue]+10];
+                    [UdStorage storageObject:newsuserscore forKey:UserScores];
+                    
                     
                     PopupView *view = [PopupView defaultPopupView];
                     view.parentVC = self;

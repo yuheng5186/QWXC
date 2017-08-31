@@ -14,6 +14,7 @@
 
 -(void)setCardBagModel:(QWCardBagModel *)cardBagModel{
     cardBagModel=_cardBagModel;
+    NSLog(@"%@===%ld",cardBagModel.Description,cardBagModel.CardCount);
     self.CardnameLabels.text = cardBagModel.CardName;
     self.CarddesLabels.text = [NSString stringWithFormat:@"%@ 免费洗车%ld次",cardBagModel.Description,cardBagModel.CardCount];
     

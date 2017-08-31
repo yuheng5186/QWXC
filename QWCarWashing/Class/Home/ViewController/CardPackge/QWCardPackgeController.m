@@ -49,7 +49,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
 -(void)GetCardbagList
 {
     NSDictionary *mulDic = @{
-                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"]
+                             @"Account_Id":[UdStorage getObjectforKey:Userid]
                              };
 [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardInfoList",Khttp] success:^(NSDictionary *dict, BOOL success) {
     NSLog(@"%@",dict);
@@ -59,11 +59,11 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
             arr = [dict objectForKey:@"JsonData"];
             for(NSDictionary *dic in arr)
             {
-                QWCardBagModel *model = [[QWCardBagModel alloc]initWithDictionary:dict error:nil];;
+                QWCardBagModel *model = [[QWCardBagModel alloc]initWithDictionary:dic error:nil];;
                 
                 [self.CardbagData addObject:model];
             }
-            [_rechargeView reloadData];
+            [self.rechargeView reloadData];
         }
         else
         {
@@ -148,7 +148,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
             else if([[[dict objectForKey:@"JsonData"] objectForKey:@"Activationstate"] integerValue] == 1)
             {
                 [self.view showInfo:@"激活成功" autoHidden:YES interval:2];
-                _CardbagData = [[NSMutableArray alloc]init];
+               
                 [self GetCardbagList];
             }
             else if([[[dict objectForKey:@"JsonData"]objectForKey:@"Activationstate"] integerValue] == 2)
@@ -273,7 +273,8 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     
     if (self.CardbagData.count!=0) {
         QWCardBagModel *card = (QWCardBagModel *)[self.CardbagData objectAtIndex:indexPath.section];
-        cell.cardBagModel=card;
+//        NSLog(@"%@",);
+        cell.cardBagModel=[self.CardbagData objectAtIndex:indexPath.section];
     }
     return cell;
 }
