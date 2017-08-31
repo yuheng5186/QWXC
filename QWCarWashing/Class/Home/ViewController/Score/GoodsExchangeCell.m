@@ -79,7 +79,7 @@
     
     [scoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.backImgV).mas_offset(22*Main_Screen_Height/667);
-        make.bottom.equalTo(self.backImgV).mas_offset(-18*Main_Screen_Height/667);
+        make.bottom.equalTo(self.backImgV).mas_offset(-16*Main_Screen_Height/667);
     }];
     
 }

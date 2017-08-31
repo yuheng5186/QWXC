@@ -14,11 +14,20 @@
 
 #import "QWMemberRightsDetailController.h"
 
-
+#import "QWCardConfigGradeModel.h"
 
 @interface QWViptequanViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    MBProgressHUD *HUD;
+}
 @property(strong,nonatomic)UITableView*tableview;
+@property (nonatomic, strong) NSMutableArray *MembershipprivilegesArray;
+@property (nonatomic, strong) NSMutableDictionary *MembershipprivilegesDic;
+@property (nonatomic, strong) NSMutableArray *NextMembershipprivilegesArr;
+@property (nonatomic, strong) NSMutableArray *CurrentMembershipprivilegesArr;
+@property (nonatomic, strong) NSString *area;
+@property (nonatomic, strong)UIButton *gradeBtns;
+
 @end
 
 #define QWCellIdentifier_VipHeaderTableViewCell @"QWVipHeaderTableViewCell"
@@ -69,6 +78,7 @@
     //    }];
     gradeBtn.titleLabel.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
     [gradeBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
+    self.gradeBtns=gradeBtn;
     [containView addSubview:gradeBtn];
     [gradeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(containView);
@@ -81,6 +91,71 @@
     
     
     [gradeBtn addTarget:self action:@selector(clickHowToIncreaseGradeBtn) forControlEvents:UIControlEventTouchUpInside];
+    self.area = @"上海市";
+    _MembershipprivilegesArray = [[NSMutableArray alloc]init];
+    _NextMembershipprivilegesArr = [[NSMutableArray alloc]init];
+    _CurrentMembershipprivilegesArr = [[NSMutableArray alloc]init];
+
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+    [self GetMembershipprivileges];
+}
+#pragma mark-等级特权查询
+-(void)GetMembershipprivileges
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"GetCardType":@3,
+                             
+                             };
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardConfigList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+           NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            _MembershipprivilegesDic = [dict objectForKey:@"JsonData"];
+            
+            
+            NSArray * arr = [_MembershipprivilegesDic objectForKey:@"cardConfigList"];
+            
+            for(NSDictionary *dic in arr)
+            {
+                QWCardConfigGradeModel *tempmodel=[[QWCardConfigGradeModel alloc]initWithDictionary:dic error:nil];
+                
+                if(tempmodel.CurrentOrNextLevel == 1)
+                {
+                    [_CurrentMembershipprivilegesArr addObject:tempmodel];
+                }
+                else
+                {
+                    [_NextMembershipprivilegesArr addObject:tempmodel];
+                }
+            }
+           
+            
+            APPDELEGATE.currentUser.UserScore = [_MembershipprivilegesDic objectForKey:@"UserScore"];
+            
+            [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"UserScore"] forKey:UserScores];
+            [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"Headimg"] forKey:UserHead];
+            [self.tableview reloadData];
+            
+            
+            [HUD setHidden:YES];
+            
+        }
+        else
+        {
+            [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }];
+    
 }
 - (void)clickHowToIncreaseGradeBtn {
     
@@ -132,20 +207,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
+ 
     switch (section) {
-        case 0:
-            return 1;
-            break;
         case 1:
-            return 1;
+            return [_CurrentMembershipprivilegesArr count];
+            break;
+            
+        case 2:
+            return [_NextMembershipprivilegesArr count];
             break;
             
         default:
             return 1;
             break;
     }
-    return 0;
+  
     
 }
 
@@ -173,6 +249,18 @@
         cell.imageViews.image=[UIImage imageNamed:@"shengjihoukaquan"];
         cell.titlelabel.text=@"10元洗车倦";
         cell.detaillabel.text=@"门店洗车时可抵扣相应金额，每月领取一次";
+        if (indexPath.section==2) {
+            if (_NextMembershipprivilegesArr.count!=0) {
+                cell.cardConfogmodel=_NextMembershipprivilegesArr[indexPath.row];
+            }
+        }else{
+            
+            if (_CurrentMembershipprivilegesArr.count!=0) {
+                cell.cardConfogmodel=_CurrentMembershipprivilegesArr[indexPath.row];
+            }
+        
+        }
+        
         return cell;
     }else
     {
@@ -185,6 +273,40 @@
         cell.backgroundColor    = [UIColor whiteColor];
         cell.accessoryType=UITableViewCellAccessoryNone;
         cell.selectionStyle =  UITableViewCellSelectionStyleNone;
+        if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 1)
+        {
+            cell.username.text = @"普通会员";
+            [self.gradeBtns setTitle:@"如何升级到白银会员" forState:UIControlStateNormal];
+        }
+        else if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 2)
+        {
+            cell.username.text = @"白银会员";
+            [self.gradeBtns setTitle:@"如何升级到黄金会员" forState:UIControlStateNormal];
+        }
+        else if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 3)
+        {
+            cell.username.text = @"黄金会员";
+            [self.gradeBtns setTitle:@"如何升级到铂金会员" forState:UIControlStateNormal];
+        }
+        else if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 4)
+        {
+            cell.username.text = @"铂金会员";
+            [self.gradeBtns setTitle:@"如何升级到钻石会员" forState:UIControlStateNormal];
+        }
+        else if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 5)
+        {
+            cell.username.text = @"钻石会员";
+            [self.gradeBtns setTitle:@"如何升级到黑钻会员" forState:UIControlStateNormal];
+        }
+        else if([_MembershipprivilegesDic[@"Level_id"] integerValue] == 6)
+        {
+            cell.username.text = @"黑钻会员";
+            [self.gradeBtns setTitle:@"您已经是黑钻会员" forState:UIControlStateNormal];
+        }
+        cell.headerimage.contentMode=UIViewContentModeScaleAspectFill;
+        
+        cell.headerimage.layer.cornerRadius = cell.headerimage.bounds.size.width/2;
+        cell.headerimage.clipsToBounds=YES;
         return cell;
     }
     //        else {
@@ -231,10 +353,29 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+   
+    
     if (indexPath.section != 0) {
         
-        QWMemberRightsDetailController      *rightDetailVC  = [[QWMemberRightsDetailController alloc]init];
-        [self.navigationController pushViewController:rightDetailVC animated:YES];
+        QWMemberRightsDetailController      *VC  = [[QWMemberRightsDetailController alloc]init];
+         VC.hidesBottomBarWhenPushed = YES;
+        
+        if(indexPath.section == 1)
+        {
+            QWCardConfigGradeModel *model=_CurrentMembershipprivilegesArr[indexPath.row];
+            VC.ConfigCode = [NSString stringWithFormat:@"%ld",model.ConfigCode];
+            VC.nextUseLevel = [NSString stringWithFormat:@"%ld",model.UseLevel];
+            
+        }
+        else
+        {
+             QWCardConfigGradeModel *model=_CurrentMembershipprivilegesArr[indexPath.row];
+            VC.ConfigCode =[NSString stringWithFormat:@"%ld",model.ConfigCode];
+            VC.nextUseLevel =[NSString stringWithFormat:@"%ld",model.UseLevel] ;
+            VC.nextdic = [_NextMembershipprivilegesArr objectAtIndex:indexPath.row];
+        }
+        VC.currentUseLevel =_MembershipprivilegesDic[@"Level_id"];
+        [self.navigationController pushViewController:VC animated:YES];
     }
     
     

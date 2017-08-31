@@ -18,9 +18,13 @@
     
     self.username.textColor=[UIColor colorFromHex:@"#999999"];
     self.username.font=[UIFont systemFontOfSize:14*Main_Screen_Height/667 weight:2];
-    self.username.text = @"白银会员";
-    self.headerimage.contentMode=UIViewContentModeScaleAspectFill;
+    
     self.headerimage.image=[UIImage imageNamed:@"gerenxinxitou"];
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    [self.headerimage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

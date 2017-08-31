@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWCardConfigGradeModel.h"
 @interface QWwashCardTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageViews;
 @property (weak, nonatomic) IBOutlet UILabel *titlelabel;
 @property (weak, nonatomic) IBOutlet UILabel *detaillabel;
-
+@property (nonatomic,strong) QWCardConfigGradeModel *cardConfogmodel;
 @end

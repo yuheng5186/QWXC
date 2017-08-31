@@ -17,6 +17,8 @@
     self.dg_viewAutoSizeToDevice = YES;
     
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageView.clipsToBounds=YES;
+    self.imageView.layer.cornerRadius=self.imageView.bounds.size.height/2;
     self.titlelabel.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
     self.titlelabel.textColor = [UIColor colorFromHex:@"#3a3a3a"];
     
@@ -25,7 +27,12 @@
     self.detaillabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     self.detaillabel.textColor = [UIColor colorFromHex:@"#999999"];
 }
+-(void)setCardConfogmodel:(QWCardConfigGradeModel *)cardConfogmodel{
+    _cardConfogmodel=cardConfogmodel;
+    self.titlelabel.text=cardConfogmodel.CardName;
+    self.detaillabel.text=cardConfogmodel.Description;
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
