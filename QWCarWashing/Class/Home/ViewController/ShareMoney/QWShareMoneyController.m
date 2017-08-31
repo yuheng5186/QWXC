@@ -61,7 +61,7 @@
     //    UIButton    *getMoneyButton = [UIUtil drawDefaultButton:self.contentView title:@"立即邀请，新人可获得99元洗车卡" target:self action:@selector(getMoneyButtonClick:)];
     NSString *string   = @"立即邀请，新人可获得99元洗车卡";
     UIFont  *stringFont = [UIFont systemFontOfSize:16];
-    UIButton    *getMoneyButton = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width -Main_Screen_Width*60/375, Main_Screen_Height*40/667) text:string font:stringFont color:[UIColor whiteColor] target:self action:@selector(getMoneyButtonClick:)];
+    UIButton    *getMoneyButton = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width -Main_Screen_Width*40/375, Main_Screen_Height*45/667) text:string font:stringFont color:[UIColor whiteColor] target:self action:@selector(getMoneyButtonClick:)];
 //    getMoneyButton.backgroundColor  = [UIColor colorWithHex:0xFFB500 alpha:1.0];
     [getMoneyButton setBackgroundImage:[UIImage imageNamed:@"denglujianbiantiao"] forState:BtnNormal];
     getMoneyButton.layer.cornerRadius   = 5;

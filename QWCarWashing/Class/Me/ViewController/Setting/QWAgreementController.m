@@ -38,7 +38,7 @@
     
 //    [self showBlackLoading];
     
-    NSURL * url                     = [NSURL URLWithString: @"http://115.159.67.77/"];
+    NSURL * url                     = [NSURL URLWithString: @"http://115.159.97.191/jingding/index.html"];
     NSURLRequest* request           = [NSURLRequest requestWithURL: url];
     
     [self.webView loadRequest:request];
@@ -60,7 +60,7 @@
     //
     //    NSString *javascript    = [NSString stringWithFormat:@"window.scrollBy(0,%ld)",(long)height];
     //    [self.webView stringByEvaluatingJavaScriptFromString:javascript];
-    
+
     
 }
 
