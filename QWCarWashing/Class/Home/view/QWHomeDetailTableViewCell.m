@@ -41,11 +41,8 @@
     self.moneys.text=RecordModel.RightDes;
     if(RecordModel.ShowType == 2)
     {
-//        imageString               = @"xiaofeijilu";
-//        titleString               = @"消费记录";
-//        vipString                 = @"";
         self.typeName.text=@"消费记录";
-        
+        self.contentImage.image=[UIImage imageNamed:@"xiaofeijilu"];
         if(RecordModel.ConsumptionType == 1)
         {
             self.payType.text=@"线下门店支付";
@@ -82,9 +79,7 @@
     else if(RecordModel.ShowType == 1)
     {
         self.typeName.text=@"优惠活动";
-//        imageString         = @"quanyi";
-//        titleString         = @"优惠活动";
-//        vipString           = @"zhuanxiang";
+        self.contentImage.image=[UIImage imageNamed:@"quanyi"];
         self.chedianName.text   = RecordModel.MiddleDes;
         self.chedianName.text    = RecordModel.BottomDes;
         

@@ -86,9 +86,40 @@
     cell.backgroundColor    = [UIColor whiteColor];
     cell.textLabel.textColor    = [UIColor colorFromHex:@"#4a4a4a"];
     if (indexPath.section == 0) {
+        
         cell.textLabel.text     = @"付款金额";
-        cell.detailTextLabel.text   = @"¥18.00";
         cell.detailTextLabel.textColor = [UIColor blackColor];
+        
+        if(self.record.ConsumptionType == 2)
+        {
+            cell.textLabel.text = @"付款方式";
+            //            [cell.detailTextLabel setNumberOfLines:2];
+            //            cell.detailTextLabel.text   = [NSString stringWithFormat:@"%@\n%@",self.record.MiddleDes,self.record.BottomDes];
+            
+            UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 5*Main_Screen_Height/667, Main_Screen_Width - 15*Main_Screen_Width/375, 30*Main_Screen_Height/667)];
+            [label setText:self.record.MiddleDes];
+            label.font = [UIFont boldSystemFontOfSize:19*Main_Screen_Width/375];
+            label.textAlignment = NSTextAlignmentRight;
+            [cell.contentView addSubview:label];
+            
+            UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, 35*Main_Screen_Height/667, Main_Screen_Width - 15*Main_Screen_Width/375, 20*Main_Screen_Height/667)];
+            [label2 setText:[NSString stringWithFormat:@"剩余%@次",self.record.BottomDes]];
+            label2.font = [UIFont boldSystemFontOfSize:12*Main_Screen_Width/375];
+            label2.textAlignment = NSTextAlignmentRight;
+            [cell.contentView addSubview:label2];
+            
+            
+        }
+        else if(self.record.ConsumptionType == 1)
+        {
+            cell.detailTextLabel.text   = [NSString stringWithFormat:@"￥%@",self.record.MiddleDes];
+        }
+        else        {
+            cell.detailTextLabel.text   = [NSString stringWithFormat:@"￥%@",self.record.BottomDes];
+        }
+        
+        
+        
         
     }else {
         cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#999999"];
@@ -96,23 +127,24 @@
         if (indexPath.row == 0) {
             
             cell.textLabel.text     = @"消费说明";
-            cell.detailTextLabel.text   = @"金雷快修车店-25元五座标准洗车";
+            cell.detailTextLabel.text   = self.record.ConsumerDescrip;
             
         }else if (indexPath.row == 1){
             cell.textLabel.text     = @"订单时间";
-            cell.detailTextLabel.text   = @"2017-7-31 14:30:20";
+            cell.detailTextLabel.text   = self.record.CreateDate;
             
         }else if (indexPath.row == 2){
+            NSArray *arr = @[@"",@"微信支付",@"支付宝支付",@"洗车卡抵扣"];
             cell.textLabel.text     = @"支付方式";
-            cell.detailTextLabel.text   = @"支付宝支付";
+            cell.detailTextLabel.text   = [arr objectAtIndex:self.record.PayMathod];
             
         }else if (indexPath.row == 3){
             cell.textLabel.text     = @"积分奖励";
-            cell.detailTextLabel.text   = @"10积分";
+            cell.detailTextLabel.text   = [NSString stringWithFormat:@"%ld积分",self.record.IntegralNumber];
             
         }else {
             cell.textLabel.text     = @"订单编号";
-            cell.detailTextLabel.text   = @"3687461972390000";
+            cell.detailTextLabel.text   = self.record.UniqueNumber;
             
         }
         

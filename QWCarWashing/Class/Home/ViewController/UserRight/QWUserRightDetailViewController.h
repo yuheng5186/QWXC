@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface QWUserRightDetailViewController : UIViewController
-
+@property(nonatomic,copy)NSString *ConfigCode;
 @end

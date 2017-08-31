@@ -163,15 +163,20 @@ static NSString *cellstr=@"Cellstr";
 #pragma mark-设置导航栏左右按钮
 -(void)setNagationLeftAndRightButton{
     //左边试图
-    UIButton *btn=[UIButton buttonWithType:UIButtonTypeCustom];
-//    [btn sizeToFit];
-//    btn.imageView.contentMode=UIViewContentModeScaleAspectFit;
-//    btn.backgroundColor = [UIColor redColor];
+    UIImageView *btn=[UIImageView new];
+    
+    btn.contentMode=UIViewContentModeScaleAspectFit;
     btn.frame = CGRectMake(0, 0, Main_Screen_Width*34/375, Main_Screen_Height*34/667);
-    [btn setImage:[UIImage imageNamed:@"gerenxinxitou"] forState:UIControlStateNormal];
-    [btn setImage:[UIImage imageNamed:@"gerenxinxitou"] forState:UIControlStateHighlighted];
+    if (!IsNullIsNull([UdStorage getObjectforKey:Userid])) {
+        NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
+        NSURL *url=[NSURL URLWithString:ImageURL];
+       
+        [btn sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+    }
+    btn.clipsToBounds=YES;
+    btn.layer.cornerRadius=(Main_Screen_Height*34/667)/2;
     btn.top     = Main_Screen_Height*5/667;
-    [btn addTarget:self action:@selector(personInfo) forControlEvents:UIControlEventTouchUpInside];
+
     
     UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.leftBarButtonItem=leftbarbtn;
@@ -352,18 +357,7 @@ static NSString *cellstr=@"Cellstr";
         return cell;
         
         
-    }else if(indexPath.section==4)
-    {
- 
-        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
-        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell2.backgroundColor=[UIColor clearColor];
-        cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
-        cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"guanggao22"]];
-        return cell2;
-    
-    }
-    else if(indexPath.section==7){
+    }else if(indexPath.section==7){
         
         UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
         cell2.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -518,21 +512,43 @@ static NSString *cellstr=@"Cellstr";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.section == 2) {
-        QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
-        consumerController.hidesBottomBarWhenPushed             = YES;
-        [self.navigationController pushViewController:consumerController animated:YES];
-    }else if(indexPath.section==3){
-        QWUserRightDetailViewController *UserRightDetailController     = [[QWUserRightDetailViewController alloc]init];
-        UserRightDetailController.hidesBottomBarWhenPushed             = YES;
-        [self.navigationController pushViewController:UserRightDetailController animated:YES];
-    
-    }else if(indexPath.section==5){
-        QWCarWashingActivityViewController *CarWashingActivityController     = [[QWCarWashingActivityViewController alloc]init];
-        CarWashingActivityController.hidesBottomBarWhenPushed             = YES;
-        [self.navigationController pushViewController:CarWashingActivityController animated:YES];
-    
+    if (indexPath.section>1) {
+        QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:indexPath.section-2];
+        
+        if(record.ShowType == 1)
+        {
+            QWUserRightDetailViewController *UserRightDetailController     = [[QWUserRightDetailViewController alloc]init];
+            UserRightDetailController.hidesBottomBarWhenPushed             = YES;
+            UserRightDetailController.ConfigCode                      = record.UniqueNumber;
+            [self.navigationController pushViewController:UserRightDetailController animated:YES];
+        }
+        
+        else{
+            QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:indexPath.section-2];
+            QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
+            consumerController.hidesBottomBarWhenPushed       = YES;
+            consumerController.record                         = record;
+            [self.navigationController pushViewController:consumerController animated:YES];
+        }
     }
+    
+    
+    
+//    if (indexPath.section == 2) {
+//        QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
+//        consumerController.hidesBottomBarWhenPushed             = YES;
+//        [self.navigationController pushViewController:consumerController animated:YES];
+//    }else if(indexPath.section==3){
+//        QWUserRightDetailViewController *UserRightDetailController     = [[QWUserRightDetailViewController alloc]init];
+//        UserRightDetailController.hidesBottomBarWhenPushed             = YES;
+//        [self.navigationController pushViewController:UserRightDetailController animated:YES];
+//    
+//    }else if(indexPath.section==5){
+//        QWCarWashingActivityViewController *CarWashingActivityController     = [[QWCarWashingActivityViewController alloc]init];
+//        CarWashingActivityController.hidesBottomBarWhenPushed             = YES;
+//        [self.navigationController pushViewController:CarWashingActivityController animated:YES];
+//    
+//    }
 }
 
 

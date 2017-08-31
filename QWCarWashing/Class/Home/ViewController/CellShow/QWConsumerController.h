@@ -7,7 +7,7 @@
 //
 
 #import "QWBaseViewController.h"
-
+#import "QWRecordModel.h"
 @interface QWConsumerController : QWBaseViewController
-
+@property(nonatomic,copy)QWRecordModel *record;
 @end
