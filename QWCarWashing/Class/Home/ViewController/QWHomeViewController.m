@@ -24,6 +24,8 @@
 #import "QWCardPackgeController.h"
 #import "QWAddShopController.h"
 #import "QWSaleActivityController.h"
+#import "QWScoreDetailController.h"
+
 
 #import "QWConsumerController.h"
 
@@ -52,6 +54,7 @@ static NSString *cellstr=@"Cellstr";
         _tableview.delegate=self;
         _tableview.dataSource=self;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableview.contentInset   = UIEdgeInsetsMake(0, 0, 180, 0);
         _tableview.backgroundColor=[UIColor colorWithHexString:@"#fafafa"];
         
     }
@@ -238,10 +241,10 @@ static NSString *cellstr=@"Cellstr";
                                      @"会员",
                                      @"积分"]];
         
-        QWScanController    *scanController             = [[QWScanController alloc]init];
-        QWCardPackgeController  *cardPackgeController   = [[QWCardPackgeController alloc]init];
-        QWViptequanViewController  *vipController   = [[QWViptequanViewController alloc]init];
-        QWScoreController       *scoreController        = [[QWScoreController alloc]init];
+        QWScanController    *scanController                 = [[QWScanController alloc]init];
+        QWCardPackgeController  *cardPackgeController       = [[QWCardPackgeController alloc]init];
+        QWViptequanViewController  *vipController           = [[QWViptequanViewController alloc]init];
+        QWScoreDetailController       *scoreController      = [[QWScoreDetailController alloc]init];
         
         cell2.selecOptionIndexs=^(NSInteger index){
             #pragma mark-图片点击事件
