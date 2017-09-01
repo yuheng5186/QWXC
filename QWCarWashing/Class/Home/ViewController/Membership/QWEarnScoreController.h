@@ -9,5 +9,5 @@
 #import "QWBaseViewController.h"
 
 @interface QWEarnScoreController : QWBaseViewController
-
+@property(nonatomic,copy)NSString *CurrentScore;
 @end

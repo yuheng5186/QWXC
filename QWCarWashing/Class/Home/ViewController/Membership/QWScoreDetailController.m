@@ -9,7 +9,8 @@
 #import "QWScoreDetailController.h"
 #import "HQSliderView.h"
 #import "HQTableViewCell.h"
-#import "QWMembershipController.h"
+#import "QWScoreController.h"
+#import "QWIntegModel.h"
 
 @interface QWScoreDetailController ()<UITableViewDelegate, UITableViewDataSource, HQSliderViewDelegate>
 
@@ -254,13 +255,8 @@
                              @"PageIndex":@0,
                              @"PageSize":@10
                              };
-    NSDictionary *params = @{
-                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                             };
-    
-    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@Integral/GetIntegralList",Khttp] success:^(NSDictionary *dict, BOOL success) {
-        
+        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Integral/GetIntegralList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+            NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             NSArray *arr = [NSArray array];
@@ -273,7 +269,12 @@
             }
             else
             {
-                [self.ScoreData addObjectsFromArray:arr];
+                for (NSDictionary *tempdic in arr) {
+                    QWIntegModel *integmodel=[[QWIntegModel alloc]initWithDictionary:tempdic error:nil];
+                    
+                    [self.ScoreData addObject:integmodel];
+                }
+                
                 [self.scoreListView reloadData];
                 [self.scoreListView.mj_header endRefreshing];
             }
@@ -301,12 +302,7 @@
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10
                              };
-    NSDictionary *params = @{
-                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                             };
-    
-    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@Integral/GetIntegralList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+       [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Integral/GetIntegralList",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
@@ -321,7 +317,12 @@
             }
             else
             {
-                [self.ScoreData addObjectsFromArray:arr];
+                for (NSDictionary *tempdic in arr) {
+                    QWIntegModel *integmodel=[[QWIntegModel alloc]initWithDictionary:tempdic error:nil];
+                    
+                    [self.ScoreData addObject:integmodel];
+                }
+               
                 [self.scoreListView reloadData];
                 [self.scoreListView.mj_footer endRefreshing];
             }
@@ -366,21 +367,21 @@
     //    cell.detailTextLabel.textColor  = [UIColor colorFromHex:@"#999999"];
     
     UIFont *titleStringFont            = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
-    
-    UILabel *titleStringLabel          = [UIUtil drawLabelInView:cell.contentView frame:[UIUtil textRect:[[_ScoreData objectAtIndex:indexPath.row] objectForKey:@"IntegName"] font:titleStringFont] font:titleStringFont text:[[_ScoreData objectAtIndex:indexPath.row] objectForKey:@"IntegName"] isCenter:NO];
+    QWIntegModel *integmodel=self.ScoreData[indexPath.row];
+    UILabel *titleStringLabel          = [UIUtil drawLabelInView:cell.contentView frame:[UIUtil textRect:integmodel.IntegName font:titleStringFont] font:titleStringFont text:integmodel.IntegName isCenter:NO];
     
     titleStringLabel.textColor         = [UIColor colorFromHex:@"#4a4a4a"];
     titleStringLabel.left              = Main_Screen_Width*13/375;
     titleStringLabel.top               = Main_Screen_Height*10/667;
     
-    NSString *timeString              = [[_ScoreData objectAtIndex:indexPath.row] objectForKey:@"GetIntegralTime"];
+    NSString *timeString              = integmodel.GetIntegralTime;
     UIFont *timeStringFont            = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
     UILabel *timeStringLabel          = [UIUtil drawLabelInView:cell.contentView frame:[UIUtil textRect:timeString font:timeStringFont] font:timeStringFont text:timeString isCenter:NO];
     timeStringLabel.textColor         = [UIColor colorFromHex:@"#999999"];
     timeStringLabel.left              = titleStringLabel.left;
     timeStringLabel.top               = titleStringLabel.bottom +Main_Screen_Height*5/667;
     
-    NSString *contentString              = [NSString stringWithFormat:@"+%@",[[_ScoreData objectAtIndex:indexPath.row] objectForKey:@"IntegralNum"]];
+    NSString *contentString              = [NSString stringWithFormat:@"+%ld",integmodel.IntegralNum];
     UIFont *contentStringFont            = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
     UILabel *contentStringLabel          = [UIUtil drawLabelInView:cell.contentView frame:[UIUtil textRect:contentString font:contentStringFont] font:contentStringFont text:contentString isCenter:NO];
     contentStringLabel.textColor         = [UIColor redColor];
@@ -432,11 +433,12 @@
     //DSMembershipController *memberVC = [[DSMembershipController alloc] init];
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
-        if ([controller isKindOfClass:[QWMembershipController class]]) {
-            QWMembershipController *memberVC =(QWMembershipController *)controller;
+        if ([controller isKindOfClass:[QWScoreController class]]) {
+            QWScoreController *memberVC =(QWScoreController *)controller;
             [self.navigationController popToViewController:memberVC animated:YES];
         }
     }
+  
     
     
 }
