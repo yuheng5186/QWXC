@@ -70,6 +70,9 @@
     showNameLabel.top               = appImageView.bottom +Main_Screen_Height*25/667;
     showNameLabel.centerX           = appImageView.centerX;
     
+    UIView      *lineView           = [UIUtil drawLineInView:upView frame:CGRectMake(0, 0, Main_Screen_Width, 1) color:[UIColor blackColor]];
+    lineView.bottom                 = Main_Screen_Height*179/667;
+    
     upView.height                   = showNameLabel.bottom +Main_Screen_Height*10/667;
     
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*200/667) ];
@@ -78,6 +81,8 @@
     self.tableView.dataSource       = self;
     self.tableView.scrollEnabled    = NO;
     self.tableView.backgroundColor  = [UIColor whiteColor];
+    self.tableView.tableFooterView  = [UIView new];
+    self.tableView.tableHeaderView  = [UIView new];
     self.tableView.tableFooterView  = [[UIView alloc]initWithFrame:CGRectZero];
     [self.contentView addSubview:self.tableView];
     
@@ -146,6 +151,7 @@
     
     if (indexPath.row == 0) {
         cell.textLabel.text     = @"密码管理";
+        
         
     }else if (indexPath.row == 1){
         
