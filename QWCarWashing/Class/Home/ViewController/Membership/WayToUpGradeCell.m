@@ -22,7 +22,32 @@
     return self;
 }
 
-
+-(void)setIntegModel:(QWIntegModel *)IntegModel{
+    _IntegModel=IntegModel;
+    NSInteger num =IntegModel.IntegType;
+//    [[[self.ScoreData objectAtIndex:indexPath.row] objectForKey:@"IntegType"] integerValue];
+    
+    
+    
+   
+    self.waysLab.text =IntegModel.IntegName;
+//    [[self.ScoreData objectAtIndex:indexPath.row] objectForKey:@"IntegName"];
+    
+    if(!IsNullIsNull(IntegModel.IntegDesc))
+    {
+        self.wayToLab.text = [NSString stringWithFormat:@"%@",IntegModel.IntegDesc];
+    }
+    else
+    {
+        self.wayToLab.text = @"";
+    }
+    
+    
+    
+    self.valuesLab.text = [NSString stringWithFormat:@"+%ld积分",IntegModel.IntegralNum];
+    
+   
+}
 - (void)setupUI {
     
     UIImageView *iconV = [[UIImageView alloc] init];

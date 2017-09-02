@@ -11,8 +11,14 @@
 #import "QWScoreDetailController.h"
 #import "QWMyCarController.h"
 #import "QWPersonInfoDetailViewController.h"
+#import "QWIntegModel.h"
+#import "QWMyCarController.h"
+#import "QWMeViewController.h"
 @interface QWEarnScoreController ()<UITableViewDelegate, UITableViewDataSource>
-
+{
+    MBProgressHUD *HUD;
+}
+@property (nonatomic, strong) NSMutableArray *ScoreData;
 @property (nonatomic, weak) UIImageView *adverView;
 
 @property (nonatomic, weak) UITableView *earnWayView;
@@ -23,7 +29,13 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 
 
 @implementation QWEarnScoreController
+-(NSMutableArray *)ScoreData{
+    if (_ScoreData==nil) {
+        _ScoreData=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _ScoreData;
 
+}
 - (UIImageView *)adverView {
     
     if (!_adverView) {
@@ -61,15 +73,64 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
     self.earnWayView.dataSource = self;
     self.earnWayView.rowHeight = 90;
     [self.earnWayView registerClass:[WayToUpGradeCell class] forCellReuseIdentifier:id_earnViewCell];
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+    [self requestGetScore];
 }
 
+-(void)requestGetScore
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid]
+                             };
+    
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Integral/EarnIntegral",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                [self.view showInfo:@"暂无数据" autoHidden:YES interval:2];
+            }
+            else
+            {
+                for (NSDictionary *tempdic in arr) {
+                    QWIntegModel *tempModel=[[QWIntegModel alloc]initWithDictionary:tempdic error:nil];
+                     [self.ScoreData addObject:tempModel];
+                }
+               
+                [self.earnWayView reloadData];
+                [HUD setHidden:YES];
+            }
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return self.ScoreData.count;
 }
 
 
@@ -101,8 +162,44 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
         earnScoreCell.wayToLab.text = @"填写个人姓名完善个人信息";
         earnScoreCell.valuesLab.text = @"+20积分";
     }
-    
+    if (self.ScoreData.count!=0) {
+        earnScoreCell.IntegModel=self.ScoreData[indexPath.row];
+        if(((QWIntegModel *)self.ScoreData[indexPath.row]).IsComplete == 1)
+        {
+            
+            [earnScoreCell.goButton setTitle:@"已完成" forState:UIControlStateNormal];
+            earnScoreCell.goButton.enabled = NO;
+            
+        }
+        else
+        {
+            earnScoreCell.goButton.tag = indexPath.row;
+            [earnScoreCell.goButton addTarget:self action:@selector(gotoearnScore:) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+   
     return earnScoreCell;
+}
+-(void)gotoearnScore:(UIButton *)btn
+{
+    QWIntegModel * integmodel=[QWIntegModel new];
+    integmodel=[self.ScoreData objectAtIndex:btn.tag];
+    if(integmodel.IntegType == 2)
+    {
+        self.tabBarController.selectedIndex = 4;
+    }
+    else if(integmodel.IntegType  == 3)
+    {
+        QWMyCarController *myCarController                  = [[QWMyCarController alloc]init];
+        myCarController.hidesBottomBarWhenPushed            = YES;
+        [self.navigationController pushViewController:myCarController animated:YES];
+    }
+    else if(integmodel.IntegType  == 4)
+    {
+        QWMeViewController *userInfoController    = [[QWMeViewController alloc]init];
+        userInfoController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userInfoController animated:YES];
+    }
 }
 -(void)completeButton:(UIButton *)btn{
     QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
@@ -132,8 +229,11 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 
 - (void)myScoreButtonClick:(id)sender {
     
+   
+    
     QWScoreDetailController *scoreController = [[QWScoreDetailController alloc] init];
     scoreController.hidesBottomBarWhenPushed = YES;
+     scoreController.CurrentScore = self.CurrentScore;
     [self.navigationController pushViewController:scoreController animated:YES];
     
 }

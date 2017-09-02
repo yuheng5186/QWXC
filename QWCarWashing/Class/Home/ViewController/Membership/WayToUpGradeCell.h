@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWIntegModel.h"
 @interface WayToUpGradeCell : UITableViewCell
 
 @property (nonatomic, weak) UIImageView *iconV;
@@ -15,5 +15,5 @@
 @property (nonatomic, weak) UILabel *wayToLab;
 @property (nonatomic, weak) UILabel *valuesLab;
 @property (nonatomic, weak) UIButton *goButton;
-
+@property (nonatomic, strong)QWIntegModel *IntegModel;
 @end
