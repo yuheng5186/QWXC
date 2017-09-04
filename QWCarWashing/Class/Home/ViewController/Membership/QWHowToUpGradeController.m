@@ -14,9 +14,11 @@
 #import "QWMyCarController.h"
 #import "QWPersonInfoDetailViewController.h"
 @interface QWHowToUpGradeController ()<UITableViewDelegate, UITableViewDataSource,HYSliderDelegate>
-
+{
+    MBProgressHUD *HUD;
+}
 @property (nonatomic, weak) UITableView *wayToEarnScoreView;
-
+@property (nonatomic, strong) NSMutableArray *ScoreData;
 
 @end
 
@@ -70,27 +72,32 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     HYSlider *slider = [[HYSlider alloc]initWithFrame:CGRectMake(35, gradeLab.frame.origin.y+gradeLab.frame.size.height+5, QWScreenWidth-46, 9)];
     slider.backgroundColor=RGBACOLOR(230, 230, 230, 1);
 
-    slider.currentValueColor = [UIColor orangeColor];
-    slider.maxValue = 1000;
-    slider.currentSliderValue = 600;
-    slider.showTextColor = [UIColor orangeColor];
+    slider.currentValueColor = [UIColor colorFromHex:@"#febb02"];
+    slider.maxValue = [self.NextLevelScore integerValue];
+    slider.currentSliderValue = [self.CurrentScore integerValue];
+    slider.showTextColor = [UIColor colorFromHex:@"#febb02"];
     slider.showTouchView = YES;
     slider.showScrollTextView = YES;
-    slider.touchViewColor = [UIColor orangeColor];
+    slider.touchViewColor = [UIColor colorFromHex:@"#febb02"];
     slider.delegate = self;
     [self.view addSubview:slider];
+    
     UILabel *maxLab = [[UILabel alloc] init];
-   
+    
     maxLab.textColor = RGBACOLOR(230, 230, 230, 1);
     maxLab.textAlignment=NSTextAlignmentRight;
     maxLab.font = [UIFont systemFontOfSize:10];
-    maxLab.text =[NSString stringWithFormat:@"%d",1000];
+    maxLab.text =self.NextLevelScore;
     [self.view addSubview:maxLab];
+    
+    
+
     
     
     UIButton *displayBtn = [[UIButton alloc] init];
     displayBtn.userInteractionEnabled = NO;
-    [displayBtn setTitle:@"再获得400积分升级为黄金会员" forState:UIControlStateNormal];
+    NSString *string = [NSString stringWithFormat:@"%ld积分升级为%@",([self.NextLevelScore integerValue]- [self.CurrentScore integerValue]),self.nextLevel];
+    [displayBtn setTitle:string forState:UIControlStateNormal];
     [displayBtn setTitleColor:[UIColor colorFromHex:@"#999999"] forState:UIControlStateNormal];
     displayBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [displayBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
@@ -175,6 +182,58 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     [self.wayToEarnScoreView registerClass:[WayToUpGradeCell class] forCellReuseIdentifier:id_wayToUpCell];
     
+    self.ScoreData = [[NSMutableArray alloc]init];
+    
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.labelText = @"加载中";
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
+    
+    [self requestGetScore];
+    
+}
+
+-(void)requestGetScore
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"]
+                             };
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Integral/EarnIntegral",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSArray *arr = [NSArray array];
+            arr = [dict objectForKey:@"JsonData"];
+            if(arr.count == 0)
+            {
+                [self.view showInfo:@"暂无数据" autoHidden:YES interval:2];
+            }
+            else
+            {
+                for (NSDictionary *tempdic in arr) {
+                    QWIntegModel *integModel=[[QWIntegModel alloc]initWithDictionary:tempdic error:nil];
+                    [self.ScoreData addObject:integModel];
+                }
+                
+                
+                [self.wayToEarnScoreView reloadData];
+                [HUD setHidden:YES];
+            }
+            
+        }
+        else
+        {
+            [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    } fail:^(NSError *error) {
+        [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -185,7 +244,7 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return [self.ScoreData count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -219,11 +278,47 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
         wayCell.wayToLab.text = @"填写个人姓名完善个人信息";
         wayCell.valuesLab.text = @"+20积分";
     }
-    
+    if (self.ScoreData.count!=0) {
+        wayCell.IntegModel=self.ScoreData[indexPath.row];
+        if(((QWIntegModel *)self.ScoreData[indexPath.row]).IsComplete == 1)
+        {
+            
+            [wayCell.goButton setTitle:@"已完成" forState:UIControlStateNormal];
+            wayCell.goButton.enabled = NO;
+            
+        }
+        else
+        {
+            wayCell.goButton.tag = indexPath.row;
+            [wayCell.goButton addTarget:self action:@selector(gotoearnScore:) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+
     
     
     
     return wayCell;
+}
+-(void)gotoearnScore:(UIButton *)btn
+{
+    QWIntegModel * integmodel=[QWIntegModel new];
+    integmodel=[self.ScoreData objectAtIndex:btn.tag];
+    if(integmodel.IntegType == 2)
+    {
+        self.tabBarController.selectedIndex = 4;
+    }
+    else if(integmodel.IntegType  == 3)
+    {
+        QWMyCarController *myCarController                  = [[QWMyCarController alloc]init];
+        myCarController.hidesBottomBarWhenPushed            = YES;
+        [self.navigationController pushViewController:myCarController animated:YES];
+    }
+    else if(integmodel.IntegType  == 4)
+    {
+        QWMeViewController *userInfoController    = [[QWMeViewController alloc]init];
+        userInfoController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:userInfoController animated:YES];
+    }
 }
 -(void)completeButton:(UIButton *)btn{
     

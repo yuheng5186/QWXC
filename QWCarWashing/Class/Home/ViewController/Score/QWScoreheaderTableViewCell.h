@@ -19,7 +19,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *goUpGrade;
 @property (weak, nonatomic) IBOutlet UIButton *ScoreNum;
 @property (weak, nonatomic) IBOutlet UIButton *AddScore;
+@property (weak, nonatomic) IBOutlet UIView *supview;
+@property (weak, nonatomic) IBOutlet UIImageView *leftJantou;
 
+@property (weak, nonatomic) IBOutlet UIImageView *rightJiant;
 
 @property (nonatomic, strong) CAGradientLayer *gradientLayer;
 //- (IBAction)scoreNumOnclick:(id)sender;
