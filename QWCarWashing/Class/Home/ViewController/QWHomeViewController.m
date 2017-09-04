@@ -417,7 +417,8 @@ static NSString *cellstr=@"Cellstr";
                     [UdStorage storageObject:targetTime forKey:UserSignTime];
                     NSString *newsuserscore=[NSString stringWithFormat:@"%ld",[[UdStorage getObjectforKey:UserScores] integerValue]+10];
                     [UdStorage storageObject:newsuserscore forKey:UserScores];
-                    
+                    NSNotification * notice = [NSNotification notificationWithName:@"qiandaoSuccess" object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter]postNotification:notice];
                     
                     PopupView *view = [PopupView defaultPopupView];
                     view.parentVC = self;

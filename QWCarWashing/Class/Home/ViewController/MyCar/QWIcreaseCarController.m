@@ -10,7 +10,7 @@
 #import "QFDatePickerView.h"
 #import "ProvinceShortController.h"
 
-@interface QWIcreaseCarController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate>
+@interface QWIcreaseCarController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate,UITextFieldDelegate>
 
 @property (nonatomic, weak) UITableView *carInfoView;
 
@@ -84,10 +84,12 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     UITableViewCell *carCell = [tableView dequeueReusableCellWithIdentifier:id_carInfoCell];
     
     carCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:id_carInfoCell];
-    
+    // 禁止cell点击事件
+    carCell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+           
             carCell.textLabel.text = @"车牌号";
             carCell.textLabel.textColor = [UIColor colorFromHex:@"#868686"];
             carCell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -113,6 +115,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             numTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             numTF.font = [UIFont systemFontOfSize:12];
             [carCell.contentView addSubview:numTF];
+            numTF.delegate=self;
             self.PlateNumberlab=numTF;
             [provinceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(carCell.textLabel);
@@ -159,6 +162,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             textTF.placeholder = @"请填写";
             textTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             textTF.font = [UIFont systemFontOfSize:12];
+            
             [carCell.contentView addSubview:textTF];
             
             [textTF mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -167,8 +171,13 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                 make.right.equalTo(carCell.contentView).mas_offset(-12);
             }];
             if (indexPath.row == 0) {
+            
+               textTF.delegate=self;
                 self.ChassisNumlab=textTF;
             }else{
+                
+                 textTF.keyboardType = UIKeyboardTypeNumberPad;
+                textTF.delegate=self;
                 self.Mileagelab=textTF;
                 
             }
@@ -213,12 +222,54 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
         self.PlateNumberlab.text=[self.mycarModel.PlateNumber substringFromIndex:1];
         self.CarBrandlab.text=self.mycarModel.CarBrand;
         self.ChassisNumlab.text=self.mycarModel.ChassisNum;
+        
         self.Mileagelab.text=[NSString stringWithFormat:@"%ld",self.mycarModel.Mileage];
+        self.Mileagelab.delegate=self;
         self.lbl.text= [NSString stringWithFormat:@"%ld",self.mycarModel.Manufacture];
         self.lbl2.text=self.mycarModel.DepartureTime;
     }
     
     return carCell;
+}
+
+#pragma mark-实现textfile的代理
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    
+    if (textField == self.PlateNumberlab) {
+        //这里的if时候为了获取删除操作,如果没有次if会造成当达到字数限制后删除键也不能使用的后果.
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }
+        //so easy
+        else if (self.PlateNumberlab.text.length >= 6) {
+            self.PlateNumberlab.text = [textField.text substringToIndex:6];
+            return NO;
+        }
+    }
+    if (textField== self.Mileagelab) {
+        //这里的if时候为了获取删除操作,如果没有次if会造成当达到字数限制后删除键也不能使用的后果.
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }
+        //so easy
+        else if ( self.Mileagelab.text.length>=6) {
+            
+             self.Mileagelab.text = [textField.text substringToIndex:6];
+            
+            return NO;
+        }
+    }
+    if (textField==self.ChassisNumlab) {
+        if (range.length == 1 && string.length == 0) {
+            return YES;
+        }
+        //so easy
+        else if (self.ChassisNumlab.text.length>=17) {
+            self.ChassisNumlab.text = [textField.text substringToIndex:17];
+            return NO;
+        }
+    }
+    return YES;
 }
 #pragma mark - 弹出省份简称
 - (void)didClickProvinceBtn {
@@ -282,6 +333,10 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     {
         
         if (indexPath.row == 1) {
+            [self.PlateNumberlab resignFirstResponder];
+            [self.ChassisNumlab resignFirstResponder];
+            [self.Mileagelab resignFirstResponder];
+            [self.CarBrandlab resignFirstResponder];
             QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
                 
                 self.lbl.text = str;
@@ -290,6 +345,10 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
         }
         
         if (indexPath.row == 2) {
+            [self.PlateNumberlab resignFirstResponder];
+            [self.ChassisNumlab resignFirstResponder];
+            [self.Mileagelab resignFirstResponder];
+            [self.CarBrandlab resignFirstResponder];
             QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
                 
                 self.lbl2.text = str;

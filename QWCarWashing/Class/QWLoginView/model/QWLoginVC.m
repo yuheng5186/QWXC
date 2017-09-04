@@ -211,7 +211,9 @@
               APPDELEGATE.currentUser = usertmpModel;
 //
             QWTabBarController *menuTabBarController              = [[QWTabBarController alloc] init];
-//                QWTabBarController *menuTabBarController=[[QWTabBarController alloc]init];
+            
+            [self.verifyFieldText resignFirstResponder];
+            
             menuTabBarController.tabBar.backgroundColor=[UIColor whiteColor];
             [AppDelegate sharedInstance].window.rootViewController  = menuTabBarController;
             

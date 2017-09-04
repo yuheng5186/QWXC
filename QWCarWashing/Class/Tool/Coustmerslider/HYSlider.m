@@ -132,10 +132,11 @@
     [_scrollShowTextView addSubview:_imageView];
     
     /** 浮标数值显示label*/
-    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0 , 36, 20)];
+    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, -3 , 36, 20)];
     _scrollShowTextLabel.textAlignment = NSTextAlignmentCenter;
     _scrollShowTextLabel.textColor = [UIColor whiteColor];
-    _scrollShowTextLabel.font = [UIFont systemFontOfSize:13.0];
+#pragma mark-UILabel宽度固定, 字体大小自适应
+    _scrollShowTextLabel.adjustsFontSizeToFitWidth = YES;
     [_scrollShowTextView addSubview:_scrollShowTextLabel];
     
     

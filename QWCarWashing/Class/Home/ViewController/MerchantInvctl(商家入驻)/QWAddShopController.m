@@ -26,7 +26,7 @@
 }
 
 - (void) createSubView {
-    self.scrollView                         = [[UIScrollView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.size.width, self.view.size.height)];
+    self.scrollView                         = [[UIScrollView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, 62, self.view.size.width, self.view.size.height+64)];
     self.scrollView.backgroundColor         = [UIColor whiteColor];
     self.scrollView.contentSize             = CGSizeMake(self.view.size.width, self.view.size.height*1.2);
     [self.scrollView flashScrollIndicators];
@@ -34,10 +34,10 @@
     [self.view addSubview:self.scrollView];
     
     
-    UIImage *adImage            = [UIImage imageNamed:@"shangjiaruzhutu"];
-    UIImageView *adImageView    = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 0, adImage.size.width, adImage.size.height) imageName:@"shangjiaruzhutu"];
+    UIImageView *adImageView    = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 62, QWScreenWidth, QWScreenWidth) imageName:@"shangjiaruzhutu"];
+    adImageView.contentMode=UIViewContentModeScaleAspectFill;
     adImageView.centerX         = Main_Screen_Width/2;
-    adImageView.top             = Main_Screen_Height*0/667;
+    adImageView.top             = Main_Screen_Height*62/667;
     
     
     NSString *string                = @"马上入住，立即赚钱";
@@ -62,14 +62,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

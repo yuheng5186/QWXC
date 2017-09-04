@@ -70,7 +70,13 @@ static NSString *cellstr=@"cell";
     
      self.tabBarController.tabBar.hidden=NO;
     [self.tableview reloadData];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeQiandaoMe:) name:@"qiandaoSuccess" object:nil];
 }
+-(void)noticeQiandaoMe:(NSNotification *)sender{
+    [self.tableview reloadData];
+}
+
 - (void)viewDidLoad {
     
     
@@ -235,6 +241,10 @@ static NSString *cellstr=@"cell";
                     NSString *targetTime = [outputFormatter stringFromDate:inputDate];
                     
                     [UdStorage storageObject:targetTime forKey:UserSignTime];
+                    NSNotification * notice = [NSNotification notificationWithName:@"qiandaoSuccess" object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+                    
+                    
                     
                     PopupView *view = [PopupView defaultPopupView];
                     view.parentVC = self;

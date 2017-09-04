@@ -57,6 +57,17 @@ static NSString *id_carListCell = @"id_carListCell";
     // Do any additional setup after loading the view.
 //    [self setupUI];
     [self requestMyCarData];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeincreaseMyCar:) name:@"increasemycarsuccess" object:nil];
+    
+  
+    
+    
+    
+    
+}
+-(void)noticeincreaseMyCar:(NSNotification *)sender{
+     [self requestMyCarData];
 }
 
 - (void)setupUI {
@@ -134,7 +145,21 @@ static NSString *id_carListCell = @"id_carListCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MyCarViewCell *carCell = [tableView dequeueReusableCellWithIdentifier:id_carListCell];
-    carCell.mycarmodel=self.CarArray[indexPath.section];
+    
+//    if (indexPath.section==0) {
+//        for (int i=0; i<self.CarArray.count; i++) {
+//            QWMyCarModel * tempmodel=self.CarArray[i];
+//            if (tempmodel.IsDefaultFav==1) {
+//                carCell.mycarmodel=tempmodel;
+//            }
+//        }
+//        
+//    }else{
+    if (self.CarArray.count!=0) {
+        carCell.mycarmodel=self.CarArray[indexPath.section];
+    }
+    
+//    }
     carCell.deleteButton.tag=indexPath.section;
      carCell.deleteButton.tag = indexPath.section+1000;
     
@@ -196,7 +221,12 @@ static NSString *id_carListCell = @"id_carListCell";
         NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
-            [self.view showInfo:@"修改成功" autoHidden:YES interval:2];
+            if ([ModifyType isEqualToString:@"2"]) {
+                 [self.view showInfo:@"修改成功" autoHidden:YES interval:2];
+            }else{
+                 [self.view showInfo:@"删除成功" autoHidden:YES interval:2];
+            }
+           
 //            _mycararray = [[NSMutableArray alloc]init];
 //            _myDefaultcararray = [[NSMutableArray alloc]init];
             [self requestMyCarData];

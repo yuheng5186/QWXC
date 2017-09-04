@@ -124,8 +124,8 @@ static NSString * HeaderId = @"header";
         
         UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
         _carInfoView = carInfoView;
-        _carInfoView.emptyDataSetDelegate=self;
-        _carInfoView.emptyDataSetSource=self;
+        
+       
         [self.view addSubview:_carInfoView];
     }
     return _carInfoView;
@@ -135,6 +135,7 @@ static NSString * HeaderId = @"header";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
     // Do any additional setup after loading the view.
     self.title  = @"我的爱车";
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
@@ -174,9 +175,14 @@ static NSString * HeaderId = @"header";
     
     //无限轮播图
     NewPagedFlowView *pageFlowView = [[NewPagedFlowView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, (Main_Screen_Width - 60) * 9 / 16 + 24)];
-    pageFlowView.backgroundColor = [UIColor whiteColor];
+    if (self.CarArray.count!=0) {
+        pageFlowView.backgroundColor = [UIColor whiteColor];
+    }
+//
     pageFlowView.delegate = self;
     pageFlowView.dataSource = self;
+//    pageFlowView.emptyDataSetDelegate=self;
+//    pageFlowView.emptyDataSetSource=self;
     pageFlowView.minimumPageAlpha = 0.4;
     //pageFlowView.minimumPageScale = 0.85;
     pageFlowView.orientation = NewPagedFlowViewOrientationHorizontal;
@@ -199,6 +205,8 @@ static NSString * HeaderId = @"header";
     
     self.carInfoView.delegate = self;
     self.carInfoView.dataSource = self;
+    self.carInfoView.emptyDataSetDelegate=self;
+    self.carInfoView.emptyDataSetSource=self;
     
     [self.carInfoView registerClass:[MyCarInfosHeaderView class] forHeaderFooterViewReuseIdentifier:HeaderId];
     
@@ -348,10 +356,16 @@ static NSString * HeaderId = @"header";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 2;
+        return self.CarArray.count;
+    }else{
+    if (self.CarArray.count!=0) {
+        return 4;
+    }else{
+        return 0;
+    
+    }
     }
     
-    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -513,8 +527,15 @@ static NSString * HeaderId = @"header";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (self.CarArray.count!=0) {
+        return 40;
+    }else{
+        return 0;
+        
+    }
+
     
-    return 40;
+    
     
 }
 
@@ -524,32 +545,38 @@ static NSString * HeaderId = @"header";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *hederview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40)];
-    hederview.backgroundColor=kColorTableBG;
-    UIView *hederviews=[[UIView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, 29)];
-    hederviews.backgroundColor=[UIColor whiteColor];
-    
-    UIImageView *infoimage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 15, 15)];
-    infoimage.contentMode=UIViewContentModeScaleAspectFill;
-    
-    
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(infoimage.frame.origin.x+infoimage.frame.size.width, 0, QWScreenWidth, 29)];
-    
-    infoLabel.textColor = [UIColor colorFromHex:@"#868686"];
-    infoLabel.font = [UIFont systemFontOfSize:15];
-    
-    if (section == 0) {
-        infoimage.image=[UIImage imageNamed:@"xinxi"];
-        infoLabel.text = @"  基本信息";
+    if (self.CarArray.count!=0) {
+        hederview.backgroundColor=kColorTableBG;
+        UIView *hederviews=[[UIView alloc]initWithFrame:CGRectMake(0, 10, QWScreenWidth, 29)];
+        hederviews.backgroundColor=[UIColor whiteColor];
         
+        UIImageView *infoimage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 15, 15)];
+        infoimage.contentMode=UIViewContentModeScaleAspectFill;
+        
+        
+        UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(infoimage.frame.origin.x+infoimage.frame.size.width, 0, QWScreenWidth, 29)];
+        
+        infoLabel.textColor = [UIColor colorFromHex:@"#868686"];
+        infoLabel.font = [UIFont systemFontOfSize:15];
+        
+        if (section == 0) {
+            infoimage.image=[UIImage imageNamed:@"xinxi"];
+            infoLabel.text = @"  基本信息";
+            
+        }else{
+            infoimage.image=[UIImage imageNamed:@"qitaxinxi"];
+            infoLabel.text = @"  其他信息";
+        }
+        [hederviews addSubview:infoimage];
+        [hederviews addSubview:infoLabel];
+        [hederview addSubview:hederviews];
+        
+        return hederview;
     }else{
-        infoimage.image=[UIImage imageNamed:@"qitaxinxi"];
-        infoLabel.text = @"  其他信息";
-    }
-    [hederviews addSubview:infoimage];
-    [hederviews addSubview:infoLabel];
-    [hederview addSubview:hederviews];
+        return hederview;
     
-    return hederview;
+    }
+    
 //    MyCarInfosHeaderView *headView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderId];
 //    headView.backgroundColor=[UIColor whiteColor];
 //    headView.infosLabel.textColor = [UIColor colorFromHex:@"#868686"];
