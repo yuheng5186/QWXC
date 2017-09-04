@@ -17,20 +17,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+//    self.supview.backgroundColor=[UIColor clearColor];
     self.dg_viewAutoSizeToDevice = YES;
 #pragma mark-电话号码显示
     NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:self.phoneNum.text];
     [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
     self.phoneNum.text=phonestr;
-    self.vipType.titleLabel.font=[UIFont systemFontOfSize:13 weight:5];
+    self.vipType.titleLabel.font=[UIFont systemFontOfSize:13*QWScreenheight/667 weight:5*QWScreenWidth/667];
     [self.vipType setTitle:@"黄金会员" forState:BtnNormal];
     self.vipType.imageView.contentMode=UIViewContentModeScaleAspectFill;
     
     [self.vipType setImage:[UIImage imageNamed:@"huiyuandianjitiaozhuan"] forState:BtnNormal];
     [self.vipType setTitleEdgeInsets:UIEdgeInsetsMake(1, -self.vipType.imageView.image.size.width, 0, self.vipType.imageView.image.size.width)];
     [self.vipType setImageEdgeInsets:UIEdgeInsetsMake(1, self.vipType.titleLabel.bounds.size.width, 0, -self.vipType.titleLabel.bounds.size.width)];
-    self.ScoreNum.titleLabel.font=[UIFont systemFontOfSize:13 weight:5];
+    self.ScoreNum.titleLabel.font=[UIFont systemFontOfSize:13*QWScreenheight/667 weight:5*QWScreenWidth/667];
     
     NSString *userscorestr= [NSString stringWithFormat:@"%@积分",[UdStorage getObjectforKey:UserScores]==nil?0:[UdStorage getObjectforKey:UserScores]];
     [self.ScoreNum setTitle:userscorestr forState:BtnNormal];
@@ -45,14 +45,14 @@
     self.goUpGrade.layer.borderWidth=1;
     self.goUpGrade.layer.borderColor=[UIColor whiteColor].CGColor;
     self.goUpGrade.layer.cornerRadius=corner;
-    self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
+    self.goUpGrade.titleLabel.font=[UIFont systemFontOfSize:8*QWScreenheight/667 weight:3*QWScreenWidth/667];
     [self.goUpGrade setTitle:@"升等级" forState:BtnNormal];
 //    [self.goUpGrade addTarget:self action:@selector(goupgradeonclick:) forControlEvents:BtnTouchUpInside];
     CGFloat corners=self.AddScore.bounds.size.height/2;
     self.AddScore.layer.borderWidth=1;
     self.AddScore.layer.borderColor=[UIColor whiteColor].CGColor;
     self.AddScore.layer.cornerRadius=corners;
-    self.AddScore.titleLabel.font=[UIFont systemFontOfSize:8 weight:3];
+    self.AddScore.titleLabel.font=[UIFont systemFontOfSize:8*QWScreenheight/667 weight:3*QWScreenWidth/667];
     [self.AddScore setTitle:@"赚积分" forState:BtnNormal];
     //初始化CAGradientlayer对象，使它的大小为UIView的大小
     self.gradientLayer = [CAGradientLayer layer];
@@ -81,12 +81,15 @@
     self.headerImage.image=[UIImage imageNamed:@"huiyuantou"];
     [self.contentViews addSubview:    self.headerImage];
     [self.contentViews addSubview:    self.phoneNum];
-    [self.contentViews addSubview:self.vipType];
-    [self.contentViews addSubview:    self.goUpGrade];
-    [self.contentViews addSubview:    self.ScoreNum];
-    [self.contentViews addSubview:self.AddScore];
+    
+    [self.contentViews addSubview:    self.supview];
+    [self.supview addSubview:self.vipType];
+    [self.supview addSubview:    self.goUpGrade];
+    [self.supview addSubview:    self.ScoreNum];
+    [self.supview addSubview:self.AddScore];
+    
+    [self.supview addSubview:self.linev];
     [self.contentViews addSubview:    self.Maxline];
-    [self.contentViews addSubview:self.linev];
    
 //    self.Maxline.
 //    .backgroundColor=[UIColor colorWithRed:248/255.0 green:238/255.0 blue:71/255.0 alpha:1];

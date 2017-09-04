@@ -232,11 +232,28 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 //
 #pragma mark - 点击升级
 - (void)clickUpgradeBtn:(UIButton *)sender {
-
+    
+    
+    NSArray *arr2 = @[@"",@"普通会员",@"白银会员",@"黄金会员",@"铂金会员",@"钻石会员",@"黑钻会员"];
+    
+    NSUInteger num = [[NSString stringWithFormat:@"%@",_MembershipUserScore[@"Level_id"]] integerValue];
+    
+    NSUInteger num2 = [[NSString stringWithFormat:@"%@",_MembershipUserScore[@"NextLevel"]] integerValue];
+    
+    
     QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
     upGradeVC.hidesBottomBarWhenPushed = YES;
-[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
+    
+    upGradeVC.currentLevel = arr2[num];
+    upGradeVC.nextLevel = arr2[num2];
+    upGradeVC.NextLevelScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"NextLevelScore"]];
+    upGradeVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
+    
+    
     [self.navigationController pushViewController:upGradeVC animated:YES];
+    
+
+   
 
 }
 //
@@ -274,14 +291,16 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section>0) {
+        QWCardConfigGradeModel *newcard = (QWCardConfigGradeModel *)[_MembershipUserScoreArray objectAtIndex:indexPath.row];
+        QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
+        ticketVC.card = newcard;
+        ticketVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
+        ticketVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:ticketVC animated:YES];
+    }
     
-    
-    QWCardConfigGradeModel *newcard = (QWCardConfigGradeModel *)[_MembershipUserScoreArray objectAtIndex:indexPath.row];
-    QWWashCarTicketController *ticketVC = [[QWWashCarTicketController alloc] init];
-    ticketVC.card = newcard;
-    ticketVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
-    ticketVC.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:ticketVC animated:YES];
+   
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

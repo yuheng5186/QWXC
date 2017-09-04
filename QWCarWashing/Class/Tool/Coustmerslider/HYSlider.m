@@ -54,7 +54,7 @@
     _textLabel = [[UILabel alloc]initWithFrame: CGRectMake(self.leftView.frame.size.width - 20, 0, 20, self.frame.size.height)];
     _textLabel.textColor = [UIColor blackColor];
     _textLabel.font = [UIFont systemFontOfSize:9.0];
-    [self.leftView addSubview:_textLabel];
+//    [self.leftView addSubview:_textLabel];
     self.textLabel.text = [NSString stringWithFormat:@"%.f",currentSliderValue];
 }
 

@@ -253,6 +253,6 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
  */
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return -64.f-74;
+    return -64.f;
 }
 @end
