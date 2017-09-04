@@ -82,12 +82,18 @@
 #define UserScores        @"UserScore"             //用户年龄
 #define UserLoading      @"userLoading"          //用户登录
 #define orderPayId       @"orderPayId"           //支付id
-//NSLog
-//#ifdef DEBUG        //调试状态打开LOG功能
-//#define NSLog(...) NSLog(__VA_ARGS__)
-//#else               //发布状态关闭LOG功能
-//#define NSLog(...)
-//#endif
+
+
+
+#ifdef DEBUG
+#define NSLog(...) NSLog(__VA_ARGS__)
+#define debugMethod() NSLog(@"%s", __func__)
+#else
+#define NSLog(...)
+#define debugMethod()
+#endif
+
+
 //签到页
 #define UserSignTime        @"SignTime"             //用户年龄
 
