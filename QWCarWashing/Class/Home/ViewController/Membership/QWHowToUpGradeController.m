@@ -324,6 +324,7 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
     QWPersonInfoDetailViewController *personinfo=[[QWPersonInfoDetailViewController alloc]init];
+    personinfo.hidesBottomBarWhenPushed = YES;
     switch (btn.tag) {
         case 2:
             [self.navigationController pushViewController:mycarVC animated:YES];

@@ -182,24 +182,26 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 }
 -(void)gotoearnScore:(UIButton *)btn
 {
-    QWIntegModel * integmodel=[QWIntegModel new];
-    integmodel=[self.ScoreData objectAtIndex:btn.tag];
-    if(integmodel.IntegType == 2)
-    {
-        self.tabBarController.selectedIndex = 4;
-    }
-    else if(integmodel.IntegType  == 3)
-    {
-        QWMyCarController *myCarController                  = [[QWMyCarController alloc]init];
-        myCarController.hidesBottomBarWhenPushed            = YES;
-        [self.navigationController pushViewController:myCarController animated:YES];
-    }
-    else if(integmodel.IntegType  == 4)
-    {
-        QWMeViewController *userInfoController    = [[QWMeViewController alloc]init];
-        userInfoController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:userInfoController animated:YES];
-    }
+    
+    
+//    QWIntegModel * integmodel=[QWIntegModel new];
+//    integmodel=[self.ScoreData objectAtIndex:btn.tag];
+//    if(integmodel.IntegType == 2)
+//    {
+//        self.tabBarController.selectedIndex = 4;
+//    }
+//    else if(integmodel.IntegType  == 3)
+//    {
+//        QWMyCarController *myCarController                  = [[QWMyCarController alloc]init];
+//        myCarController.hidesBottomBarWhenPushed            = YES;
+//        [self.navigationController pushViewController:myCarController animated:YES];
+//    }
+//    else if(integmodel.IntegType  == 4)
+//    {
+//        QWMeViewController *userInfoController    = [[QWMeViewController alloc]init];
+//        userInfoController.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:userInfoController animated:YES];
+//    }
 }
 -(void)completeButton:(UIButton *)btn{
     QWMyCarController *mycarVC=[[QWMyCarController alloc]init];

@@ -9,8 +9,13 @@
 #import "QWIcreaseCarController.h"
 #import "QFDatePickerView.h"
 #import "ProvinceShortController.h"
-
+#import "QWScoreController.h"
+#import "QWViptequanViewController.h"
+#import "MBProgressHUD.h"
 @interface QWIcreaseCarController ()<UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate,UITextFieldDelegate>
+{
+    MBProgressHUD *HUD;
+}
 
 @property (nonatomic, weak) UITableView *carInfoView;
 
@@ -452,7 +457,82 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                     [self.view showInfo:@"新增成功" autoHidden:YES interval:2];
                     NSNotification * notice = [NSNotification notificationWithName:@"increasemycarsuccess" object:nil userInfo:nil];
                     [[NSNotificationCenter defaultCenter]postNotification:notice];
-                    [self.navigationController popViewControllerAnimated:YES];
+                    __weak typeof (self) weakSelf = self;
+                    
+                    
+                    HUD.completionBlock = ^(){
+                        NSArray *vcsArray = [NSArray array];
+                        vcsArray= [self.navigationController viewControllers];
+                        NSInteger vcCount = vcsArray.count;
+                        
+                        if(vcCount <5)
+                        {
+                            
+                            [weakSelf.view showInfo:@"新增成功" autoHidden:YES interval:2];
+                            [weakSelf.navigationController popViewControllerAnimated:YES];
+                        }
+                        else
+                        {
+                           
+                            
+                            NSInteger m = 0;
+                            
+                            NSInteger n = 0;
+                            
+                            
+                            for (UIViewController *controller in weakSelf.navigationController.viewControllers) {
+                                if ([controller isKindOfClass:[QWScoreController class]]) {
+                                    QWScoreController *memberVC =(QWScoreController *)controller;
+                                    [weakSelf.navigationController popToViewController:memberVC animated:YES];
+                                    m++;
+                                }
+                                else if ([controller isKindOfClass:[QWViptequanViewController class]]) {
+                                    QWViptequanViewController *memberVC =(QWViptequanViewController *)controller;
+                                    [weakSelf.navigationController popToViewController:memberVC animated:YES];
+                                    n++;
+                                }
+                            }
+                            if(m != 0)
+                            {
+                                NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                                [[NSNotificationCenter defaultCenter]postNotification:notice];
+                                UIViewController *controller;
+                                QWScoreController *memberVC =(QWScoreController *)controller;
+                                [weakSelf.navigationController popToViewController:memberVC animated:YES];
+                            }
+                            else
+                            {
+                                NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                                [[NSNotificationCenter defaultCenter]postNotification:notice];
+                                UIViewController *controller;
+                                QWViptequanViewController *memberVC =(QWViptequanViewController *)controller;
+                                [weakSelf.navigationController popToViewController:memberVC animated:YES];
+                            }
+                            
+                            
+                            
+                            
+                            //                                }
+                            //                                else if([lastVC isKindOfClass:[EarnScoreController class]])
+                            //                                {
+                            //                                    if([lasttwoVC isKindOfClass:[DSMembershipController class]])
+                            //                                    {
+                            //                                        NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                            //                                        [[NSNotificationCenter defaultCenter]postNotification:notice];
+                            //                                        [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:index-4]animated:YES];
+                            //                                    }
+                            //                                    NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                            //                                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+                            //                                    [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:index-5]animated:YES];
+                            //                                }
+                            //
+                        }
+                        
+                    };
+                    //
+                    //
+                    //        
+                    [HUD hide:YES afterDelay:1];
                 }
                 
                 else
