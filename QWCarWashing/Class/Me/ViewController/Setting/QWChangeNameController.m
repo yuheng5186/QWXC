@@ -30,7 +30,7 @@
 - (void) createSubView {
     self.view.backgroundColor       = [UIColor colorFromHex:@"#e6e6e6"];
     UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*60/667) color:[UIColor whiteColor]];
-    upView.top                      = Main_Screen_Height*84/667;
+    upView.top                      = 74;
     
     self.userNameText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 40)];
     self.userNameText.placeholder    = self.userName;

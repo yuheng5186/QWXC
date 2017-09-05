@@ -75,7 +75,7 @@
     
     upView.height                   = showNameLabel.bottom +Main_Screen_Height*10/667;
     
-    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*200/667) ];
+    self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*150/667) ];
     self.tableView.top              = upView.bottom+1;
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
@@ -128,7 +128,7 @@
 {
     
 
-    return 3;
+    return 2;
     
 }
 
@@ -150,16 +150,15 @@
     cell.textLabel.font         = [UIFont systemFontOfSize:15];
     
     if (indexPath.row == 0) {
-        cell.textLabel.text     = @"密码管理";
+        cell.textLabel.text     = @"关于金顶";
         
         
     }else if (indexPath.row == 1){
         
-        cell.textLabel.text     = @"关于金顶";
+        cell.textLabel.text     = @"给我评分";
         
     }else {
         
-        cell.textLabel.text     = @"给我评分";
     }
     
     //    if (indexPath.section == 0) {
@@ -191,14 +190,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 0) {
-        
-        QWPasswordController *passwordController        = [[QWPasswordController alloc]init];
-        passwordController.hidesBottomBarWhenPushed      = YES;
-        [self.navigationController pushViewController:passwordController animated:YES];
-        
-    }else if (indexPath.row == 1){
-        
+//    if (indexPath.row == 0) {
+//        
+//        QWPasswordController *passwordController        = [[QWPasswordController alloc]init];
+//        passwordController.hidesBottomBarWhenPushed      = YES;
+//        [self.navigationController pushViewController:passwordController animated:YES];
+//        
+//    }else
+    if (indexPath.row == 0){
+    
         QWAboutController *aboutController             = [[QWAboutController alloc]init];
         aboutController.hidesBottomBarWhenPushed        = YES;
         [self.navigationController pushViewController:aboutController animated:YES];
