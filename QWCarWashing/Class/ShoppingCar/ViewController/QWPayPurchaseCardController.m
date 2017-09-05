@@ -76,6 +76,9 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     
     UILabel *bottomPriceLab = [[UILabel alloc] init];
     bottomPriceLab.text = @"¥54.00";
+    if (self.choosecard!=nil) {
+        bottomPriceLab.text =[NSString stringWithFormat:@"¥%@",self.choosecard.CardPrice];
+    }
     bottomPriceLab.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
     bottomPriceLab.textColor = [UIColor colorFromHex:@"#ff525a"];
     [payBottomView addSubview:bottomPriceLab];
@@ -161,7 +164,9 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     if (indexPath.section == 0 && indexPath.row == 1) {
         
         payCardDetailCell *payCell = [tableView dequeueReusableCellWithIdentifier:id_payDetailCell];
-        
+        if (self.choosecard!=nil) {
+            payCell.choosecard=self.choosecard;
+        }
         return payCell;
     }
     
@@ -185,25 +190,14 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
             [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
         }
         
-        
-        
-        //        UIButton *payWayBtn = [[UIButton alloc] init];
-        //        [payWayBtn setImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
-        //        [payWayBtn setImage:[UIImage imageNamed:@"xaunzhong"] forState:UIControlStateSelected];
-        //        [paycell.contentView addSubview:payWayBtn];
-        //
-        //        [payWayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        //            make.centerY.equalTo(cell.contentView);
-        //            make.right.equalTo(cell.contentView).mas_offset(-12);
-        //            make.width.mas_equalTo(21);
-        //            make.height.mas_equalTo(21);
-        //        }];
-        
         return paycell;
     }
     
     cell.textLabel.text  = @"卡名称";
     cell.detailTextLabel.text = @"洗车月卡";
+    if (self.choosecard!=nil) {
+        cell.detailTextLabel.text=self.choosecard.CardName;
+    }
     
     cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#febb02"];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:13];

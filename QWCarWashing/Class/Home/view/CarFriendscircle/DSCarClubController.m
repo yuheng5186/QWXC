@@ -371,7 +371,7 @@
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
     if (self.dataArray.count!=0) {
          detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode;
-         NSLog(@"%@",((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode);
+//         NSLog(@"%ld",(long)((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode);
     }
    
    

@@ -382,7 +382,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526276422.989896"
+                  timestampString = "526287519.978124"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"
@@ -397,7 +397,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526276422.991254"
+                  timestampString = "526287519.979658"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"
@@ -413,13 +413,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/view/CarFriendscircle/DSCarClubController.m"
-            timestampString = "526276100.309249"
+            filePath = "QWCarWashing/Class/Merchant/ViewController/QWMerchantDetailViewController.m"
+            timestampString = "526285563.572619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -429,13 +429,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/view/CarFriendscircle/DSCarClubController.m"
-            timestampString = "526276153.666016"
+            filePath = "QWCarWashing/Class/Merchant/ViewController/QWMerchantDetailViewController.m"
+            timestampString = "526285563.572619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Merchant/view/QWMcServiceTableViewCell.m"
+            timestampString = "526285448.10693"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-setMerSerList:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWMembershipController.m"
+            timestampString = "526286817.32174"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "-clickHowToIncreaseGradeBtn"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Me/ViewController/ViptequanViewctl/QWViptequanViewController.m"
+            timestampString = "526287510.625417"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -30,15 +30,22 @@
     }
     return self;
 }
--(void)setMerchantmod:(QWMerSerListModel *)MerSerList{
+-(void)setMerSerList:(QWMerSerListModel *)MerSerList{
+    NSLog(@"===%@",MerSerList);
     _MerSerList=MerSerList;
     self.Mcservicename.text=MerSerList.SerName;
     self.Mcserviceintro.text=MerSerList.SerComment;
     
     self.Mcprice.text=[NSString stringWithFormat:@"¥%@",MerSerList.OriginalPrice];
     self.Mccurrentprice.text=[NSString stringWithFormat:@"¥%@",MerSerList.CurrentPrice];
-
+    
+    NSString *textStr = self.Mcprice.text;
+    NSDictionary *attribtDic = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
+    NSMutableAttributedString *attribtStr = [[NSMutableAttributedString alloc]initWithString:textStr attributes:attribtDic];
+    self.Mcprice.attributedText = attribtStr;
+    
 }
+
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -85,7 +92,7 @@
     self.Mccurrentprice = price;
     
     
-    UILabel *usedprice = [[UILabel alloc]initWithFrame:CGRectMake1(310, 47, 50, 10)];
+    UILabel *usedprice = [[UILabel alloc]initWithFrame:CGRectMake1(310, 47, 50, 15)];
     [usedprice setFont:[UIFont fontWithName:@"Helvetica" size:14 * myDelegate.autoSizeScaleX]];
     usedprice.textColor = [UIColor colorWithHexString:@"#999999"];
     usedprice.text = @"￥88.00";

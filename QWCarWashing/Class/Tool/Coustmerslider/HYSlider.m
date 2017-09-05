@@ -44,8 +44,14 @@
 - (void)setCurrentSliderValue:(CGFloat)currentSliderValue
 {
     _currentSliderValue = currentSliderValue;
+    if (_hyMaxValue==0) {
+        _leftView.frame = CGRectMake(0, 0,0, self.frame.size.height);
+    }else{
+         _leftView.frame = CGRectMake(0, 0,currentSliderValue / (_hyMaxValue/self.frame.size.width), self.frame.size.height);
+    }
+   
     
-    _leftView.frame = CGRectMake(0, 0,currentSliderValue / (_hyMaxValue/self.frame.size.width), self.frame.size.height);
+   
     
     if(_textLabel){
         [_textLabel removeFromSuperview];
