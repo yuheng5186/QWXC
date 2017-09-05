@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-            timestampString = "526217298.987411"
+            timestampString = "526272644.841306"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "450"
-            endingLineNumber = "450"
+            startingLineNumber = "454"
+            endingLineNumber = "454"
             landmarkName = "-requestAddCarAndcCarBrand:andPlateNumber:andChassisNum:andManufacture:andDepartureTime:andMileage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-            timestampString = "526217298.987411"
+            timestampString = "526272644.841306"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "456"
-            endingLineNumber = "456"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
             landmarkName = "-requestAddCarAndcCarBrand:andPlateNumber:andChassisNum:andManufacture:andDepartureTime:andMileage:"
             landmarkType = "7">
          </BreakpointContent>
@@ -253,44 +253,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWEarnScoreController.m"
-            timestampString = "526197137.778002"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-gotoearnScore:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWHowToUpGradeController.m"
-            timestampString = "526215583.061074"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "-completeButton:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526215622.800278"
+            timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -302,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526215650.023565"
+            timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-noticeupdateUserPhone:"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,11 +286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526215651.405085"
+            timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-noticeupdateUserName:"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,11 +302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526215653.43989"
+            timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-createSubView"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,11 +318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526215659.654506"
+            timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-back:"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,13 +350,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWEarnScoreController.m"
-            timestampString = "526216370.256158"
+            timestampString = "526266870.64515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-completeButton:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWHowToUpGradeController.m"
+            timestampString = "526271919.297696"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "-gotoearnScore:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/MyCar/QWMyCarController.m"
+            timestampString = "526272192.324742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "852"
+            endingLineNumber = "852"
+            landmarkName = "-emptyDataSetDidTapButton:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
+            timestampString = "526272644.841306"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
+            landmarkName = "-requestAddCarAndcCarBrand:andPlateNumber:andChassisNum:andManufacture:andDepartureTime:andMileage:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__124-[QWIcreaseCarController requestAddCarAndcCarBrand:andPlateNumber:andChassisNum:andManufacture:andDepartureTime:andMileage:]_block_invoke"
+                  moduleName = "QWCarWashing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
+                  timestampString = "526272785.205892"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "467"
+                  endingLineNumber = "467"
+                  offsetFromSymbolStart = "554">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__124-[QWIcreaseCarController requestAddCarAndcCarBrand:andPlateNumber:andChassisNum:andManufacture:andDepartureTime:andMileage:]_block_invoke_2"
+                  moduleName = "QWCarWashing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
+                  timestampString = "526272785.207491"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "467"
+                  endingLineNumber = "467"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

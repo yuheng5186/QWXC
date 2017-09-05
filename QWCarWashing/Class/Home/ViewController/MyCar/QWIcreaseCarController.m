@@ -36,7 +36,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"我的车库";
+    self.title=IsNullIsNull(self.titlename)?@"我的车库":self.titlename;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = kColorTableBG;
     
@@ -434,6 +434,10 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 #pragma mark-新增爱车
 //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
 -(void)requestAddCarAndcCarBrand:(NSString *)CarBrand andPlateNumber:(NSString *)PlateNumber andChassisNum:(NSString *)ChassisNum andManufacture:(NSString *)Manufacture andDepartureTime:(NSString *)DepartureTime andMileage:(NSString *)Mileage {
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
         NSDictionary *mulDic = @{
                                  @"CarBrand":CarBrand,
                                  @"PlateNumber":PlateNumber,
@@ -482,11 +486,13 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                             
                             for (UIViewController *controller in weakSelf.navigationController.viewControllers) {
                                 if ([controller isKindOfClass:[QWScoreController class]]) {
+                                    //金顶会员
                                     QWScoreController *memberVC =(QWScoreController *)controller;
                                     [weakSelf.navigationController popToViewController:memberVC animated:YES];
                                     m++;
                                 }
                                 else if ([controller isKindOfClass:[QWViptequanViewController class]]) {
+                                    //会员特权
                                     QWViptequanViewController *memberVC =(QWViptequanViewController *)controller;
                                     [weakSelf.navigationController popToViewController:memberVC animated:YES];
                                     n++;
@@ -537,6 +543,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                 
                 else
                 {
+                    [HUD setHidden:YES];
                     [self.view showInfo:@"新增失败" autoHidden:YES interval:2];
                 }
                 
@@ -546,6 +553,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                 
                 
             } fail:^(NSError *error) {
+                [HUD setHidden:YES];
                 [self.view showInfo:@"新增失败" autoHidden:YES interval:2];
             }];
             

@@ -833,7 +833,7 @@ static NSString * HeaderId = @"header";
 }
 //是否允许点击，默认YES
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
-    return NO;
+    return YES;
 }
 //是否允许滚动，默认NO
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
@@ -849,7 +849,10 @@ static NSString * HeaderId = @"header";
 }
 //空白页按钮点击事件
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
-    return NSLog(@"空白页按钮点击事件");
+    QWIcreaseCarController *increaseVC = [[QWIcreaseCarController alloc] init];
+    increaseVC.hidesBottomBarWhenPushed = YES;
+//    increaseVC.titlename = @"新增车辆";
+    [self.navigationController pushViewController:increaseVC animated:YES];
 }
 /**
  *  调整垂直位置

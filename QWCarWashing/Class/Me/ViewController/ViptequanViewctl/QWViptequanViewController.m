@@ -91,6 +91,9 @@
     
     
     [gradeBtn addTarget:self action:@selector(clickHowToIncreaseGradeBtn) forControlEvents:UIControlEventTouchUpInside];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+   
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"Earnsuccess" object:nil];
     self.area = @"上海市";
     _MembershipprivilegesArray = [[NSMutableArray alloc]init];
     _NextMembershipprivilegesArr = [[NSMutableArray alloc]init];
@@ -101,6 +104,9 @@
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.labelText = @"加载中";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
+    [self GetMembershipprivileges];
+}
+-(void)noticeupdate:(NSNotification *)sender{
     [self GetMembershipprivileges];
 }
 #pragma mark-等级特权查询

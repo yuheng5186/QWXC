@@ -61,9 +61,11 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem= leftItem;
     
-//     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"积分规则" style:UIBarButtonItemStyleDone target:self action:@selector(ScoreRuleOnclick:)];
-//    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} forState:UIControlStateNormal];
-    // Do any additional setup after loading the view.
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"updatenamesuccess" object:nil];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"updateheadimgsuccess" object:nil];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"updatecard" object:nil];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"Earnsuccess" object:nil];
     self.title  = @"金顶会员";
     self.view.backgroundColor   = [UIColor whiteColor];
     
@@ -81,6 +83,11 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 
 
 
+}
+-(void)noticeupdate:(NSNotification *)sender{
+    
+    
+    [self GetMembershipUserScore];
 }
 //#pragma mark-积分规则
 //-(void)ScoreRuleOnclick:(id)sender{
