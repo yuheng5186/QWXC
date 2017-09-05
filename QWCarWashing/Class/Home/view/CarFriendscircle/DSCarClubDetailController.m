@@ -382,7 +382,7 @@
     .heightIs(1);
     
     
-    [header setupAutoHeightWithBottomView:bottomLine bottomMargin:10*QWScreenheight/667];
+    [header setupAutoHeightWithBottomView:bottomLine bottomMargin:1*QWScreenheight/667];
     [header layoutSubviews];
     self.tableView.tableHeaderView  = header;
     
@@ -415,7 +415,7 @@
     self.downView .backgroundColor  = [UIColor whiteColor];
     
     
-    self.userSayTextField                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-150, Main_Screen_Height*40/667)];
+    self.userSayTextField                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-150*Main_Screen_Width/375, Main_Screen_Height*40/667)];
     self.userSayTextField.placeholder    = @"    我来说两句...";
     self.userSayTextField.delegate       = self;
     self.userSayTextField.returnKeyType  = UIReturnKeyDone;
@@ -443,7 +443,7 @@
     [self.downView  addSubview:sayButton];
     
     sayButton.sd_layout
-    .leftSpaceToView(self.userSayTextField, 10*Main_Screen_Height/667)
+    .leftSpaceToView(self.userSayTextField, 15*Main_Screen_Height/667)
     .centerYEqualToView(self.userSayTextField)
     .heightIs(20*Main_Screen_Height/667)
     .widthIs(20*Main_Screen_Height/667);
@@ -463,7 +463,7 @@
     sayShowLabel.sd_layout
     .leftSpaceToView(sayButton, 5*Main_Screen_Height/667)
     .topSpaceToView(self.downView , 12*Main_Screen_Height/667)
-    .widthIs(40*Main_Screen_Height/667)
+    .widthIs(25*Main_Screen_Height/667)
     .heightIs(20*Main_Screen_Height/667);
     
     UIButton    *downGoodButton = [UIButton new];
@@ -474,7 +474,7 @@
     [self.downView  addSubview:downGoodButton];
     
     downGoodButton.sd_layout
-    .leftSpaceToView(self.sayShowLabel, 5*Main_Screen_Height/667)
+    .leftSpaceToView(self.sayShowLabel, 10*Main_Screen_Height/667)
     .centerYEqualToView(self.userSayTextField)
     .heightIs(20*Main_Screen_Height/667)
     .widthIs(20*Main_Screen_Height/667);
@@ -482,7 +482,7 @@
     
     UILabel *goodShowLabel                   = [UILabel new];
     goodShowLabel.textColor                  = [UIColor colorFromHex:@"#999999"];
-    goodShowLabel.font                       = [UIFont systemFontOfSize:12];
+    goodShowLabel.font                       = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
     goodShowLabel.text                       = @"369";
     
    goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
@@ -490,9 +490,9 @@
     [self.downView  addSubview:goodShowLabel];
     
     goodShowLabel.sd_layout
-    .leftSpaceToView(downGoodButton, 0)
-    .topSpaceToView(self.downView , 12*Main_Screen_Height/667)
-    .widthIs(40*Main_Screen_Height/667)
+    .leftSpaceToView(downGoodButton, 5*Main_Screen_Height/667)
+    .topSpaceToView(self.downView , 10*Main_Screen_Height/667)
+    .widthIs(25*Main_Screen_Height/667)
     .heightIs(20*Main_Screen_Height/667);
     
     [self.downView  layoutSubviews];
@@ -1150,7 +1150,7 @@
     }
     else
     {
-        return [self.tableView cellHeightForIndexPath:indexPath model:self.modelsArray[indexPath.row] keyPath:@"CarClubUserModel" cellClass:[DSActivityDetailCell class] contentViewWidth:[self cellContentViewWith]];
+        return [self.tableView cellHeightForIndexPath:indexPath model:self.modelsArray[indexPath.row] keyPath:@"CarClubUserModel" cellClass:[DSActivityDetailCell class] contentViewWidth:[self cellContentViewWith]]+23*Main_Screen_Height/667;
     }
    
 }
