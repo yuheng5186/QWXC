@@ -1052,7 +1052,7 @@
     NSLog(@"添加评论借口参数：%ld==%@",(long)self.ActivityCode,self.userSayTextField.text);
     //    ht://192.168.3.101:8090/api/Activity/AddActivityCommentInfo
     NSDictionary *mulDic = @{
-                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
                              @"Comment":self.userSayTextField.text
                              };
