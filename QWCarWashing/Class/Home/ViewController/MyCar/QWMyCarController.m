@@ -130,12 +130,23 @@ static NSString * HeaderId = @"header";
     }
     return _carInfoView;
 }
-
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+    [self resetBabkButton];
     // Do any additional setup after loading the view.
     self.title  = @"我的爱车";
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
@@ -365,6 +376,7 @@ static NSString * HeaderId = @"header";
     
     }
     }
+ 
     
 }
 
@@ -772,6 +784,7 @@ static NSString * HeaderId = @"header";
 }
 
 #pragma mark - 无数据占位
+#import "UIScrollView+EmptyDataSet.h"//第三方空白页,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 //无数据占位
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
     return [UIImage imageNamed:@"cheku_kongbai"];
@@ -801,18 +814,18 @@ static NSString * HeaderId = @"header";
 
 //- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state  {
 ////    NSLog(@"buttonTitleForEmptyDataSet:点击上传照片");
-////    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
-////    return [[NSAttributedString alloc] initWithString:@"点击上传照片" attributes:attributes];
+//    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
+//    return [[NSAttributedString alloc] initWithString:@"点击上传照片" attributes:attributes];
 //}
 // 返回可以点击的按钮 上面带文字
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
     NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
-    return [[NSAttributedString alloc] initWithString:@"" attributes:attribute];
+    return [[NSAttributedString alloc] initWithString:@"xinzeng.png" attributes:attribute];
 }
 
 
 - (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-    return [UIImage imageNamed:@"button_image"];
+    return [UIImage imageNamed:@"xinzeng.png"];
 }
 //是否显示空白页，默认YES
 - (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
@@ -820,7 +833,7 @@ static NSString * HeaderId = @"header";
 }
 //是否允许点击，默认YES
 - (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
-    return NO;
+    return YES;
 }
 //是否允许滚动，默认NO
 - (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
@@ -836,7 +849,10 @@ static NSString * HeaderId = @"header";
 }
 //空白页按钮点击事件
 - (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
-    return NSLog(@"空白页按钮点击事件");
+    QWIcreaseCarController *increaseVC = [[QWIcreaseCarController alloc] init];
+    increaseVC.hidesBottomBarWhenPushed = YES;
+//    increaseVC.titlename = @"新增车辆";
+    [self.navigationController pushViewController:increaseVC animated:YES];
 }
 /**
  *  调整垂直位置

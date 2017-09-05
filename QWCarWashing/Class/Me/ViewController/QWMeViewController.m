@@ -336,11 +336,13 @@ static NSString *cellstr=@"cell";
         if (indexPath.row == 0) {
             QWMyCarController   *myCar      = [[QWMyCarController alloc]init];
             myCar.hidesBottomBarWhenPushed  = YES;
+           
             [self.navigationController pushViewController:myCar animated:YES];
         }else
         {
             QWCardPackgeController  *cardPackgeController   = [[QWCardPackgeController alloc]init];
             cardPackgeController.hidesBottomBarWhenPushed   = YES;
+            
             [self.navigationController pushViewController:cardPackgeController animated:YES];
             
         }
@@ -348,6 +350,7 @@ static NSString *cellstr=@"cell";
     }else if(indexPath.section==2){
         QWScoreController *scoreCtl=[[QWScoreController alloc]init];
         scoreCtl.hidesBottomBarWhenPushed  = YES;
+       
         [self.navigationController pushViewController:scoreCtl animated:YES];
         
         
@@ -355,12 +358,7 @@ static NSString *cellstr=@"cell";
     }
     
     if (indexPath.section == 4) {
-//        ShareWeChatController *shareVC = [[ShareWeChatController alloc] init];
-//        shareVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-//        shareVC.delegate = self;
-//        
-//        self.tabBarController.tabBar.hidden = YES;
-//        [self presentViewController:shareVC animated:NO completion:nil];
+
         
         if (!self.activityView)
         {
@@ -372,33 +370,129 @@ static NSString *cellstr=@"cell";
             ButtonView *bv ;
             
             bv = [[ButtonView alloc]initWithText:@"微信" image:[UIImage imageNamed:@"btn_share_weixin"] handler:^(ButtonView *buttonView){
+                
+                
                 NSLog(@"点击微信");
-                SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-                req.text                = @"简单文本分享测试";
-                req.bText               = YES;
-                // 目标场景
-                // 发送到聊天界面  WXSceneSession
-                // 发送到朋友圈    WXSceneTimeline
-                // 发送到微信收藏  WXSceneFavorite
-                req.scene               = WXSceneSession;
-                [WXApi sendReq:req];
+//                SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//                req.text                = @"简单文本分享测试";
+//                req.bText               = YES;
+//                // 目标场景
+//                // 发送到聊天界面  WXSceneSession
+//                // 发送到朋友圈    WXSceneTimeline
+//                // 发送到微信收藏  WXSceneFavorite
+//                req.scene               = WXSceneSession;
+//                [WXApi sendReq:req];
+//                
+//                self.tabBarController.tabBar.hidden = NO;
+                NSDictionary *mulDic = @{
+                                         @"Account_Id":[UdStorage getObjectforKey:Userid],
+                                         @"ShareType":@3
+                                         };
+                
+                [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@InviteShare/UserShare",Khttp] success:^(NSDictionary *dict, BOOL success) {
+                    
+                    if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+                    {
+                        //创建发送对象实例
+                        SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
+                        sendReq.bText = NO;//不使用文本信息
+                        sendReq.scene = 0;//0 = 好友列表 1 = 朋友圈 2 = 收藏
+                        
+                        //创建分享内容对象
+                        WXMediaMessage *urlMessage = [WXMediaMessage message];
+                        urlMessage.title = @"蔷薇爱车";//分享标题
+                        urlMessage.description = @"分享赚钱";//分享描述
+                        [urlMessage setThumbImage:[UIImage imageNamed:@"loginIcon"]];//分享图片,使用SDK的setThumbImage方法可压缩图片大小
+                        
+                        //创建多媒体对象
+                        WXWebpageObject *webObj = [WXWebpageObject object];
+                        webObj.webpageUrl = [NSString stringWithFormat:@"%@",[[dict objectForKey:@"JsonData"] objectForKey:@"InviteShareUrl"]];//分享链接
+                        
+                        //完成发送对象实例
+                        urlMessage.mediaObject = webObj;
+                        sendReq.message = urlMessage;
+                        
+                        //发送分享信息
+                        [WXApi sendReq:sendReq];
+                        
+                    }
+                    else
+                    {
+                        [self.view showInfo:@"分享失败，请重试" autoHidden:YES interval:2];
+                        
+                    }
+                    
+                } fail:^(NSError *error) {
+                    [self.view showInfo:@"分享失败，请重试" autoHidden:YES interval:2];
+                    
+                }];
+                
                 
                 self.tabBarController.tabBar.hidden = NO;
                 
             }];
+            
+            
+            
+            //========
             [self.activityView addButtonView:bv];
             
             bv = [[ButtonView alloc]initWithText:@"微信朋友圈" image:[UIImage imageNamed:@"btn_share_pengyouquan"] handler:^(ButtonView *buttonView){
                 NSLog(@"点击微信朋友圈");
-                SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
-                req.text                = @"简单文本分享测试";
-                req.bText               = YES;
-                // 目标场景
-                // 发送到聊天界面  WXSceneSession
-                // 发送到朋友圈    WXSceneTimeline
-                // 发送到微信收藏  WXSceneFavorite
-                req.scene               = WXSceneTimeline;
-                [WXApi sendReq:req];
+//                SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//                req.text                = @"简单文本分享测试";
+//                req.bText               = YES;
+//                // 目标场景
+//                // 发送到聊天界面  WXSceneSession
+//                // 发送到朋友圈    WXSceneTimeline
+//                // 发送到微信收藏  WXSceneFavorite
+//                req.scene               = WXSceneTimeline;
+//                [WXApi sendReq:req];
+//                self.tabBarController.tabBar.hidden = NO;
+                
+                NSDictionary *mulDic = @{
+                                         @"Account_Id":[UdStorage getObjectforKey:Userid],
+                                         @"ShareType":@3
+                                         };
+                
+                [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@InviteShare/UserShare",Khttp] success:^(NSDictionary *dict, BOOL success) {
+                    
+                    if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+                    {
+                        //创建发送对象实例
+                        SendMessageToWXReq *sendReq = [[SendMessageToWXReq alloc] init];
+                        sendReq.bText = NO;//不使用文本信息
+                        sendReq.scene = 1;//0 = 好友列表 1 = 朋友圈 2 = 收藏
+                        
+                        //创建分享内容对象
+                        WXMediaMessage *urlMessage = [WXMediaMessage message];
+                        urlMessage.title = @"蔷薇爱车";//分享标题
+                        urlMessage.description = @"分享赚钱";//分享描述
+                        [urlMessage setThumbImage:[UIImage imageNamed:@"loginIcon"]];//分享图片,使用SDK的setThumbImage方法可压缩图片大小
+                        
+                        //创建多媒体对象
+                        WXWebpageObject *webObj = [WXWebpageObject object];
+                        webObj.webpageUrl = [NSString stringWithFormat:@"%@",[[dict objectForKey:@"JsonData"] objectForKey:@"InviteShareUrl"]];//分享链接
+                        
+                        //完成发送对象实例
+                        urlMessage.mediaObject = webObj;
+                        sendReq.message = urlMessage;
+                        
+                        //发送分享信息
+                        [WXApi sendReq:sendReq];
+                        
+                    }
+                    else
+                    {
+                        [self.view showInfo:@"分享失败，请重试" autoHidden:YES interval:2];
+                        
+                    }
+                    
+                } fail:^(NSError *error) {
+                    [self.view showInfo:@"分享失败，请重试" autoHidden:YES interval:2];
+                    
+                }];
+                
                 self.tabBarController.tabBar.hidden = NO;
                 
             }];

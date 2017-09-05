@@ -7,9 +7,15 @@
 //
 
 #import "QWChangeNameController.h"
+#import "MBProgressHUD.h"
+#import "QWHowToUpGradeController.h"
+#import "QWEarnScoreController.h"
+#import "QWScoreController.h"
 
 @interface QWChangeNameController ()<UITextFieldDelegate>
-
+{
+    MBProgressHUD *HUD;
+}
 @property (nonatomic, strong) UITextField *userNameText;
 
 
@@ -62,6 +68,10 @@
 }
 #pragma mark-修改昵称
 -(void)updateUserName:(NSString *)username{
+    HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.removeFromSuperViewOnHide =YES;
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    HUD.minSize = CGSizeMake(132.f, 108.0f);
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
                              @"ModifyType":@"2",
@@ -72,18 +82,88 @@
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
+            HUD.mode = MBProgressHUDModeCustomView;
             
-            [UdStorage storageObject:username forKey:UserNamer];
-            NSNotification * notice = [NSNotification notificationWithName:@"updatenamesuccess" object:nil userInfo:@{@"username":username}];
-            [[NSNotificationCenter defaultCenter]postNotification:notice];
-            [self.navigationController popViewControllerAnimated:YES];
+            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success"]];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.animationType = MBProgressHUDAnimationZoom;
+            HUD.removeFromSuperViewOnHide = YES;
+            
+            
+            
+            HUD.completionBlock = ^(){
+                
+                
+                APPDELEGATE.currentUser.UserName = self.userNameText.text;
+                
+                [UdStorage storageObject:APPDELEGATE.currentUser.UserName forKey:@"Name"];
+                [UdStorage storageObject:username forKey:UserNamer];
+                            NSNotification * notice = [NSNotification notificationWithName:@"updatenamesuccess" object:nil userInfo:@{@"username":username}];
+                            [[NSNotificationCenter defaultCenter]postNotification:notice];
+                
+
+                
+                
+                
+                NSArray *vcsArray = [NSArray array];
+                vcsArray= [self.navigationController viewControllers];
+                NSInteger vcCount = vcsArray.count;
+                
+                
+                
+                if(vcCount <= 3)
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+                
+                else
+                {
+                    UIViewController *lastVC = vcsArray[vcCount-3];
+                    UIViewController *lasttwoVC = vcsArray[vcCount-4];
+                    int index=[[self.navigationController viewControllers]indexOfObject:self];
+                    //升等级
+                    if([lastVC isKindOfClass:[QWHowToUpGradeController class]])
+                    {
+                        
+                        NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                        [[NSNotificationCenter defaultCenter]postNotification:notice];
+                        
+                        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-3]animated:YES];
+                    }
+                    //赚积分
+                    else if([lastVC isKindOfClass:[QWEarnScoreController class]])
+                    {
+                        //金顶会员
+                        if([lasttwoVC isKindOfClass:[QWScoreController class]])
+                        {
+                            NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                            [[NSNotificationCenter defaultCenter]postNotification:notice];
+                            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-3]animated:YES];
+                        }
+                        NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                        [[NSNotificationCenter defaultCenter]postNotification:notice];
+                        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-4]animated:YES];
+                    }
+                    
+                    
+                }
+                
+                
+                
+                
+            };
+            
+            [HUD hide:YES afterDelay:1.f];
+
         }
         else
         {
+            [HUD hide:YES];
             [self.view showInfo:@"修改失败" autoHidden:YES interval:1];
         }
         
     } fail:^(NSError *error) {
+        [HUD hide:YES];
         [self.view showInfo:@"修改失败" autoHidden:YES interval:1];
     }];
 

@@ -10,4 +10,5 @@
 
 @interface QWIcreaseCarController : QWBaseViewController
 @property(nonatomic,strong)QWMyCarModel *mycarModel;
+@property(nonatomic,strong)NSString *titlename;
 @end

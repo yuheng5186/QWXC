@@ -16,10 +16,11 @@
 #import "QWCitySelectViewController.h"
 #import "QWMerchantDetailViewController.h"
 #import "QWMerchantModel.h"
+#import "UIScrollView+EmptyDataSet.h"//第三方空白页
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 
-@interface QWMerchantViewController ()<UITableViewDelegate, UITableViewDataSource,YZPullDownMenuDataSource>
+@interface QWMerchantViewController ()<UITableViewDelegate, UITableViewDataSource,YZPullDownMenuDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 {
     AppDelegate *myDelegate;
 }
@@ -100,6 +101,8 @@
 {
     self.MerchantListtableview.delegate = self;
     self.MerchantListtableview.dataSource = self;
+    self.MerchantListtableview.emptyDataSetSource = self;
+    self.MerchantListtableview.emptyDataSetDelegate = self;
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.MerchantListtableview.separatorStyle = NO;
     self.MerchantListtableview.showsVerticalScrollIndicator = NO;
@@ -501,6 +504,78 @@ CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
     rect.size.height = height * myDelegate.autoSizeScaleY;
     return rect;
 }
+#pragma mark - 无数据占位
+//无数据占位
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
+    return [UIImage imageNamed:@"Store"];
+}
 
+- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @""];
+    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
+    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0,   1.0)];
+    animation.duration = 0.25;
+    animation.cumulative = YES;
+    animation.repeatCount = MAXFLOAT;
+    return animation;
+}
+//设置文字（上图下面的文字，我这个图片默认没有这个文字的）是富文本样式，扩展性很强！
+
+//这个是设置标题文字的
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString *text = @"暂时还没有商家信息";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:13.0f],
+                                 NSForegroundColorAttributeName: [UIColor colorFromHex: @"#4a4a4a"]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+//设置占位图空白页的背景色( 图片优先级高于文字)
+
+- (UIColor *)backgroundColorForEmptyDataSet:(UIScrollView *)scrollView {
+    return [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
+}
+////设置按钮的文本和按钮的背景图片
+//- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state  {
+//    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],NSForegroundColorAttributeName:[UIColor whiteColor]};
+//    return [[NSAttributedString alloc] initWithString:@"马上去洗车" attributes:attributes];
+//}
+//-(UIImage *)buttonBackgroundImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state{
+////    return [UIImage imageNamed:@"qxiche"];
+//}
+//- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
+//    return [UIImage imageNamed:@"qxiche"];
+//}
+//是否显示空白页，默认YES
+- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
+    return YES;
+}
+//是否允许点击，默认YES
+- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
+    return NO;
+}
+//是否允许滚动，默认NO
+- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
+    return YES;
+}
+//图片是否要动画效果，默认NO
+- (BOOL) emptyDataSetShouldAllowImageViewAnimate:(UIScrollView *)scrollView {
+    return YES;
+}
+//空白页点击事件
+- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView {
+    NSLog(@"空白页点击事件");
+}
+//空白页按钮点击事件
+- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
+    return NSLog(@"空白页按钮点击事件");
+}
+/**
+ *  调整垂直位置
+ */
+- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return -64.f-44;
+}
 
 @end

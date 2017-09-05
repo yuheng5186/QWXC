@@ -136,8 +136,9 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WayToUpGradeCell *earnScoreCell = [tableView dequeueReusableCellWithIdentifier:id_earnViewCell forIndexPath:indexPath];
+    earnScoreCell.selectionStyle=UITableViewCellSelectionStyleNone;
     earnScoreCell.goButton.tag=indexPath.row;
-    [earnScoreCell.goButton addTarget:self action:@selector(completeButton:) forControlEvents:BtnTouchUpInside];
+    
     if (indexPath.row == 0) {
         earnScoreCell.iconV.image = [UIImage imageNamed:@"qw_xinyonghuzhuce"];
         earnScoreCell.waysLab.text = @"新用户注册";
@@ -187,6 +188,7 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
     if(integmodel.IntegType == 2)
     {
         self.tabBarController.selectedIndex = 4;
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     else if(integmodel.IntegType  == 3)
     {
@@ -196,30 +198,12 @@ static NSString *id_earnViewCell = @"id_earnViewCell";
     }
     else if(integmodel.IntegType  == 4)
     {
-        QWMeViewController *userInfoController    = [[QWMeViewController alloc]init];
+        QWPersonInfoDetailViewController *userInfoController    = [[QWPersonInfoDetailViewController alloc]init];
         userInfoController.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:userInfoController animated:YES];
     }
 }
--(void)completeButton:(UIButton *)btn{
-    QWMyCarController *mycarVC=[[QWMyCarController alloc]init];
-    QWPersonInfoDetailViewController *personinfo=[[QWPersonInfoDetailViewController alloc]init];
-    switch (btn.tag) {
-        case 2:
-            [self.navigationController pushViewController:mycarVC animated:YES];
-            break;
-        case 3:
-            [self.navigationController pushViewController:personinfo animated:YES];
-            break;
-        case 1:
-            
-            break;
-        default:
-            
-            break;
-    }
 
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return 10;

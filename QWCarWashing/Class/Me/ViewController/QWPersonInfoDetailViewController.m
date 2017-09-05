@@ -13,7 +13,9 @@
 
 #import "QWChangePhoneController.h"
 #import "QWChangeNameController.h"
-
+#import "QWHowToUpGradeController.h"
+#import "QWScoreController.h"
+#import "QWEarnScoreController.h"
 
 @interface QWPersonInfoDetailViewController ()<UITableViewDelegate,UITableViewDataSource,LKActionSheetDelegate,LKAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -208,7 +210,7 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
         
@@ -374,20 +376,52 @@
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
-            
-            //            APPDELEGATE.currentUser.Headimg = [[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"];
-//            UdStorage storageObject: forKey:@"Headimg"
-//            [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"] forKey:@"Headimg"];
-//         [self.userImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Khttp,[UdStorage getObjectforKey:@"Headimg"]]] placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
-////            刷新上一页面头像
-//            NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
-//            [[NSNotificationCenter defaultCenter]postNotification:notice];
+           
             APPDELEGATE.currentUser.Headimg = [[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"];
             [UdStorage storageObject:[[dict objectForKey:@"JsonData"] objectForKey:@"Headimg"] forKey:UserHead];
             self.userImageView.image =headerimage ;
             
             NSNotification * notice = [NSNotification notificationWithName:@"updateheadimgsuccess" object:nil userInfo:nil];
             [[NSNotificationCenter defaultCenter]postNotification:notice];
+            
+            NSArray *vcsArray = [NSArray array];
+            vcsArray= [self.navigationController viewControllers];
+            NSInteger vcCount = vcsArray.count;
+            
+            if(vcsArray.count == 2)
+            {
+                
+            }
+            else
+            {
+                UIViewController *lastVC = vcsArray[vcCount-2];
+                UIViewController *lasttwoVC = vcsArray[vcCount-3];
+                int index=[[self.navigationController viewControllers]indexOfObject:self];
+               
+                if([lastVC isKindOfClass:[QWHowToUpGradeController class]])
+                {
+                    NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+                    
+                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-2]animated:YES];
+                }
+                else if([lastVC isKindOfClass:[QWEarnScoreController class]])
+                {
+                    if([lasttwoVC isKindOfClass:[QWScoreController class]])
+                    {
+                        NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                        [[NSNotificationCenter defaultCenter]postNotification:notice];
+                        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-2]animated:YES];
+                        
+                    }
+                    NSNotification * notice = [NSNotification notificationWithName:@"Earnsuccess" object:nil userInfo:nil];
+                    [[NSNotificationCenter defaultCenter]postNotification:notice];
+                    
+                    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:index-3]animated:YES];
+                }
+                
+            }
+
             
         }
         else
