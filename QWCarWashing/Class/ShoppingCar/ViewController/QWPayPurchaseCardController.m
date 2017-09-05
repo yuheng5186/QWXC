@@ -35,6 +35,7 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     if (!_payCardView) {
         UITableView *payCardView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
         self.payCardView = payCardView;
+        self.payCardView.backgroundColor    = [UIColor colorFromHex:@"#fafafa"];
         [self.view addSubview:payCardView];
     }
     return _payCardView;
