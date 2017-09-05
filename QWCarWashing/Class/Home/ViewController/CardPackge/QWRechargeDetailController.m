@@ -269,7 +269,7 @@
     if (!_noticeLabelFour) {
         
         UILabel *noticeLabelFour = [[UILabel alloc] init];
-        noticeLabelFour.text = @"4、此卡可在蔷薇服务点享受会员优惠待遇，不得与其它优惠同时使用";
+        noticeLabelFour.text = @"4、此卡可在金顶服务点享受会员优惠待遇，不得与其它优惠同时使用";
         noticeLabelFour.textColor = [UIColor colorFromHex:@"#999999"];
         noticeLabelFour.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
         noticeLabelFour.numberOfLines = 0;
@@ -286,7 +286,7 @@
     if (!_noticeLabelFive) {
         
         UILabel *noticeLabelFive = [[UILabel alloc] init];
-        noticeLabelFive.text = @"5、由青岛蔷薇汽车服务有限公司保留此卡法律范围内的最终解释权。VIP热线：4006979558";
+        noticeLabelFive.text = @"5、由青岛金顶汽车服务有限公司保留此卡法律范围内的最终解释权。VIP热线：4006979558";
         noticeLabelFive.textColor = [UIColor colorFromHex:@"#999999"];
         noticeLabelFive.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
         noticeLabelFive.numberOfLines = 0;
