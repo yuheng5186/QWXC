@@ -538,8 +538,8 @@
     }
 
     
-    self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
-    self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
+//    self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+//    self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
     
     [self.view addSubview:self.downView ];
     
@@ -579,7 +579,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         _modelsArray = [NSMutableArray new];
         self.page = 0 ;
-        
+        [self.downView removeFromSuperview];
         [self requestActivityDetail];
         
     });
@@ -716,14 +716,16 @@
 -(void)requestCommentList
 {
     NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
                              @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
-                             @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
+                             @"PageIndex":@0,
                              @"PageSize":@10
                              };
        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityCommentList",Khttp] success:^(NSDictionary *dict, BOOL success) {
            NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
+            [self.modelsArray removeAllObjects];
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
             NSArray *arr = [NSArray array];
             arr = [dict objectForKey:@"JsonData"];
@@ -752,6 +754,7 @@
 -(void)requestCommentList2
 {
     NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
                              @"ActivityCode":[NSString stringWithFormat:@"%ld",self.ActivityCode],
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10
@@ -887,8 +890,14 @@
             [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
             
             self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过", self.CarClubNewsModel.GiveCount + 1];
-            
-            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
+            if(self.CarClubNewsModel.GiveCount>99)
+            {
+                self.goodShowLabel.text = @"99+";
+            }else
+            {
+                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
+            }
+//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
             self.CarClubNewsModel.GiveCount++;
             [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
             self.downGoodButton.selected = YES;
@@ -925,7 +934,16 @@
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             [self.view showInfo:@"取消点赞成功" autoHidden:YES interval:2];
-            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
+            
+            if(self.CarClubNewsModel.GiveCount>99)
+            {
+                self.goodShowLabel.text = @"99+";
+            }else
+            {
+                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
+            }
+            
+//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
             [self.downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
             
             self.CarClubNewsModel.GiveCount--;
