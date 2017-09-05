@@ -122,7 +122,7 @@ static NSString * HeaderId = @"header";
     
     if (_carInfoView == nil) {
         
-        UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
+        UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height - 64) style:UITableViewStyleGrouped];
         _carInfoView = carInfoView;
         
        
@@ -157,11 +157,11 @@ static NSString * HeaderId = @"header";
     
     
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
-    tap.delegate = self;
-    [self.view addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
+//    tap.delegate = self;
+//    [self.view addGestureRecognizer:tap];
     [self requestMyCarData];
     
     
@@ -366,15 +366,18 @@ static NSString * HeaderId = @"header";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return self.CarArray.count;
-    }else{
-    if (self.CarArray.count!=0) {
-        return 4;
-    }else{
+    if(_CarArray.count == 0)
+    {
         return 0;
-    
     }
+    
+    else
+    {
+        if (section == 0) {
+            return 2;
+        }
+        
+        return 4;
     }
  
     
@@ -613,6 +616,7 @@ static NSString * HeaderId = @"header";
     QWMyCarModel *car = [[QWMyCarModel alloc]init];
     car = [self.CarArray objectAtIndex:_Xuhao];
      increaseVC.mycarModel = car;
+    increaseVC.titlename = @"修改车辆信息";
     increaseVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:increaseVC animated:YES];
 //    if (indexPath.section == 1)
@@ -659,31 +663,45 @@ static NSString * HeaderId = @"header";
 
 //点击输入框触发
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    //键盘高度
-    CGFloat keyboardHeight = 216.0f;
-    //获取tag
-    //NSLog(@"hhhhh === %d",textField.tag);
-    //判断键盘高度是否遮住输入框，具体超过多少距离，移动多少距离（自己算好就可以，不一定和这里一样）
-    if ((self.carInfoView.bounds.size.height - 264) - keyboardHeight - 60 * (textField.tag + 1) < 0 &&(self.carInfoView.bounds.size.height - 264) - keyboardHeight - 60 * (textField.tag + 1) > -60) {
-        
-        [self.carInfoView setContentOffset:CGPointMake(0, 216) animated:YES];
-    }
-    else if (self.carInfoView.bounds.size.height - 264 - keyboardHeight - 60 * (textField.tag + 1) < 180 &&self.carInfoView.bounds.size.height - 264 - keyboardHeight - 60 * (textField.tag + 1) > -120)
-    {
-        [self.carInfoView setContentOffset:CGPointMake(0, 80) animated:YES];
-    }
-    else if (self.carInfoView.bounds.size.height - keyboardHeight - 60 * (textField.tag + 1) < -120 &&self.carInfoView.bounds.size.height - keyboardHeight - 60 * (textField.tag + 1) > -180)
-    {
-        [self.carInfoView setContentOffset:CGPointMake(0, 170) animated:YES];
-    }
+//    //键盘高度
+//    CGFloat keyboardHeight = 216.0f;
+//    //获取tag
+//    //NSLog(@"hhhhh === %d",textField.tag);
+//    //判断键盘高度是否遮住输入框，具体超过多少距离，移动多少距离（自己算好就可以，不一定和这里一样）
+//    if ((self.carInfoView.bounds.size.height - 264) - keyboardHeight - 60 * (textField.tag + 1) < 0 &&(self.carInfoView.bounds.size.height - 264) - keyboardHeight - 60 * (textField.tag + 1) > -60) {
+//        
+//        [self.carInfoView setContentOffset:CGPointMake(0, 216) animated:YES];
+//    }
+//    else if (self.carInfoView.bounds.size.height - 264 - keyboardHeight - 60 * (textField.tag + 1) < 180 &&self.carInfoView.bounds.size.height - 264 - keyboardHeight - 60 * (textField.tag + 1) > -120)
+//    {
+//        [self.carInfoView setContentOffset:CGPointMake(0, 80) animated:YES];
+//    }
+//    else if (self.carInfoView.bounds.size.height - keyboardHeight - 60 * (textField.tag + 1) < -120 &&self.carInfoView.bounds.size.height - keyboardHeight - 60 * (textField.tag + 1) > -180)
+//    {
+//        [self.carInfoView setContentOffset:CGPointMake(0, 170) animated:YES];
+//    }
+
+    
+    [textField resignFirstResponder];
+
+    QWIcreaseCarController *increaseVC = [[QWIcreaseCarController alloc] init];
+    QWMyCarModel *car = [[QWMyCarModel alloc]init];
+    car = [self.CarArray objectAtIndex:_Xuhao];
+    increaseVC.mycarModel = car;
+    increaseVC.titlename = @"修改车辆信息";
+    increaseVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:increaseVC animated:YES];
+
+
+
 }
 
 //键盘收回触发
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    //回归原处
-    [self.carInfoView setContentOffset:CGPointMake(0, 0) animated:YES];
-    
-}
+//- (void)textFieldDidEndEditing:(UITextField *)textField{
+//    //回归原处
+//    [self.carInfoView setContentOffset:CGPointMake(0, 0) animated:YES];
+//    
+//}
 
 //- (void)viewDidAppear:(BOOL)animated
 //{
