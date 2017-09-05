@@ -22,9 +22,25 @@
 
 @implementation QWUpdatePhoneNextVC
 
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title      = @"修改手机号";
+    [self resetBabkButton];
     self.phoneString=[UdStorage getObjectforKey:UserPhone];
     [self createSubView];
 }
@@ -136,7 +152,7 @@
         self.phoneNumberText.textAlignment  = NSTextAlignmentLeft;
         self.phoneNumberText.font           = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
         self.phoneNumberText.backgroundColor= [UIColor whiteColor];
-        self.phoneNumberText.centerY        = cell.centerY+Main_Screen_Height*8/667;
+        self.phoneNumberText.top            = Main_Screen_Height*10/667;
         self.phoneNumberText.left           = Main_Screen_Width*10/375 ;
         
         [self.phoneNumberText addTarget:self action:@selector(phoneNumberTextChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -148,7 +164,7 @@
         getVeriifyStrButton.backgroundColor= [UIColor colorWithHex:0xFFB500 alpha:1.0];
         getVeriifyStrButton.layer.cornerRadius = Main_Screen_Height*20/667;
         getVeriifyStrButton.right          = Main_Screen_Width -Main_Screen_Width*10/375;
-        getVeriifyStrButton.centerY        = self.phoneNumberText.centerY-Main_Screen_Height*5/667;
+        getVeriifyStrButton.top            = Main_Screen_Height*10/667;
     }else if (indexPath.row == 1){
         self.verifyNumberFieldText                = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*150/375, Main_Screen_Height*40/667)];
         self.verifyNumberFieldText.placeholder    = @"请输入验证码";
@@ -159,7 +175,7 @@
         
         self.verifyNumberFieldText.font           = [UIFont systemFontOfSize:Main_Screen_Height*16/667];
         self.verifyNumberFieldText.backgroundColor= [UIColor whiteColor];
-        self.verifyNumberFieldText.centerY        = cell.centerY;
+        self.verifyNumberFieldText.top            = Main_Screen_Height*10/667;
         self.verifyNumberFieldText.left           = Main_Screen_Width*10/375;
         
         [self.verifyNumberFieldText addTarget:self action:@selector(verifyNumberFieldTextChanged:) forControlEvents:UIControlEventEditingChanged];

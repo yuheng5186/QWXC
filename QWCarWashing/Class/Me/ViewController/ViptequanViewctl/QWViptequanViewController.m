@@ -347,9 +347,9 @@
     
     
     
-    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30*Main_Screen_Height/667)];
+    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40*Main_Screen_Height/667)];
     if (section==2||section==1) {
-        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29*Main_Screen_Height/667)];
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 39*Main_Screen_Height/667)];
         lab.backgroundColor=[UIColor whiteColor];
         lab.font=[UIFont systemFontOfSize:16*Main_Screen_Height/667];
         lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
@@ -370,7 +370,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==2||section==1) {
-        return 30*Main_Screen_Height/667;
+        return 40*Main_Screen_Height/667;
     }else{
         return 0;
     }

@@ -250,7 +250,10 @@ static NSString *cellstr=@"Cellstr";
         QWScanController    *scanController                 = [[QWScanController alloc]init];
         QWCardPackgeController  *cardPackgeController       = [[QWCardPackgeController alloc]init];
         QWViptequanViewController  *vipController           = [[QWViptequanViewController alloc]init];
-        QWScoreDetailController       *scoreController      = [[QWScoreDetailController alloc]init];
+        
+        QWScoreController *scoreCtl                         = [[QWScoreController alloc]init];
+
+        
         
         cell2.selecOptionIndexs=^(NSInteger index){
             #pragma mark-图片点击事件
@@ -270,8 +273,8 @@ static NSString *cellstr=@"Cellstr";
                     [self.navigationController pushViewController:vipController animated:YES];
                     break;
                 case 3:
-                    scoreController.hidesBottomBarWhenPushed        = YES;
-                    [self.navigationController pushViewController:scoreController animated:YES];
+                    scoreCtl.hidesBottomBarWhenPushed  = YES;
+                    [self.navigationController pushViewController:scoreCtl animated:YES];
                     break;
                 default:
                     break;
