@@ -155,14 +155,14 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
     cell.textLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         
         payCardDetailCell *payCell = [tableView dequeueReusableCellWithIdentifier:id_payDetailCell];
-        
+        payCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return payCell;
     }
     
@@ -207,19 +207,19 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     cell.detailTextLabel.text = @"洗车月卡";
     
     cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#febb02"];
-    cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
     
     
     return cell;
 }
 
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 1 && indexPath.row == 0 ) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if (indexPath.section == 1 && indexPath.row == 0 ) {
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    }
+//}
 
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -254,13 +254,13 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 #pragma mark - 点击cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        
-        CashViewController *cashVC = [[CashViewController alloc] init];
-        
-        cashVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:cashVC animated:NO completion:nil];
-    }
+//    if (indexPath.section == 1 && indexPath.row == 0) {
+//        
+//        CashViewController *cashVC = [[CashViewController alloc] init];
+//        
+//        cashVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        [self presentViewController:cashVC animated:NO completion:nil];
+//    }
     
     
     if (indexPath.section == 2) {

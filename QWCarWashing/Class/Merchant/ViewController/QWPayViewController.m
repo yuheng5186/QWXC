@@ -229,6 +229,8 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     
     payCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
     
+    payCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if (indexPath.section == 0 || indexPath.section == 1) {
         payCell.textLabel.text = @"服务商家";
         payCell.detailTextLabel.text = @"上海金雷洗车";
@@ -278,12 +280,12 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     return payCell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == 1 && indexPath.row == 0 ) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-}
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if (indexPath.section == 1 && indexPath.row == 0 ) {
+//        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    }
+//}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
@@ -319,14 +321,14 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        
-        CashViewController *cashVC = [[CashViewController alloc] init];
-        //cashVC.providesPresentationContextTransitionStyle = YES;
-        //cashVC.definesPresentationContext = YES;
-        cashVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [self presentViewController:cashVC animated:NO completion:nil];
-    }
+//    if (indexPath.section == 1 && indexPath.row == 0) {
+//        
+//        CashViewController *cashVC = [[CashViewController alloc] init];
+//        //cashVC.providesPresentationContextTransitionStyle = YES;
+//        //cashVC.definesPresentationContext = YES;
+//        cashVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+//        [self presentViewController:cashVC animated:NO completion:nil];
+//    }
     
     if (indexPath.section == 2) {
         
