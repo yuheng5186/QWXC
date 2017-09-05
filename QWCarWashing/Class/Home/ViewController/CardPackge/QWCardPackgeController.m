@@ -39,6 +39,9 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     return _CardbagData;
 
 }
+-(void)viewWillAppear:(BOOL)animated{
+     [self GetCardbagList];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -52,8 +55,9 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     HUD.labelText = @"加载中";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
 
-    [self GetCardbagList];
+   
 }
+
 -(void)GetCardbagList
 {
     [self.CardbagData removeAllObjects];

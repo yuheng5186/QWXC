@@ -233,6 +233,7 @@ static NSString *cellstr=@"Cellstr";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+  
     if(indexPath.section==0)
     {
         QWMenuTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_MenuTableViewCell forIndexPath:indexPath];
@@ -247,15 +248,17 @@ static NSString *cellstr=@"Cellstr";
                                      @"会员",
                                      @"积分"]];
         
-        QWScanController    *scanController                 = [[QWScanController alloc]init];
-        QWCardPackgeController  *cardPackgeController       = [[QWCardPackgeController alloc]init];
-        QWViptequanViewController  *vipController           = [[QWViptequanViewController alloc]init];
         
-        QWScoreController *scoreCtl                         = [[QWScoreController alloc]init];
 
         
         
         cell2.selecOptionIndexs=^(NSInteger index){
+            QWCardPackgeController  *cardPackgeController       = [[QWCardPackgeController alloc]init];
+            QWScanController    *scanController                 = [[QWScanController alloc]init];
+            
+            QWViptequanViewController  *vipController           = [[QWViptequanViewController alloc]init];
+            
+            QWScoreController *scoreCtl                         = [[QWScoreController alloc]init];
             #pragma mark-图片点击事件
             switch (index) {
                 case 0:
@@ -265,6 +268,10 @@ static NSString *cellstr=@"Cellstr";
                     break;
                 case 1:
                     cardPackgeController.hidesBottomBarWhenPushed     = YES;
+                    
+                    NSLog(@"%@",self.navigationController.viewControllers);
+                    
+                    
                     [self.navigationController pushViewController:cardPackgeController animated:YES];
                     break;
                 case 2:
@@ -308,21 +315,21 @@ static NSString *cellstr=@"Cellstr";
                                     @"优惠活动",
                                     @"车友圈"]];
         cell.backgroundView                                 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"4geiconditu"]];
-        QWCarFriendsCircleController *qwcarfriendscirclectl = [[QWCarFriendsCircleController alloc]init];
-        QWExchangeViewController *exchangevctl              = [[QWExchangeViewController alloc]init];
-        QWAddShopController *MerchantIn                     = [[QWAddShopController alloc]init];
-        QWUserServiceController     *userService            = [[QWUserServiceController alloc]init];
-        QWMyCarController           *myCar                  = [[QWMyCarController alloc]init];
-        QWShareMoneyController      *shareMoney             = [[QWShareMoneyController alloc]init];
-        QWSaleActivityController    *activity               = [[QWSaleActivityController alloc]init];
+       
         
         PopupView *view = [PopupView defaultPopupView];
         view.parentVC   = self;
     
         cell.selecOptionIndexs=^(NSInteger index){
+            QWCarFriendsCircleController *qwcarfriendscirclectl = [[QWCarFriendsCircleController alloc]init];
+            QWExchangeViewController *exchangevctl              = [[QWExchangeViewController alloc]init];
+            QWAddShopController *MerchantIn                     = [[QWAddShopController alloc]init];
+            QWUserServiceController     *userService            = [[QWUserServiceController alloc]init];
+            QWMyCarController           *myCar                  = [[QWMyCarController alloc]init];
+            QWShareMoneyController      *shareMoney             = [[QWShareMoneyController alloc]init];
+            QWSaleActivityController    *activity               = [[QWSaleActivityController alloc]init];
             switch (index) {
                 case 0:
-                    
                     [self.navigationController pushViewController:exchangevctl animated:YES];
                     
                     break;

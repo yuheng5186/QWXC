@@ -123,7 +123,7 @@
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    //UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
+   
     if(QWScreenheight>568){
         return UIEdgeInsetsMake(15,autoScaleW(15),10, autoScaleW(5));}else{
             return UIEdgeInsetsMake(5,autoScaleW(15),5, autoScaleW(5));

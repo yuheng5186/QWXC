@@ -46,7 +46,7 @@
 //    {
 //        if ([views isKindOfClass:NSClassFromString(@"UITabBarButton")])
 //        {
-//            //            [views removeFromSuperview];
+//            [views removeFromSuperview];
 //            
 //        }
 //    }
