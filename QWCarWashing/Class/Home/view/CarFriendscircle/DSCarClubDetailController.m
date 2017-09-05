@@ -144,6 +144,8 @@
 #pragma maek-空白页
     self.tableView.emptyDataSetSource = self;
     self.tableView.emptyDataSetDelegate = self;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+
     //    self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
     //    self.tableView.scrollEnabled    = NO;
     //    self.tableView.tableFooterView  = [UIView new];
