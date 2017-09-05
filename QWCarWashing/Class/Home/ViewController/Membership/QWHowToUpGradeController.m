@@ -352,6 +352,10 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     QWEarnScoreController *earnScoreVC = [[QWEarnScoreController alloc] init];
     earnScoreVC.hidesBottomBarWhenPushed = YES;
     
+    
+    earnScoreVC.CurrentScore = self.CurrentScore;
+    
+    
     [self.navigationController pushViewController:earnScoreVC animated:YES];
 }
 

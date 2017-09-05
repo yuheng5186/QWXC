@@ -46,28 +46,28 @@
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-    UIImageView *imageV =[[UIImageView alloc]initWithFrame:CGRectMake1(12,12,13,13)];
+    UIImageView *imageV =[[UIImageView alloc]initWithFrame:CGRectMake1(12,12+3,13,13)];
     imageV.opaque = YES;
     imageV.image = [UIImage imageNamed:@"shangjiadingwei"];
     [self.contentView addSubview:imageV];
     self.MczuobiaoImageView = imageV;
     
     
-    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake1(46,14, 200, 10)];
+    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake1(46,14+3, 200, 10)];
     [namelabel setFont:[UIFont fontWithName:@"Helvetica" size:13 * myDelegate.autoSizeScaleX]];
     namelabel.textColor = [UIColor colorWithHexString:@"#999999"];
     namelabel.text = @"上海市浦东新区金桥路金桥路";
     [self.contentView addSubview:namelabel];
     self.Mcaddress = namelabel;
     
-    UIImageView *imageV1 =[[UIImageView alloc]initWithFrame:CGRectMake1(12,14+13+16,13,13)];
+    UIImageView *imageV1 =[[UIImageView alloc]initWithFrame:CGRectMake1(12,14+13+16+3,13,13)];
     imageV1.opaque = YES;
     imageV1.image = [UIImage imageNamed:@"yingyeshijian"];
     [self.contentView addSubview:imageV1];
     self.MctimeImageView = imageV1;
     
     
-    UILabel *tlabel = [[UILabel alloc]initWithFrame:CGRectMake1(46,14+13+16, 200, 10)];
+    UILabel *tlabel = [[UILabel alloc]initWithFrame:CGRectMake1(46,14+13+16+3, 200, 10)];
     [tlabel setFont:[UIFont fontWithName:@"Helvetica" size:13 * myDelegate.autoSizeScaleX]];
     tlabel.textColor = [UIColor colorWithHexString:@"#999999"];
     tlabel.text = @"营业时间 : 8:00-20:00";
