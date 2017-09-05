@@ -174,7 +174,7 @@
     uselabel.left                   = Main_Screen_Width*10/375;
     uselabel.top                    = Main_Screen_Height*10/667;
     
-    NSString *useString1             = @"1. 本代金券由蔷薇爱车APP开发，仅限蔷薇爱车店和与蔷薇合作商家使用";
+    NSString *useString1             = @"1. 本代金券由金顶洗车APP开发，仅限金顶洗车店和与金顶合作商家使用";
     UIFont    *useFont1              = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     UILabel     *uselabel1           = [UIUtil drawLabelInView:downView frame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*20/375, Main_Screen_Height*40/667) font:useFont1 text:useString1 isCenter:NO];
     uselabel1.textColor              = [UIColor colorFromHex:@"#999999"];
@@ -190,7 +190,7 @@
     uselabel2.centerX                = Main_Screen_Width/2;
     uselabel2.top                    = uselabel1.bottom +Main_Screen_Height*5/667;
     
-    NSString *useString3             = @"3. 有任何问题，可咨询蔷薇客服";
+    NSString *useString3             = @"3. 有任何问题，可咨询金顶客服";
     UIFont    *useFont3              = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     UILabel     *uselabel3           = [UIUtil drawLabelInView:downView frame:CGRectMake(0, 0, Main_Screen_Width-Main_Screen_Width*20/375, Main_Screen_Height*40/667) font:useFont3 text:useString3 isCenter:NO];
     uselabel3.textColor              = [UIColor colorFromHex:@"#999999"];
