@@ -298,6 +298,7 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
 }
 -(void)gotoearnScore:(UIButton *)btn
 {
+    
     QWIntegModel * integmodel=[QWIntegModel new];
     integmodel=[self.ScoreData objectAtIndex:btn.tag];
     if(integmodel.IntegType == 2)

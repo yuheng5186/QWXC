@@ -32,6 +32,8 @@
 @property (nonatomic,strong) NSMutableArray *otherArray;
 
 @property (nonatomic)NSInteger page;
+
+@property (nonatomic)NSInteger weiyi;
 @end
 
 @implementation QWMerchantViewController
@@ -53,11 +55,12 @@
    
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.pramsDic = [[NSMutableDictionary alloc]init];
-    NSArray *array1 = [[NSArray alloc] initWithObjects:@"上海市",@"浦东新区", nil];
+    NSArray *array1 = [[NSArray alloc] initWithObjects:[UdStorage getObjectforKey:@"City"],[UdStorage getObjectforKey:@"Quyu"], nil];
     NSDictionary *dic = @{@"0":array1,@"1":@"普洗-5座轿车",@"2":@"默认排序"};
     self.pramsDic  = [NSMutableDictionary dictionaryWithDictionary:dic];
     self.MerchantData = [[NSMutableArray alloc]init];
     self.page = 0;
+    self.weiyi = 0;
     self.otherArray = [[NSMutableArray alloc]init];
     NSNotificationCenter *observer = [[NSNotificationCenter defaultCenter] addObserverForName:YZUpdateMenuTitleNote object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
@@ -281,8 +284,8 @@
                              @"ShopType":@1,
                              @"ServiceCode":@101,
                              @"DefaultSort":DefaultSort,
-                             @"Ym":@31.192255,
-                             @"Xm":@121.52334,
+                             @"Ym":[UdStorage getObjectforKey:@"Ym"],
+                             @"Xm":[UdStorage getObjectforKey:@"Xm"],
                              @"PageIndex":@0,
                              @"PageSize":@10
                              };
@@ -398,11 +401,13 @@
         {
             [self.view showInfo:@"数据请求失败" autoHidden:YES interval:2];
             [self.MerchantListtableview.mj_footer endRefreshing];
+            self.page--;
         }
         
     } fail:^(NSError *error) {
         [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
         [self.MerchantListtableview.mj_header endRefreshing];
+        self.page--;
     }];
     
 }
@@ -421,7 +426,7 @@
     menu.dataSource = self;
     
     // 初始化标题
-    _titles = @[@"上海市",@"全部门店",@"默认排序"];
+    _titles = @[[UdStorage getObjectforKey:@"Quyu"],@"普洗-5座轿车",@"默认排序"];
     
     // 添加子控制器
     [self setupAllChildViewController];
@@ -575,7 +580,19 @@ CGRectMake1(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
  */
 - (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
 {
-    return -64.f-44;
+    self.weiyi ++ ;
+    if(self.weiyi == 1)
+    {
+        return -64.f;
+    }
+    if(self.weiyi == 2)
+    {
+        return -64.f;
+    }
+    else
+    {
+        return 0.f;
+    }
 }
 
 @end
