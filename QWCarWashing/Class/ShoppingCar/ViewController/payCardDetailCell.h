@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "QWCarModel.h"
 @interface payCardDetailCell : UITableViewCell
 
 @property (nonatomic, weak) UILabel *useCardLabel;
 @property (nonatomic, weak) UILabel *timesCardLabel;
 @property (nonatomic, weak) UILabel *brandCardLabel;
-
+@property(nonatomic,strong)QWCarModel *choosecard;
 @end

@@ -92,7 +92,7 @@
     
     [gradeBtn addTarget:self action:@selector(clickHowToIncreaseGradeBtn) forControlEvents:UIControlEventTouchUpInside];
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-   
+    //    [center addObserver:self selector:@selector(noticeupdateCardNum:) name:@"receivesuccess" object:nil];
     [center addObserver:self selector:@selector(noticeupdate:) name:@"Earnsuccess" object:nil];
     self.area = @"上海市";
     _MembershipprivilegesArray = [[NSMutableArray alloc]init];
@@ -105,6 +105,7 @@
     HUD.labelText = @"加载中";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
     [self GetMembershipprivileges];
+    
 }
 -(void)noticeupdate:(NSNotification *)sender{
     [self GetMembershipprivileges];
@@ -165,7 +166,21 @@
 }
 - (void)clickHowToIncreaseGradeBtn {
     
+    NSArray *arr2 = @[@"",@"普通会员",@"白银会员",@"黄金会员",@"铂金会员",@"钻石会员",@"黑钻会员"];
+    
+    NSUInteger num = [[NSString stringWithFormat:@"%@",_MembershipprivilegesDic[@"Level_id"]] integerValue];
+    
+    NSUInteger num2 = [[NSString stringWithFormat:@"%@",_MembershipprivilegesDic[@"NextLevel"]] integerValue];
+    
+    
     QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+    upGradeVC.hidesBottomBarWhenPushed = YES;
+    
+    upGradeVC.currentLevel = arr2[num];
+    upGradeVC.nextLevel = arr2[num2];
+    upGradeVC.NextLevelScore = [NSString stringWithFormat:@"%@",_MembershipprivilegesDic[@"NextLevelScore"]];
+    upGradeVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipprivilegesDic[@"UserScore"]];
+    
     
     [self.navigationController pushViewController:upGradeVC animated:YES];
 
@@ -332,9 +347,9 @@
     
     
     
-    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 30*Main_Screen_Height/667)];
+    UIView *headerview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 40*Main_Screen_Height/667)];
     if (section==2||section==1) {
-        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 29*Main_Screen_Height/667)];
+        UILabel *lab=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, QWScreenWidth, 39*Main_Screen_Height/667)];
         lab.backgroundColor=[UIColor whiteColor];
         lab.font=[UIFont systemFontOfSize:16*Main_Screen_Height/667];
         lab.textColor = [UIColor colorFromHex:@"#3a3a3a"];
@@ -355,7 +370,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section==2||section==1) {
-        return 30*Main_Screen_Height/667;
+        return 40*Main_Screen_Height/667;
     }else{
         return 0;
     }

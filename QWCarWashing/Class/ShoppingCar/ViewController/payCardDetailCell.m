@@ -18,7 +18,12 @@
     }
     return self;
 }
+-(void)setChoosecard:(QWCarModel *)choosecard{
+    _choosecard=choosecard;
+    self.useCardLabel.text=choosecard.CardName;
+    self.timesCardLabel.text=[NSString stringWithFormat:@"可免费洗车%ld次",self.choosecard.CardCount];
 
+}
 - (void)setupUI {
     
     UILabel *useCardLabel = [[UILabel alloc] init];
@@ -32,14 +37,16 @@
     timesCardLabel.textAlignment = NSTextAlignmentRight;
     timesCardLabel.textColor = [UIColor colorFromHex:@"#febb02"];
     timesCardLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
-    [self.contentView addSubview:timesCardLabel];
+    self.timesCardLabel=timesCardLabel;
+    [self.contentView addSubview:self.timesCardLabel];
     
     UILabel *brandCardLabel = [[UILabel alloc] init];
     brandCardLabel.text = @"金顶自动洗车可用";
     brandCardLabel.textColor = [UIColor colorFromHex:@"#febb02"];
     brandCardLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
     brandCardLabel.textAlignment = NSTextAlignmentRight;
-    [self.contentView addSubview:brandCardLabel];
+    self.brandCardLabel=brandCardLabel;
+    [self.contentView addSubview:self.brandCardLabel];
     
     
     //约束

@@ -231,9 +231,15 @@
 
 - (void)clickHowToIncreaseGradeBtn {
     
-    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+//    QWHowToUpGradeController *upGradeVC = [[QWHowToUpGradeController alloc] init];
+//    NSString *currentLevel;
+//    @property(nonatomic,copy)NSString *nextLevel;
+//    
+//    @property(nonatomic,copy)NSString *NextLevelScore;
+//    @property(nonatomic,copy)NSString *CurrentScore;
+//    [self.navigationController pushViewController:upGradeVC animated:YES];
     
-    [self.navigationController pushViewController:upGradeVC animated:YES];
+    
     
 }
 
