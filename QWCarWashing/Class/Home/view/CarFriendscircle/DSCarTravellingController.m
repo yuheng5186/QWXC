@@ -265,6 +265,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
+    if (self.dataArray.count!=0) {
+        detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode;
+        NSLog(@"%ld",(long)((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode);
+    }
+    
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
     
