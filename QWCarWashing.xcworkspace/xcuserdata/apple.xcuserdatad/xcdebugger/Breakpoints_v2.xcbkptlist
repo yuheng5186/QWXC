@@ -174,22 +174,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/view/CarFriendscircle/DSCarClubDetailController.m"
-            timestampString = "526274704.104768"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "953"
-            endingLineNumber = "953"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -244,22 +228,6 @@
             startingLineNumber = "233"
             endingLineNumber = "233"
             landmarkName = "-requestAddCard"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Me/ViewController/QWPersonInfoDetailViewController.m"
-            timestampString = "526271919.297696"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -350,7 +318,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526295545.150599"
+                  timestampString = "526296551.838534"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"
@@ -365,7 +333,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526295545.152165"
+                  timestampString = "526296551.840048"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"
@@ -388,22 +356,6 @@
             startingLineNumber = "234"
             endingLineNumber = "234"
             landmarkName = "-clickHowToIncreaseGradeBtn"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Me/ViewController/ViptequanViewctl/QWViptequanViewController.m"
-            timestampString = "526288618.31069"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -452,6 +404,22 @@
             startingLineNumber = "65"
             endingLineNumber = "65"
             landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QWCarWashing/Class/Home/ViewController/CardPackge/QWCardPackgeController.m"
+            timestampString = "526296551.121057"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-GetCardbagList"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
