@@ -206,6 +206,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
         _rechargeView = rechargeView;
         _rechargeView.emptyDataSetSource=self;
         _rechargeView.emptyDataSetDelegate=self;
+        _rechargeView.showsVerticalScrollIndicator = NO;
         [self.view addSubview:_rechargeView];
     }
     
@@ -247,7 +248,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
         make.top.equalTo(titleView.mas_bottom);
         make.left.equalTo(self.view).mas_offset(Main_Screen_Width*37.5/375);
         make.right.equalTo(self.view).mas_offset(-Main_Screen_Width*37.5/375);
-        make.height.mas_equalTo(self.view.height);
+        make.height.mas_equalTo(Main_Screen_Height - 60*Main_Screen_Height/667 - 64);
     }];
     
     self.rechargeView.delegate = self;
