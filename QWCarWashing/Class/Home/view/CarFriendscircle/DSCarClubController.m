@@ -62,7 +62,7 @@
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
     self.tableView.top              = 0;
-//    self.tableView.tableFooterView  = [UIView new];
+    self.tableView.tableFooterView  = [UIView new];
     [self.tableView registerNib:[UINib nibWithNibName:@"ActivityListCell" bundle:nil] forCellReuseIdentifier:@"ActivityListCell"];
     
     self.tableView.rowHeight        = Main_Screen_Height*205/667;
@@ -192,6 +192,7 @@
     } fail:^(NSError *error) {
         [self.view showInfo:@"获取数据失败" autoHidden:YES interval:2];
         [self.tableView.mj_header endRefreshing];
+        self.page--;
     }];
     
 }
