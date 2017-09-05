@@ -349,22 +349,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWEarnScoreController.m"
-            timestampString = "526266870.64515"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-completeButton:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QWCarWashing/Class/Home/ViewController/Membership/QWHowToUpGradeController.m"
             timestampString = "526271919.297696"
             startingColumnNumber = "9223372036854775807"
@@ -414,7 +398,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526272785.205892"
+                  timestampString = "526273639.518664"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"
@@ -429,7 +413,7 @@
                   moduleName = "QWCarWashing"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/apple/QWXC/QWCarWashing/Class/Home/ViewController/MyCar/QWIcreaseCarController.m"
-                  timestampString = "526272785.207491"
+                  timestampString = "526273639.520206"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "467"

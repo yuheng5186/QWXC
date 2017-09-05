@@ -20,9 +20,10 @@
 //    self.supview.backgroundColor=[UIColor clearColor];
     self.dg_viewAutoSizeToDevice = YES;
 #pragma mark-电话号码显示
-    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:self.phoneNum.text];
+    NSMutableString *phonestr = [[NSMutableString  alloc] initWithString:[UdStorage getObjectforKey:UserPhone]];
     [phonestr replaceCharactersInRange:NSMakeRange(3, 4) withString:@"****"];
-    self.phoneNum.text=phonestr;
+    NSString *username=[UdStorage getObjectforKey:UserNamer];
+    self.phoneNum.text=IsNullIsNull(username)?phonestr:username;
     self.vipType.titleLabel.font=[UIFont systemFontOfSize:13*QWScreenheight/667 weight:5*QWScreenWidth/667];
     [self.vipType setTitle:@"黄金会员" forState:BtnNormal];
     self.vipType.imageView.contentMode=UIViewContentModeScaleAspectFill;
