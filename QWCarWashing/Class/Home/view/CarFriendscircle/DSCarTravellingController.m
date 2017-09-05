@@ -183,6 +183,7 @@
 }
 #pragma mark-车友圈列表查询
 -(void)requestSelcectList{
+    [self.dataArray removeAllObjects];
     
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:Userid],
