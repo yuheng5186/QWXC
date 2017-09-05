@@ -36,11 +36,15 @@
 #import "LewPopupViewAnimationDrop.h"
 #import "QWViptequanViewController.h"
 
+#import "CoreLocation/CoreLocation.h"
+
 #import "QWRecordModel.h"
-@interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *GetUserRecordData;
 //@property (nonatomic, strong) UIButton  *locationButton;
+@property (strong, nonatomic) CLLocationManager* locationManager;
+
 @property (strong, nonatomic)NSString *LocCity;
 @end
 static NSString *cellstr=@"Cellstr";
@@ -99,6 +103,8 @@ static NSString *cellstr=@"Cellstr";
 - (void)headerRereshing
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self startLocation];
+        
         self.GetUserRecordData = [[NSMutableArray alloc]init];
         
         
@@ -585,5 +591,87 @@ static NSString *cellstr=@"Cellstr";
     }
     
 }
+
+-(void)startLocation{
+    
+    if ([CLLocationManager locationServicesEnabled]) {//判断定位操作是否被允许
+        
+        self.locationManager = [[CLLocationManager alloc] init];
+        
+        self.locationManager.delegate = self;//遵循代理
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        self.locationManager.distanceFilter = 10.0f;
+        
+        [_locationManager requestWhenInUseAuthorization];//使用程序其间允许访问位置数据（iOS8以上版本定位需要）
+        
+        [self.locationManager startUpdatingLocation];//开始定位
+        
+    }else{//不能定位用户的位置的情况再次进行判断，并给与用户提示
+        
+        //1.提醒用户检查当前的网络状况
+        
+        //2.提醒用户打开定位开关
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法进行定位" message:@"请检查您的设备是否开启定位功能" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+    
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+    //当前所在城市的坐标值
+    CLLocation *currLocation = [locations lastObject];
+    
+    //    NSLog(@"经度=%f 纬度=%f 高度=%f", currLocation.coordinate.latitude, currLocation.coordinate.longitude, currLocation.altitude);
+    
+    [UdStorage storageObject:@"上海市" forKey:@"City"];
+    [UdStorage storageObject:@"黄浦区" forKey:@"Quyu"];
+    [UdStorage storageObject:[NSString stringWithFormat:@"%f",currLocation.coordinate.latitude] forKey:@"Ym"];
+    [UdStorage storageObject:[NSString stringWithFormat:@"%f",currLocation.coordinate.longitude]  forKey:@"Xm"];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //根据经纬度反向地理编译出地址信息
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    
+    [geoCoder reverseGeocodeLocation:currLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        for (CLPlacemark * placemark in placemarks) {
+            
+            NSDictionary *address = [placemark addressDictionary];
+            
+            //  Country(国家)  State(省)  City（市）
+            //            NSLog(@"#####%@",address);
+            //
+            //            NSLog(@"%@", [address objectForKey:@"Country"]);
+            //
+            //            NSLog(@"%@", [address objectForKey:@"State"]);
+            //
+            //            NSLog(@"%@", [address objectForKey:@"City"]);
+            
+            NSString *subLocality=[address objectForKey:@"SubLocality"];
+            
+            self.LocCity = [address objectForKey:@"City"];
+            
+            [UdStorage storageObject:subLocality forKey:@"subLocality"];
+            
+            
+        }
+        
+    }];
+    
+}
+
+
 
 @end
