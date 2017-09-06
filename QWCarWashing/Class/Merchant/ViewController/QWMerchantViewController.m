@@ -51,13 +51,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupview];
+    
    
+    
+    
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    self.pramsDic = [[NSMutableDictionary alloc]init];
+    
+    
+    [self setupmenu];
+    
+//    self.pramsDic = [[NSMutableDictionary alloc]init];
     NSArray *array1 = [[NSArray alloc] initWithObjects:[UdStorage getObjectforKey:@"City"],[UdStorage getObjectforKey:@"Quyu"], nil];
+    
     NSDictionary *dic = @{@"0":array1,@"1":@"普洗-5座轿车",@"2":@"默认排序"};
+    
     self.pramsDic  = [NSMutableDictionary dictionaryWithDictionary:dic];
+    NSLog(@"%@==%@",array1, self.pramsDic );
     self.MerchantData = [[NSMutableArray alloc]init];
     self.page = 0;
     self.weiyi = 0;
@@ -91,8 +100,8 @@
         
     }];
 
+    [self setupview];
     
-    [self setupmenu];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,6 +118,9 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     self.MerchantListtableview.separatorStyle = NO;
     self.MerchantListtableview.showsVerticalScrollIndicator = NO;
+
+    [self setupRefresh];
+
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -425,12 +437,14 @@
     // 设置下拉菜单代理
     menu.dataSource = self;
     
+    NSLog(@"%@",[UdStorage getObjectforKey:@"Quyu"]);
+    
     // 初始化标题
     _titles = @[[UdStorage getObjectforKey:@"Quyu"],@"普洗-5座轿车",@"默认排序"];
     
     // 添加子控制器
     [self setupAllChildViewController];
-    [self setupRefresh];
+    
 }
 
 #pragma mark - 添加子控制器
