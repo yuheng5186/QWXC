@@ -65,6 +65,7 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     UILabel *gradeLab = [[UILabel alloc] init];
     gradeLab.text = @"白银会员";
+    gradeLab.text = self.currentLevel;
     gradeLab.textColor = [UIColor blackColor];
     gradeLab.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:gradeLab];
