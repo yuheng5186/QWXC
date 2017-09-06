@@ -8,6 +8,8 @@
 
 #import "QWSaleActivityController.h"
 #import "QWUserRightDetailViewController.h"
+#import "QWSalaActivityCellTableViewCell.h"
+
 @interface QWSaleActivityController ()<UITableViewDelegate,UITableViewDataSource>
 {
     MBProgressHUD *HUD;
@@ -16,6 +18,8 @@
 @property (nonatomic, strong) NSString *area;
 @property (nonatomic, strong) NSMutableArray *CouponListData;
 @end
+
+static NSString *cellStatic = @"cellStatic";
 
 @implementation QWSaleActivityController
 -(NSMutableArray *)CouponListData{
@@ -83,6 +87,8 @@
     //    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
     //        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     //    }
+    
+    [self.tableView registerClass:[QWSalaActivityCellTableViewCell class] forCellReuseIdentifier:cellStatic];
 }
 
 #pragma mark - UITableViewDataSource
@@ -132,11 +138,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *cellStatic = @"cellStatic";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStatic];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    }
+    
+    QWSalaActivityCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellStatic];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+//    }
     cell.backgroundColor    = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -199,7 +205,6 @@
 //        titleLab.text = @"金顶会员专享";
 //        introLab.text = @"平台商家下单洗车可抵扣";
 //    }
-    
     
     
     return cell;
