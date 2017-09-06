@@ -455,7 +455,7 @@
         UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 89* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
         separatorview.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:separatorview];
-        if (self.MerChantmodel!=nil) {
+        if (self.MerChantmodel!=nil &&self.MerChantmodel.MerSerList.count!=0) {
 
             QWMerSerListModel *serlistmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)self.MerChantmodel.MerSerList[indexPath.row] error:nil];
             cell.MerSerList=serlistmodel;
