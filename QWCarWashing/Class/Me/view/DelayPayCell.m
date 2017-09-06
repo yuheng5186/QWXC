@@ -43,6 +43,11 @@
         QWPayViewController *payVC = [[QWPayViewController alloc] init];
         payVC.hidesBottomBarWhenPushed = YES;
         
+        payVC.SerMerChant = self.SerMerChant;
+        payVC.SerProject = self.washTypeLabel.text;
+        payVC.Jprice = self.Jprice;
+        payVC.Xprice = self.Xprice;
+        
         [self.delegate pushVC:payVC animated:YES];
     }
 }

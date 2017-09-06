@@ -10,4 +10,10 @@
 
 @interface QWPayViewController : UIViewController
 
+@property(nonatomic ,copy)NSString *SerMerChant;
+@property(nonatomic ,copy)NSString *SerProject;
+
+@property(nonatomic ,copy)NSString *Jprice;
+@property(nonatomic ,copy)NSString *Xprice;
+
 @end

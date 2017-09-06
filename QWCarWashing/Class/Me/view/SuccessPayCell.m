@@ -44,6 +44,10 @@
         OrderCommentController *starCommentVC = [[OrderCommentController alloc] init];
         starCommentVC.hidesBottomBarWhenPushed = YES;
         
+        starCommentVC.orderid = self.orderid;
+        starCommentVC.SerMerCode = self.SerMerCode;
+        starCommentVC.SerCode = self.SerCode;
+        
         [self.delegate pushController:starCommentVC animated:YES];
     }
 }
