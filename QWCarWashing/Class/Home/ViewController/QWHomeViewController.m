@@ -175,7 +175,7 @@ static NSString *cellstr=@"Cellstr";
     UIImageView *btn=[UIImageView new];
     
     btn.contentMode=UIViewContentModeScaleAspectFill;
-    btn.frame = CGRectMake(0, 0, Main_Screen_Width*40/375, Main_Screen_Height*40/667);
+    btn.frame = CGRectMake(0, 0, Main_Screen_Width*35/375, Main_Screen_Height*35/667);
     if (!IsNullIsNull([UdStorage getObjectforKey:Userid])) {
         NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
         NSURL *url=[NSURL URLWithString:ImageURL];
@@ -183,8 +183,8 @@ static NSString *cellstr=@"Cellstr";
         [btn sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
     }
     btn.clipsToBounds=YES;
-    btn.layer.cornerRadius=(Main_Screen_Height*40/667)/2;
-    btn.top     = Main_Screen_Height*5/667;
+    btn.layer.cornerRadius=btn.height/2;
+    btn.top     = Main_Screen_Height*3/667;
 
     
     UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:btn];
