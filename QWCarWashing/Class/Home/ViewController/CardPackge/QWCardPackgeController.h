@@ -8,6 +8,6 @@
 
 #import "QWBaseViewController.h"
 
-@interface QWCardPackgeController : QWBaseViewController
+@interface QWCardPackgeController : UIViewController
 
 @end

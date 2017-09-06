@@ -43,7 +43,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title  = @"卡包";
-
+    [self resetBabkButton];
      [self setupUI];
     self.view.backgroundColor=kColorTableBG;
     HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -53,6 +53,18 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
 
     [self GetCardbagList];
+}
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)GetCardbagList
 {
@@ -77,10 +89,12 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
         }
         else
         {
+            [HUD setHidden:YES];
             [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } fail:^(NSError *error) {
+        [HUD setHidden:YES];
         [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
         [self.navigationController popViewControllerAnimated:YES];
         

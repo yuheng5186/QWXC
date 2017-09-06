@@ -31,16 +31,23 @@
 }
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
-    if (self.viewControllers.count != 0)
-    {
-//        UIBarButtonItem *barbut=[UIBarButtonItem setUibarbutonimgname:@"backselected" andhightimg:@"backselected" Target:self action:@selector(backpop) forControlEvents:UIControlEventTouchUpInside];
-//        UIBarButtonItem *barbutright=[UIBarButtonItem setUibarbutonimgname:@"navigationbar_more" andhightimg:@"navigationbar_more_highlighted" Target:self action:@selector(backroot) forControlEvents:UIControlEventTouchUpInside];
-    }
+//    if (self.viewControllers.count != 0)
+//    {
+//        UIBarButtonItem *barbut=[UIBarButtonItem setUibarbutonimgname:@"icon_titlebar_arrow" andhightimg:@"icon_titlebar_arrow" Target:self action:@selector(backpop) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        [super pushViewController:viewController animated:animated];
+//         self.navigationItem.leftBarButtonItem = barbut;
+//    }
     [super pushViewController:viewController animated:animated];
 }
 -(void)backpop
 {
-    [self popViewControllerAnimated:YES];
+    if (self.navigationController.viewControllers.count>1) {
+        [self popViewControllerAnimated:YES];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 -(void)backroot
 {

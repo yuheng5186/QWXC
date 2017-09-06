@@ -105,7 +105,7 @@
     HUD.labelText = @"加载中";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
     [self GetMembershipprivileges];
-    [self.tableview reloadData];
+    
 }
 -(void)noticeupdate:(NSNotification *)sender{
     [self GetMembershipprivileges];

@@ -166,18 +166,21 @@ static NSString *cellstr=@"cell";
         (indexPath.section==1){
         QWOrderTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier_QWOrderTableViewCell forIndexPath:indexPath];
 //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        QWorderMenuViewController *menuorder=[[QWorderMenuViewController alloc]init];
+        
         cell.oneClicked = ^(void){
+            QWorderMenuViewController *menuorder=[[QWorderMenuViewController alloc]init];
              menuorder.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:menuorder animated:YES];
         };
-        QWcollectionViewController *collectionViectl=[[QWcollectionViewController alloc]init];
+        
         cell.twoClicked = ^(void){
+            QWcollectionViewController *collectionViectl=[[QWcollectionViewController alloc]init];
            collectionViectl.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:collectionViectl animated:YES];
         };
-        QWExchangeViewController *ExchangeViectl=[[QWExchangeViewController alloc]init];
+        
         cell.threeClicked = ^(void){
+            QWExchangeViewController *ExchangeViectl=[[QWExchangeViewController alloc]init];
             ExchangeViectl.hidesBottomBarWhenPushed     = YES;
             [self.navigationController pushViewController:ExchangeViectl animated:YES];
         };
@@ -331,7 +334,8 @@ static NSString *cellstr=@"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.section == 3) {
+    if (indexPath.section == 3)
+    {
         
         if (indexPath.row == 0) {
             QWMyCarController   *myCar      = [[QWMyCarController alloc]init];
@@ -347,7 +351,8 @@ static NSString *cellstr=@"cell";
             
         }
         
-    }else if(indexPath.section==2){
+    }else if(indexPath.section==2)
+    {
         QWScoreController *scoreCtl=[[QWScoreController alloc]init];
         scoreCtl.hidesBottomBarWhenPushed  = YES;
        
