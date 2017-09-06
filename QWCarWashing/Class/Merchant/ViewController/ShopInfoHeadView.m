@@ -57,15 +57,13 @@
     
     
   
-    [self.freeCheckLabel setFont:[UIFont fontWithName:@"Helvetica" size:11*Main_Screen_Height/667]];
-    self.freeCheckLabel.textColor = [UIColor colorWithHexString:@"#fefefe"];
+    [self.qualityProtectedLabel setFont:[UIFont fontWithName:@"Helvetica" size:11*Main_Screen_Height/667]];
+    self.qualityProtectedLabel.textColor = [UIColor colorWithHexString:@"#fefefe"];
 
-    self.freeCheckLabel.backgroundColor = [UIColor colorWithHexString:@"#ff7556"];
-    self.freeCheckLabel.textAlignment = NSTextAlignmentCenter;
-    self.freeCheckLabel.layer.masksToBounds = YES;
-    
-    self.freeCheckLabel.layer.cornerRadius = 7.5*Main_Screen_Height/667;
-   ;
+    self.qualityProtectedLabel.backgroundColor = [UIColor colorWithHexString:@"#ff7556"];
+    self.qualityProtectedLabel.textAlignment = NSTextAlignmentCenter;
+    self.qualityProtectedLabel.layer.masksToBounds = YES;
+  
     
     self.qualityProtectedLabel.layer.cornerRadius = 7.5*Main_Screen_Height/667;
   

@@ -61,6 +61,7 @@
 - (void)addChildViewControllers{
     //门店简介
     QWMerChantIntroViewController *introController = [[QWMerChantIntroViewController alloc] init];
+    
     [self addChildViewController:introController];
     introController.view.frame = CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 44*myDelegate.autoSizeScaleY - 64);
     

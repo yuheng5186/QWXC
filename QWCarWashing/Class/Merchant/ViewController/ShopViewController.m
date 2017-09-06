@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"门店";
+    self.title = self.merchantModel.MerName;
     
     self.view.backgroundColor = [UIColor whiteColor];
     

@@ -30,6 +30,9 @@
     AppDelegate *myDelegate;
     int collecttag;
     enum WXScene scene;
+    UILabel *lblCarType;
+    UILabel *lblPrice;
+    UILabel *formerPriceLab;
 
 }
 
@@ -43,7 +46,8 @@
 @property(nonatomic,strong)NSIndexPath *lastPath;
 @property(nonatomic,strong)NSMutableArray *MerchantDetailData;
 @property(nonatomic,strong)QWMerchantModel *MerChantmodel;
-
+@property(nonatomic,strong)QWMerComListModel *MerComListmodel;
+@property(nonatomic,strong)QWMerSerListModel *MerSerListmodel;
 #pragma mark - map
 @property (nonatomic, strong)JXMapNavigationView *mapNavigationView;
 @end
@@ -98,7 +102,8 @@
             {
                 NSLog(@"===%@==",dict);
                 self.MerChantmodel=[[QWMerchantModel alloc]initWithDictionary:[dict objectForKey:@"JsonData"] error:nil];
-               
+//               self.MerComListmodel=[[QWMerComListModel alloc]initWithDictionary:[[dict objectForKey:@"JsonData"] objectForKey:@"MerComList"] error:nil];
+//                self.MerSerListmodel=[[QWMerSerListModel alloc]initWithDictionary:[[dict objectForKey:@"JsonData"] objectForKey:@"MerSerList"] error:nil];
                 [self setupview];
             }
             else
@@ -157,14 +162,29 @@
     jiesuan.tintColor = [UIColor whiteColor];
     jiesuan.backgroundColor = [UIColor colorWithHexString:@"#ff800a"];
     
-    UILabel *lblPrice = [[UILabel alloc] initWithFrame:CGRectMake1(12, 14, 60, 15)];
-    lblPrice.text = @"¥24.00";
+    lblPrice = [[UILabel alloc] initWithFrame:CGRectMake1(12, 14, 60, 15)];
+    if (self.MerChantmodel!=nil&&self.MerChantmodel.MerSerList.count!=0) {
+         self.MerSerListmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)[self.MerChantmodel.MerSerList objectAtIndex:0] error:nil];
+    }
+    if (self.MerChantmodel!=nil&&self.MerChantmodel.MerSerList.count!=0) {
+       
+        
+         lblPrice.text =[NSString stringWithFormat:@"¥%@",self.MerSerListmodel.CurrentPrice] ;
+    }else{
+        lblPrice.text = @"¥0.00";
+    }
+    
     lblPrice.font = [UIFont systemFontOfSize:18*myDelegate.autoSizeScaleX];
     lblPrice.textColor = [UIColor colorWithHexString:@"#ff525a"];
     [vv addSubview:lblPrice];
-    
-    UILabel *formerPriceLab = [[UILabel alloc] initWithFrame:CGRectMake1(80, 19, 60, 10)];
-    formerPriceLab.text = @"¥38.00";
+    //旧的
+   formerPriceLab = [[UILabel alloc] initWithFrame:CGRectMake1(80, 19, 60, 10)];
+    if (self.MerChantmodel!=nil&&self.MerChantmodel.MerSerList.count!=0) {
+      
+        formerPriceLab.text =[NSString stringWithFormat:@"¥%@",self.MerSerListmodel.OriginalPrice];
+         }else{
+             formerPriceLab.text = @"¥0.00";
+         }
     formerPriceLab.textColor = [UIColor colorWithHexString:@"#999999"];
     formerPriceLab.font = [UIFont systemFontOfSize:13*myDelegate.autoSizeScaleX];
     [vv addSubview:formerPriceLab];
@@ -174,8 +194,11 @@
     formerPriceLab.attributedText = attribtStr;
 
     
-    UILabel *lblCarType = [[UILabel alloc] initWithFrame:CGRectMake1(12, 37, 200, 10)];
-    lblCarType.text = @"标准洗车-五座轿车";
+    lblCarType = [[UILabel alloc] initWithFrame:CGRectMake1(12, 37, 200, 10)];
+    if (self.MerChantmodel!=nil) {
+         lblCarType.text =self.MerSerListmodel.SerName;
+    }
+   
     lblCarType.font = [UIFont systemFontOfSize:13*myDelegate.autoSizeScaleX];
     lblCarType.textColor = [UIColor colorWithHexString:@"#999999"];
     [vv addSubview:lblCarType];
@@ -704,10 +727,18 @@
     
     
     NSLog(@"%@",_lastPath);
-    
+//    BusinessPayController *payController = [[BusinessPayController alloc] init];
+//    
+//    
+//    
+//    [self.navigationController pushViewController:payController animated:YES];
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     QWPayViewController *detailController = [[QWPayViewController alloc] init];
+    detailController.SerMerChant =self.MerChantmodel.MerName;
+    detailController.SerProject = lblCarType.text;
+    detailController.Jprice = formerPriceLab.text;
+    detailController.Xprice = lblPrice.text;
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }

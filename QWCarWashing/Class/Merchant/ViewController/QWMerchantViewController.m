@@ -415,10 +415,10 @@
 {
     // 创建下拉菜单
     YZPullDownMenu *menu = [[YZPullDownMenu alloc] init];
-    menu.frame = CGRectMake(0, 64, QWScreenWidth ,39 * myDelegate.autoSizeScaleY);
+    menu.frame = CGRectMake(0, 64, QWScreenWidth ,39*QWScreenheight/667);
     [self.view addSubview:menu];
     
-    UIView *viewb = [[UIView alloc]initWithFrame:CGRectMake(0, 64+39* myDelegate.autoSizeScaleY, QWScreenWidth, 10* myDelegate.autoSizeScaleY)];
+    UIView *viewb = [[UIView alloc]initWithFrame:CGRectMake(0, 64+39*QWScreenheight/667, QWScreenWidth, 10*QWScreenheight/667)];
     viewb.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
     [self.view addSubview:viewb];
     
