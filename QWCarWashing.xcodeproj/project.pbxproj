@@ -23,6 +23,7 @@
 		0401E9361F501E9B00F0CA79 /* TFGridInputViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9321F501E9B00F0CA79 /* TFGridInputViewCell.m */; };
 		0401E9371F501E9B00F0CA79 /* TFGridInputViewCellStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */; };
 		0401E93A1F501EF400F0CA79 /* QWInputCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9391F501EF400F0CA79 /* QWInputCodeController.m */; };
+		1802AD961F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1802AD951F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
 		180701E61F441AA100398435 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E21F441AA100398435 /* UIColor+HexColor.m */; };
@@ -322,6 +323,8 @@
 		0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFGridInputViewCellStyle.m; sourceTree = "<group>"; };
 		0401E9381F501EF400F0CA79 /* QWInputCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWInputCodeController.h; sourceTree = "<group>"; };
 		0401E9391F501EF400F0CA79 /* QWInputCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWInputCodeController.m; sourceTree = "<group>"; };
+		1802AD941F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWSalaActivityCellTableViewCell.h; sourceTree = "<group>"; };
+		1802AD951F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWSalaActivityCellTableViewCell.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
 		180701DD1F44134700398435 /* QWScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanController.m; sourceTree = "<group>"; };
 		180701DF1F441AA100398435 /* UIColor+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Additions.h"; sourceTree = "<group>"; };
@@ -1078,6 +1081,8 @@
 				180702AC1F458DD400398435 /* toast */,
 				180702A61F458A6900398435 /* QWSaleActivityController.h */,
 				180702A71F458A6900398435 /* QWSaleActivityController.m */,
+				1802AD941F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.h */,
+				1802AD951F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m */,
 				180702A91F458AB700398435 /* QWUserRightDetailController.h */,
 				180702AA1F458AB700398435 /* QWUserRightDetailController.m */,
 			);
@@ -2622,6 +2627,7 @@
 				180701F41F44214C00398435 /* PopHelpView.m in Sources */,
 				180702EA1F46007300398435 /* QWSettingController.m in Sources */,
 				18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */,
+				1802AD961F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m in Sources */,
 				18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */,
 				180702E21F45976D00398435 /* TYAlertView.m in Sources */,
 				185C9DF21F42A8FF00B4ED52 /* DSCarTravellingController.m in Sources */,
