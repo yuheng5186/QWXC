@@ -613,7 +613,7 @@
 - (void)clickCommentButton {
     
     ShopViewController *commentVC = [[ShopViewController alloc] init];
-    
+    commentVC.isComment = YES;
     commentVC.merchantModel = self.MerChantmodel;
     
     [self.navigationController pushViewController:commentVC animated:YES];

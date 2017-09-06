@@ -12,4 +12,6 @@
 
 @property (nonatomic,copy) QWMerchantModel *merchantModel;
 
+@property (nonatomic, assign) BOOL isComment;
+
 @end

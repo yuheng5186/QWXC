@@ -11,8 +11,6 @@
 
 @interface ShopCategoryView ()
 
-@property (nonatomic, strong) NSMutableArray <UIButton *> *buttonArray;
-
 @property (nonatomic, strong) UIButton *firstButton;
 
 /**
