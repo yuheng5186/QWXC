@@ -7,9 +7,11 @@
 //
 
 #import "OrderDetailView.h"
-#import "UIView+AutoSizeToDevice.h"
 
 @implementation OrderDetailView
+
+- (IBAction)GotoMerChant:(id)sender {
+}
 
 + (instancetype)orderDetailView {
     
@@ -19,15 +21,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    //self.dg_viewAutoSizeToDevice = YES;
-    
-    
     [self setupUI];
 }
 
 - (void)setupUI {
     
-   
 }
 
 @end

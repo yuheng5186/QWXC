@@ -267,6 +267,7 @@
 		18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603451F50135E00CFA328 /* JXMapNavigationView.m */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
+		18E702901F5F9E7B007A9777 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E7028F1F5F9E7B007A9777 /* Order.m */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
 		48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312F01F41DDFA0029BA17 /* UIImage+Common.m */; };
 		48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312FC1F41F7500029BA17 /* QWOrderTableViewCell.m */; };
@@ -786,6 +787,8 @@
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
+		18E7028E1F5F9E7B007A9777 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		18E7028F1F5F9E7B007A9777 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		48D312EC1F41D9140029BA17 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		48D312ED1F41D9140029BA17 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		48D312EF1F41DDFA0029BA17 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
@@ -1375,6 +1378,8 @@
 				180957B71F414D0000BE185D /* model */,
 				180957B81F414D0000BE185D /* view */,
 				180957B91F414D0000BE185D /* ViewController */,
+				18E7028E1F5F9E7B007A9777 /* Order.h */,
+				18E7028F1F5F9E7B007A9777 /* Order.m */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -2498,6 +2503,7 @@
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
 				180957F61F41AED400BE185D /* QWOrderMenuTableViewCell.m in Sources */,
 				48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */,
+				18E702901F5F9E7B007A9777 /* Order.m in Sources */,
 				182E93461F4ECA4C00819B79 /* UIView+YZCategory.m in Sources */,
 				180702DD1F45976D00398435 /* TYAlertController+TransitionAnimate.m in Sources */,
 				180702DA1F45976D00398435 /* UIImage+ImageEffects.m in Sources */,
