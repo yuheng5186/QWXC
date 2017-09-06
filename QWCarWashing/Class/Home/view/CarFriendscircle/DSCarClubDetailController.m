@@ -152,7 +152,9 @@
 //    self.tableView.contentInset     = UIEdgeInsetsMake(0, 0, 180, 0);
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor=[UIColor clearColor];
-    
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
     [self setupRefresh];
 
 //    [self creatModelsWithCount:10];
