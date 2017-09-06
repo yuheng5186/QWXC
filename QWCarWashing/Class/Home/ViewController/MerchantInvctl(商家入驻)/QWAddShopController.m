@@ -26,7 +26,7 @@
 }
 
 - (void) createSubView {
-    self.scrollView                         = [[UIScrollView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, 62, self.view.size.width, self.view.size.height+64)];
+    self.scrollView                         = [[UIScrollView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, 0, self.view.size.width, self.view.size.height)];
     self.scrollView.backgroundColor         = [UIColor whiteColor];
     self.scrollView.contentSize             = CGSizeMake(self.view.size.width, self.view.size.height*1.2);
     [self.scrollView flashScrollIndicators];
@@ -34,10 +34,10 @@
     [self.view addSubview:self.scrollView];
     
     
-    UIImageView *adImageView    = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 62, QWScreenWidth, QWScreenWidth) imageName:@"shangjiaruzhutu"];
-    adImageView.contentMode=UIViewContentModeScaleAspectFill;
+    UIImageView *adImageView    = [UIUtil drawCustomImgViewInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) imageName:@"shangjiaruzhutu"];
+//    adImageView.contentMode=UIViewContentModeScaleAspectFill;
     adImageView.centerX         = Main_Screen_Width/2;
-    adImageView.top             = Main_Screen_Height*62/667;
+    adImageView.top             = Main_Screen_Height*0/667;
     
     
     NSString *string                = @"马上入住，立即赚钱";
@@ -45,7 +45,7 @@
     UIButton    *getMoneyButton     = [UIUtil drawButtonInView:self.scrollView frame:CGRectMake(0, 0, Main_Screen_Width -Main_Screen_Width*60/375, Main_Screen_Height*40/667) text:string font:stringFont color:[UIColor whiteColor] target:self action:@selector(getShopMoneyButtonClick:)];
     getMoneyButton.backgroundColor  = [UIColor colorWithHex:0xFFB500 alpha:1.0];
     getMoneyButton.layer.cornerRadius   = 5;
-    getMoneyButton.bottom           = adImageView.bottom -Main_Screen_Height*10/667;
+    getMoneyButton.bottom           = adImageView.bottom -Main_Screen_Height*15/667;
     getMoneyButton.centerX          = self.view.centerX;
     
     self.scrollView.contentSize             = CGSizeMake(self.view.size.width, self.view.size.height +getMoneyButton.height*1.2);
