@@ -30,7 +30,7 @@
     return self;
 
 }
--(void)setMerserlist:(QWMerComListModel *)ComList{
+-(void)setComList:(QWMerComListModel *)ComList{
     _ComList=ComList;
     NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,ComList.FromuserImg];
     NSURL *url=[NSURL URLWithString:ImageURL];
@@ -39,6 +39,7 @@
     self.comment.text=ComList.CommentContent;
     self.commenttime.text=ComList.CommentDate;
 }
+
 -(void)setlayoutCell
 {
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

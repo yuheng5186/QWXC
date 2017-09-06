@@ -64,9 +64,9 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     [self.view addSubview:headContainView];
     
     UILabel *gradeLab = [[UILabel alloc] init];
-    gradeLab.text = @"白银会员";
+    gradeLab.text = self.currentLevel;
     gradeLab.textColor = [UIColor blackColor];
-    gradeLab.font = [UIFont systemFontOfSize:15];
+    gradeLab.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
     [self.view addSubview:gradeLab];
 
     HYSlider *slider = [[HYSlider alloc]initWithFrame:CGRectMake(35, gradeLab.frame.origin.y+gradeLab.frame.size.height+5, QWScreenWidth-46, 9)];
@@ -84,9 +84,9 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     UILabel *maxLab = [[UILabel alloc] init];
     
-    maxLab.textColor = RGBACOLOR(230, 230, 230, 1);
+    maxLab.textColor = [UIColor grayColor];
     maxLab.textAlignment=NSTextAlignmentRight;
-    maxLab.font = [UIFont systemFontOfSize:10];
+    maxLab.font = [UIFont systemFontOfSize:12];
     maxLab.text =self.NextLevelScore;
     [self.view addSubview:maxLab];
     
@@ -96,10 +96,10 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
     UIButton *displayBtn = [[UIButton alloc] init];
     displayBtn.userInteractionEnabled = NO;
-    NSString *string = [NSString stringWithFormat:@"%ld积分升级为%@",([self.NextLevelScore integerValue]- [self.CurrentScore integerValue]),self.nextLevel];
+    NSString *string = [NSString stringWithFormat:@"%ld积分升级为%@",(long)(([self.NextLevelScore integerValue]- [self.CurrentScore integerValue])),self.nextLevel];
     [displayBtn setTitle:string forState:UIControlStateNormal];
     [displayBtn setTitleColor:[UIColor colorFromHex:@"#999999"] forState:UIControlStateNormal];
-    displayBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    displayBtn.titleLabel.font = [UIFont systemFontOfSize:Main_Screen_Height*14/667];
     [displayBtn setImage:[UIImage imageNamed:@"qw_shengji"] forState:UIControlStateNormal];
     displayBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [displayBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 0)];
@@ -125,44 +125,45 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     [headContainView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).mas_offset(64);
         make.left.right.equalTo(self.view);
-        make.height.mas_equalTo(130);
+        make.height.mas_equalTo(130*Main_Screen_Height/667);
     }];
     
     [gradeLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(headContainView).mas_offset(9);
+        make.top.equalTo(headContainView).mas_offset(Main_Screen_Height*20/667);
         make.centerX.equalTo(headContainView);
     }];
     
     [slider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(gradeLab.mas_bottom).mas_offset(35);
+        make.top.equalTo(gradeLab.mas_bottom).mas_offset(Main_Screen_Height*30/667);
         make.left.equalTo(headContainView).mas_offset(23);
         make.right.equalTo(headContainView).mas_offset(-23);
         make.width.mas_equalTo(QWScreenWidth-46);
-        make.height.mas_equalTo(9);
+        make.height.mas_equalTo(Main_Screen_Height*9/667);
     }];
     [maxLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(slider.mas_bottom).mas_offset(5);
+        make.top.equalTo(slider.mas_bottom).mas_offset(Main_Screen_Height*5/667);
 //        make.left.equalTo(headContainView).mas_offset(23);
         make.right.equalTo(slider);
         make.width.mas_equalTo(46);
-        make.height.mas_equalTo(9);
+        make.height.mas_equalTo(Main_Screen_Height*15/667);
     }];
     
     [displayBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(maxLab.mas_bottom).mas_offset(15);
+        make.top.equalTo(maxLab.mas_bottom).mas_offset(5*Main_Screen_Height/667);
         make.centerX.equalTo(headContainView);
         make.width.mas_equalTo(250);
+//        make.bottom.equalTo(headContainView).mas_offset(Main_Screen_Height*10/667);
     }];
     
     [containView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.left.right.equalTo(self.view);
-        make.height.mas_equalTo(49);
+        make.height.mas_equalTo(49*Main_Screen_Height/667);
     }];
     
     [getMoreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(containView);
-        make.height.mas_equalTo(40);
-        make.width.mas_equalTo(250);
+        make.height.mas_equalTo(40*Main_Screen_Height/667);
+        make.width.mas_equalTo(250*Main_Screen_Width/375);
     }];
     
     getMoreBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -358,6 +359,10 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     
 
     [self.navigationController pushViewController:earnScoreVC animated:YES];
+}
+- (void)HYSlider:(HYSlider *)hySlider didScrollValue:(CGFloat)value
+{
+
 }
 
 - (void)didReceiveMemoryWarning {

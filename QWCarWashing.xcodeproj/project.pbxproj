@@ -169,6 +169,7 @@
 		182E93751F56C25400819B79 /* QWRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93741F56C25400819B79 /* QWRecordModel.m */; };
 		182E93791F57A21100819B79 /* QWCardConfigGradeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93781F57A21100819B79 /* QWCardConfigGradeModel.m */; };
 		182E937D1F58F24C00819B79 /* QWIntegModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E937C1F58F24C00819B79 /* QWIntegModel.m */; };
+		182E93811F5FCF6C00819B79 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 182E93801F5FCF6C00819B79 /* Order.m */; };
 		18464A571F53C54B00229017 /* PGIndexBannerSubiew.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */; };
 		18464A5A1F53C56800229017 /* NewPagedFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18464A591F53C56800229017 /* NewPagedFlowView.m */; };
 		18508FE91F42A40300795E0A /* QWMerchantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18508FE81F42A40300795E0A /* QWMerchantDetailViewController.m */; };
@@ -605,6 +606,8 @@
 		182E93781F57A21100819B79 /* QWCardConfigGradeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCardConfigGradeModel.m; sourceTree = "<group>"; };
 		182E937B1F58F24C00819B79 /* QWIntegModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWIntegModel.h; sourceTree = "<group>"; };
 		182E937C1F58F24C00819B79 /* QWIntegModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWIntegModel.m; sourceTree = "<group>"; };
+		182E937F1F5FCF6C00819B79 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		182E93801F5FCF6C00819B79 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
 		18464A551F53C54B00229017 /* PGIndexBannerSubiew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGIndexBannerSubiew.h; sourceTree = "<group>"; };
 		18464A561F53C54B00229017 /* PGIndexBannerSubiew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGIndexBannerSubiew.m; sourceTree = "<group>"; };
 		18464A581F53C56800229017 /* NewPagedFlowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPagedFlowView.h; sourceTree = "<group>"; };
@@ -1372,18 +1375,11 @@
 		180957B61F414D0000BE185D /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				180957B71F414D0000BE185D /* model */,
+				182E937E1F5FCF6C00819B79 /* model */,
 				180957B81F414D0000BE185D /* view */,
 				180957B91F414D0000BE185D /* ViewController */,
 			);
 			path = Me;
-			sourceTree = "<group>";
-		};
-		180957B71F414D0000BE185D /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		180957B81F414D0000BE185D /* view */ = {
@@ -1925,6 +1921,15 @@
 				182E937C1F58F24C00819B79 /* QWIntegModel.m */,
 			);
 			path = IntegModel;
+			sourceTree = "<group>";
+		};
+		182E937E1F5FCF6C00819B79 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				182E937F1F5FCF6C00819B79 /* Order.h */,
+				182E93801F5FCF6C00819B79 /* Order.m */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2667,6 +2672,7 @@
 				180957CA1F414D0000BE185D /* UIBarButtonItem+XLItems.m in Sources */,
 				185C9E281F42D06F00B4ED52 /* DelayPayCell.m in Sources */,
 				180957D31F414DC700BE185D /* QWTabBarController.m in Sources */,
+				182E93811F5FCF6C00819B79 /* Order.m in Sources */,
 				1807029E1F45847000398435 /* WayToUpGradeCell.m in Sources */,
 				180702F01F4600B400398435 /* QWAboutController.m in Sources */,
 				185C9DF71F42BDF300B4ED52 /* BaseController.m in Sources */,

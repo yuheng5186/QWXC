@@ -84,6 +84,9 @@ static NSString *cellstr=@"cell";
     [super viewDidLoad];
     [self setNagationLeftAndRightButton];
     [self.view addSubview:self.tableview];
+    if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableview setSeparatorInset:UIEdgeInsetsZero];
+    }
 //    [self.tableview reloadData];
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
 //    [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];

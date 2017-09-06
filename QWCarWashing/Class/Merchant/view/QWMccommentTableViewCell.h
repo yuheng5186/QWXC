@@ -18,6 +18,7 @@
 
 @property(nonatomic,weak)UILabel *commenttime;
 @property(nonatomic,strong)QWMerComListModel *ComList;
+
 //-(void)setlayoutCell;
 
 @end

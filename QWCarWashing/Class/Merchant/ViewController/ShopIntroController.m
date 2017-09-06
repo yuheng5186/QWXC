@@ -45,6 +45,7 @@ static NSString *id_infoCell = @"id_infoCell";
 }
 
 - (void)setupUI {
+//    0, 0, Main_Screen_Width,Main_Screen_Height-44*Main_Screen_Height/667-64
     self.infoHeadView.backgroundColor=[UIColor whiteColor];
     self.infoHeadView.frame = CGRectMake(0, 0, Main_Screen_Width, 280*Main_Screen_Height/667);
 //    [self.infoHeadView mas_makeConstraints:^(MASConstraintMaker *make) {
