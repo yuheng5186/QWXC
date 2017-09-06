@@ -40,7 +40,7 @@
 
 - (UITableView *)MerchantListtableview {
     if (nil == _MerchantListtableview) {
-        UITableView *MerchantListtableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+49+49*myDelegate.autoSizeScaleY, ScreenWidth, ScreenHeight - 49 - 64 - 49*myDelegate.autoSizeScaleY) style:UITableViewStylePlain];
+        UITableView *MerchantListtableview = [[UITableView alloc] initWithFrame:CGRectMake(0, 64+49*Main_Screen_Height/667, ScreenWidth, ScreenHeight - 49 - 64 - 49*Main_Screen_Height/667) style:UITableViewStylePlain];
         _MerchantListtableview = MerchantListtableview;
         
         [self.view addSubview:MerchantListtableview];
