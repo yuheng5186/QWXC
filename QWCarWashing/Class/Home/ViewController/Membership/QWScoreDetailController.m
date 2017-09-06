@@ -113,6 +113,7 @@
     
     if (_scoreListView == nil) {
         UITableView *scoreListView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        scoreListView.backgroundColor   = [UIColor clearColor];
         _scoreListView = scoreListView;
         [self.view addSubview:_scoreListView];
     }
