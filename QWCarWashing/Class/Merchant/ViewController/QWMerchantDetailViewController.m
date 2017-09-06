@@ -64,7 +64,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+    self.lastPath = indexPath;
+    [self.McdetailTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionNone];
+    if ([_McdetailTableView.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+        [_McdetailTableView.delegate tableView:_McdetailTableView didSelectRowAtIndexPath:indexPath];
+    }
+
     self.title = @"商家详情";
     
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -125,7 +131,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"fenxiang-1"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 50*myDelegate.autoSizeScaleY)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 60*myDelegate.autoSizeScaleY) style:UITableViewStyleGrouped];
     tableView.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
     _McdetailTableView = tableView;
     _McdetailTableView.delegate = self;
@@ -133,8 +139,9 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     _McdetailTableView.separatorStyle = NO;
     _McdetailTableView.showsVerticalScrollIndicator = NO;
+    _McdetailTableView.contentInset=UIEdgeInsetsMake(0, 0, 10, 0);
     [self.view addSubview:_McdetailTableView];
-    
+   
     _detaiview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
     _detaiImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenWidth/2)];
     _detaiImgView.image = [UIImage imageNamed:@"shangjiadiantu"];
@@ -312,7 +319,7 @@
         return 37*(myDelegate.autoSizeScaleY );
     }
     else
-        return 0;
+        return 0.01;
     
 }
 
@@ -361,7 +368,7 @@
     {
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake1(0, 0, QWScreenWidth, 0)];//创建一个视图
         
-        headerView.backgroundColor=[UIColor greenColor];
+//        headerView.backgroundColor=[UIColor greenColor];
         return headerView;
     }
     
@@ -489,16 +496,17 @@
         
         cell.delegate = self;
         cell.selectedIndexPath = indexPath;
-        [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
-   
+//        cell.selectbtn.userInteractionEnabled = NO;
+        
+        [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:BtnNormal];
+//         [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:BtnStateSelected];
         
         //当上下拉动的时候，因为cell的复用性，我们需要重新判断一下哪一行是打勾的
         if (_lastPath == indexPath) {
-//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
-            
+           
+           [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:BtnNormal];
         }else {
-            [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
+            [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:BtnNormal];
             
         }
 
@@ -624,7 +632,15 @@
         //当前选择的打勾
         QWMcServiceTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         //    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
+         [cell.selectbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
+        if (self.MerChantmodel!=nil&&self.MerChantmodel.MerSerList.count!=0) {
+            self.MerSerListmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)[self.MerChantmodel.MerSerList objectAtIndex:_lastPath.row] error:nil];
+            lblCarType.text=self.MerSerListmodel.SerName;
+            lblPrice.text=[NSString stringWithFormat:@"¥%@",self.MerSerListmodel.CurrentPrice] ;
+            formerPriceLab.text=[NSString stringWithFormat:@"¥%@",self.MerSerListmodel.OriginalPrice] ;
+        }
+       
+        
     }
     
 }
@@ -647,13 +663,8 @@
 {
     //设置导航栏背景图片为一个空的image，这样就透明了
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
-    self.lastPath = indexPath;
-        [self.McdetailTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        if ([_McdetailTableView.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-            [_McdetailTableView.delegate tableView:_McdetailTableView didSelectRowAtIndexPath:indexPath];
-        }
-    //去掉透明后导航栏下边的黑边
+  
+            //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 
 }
@@ -774,14 +785,19 @@
     
     
     
-//    [_McdetailTableView reloadRowsAtIndexPaths:@[
-//                                             [NSIndexPath indexPathForRow:jiesuan.tag inSection:0]
-//                                             ] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 -(void)didClickwhichservice:(UIButton *)selectedbtn
 {
-    
+//    if (selectedbtn.selected) {
+//        
+//        [selectedbtn setImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:BtnNormal];
+//    }else{
+//         [selectedbtn setImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:BtnNormal];
+//    
+//    }
+//    
+//    selectedbtn.selected = !selectedbtn.selected;
 }
 
 -(void)clicktiaozhuan:(UIGestureRecognizer *)gap
