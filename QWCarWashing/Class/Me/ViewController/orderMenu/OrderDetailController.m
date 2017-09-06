@@ -65,14 +65,11 @@
     
     NSDictionary *mulDic = @{
                              @"MerCode":[NSString stringWithFormat:@"%ld",self.MerCode],
-                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
                              };
-    NSDictionary *params = @{
-                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                             };
-    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@MerChant/GetStoreDetail",Khttp] success:^(NSDictionary *dict, BOOL success) {
-        //        NSLog(@"%@",dict);
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MerChant/GetStoreDetail",Khttp] success:^(NSDictionary *dict, BOOL success) {
+                NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             

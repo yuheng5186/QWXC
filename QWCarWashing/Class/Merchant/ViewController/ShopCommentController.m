@@ -24,7 +24,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 
 - (UITableView *)commentListView{
     if (_commentListView == nil) {
-        UITableView *commenListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, QWScreenWidth, QWScreenheight-5) style:UITableViewStyleGrouped];
+        UITableView *commenListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-44*Main_Screen_Height/667-64) style:UITableViewStyleGrouped];
         _commentListView = commenListView;
         [self.view addSubview:commenListView];
     }
@@ -117,6 +117,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 #pragma mark-请求商家评论数据
 -(void)GetCommentDetail
 {
+    [self.MerComList removeAllObjects];
     NSDictionary *mulDic = @{
                              @"MerCode":self.mercode,
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
@@ -130,10 +131,10 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
             NSLog(@"%@",dict);
             NSArray *arr = [NSArray array];
             arr = [dict objectForKey:@"JsonData"];
-            for (QWMerComListModel *comlistmodel in arr) {
+            for (NSDictionary *dict in arr) {
+                QWMerComListModel *comlistmodel=[[QWMerComListModel alloc]initWithDictionary:dict error:nil];
                 [self.MerComList addObject:comlistmodel];
             }
-//            [self.MerchantCommentListData addObjectsFromArray:arr];
             [_commentListView.mj_header endRefreshing];
             [_commentListView reloadData];
         }
@@ -166,6 +167,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
         commentCell = [[QWMccommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:id_commentShopCell];
     }
     if (self.MerComList.count!=0) {
+        
         commentCell.ComList =self.MerComList[indexPath.row];
     }
     
@@ -176,7 +178,7 @@ static NSString *id_commentShopCell = @"id_commentShopCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UILabel *commentTitleLabel = [[UILabel alloc] init];
-    commentTitleLabel.text = @"  评价(58)";
+    commentTitleLabel.text =[NSString stringWithFormat:@"  评价(%ld)",self.MerComList.count] ;
     commentTitleLabel.backgroundColor = [UIColor whiteColor];
     commentTitleLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
     commentTitleLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];

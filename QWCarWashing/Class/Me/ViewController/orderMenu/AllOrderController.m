@@ -139,7 +139,7 @@ static NSString *id_cancelCell = @"id_cancelCell";
     
     
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@OrderRecords/GetOrderRecordsList",Khttp] success:^(NSDictionary *dict, BOOL success) {
-        
+        NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             self.page = 0;

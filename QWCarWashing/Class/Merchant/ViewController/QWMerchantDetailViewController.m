@@ -68,13 +68,13 @@
     
     NSLog(@"===%@",self.MerCode);
     
-    if (!IsNullIsNull(self.MerCode)) {
+    if (self.MerCode!=nil) {
         [self requestMerchantDetailDataAndMerCode:self.MerCode];
     }else{
         [self setupview];
     }
     
-//
+
     
     
     
@@ -244,18 +244,16 @@
     }
     else if(section == 2)
     {
-//        if (self.MerChantmodel.MerSerList.count!=0 && self.MerChantmodel.MerSerList.count>2) {
-//            return 2;
-//        }else{
+
             return self.MerChantmodel.MerSerList.count;
-//        }
+
     }
     else
     {
-        if (self.MerChantmodel.MerSerList.count!=0 && self.MerChantmodel.MerSerList.count>2) {
+        if (self.MerChantmodel.MerComList.count!=0 && self.MerChantmodel.MerComList.count>2) {
             return 2;
         }else{
-            return self.MerChantmodel.MerSerList.count;
+            return self.MerChantmodel.MerComList.count;
         }
 
         
@@ -322,7 +320,7 @@
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake1(15, 5, 150, 20)];
         headerLabel.font = [UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX];
         headerLabel.textColor = [UIColor colorWithRed:100/255.f green:100/255.f blue:100/255.f alpha:1.0f];
-        headerLabel.text = [NSString stringWithFormat:@"评论（%ld）",self.MerChantmodel.MerSerList.count];
+        headerLabel.text = [NSString stringWithFormat:@"评论（%ld）",self.MerChantmodel.MerComList.count];
         [headerView addSubview:headerLabel];
         CGSize labelSize = [headerLabel.text sizeWithFont:[UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX] constrainedToSize:CGSizeMake(200, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
         headerLabel.frame = CGRectMake(15* myDelegate.autoSizeScaleX, 37 * myDelegate.autoSizeScaleY/2-labelSize.height/2, 200, labelSize.height);
@@ -488,8 +486,7 @@
         UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 89* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
         separatorview.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:separatorview];
-        if (self.MerChantmodel!=nil &&self.MerChantmodel.MerSerList.count!=0) {
-
+        if (self.MerChantmodel!=nil && self.MerChantmodel.MerSerList.count!=0) {
             QWMerSerListModel *serlistmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)self.MerChantmodel.MerSerList[indexPath.row] error:nil];
             cell.MerSerList=serlistmodel;
 
@@ -500,9 +497,6 @@
     }
     else
     {
-        
-//        if(indexPath.row<2)
-//        {
             static NSString *CellIdentifier=@"Cell4";
             [tableView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:CellIdentifier];
             QWMccommentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -518,8 +512,10 @@
             UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 104 * myDelegate.autoSizeScaleY,QWScreenWidth,1)];
             separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
             [cell.contentView addSubview:separatorview];
-            if (self.MerChantmodel==nil) {
-                cell.ComList=self.MerChantmodel.MerComList[indexPath.row];
+            if (self.MerChantmodel.MerComList.count!=0&&self.MerChantmodel!=nil) {
+                QWMerComListModel *MerComListmodel=[[QWMerComListModel alloc]initWithDictionary:(NSDictionary *)self.MerChantmodel.MerComList[indexPath.row] error:nil];
+               
+                cell.ComList=MerComListmodel;
             }
             
             return cell;

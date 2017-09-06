@@ -70,7 +70,7 @@
     //    }
     
     
-    //    __weak __typeof(self)weakSelf = self;
+        __weak __typeof(self)weakSelf = self;
     self.tggStarEvaView = [TggStarEvaluationView evaluationViewWithChooseStarBlock:^(NSUInteger count) {
         //几颗星的回调count
         score = count;
@@ -155,7 +155,7 @@
 - (void)clickSigninButton:(UIButton *)button {
     
     NSDictionary *mulDic = @{
-                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"MerCode":self.SerMerCode,
                              @"SerCode":self.SerCode,
                              @"OrderId":self.orderid,
@@ -163,13 +163,10 @@
                              @"Score":[NSString stringWithFormat:@"%ld",score]
                              };
     
-    NSDictionary *params = @{
-                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                             };
     
-    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@OrderRecords/AddOrderComment",Khttp] success:^(NSDictionary *dict, BOOL success) {
-        
+    
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@OrderRecords/AddOrderComment",Khttp] success:^(NSDictionary *dict, BOOL success) {
+        NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            NSNotification * notice = [NSNotification notificationWithName:@"update" object:nil userInfo:nil];

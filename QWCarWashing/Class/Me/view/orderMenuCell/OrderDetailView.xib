@@ -31,7 +31,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="renzheng" translatesAutoresizingMaskIntoConstraints="NO" id="ook-Tg-qLn">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="renzhengbiaoqian" translatesAutoresizingMaskIntoConstraints="NO" id="ook-Tg-qLn">
                             <rect key="frame" x="12" y="10" width="25" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="25" id="h41-8U-vqW"/>
@@ -94,7 +94,7 @@
                                 <constraint firstAttribute="height" constant="20" id="WPe-co-BaV"/>
                                 <constraint firstAttribute="width" constant="20" id="wts-xd-VkF"/>
                             </constraints>
-                            <state key="normal" image="lansedaohang"/>
+                            <state key="normal" image="mdjjdaohang"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exn-O1-QpD">
                             <rect key="frame" x="44" y="7" width="77" height="30"/>
@@ -300,7 +300,7 @@
     <resources>
         <image name="aiche1" width="67" height="67"/>
         <image name="juli" width="10" height="10"/>
-        <image name="lansedaohang" width="20" height="20"/>
-        <image name="renzheng" width="30" height="30"/>
+        <image name="mdjjdaohang" width="20" height="20"/>
+        <image name="renzhengbiaoqian" width="30" height="30"/>
     </resources>
 </document>
