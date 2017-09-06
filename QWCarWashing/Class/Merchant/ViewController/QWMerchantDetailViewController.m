@@ -106,15 +106,9 @@
                 [self.view showInfo:@"商家信息获取失败" autoHidden:YES interval:2];
                 [self.navigationController popViewControllerAnimated:YES];
             }
-            
-            
-            
-            
         } fail:^(NSError *error) {
             [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
         }];
-    
-
 }
 -(void)setupview
 {
@@ -126,7 +120,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"fenxiang-1"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 20*myDelegate.autoSizeScaleY)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, QWScreenheight - 50*myDelegate.autoSizeScaleY)];
     tableView.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
     _McdetailTableView = tableView;
     _McdetailTableView.delegate = self;
@@ -250,19 +244,20 @@
     }
     else if(section == 2)
     {
-        if (self.MerChantmodel.MerSerList.count==0) {
-            return 4;
-        }else{
-        return self.MerChantmodel.MerSerList.count;
-        }
+//        if (self.MerChantmodel.MerSerList.count!=0 && self.MerChantmodel.MerSerList.count>2) {
+//            return 2;
+//        }else{
+            return self.MerChantmodel.MerSerList.count;
+//        }
     }
     else
     {
-        if (self.MerChantmodel.MerSerList.count==0) {
-            return 3;
+        if (self.MerChantmodel.MerSerList.count!=0 && self.MerChantmodel.MerSerList.count>2) {
+            return 2;
         }else{
-            return self.MerChantmodel.MerComList.count;
+            return self.MerChantmodel.MerSerList.count;
         }
+
         
     }
 }
@@ -327,13 +322,14 @@
         UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake1(15, 5, 150, 20)];
         headerLabel.font = [UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX];
         headerLabel.textColor = [UIColor colorWithRed:100/255.f green:100/255.f blue:100/255.f alpha:1.0f];
-        headerLabel.text = @"评论（58）";
+        headerLabel.text = [NSString stringWithFormat:@"评论（%ld）",self.MerChantmodel.MerSerList.count];
         [headerView addSubview:headerLabel];
         CGSize labelSize = [headerLabel.text sizeWithFont:[UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleX] constrainedToSize:CGSizeMake(200, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
         headerLabel.frame = CGRectMake(15* myDelegate.autoSizeScaleX, 37 * myDelegate.autoSizeScaleY/2-labelSize.height/2, 200, labelSize.height);
-        
+        //商家评论分割线
         UIView * separator = [[UIView alloc] initWithFrame:CGRectMake(0, 36.5, QWScreenWidth, 0.5)];
-        separator.backgroundColor = [UIColor whiteColor];
+        
+       separator.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1];
         [headerView addSubview:separator];
         
         return headerView;
@@ -351,14 +347,51 @@
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
-    UIView *footerview=[UIView new];
-    footerview.backgroundColor=[UIColor clearColor];
+    
+    if (section==3) {
+        if (self.MerChantmodel.MerSerList.count==0) {
+            UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 215*Main_Screen_Height/667)];
+            UIImageView *ImgView = [[UIImageView alloc] initWithFrame:CGRectMake(120*Main_Screen_Height/667, 27*Main_Screen_Height/667, 135*Main_Screen_Height/667, 120*Main_Screen_Height/667)];
+            ImgView.image = [UIImage imageNamed:@"pinglun_kongbai"];
+            [v addSubview:ImgView];
+            
+            UILabel *nocommentlab = [[UILabel alloc]initWithFrame:CGRectMake(0, ImgView.frame.origin.y+ImgView.frame.size.height+17*Main_Screen_Height/667, Main_Screen_Width, 14*Main_Screen_Height/667)];
+            nocommentlab.text = @"暂无评价信息";
+            nocommentlab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
+            nocommentlab.textAlignment = NSTextAlignmentCenter;
+            nocommentlab.textColor = [UIColor colorFromHex:@"#999999"];
+            [v addSubview:nocommentlab];
+            return v;
+        }else{
+            UIButton *commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 50 * myDelegate.autoSizeScaleY)];
+            [commentBtn setTitle:@"查看全部评价" forState:UIControlStateNormal];
+            [commentBtn setTitleColor:[UIColor colorWithHexString:@"#3a3a3a"] forState:UIControlStateNormal];
+            commentBtn.titleLabel.font = [UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleY];
+            commentBtn.backgroundColor = [UIColor whiteColor];
+            //        [cell.contentView addSubview:commentBtn];
+            //添加点击事件
+            [commentBtn addTarget:self action:@selector(clickCommentButton) forControlEvents:UIControlEventTouchUpInside];
+            return commentBtn;
+        
+        }
+        
+        
+    }else{
+        UIView *footerview=[UIView new];
+        footerview.backgroundColor=[UIColor clearColor];
+        return footerview;
+    }
    
-    return footerview;
+    
 
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    if (section==3) {
+        return  50 * myDelegate.autoSizeScaleY;
+    }else{
+        return 10;
+    }
+    
 
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -455,7 +488,7 @@
         UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 89* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
         separatorview.backgroundColor = [UIColor whiteColor];
         [cell.contentView addSubview:separatorview];
-        if (self.MerChantmodel!=nil) {
+        if (self.MerChantmodel!=nil &&self.MerChantmodel.MerSerList.count!=0) {
 
             QWMerSerListModel *serlistmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)self.MerChantmodel.MerSerList[indexPath.row] error:nil];
             cell.MerSerList=serlistmodel;
@@ -468,8 +501,8 @@
     else
     {
         
-        if(indexPath.row<1)
-        {
+//        if(indexPath.row<2)
+//        {
             static NSString *CellIdentifier=@"Cell4";
             [tableView registerClass:[QWMccommentTableViewCell class] forCellReuseIdentifier:CellIdentifier];
             QWMccommentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -492,38 +525,31 @@
             return cell;
             
 
-        }
-        else
-        
-        {
-            NSString *CellIdentifier=@"Cell9";
-            [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
-            UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-            
-            [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
-
-            [cell setBackgroundColor:[UIColor clearColor]];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
-            separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
-            [cell.contentView addSubview:separatorview];
-            
-            UIView *Deseparatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY + 1,QWScreenWidth,cell.contentView.height - 50* myDelegate.autoSizeScaleY -  1)];
-            Deseparatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
-            [cell.contentView addSubview:Deseparatorview];
-            
-            UIButton *commentBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, QWScreenWidth, 50 * myDelegate.autoSizeScaleY)];
-            [commentBtn setTitle:@"查看全部评价（128）" forState:UIControlStateNormal];
-            [commentBtn setTitleColor:[UIColor colorWithHexString:@"#3a3a3a"] forState:UIControlStateNormal];
-            commentBtn.titleLabel.font = [UIFont systemFontOfSize:14 * myDelegate.autoSizeScaleY];
-            commentBtn.backgroundColor = [UIColor whiteColor];
-            [cell.contentView addSubview:commentBtn];
-            //添加点击事件
-            [commentBtn addTarget:self action:@selector(clickCommentButton) forControlEvents:UIControlEventTouchUpInside];
-            return cell;
-        
-        }
+//        }
+//        else
+//        
+//        {
+//            NSString *CellIdentifier=@"Cell9";
+//            [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+//            UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+//            
+//            [tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+//
+//            [cell setBackgroundColor:[UIColor clearColor]];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            
+//            UIView *separatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY,QWScreenWidth,1)];
+//            separatorview.backgroundColor = [UIColor colorWithRed:230/255.f green:230/255.f blue:230/255.f alpha:1.0f];
+//            [cell.contentView addSubview:separatorview];
+//            
+//            UIView *Deseparatorview = [[UIView alloc]initWithFrame:CGRectMake(0, 50* myDelegate.autoSizeScaleY + 1,QWScreenWidth,cell.contentView.height - 50* myDelegate.autoSizeScaleY -  1)];
+//            Deseparatorview.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1.0f];
+//            [cell.contentView addSubview:Deseparatorview];
+//            
+//           
+//            return cell;
+//        
+//        }
         
     }
 }
@@ -613,12 +639,6 @@
 
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    
-//    //    如果不想让其他页面的导航栏变为透明 需要重置
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
-//    [self.navigationController.navigationBar setShadowImage:nil];
-}
 
 -(void)back
 {

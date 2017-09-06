@@ -52,7 +52,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     HUD.labelText = @"加载中";
     HUD.minSize = CGSizeMake(132.f, 108.0f);
 
-   
+    [self GetCardbagList];
 }
 - (void) resetBabkButton {
     

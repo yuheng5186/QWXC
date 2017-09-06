@@ -89,6 +89,8 @@
                 NSInteger score=[[UdStorage getObjectforKey:UserScores] integerValue]-self.card.Integralnum;
                 [UdStorage storageObject:[NSString stringWithFormat:@"%ld",score] forKey:UserScores];
                 [self.view showInfo:@"兑换成功" autoHidden:YES interval:2];
+                NSNotification * notice = [NSNotification notificationWithName:@"updatecard" object:nil userInfo:nil];
+                [[NSNotificationCenter defaultCenter]postNotification:notice];
                 
             }
             else
