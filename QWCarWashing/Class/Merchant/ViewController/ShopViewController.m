@@ -154,6 +154,15 @@
 }
 
 
+- (void)viewWillLayoutSubviews {
+    
+    if (self.isComment) {
+        
+        [self.categoryView.buttonArray[1] sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
