@@ -16,7 +16,8 @@
     self.typeName.font=[UIFont systemFontOfSize:14];
     self.Nowtime.textColor=[UIColor colorWithHexString:@"#999999"];
     self.Nowtime.font=[UIFont systemFontOfSize:12];
-    self.payType.font=[UIFont systemFontOfSize:12];
+    self.payType.adjustsFontSizeToFitWidth =YES;
+//    self.payType.font=[UIFont systemFontOfSize:12];
     self.payType.textColor=[UIColor colorWithHexString:@"#868686"];
     self.moneys.font=[UIFont systemFontOfSize:20];
     self.moneys.textColor=[UIColor colorWithHexString:@"#3a3a3a"];

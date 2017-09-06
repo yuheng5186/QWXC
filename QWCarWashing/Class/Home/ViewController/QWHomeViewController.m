@@ -120,7 +120,7 @@ static NSString *cellstr=@"Cellstr";
     {
         self.LocCity = @"";
     }
-    
+   
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"Area":@"上海市"
