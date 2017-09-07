@@ -268,6 +268,7 @@
 		18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603451F50135E00CFA328 /* JXMapNavigationView.m */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
+		18E702961F614E1F007A9777 /* ScanCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E702951F614E1F007A9777 /* ScanCode.m */; };
 		48D312EE1F41D9140029BA17 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312ED1F41D9140029BA17 /* UIView+Frame.m */; };
 		48D312F11F41DDFA0029BA17 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312F01F41DDFA0029BA17 /* UIImage+Common.m */; };
 		48D312FD1F41F7500029BA17 /* QWOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D312FC1F41F7500029BA17 /* QWOrderTableViewCell.m */; };
@@ -789,6 +790,8 @@
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
+		18E702941F614E1F007A9777 /* ScanCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanCode.h; sourceTree = "<group>"; };
+		18E702951F614E1F007A9777 /* ScanCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanCode.m; sourceTree = "<group>"; };
 		48D312EC1F41D9140029BA17 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		48D312ED1F41D9140029BA17 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		48D312EF1F41DDFA0029BA17 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
@@ -873,6 +876,8 @@
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				18E702941F614E1F007A9777 /* ScanCode.h */,
+				18E702951F614E1F007A9777 /* ScanCode.m */,
 				0401E92E1F501E9B00F0CA79 /* TFGridInputView */,
 				180701DC1F44134700398435 /* QWScanController.h */,
 				180701DD1F44134700398435 /* QWScanController.m */,
@@ -2522,6 +2527,7 @@
 				1807022B1F4442F600398435 /* QWDownloadController.m in Sources */,
 				18A4B1AE1F46F49C00C64978 /* BusinessPayCell.m in Sources */,
 				180702371F44436100398435 /* QWUserServiceController.m in Sources */,
+				18E702961F614E1F007A9777 /* ScanCode.m in Sources */,
 				182E93661F55346800819B79 /* QWCarClubNewsModel.m in Sources */,
 				180702F91F4603F700398435 /* QWAgreementController.m in Sources */,
 				180957FC1F427E9D00BE185D /* QWMclistTableViewCell.m in Sources */,
