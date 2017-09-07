@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSIndexPath *nowPath;
 @property (nonatomic, strong) NSMutableArray *CarArray;
 @property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, strong)NSMutableArray *mycararray;
 @end
 
 static NSString *id_carListCell = @"id_carListCell";
@@ -28,7 +29,7 @@ static NSString *id_carListCell = @"id_carListCell";
     
     if (_carListView == nil) {
         
-        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height) ];
+        UITableView *carListView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, Main_Screen_Width, Main_Screen_Height - 64 - (48+25+25)*Main_Screen_Height/667) ];
         _carListView = carListView;
         
         [self.view addSubview:_carListView];
@@ -41,6 +42,12 @@ static NSString *id_carListCell = @"id_carListCell";
         _imageArray = [NSMutableArray array];
     }
     return _imageArray;
+}
+-(NSMutableArray *)mycararray{
+    if (_mycararray==nil) {
+        _mycararray=[NSMutableArray arrayWithCapacity:0];
+    }
+    return _mycararray;
 }
 -(NSMutableArray *)CarArray{
     if (_CarArray==nil) {
@@ -60,7 +67,7 @@ static NSString *id_carListCell = @"id_carListCell";
     [center addObserver:self selector:@selector(noticeincreaseMyCar:) name:@"increasemycarsuccess" object:nil];
     
   
-    
+    self.view.backgroundColor=kColorTableBG;
     
     
     
@@ -76,23 +83,23 @@ static NSString *id_carListCell = @"id_carListCell";
     self.carListView.emptyDataSetSource=self;
     self.carListView.emptyDataSetDelegate=self;
     self.carListView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    self.carListView.rowHeight = 140;
+    self.carListView.rowHeight = 150*Main_Screen_Height/667;
     [self.carListView registerNib:[UINib nibWithNibName:@"MyCarViewCell" bundle:nil] forCellReuseIdentifier:id_carListCell];
     
     self.carListView.backgroundColor=kColorTableBG;
     UIButton *increaseBtn = [UIUtil drawDefaultButton:self.view title:@"新增车辆" target:self action:@selector(didClickIncreaseButton)];
     
     [increaseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.view).mas_offset(10);
-        make.height.mas_equalTo(48);
+        make.width.mas_equalTo(351*Main_Screen_Height/667);
+        make.height.mas_equalTo(48*Main_Screen_Height/667);
         make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view).mas_offset(-25);
-    }];
+        make.bottom.equalTo(self.view).mas_offset(-25*Main_Screen_Height/667);    }];
 }
 #pragma mark-查询爱车列表
 -(void)requestMyCarData
 {
     [self.CarArray removeAllObjects];
+    [self.mycararray removeAllObjects];
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:Userid]
                              };
@@ -104,12 +111,25 @@ static NSString *id_carListCell = @"id_carListCell";
         {
             NSArray *arr = [NSArray array];
             arr = [dict objectForKey:@"JsonData"];
+         
             for(NSDictionary *dic in arr)
             {
-                QWMyCarModel *newcar = [[QWMyCarModel alloc]initWithDictionary:dic error:nil];
                 
-                [self.CarArray addObject:newcar];
+                QWMyCarModel *newcar = [[QWMyCarModel alloc]initWithDictionary:dic error:nil];
+                if (newcar.IsDefaultFav==1) {
+                    
+                    [self.mycararray addObject:newcar];
+                }else{
+                    [self.CarArray addObject:newcar];
+
+                }
+                
             }
+             NSLog(@"111111%ld====%@",self.CarArray.count,self.CarArray[0]);
+            NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:
+                                   NSMakeRange(0,[self.mycararray count])];
+            [self.CarArray insertObjects:self.mycararray atIndexes:indexes];
+            NSLog(@"222222%ld===%@",self.CarArray.count,self.CarArray[0]);
             
             for (int index = 0; index < [self.CarArray count]; index++) {
                 UIImage *image = [UIImage imageNamed:@"aicheditu"];
@@ -162,7 +182,7 @@ static NSString *id_carListCell = @"id_carListCell";
     }
     
 //    }
-    carCell.deleteButton.tag=indexPath.section;
+    carCell.defaultButton.tag=indexPath.section;
      carCell.deleteButton.tag = indexPath.section+1000;
     
     
@@ -195,17 +215,10 @@ static NSString *id_carListCell = @"id_carListCell";
 #pragma mark-修改车辆的默认值
 - (IBAction)didClickDefaultButton:(UIButton *)button {
     
-//    UITableViewCell *cell = (UITableViewCell *) [[button superview] superview];
-//    
-//    NSIndexPath *path = [self.carListView indexPathForCell:cell];
-//    
-//    //记录当下的indexpath
-//    self.nowPath = path;
-//    
-//    [self.carListView reloadData];
+
     QWMyCarModel *mycar=[[QWMyCarModel alloc]init];
     mycar=self.CarArray[button.tag];
-   
+    NSLog(@"%@",mycar.CarBrand);
    
     [self updateCarDefaultAndCarCode:[NSString stringWithFormat:@"%ld",mycar.CarCode] andModifyType:@"2"];
     
@@ -218,6 +231,7 @@ static NSString *id_carListCell = @"id_carListCell";
                              @"CarCode":carCode,
                              @"ModifyType":ModifyType,
                              };
+    NSLog(@"%@",mulDic);
     
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/ModifyCarInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
         NSLog(@"%@",dict);
