@@ -9,6 +9,7 @@
 #import "QWcollectionViewController.h"
 #import "SalerListViewCell.h"
 #import "UIScrollView+EmptyDataSet.h"//第三方空白页
+#import "QWMerchantDetailViewController.h"
 @interface QWcollectionViewController ()<UITableViewDelegate, UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property (nonatomic, weak) UITableView *favoriteListView;
@@ -137,6 +138,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    //跳转商家详情
+    QWMerchantDetailViewController *detailController = [[QWMerchantDetailViewController alloc] init];
+    detailController.hidesBottomBarWhenPushed      = YES;
+    detailController.MerCode                       =[self.merchantModelars objectAtIndex:indexPath.row].MerCode;
+    detailController.distance=[NSString stringWithFormat:@"%.2f",[self.merchantModelars objectAtIndex:indexPath.row].Distance];
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 

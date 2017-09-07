@@ -183,10 +183,10 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         paycell.textLabel.text = self.payNameArray[indexPath.row];
         paycell.textLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
         paycell.textLabel.font = [UIFont systemFontOfSize:15*Main_Screen_Height/667];
-        
+         [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlweixuanzhong"] forState:UIControlStateNormal];
         NSInteger row = [indexPath row];
         NSInteger oldRow = [self.lastPath row];
-        
+       
         if (row == oldRow && self.lastPath != nil) {
             [paycell.payWayBtn setBackgroundImage:[UIImage imageNamed:@"xfjlxaunzhong"] forState:UIControlStateNormal];
         }else{
