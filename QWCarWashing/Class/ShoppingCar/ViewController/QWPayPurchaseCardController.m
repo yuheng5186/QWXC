@@ -33,7 +33,7 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 
 - (UITableView *)payCardView {
     if (!_payCardView) {
-        UITableView *payCardView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height) style:UITableViewStyleGrouped];
+        UITableView *payCardView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
         self.payCardView = payCardView;
         self.payCardView.backgroundColor    = [UIColor colorFromHex:@"#fafafa"];
         [self.view addSubview:payCardView];
@@ -284,7 +284,6 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 10*Main_Screen_Height/667;
 }
-
 #pragma mark - 点击cell
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

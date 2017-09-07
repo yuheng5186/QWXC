@@ -11,7 +11,7 @@
 #import "HQTableViewCell.h"
 #import "QWScoreController.h"
 #import "QWIntegModel.h"
-
+#import "QWEarnScoreController.h"
 @interface QWScoreDetailController ()<UITableViewDelegate, UITableViewDataSource, HQSliderViewDelegate>
 
 @property (nonatomic, weak) UITableView *scoreListView;
@@ -132,10 +132,10 @@
     
     
     [self setupRefresh];
-    self.scoreLabel.text = @"0";
+    self.scoreLabel.text =@"0";
 
     
-    if (self.CurrentScore.length > 0) {
+    if (!IsNullIsNull(self.CurrentScore)) {
         self.scoreLabel.text = self.CurrentScore;
 
     }
@@ -378,8 +378,14 @@
     timeStringLabel.textColor         = [UIColor colorFromHex:@"#999999"];
     timeStringLabel.left              = titleStringLabel.left;
     timeStringLabel.top               = titleStringLabel.bottom +Main_Screen_Height*5/667;
+    NSString *contentString;
+    if (self.scoreTag==2) {
+         contentString              = [NSString stringWithFormat:@"-%ld",(long)integmodel.IntegralNum];
+    }else{
+        contentString              = [NSString stringWithFormat:@"+%ld",(long)integmodel.IntegralNum];
     
-    NSString *contentString              = [NSString stringWithFormat:@"+%ld",(long)integmodel.IntegralNum];
+    }
+   
     UIFont *contentStringFont            = [UIFont systemFontOfSize:15];
     UILabel *contentStringLabel          = [UIUtil drawLabelInView:cell.contentView frame:[UIUtil textRect:contentString font:contentStringFont] font:contentStringFont text:contentString isCenter:NO];
     contentStringLabel.textColor         = [UIColor colorFromHex:@"febb02"];
@@ -422,7 +428,37 @@
 #pragma mark - 点击赚积分按钮和兑换按钮
 - (void)didClickEarnScoreBtn {
     
-    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+    // push将控制器压到栈中，栈是先进后出；pop是出栈：即将控制器从栈中取出。
+    
+    NSArray * a = self.navigationController.viewControllers;
+    
+    NSMutableArray *arrController = [NSMutableArray arrayWithArray:a];
+    
+    NSInteger VcCount = arrController.count;
+    
+    //最后一个vc是自己，(-2)是倒数第二个是上一个控制器。
+    
+    UIViewController *lastVC = arrController[VcCount - 2];
+    
+    // 返回到倒数第三个控制器
+    
+    if([lastVC isKindOfClass:[QWEarnScoreController class]]) {
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }
+    
+    else
+    {
+        
+        QWEarnScoreController *earnVC = [[QWEarnScoreController alloc]init];
+        earnVC.CurrentScore = self.CurrentScore;
+        [arrController replaceObjectAtIndex:(VcCount - 1) withObject:earnVC];
+        self.navigationController.viewControllers = arrController;
+    }
+    
 }
 
 

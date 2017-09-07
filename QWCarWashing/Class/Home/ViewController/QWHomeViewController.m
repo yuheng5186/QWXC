@@ -127,7 +127,6 @@ static NSString *cellstr=@"Cellstr";
                              //                             @"Area":self.LocCity
                              };
        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/GetUserRecord",Khttp] success:^(NSDictionary *dict, BOOL success) {
-           NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             NSArray *arr = [NSArray array];
@@ -215,21 +214,9 @@ static NSString *cellstr=@"Cellstr";
     return self.GetUserRecordData.count+2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return 1;
-            break;
-        case 1:
-            return 1;
-            break;
-        case 2:
-            return 1;
-            break;
-        
-        default:
-            return  1 ;
-            break;
-    }
+ 
+        return 1;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -376,15 +363,16 @@ static NSString *cellstr=@"Cellstr";
         return cell;
         
         
-    }else if(indexPath.section==7){
-        
-        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
-        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell2.backgroundColor=[UIColor clearColor];
-        cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
-        cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
-        return cell2;
     }
+//    else if(indexPath.section==7){
+//        
+//        UITableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:cellstr forIndexPath:indexPath];
+//        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
+//        cell2.backgroundColor=[UIColor clearColor];
+//        cell2.backgroundView.contentMode=UIViewContentModeScaleAspectFill;
+//        cell2.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+//        return cell2;
+//    }
     else{
         QWHomeDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:QWCellIdentifier_HomeDetailTableViewCell forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -392,13 +380,36 @@ static NSString *cellstr=@"Cellstr";
             QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:indexPath.section-2];
             cell.RecordModel=record;
         }
-        
+        cell.seeDetailbtn.tag=indexPath.section;
+        [cell.seeDetailbtn addTarget:self action:@selector(seeUserInfoOnClick:) forControlEvents:BtnTouchUpInside];
        
         return cell;
         
         
     }
     
+}
+-(void)seeUserInfoOnClick:(UIButton *)btn{
+   
+        QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:btn.tag-2];
+        
+        if(record.ShowType == 1)
+        {
+            QWUserRightDetailViewController *UserRightDetailController     = [[QWUserRightDetailViewController alloc]init];
+            UserRightDetailController.hidesBottomBarWhenPushed             = YES;
+            UserRightDetailController.ConfigCode                      = record.UniqueNumber;
+            [self.navigationController pushViewController:UserRightDetailController animated:YES];
+        }
+        
+        else{
+            QWRecordModel *record = (QWRecordModel *)[self.GetUserRecordData objectAtIndex:btn.tag-2];
+            QWConsumerController      *consumerController     = [[QWConsumerController alloc]init];
+            consumerController.hidesBottomBarWhenPushed       = YES;
+            consumerController.record                         = record;
+            [self.navigationController pushViewController:consumerController animated:YES];
+        }
+    
+
 }
 #pragma mark-签到数据请求
 -(void)Addsign{
