@@ -53,6 +53,10 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     self.payImageNameArr = payImageNameArr;
     
     [self setupUI];
+    if ([self.payCardView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.payCardView setSeparatorInset:UIEdgeInsetsZero];
+    }
+
     
 }
 
@@ -161,7 +165,11 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textLabel.textColor = [UIColor colorFromHex:@"#4a4a4a"];
     cell.textLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
-    
+    cell.textLabel.text  = @"卡名称";
+    cell.detailTextLabel.text = @"洗车月卡";
+    if (self.choosecard!=nil) {
+        cell.detailTextLabel.text=self.choosecard.CardName;
+    }
     if (indexPath.section == 0 && indexPath.row == 1) {
         
         payCardDetailCell *payCell = [tableView dequeueReusableCellWithIdentifier:id_payDetailCell];
@@ -169,11 +177,23 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         if (self.choosecard!=nil) {
             payCell.choosecard=self.choosecard;
         }
-
+        
         payCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return payCell;
     }
+    if (indexPath.section == 0 && indexPath.row == 2){
+        cell.textLabel.text  = @"有效期";
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *datenow = [NSDate date];
+        
+        NSDate *newDate = [datenow dateByAddingTimeInterval:60 * 60 * 24 * self.choosecard.ExpiredDay];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"即日起至%@",[formatter stringFromDate:newDate]];
+        
+        cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#febb02"];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
     
+    }
     if (indexPath.section == 2) {
         
         BusinessPayCell *paycell = [tableView dequeueReusableCellWithIdentifier:id_businessPaycell forIndexPath:indexPath];
@@ -196,12 +216,29 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         
         return paycell;
     }
-    
-    cell.textLabel.text  = @"卡名称";
-    cell.detailTextLabel.text = @"洗车月卡";
-    if (self.choosecard!=nil) {
-        cell.detailTextLabel.text=self.choosecard.CardName;
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        
+        cell.textLabel.text  = @"特惠活动";
+       
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"立减%.2f元",self.choosecard.DiscountPrice];
+        
+        cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#febb02"];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        
+        return cell;
     }
+    else if (indexPath.section == 1 && indexPath.row == 1) {
+        
+        cell.textLabel.text  = @"实付";
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"￥%@元",self.choosecard.CardPrice];
+        
+        cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#ff3645"];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];
+        
+        return cell;
+    }
+   
+    
     
     cell.detailTextLabel.textColor = [UIColor colorFromHex:@"#febb02"];
     cell.detailTextLabel.font = [UIFont systemFontOfSize:13*Main_Screen_Height/667];

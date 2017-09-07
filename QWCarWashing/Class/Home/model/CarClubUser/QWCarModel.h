@@ -27,4 +27,5 @@
 @property (nonatomic ,copy)NSString <Optional>*CurrentOrNextLevel;
 @property (nonatomic)NSInteger ConfigCode;
 @property (nonatomic)NSInteger ExpiredDay;
+@property(nonatomic)CGFloat DiscountPrice,PaymentPrice;
 @end
