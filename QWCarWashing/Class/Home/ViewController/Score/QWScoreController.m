@@ -229,7 +229,6 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 }
 #pragma mark - 点击赚积分
 - (void)clickEarnScoreBtn:(UIButton *)sender {
-   
        QWEarnScoreController *earnScoreVC    = [[QWEarnScoreController alloc] init];
     earnScoreVC.hidesBottomBarWhenPushed  = YES;
      earnScoreVC.CurrentScore = [NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
@@ -283,6 +282,7 @@ static NSString *id_exchangeCell = @"id_exchangeCell";
 - (void)clickMemberScoreBtn:(UIButton *)sender {
 
     QWScoreDetailController *scoreVC = [[QWScoreDetailController alloc] init];
+    scoreVC.CurrentScore=[NSString stringWithFormat:@"%@",_MembershipUserScore[@"UserScore"]];
     scoreVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     [self.navigationController pushViewController:scoreVC animated:YES];

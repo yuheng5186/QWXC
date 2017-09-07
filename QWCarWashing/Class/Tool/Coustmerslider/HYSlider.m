@@ -11,8 +11,7 @@
 @property (nonatomic,strong) UIView *leftView;
 @property (nonatomic,strong) UIView *scrollShowTextView;
 @property (nonatomic,strong) UILabel *textLabel;
-@property (nonatomic,strong) UIImageView *imageView;
-@property (nonatomic,strong) UILabel *scrollShowTextLabel;
+
 @property (nonatomic,strong) UIView *touchView;
 @property (nonatomic) CGFloat hyMaxValue;
 
@@ -26,7 +25,7 @@
     if (self) {
         [self setup];
         self.backgroundColor=[UIColor greenColor];
-        self.leftView.backgroundColor=[UIColor yellowColor];
+//        self.leftView.backgroundColor=[UIColor yellowColor];
     }
     return self;
 }
@@ -36,7 +35,7 @@
     if (self) {
         [self setup];
         self.backgroundColor=[UIColor greenColor];
-        self.leftView.backgroundColor=[UIColor yellowColor];
+//        self.leftView.backgroundColor=[UIColor yellowColor];
     }
     return self;
 }
@@ -133,17 +132,23 @@
     
     
     /** 浮标image*/
-    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0,36,20)];
+    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, -2*Main_Screen_Height/667,46*Main_Screen_Width/375,25*Main_Screen_Height/667)];
     _imageView.image = [UIImage imageNamed:@"huiyuanfenshukuang"];
+        _imageView.backgroundColor=[UIColor clearColor];
     [_scrollShowTextView addSubview:_imageView];
     
     /** 浮标数值显示label*/
-    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, -3 , 36, 20)];
+    _scrollShowTextLabel = [[UILabel alloc]initWithFrame:CGRectMake(2*Main_Screen_Width/375, 2*Main_Screen_Height/667, 26*Main_Screen_Width/375, 17*Main_Screen_Height/667)];
     _scrollShowTextLabel.textAlignment = NSTextAlignmentCenter;
-    _scrollShowTextLabel.textColor = [UIColor whiteColor];
-#pragma mark-UILabel宽度固定, 字体大小自适应
-    _scrollShowTextLabel.adjustsFontSizeToFitWidth = YES;
-    [_scrollShowTextView addSubview:_scrollShowTextLabel];
+    _scrollShowTextLabel.textColor = [UIColor clearColor];
+    //   _scrollShowTextLabel.adjustsFontSizeToFitWidth = YES;
+    _scrollShowTextLabel.font=[UIFont systemFontOfSize:12*Main_Screen_Height/667];
+    
+    //    boundingRectWithSize
+    _scrollShowTextLabel.text=[NSString stringWithFormat:@"%f",self.currentSliderValue];
+    
+    
+    [_imageView addSubview:_scrollShowTextLabel];
     
     
     /** 圆形触摸块*/

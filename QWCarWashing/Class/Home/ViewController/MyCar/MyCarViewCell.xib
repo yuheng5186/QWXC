@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,11 +55,10 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z11-eH-yQl">
-                        <rect key="frame" x="187" y="101" width="1" height="30"/>
+                        <rect key="frame" x="187" y="101" width="1" height="28.5"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="koh-vf-Pks"/>
-                            <constraint firstAttribute="height" constant="30" id="qH8-ks-J3k"/>
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9u7-aa-Lyn">
@@ -92,6 +92,7 @@
                     <constraint firstItem="QxK-Iz-pZp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="JIi-Mh-I1R"/>
                     <constraint firstItem="z11-eH-yQl" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="LdQ-TO-J56"/>
                     <constraint firstItem="Lt1-Fs-Nhu" firstAttribute="leading" secondItem="sBa-TA-6JE" secondAttribute="leading" id="OOU-Cn-5V3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="z11-eH-yQl" secondAttribute="bottom" constant="1" id="Q0v-DR-XMQ"/>
                     <constraint firstItem="9u7-aa-Lyn" firstAttribute="top" secondItem="XpY-61-pOv" secondAttribute="bottom" id="Q46-xW-6Xo"/>
                     <constraint firstItem="z11-eH-yQl" firstAttribute="leading" secondItem="9u7-aa-Lyn" secondAttribute="trailing" id="RsP-Wf-2q7"/>
                     <constraint firstItem="z11-eH-yQl" firstAttribute="top" secondItem="XpY-61-pOv" secondAttribute="bottom" constant="7" id="W8a-FI-h5o"/>

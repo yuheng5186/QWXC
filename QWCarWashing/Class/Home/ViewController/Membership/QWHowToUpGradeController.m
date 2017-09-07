@@ -80,6 +80,11 @@ static NSString *id_wayToUpCell = @"id_wayToUpCell";
     slider.showScrollTextView = YES;
     slider.touchViewColor = [UIColor colorFromHex:@"#febb02"];
     slider.delegate = self;
+#pragma mark-重至slider的imageview宽度
+    CGSize imageWidth=[slider.scrollShowTextLabel boundingRectWithSize:CGSizeMake(10000, 17*Main_Screen_Height/667)];
+    
+    slider.scrollShowTextLabel.frame=CGRectMake(5*Main_Screen_Width/375, 2*Main_Screen_Height/667, imageWidth.width, 17*Main_Screen_Height/667);
+    slider.imageView.frame=CGRectMake(0, -2*Main_Screen_Height/667,imageWidth.width+10*Main_Screen_Height/667,25*Main_Screen_Height/667);
     [self.view addSubview:slider];
     
     UILabel *maxLab = [[UILabel alloc] init];
