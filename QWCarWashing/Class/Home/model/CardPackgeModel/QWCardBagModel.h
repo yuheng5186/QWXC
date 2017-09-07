@@ -25,4 +25,5 @@
 @property(nonatomic)NSInteger Integralnum;
 @property(nonatomic)NSInteger CardType;
 @property(nonatomic)NSInteger UseLevel;
+@property(nonatomic)CGFloat DiscountPrice,PaymentPrice;
 @end

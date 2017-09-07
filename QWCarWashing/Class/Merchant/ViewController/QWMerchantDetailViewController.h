@@ -10,4 +10,7 @@
 
 @interface QWMerchantDetailViewController : UIViewController
 @property (nonatomic,strong) NSString *MerCode;
+
+
+@property (nonatomic,copy) NSString *distance;
 @end

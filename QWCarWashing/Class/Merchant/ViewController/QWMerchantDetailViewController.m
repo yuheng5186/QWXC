@@ -469,7 +469,8 @@
         //[cell.McImagedanhaoView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clicktiaozhuan:)]];
         [cell.areaBtn addTarget:self action:@selector(clicktiaozhuan:) forControlEvents:UIControlEventTouchUpInside];
         [cell.callbtn addTarget:self action:@selector(didClickServiceBtn:) forControlEvents:UIControlEventTouchUpInside];
-//        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
+        NSLog(@"%d===%d",self.MerChantmodel.IsCollection,self.MerChantmodel.IsCollection== 1?YES:NO);
+        cell.collectbtn.selected=self.MerChantmodel.IsCollection== 1?YES:NO;
         [cell.collectbtn addTarget:self action:@selector(didClickcollectBtn:) forControlEvents:UIControlEventTouchUpInside];
         cell.collectbtn.tag = indexPath.row;
 //        [cell setlayoutCell];
@@ -765,17 +766,19 @@
 {
  
     NSLog(@"%d",jiesuan.isSelected);
+    [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
+    [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
+
     if(jiesuan.isSelected)
     {
         [jiesuan setSelected:NO];
-        [jiesuan setImage:[UIImage imageNamed:@"shoucang1"] forState:BtnNormal];
+        
         
         [self.view showInfo:@"取消收藏" autoHidden:YES];
     }
     else
     {
         [jiesuan setSelected:YES];
-        [jiesuan setImage:[UIImage imageNamed:@"shoucang2"] forState:BtnStateSelected];
         
         [self.view showInfo:@"收藏成功" autoHidden:YES];
     }
