@@ -141,8 +141,20 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
         // 获取列
         NSInteger col = [self.controllers indexOfObject:note.object];
         
-        // 获取对应按钮
-        UIButton *btn = self.menuButtons[col];
+       
+        
+        
+        
+        UIButton *btn;
+        if(col != NSNotFound) //
+        {
+            // 获取对应按钮
+            btn = self.menuButtons[col];
+        }else{
+//            NSLog(@"==拿错了索引==");
+            return ;
+        }
+        
         
         // 隐藏下拉菜单
         [self dismiss];
@@ -211,10 +223,10 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
 {
     [super willMoveToWindow:newWindow];
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
         [self reload];
-    });
+//    });
     
     
 }
@@ -237,7 +249,7 @@ NSString * const YZUpdateMenuTitleNote = @"YZUpdateMenuTitleNote";
 - (void)reload
 {
     // 删除之前所有数据,移除之前所有子控件
-    [self clear];
+//    [self clear];
     
     // 没有数据源，直接返回
     if (self.dataSource == nil) return;
