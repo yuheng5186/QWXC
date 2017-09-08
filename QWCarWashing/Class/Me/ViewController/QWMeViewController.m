@@ -249,9 +249,7 @@ static NSString *cellstr=@"cell";
                     [UdStorage storageObject:targetTime forKey:UserSignTime];
                     NSNotification * notice = [NSNotification notificationWithName:@"qiandaoSuccess" object:nil userInfo:nil];
                     [[NSNotificationCenter defaultCenter]postNotification:notice];
-                    
-                    
-                    
+                                        
                     PopupView *view = [PopupView defaultPopupView];
                     view.parentVC = self;
                     
