@@ -8,7 +8,7 @@
 
 #import "QWBaseViewController.h"
 
-@interface QWIcreaseCarController : QWBaseViewController
+@interface QWIcreaseCarController : UIViewController
 @property(nonatomic,strong)QWMyCarModel *mycarModel;
 @property(nonatomic,strong)NSString *titlename;
 @end

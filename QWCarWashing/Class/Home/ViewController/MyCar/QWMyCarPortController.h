@@ -8,6 +8,6 @@
 
 #import "QWBaseViewController.h"
 
-@interface QWMyCarPortController : QWBaseViewController
+@interface QWMyCarPortController : UIViewController
 
 @end

@@ -18,4 +18,8 @@
 
 @property(nonatomic ,copy)NSString *DeviceCode;
 
+@property(nonatomic ,copy)NSString *SCode;
+@property(nonatomic ,copy)NSString *MCode;
+@property(nonatomic ,copy)NSString *OrderCode;
+
 @end

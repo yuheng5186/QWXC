@@ -83,6 +83,8 @@ static NSString *id_carListCell = @"id_carListCell";
     self.carListView.emptyDataSetSource=self;
     self.carListView.emptyDataSetDelegate=self;
     self.carListView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+#pragma mark-tableview自适应
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.carListView.rowHeight = 150*Main_Screen_Height/667;
     [self.carListView registerNib:[UINib nibWithNibName:@"MyCarViewCell" bundle:nil] forCellReuseIdentifier:id_carListCell];
     

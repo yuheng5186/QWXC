@@ -47,7 +47,10 @@
         payVC.SerProject = self.washTypeLabel.text;
         payVC.Jprice = self.Jprice;
         payVC.Xprice = self.Xprice;
+        payVC.SCode = self.MCode;
+        payVC.SCode = self.SCode;
         
+        payVC.OrderCode = self.OrderCode;
         [self.delegate pushVC:payVC animated:YES];
     }
 }

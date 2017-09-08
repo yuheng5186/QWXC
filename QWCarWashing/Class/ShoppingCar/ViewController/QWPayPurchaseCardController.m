@@ -100,38 +100,90 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
     [bottomPayButton setTintColor:[UIColor whiteColor]];
     
     //方法子
-    [bottomPayButton addTarget:self action:@selector(showAlertWithTitle:message:) forControlEvents:UIControlEventTouchUpInside];
+    [bottomPayButton addTarget:self action:@selector(lijizhifu) forControlEvents:UIControlEventTouchUpInside];
     
     [payBottomView addSubview:bottomPayButton];
 }
 
 
 //方法子
-- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+//- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+//    
+//    if (self.lastPath.row == 0) {
+//        message = @"金顶洗车想要打开微信";
+//    }else {
+//        message = @"金顶洗车想要打开支付宝";
+//    }
+//    
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+//    
+//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+//    [alertController addAction:cancelAction];
+//    
+//    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+//    [alertController addAction:OKAction];
+//    
+//    [self presentViewController:alertController animated:YES completion:nil];
+//    
+//}
+#pragma mark-购卡支付
+-(void)lijizhifu
+{
+    NSDictionary *mulDic = @{
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
+                             @"ConfigCode":[NSString stringWithFormat:@"%ld",self.choosecard.ConfigCode]
+                             };
     
-    if (self.lastPath.row == 0) {
-        message = @"金顶洗车想要打开微信";
-    }else {
-        message = @"金顶洗车想要打开支付宝";
-    }
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Payment/PurchasePayment",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
-    }];
-    [alertController addAction:cancelAction];
-    
-    UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
+        {
+            NSDictionary *di = [NSDictionary dictionary];
+            di = [dict objectForKey:@"JsonData"];
+            
+            NSMutableString *stamp = [di objectForKey:@"timestamp"];
+            //调起微信支付
+            PayReq *req= [[PayReq alloc] init];
+            req.partnerId
+            = [dict objectForKey:@"partnerid"];
+            req.prepayId
+            = [dict objectForKey:@"prepayid"];
+            req.nonceStr
+            = [dict objectForKey:@"noncestr"];
+            req.timeStamp
+            = stamp.intValue;
+            req.package
+            = [dict objectForKey:@"packag"];
+            req.sign = [dict objectForKey:@"sign"];
+            BOOL result = [WXApi sendReq:req];
+            
+            NSLog(@"-=-=-=-=-%d", result);
+            //日志输出
+            NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[di
+                                                                                                        objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign
+                  );
+            
+        }
+        else
+        {
+            
+            [self.view showInfo:@"信息获取失败,请检查网络" autoHidden:YES interval:2];
+            
+        }
         
+        
+        
+        
+    } fail:^(NSError *error) {
+        
+        [self.view showInfo:@"信息获取失败,请检查网络" autoHidden:YES interval:2];
     }];
-    [alertController addAction:OKAction];
-    
-    [self presentViewController:alertController animated:YES completion:nil];
     
 }
-
-
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
