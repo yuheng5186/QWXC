@@ -111,7 +111,6 @@
         }
         cell.backgroundColor    = [UIColor whiteColor];
         cell.accessoryType=UITableViewCellAccessoryNone;
-     
         return cell;
     }else {
     
