@@ -9,5 +9,8 @@
 #import "QWBaseViewController.h"
 
 @interface QWStartWashingController : QWBaseViewController
-
+@property(nonatomic,copy)NSString *RemainCount;
+@property(nonatomic,copy)NSString *CardType;
+@property(nonatomic,copy)NSString *CardName;
+@property(nonatomic,copy)NSString *IntegralNum;
 @end

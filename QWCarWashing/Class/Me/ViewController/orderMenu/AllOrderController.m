@@ -130,8 +130,8 @@ static NSString *id_cancelCell = @"id_cancelCell";
 -(void)setData
 {
     NSDictionary *mulDic = @{
-                             //                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                             @"Account_Id":@"404832711505",
+                            @"Account_Id":[UdStorage getObjectforKey:Userid],
+                            
                              @"PageIndex":@0,
                              @"PageSize":@10,
                              @"PayState" :@0
@@ -183,8 +183,7 @@ static NSString *id_cancelCell = @"id_cancelCell";
 -(void)setDataMore
 {
     NSDictionary *mulDic = @{
-                             //                             @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                             @"Account_Id":@"404832711505",
+                              @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10,
                              @"PayState" :@0
@@ -287,6 +286,9 @@ static NSString *id_cancelCell = @"id_cancelCell";
         delayCell.SerMerChant = order.SerName;
         delayCell.Jprice = [NSString stringWithFormat:@"￥%@",order.PayableAmount];
         delayCell.Xprice = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
+        delayCell.MCode = [NSString stringWithFormat:@"%ld",order.MerCode];
+        delayCell.SCode =[NSString stringWithFormat:@"%ld",order.SerCode];
+        delayCell.OrderCode = order.OrderCode;
         return delayCell;
     }
     

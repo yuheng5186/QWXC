@@ -246,8 +246,23 @@
 }
 
 - (void)handleScanData:(NSString *)outMessage {
-    
+    #pragma mark-获取设备编码
     NSString *imei                          = outMessage;
+    //处理设备编码
+//    NSRange
+//    startRange = [imei rangeOfString:@":"];
+//    
+//    NSRange
+//    endRange = [imei rangeOfString:@":"];
+//    
+//    NSRange
+//    range = NSMakeRange(startRange.location
+//                        + startRange.length,
+//                        endRange.location
+//                        - startRange.location
+//                        - startRange.length);
+    
+    //    NSString *result = [imei substringWithRange:range];
     
     if (imei != nil) {
         
@@ -287,24 +302,7 @@
                         payVC.SerProject = weakSelf.scan.ServiceItems;
                         payVC.Jprice = [NSString stringWithFormat:@"￥%@",weakSelf.scan.OriginalAmt];
                         payVC.Xprice = [NSString stringWithFormat:@"￥%@",weakSelf.scan.Amt];
-                        
-                        
-                        
-                        NSRange
-                        startRange = [weakSelf.scan.DeviceCode rangeOfString:@":"];
-                        
-                        NSRange
-                        endRange = [weakSelf.scan.DeviceCode rangeOfString:@":"];
-                        
-                        NSRange
-                        range = NSMakeRange(startRange.location
-                                            + startRange.length,
-                                            endRange.location
-                                            - startRange.location
-                                            - startRange.length);
-                        
-                        NSString *result = [weakSelf.scan.DeviceCode substringWithRange:range];
-                        payVC.DeviceCode = result;
+                        payVC.DeviceCode = weakSelf.scan.DeviceCode;
                         
                         [weakSelf.navigationController pushViewController:payVC animated:YES];
                     }

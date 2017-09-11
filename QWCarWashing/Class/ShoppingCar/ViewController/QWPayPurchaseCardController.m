@@ -144,21 +144,21 @@ static NSString *id_businessPaycell = @"id_businessPaycell";
         {
             NSDictionary *di = [NSDictionary dictionary];
             di = [dict objectForKey:@"JsonData"];
-            
+//
             NSMutableString *stamp = [di objectForKey:@"timestamp"];
             //调起微信支付
             PayReq *req= [[PayReq alloc] init];
             req.partnerId
-            = [dict objectForKey:@"partnerid"];
+            = [di objectForKey:@"partnerid"];
             req.prepayId
-            = [dict objectForKey:@"prepayid"];
+            = [di objectForKey:@"prepayid"];
             req.nonceStr
-            = [dict objectForKey:@"noncestr"];
+            = [di objectForKey:@"noncestr"];
             req.timeStamp
             = stamp.intValue;
             req.package
-            = [dict objectForKey:@"packag"];
-            req.sign = [dict objectForKey:@"sign"];
+            = [di objectForKey:@"packag"];
+            req.sign = [di objectForKey:@"sign"];
             BOOL result = [WXApi sendReq:req];
             
             NSLog(@"-=-=-=-=-%d", result);

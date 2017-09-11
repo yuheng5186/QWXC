@@ -2313,6 +2313,7 @@
 				TargetAttributes = {
 					180957721F4147E400BE185D = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = W85DM2ZM4W;
 						ProvisioningStyle = Automatic;
 					};
 					1809578B1F4147E400BE185D = {
@@ -2846,10 +2847,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W85DM2ZM4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2862,10 +2864,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W85DM2ZM4W;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";

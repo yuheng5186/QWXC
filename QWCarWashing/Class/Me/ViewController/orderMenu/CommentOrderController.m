@@ -124,8 +124,7 @@ static NSString *id_successPayCell = @"id_successPayCell";
 -(void)setData
 {
     NSDictionary *mulDic = @{
-                             //                                 @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                             @"Account_Id":@"404832711505",
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"PageIndex":@0,
                              @"PageSize":@10,
                              @"PayState" :@2
@@ -176,18 +175,12 @@ static NSString *id_successPayCell = @"id_successPayCell";
 -(void)setDataMore
 {
     NSDictionary *mulDic = @{
-                             //                                 @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                             @"Account_Id":@"404832711505",
+                             @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10,
                              @"PayState" :@2
                              };
-    NSDictionary *params = @{
-                             @"JsonData" : [NSString stringWithFormat:@"%@",[AFNetworkingTool convertToJsonData:mulDic]],
-                             @"Sign" : [NSString stringWithFormat:@"%@",[LCMD5Tool md5:[AFNetworkingTool convertToJsonData:mulDic]]]
-                             };
-    
-    [AFNetworkingTool post:params andurl:[NSString stringWithFormat:@"%@OrderRecords/GetOrderRecordsList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@OrderRecords/GetOrderRecordsList",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {

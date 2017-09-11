@@ -251,7 +251,6 @@ static NSString *cellstr=@"Cellstr";
                 case 0:
                     scanController.hidesBottomBarWhenPushed     = YES;
                     [self.navigationController pushViewController:scanController animated:YES];
-                    
                     break;
                 case 1:
                     cardPackgeController.hidesBottomBarWhenPushed     = YES;

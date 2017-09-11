@@ -98,7 +98,7 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     
     UIButton *bottomPayButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 136*Main_Screen_Height/667, 0, 136*Main_Screen_Height/667, 60*Main_Screen_Height/667)];
     bottomPayButton.backgroundColor = [UIColor colorFromHex:@"#febb02"];
-    [bottomPayButton setTitle:@"立即支付" forState:UIControlStateNormal];
+    [bottomPayButton setTitle:@"立即付款" forState:UIControlStateNormal];
     [bottomPayButton setTintColor:[UIColor whiteColor]];
     bottomPayButton.titleLabel.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];
     
@@ -169,13 +169,18 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
     
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
+#pragma mark-购买商家服务支付,
+        //商家编号:MerCode,SerCode 服务编号,
+        NSLog(@"%@==%@==%@==%@",self.MCode,self.SCode,self.OrderCode,self.SerMerChant);
         NSDictionary *mulDic = @{
                                  @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"],
-                                 @"DeviceCode":self.DeviceCode
+                                 @"MerCode":self.MCode,
+                                 @"SerCode":self.SCode,
+                                 @"OrderCode":self.OrderCode,
+                                 @"MerName":self.SerMerChant
                                  };
-       
-        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Payment/ScanPayment",Khttp] success:^(NSDictionary *dict, BOOL success) {
-            
+            [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Payment/ServicePayment",Khttp] success:^(NSDictionary *dict, BOOL success) {
+            NSLog(@"%@",dict);
             if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
             {
                 NSDictionary *di = [NSDictionary dictionary];
@@ -185,16 +190,16 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
                 //调起微信支付
                 PayReq *req= [[PayReq alloc] init];
                 req.partnerId
-                = [dict objectForKey:@"partnerid"];
+                = [di objectForKey:@"partnerid"];
                 req.prepayId
-                = [dict objectForKey:@"prepayid"];
+                = [di objectForKey:@"prepayid"];
                 req.nonceStr
-                = [dict objectForKey:@"noncestr"];
+                = [di objectForKey:@"noncestr"];
                 req.timeStamp
                 = stamp.intValue;
                 req.package
-                = [dict objectForKey:@"packag"];
-                req.sign = [dict objectForKey:@"sign"];
+                = [di objectForKey:@"packag"];
+                req.sign = [di objectForKey:@"sign"];
                 BOOL result = [WXApi sendReq:req];
                 
                 NSLog(@"-=-=-=-=-%d", result);
@@ -215,10 +220,9 @@ static NSString *id_paySelectCell = @"id_paySelectCell";
             
             
         } fail:^(NSError *error) {
-            
+            NSLog(@"%@",error);
             [self.view showInfo:@"信息获取失败,请检查网络" autoHidden:YES interval:2];
         }];
-
         
     }];
     [alertController addAction:OKAction];

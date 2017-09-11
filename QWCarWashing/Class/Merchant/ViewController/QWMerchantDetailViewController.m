@@ -745,12 +745,21 @@
 //    
 //    [self.navigationController pushViewController:payController animated:YES];
     
+  
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"ijanbiantiao"] forBarMetrics:0];
     QWPayViewController *detailController = [[QWPayViewController alloc] init];
     detailController.SerMerChant =self.MerChantmodel.MerName;
     detailController.SerProject = lblCarType.text;
     detailController.Jprice = formerPriceLab.text;
     detailController.Xprice = lblPrice.text;
+    if (self.MerChantmodel!=nil&&self.MerChantmodel.MerSerList.count!=0) {
+        self.MerSerListmodel=[[QWMerSerListModel alloc]initWithDictionary:(NSDictionary *)[self.MerChantmodel.MerSerList objectAtIndex:0] error:nil];
+        detailController.SCode=[NSString stringWithFormat:@"%d",self.MerSerListmodel.SerCode];
+    }
+    detailController.MCode =self.MerChantmodel.MerCode;
+    detailController.OrderCode = @"";
+
     detailController.hidesBottomBarWhenPushed       = YES;
     [self.navigationController pushViewController:detailController animated:YES];
 }
