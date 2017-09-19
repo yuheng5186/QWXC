@@ -130,7 +130,8 @@ static NSString *cellstr=@"Cellstr";
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             NSArray *arr = [NSArray array];
-            arr = [dict objectForKey:@"JsonData"];
+            arr = [[dict objectForKey:@"JsonData"] objectForKey:@"recList"];
+            NSLog(@"===%@",arr);
             if(arr.count == 0)
             {
                 //                [self.view showInfo:@"暂无更多数据" autoHidden:YES interval:2];
@@ -141,7 +142,7 @@ static NSString *cellstr=@"Cellstr";
                 
                 
                 NSArray *arr = [NSArray array];
-                arr = [dict objectForKey:@"JsonData"];
+                arr = [[dict objectForKey:@"JsonData"]objectForKey:@"recList"];
                 for(NSDictionary *dic in arr)
                 {
                     QWRecordModel *newrc = [[QWRecordModel alloc]initWithDictionary:dic error:nil];
