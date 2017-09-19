@@ -392,25 +392,25 @@
     
     
     
-    if(self.modelsArray.count == 0)
-    {
-        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 215*Main_Screen_Height/667)];
-        v.backgroundColor = [UIColor whiteColor];
-        [self.view addSubview:v];
-        
-        
-        UIImageView *ImgView = [[UIImageView alloc] initWithFrame:CGRectMake(120*Main_Screen_Width/375, 27*Main_Screen_Height/667, 135*Main_Screen_Width/375, 120*Main_Screen_Height/667)];
-        ImgView.image = [UIImage imageNamed:@"pinglun_kongbai"];
-        [v addSubview:ImgView];
-        
-        UILabel *nocommentlab = [[UILabel alloc]initWithFrame:CGRectMake(0, ImgView.frame.origin.y+ImgView.frame.size.height+17*Main_Screen_Height/667, Main_Screen_Width, 14*Main_Screen_Height/667)];
-        nocommentlab.text = @"暂无评价信息";
-        nocommentlab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
-        nocommentlab.textAlignment = NSTextAlignmentCenter;
-        nocommentlab.textColor = [UIColor colorFromHex:@"#999999"];
-        [v addSubview:nocommentlab];
-        self.tableView.tableFooterView = v;
-    }
+//    if(self..count == 0)
+//    {
+//        UIView *v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 215*Main_Screen_Height/667)];
+//        v.backgroundColor = [UIColor whiteColor];
+//        [self.view addSubview:v];
+//        
+//        
+//        UIImageView *ImgView = [[UIImageView alloc] initWithFrame:CGRectMake(120*Main_Screen_Width/375, 27*Main_Screen_Height/667, 135*Main_Screen_Width/375, 120*Main_Screen_Height/667)];
+//        ImgView.image = [UIImage imageNamed:@"pinglun_kongbai"];
+//        [v addSubview:ImgView];
+//        
+//        UILabel *nocommentlab = [[UILabel alloc]initWithFrame:CGRectMake(0, ImgView.frame.origin.y+ImgView.frame.size.height+17*Main_Screen_Height/667, Main_Screen_Width, 14*Main_Screen_Height/667)];
+//        nocommentlab.text = @"暂无评价信息";
+//        nocommentlab.font = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
+//        nocommentlab.textAlignment = NSTextAlignmentCenter;
+//        nocommentlab.textColor = [UIColor colorFromHex:@"#999999"];
+//        [v addSubview:nocommentlab];
+//        self.tableView.tableFooterView = v;
+//    }
     
     
     

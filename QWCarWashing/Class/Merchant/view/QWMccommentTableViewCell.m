@@ -30,6 +30,7 @@
     return self;
 
 }
+
 -(void)setComList:(QWMerComListModel *)ComList{
     _ComList=ComList;
     NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,ComList.FromuserImg];
