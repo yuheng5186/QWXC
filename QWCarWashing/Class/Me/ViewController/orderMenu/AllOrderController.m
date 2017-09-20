@@ -248,50 +248,91 @@ static NSString *id_cancelCell = @"id_cancelCell";
     
     Order *order = (Order *)[self.OrderDataArray objectAtIndex:indexPath.section];
     
-    if(order.PayState == 3)
-    {
-        CancelPayCell *cancelCell = [tableView dequeueReusableCellWithIdentifier:id_cancelCell forIndexPath:indexPath];
-        
-        cancelCell.orderLabel.text = [NSString stringWithFormat:@"订单号: %@",order.OrderCode];
-        cancelCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
-        cancelCell.washTypeLabel.text = order.SerName;
-        
-        return cancelCell;
-    }
-    else if(order.PayState == 2)
-    {
-        SuccessPayCell *successCell = [tableView dequeueReusableCellWithIdentifier:id_successPayCell forIndexPath:indexPath];
-        successCell.delegate = self;
-        
-        
-        successCell.orderLabel.text = [NSString stringWithFormat:@"订单号: %@",order.OrderCode];
-        successCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
-        successCell.washTypeLabel.text = order.SerName;
-        
-        successCell.orderid = order.OrderCode;
-        successCell.SerMerCode = [NSString stringWithFormat:@"%ld",order.MerCode];
-        successCell.SerCode = [NSString stringWithFormat:@"%ld",order.SerCode];
-        
-        return successCell;
-    }
-    else
+    //    if(order.PayState == 3)
+    //    {
+    //        CancelPayCell *cancelCell = [tableView dequeueReusableCellWithIdentifier:id_cancelCell forIndexPath:indexPath];
+    //
+    //        cancelCell.orderLabel.text = [NSString stringWithFormat:@"订单号: %@",order.OrderCode];
+    //        cancelCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
+    //        cancelCell.washTypeLabel.text = order.SerName;
+    //
+    //        return cancelCell;
+    //    }
+    //    else
+    //1未支付   2 待评价   3、完成订单、
+    
+    if(order.PayState == 1)
     {
         DelayPayCell *delayCell = [tableView dequeueReusableCellWithIdentifier:id_delayPayCell forIndexPath:indexPath];
         delayCell.delegate = self;
         
         delayCell.orderLabel.text = [NSString stringWithFormat:@"订单号: %@",order.OrderCode];
         delayCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
-        delayCell.washTypeLabel.text = order.SerName;
         
-        delayCell.SerMerChant = order.SerName;
+        
+        
+        delayCell.washTypeLabel.text = order.SerName;
+        delayCell.SerMerChant = order.MerName;
         delayCell.Jprice = [NSString stringWithFormat:@"￥%@",order.PayableAmount];
         delayCell.Xprice = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
         delayCell.MCode = [NSString stringWithFormat:@"%ld",order.MerCode];
         delayCell.SCode =[NSString stringWithFormat:@"%ld",order.SerCode];
         delayCell.OrderCode = order.OrderCode;
+        
         return delayCell;
     }
-    
+    else if(order.PayState == 4){
+        SuccessPayCell *successCell = [tableView dequeueReusableCellWithIdentifier:id_successPayCell forIndexPath:indexPath];
+        successCell.delegate = self;
+        
+        successCell.stateLabel.textColor=[UIColor colorFromHex:@"#999999"];
+        successCell.stateLabel.text=@"交易失败";
+        [successCell.stateButton setTitleColor:[UIColor colorFromHex:@"#999999"] forState:UIControlStateNormal];
+        [successCell.stateButton setTitle:@"已过期" forState:UIControlStateNormal];
+        [successCell.stateButton setEnabled:NO];
+        successCell.stateButton.layer.cornerRadius = 12.5*Main_Screen_Height/667;
+        successCell.stateButton.layer.borderWidth = 1;
+        successCell.stateButton.layer.borderColor = [UIColor colorFromHex:@"#999999"].CGColor;
+        
+        return successCell;
+        
+    }else{
+        SuccessPayCell *successCell = [tableView dequeueReusableCellWithIdentifier:id_successPayCell forIndexPath:indexPath];
+        successCell.delegate = self;
+        
+        if (order.PayState==3) {
+            successCell.stateLabel.text=@"交易成功";
+            [successCell.stateButton setTitleColor:[UIColor colorFromHex:@"#999999"] forState:UIControlStateNormal];
+            [successCell.stateButton setTitle:@"已评价" forState:UIControlStateNormal];
+            [successCell.stateButton setEnabled:NO];
+            successCell.stateButton.layer.cornerRadius = 12.5*Main_Screen_Height/667;
+            successCell.stateButton.layer.borderWidth = 1;
+            successCell.stateButton.layer.borderColor = [UIColor colorFromHex:@"#999999"].CGColor;
+            
+        }else{
+            [successCell.stateButton setTitle:@"去评价" forState:UIControlStateNormal];
+            [successCell.stateButton setEnabled:YES];
+            [successCell.stateButton setTitleColor:[UIColor colorFromHex:@"#0161a1"] forState:UIControlStateNormal];
+            successCell.stateButton.layer.cornerRadius = 12.5*Main_Screen_Height/667;
+            successCell.stateButton.layer.borderWidth = 1;
+            successCell.stateButton.layer.borderColor = [UIColor colorFromHex:@"#0161a1"].CGColor;
+            
+            
+        }
+        successCell.orderLabel.text = [NSString stringWithFormat:@"订单号: %@",order.OrderCode];
+        successCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",order.PaypriceAmount];
+        successCell.washTypeLabel.text = order.SerName;
+        
+        
+        successCell.orderid = order.OrderCode;
+        successCell.SerMerCode = [NSString stringWithFormat:@"%ld",order.MerCode];
+        successCell.SerCode = [NSString stringWithFormat:@"%ld",order.SerCode];
+        
+        
+        
+        return successCell;
+    }
+
     
 }
 

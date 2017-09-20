@@ -143,9 +143,13 @@
            
             
             APPDELEGATE.currentUser.UserScore = [_MembershipprivilegesDic objectForKey:@"UserScore"];
-            
-            [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"UserScore"] forKey:UserScores];
-            [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"Headimg"] forKey:UserHead];
+//            if (!IsNullIsNull([_MembershipprivilegesDic objectForKey:@"UserScore"])) {
+                 [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"UserScore"] forKey:UserScores];
+//            }
+//            if (!IsNullIsNull([_MembershipprivilegesDic objectForKey:@"Headimg"])) {
+//                [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"Headimg"] forKey:UserScores];
+//            }
+//            [UdStorage storageObject: [_MembershipprivilegesDic objectForKey:@"Headimg"] forKey:UserHead];
             [self.tableview reloadData];
             
             
