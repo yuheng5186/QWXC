@@ -650,10 +650,8 @@
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
-            
             NSDictionary *dic = [dict objectForKey:@"JsonData"];
             self.CarClubNewsModel=[[QWCarClubNewsModel alloc]initWithDictionary:dic error:nil];
-            
             
             
             NSArray *arr = [NSArray array];
