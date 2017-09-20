@@ -182,6 +182,8 @@
 		185090121F43CFD300795E0A /* QWMerChantCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1850900F1F43CFD300795E0A /* QWMerChantCommentViewController.m */; };
 		185090131F43CFD300795E0A /* QWMerChantIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185090101F43CFD300795E0A /* QWMerChantIntroViewController.m */; };
 		185090161F43CFF600795E0A /* QWStoreCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 185090151F43CFF600795E0A /* QWStoreCategory.m */; };
+		185833E91F70C05B004EA905 /* SXScrPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185833E81F70C05B004EA905 /* SXScrPageView.m */; };
+		185833F01F70C4A0004EA905 /* QWScanPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185833EF1F70C4A0004EA905 /* QWScanPayController.m */; };
 		185C9DD11F42A63800B4ED52 /* QWCarFriendsCircleController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DD01F42A63800B4ED52 /* QWCarFriendsCircleController.m */; };
 		185C9DD51F42A7CF00B4ED52 /* DSSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DD41F42A7CF00B4ED52 /* DSSegmentView.m */; };
 		185C9DEB1F42A8FF00B4ED52 /* ActivityListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 185C9DD91F42A8FF00B4ED52 /* ActivityListCell.m */; };
@@ -633,6 +635,10 @@
 		185090101F43CFD300795E0A /* QWMerChantIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWMerChantIntroViewController.m; sourceTree = "<group>"; };
 		185090141F43CFF600795E0A /* QWStoreCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWStoreCategory.h; sourceTree = "<group>"; };
 		185090151F43CFF600795E0A /* QWStoreCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWStoreCategory.m; sourceTree = "<group>"; };
+		185833E71F70C05B004EA905 /* SXScrPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SXScrPageView.h; sourceTree = "<group>"; };
+		185833E81F70C05B004EA905 /* SXScrPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SXScrPageView.m; sourceTree = "<group>"; };
+		185833EE1F70C4A0004EA905 /* QWScanPayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanPayController.h; sourceTree = "<group>"; };
+		185833EF1F70C4A0004EA905 /* QWScanPayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWScanPayController.m; sourceTree = "<group>"; };
 		185C9DCF1F42A63800B4ED52 /* QWCarFriendsCircleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWCarFriendsCircleController.h; sourceTree = "<group>"; };
 		185C9DD01F42A63800B4ED52 /* QWCarFriendsCircleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWCarFriendsCircleController.m; sourceTree = "<group>"; };
 		185C9DD31F42A7CF00B4ED52 /* DSSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSSegmentView.h; sourceTree = "<group>"; };
@@ -876,6 +882,7 @@
 		180701DB1F4412D200398435 /* ScanQRCode */ = {
 			isa = PBXGroup;
 			children = (
+				185833EA1F70C3F9004EA905 /* ScanPay */,
 				18E702941F614E1F007A9777 /* ScanCode.h */,
 				18E702951F614E1F007A9777 /* ScanCode.m */,
 				0401E92E1F501E9B00F0CA79 /* TFGridInputView */,
@@ -1545,6 +1552,7 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				185833E61F70C05B004EA905 /* WashCarStep */,
 				182E935B1F513C3300819B79 /* CustomPch */,
 				18A603411F50133500CFA328 /* MapNavigationView */,
 				0401E9171F4F011F00F0CA79 /* EAIntroView */,
@@ -1935,6 +1943,24 @@
 				182E93801F5FCF6C00819B79 /* Order.m */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		185833E61F70C05B004EA905 /* WashCarStep */ = {
+			isa = PBXGroup;
+			children = (
+				185833E71F70C05B004EA905 /* SXScrPageView.h */,
+				185833E81F70C05B004EA905 /* SXScrPageView.m */,
+			);
+			path = WashCarStep;
+			sourceTree = "<group>";
+		};
+		185833EA1F70C3F9004EA905 /* ScanPay */ = {
+			isa = PBXGroup;
+			children = (
+				185833EE1F70C4A0004EA905 /* QWScanPayController.h */,
+				185833EF1F70C4A0004EA905 /* QWScanPayController.m */,
+			);
+			name = ScanPay;
 			sourceTree = "<group>";
 		};
 		185C9DCE1F42A5D600B4ED52 /* CarFriendsCircle */ = {
@@ -2505,6 +2531,7 @@
 				0401E91F1F4F01A600F0CA79 /* EAIntroView.m in Sources */,
 				18A4B19A1F46E06B00C64978 /* JFCityTableViewCell.m in Sources */,
 				185C9E3F1F42DC7600B4ED52 /* CommentOrderController.m in Sources */,
+				185833E91F70C05B004EA905 /* SXScrPageView.m in Sources */,
 				18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */,
 				187CCBC11F42FC6200FCDF1C /* QWViptequanViewController.m in Sources */,
 				180957F61F41AED400BE185D /* QWOrderMenuTableViewCell.m in Sources */,
@@ -2660,6 +2687,7 @@
 				180702B71F458DD500398435 /* UIWindow+YzdHUD.m in Sources */,
 				18A4B2151F4D640400C64978 /* ShopCategoryView.m in Sources */,
 				185C9DEE1F42A8FF00B4ED52 /* DSActivityModel.m in Sources */,
+				185833F01F70C4A0004EA905 /* QWScanPayController.m in Sources */,
 				182E935A1F4FC7EA00819B79 /* QWMerComListModel.m in Sources */,
 				185C9E0A1F42C22800B4ED52 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				18508FFE1F42F36000795E0A /* QWPayViewController.m in Sources */,
@@ -2855,6 +2883,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2872,6 +2901,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

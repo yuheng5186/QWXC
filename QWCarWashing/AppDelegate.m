@@ -9,6 +9,13 @@
 #import "AppDelegate.h"
 #import "QWLoginVC.h"
 #import "QWGuideViewController.h"
+#import "QWTabBarController.h"
+
+
+
+
+
+#import "WXApi.h"
 @interface AppDelegate ()
 {
     AppDelegate *myDelegate;

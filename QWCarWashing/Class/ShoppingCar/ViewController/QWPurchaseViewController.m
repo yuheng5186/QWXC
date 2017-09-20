@@ -151,7 +151,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     //定位按钮
     self.locationManager = [[JFLocation alloc] init];
     _locationManager.delegate = self;
-    self.area = @"上海市";
+     self.area = [UdStorage getObjectforKey:@"locationCity"]==nil?@"青岛市":[UdStorage getObjectforKey:@"locationCity"];
     
     UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, 64) color:[UIColor colorFromHex:@"#293754"]];
     upView.top                      = 0;

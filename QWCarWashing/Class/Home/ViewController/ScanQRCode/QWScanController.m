@@ -20,9 +20,9 @@
 #import "UdStorage.h"
 #import "ScanCode.h"
 
-#import "QWPayViewController.h"
 
-
+#import "QWScanPayController.h"
+#import "QWStartWashingController.h"
 @interface QWScanController ()<AVCaptureMetadataOutputObjectsDelegate>
 {
     MBProgressHUD *HUD;
@@ -56,31 +56,29 @@
     }];
 }
 
-- (void) resetBabkButton {
-    
-    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
-    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-    self.navigationItem.leftBarButtonItem= rightItem;
-}
-- (void) backButtonClick:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
+#pragma mark-菜单栏扫码洗车
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.title  = @"扫码洗车";
-    self.view.backgroundColor   = [UIColor blackColor];
-    self.view.alpha=0.8;
-    [self resetBabkButton];
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[[UIImage imageNamed:@"xiazai"] scaledToSize:CGSizeMake(25, 25)] style:(UIBarButtonItemStyleDone) target:self action:@selector(downloadOnclick:)];
+    self.navigationController.navigationBar.hidden = YES;
     
-    self.navigationItem.rightBarButtonItem  = [[UIBarButtonItem alloc]initWithTitle:@"使用帮助" style:UIBarButtonItemStyleDone target:self action:@selector(helpButtonClick:)];
-    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:13],NSFontAttributeName, nil] forState:UIControlStateNormal];
+    UIView *titleView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, 64) color:[UIColor colorFromHex:@"#0161a1"]];
+    titleView.top                      = 0;
+    
+    NSString *titleName              = @"扫码洗车";
+    UIFont *titleNameFont            = [UIFont boldSystemFontOfSize:18];
+    UILabel *titleNameLabel          = [UIUtil drawLabelInView:titleView frame:[UIUtil textRect:titleName font:titleNameFont] font:titleNameFont text:titleName isCenter:NO];
+    titleNameLabel.textColor         = [UIColor whiteColor];
+    titleNameLabel.centerX           = titleView.centerX;
+    titleNameLabel.centerY           = titleView.centerY +8;
+    
+    NSString  *helpString     = @"使用帮助";
+    UIFont    *helpStringFont = [UIFont systemFontOfSize:Main_Screen_Width*14/375];
+    UIButton   *helpButton      = [UIUtil drawButtonInView:titleView frame:CGRectMake(0, 0, Main_Screen_Width*80/375, Main_Screen_Height*20/667) text:helpString font:helpStringFont color:[UIColor whiteColor] target:self action:@selector(helpButtonClick:)];
+    helpButton.tintColor = [UIColor whiteColor];
+    helpButton.centerY   = titleNameLabel.centerY;
+    helpButton.right     = Main_Screen_Width -Main_Screen_Width*10/375;
+    
     
     //1.扫描区域
     [self setupScanWindowView];
@@ -88,12 +86,11 @@
     [self beginScanning];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resumeAnimation) name:@"EnterForeground" object:nil];
-    
 }
 
-
-
 -(void)viewWillAppear:(BOOL)animated{
+    
+    
     [self resumeAnimation];
     [_session startRunning];
 }
@@ -107,10 +104,10 @@
 - (void)setupScanWindowView
 {
     UIImageView *scanImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saomakuang"]];
-    scanImageView.width = Main_Screen_Width - 65*2;
-    scanImageView.height = Main_Screen_Width - 65*2;
+    scanImageView.width = Main_Screen_Width - 65*2*Main_Screen_Height/667;
+    scanImageView.height = Main_Screen_Width - 65*2*Main_Screen_Height/667;
     scanImageView.centerX = Main_Screen_Width/2;
-    scanImageView.centerY = self.view.height/2-50;
+    scanImageView.centerY = self.view.height/2-50*Main_Screen_Height/667;
     
     _scanNetImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saomiaozhong"]];
     
@@ -120,14 +117,14 @@
     
     NSString *tooltip = @"请对准机器上的二维码";
     
-    UIFont *textFont = [UIFont boldSystemFontOfSize:18];
+    UIFont *textFont = [UIFont boldSystemFontOfSize:Main_Screen_Height*18/667];
     UILabel *lbl = [UIUtil drawLabelInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, [UIUtil textHeight:tooltip font:textFont]) font:textFont text:tooltip isCenter:YES color:[UIColor whiteColor]];
     lbl.numberOfLines = 0;
     lbl.centerY = scanImageView.top/2;
-    lbl.top     = self.scanWindow.bottom +Main_Screen_Height*25/667;
+    lbl.top     = self.scanWindow.bottom +Main_Screen_Height*20/667;
     
     
-    self.flashlight     = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"shoudiantong" target:self action:@selector(flashlightButtonClcik:)];
+    self.flashlight     = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"Flashlight_N" target:self action:@selector(flashlightButtonClcik:)];
     self.flashlight.top = lbl.bottom +Main_Screen_Height*50/667;
     self.flashlight.right = scanImageView.right;
     
@@ -136,7 +133,7 @@
     self.flashlightSwitch     = [UIUtil drawLabelInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*150/375, Main_Screen_Height*20/667) font:openStringFont text:openString isCenter:NO];
     self.flashlightSwitch.textColor = [UIColor whiteColor];
     self.flashlightSwitch.top = self.flashlight.bottom +Main_Screen_Height*10/667;
-    self.flashlightSwitch.left  = self.flashlight.left+Main_Screen_Width*10/375;
+    self.flashlightSwitch.left  = self.flashlight.left+Main_Screen_Height*10/667;
     
     self.inputButton        = [UIUtil drawButtonInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width*100/375, Main_Screen_Height*50/667) iconName:@"shurubianhao" target:self action:@selector(inputButtonClcik:)];
     self.inputButton.top    = lbl.bottom +Main_Screen_Height*50/667;
@@ -148,25 +145,19 @@
     self.inputLabel.textColor   = [UIColor whiteColor];
     self.inputLabel.top         = self.inputButton.bottom +Main_Screen_Height*10/667;
     self.inputLabel.centerX     = self.inputButton.centerX;
-    
 }
 - (void) inputButtonClcik:(UIButton *)sender {
     
-//    QWStartWashingController *startVC        = [[QWStartWashingController alloc]init];
-//    startVC.hidesBottomBarWhenPushed     = YES;
-//    [self.navigationController pushViewController:startVC animated:YES];
-    
-    QWInputCodeController    *inputVC        = [[QWInputCodeController alloc]init];
-    inputVC.hidesBottomBarWhenPushed         = YES;
-    [self.navigationController pushViewController:inputVC animated:YES];
-    
+    QWInputCodeController    *inputCodeVC     = [[QWInputCodeController alloc]init];
+    inputCodeVC.hidesBottomBarWhenPushed         = YES;
+    [self.navigationController pushViewController:inputCodeVC animated:YES];
     
 }
 - (void) flashlightButtonClcik:(UIButton *)sender {
     
     sender.selected = !sender.selected;
     if (sender.selected) {
-        [sender setImage:[UIImage imageNamed:@"dakaishoudiantong"] forState:UIControlStateSelected];
+        [sender setImage:[UIImage imageNamed:@"kaishoudiantong"] forState:UIControlStateSelected];
         self.flashlightSwitch.text  = @"关闭手电筒";
         //打开闪光灯
         AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -181,7 +172,7 @@
         }
         
     }else{
-        [sender setImage:[UIImage imageNamed:@"shoudiantong"] forState:UIControlStateSelected];
+        [sender setImage:[UIImage imageNamed:@"Flashlight_N"] forState:UIControlStateSelected];
         self.flashlightSwitch.text  = @"打开手电筒";
         //关闭闪光灯
         AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -236,7 +227,7 @@
 
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
     if (metadataObjects.count>0) {
-        [_session stopRunning];
+        //        [_session stopRunning];
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex : 0 ];
         NSString *qaMessage = metadataObject.stringValue;
         
@@ -246,25 +237,16 @@
 }
 
 - (void)handleScanData:(NSString *)outMessage {
-    #pragma mark-获取设备编码
+    
+#pragma mark-获取设备编码
     NSString *imei                          = outMessage;
     //处理设备编码
-//    NSRange
-//    startRange = [imei rangeOfString:@":"];
-//    
-//    NSRange
-//    endRange = [imei rangeOfString:@":"];
-//    
-//    NSRange
-//    range = NSMakeRange(startRange.location
-//                        + startRange.length,
-//                        endRange.location
-//                        - startRange.location
-//                        - startRange.length);
+    NSArray *array = [imei componentsSeparatedByString:@":"]; //从字符：中分隔成2个元素的数组
     
-    //    NSString *result = [imei substringWithRange:range];
-    
-    if (imei != nil) {
+    if (array.count==3&&((NSString *)array[1]).length==8) {
+        
+        [_session stopRunning];
+        
         
         HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         HUD.removeFromSuperViewOnHide =YES;
@@ -273,14 +255,15 @@
         HUD.minSize = CGSizeMake(132.f, 108.0f);
         
         NSDictionary *mulDic = @{
-                                 @"DeviceCode":imei,
+                                 @"DeviceCode":array[1],
                                  @"Account_Id":[UdStorage getObjectforKey:@"Account_Id"]
                                  };
-        
+               NSLog(@"====%@====",mulDic);
         [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@ScanCode/DeviceScanCode",Khttp] success:^(NSDictionary *dict, BOOL success) {
-            
+            NSLog(@"%@",dict);
             if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
             {
+                [_session stopRunning];
                 
                 
                 NSDictionary *arr = [NSDictionary dictionary];
@@ -292,25 +275,61 @@
                 
                 __weak typeof(self) weakSelf = self;
                 HUD.completionBlock = ^(){
-                    
+                    //(1.需要支付状态,2.扫描成功)
                     if(weakSelf.scan.ScanCodeState == 1)
                     {
-                        QWPayViewController *payVC           = [[QWPayViewController alloc]init];
+                        QWScanPayController *payVC           = [[QWScanPayController alloc]init];
                         payVC.hidesBottomBarWhenPushed            = YES;
                         
                         payVC.SerMerChant = weakSelf.scan.DeviceName;
                         payVC.SerProject = weakSelf.scan.ServiceItems;
                         payVC.Jprice = [NSString stringWithFormat:@"￥%@",weakSelf.scan.OriginalAmt];
                         payVC.Xprice = [NSString stringWithFormat:@"￥%@",weakSelf.scan.Amt];
+                        
                         payVC.DeviceCode = weakSelf.scan.DeviceCode;
+                        
+                        payVC.RemainCount = [NSString stringWithFormat:@"%ld",(long)weakSelf.scan.RemainCount];
+                        payVC.IntegralNum = [NSString stringWithFormat:@"%ld",(long)weakSelf.scan.IntegralNum];
+                        payVC.CardType = [NSString stringWithFormat:@"%ld",(long)weakSelf.scan.CardType];
+                        
+                        payVC.CardName = weakSelf.scan.CardName;
                         
                         [weakSelf.navigationController pushViewController:payVC animated:YES];
                     }
                     else
                     {
+                        
+                        
+                        
+                        NSDate*date                     = [NSDate date];
+                        NSDateFormatter *dateFormatter  = [[NSDateFormatter alloc] init];
+                        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                        NSString *dateString        = [dateFormatter stringFromDate:date];
+                        NSUserDefaults *defaults    = [NSUserDefaults standardUserDefaults];
+                        [defaults setObject:dateString forKey:@"setTime"];
+                        [defaults synchronize];
+                        NSLog(@"setTime ==== %@",[defaults objectForKey:@"setTime"]);
+                        [UdStorage storageObject:[NSString stringWithFormat:@"￥%@",weakSelf.scan.OriginalAmt] forKey:@"Jprice"];
+                        [UdStorage storageObject:[NSString stringWithFormat:@"%ld",weakSelf.scan.RemainCount] forKey:@"RemainCount"];
+                        [UdStorage storageObject:[NSString stringWithFormat:@"%ld",weakSelf.scan.IntegralNum] forKey:@"IntegralNum"];
+                        [UdStorage storageObject:[NSString stringWithFormat:@"%ld",weakSelf.scan.CardType] forKey:@"CardType"];
+                        [UdStorage storageObject:weakSelf.scan.CardName forKey:@"CardName"];
+                        
                         QWStartWashingController *start = [[QWStartWashingController alloc]init];
                         start.hidesBottomBarWhenPushed            = YES;
+                        
+                        start.RemainCount   = [NSString stringWithFormat:@"%ld",(long)weakSelf.scan.RemainCount];
+                        start.IntegralNum   = [NSString stringWithFormat:@"%ld",(long)weakSelf.scan.IntegralNum];
+                        start.CardType      = [NSString stringWithFormat:@"%ld",weakSelf.scan.CardType];
+                        start.CardName      = weakSelf.scan.CardName;
+                        start.paynum=[NSString stringWithFormat:@"￥%@",weakSelf.scan.OriginalAmt];
+                        start.second        = 240;
+                        
                         [weakSelf.navigationController pushViewController:start animated:YES];
+                        
+                        
+                        
+                        
                     }
                 };
                 
@@ -323,11 +342,39 @@
                 //                [self.navigationController popViewControllerAnimated:YES];
             }
         } fail:^(NSError *error) {
+            NSLog(@"%@",error);
             [HUD hide:YES];
             [self.view showInfo:@"获取失败" autoHidden:YES interval:2];
             //            [self.navigationController popViewControllerAnimated:YES];
             
         }];
+        
+        
+        
+        
+        
+        
+    }else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"错误提示" message:@"扫码错误" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertController addAction:cancelAction];
+        
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //            //1.扫描区域
+            //            [self setupScanWindowView];
+            //            //2.开始动画
+            //            [self beginScanning];
+            [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(resumeAnimation) name:@"EnterForeground" object:nil];
+            
+            
+        }];
+        [alertController addAction:OKAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
     }
 }
 
@@ -350,7 +397,7 @@
         
     }else{
         
-        CGFloat scanNetImageViewH = 241;
+        CGFloat scanNetImageViewH = 241*Main_Screen_Height/667;
         CGFloat scanWindowH = _scanWindow.width;
         CGFloat scanNetImageViewW = _scanWindow.width;
         
@@ -379,10 +426,12 @@
     return CGRectMake(x, y, width, height);
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
