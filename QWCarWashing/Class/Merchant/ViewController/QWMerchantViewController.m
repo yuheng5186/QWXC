@@ -30,6 +30,8 @@
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSMutableArray *MerchantData;
 @property (nonatomic,strong) NSMutableArray *otherArray;
+@property (nonatomic,strong) NSString *areastr;
+@property (nonatomic,strong) NSString *citystr;
 
 @property (nonatomic)NSInteger page;
 
@@ -53,7 +55,8 @@
     [super viewDidLoad];
     
    
-    
+    self.areastr=@" ";
+    self.citystr=@" ";
     
     myDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
@@ -63,8 +66,8 @@
 //    self.pramsDic = [[NSMutableDictionary alloc]init];
     NSArray *array1 = [[NSArray alloc] initWithObjects:[UdStorage getObjectforKey:@"City"],[UdStorage getObjectforKey:@"Quyu"], nil];
     
-    NSDictionary *dic = @{@"0":array1,@"1":@"普洗-5座轿车",@"2":@"默认排序"};
-    
+//    NSDictionary *dic = @{@"0":array1,@"1":@"普洗-5座轿车",@"2":@"默认排序"};
+     NSDictionary *dic = @{@"0":array1,@"1":@"车身外部清洗维护",@"2":@"默认排序"};
     self.pramsDic  = [NSMutableDictionary dictionaryWithDictionary:dic];
     NSLog(@"%@==%@",array1, self.pramsDic );
     self.MerchantData = [[NSMutableArray alloc]init];
@@ -75,7 +78,10 @@
         
         // 获取列
         NSInteger col = [self.childViewControllers indexOfObject:note.object];
-        
+        if (col==0) {
+            self.citystr=[[self.pramsDic objectForKey:@"0"] objectAtIndex:0];
+            self.areastr=[[self.pramsDic objectForKey:@"0"] objectAtIndex:1];//区域
+        }
         // 获取所有值
         NSArray *allValues = note.userInfo.allValues;
         
@@ -85,6 +91,9 @@
         NSString *str = allValues.firstObject;
         if ([str containsString:@":"]) {
             NSArray *array = [allValues.firstObject componentsSeparatedByString:@":"];
+            self.citystr=array[0];
+            self.areastr=array[1];
+
             // 设置按钮标题
             [self.pramsDic setValue:array forKey:[NSString stringWithFormat:@"%ld",(long)col]];
         } else {
@@ -270,6 +279,19 @@
     [self.MerchantData removeAllObjects];
     //    NSLog(@"%@",self.pramsDic);
     
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"车身外部清洗维护",@"车内清洁-5座轿车",@"车内清洁SUV或7座", nil];
+    
+    NSInteger index;
+    
+    if ([array containsObject:[self.pramsDic objectForKey:@"1"]]) {
+        
+        index = [array indexOfObject:[self.pramsDic objectForKey:@"1"]];
+        
+    }
+    
+    
+    
+    
     NSString *DefaultSort;
     
     if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"默认排序"])
@@ -291,10 +313,10 @@
     
     
     NSDictionary *mulDic = @{
-                             @"City":[[self.pramsDic objectForKey:@"0"] objectAtIndex:0],
-                             @"Area":[[self.pramsDic objectForKey:@"0"] objectAtIndex:1],
+                             @"City":self.citystr,
+                             @"Area":self.areastr,
                              @"ShopType":@1,
-                             @"ServiceCode":@101,
+                             @"ServiceCode":[NSString stringWithFormat:@"10%ld",index+1],
                              @"DefaultSort":DefaultSort,
                              @"Ym":[UdStorage getObjectforKey:@"Ym"],
                              @"Xm":[UdStorage getObjectforKey:@"Xm"],
@@ -348,6 +370,17 @@
 -(void)setDatamore
 {
     
+    
+    NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:@"车身外部清洗维护",@"车内清洁-5座轿车",@"车内清洁SUV或7座", nil];
+    
+    NSInteger index;
+    
+    if ([array containsObject:[self.pramsDic objectForKey:@"1"]]) {
+        
+        index = [array indexOfObject:[self.pramsDic objectForKey:@"1"]];
+        
+    }
+    
     NSString *DefaultSort;
     
     if([[self.pramsDic objectForKey:@"2"] isEqualToString:@"默认排序"])
@@ -366,16 +399,16 @@
     {
         DefaultSort = @"4";
     }
-    
+
     
     NSDictionary *mulDic = @{
-                             @"City":[[self.pramsDic objectForKey:@"0"] objectAtIndex:0],
-                             @"Area":[[self.pramsDic objectForKey:@"0"] objectAtIndex:1],
+                             @"City":self.citystr,
+                             @"Area":self.areastr,
                              @"ShopType":@1,
-                             @"ServiceCode":@101,
+                             @"ServiceCode":[NSString stringWithFormat:@"10%ld",index+1],
                              @"DefaultSort":DefaultSort,
-                             @"Ym":@31.192255,
-                             @"Xm":@121.52334,
+                             @"Ym":[UdStorage getObjectforKey:@"Ym"],
+                             @"Xm":[UdStorage getObjectforKey:@"Xm"],
                              @"PageIndex":[NSString stringWithFormat:@"%ld",self.page],
                              @"PageSize":@10
                              };
@@ -436,7 +469,9 @@
     NSLog(@"%@",[UdStorage getObjectforKey:@"Quyu"]);
     
     // 初始化标题
-    _titles = @[[UdStorage getObjectforKey:@"Quyu"],@"普洗-5座轿车",@"默认排序"];
+//    _titles = @[[UdStorage getObjectforKey:@"Quyu"],@"普洗-5座轿车",@"默认排序"];
+    // 初始化标题
+    _titles = @[[UdStorage getObjectforKey:@"City"],@"车身外部清洗维护",@"默认排序"];
     
     // 添加子控制器
     [self setupAllChildViewController];

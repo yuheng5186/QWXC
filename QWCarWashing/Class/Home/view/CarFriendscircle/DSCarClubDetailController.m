@@ -11,9 +11,9 @@
 #import "UITableView+SDAutoTableViewCellHeight.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "IQKeyboardManager.h"
-#import "UIScrollView+EmptyDataSet.h"//第三方空白页
+//#import "UIScrollView+EmptyDataSet.h"//第三方空白页
 
-@interface DSCarClubDetailController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface DSCarClubDetailController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 
@@ -71,14 +71,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    self.title=@"活动详情";
-    
+    //是否显示键盘上的工具条
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [self resetBabkButton];
     
     
-    //添加监听，当键盘出现时收到消息
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)name:UIKeyboardWillShowNotification object:nil];
-    //添加监听，当键盘退出时收到消息
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)name:UIKeyboardWillHideNotification object:nil];
+//    //添加监听，当键盘出现时收到消息
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)name:UIKeyboardWillShowNotification object:nil];
+//    //添加监听，当键盘退出时收到消息
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)name:UIKeyboardWillHideNotification object:nil];
     
     
     [self createSubView];
@@ -98,35 +99,35 @@
 }
 
 
-// 当键盘出现或改变时调用
-- (void)keyboardWillShow:(NSNotification *)aNotification
-{
-    // 获取键盘的高度
-    NSDictionary *userInfo = [aNotification userInfo];
-    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-    CGRect keyboardRect = [aValue CGRectValue];
-    int height = keyboardRect.size.height;
-    if (self.userSayTextField.text.length ==0) {//键盘弹出
-//        0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667
-        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667);
-    }else{
-        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667, Main_Screen_Width, Main_Screen_Height*60/667);
-        self.downView.frame = rect;
-    }
-}
-// 当键退出时调用
-- (void)keyboardWillHide:(NSNotification *)aNotification
-{
-    
-    if (self.userSayTextField.text.length ==0) {//键盘弹出
-        
-        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667);
-    }else{
-        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667, Main_Screen_Width, Main_Screen_Height*60/667);
-        self.downView.frame = rect;
-    }
-    
-}
+//// 当键盘出现或改变时调用
+//- (void)keyboardWillShow:(NSNotification *)aNotification
+//{
+//    // 获取键盘的高度
+//    NSDictionary *userInfo = [aNotification userInfo];
+//    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+//    CGRect keyboardRect = [aValue CGRectValue];
+//    int height = keyboardRect.size.height;
+//    if (self.userSayTextField.text.length ==0) {//键盘弹出
+////        0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667
+//        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667);
+//    }else{
+//        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667, Main_Screen_Width, Main_Screen_Height*60/667);
+//        self.downView.frame = rect;
+//    }
+//}
+//// 当键退出时调用
+//- (void)keyboardWillHide:(NSNotification *)aNotification
+//{
+//    
+//    if (self.userSayTextField.text.length ==0) {//键盘弹出
+//        
+//        self.downView.frame = CGRectMake(0, Main_Screen_Height -Main_Screen_Height*60/667, Main_Screen_Width, Main_Screen_Height*60/667);
+//    }else{
+//        CGRect rect =CGRectMake(0, Main_Screen_Height -Main_Screen_Height*100/667, Main_Screen_Width, Main_Screen_Height*60/667);
+//        self.downView.frame = rect;
+//    }
+//    
+//}
 
 
 - (void) createSubView {
@@ -141,9 +142,7 @@
     
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
-#pragma maek-空白页
-    self.tableView.emptyDataSetSource = self;
-    self.tableView.emptyDataSetDelegate = self;
+
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.automaticallyAdjustsScrollViewInsets = NO;
     //    self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
@@ -285,13 +284,15 @@
     
     UILabel *textContentLabel                 = [UILabel new];
     textContentLabel.textColor                = [UIColor colorFromHex:@"#999999"];
-    textContentLabel.text                     = @"夏天到来,随着温度越来越高,很多抵抗力差的人在高温环境下很容易中暑.今天太阳城管理网分享几条经验,教亲们如何采取措施,防止中暑.每天要喝7-8杯水,夏天是个严重缺水的季节,所以要增加水量,做到水分充足.补充水分也可以选择喝茶,因为茶味略苦性寒，具有消暑、解毒、去火等功能,但饮茶不能过量，茶水以清淡适中为宜哦.还有水果跟蔬菜也可补充水分.记住不要等到口渴了才喝水, 因为口渴表示身体已经缺水了.吃的东西越多，为了消化这些食物，身体产生的代谢热量就越多.一定要注意少吃高蛋白的食物，因为它们产生的代谢热量特别多.高蛋白质的食物如:牛奶,肉,鸡蛋,豆类等.还要吃得清淡,像黄瓜,西红柿等,这些蔬菜含水量多.夏天的衣服一定要尽量穿透气、浅色的.散热的棉质衣服而且要宽松的.浅色的衣服不会吸热.所以尽量不要穿暗色的衣服易吸热,像黑色,灰色等.";
+    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[[NSString stringWithFormat:@"<html><body>%@</html></body>",self.CarClubNewsModel.Comment] dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    NSLog(@"%@",attrStr);
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithAttributedString:attrStr];
+    
+    [string removeAttribute:NSParagraphStyleAttributeName range: NSMakeRange(0, string.length)];
+    textContentLabel.attributedText = string;
     textContentLabel.font                     = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     textContentLabel.numberOfLines            = 0;
-    
-    textContentLabel.text=self.CarClubNewsModel.Comment;
-    
-    
+
     self.textContentLabel                     = textContentLabel;
     [backgroudView addSubview:textContentLabel];
     
@@ -341,7 +342,7 @@
     goodNumberLabel.text                     = @"共有168人点赞过";
     goodNumberLabel.font                     = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     
-    goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+    goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.GiveCount];
        self.goodNumberLabel                     = goodNumberLabel;
     goodNumberLabel.textAlignment            = NSTextAlignmentCenter;
     [backgroudView addSubview:goodNumberLabel];
@@ -361,7 +362,7 @@
     sayNumberLab.textColor                  = [UIColor blackColor];
     sayNumberLab.font                       = [UIFont systemFontOfSize:16];
     sayNumberLab.text                       = @"评论（0）";
-    sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
+    sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CommentCount];
     
 
 
@@ -462,7 +463,7 @@
     sayShowLabel.font                       = [UIFont systemFontOfSize:12];
     sayShowLabel.text                       = @"369";
     
-    sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+    sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CommentCount];
     
     
     self.sayShowLabel                       = sayShowLabel;
@@ -493,7 +494,7 @@
     goodShowLabel.font                       = [UIFont systemFontOfSize:12*Main_Screen_Height/667];
     goodShowLabel.text                       = @"369";
     
-   goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
+   goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount];
     self.goodShowLabel                       = goodShowLabel;
     [self.downView  addSubview:goodShowLabel];
     
@@ -505,8 +506,8 @@
     
     [self.downView  layoutSubviews];
     
-    self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
-    self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CarClubNewsModel.CommentCount];
+    self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",self.GiveCount];
+    self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",self.CommentCount];
     if(self.CarClubNewsModel.IsGive == 1)
     {
         [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
@@ -525,27 +526,27 @@
         self.downGoodButton.selected = NO;
     }
     
-    if(self.CarClubNewsModel.CommentCount > 99)
+    if(self.CommentCount > 99)
     {
         self.sayShowLabel.text = @"99+";
     }
     else
     {
-        self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
+        self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CommentCount];
     }
     
-    if(self.CarClubNewsModel.GiveCount>99)
+    if(self.GiveCount>99)
     {
         self.goodShowLabel.text = @"99+";
     }
     else
     {
-        self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
+        self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount];
     }
 
     
-//    self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.CommentCount];
-//    self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount];
+//    self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",self.CommentCount];
+//    self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount];
     
     [self.view addSubview:self.downView ];
     
@@ -645,14 +646,12 @@
                              };
         //
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Activity/GetActivityInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
-//        NSLog(@"%@",dict);
+        NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
-            
             NSDictionary *dic = [dict objectForKey:@"JsonData"];
             self.CarClubNewsModel=[[QWCarClubNewsModel alloc]initWithDictionary:dic error:nil];
-            
             
             
             NSArray *arr = [NSArray array];
@@ -666,42 +665,7 @@
                 
                 [self.modelsArray addObject:model];
             }
-            
-            
-            //            self.userName.text = newsDetail.FromusrName;
-            //            self.sayTime.text = newsDetail.ActDate;
-            //            self.seeNumber.text = [NSString stringWithFormat:@"%ld",newsDetail.Readcount];
-            //            self.textTitleLabel.text = newsDetail.ActivityName;
-            //            self.textContentLabel.text = newsDetail.Comment;
-            //            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            //                                                NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,newsDetail.IndexImg];
-            //                                                NSURL *url=[NSURL URLWithString:ImageURL];
-            //                                                NSData *data=[NSData dataWithContentsOfURL:url];
-            //                                                UIImage *img=[UIImage imageWithData:data];
-            //                                                dispatch_sync(dispatch_get_main_queue(), ^{
-            //                                                    [self.textImageView setImage:img];
-            //                                                });
-            //                                            });
-            //            self.goodNumberLabel.text = [NSString stringWithFormat:@"共有%ld人点赞过",newsDetail.GiveCount];
-            //            self.sayNumberLab.text = [NSString stringWithFormat:@"评论(%ld)",newsDetail.CommentCount];
-            //            if(newsDetail.IsGive == 1)
-            //            {
-            //                [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
-            //                [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
-            //                self.goodButton.selected = YES;
-            //                self.downGoodButton.selected = YES;
-            //            }
-            //            else
-            //            {
-            //                [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
-            //                [self.downGoodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan"] forState:UIControlStateNormal];
-            //                self.goodButton.selected = NO;
-            //                self.downGoodButton.selected = NO;
-            //            }
-            //            self.sayShowLabel.text = [NSString stringWithFormat:@"%ld",newsDetail.CommentCount];
-            //            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",newsDetail.GiveCount];
-            
-            //
+//            self.CommentCount=arr.count;
             [self createHeaderView];
             [_tableView reloadData];
             [self.tableView.mj_header endRefreshing];
@@ -895,16 +859,16 @@
             
             [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan2"] forState:UIControlStateNormal];
             
-            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过", self.CarClubNewsModel.GiveCount + 1];
-            if(self.CarClubNewsModel.GiveCount>99)
+            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过", self.GiveCount + 1];
+            if(self.GiveCount>99)
             {
                 self.goodShowLabel.text = @"99+";
             }else
             {
-                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
+                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount+1];
             }
-//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount+1];
-            self.CarClubNewsModel.GiveCount++;
+//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount+1];
+            self.GiveCount++;
             [self.downGoodButton setImage:[UIImage imageNamed:@"xiaohongshou"] forState:UIControlStateNormal];
             self.downGoodButton.selected = YES;
            
@@ -941,20 +905,20 @@
         {
             [self.view showInfo:@"取消点赞成功" autoHidden:YES interval:2];
             
-            if(self.CarClubNewsModel.GiveCount>99)
+            if(self.GiveCount>99)
             {
                 self.goodShowLabel.text = @"99+";
             }else
             {
-                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
+                self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount-1];
             }
             
-//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.CarClubNewsModel.GiveCount-1];
+//            self.goodShowLabel.text = [NSString stringWithFormat:@"%ld",self.GiveCount-1];
             [self.downGoodButton setImage:[UIImage imageNamed:@"faxiandianzan"] forState:UIControlStateNormal];
             
-            self.CarClubNewsModel.GiveCount--;
+            self.GiveCount--;
             [self.goodButton setImage:[UIImage imageNamed:@"huodongxiangqingzan1"] forState:UIControlStateNormal];
-            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过",self.CarClubNewsModel.GiveCount];
+            self.goodNumberLabel.text                     = [NSString stringWithFormat:@"共有%ld人点赞过",self.GiveCount];
             self.goodButton.selected = NO;
         }
         else
@@ -1068,6 +1032,9 @@
         
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
+            NSNotification * notice = [NSNotification notificationWithName:@"update" object:nil userInfo:nil];
+            [[NSNotificationCenter defaultCenter]postNotification:notice];
+            self.CommentCount++;
             [self.view showInfo:@"评论添加成功" autoHidden:YES interval:2];
             //            self.dic = [dict objectForKey:@"JsonData"];
             //        [self.MerchantDetailData addObjectsFromArray:arr];
@@ -1102,84 +1069,13 @@
     
     textField.text = @"";
 }
-
-#pragma mark - 无数据占位
-//无数据占位
-- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView{
-    return [UIImage imageNamed:@"pinglun_kongbai"];
-}
-
-- (CAAnimation *)imageAnimationForEmptyDataSet:(UIScrollView *)scrollView{
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.userSayTextField resignFirstResponder];
     
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath: @"pinglun_kongbai"];
-    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    animation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI_2, 0.0, 0.0,   1.0)];
-    animation.duration = 0.25;
-    animation.cumulative = YES;
-    animation.repeatCount = MAXFLOAT;
-    return animation;
-}
-//设置文字（上图下面的文字，我这个图片默认没有这个文字的）是富文本样式，扩展性很强！
-
-//这个是设置标题文字的
-- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView {
-    NSString *text = @"暂无评论信息";
     
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:16.0f],
-                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
     
-    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-}
-//设置占位图空白页的背景色( 图片优先级高于文字)
-
-
-// 返回可以点击的按钮 上面带文字
-- (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-    NSDictionary *attribute = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0f]};
-    return [[NSAttributedString alloc] initWithString:@"afdfdgfd" attributes:attribute];
 }
 
-
-- (UIImage *)buttonImageForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state {
-    return [UIImage imageNamed:@"pinglun_kongbai"];
-}
-//是否显示空白页，默认YES
-- (BOOL)emptyDataSetShouldDisplay:(UIScrollView *)scrollView {
-    return YES;
-}
-//是否允许点击，默认YES
-- (BOOL)emptyDataSetShouldAllowTouch:(UIScrollView *)scrollView {
-    return NO;
-}
-//是否允许滚动，默认NO
-- (BOOL)emptyDataSetShouldAllowScroll:(UIScrollView *)scrollView {
-    return YES;
-}
-//图片是否要动画效果，默认NO
-- (BOOL) emptyDataSetShouldAllowImageViewAnimate:(UIScrollView *)scrollView {
-    return YES;
-}
-//空白页点击事件
-- (void)emptyDataSetDidTapView:(UIScrollView *)scrollView {
-    NSLog(@"空白页点击事件");
-}
-//空白页按钮点击事件
-- (void)emptyDataSetDidTapButton:(UIScrollView *)scrollView {
-    return NSLog(@"空白页按钮点击事件");
-}
-/**
- *  调整垂直位置
- */
-- (CGFloat)verticalOffsetForEmptyDataSet:(UIScrollView *)scrollView
-{//偏移量计算逻辑 ->
-    //    当前屏幕一半的高度 = (获取屏幕的的高度->减去导航栏高度)/2
-    //判断headerView高度是否超过屏幕的一半
-    BOOL isHeader =  (CGRectGetHeight(self.tableView.tableHeaderView.frame)>(self.view.bounds.size.height-64)/2);
-    //计算偏移量 (bgView 为空白占位图)
-    //    CGFloat height=CGRectGetHeight(self.tableView.tableHeaderView.frame.size.height-(self.view.bounds.size.height-64)/2));
-    //    return isHeader?self.tableView.tableHeaderView.frame.size.height-(self.view.bounds.size.height-64)/2:-64;
-    return 450;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -103,8 +103,9 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     [self.CardArray removeAllObjects];
     NSDictionary *mulDic = @{
                              @"GetCardType":@1,
-                             @"Area":self.area
+                             @"Area":(self.locationButton.titleLabel.text.length==0?@"青岛市":self.locationButton.titleLabel.text)
                              };
+    NSLog(@"%@",mulDic);
         [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardConfigList",Khttp] success:^(NSDictionary *dict, BOOL success) {
         
             NSLog(@"%@",dict);
@@ -125,7 +126,25 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
                 [self.imageArray addObject:image];
             }
             
-            [self setupUI];
+            if(arr.count == 0)
+            {
+                UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake((375-120)/2*Main_Screen_Height/667, 110*Main_Screen_Height/667, 120*Main_Screen_Height/667, 120*Main_Screen_Height/667)];
+                imgV.image = [UIImage imageNamed:@"kabao_kongbai"];
+                imgV.contentMode = UIViewContentModeScaleAspectFill;
+                [_middleview addSubview:imgV];
+                UILabel *tagLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, imgV.frame.origin.y+137*Main_Screen_Height/667, Main_Screen_Width, 20*Main_Screen_Height/667)];
+                tagLabel.text = @"该城市暂未发售购卡";
+                tagLabel.textAlignment = NSTextAlignmentCenter;
+                tagLabel.font = [UIFont boldSystemFontOfSize:13.0f*Main_Screen_Height/667];
+                tagLabel.textColor = [UIColor colorFromHex: @"#4a4a4a"];
+                [_middleview addSubview:tagLabel];
+                
+            }
+            else
+            {
+                [self setupUI];
+            }
+
             
             [HUD setHidden:YES];
             
@@ -151,6 +170,7 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     //定位按钮
     self.locationManager = [[JFLocation alloc] init];
     _locationManager.delegate = self;
+   
      self.area = [UdStorage getObjectforKey:@"locationCity"]==nil?@"青岛市":[UdStorage getObjectforKey:@"locationCity"];
     
     UIView *upView                  = [UIUtil drawLineInView:self.view frame:CGRectMake(0, 0, Main_Screen_Width, 64) color:[UIColor colorFromHex:@"#293754"]];
@@ -166,9 +186,10 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     self.locationButton        = [UIButton buttonWithType:UIButtonTypeCustom];
     self.locationButton.frame             = CGRectMake(0, 0, Main_Screen_Width*70/375, Main_Screen_Height*30/667);
     self.locationButton.backgroundColor   = [UIColor clearColor];
-    [self.locationButton setTitle:@"上海" forState:UIControlStateNormal];
     [self.locationButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.locationButton.titleLabel.font   = [UIFont systemFontOfSize:Main_Screen_Height*14/667];
+    [self.locationButton setTitle:self.area forState:UIControlStateNormal];
+   
     self.locationButton.left              = Main_Screen_Width*14/375;
     self.locationButton.centerY           = titleNameLabel.centerY;
     [self.locationButton addTarget:self action:@selector(clickLocationButton) forControlEvents:UIControlEventTouchUpInside];
@@ -176,11 +197,12 @@ static NSString *id_puchaseCard = @"purchaseCardCell";
     self.locationButton.imageEdgeInsets = UIEdgeInsetsMake(0, -Main_Screen_Width*10/375, 0, 0);
     [self.locationButton setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     self.locationButton.layer.cornerRadius = self.locationButton.height/2;
-    //self.locationButton.clipsToBounds = YES;
+    self.locationButton.clipsToBounds = YES;
     self.locationButton.layer.borderWidth = 1;
     self.locationButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    [upView addSubview:self.locationButton];
-    
+
+    UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:self.locationButton];
+    self.navigationItem.leftBarButtonItem=leftbarbtn;
     
     _middleview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height)];
     _middleview.backgroundColor = [UIColor colorFromHex:@"#fafafa"];
