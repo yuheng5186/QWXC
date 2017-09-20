@@ -102,7 +102,7 @@
     if (indexPath.row == 0) {
         self.phoneNumberText                = [[UITextField alloc]initWithFrame:CGRectMake(Main_Screen_Width*10/375, 0, Main_Screen_Width-Main_Screen_Width*240/375, Main_Screen_Height*40/667)];
         
-        self.phoneNumberText.placeholder    = self.phoneString;
+        self.phoneNumberText.text    = self.phoneString;
         self.phoneNumberText.delegate       = self;
         self.phoneNumberText.returnKeyType  = UIReturnKeyDone;
         self.phoneNumberText.keyboardType   = UIKeyboardTypeNumberPad;
@@ -233,6 +233,11 @@
     
     
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

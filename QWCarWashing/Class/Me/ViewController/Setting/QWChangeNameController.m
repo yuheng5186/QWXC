@@ -42,6 +42,7 @@
     self.userNameText.placeholder    = self.userName;
     self.userNameText.delegate       = self;
     self.userNameText.returnKeyType  = UIReturnKeyDone;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     self.userNameText.textAlignment  = NSTextAlignmentLeft;
     self.userNameText.font           = [UIFont systemFontOfSize:16*Main_Screen_Height/667];
     self.userNameText.backgroundColor= [UIColor whiteColor];
@@ -59,12 +60,22 @@
     
     
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
+}
+
 
 - (void) sureButtonClick:(id)sender {
-    if (self.userNameText.text.length) {
-     
+    
+    if (self.userNameText.text.length > 0) {
+        [self.userNameText resignFirstResponder];
+        [self updateUserName:self.userNameText.text];
+
+    }else {
+    
+        [self.view showInfo:@"请输入您要修改的姓名，再确定提交" autoHidden:YES];
     }
-    [self updateUserName:self.userNameText.text];
 }
 #pragma mark-修改昵称
 -(void)updateUserName:(NSString *)username{

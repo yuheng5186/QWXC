@@ -145,7 +145,7 @@
     if (indexPath.row == 0) {
         self.phoneNumberText                = [[UITextField alloc]initWithFrame:CGRectMake(Main_Screen_Width*10/375, Main_Screen_Height*45/667, Main_Screen_Width-Main_Screen_Width*240/375, Main_Screen_Height*40/667)];
         
-        self.phoneNumberText.placeholder    = self.phoneString;
+        self.phoneNumberText.placeholder    = @"请输入新的手机号";
         self.phoneNumberText.delegate       = self;
         self.phoneNumberText.returnKeyType  = UIReturnKeyDone;
         self.phoneNumberText.keyboardType   = UIKeyboardTypeNumberPad;
@@ -272,4 +272,10 @@
     
     
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
+}
+
 @end
