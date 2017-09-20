@@ -269,6 +269,12 @@
 		18A603401F4FC52F00CFA328 /* TggStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A6033E1F4FC52F00CFA328 /* TggStarEvaluationView.m */; };
 		18A603461F50135E00CFA328 /* CLLocation+YCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603431F50135E00CFA328 /* CLLocation+YCLocation.m */; };
 		18A603471F50135E00CFA328 /* JXMapNavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A603451F50135E00CFA328 /* JXMapNavigationView.m */; };
+		18ACD2D11F725B9B00533E45 /* b1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2CB1F725B9B00533E45 /* b1.gif */; };
+		18ACD2D21F725B9B00533E45 /* b2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2CC1F725B9B00533E45 /* b2.gif */; };
+		18ACD2D31F725B9B00533E45 /* b3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2CD1F725B9B00533E45 /* b3.gif */; };
+		18ACD2D41F725B9B00533E45 /* b4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2CE1F725B9B00533E45 /* b4.gif */; };
+		18ACD2D51F725B9B00533E45 /* b5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2CF1F725B9B00533E45 /* b5.gif */; };
+		18ACD2D61F725B9B00533E45 /* b6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 18ACD2D01F725B9B00533E45 /* b6.gif */; };
 		18CEA1411F4C4ADE004AB65A /* QWwashCardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */; };
 		18CEA1421F4C4ADE004AB65A /* QWwashCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */; };
 		18E702961F614E1F007A9777 /* ScanCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E702951F614E1F007A9777 /* ScanCode.m */; };
@@ -796,6 +802,12 @@
 		18A603431F50135E00CFA328 /* CLLocation+YCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+YCLocation.m"; sourceTree = "<group>"; };
 		18A603441F50135E00CFA328 /* JXMapNavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXMapNavigationView.h; sourceTree = "<group>"; };
 		18A603451F50135E00CFA328 /* JXMapNavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXMapNavigationView.m; sourceTree = "<group>"; };
+		18ACD2CB1F725B9B00533E45 /* b1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b1.gif; sourceTree = "<group>"; };
+		18ACD2CC1F725B9B00533E45 /* b2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b2.gif; sourceTree = "<group>"; };
+		18ACD2CD1F725B9B00533E45 /* b3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b3.gif; sourceTree = "<group>"; };
+		18ACD2CE1F725B9B00533E45 /* b4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b4.gif; sourceTree = "<group>"; };
+		18ACD2CF1F725B9B00533E45 /* b5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b5.gif; sourceTree = "<group>"; };
+		18ACD2D01F725B9B00533E45 /* b6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = b6.gif; sourceTree = "<group>"; };
 		18CEA13E1F4C4ADE004AB65A /* QWwashCardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWwashCardTableViewCell.h; sourceTree = "<group>"; };
 		18CEA13F1F4C4ADE004AB65A /* QWwashCardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWwashCardTableViewCell.m; sourceTree = "<group>"; };
 		18CEA1401F4C4ADE004AB65A /* QWwashCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QWwashCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -1210,6 +1222,7 @@
 		180957751F4147E400BE185D /* QWCarWashing */ = {
 			isa = PBXGroup;
 			children = (
+				18ACD2CA1F725B9B00533E45 /* giftu */,
 				180957A91F414D0000BE185D /* Class */,
 				180957791F4147E400BE185D /* AppDelegate.h */,
 				1809577A1F4147E400BE185D /* AppDelegate.m */,
@@ -2256,6 +2269,19 @@
 			name = MapNavigationView;
 			sourceTree = "<group>";
 		};
+		18ACD2CA1F725B9B00533E45 /* giftu */ = {
+			isa = PBXGroup;
+			children = (
+				18ACD2CB1F725B9B00533E45 /* b1.gif */,
+				18ACD2CC1F725B9B00533E45 /* b2.gif */,
+				18ACD2CD1F725B9B00533E45 /* b3.gif */,
+				18ACD2CE1F725B9B00533E45 /* b4.gif */,
+				18ACD2CF1F725B9B00533E45 /* b5.gif */,
+				18ACD2D01F725B9B00533E45 /* b6.gif */,
+			);
+			path = giftu;
+			sourceTree = "<group>";
+		};
 		445EC465F7A6D4FF15959817 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2395,7 +2421,9 @@
 				185C9E171F42C8DE00B4ED52 /* SalerListViewCell.xib in Resources */,
 				18A4B12A1F46BEB900C64978 /* CarTicketView.xib in Resources */,
 				182E934A1F4ECA4C00819B79 /* YZSortCell.xib in Resources */,
+				18ACD2D31F725B9B00533E45 /* b3.gif in Resources */,
 				185C9E2B1F42D06F00B4ED52 /* CancelPayCell.xib in Resources */,
+				18ACD2D11F725B9B00533E45 /* b1.gif in Resources */,
 				1807021B1F442CD500398435 /* PopupView.xib in Resources */,
 				180702681F45609100398435 /* AnswerCell.xib in Resources */,
 				185C9DEC1F42A8FF00B4ED52 /* ActivityListCell.xib in Resources */,
@@ -2408,11 +2436,15 @@
 				185C9E471F42DCD900B4ED52 /* OrderDetailView.xib in Resources */,
 				180958411F42902900BE185D /* QWHomeDetailTableViewCell.xib in Resources */,
 				185C9E291F42D06F00B4ED52 /* DelayPayCell.xib in Resources */,
+				18ACD2D61F725B9B00533E45 /* b6.gif in Resources */,
+				18ACD2D41F725B9B00533E45 /* b4.gif in Resources */,
 				18A4B1AB1F46F42F00C64978 /* TicketCashView.xib in Resources */,
 				18A4B2181F4D640400C64978 /* ShopInfoHeadView.xib in Resources */,
 				180702861F456E6200398435 /* MyCarViewCell.xib in Resources */,
+				18ACD2D51F725B9B00533E45 /* b5.gif in Resources */,
 				180702481F444EA000398435 /* DiscountCell.xib in Resources */,
 				187CCBCF1F43359300FCDF1C /* QWVipHeaderTableViewCell.xib in Resources */,
+				18ACD2D21F725B9B00533E45 /* b2.gif in Resources */,
 				18A4B1951F46E06B00C64978 /* shop_area.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
