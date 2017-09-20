@@ -23,6 +23,7 @@
 		0401E9361F501E9B00F0CA79 /* TFGridInputViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9321F501E9B00F0CA79 /* TFGridInputViewCell.m */; };
 		0401E9371F501E9B00F0CA79 /* TFGridInputViewCellStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */; };
 		0401E93A1F501EF400F0CA79 /* QWInputCodeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0401E9391F501EF400F0CA79 /* QWInputCodeController.m */; };
+		046E41EA1F724D3B00DF4866 /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 046E41E91F724D3B00DF4866 /* HSUpdateApp.m */; };
 		1802AD961F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1802AD951F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m */; };
 		180701DE1F44134700398435 /* QWScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701DD1F44134700398435 /* QWScanController.m */; };
 		180701E51F441AA100398435 /* UIColor+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 180701E01F441AA100398435 /* UIColor+Additions.m */; };
@@ -327,6 +328,8 @@
 		0401E9341F501E9B00F0CA79 /* TFGridInputViewCellStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFGridInputViewCellStyle.m; sourceTree = "<group>"; };
 		0401E9381F501EF400F0CA79 /* QWInputCodeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWInputCodeController.h; sourceTree = "<group>"; };
 		0401E9391F501EF400F0CA79 /* QWInputCodeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWInputCodeController.m; sourceTree = "<group>"; };
+		046E41E81F724D3B00DF4866 /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
+		046E41E91F724D3B00DF4866 /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
 		1802AD941F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWSalaActivityCellTableViewCell.h; sourceTree = "<group>"; };
 		1802AD951F5FC47B009EB146 /* QWSalaActivityCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QWSalaActivityCellTableViewCell.m; sourceTree = "<group>"; };
 		180701DC1F44134700398435 /* QWScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QWScanController.h; sourceTree = "<group>"; };
@@ -1552,6 +1555,8 @@
 		180957C21F414D0000BE185D /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				046E41E81F724D3B00DF4866 /* HSUpdateApp.h */,
+				046E41E91F724D3B00DF4866 /* HSUpdateApp.m */,
 				185833E61F70C05B004EA905 /* WashCarStep */,
 				182E935B1F513C3300819B79 /* CustomPch */,
 				18A603411F50133500CFA328 /* MapNavigationView */,
@@ -2530,6 +2535,7 @@
 				180957EC1F4177B900BE185D /* UIColor+HEXString.m in Sources */,
 				0401E91F1F4F01A600F0CA79 /* EAIntroView.m in Sources */,
 				18A4B19A1F46E06B00C64978 /* JFCityTableViewCell.m in Sources */,
+				046E41EA1F724D3B00DF4866 /* HSUpdateApp.m in Sources */,
 				185C9E3F1F42DC7600B4ED52 /* CommentOrderController.m in Sources */,
 				185833E91F70C05B004EA905 /* SXScrPageView.m in Sources */,
 				18A4B1291F46BEB900C64978 /* CarTicketView.m in Sources */,
@@ -2879,7 +2885,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2897,7 +2903,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/QWCarWashing/PrefixHeader.pch";
 				INFOPLIST_FILE = QWCarWashing/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qiangwei.QWCarWashing;
 				PRODUCT_NAME = "$(TARGET_NAME)";

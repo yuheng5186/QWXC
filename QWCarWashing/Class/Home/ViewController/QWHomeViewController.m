@@ -39,6 +39,12 @@
 #import "CoreLocation/CoreLocation.h"
 
 #import "QWRecordModel.h"
+
+
+#import "HSUpdateApp.h"
+
+
+
 @interface QWHomeViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate>
 @property(nonatomic,strong)UITableView *tableview;
 @property (nonatomic, strong) NSMutableArray *GetUserRecordData;
@@ -74,6 +80,40 @@ static NSString *cellstr=@"Cellstr";
     self.tabBarController.tabBar.hidden=NO;
     
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //一句代码实现检测更新,很简单哦 （需要在viewDidAppear完成时，再调用改方法。不然在网速飞快的时候，会出现一个bug，就是当前控制器viewDidLoad调用的话，可能当前视图还没加载完毕就需要推出UIAlertAction）
+    [self hsUpdateApp];
+}
+
+-(void)hsUpdateApp{
+    __weak __typeof(&*self)weakSelf = self;
+    [HSUpdateApp hs_updateWithAPPID:@"" block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+        if (isUpdate == YES) {
+            [weakSelf showStoreVersion:storeVersion openUrl:openUrl];
+        }
+    }];
+}
+
+
+
+
+-(void)showStoreVersion:(NSString *)storeVersion openUrl:(NSString *)openUrl{
+    UIAlertController *alercConteoller = [UIAlertController alertControllerWithTitle:@"版本有更新" message:[NSString stringWithFormat:@"检测到新版本(%@),是否更新?",storeVersion] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *actionYes = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSURL *url = [NSURL URLWithString:openUrl];
+        [[UIApplication sharedApplication] openURL:url];
+    }];
+    UIAlertAction *actionNo = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    [alercConteoller addAction:actionYes];
+    [alercConteoller addAction:actionNo];
+    [self presentViewController:alercConteoller animated:YES completion:nil];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNagationLeftAndRightButton];
