@@ -127,11 +127,14 @@ static NSString *id_carListCell = @"id_carListCell";
                 }
                 
             }
-             NSLog(@"111111%ld====%@",self.CarArray.count,self.CarArray[0]);
-            NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:
-                                   NSMakeRange(0,[self.mycararray count])];
-            [self.CarArray insertObjects:self.mycararray atIndexes:indexes];
-            NSLog(@"222222%ld===%@",self.CarArray.count,self.CarArray[0]);
+//            if (self.mycararray.count!=0) {
+                NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:
+                                       NSMakeRange(0,[self.mycararray count])];
+                [self.CarArray insertObjects:self.mycararray atIndexes:indexes];
+//            }
+//             NSLog(@"111111%ld====%@",self.CarArray.count,self.CarArray[0]);
+           
+//            NSLog(@"222222%ld===%@",self.CarArray.count,self.CarArray[0]);
             
             for (int index = 0; index < [self.CarArray count]; index++) {
                 UIImage *image = [UIImage imageNamed:@"aicheditu"];

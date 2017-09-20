@@ -50,6 +50,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"update" object:nil];
     
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
     [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
@@ -77,7 +79,11 @@
     
     
 }
-
+-(void)noticeupdate:(NSNotification *)sender{
+    _otherArray = [[NSMutableArray alloc]init];
+    self.page = 0 ;
+    [self requestSelcectList];
+}
 -(void)setupRefresh
 {
     self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -369,10 +375,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    CarClubNews *news = [[CarClubNews alloc]init];
+    QWCarClubNewsModel *news = [[QWCarClubNewsModel alloc]init];
+    
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
     if (self.dataArray.count!=0) {
+        news = [self.dataArray objectAtIndex:indexPath.section];
          detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode;
-
+        detailController.hidesBottomBarWhenPushed       = YES;
+        detailController.GiveCount=news.GiveCount;
+        detailController.CommentCount=news.CommentCount;
+        detailController.ActivityCode                   = news.ActivityCode;
     }
    
    

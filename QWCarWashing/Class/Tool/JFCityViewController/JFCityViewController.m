@@ -379,6 +379,7 @@
         }
         if (indexPath.section == _HeaderSectionTotal - 3) {
             NSString *locationCity = [KCURRENTCITYINFODEFAULTS objectForKey:@"locationCity"];
+            NSLog(@"locationCity%@",locationCity);
             _cell.cityNameArray = locationCity ? @[locationCity] : @[@"正在定位..."];
         }
         if (indexPath.section == _HeaderSectionTotal - 2) {
