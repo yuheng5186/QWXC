@@ -22,19 +22,7 @@
 @end
 
 @implementation DSCarTravellingController
--(NSMutableArray *)dataArray{
-    if (_dataArray==nil) {
-        _dataArray=[NSMutableArray arrayWithCapacity:0];
-    }
-    return _dataArray;
-}
--(NSMutableArray *)otherArray{
-    if (_otherArray==nil) {
-        _otherArray=[NSMutableArray arrayWithCapacity:0];
-    }
-    return _otherArray;
-    
-}
+
 - (void) drawContent
 {
     self.statusView.hidden      = YES;
@@ -44,8 +32,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _area = @"上海市";
+    self.dataArray=[NSMutableArray arrayWithCapacity:0];
+    _area = [UdStorage getObjectforKey:@"City"];
     // Do any additional setup after loading the view.
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(noticeupdate:) name:@"update" object:nil];
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height-Main_Screen_Height*100/667)];
     self.tableView.delegate         = self;
     self.tableView.dataSource       = self;
@@ -65,6 +56,13 @@
     [self setupRefresh];
     
 }
+-(void)noticeupdate:(NSNotification *)sender{
+    self.dataArray = [[NSMutableArray alloc]init];
+    self.otherArray = [[NSMutableArray alloc]init];
+    self.page = 0 ;
+    [self requestSelcectList];
+}
+
 -(void)setupRefresh
 {
     self.tableView.mj_header= [MJRefreshNormalHeader headerWithRefreshingBlock:^{
@@ -91,7 +89,8 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        
+        self.dataArray=[NSMutableArray arrayWithCapacity:0];
+
         self.page = 0 ;
         [self requestSelcectList];
         
@@ -110,6 +109,7 @@
         else
         {
             self.page++;
+            _otherArray = [NSMutableArray new];
             [self requestSelectListMore];
             
         }
@@ -141,7 +141,7 @@
             for(NSDictionary *dic in arr)
             {
                 QWCarClubNewsModel *news = [[QWCarClubNewsModel alloc]initWithDictionary:dict error:nil];
-                [news setValuesForKeysWithDictionary:dic];
+                
                 [self.otherArray addObject:news];
             }
             if(self.otherArray.count == 0)
