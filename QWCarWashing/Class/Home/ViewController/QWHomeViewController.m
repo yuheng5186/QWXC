@@ -52,6 +52,7 @@
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 @property (strong, nonatomic)NSString *LocCity;
+@property (strong, nonatomic) UIImageView *NavgationLeftImage;
 @end
 static NSString *cellstr=@"Cellstr";
 @implementation QWHomeViewController
@@ -121,7 +122,16 @@ static NSString *cellstr=@"Cellstr";
     
     [self setupRefresh];
     
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    //    [center addObserver:self selector:@selector(noticeupdateUserName:)  name:@"updatenamesuccess" object:nil];
+    [center addObserver:self selector:@selector(noticeupdateUserheadimg:) name:@"updateheadimgsuccess" object:nil];
 }
+
+-(void)noticeupdateUserheadimg:(NSNotification *)sender{
+    NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
+    NSURL *url=[NSURL URLWithString:ImageURL];
+    
+    [self.NavgationLeftImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];}
 
 -(void)setupRefresh
 {
@@ -212,22 +222,22 @@ static NSString *cellstr=@"Cellstr";
 #pragma mark-设置导航栏左右按钮
 -(void)setNagationLeftAndRightButton{
     //左边试图
-    UIImageView *btn=[UIImageView new];
+   self.NavgationLeftImage=[UIImageView new];
     
-    btn.contentMode=UIViewContentModeScaleAspectFill;
-    btn.frame = CGRectMake(0, 0, Main_Screen_Width*35/375, Main_Screen_Height*35/667);
+    self.NavgationLeftImage.contentMode=UIViewContentModeScaleAspectFill;
+    self.NavgationLeftImage.frame = CGRectMake(0, 0, Main_Screen_Width*35/375, Main_Screen_Height*35/667);
     if (!IsNullIsNull([UdStorage getObjectforKey:Userid])) {
         NSString *ImageURL=[NSString stringWithFormat:@"%@%@",kHTTPImg,[UdStorage getObjectforKey:UserHead]];
         NSURL *url=[NSURL URLWithString:ImageURL];
        
-        [btn sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
+        [self.NavgationLeftImage sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"gerenxinxitou"]];
     }
-    btn.clipsToBounds=YES;
-    btn.layer.cornerRadius=btn.height/2;
-    btn.top     = Main_Screen_Height*3/667;
+    self.NavgationLeftImage.clipsToBounds=YES;
+    self.NavgationLeftImage.layer.cornerRadius=self.NavgationLeftImage.height/2;
+    self.NavgationLeftImage.top     = Main_Screen_Height*3/667;
 
     
-    UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:btn];
+    UIBarButtonItem *leftbarbtn= [[UIBarButtonItem alloc]initWithCustomView:self.NavgationLeftImage];
     self.navigationItem.leftBarButtonItem=leftbarbtn;
     //右边试图
     
