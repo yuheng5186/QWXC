@@ -28,6 +28,8 @@
 @property (nonatomic, weak) UITextField *Manufacturelab;
 @property (nonatomic, weak) UITextField *DepartureTimelab;
 @property (nonatomic, weak) UITextField *Mileagelab;
+@property (nonatomic, strong) NSString *lblYear;
+@property (nonatomic, strong) NSString *lblData;
 //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
 @end
 static NSString *id_carInfoCell = @"id_carInfoCell";
@@ -193,7 +195,10 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             if (indexPath.row == 1) {
                 UILabel *lbl = [[UILabel alloc] init];
                 _lbl = lbl;
-                lbl.text = @"请选择";
+               
+                    lbl.text = @"请选择";
+                    self.lblYear=@"";
+               
                 lbl.textColor = [UIColor colorFromHex:@"#868686"];
                 lbl.font = [UIFont systemFontOfSize:12];
                 [carCell.contentView addSubview:lbl];
@@ -205,6 +210,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             }else {
                 UILabel *lbl2 = [[UILabel alloc] init];
                 _lbl2 = lbl2;
+                self.lblData=@" ";
                 lbl2.text = @"请选择";
                 lbl2.textColor = [UIColor colorFromHex:@"#868686"];
                 lbl2.font = [UIFont systemFontOfSize:12];
@@ -343,7 +349,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             [self.Mileagelab resignFirstResponder];
             [self.CarBrandlab resignFirstResponder];
             QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
-                
+                self.lblYear=str;
                 self.lbl.text = str;
             }];
             [datePickerView show];
@@ -355,7 +361,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             [self.Mileagelab resignFirstResponder];
             [self.CarBrandlab resignFirstResponder];
             QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
-                
+                self.lblData=str;
                 self.lbl2.text = str;
             }];
             [datePickerView show];
@@ -375,15 +381,39 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 - (void)didClickSaveButton {
     if (self.mycarModel==nil) {
+//        self.CarBrandlab.text
         //新增
-        if (IsNullIsNull(self.CarBrandlab.text)||IsNullIsNull(self.PlateNumberlab.text)||IsNullIsNull(self.ChassisNumlab.text)||IsNullIsNull(self.lbl.text)||IsNullIsNull(self.lbl2.text)||IsNullIsNull(self.Mileagelab.text)) {
-            [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:1];
-            
-        }else{
+//        if (IsNullIsNull(self.CarBrandlab.text)||IsNullIsNull(self.PlateNumberlab.text)||IsNullIsNull(self.ChassisNumlab.text)||IsNullIsNull(self.lbl.text)||IsNullIsNull(self.lbl2.text)||IsNullIsNull(self.Mileagelab.text)) {
+//            [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:1];
+//            
+//        }else{
+        //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
+        if(self.PlateNumberlab.text.length == 0 || self.CarBrandlab.text.length == 0 )
+        {
+            [HUD hide:YES];
+            [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:2];
+        }
+        
+        else
+        {
+            NSString *lblstr=@"";
+            if (self.lblYear.length>=4) {
+                lblstr=[self.lblYear substringWithRange:NSMakeRange(0,4)];
+            }
+            //            lblstr= [lblstr isEqualToString:@" "]?0:lblstr;
+            if(lblstr.length==0){
+                lblstr=@"0";
+            }
+            if(self.Mileagelab.text.length==0 ){
+                self.Mileagelab.text=@"0";
+            }
+            //            _text2.text=[_text2.text isEqualToString:@" "]?0:_text2.text;
+            NSLog(@"%@===%@==%@===%@",self.lblYear,lblstr,self.lblData,self.Mileagelab.text);
             //车牌号：沪+编号
             NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
             
-            [self requestAddCarAndcCarBrand:self.CarBrandlab.text andPlateNumber:PlateNumberstr andChassisNum:self.ChassisNumlab.text andManufacture:[self.lbl.text substringWithRange:NSMakeRange(0,4)] andDepartureTime:self.lbl2.text andMileage:self.Mileagelab.text];
+    
+            [self requestAddCarAndcCarBrand:self.CarBrandlab.text andPlateNumber:PlateNumberstr andChassisNum:self.ChassisNumlab.text andManufacture:lblstr andDepartureTime:self.lblData andMileage:self.Mileagelab.text];
             
         }
     }else{
@@ -396,9 +426,28 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 #pragma mark-修改信息
 #pragma mark-修改车辆默认值接口
 -(void)updateCarDefaultAndCarCode:(NSString *)carCode andModifyType:(NSString *)ModifyType {
+    if(self.PlateNumberlab.text.length == 0 || self.CarBrandlab.text.length == 0 )
+    {
+        [HUD hide:YES];
+        [self.view showInfo:@"请将信息填写完整" autoHidden:YES interval:2];
+    }
+    
+    else
+    {
+        NSString *lblstr=@"";
+        if (self.lblYear.length>=4) {
+            lblstr=[self.lblYear substringWithRange:NSMakeRange(0,4)];
+        }
+        //            lblstr= [lblstr isEqualToString:@" "]?0:lblstr;
+        if(lblstr.length==0){
+            lblstr=@"0";
+        }
+        if(self.Mileagelab.text.length==0 ){
+            self.Mileagelab.text=@"0";
+        }
     //车牌号：沪+编号
     NSString *PlateNumberstr=[NSString stringWithFormat:@"%@%@",self.provinceBtn.titleLabel.text,self.PlateNumberlab.text];
-    //    [[_mycararray objectAtIndex:button.tag] objectForKey:@"CarCode"]
+        
     NSDictionary *mulDic = @{
                              @"Account_Id":[UdStorage getObjectforKey:Userid],
                              @"CarCode":carCode,
@@ -407,10 +456,12 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
                              @"PlateNumber":PlateNumberstr,
                              @"ChassisNum":self.ChassisNumlab.text,
                              @"EngineNum":@"",
-                             @"Manufacture":[self.lbl.text substringWithRange:NSMakeRange(0,4)],
-                             @"DepartureTime":self.lbl2.text,
+                             @"Manufacture":lblstr,
+                             @"DepartureTime":self.lblData,
                              @"Mileage":self.Mileagelab.text
                              };
+        
+        
     NSLog(@"%@",mulDic);
     [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@MyCar/ModifyCarInfo",Khttp] success:^(NSDictionary *dict, BOOL success) {
         NSLog(@"%@",dict);
@@ -429,7 +480,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
     } fail:^(NSError *error) {
         [self.view showInfo:@"修改失败" autoHidden:YES interval:2];
     }];
-    
+    }
 }
 #pragma mark-新增爱车
 //CarBrand:车辆品牌,PlateNumber:车牌号,ChassisNum:车架号,Manufacture:生产年份,DepartureTime:上路时间,Mileage:行驶里程
