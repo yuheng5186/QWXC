@@ -265,10 +265,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    QWCarClubNewsModel *news = [[QWCarClubNewsModel alloc]init];
+
     DSCarClubDetailController  *detailController    = [[DSCarClubDetailController alloc]init];
     if (self.dataArray.count!=0) {
+        news = [self.dataArray objectAtIndex:indexPath.section];
+
         detailController.ActivityCode=((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode;
-        NSLog(@"%ld",(long)((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode);
+//        NSLog(@"%ld",(long)((QWCarClubNewsModel *)self.dataArray[indexPath.section]).ActivityCode);
+        detailController.hidesBottomBarWhenPushed       = YES;
+        detailController.GiveCount=news.GiveCount;
+        detailController.CommentCount=news.CommentCount;
+        detailController.ActivityCode                   = news.ActivityCode;
     }
     
     detailController.hidesBottomBarWhenPushed       = YES;
