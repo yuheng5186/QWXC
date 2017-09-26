@@ -64,6 +64,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
     self.lastPath = indexPath;
     [self.McdetailTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:2] animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -77,7 +78,8 @@
     collecttag=0;
     
     NSLog(@"===%@",self.MerCode);
-    
+    [self setupview];
+
     if (self.MerCode!=nil) {
         [self requestMerchantDetailDataAndMerCode:self.MerCode];
     }else{

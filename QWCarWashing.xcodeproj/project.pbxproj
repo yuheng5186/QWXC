@@ -1274,7 +1274,7 @@
 				180957B21F414D0000BE185D /* Main */,
 				180957B61F414D0000BE185D /* Me */,
 				180957BA1F414D0000BE185D /* Merchant */,
-				180957BE1F414D0000BE185D /* ShoppingCar */,
+				180957BE1F414D0000BE185D /* ShoppingCard */,
 				180957C21F414D0000BE185D /* Tool */,
 			);
 			path = Class;
@@ -1515,13 +1515,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		180957BE1F414D0000BE185D /* ShoppingCar */ = {
+		180957BE1F414D0000BE185D /* ShoppingCard */ = {
 			isa = PBXGroup;
 			children = (
 				180957BF1F414D0000BE185D /* model */,
 				180957C01F414D0000BE185D /* view */,
 				180957C11F414D0000BE185D /* ViewController */,
 			);
+			name = ShoppingCard;
 			path = ShoppingCar;
 			sourceTree = "<group>";
 		};

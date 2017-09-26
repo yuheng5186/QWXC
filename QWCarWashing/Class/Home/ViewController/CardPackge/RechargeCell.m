@@ -16,13 +16,13 @@
     _cardBagModel=cardBagModel;
 //    NSLog(@"%@===%ld",cardBagModel.Description,cardBagModel.CardCount);
     self.CardnameLabels.text = cardBagModel.CardName;
-    self.CarddesLabels.text = [NSString stringWithFormat:@"%@ 免费洗车%ld次",cardBagModel.Description,cardBagModel.CardCount];
+    self.CarddesLabels.text = [NSString stringWithFormat:@"本月免费洗车%ld次",cardBagModel.CardCount];
     
     
     
     
     
-    self.CardTimeLabels.text = [NSString stringWithFormat:@"有效期: %@-%@",[LCMD5Tool DateZhuan:cardBagModel.ExpStartDates],[LCMD5Tool DateZhuan:cardBagModel.ExpEndDates]];
+    self.CardTimeLabels.text = [NSString stringWithFormat:@"截止日期: %@-%@",[LCMD5Tool DateZhuan:cardBagModel.ExpStartDates],[LCMD5Tool DateZhuan:cardBagModel.ExpEndDates]];
     
     if(cardBagModel.CardUseState == 2)
     {

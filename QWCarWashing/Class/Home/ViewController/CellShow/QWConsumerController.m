@@ -73,7 +73,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 50;
+    if(self.record.ConsumptionType == 2)
+    {
+        return 60*Main_Screen_Height/667;
+    }
+    return 50*Main_Screen_Height/667;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -157,9 +157,9 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
         {
             [self.rechargeView.mj_footer endRefreshing];
             self.page--;
-            [self.view showInfo:@"信息获取失败" autoHidden:YES interval:2];
+            [self.view showInfo:@"没有更多数据" autoHidden:YES interval:2];
             
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
             
         }
     } fail:^(NSError *error) {
@@ -180,7 +180,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
                              @"PageIndex":@0,
                              @"PageSize":@10
                              };
-[AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardInfoList",Khttp] success:^(NSDictionary *dict, BOOL success) {
+    [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@Card/GetCardInfoList",Khttp] success:^(NSDictionary *dict, BOOL success) {
     NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
@@ -200,7 +200,7 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
                     
                     [self.CardbagData addObject:model];
                 }
-                [self.rechargeView reloadData];
+//                [self.rechargeView reloadData];
                 [HUD setHidden:YES];
                 [self.rechargeView reloadData];
                 [self.rechargeView.mj_header endRefreshing];
@@ -393,9 +393,9 @@ static NSString *id_rechargeCell = @"id_rechargeCell";
     
     
     [self.rechargeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(titleView.mas_bottom);
-        make.left.equalTo(self.view).mas_offset(Main_Screen_Width*37.5/375);
-        make.right.equalTo(self.view).mas_offset(-Main_Screen_Width*37.5/375);
+        make.top.equalTo(titleView.mas_bottom).mas_offset(Main_Screen_Height*12.5/667);
+        make.left.equalTo(self.view).mas_offset(Main_Screen_Width*22.5/375);
+        make.right.equalTo(self.view).mas_offset(-Main_Screen_Width*22.5/375);
         make.height.mas_equalTo(Main_Screen_Height - 60*Main_Screen_Height/667 - 64);
     }];
     
