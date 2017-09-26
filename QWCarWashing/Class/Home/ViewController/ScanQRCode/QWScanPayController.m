@@ -170,7 +170,7 @@ static NSString *id_paySelectCell = @"id_paySelectCell";@implementation QWScanPa
     }];
     
     UIButton *bottomPayButton = [[UIButton alloc] initWithFrame:CGRectMake(Main_Screen_Width - 136*Main_Screen_Height/667, 0, 136*Main_Screen_Height/667, 60*Main_Screen_Height/667)];
-    bottomPayButton.backgroundColor = [UIColor colorFromHex:@"#0161a1"];
+    bottomPayButton.backgroundColor = [UIColor colorFromHex:@"#ffce36"];
     [bottomPayButton setTitle:@"立即支付" forState:UIControlStateNormal];
     [bottomPayButton setTintColor:[UIColor whiteColor]];
     bottomPayButton.titleLabel.font = [UIFont systemFontOfSize:18*Main_Screen_Height/667];

@@ -292,7 +292,7 @@ static NSString *cellstr=@"Cellstr";
         
         cell2.selecOptionIndexs=^(NSInteger index){
             QWCardPackgeController  *cardPackgeController       = [[QWCardPackgeController alloc]init];
-            QWScanController    *scanController                 = [[QWScanController alloc]init];
+//            QWScanController    *scanController                 = [[QWScanController alloc]init];
             
             QWViptequanViewController  *vipController           = [[QWViptequanViewController alloc]init];
             
@@ -300,8 +300,10 @@ static NSString *cellstr=@"Cellstr";
             #pragma mark-图片点击事件
             switch (index) {
                 case 0:
-                    scanController.hidesBottomBarWhenPushed     = YES;
-                    [self.navigationController pushViewController:scanController animated:YES];
+                    self.tabBarController.selectedIndex = 2;
+//
+//                    scanController.hidesBottomBarWhenPushed     = YES;
+//                    [self.navigationController pushViewController:scanController animated:YES];
                     break;
                 case 1:
                     cardPackgeController.hidesBottomBarWhenPushed     = YES;
