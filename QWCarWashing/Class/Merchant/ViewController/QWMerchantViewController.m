@@ -523,12 +523,12 @@
 {
     // 第1列 高度
     if (index == 0) {
-        return 300* myDelegate.autoSizeScaleY;
+        return 270* myDelegate.autoSizeScaleY;
     }
     
     // 第2列 高度
     if (index == 1) {
-        return 200* myDelegate.autoSizeScaleY;
+        return 180* myDelegate.autoSizeScaleY;
     }
     
     // 第3列 高度

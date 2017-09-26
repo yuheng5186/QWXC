@@ -410,9 +410,9 @@ static NSString * HeaderId = @"header";
 //            [provinceBtn addTarget:self action:@selector(didClickProvinceBtn) forControlEvents:UIControlEventTouchUpInside];
             [carCell.contentView addSubview:provinceBtn];
             
-            UIImageView *provinceImgV = [[UIImageView alloc] init];
-            provinceImgV.image = [UIImage imageNamed:@"xuanshengfen"];
-            [provinceBtn addSubview:provinceImgV];
+//            UIImageView *provinceImgV = [[UIImageView alloc] init];
+//            provinceImgV.image = [UIImage imageNamed:@"xuanshengfen"];
+//            [provinceBtn addSubview:provinceImgV];
             
             UITextField *numTF = [[UITextField alloc] init];
             numTF.placeholder = @"请输入车牌号";
@@ -427,11 +427,11 @@ static NSString * HeaderId = @"header";
                 make.left.equalTo(carCell.contentView).mas_offset(110);
             }];
             
-            [provinceImgV mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.right.equalTo(provinceBtn);
-                make.bottom.equalTo(provinceBtn);
-                make.width.height.mas_equalTo(7);
-            }];
+//            [provinceImgV mas_makeConstraints:^(MASConstraintMaker *make) {
+//                make.right.equalTo(provinceBtn);
+//                make.bottom.equalTo(provinceBtn);
+//                make.width.height.mas_equalTo(7);
+//            }];
             
             [numTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(provinceBtn);

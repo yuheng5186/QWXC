@@ -53,6 +53,8 @@ static NSString * const DetailID_cell = @"Detailcell";
     cityDTableView.delegate = self;
     cityDTableView.dataSource = self;
     self.cityDetailTableView = cityDTableView;
+    cityDTableView.contentInset  = UIEdgeInsetsMake(0, 0, Main_Screen_Height*400/667, 0);
+
     [self.view addSubview:cityDTableView];
     
     [cityTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:ID_cell];
