@@ -36,12 +36,28 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
 
 @implementation QWIcreaseCarController
 
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=IsNullIsNull(self.titlename)?@"我的车库":self.titlename;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = kColorTableBG;
-    
+    [self resetBabkButton];
+
     UITableView *carInfoView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width, 420)];
     
     _carInfoView = carInfoView;
@@ -135,7 +151,7 @@ static NSString *id_carInfoCell = @"id_carInfoCell";
             }];
             [numTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(provinceLabel);
-                make.leading.equalTo(provinceLabel.mas_trailing).mas_offset(16);
+                make.leading.equalTo(provinceLabel.mas_trailing).mas_offset(0);
                 make.width.mas_equalTo(200);
             }];
         }else{

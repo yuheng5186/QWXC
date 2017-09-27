@@ -59,7 +59,8 @@ static NSString *id_carListCell = @"id_carListCell";
     [super viewDidLoad];
     self.title=@"我的车库";
     
- 
+    [self resetBabkButton];
+
     // Do any additional setup after loading the view.
 //    [self setupUI];
     [self requestMyCarData];
@@ -72,6 +73,20 @@ static NSString *id_carListCell = @"id_carListCell";
     
     
 }
+
+- (void) resetBabkButton {
+    
+    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0,0,20,20)];
+    [rightButton setImage:[UIImage imageNamed:@"icon_titlebar_arrow"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(backButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.leftBarButtonItem= rightItem;
+}
+- (void) backButtonClick:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)noticeincreaseMyCar:(NSNotification *)sender{
      [self requestMyCarData];
 }

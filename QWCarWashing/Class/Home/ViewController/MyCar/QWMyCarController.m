@@ -226,7 +226,7 @@ static NSString * HeaderId = @"header";
 
 #pragma mark NewPagedFlowView Delegate
 - (CGSize)sizeForPageInFlowView:(NewPagedFlowView *)flowView {
-    return CGSizeMake(Main_Screen_Width - 84, (Main_Screen_Width - 84) / 2);
+    return CGSizeMake(Main_Screen_Width - 84*Main_Screen_Height/667, (Main_Screen_Width - 84*Main_Screen_Height/667) / 2);
 }
 
 - (void)didSelectCell:(UIView *)subView withSubViewIndex:(NSInteger)subIndex {
@@ -387,7 +387,7 @@ static NSString * HeaderId = @"header";
     
     static NSString *id_carCell = @"id_carCell";
     UITableViewCell *carCell = [tableView dequeueReusableCellWithIdentifier:id_carCell];
-    
+    carCell.selectionStyle=UITableViewCellSelectionStyleNone;
     carCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:id_carCell];
     
     if (indexPath.section == 0) {
@@ -435,7 +435,7 @@ static NSString * HeaderId = @"header";
             
             [numTF mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerY.equalTo(provinceBtn);
-                make.leading.equalTo(provinceBtn.mas_trailing).mas_offset(16);
+                make.leading.equalTo(provinceBtn.mas_trailing).mas_offset(0);
                 make.width.mas_equalTo(200);
             }];
             
@@ -450,6 +450,8 @@ static NSString * HeaderId = @"header";
             brandTF.placeholder = @"请填写";
             brandTF.textColor = [UIColor colorFromHex:@"#b4b4b4"];
             brandTF.font = [UIFont systemFontOfSize:12];
+            brandTF.delegate = self;
+
             [carCell.contentView addSubview:brandTF];
             self.CarBrandlab=brandTF;
             [brandTF mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -683,7 +685,7 @@ static NSString * HeaderId = @"header";
 
     
     [textField resignFirstResponder];
-
+    [self.CarBrandlab resignFirstResponder];
     QWIcreaseCarController *increaseVC = [[QWIcreaseCarController alloc] init];
     QWMyCarModel *car = [[QWMyCarModel alloc]init];
     car = [self.CarArray objectAtIndex:_Xuhao];
