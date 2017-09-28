@@ -44,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.serviceTag = 0;
+
     self.title      = @"客服咨询";
     [self setupUI];
     
@@ -54,7 +56,15 @@
 #pragma mark 加载数据
 - (void)loadData
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"problemCenter.plist" withExtension:nil];
+    NSURL *url;
+    if (self.serviceTag == 0) {
+        url = [[NSBundle mainBundle] URLForResource:@"problemCenter.plist" withExtension:nil];
+        
+    }else if (self.serviceTag == 1){
+        url = [[NSBundle mainBundle] URLForResource:@"problemCar.plist" withExtension:nil];
+    }else{
+        url = [[NSBundle mainBundle] URLForResource:@"ProblemUse.plist" withExtension:nil];
+    }
     NSArray *tempArray = [NSArray arrayWithContentsOfURL:url];
     
     self.answersArray = [NSMutableArray array];
@@ -93,7 +103,6 @@
     [phoneBtn setTitle:@"电话客服" forState:UIControlStateNormal];
     //[phoneBtn setTintColor:[UIColor blackColor]];
     [phoneBtn setTitleColor:[UIColor colorFromHex:@"#4a4a4a"] forState:UIControlStateNormal];
-    
     phoneBtn.titleLabel.font = [UIFont systemFontOfSize:14*Main_Screen_Height/667];
     [phoneBtn setImage:[UIImage imageNamed:@"djjdianhua"] forState:UIControlStateNormal];
     [bottomPhoneView addSubview:phoneBtn];
@@ -131,7 +140,7 @@
 
 - (void)showAlertWithMessage:(NSString *)message{
     
-    [PhoneHelper dial: @"1008611"];
+    [PhoneHelper dial: @"0532-58698831"];
 }
 
 
@@ -229,6 +238,7 @@
 - (void)sliderView:(HQSliderView *)sliderView didClickMenuButton:(UIButton *)button{
     
     self.serviceTag = button.tag;
+    [self loadData];
     [self.serviceListView reloadData];
 }
 

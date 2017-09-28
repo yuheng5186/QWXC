@@ -200,6 +200,9 @@
             //            [self.view showInfo:@"获取数据成功" autoHidden:YES interval:2];
             NSArray *arr = [NSArray array];
             arr = [dict objectForKey:@"JsonData"];
+            if (arr.count == 0) {
+                [self.view showInfo:@"当前暂无更新内容" autoHidden:YES interval:3];
+            }
             for(NSDictionary *dic in arr)
             {
                 QWCarClubNewsModel *news = [[QWCarClubNewsModel alloc]initWithDictionary:dic error:nil];
