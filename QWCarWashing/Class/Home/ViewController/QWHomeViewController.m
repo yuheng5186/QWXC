@@ -177,6 +177,7 @@ static NSString *cellstr=@"Cellstr";
                              //                             @"Area":self.LocCity
                              };
        [AFNetworkingTool post:mulDic andurl:[NSString stringWithFormat:@"%@User/GetUserRecord",Khttp] success:^(NSDictionary *dict, BOOL success) {
+           NSLog(@"%@",dict);
         if([[dict objectForKey:@"ResultCode"] isEqualToString:[NSString stringWithFormat:@"%@",@"F000000"]])
         {
             NSArray *arr = [NSArray array];

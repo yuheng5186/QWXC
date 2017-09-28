@@ -86,10 +86,6 @@
         [self setupview];
     }
     
-
-    
-    
-    
     
     
 }

@@ -45,8 +45,8 @@
     upView.top                      = 0;
     
     
-    UIImage *appImage              = [UIImage imageNamed:@"denglu-icon-ditu"];
-    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width/2, appImage.size.height/2) imageName:@"denglu-icon-ditu"];
+    UIImage *appImage              = [UIImage imageNamed:@"denglu_icon"];
+    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width, appImage.size.height) imageName:@"denglu_icon"];
     appImageView.top               = Main_Screen_Height*20/667;
     appImageView.centerX           = upView.centerX;
     

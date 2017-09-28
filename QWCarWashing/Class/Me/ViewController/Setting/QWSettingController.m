@@ -58,8 +58,8 @@
     UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
     upView.top                      = 0;
     
-    UIImage *appImage              = [UIImage imageNamed:@"denglu-icon-ditu"];
-    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width/2, appImage.size.height/2) imageName:@"denglu-icon-ditu"];
+    UIImage *appImage              = [UIImage imageNamed:@"denglu_icon"];
+    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width, appImage.size.height) imageName:@"denglu_icon"];
     appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     
@@ -67,13 +67,13 @@
     UIFont *showNameFont            = [UIFont systemFontOfSize:Main_Screen_Height*13/667];
     UILabel *showNameLabel          = [UIUtil drawLabelInView:upView frame:[UIUtil textRect:showName font:showNameFont] font:showNameFont text:showName isCenter:NO];
     showNameLabel.textColor         = [UIColor colorFromHex:@"#999999"];
-    showNameLabel.top               = appImageView.bottom +Main_Screen_Height*25/667;
+    showNameLabel.top               = appImageView.bottom +Main_Screen_Height*10/667;
     showNameLabel.centerX           = appImageView.centerX;
     
     UIView      *lineView           = [UIUtil drawLineInView:upView frame:CGRectMake(0, 0, Main_Screen_Width, 1) color:[UIColor blackColor]];
     lineView.bottom                 = Main_Screen_Height*179/667;
     
-    upView.height                   = showNameLabel.bottom +Main_Screen_Height*10/667;
+    upView.height                   = showNameLabel.bottom +Main_Screen_Height*15/667;
     
     self.tableView                  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, Main_Screen_Width,Main_Screen_Height*150/667) ];
     self.tableView.top              = upView.bottom+1;
