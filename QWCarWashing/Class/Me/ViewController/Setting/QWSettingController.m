@@ -58,8 +58,7 @@
     UIView *upView                  = [UIUtil drawLineInView:self.contentView frame:CGRectMake(0, 0, Main_Screen_Width, Main_Screen_Height*180/667) color:[UIColor whiteColor]];
     upView.top                      = 0;
     
-    UIImage *appImage              = [UIImage imageNamed:@"denglu_icon"];
-    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, appImage.size.width, appImage.size.height) imageName:@"denglu_icon"];
+    UIImageView *appImageView      = [UIUtil drawCustomImgViewInView:upView frame:CGRectMake(0, 0, Main_Screen_Width*80/375, Main_Screen_Height*80/667) imageName:@"denglu_icon"];
     appImageView.top               = Main_Screen_Height*30/667;
     appImageView.centerX           = upView.centerX;
     

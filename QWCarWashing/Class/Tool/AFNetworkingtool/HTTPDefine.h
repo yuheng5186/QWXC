@@ -8,13 +8,13 @@
 //
 #pragma mark-上线服务器
 
-#define Khttp @"http://api.jinding6666.com/api/"
-
-#define kHTTPImg @"http://api.jinding6666.com"
-
-//#define Khttp @"http://192.168.2.152:8090/api/"
+//#define Khttp @"http://api.jdkuaixi.com/api/"
 //
-//#define kHTTPImg @"http://192.168.2.152:8090"
+//#define kHTTPImg @"http://api.jdkuaixi.com"
+
+#define Khttp @"http://192.168.2.152:8090/api/"
+
+#define kHTTPImg @"http://192.168.2.152:8090"
 
 //http://api.jinding6666.com/  上线地址
 
